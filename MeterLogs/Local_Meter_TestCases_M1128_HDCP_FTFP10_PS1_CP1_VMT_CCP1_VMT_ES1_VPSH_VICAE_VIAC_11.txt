@@ -1,0 +1,23 @@
+[04/04 03:46:03.417] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 03/15_00:00 - 04/28_23:59)> curdt 2025-04-20 18:01:00
+[04/04 03:46:03.419] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 03/15_00:00 - 04/28_23:59)> curdt 2025-04-20 23:36:00
+[04/04 03:46:03.421] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 03/15_00:00 - 04/28_23:59)> curdt 2025-04-21 05:16:00
+[04/04 03:46:03.423] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 03/15_00:00 - 04/28_23:59)> curdt 2025-04-21 11:01:00
+[04/04 03:46:03.425] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 03/15_00:00 - 04/28_23:59)> curdt 2025-04-21 16:51:00
+[04/04 03:46:03.428] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 03/15_00:00 - 04/28_23:59)> curdt 2025-04-21 22:46:00
+[04/04 03:46:03.430] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 03/15_00:00 - 04/28_23:59)> curdt 2025-04-13 01:46:00
+[04/04 03:46:03.432] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 03/15_00:00 - 04/28_23:59)> curdt 2025-04-13 01:46:00
+[04/04 03:46:03.433] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 36073 rp_min_to_free 36073
+[04/04 03:46:03.435] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 03/15_00:00 - 04/28_23:59)> curdt 2025-04-13 01:46:03.433701
+[04/04 03:46:22.362] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[04/04 03:46:22.364] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/04 03:46:22.364] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/04 03:46:22.364] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1743738382,2,2
+
+[04/04 03:46:22.538] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[04/04 03:46:22.539] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/04 03:46:22.539] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/04 03:46:22.540] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1743738382,2,2
+
+[04/04 03:46:24.292] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[04/04 03:46:24.292] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[04/04 03:46:24.316] | INFO     | lib.seco   | watchdog   | SecoLib()::check_temp(): SECO cpu temperature is:  Kelvin 3151 Celsius 41

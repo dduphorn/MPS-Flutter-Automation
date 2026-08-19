@@ -1,0 +1,62 @@
+[05/19 20:58:50.166] | INFO     | sys_serv   | time_checker | _log_ntp_peer_info(): 1/3/5 (primary/good+primary/total) - primary:*149.248.12.167  132.239.1.6      2 u 1013 1024  377   71.802    1.464   1.915 good:+144.202.41.38   216.230.233.39   3 u 1054 1024  377   60.217    0.665   8.265, +185.125.190.56  99.220.8.133     2 u  829 1024  377  115.816    1.335   4.963 bad:-172.234.37.140  80.192.165.246   2 u  160 1024  377   61.996   -0.871   4.569, -23.150.41.123   135.45.28.167    2 u  694 1024  177   49.392   -4.011   2.195 other:
+[05/19 20:58:50.305] | INFO     | sys_serv   | time_checker | get_primary_reference(): Found primary_ref: *149.248.12.167  132.239.1.6      2 u 1013 1024  377   71.802    1.464   1.915
+[05/19 20:58:50.307] | INFO     | idigi      | time_checker | clear_ntp_reloaded(): clearing ntp_reloaded controlling watchdog checks
+[05/19 20:58:50.372] | INFO     | lib.cgos   | time_checker | Set RTC to 2026-05-19 20:58:50.308890+00:00
+[05/19 20:58:51.764] | INFO     | detection  | main_reactor | is_daytime(): URL https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0
+[05/19 20:58:51.905] | ERROR    | detection  | main_reactor | is_daytime: Error processing url https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0 read - exception <urlopen error [Errno 1] _ssl.c:504: error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure>
+[05/19 20:58:51.909] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[05/19 20:58:51.914] | INFO     | detection  | main_reactor | is_daytime(): URL https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0
+[05/19 20:58:52.067] | ERROR    | detection  | main_reactor | is_daytime: Error processing url https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0 read - exception <urlopen error [Errno 1] _ssl.c:504: error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure>
+[05/19 20:58:52.070] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[05/19 20:59:12.378] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/system_alive-967f43ae53c511f18822001395129121.json
+[05/19 20:59:13.562] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"ip_addr": "10.10.102.242", "rmq_responses_attempted": 3665, "msg_id": "0x8000002eL", "rmq_api_bytes_sent": 304, "message": "9000-9001", "rmq_image_bytes_sent": 0, "rmq_response_bytes_sent": 2412504, "coin_jar_full": 0, "rmq_images_attempted": 0, "desc_str": "Sentry is alive and normal", "rmq_image_errors": 0, "rmq_images_sent": 0, "rmq_json_errors": 0, "rmq_responses_sent": 3665, "rmq_apis_attempted": 2, "rmq_jsons_attempted": 4946, "sentry_thread_hung": false, "rmq_api_errors": 0, "rmq_response_errors": 0, "rmq_json_bytes_sent": 4240773, "rmq_jsons_sent": 4946, "rmq_apis_sent": 2}, "class": "event", "queued_dt": "2026-05-19T20:59:12Z", "type": "system_alive", "id": "4df6bd68-3c4f-4c57-bcc0-87340ae4faba", "device_id": "m:001395129121"}
+[05/19 20:59:13.697] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at rabbitmq.staging.sentry-link.com:5671 (200): Normal shutdown
+[05/19 20:59:32.441] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 35040 rp_min_to_free 35040
+[05/19 20:59:52.991] | INFO     | detection  | main_reactor | is_daytime(): URL https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0
+[05/19 20:59:53.136] | ERROR    | detection  | main_reactor | is_daytime: Error processing url https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0 read - exception <urlopen error [Errno 1] _ssl.c:504: error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure>
+[05/19 20:59:53.138] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[05/19 20:59:53.141] | INFO     | detection  | main_reactor | is_daytime(): URL https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0
+[05/19 20:59:53.280] | ERROR    | detection  | main_reactor | is_daytime: Error processing url https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0 read - exception <urlopen error [Errno 1] _ssl.c:504: error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure>
+[05/19 20:59:53.285] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[05/19 21:00:19.085] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[05/19 21:00:32.508] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 35039 rp_min_to_free 35039
+[05/19 21:00:53.543] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[05/19 21:00:53.550] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[05/19 21:00:54.210] | INFO     | detection  | main_reactor | is_daytime(): URL https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0
+[05/19 21:00:54.323] | ERROR    | detection  | main_reactor | is_daytime: Error processing url https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0 read - exception <urlopen error [Errno 1] _ssl.c:504: error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure>
+[05/19 21:00:54.326] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[05/19 21:00:54.328] | INFO     | detection  | main_reactor | is_daytime(): URL https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0
+[05/19 21:00:54.507] | ERROR    | detection  | main_reactor | is_daytime: Error processing url https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0 read - exception <urlopen error [Errno 1] _ssl.c:504: error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure>
+[05/19 21:00:54.515] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[05/19 21:01:17.737] | WARNING  | net_monitor | main_reactor | check_network_connectivity_async(): Skipping due to high CPU load (1.18 > 0.7)
+[05/19 21:01:32.470] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 35038 rp_min_to_free 35038
+[05/19 21:01:40.410] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req Disabled gatelot blob logs Target: u'rpc_parking'
+[05/19 21:01:40.414] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint parking response {"jsonrpc": "2.0", "id": 77450572, "result": {"success": false}}
+[05/19 21:01:40.464] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 77450572, "result": {"success": false}} Queue amq.gen-qDYroFxoEUuKWopXWfxN9w #3666
+[05/19 21:01:43.691] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req Disabled gatelot blob logs Target: u'rpc_parking'
+[05/19 21:01:43.695] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint parking response {"jsonrpc": "2.0", "id": 77450573, "result": {"success": false}}
+[05/19 21:01:43.741] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 77450573, "result": {"success": false}} Queue amq.gen-ojGMJTbYSwKxvyPslOaVSg #3667
+[05/19 21:01:44.985] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req Disabled gatelot blob logs Target: u'rpc_parking'
+[05/19 21:01:44.990] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint parking response {"jsonrpc": "2.0", "id": 77450572, "result": {"success": false}}
+[05/19 21:01:45.042] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 77450572, "result": {"success": false}} Queue amq.gen-DKcgOy-iNyaL-F6i63qLKg #3668
+[05/19 21:01:48.265] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req Disabled gatelot blob logs Target: u'rpc_parking'
+[05/19 21:01:48.274] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint parking response {"jsonrpc": "2.0", "id": 77450573, "result": {"success": false}}
+[05/19 21:01:48.325] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 77450573, "result": {"success": false}} Queue amq.gen-HV6hzRcgjZ0PkBf9AaecNw #3669
+[05/19 21:01:51.564] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req Disabled gatelot blob logs Target: u'rpc_parking'
+[05/19 21:01:51.571] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint parking response {"jsonrpc": "2.0", "id": 77450572, "result": {"success": false}}
+[05/19 21:01:51.623] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 77450572, "result": {"success": false}} Queue amq.gen-XzCBLC8w2e89de0llcb2PA #3670
+[05/19 21:01:54.847] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req Disabled gatelot blob logs Target: u'rpc_parking'
+[05/19 21:01:54.854] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint parking response {"jsonrpc": "2.0", "id": 77450573, "result": {"success": false}}
+[05/19 21:01:54.899] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 77450573, "result": {"success": false}} Queue amq.gen-i7Ead94GmgYR0ghy6IepNg #3671
+[05/19 21:01:55.424] | INFO     | detection  | main_reactor | is_daytime(): URL https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0
+[05/19 21:01:55.520] | ERROR    | detection  | main_reactor | is_daytime: Error processing url https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0 read - exception <urlopen error [Errno 1] _ssl.c:504: error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure>
+[05/19 21:01:55.523] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[05/19 21:01:55.528] | INFO     | detection  | main_reactor | is_daytime(): URL https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0
+[05/19 21:01:55.663] | ERROR    | detection  | main_reactor | is_daytime: Error processing url https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0 read - exception <urlopen error [Errno 1] _ssl.c:504: error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure>
+[05/19 21:01:55.665] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[05/19 21:02:00.141] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req Disabled gatelot blob logs Target: u'rpc_parking'
+[05/19 21:02:00.145] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint parking response {"jsonrpc": "2.0", "id": 77450572, "result": {"success": false}}
+[05/19 21:02:00.196] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 77450572, "result": {"success": false}} Queue amq.gen--Du3xzTOp7bY8_wnhsQIuw #3672
+[05/19 21:02:03.565] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req Disabled gatelot blob logs Target: u'rpc_parking'
+[05/19 21:02:03.568] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint parking response {"jsonrpc": "2.0", "id": 77450573, "result": {"success": false}}
+[05/19 21:02:03.616] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 77450573, "result": {"success": false}} Queue amq.gen-y6qNZW6JGORbxjQf7tr8qQ #3673

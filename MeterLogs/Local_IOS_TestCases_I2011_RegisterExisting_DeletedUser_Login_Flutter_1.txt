@@ -1,0 +1,32 @@
+[04/09 16:14:54.436] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x00' (1 q_len tx_seqno #71 tx_failed 3) STATE_IDLE
+[04/09 16:14:54.456] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 71 (tx_seqno 71 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0e\xcf'
+[04/09 16:14:54.460] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 3791 photocell state 1
+[04/09 16:14:54.464] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/09 16:14:54.466] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1775751294,2,0
+
+[04/09 16:14:54.601] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 3791 photocell state 1
+[04/09 16:14:54.604] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/09 16:14:54.605] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1775751294,2,0
+
+[04/09 16:15:32.601] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[04/09 16:15:32.603] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[04/09 16:15:40.507] | WARNING  | net_monitor | main_reactor | check_network_connectivity_async(): Skipping due to high CPU load (0.84 > 0.7)
+[04/09 16:15:52.702] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x00' (1 q_len tx_seqno #72 tx_failed 3) STATE_IDLE
+[04/09 16:15:52.718] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 72 (tx_seqno 72 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\x86'
+[04/09 16:15:52.721] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x00d\xff\xff' (1 q_len tx_seqno #72 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[04/09 16:15:52.723] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x01' (2 q_len tx_seqno #72 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[04/09 16:15:52.744] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 73 (tx_seqno 73 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[04/09 16:15:52.770] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 74 (tx_seqno 74 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xab'
+[04/09 16:15:52.791] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x01d\xff\xff' (1 q_len tx_seqno #75 tx_failed 3) STATE_IDLE
+[04/09 16:15:52.809] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 75 (tx_seqno 75 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[04/09 16:15:52.822] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 42524 rp_min_to_free 42524
+[04/09 16:15:56.216] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x00' (1 q_len tx_seqno #76 tx_failed 3) STATE_IDLE
+[04/09 16:15:56.232] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 76 (tx_seqno 76 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\x81'
+[04/09 16:15:56.237] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 3969 photocell state 1
+[04/09 16:15:56.241] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/09 16:15:56.243] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1775751356,2,0
+
+[04/09 16:15:56.383] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 3969 photocell state 1
+[04/09 16:15:56.387] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/09 16:15:56.390] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1775751356,2,0
+

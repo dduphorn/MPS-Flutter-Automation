@@ -1,0 +1,38 @@
+[04/14 23:30:47.017] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744673447,2,2
+
+[04/14 23:30:47.191] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/14 23:30:47.192] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/14 23:30:47.193] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/14 23:30:47.193] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744673447,2,2
+
+[04/14 23:30:51.336] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/system_alive-80aa1e46198811f0875300c0089e93e0.json
+[04/14 23:30:52.117] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"ip_addr": "10.10.100.201", "rmq_responses_attempted": 521, "msg_id": "0x8000002eL", "rmq_api_bytes_sent": 304, "message": "5591-5592", "rmq_image_bytes_sent": 0, "rmq_response_bytes_sent": 423524, "coin_jar_full": 19.1, "rmq_images_attempted": 0, "desc_str": "Sentry is alive and normal", "rmq_image_errors": 0, "rmq_images_sent": 0, "rmq_json_errors": 0, "rmq_responses_sent": 521, "rmq_apis_attempted": 2, "rmq_jsons_attempted": 703, "sentry_thread_hung": false, "rmq_api_errors": 0, "rmq_response_errors": 0, "rmq_json_bytes_sent": 624085, "rmq_jsons_sent": 703, "rmq_apis_sent": 2}, "class": "event", "queued_dt": "2025-04-14T23:30:51Z", "type": "system_alive", "id": "7ac6f5aa-1216-401a-968b-ddac8f49ab32", "device_id": "m:00C0089E93E0"}
+[04/14 23:30:52.210] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at quality-rabbitmq-lb-1284426831.us-east-1.elb.amazonaws.com:5671 (200): Normal shutdown
+[04/14 23:31:02.247] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 40648 rp_min_to_free 40648
+[04/14 23:31:03.351] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[04/14 23:31:48.835] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/14 23:31:48.837] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/14 23:31:48.837] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/14 23:31:48.838] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744673508,2,2
+
+[04/14 23:31:49.010] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/14 23:31:49.011] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/14 23:31:49.011] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/14 23:31:49.012] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744673509,2,2
+
+[04/14 23:32:02.258] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 40647 rp_min_to_free 40647
+[04/14 23:32:30.317] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[04/14 23:32:30.318] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[04/14 23:32:30.343] | INFO     | lib.seco   | watchdog   | SecoLib()::check_temp(): SECO cpu temperature is:  Kelvin 3161 Celsius 42
+[04/14 23:32:50.671] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/14 23:32:50.672] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/14 23:32:50.673] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/14 23:32:50.673] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744673570,2,2
+
+[04/14 23:32:50.847] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/14 23:32:50.848] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/14 23:32:50.848] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/14 23:32:50.848] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744673570,2,2
+
+[04/14 23:33:02.188] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 40646 rp_min_to_free 40646
+[04/14 23:33:03.392] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3

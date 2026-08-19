@@ -1,0 +1,14 @@
+[03/17 23:59:33.905] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[03/17 23:59:33.905] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1742255973,2,2
+
+[03/17 23:59:42.317] | WARNING  | net_monitor | main_reactor | check_network_connectivity_async(): Skipping due to high CPU load (4.88 > 3.5)
+[03/18 00:00:00.764] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[03/18 00:00:23.526] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req: u'rpc_coin' Payload: '{"method":"get_last_harvest_datetime","params":[],"jsonrpc":"2.0","id":9658613}'
+[03/18 00:00:23.527] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint coin response {"jsonrpc": "2.0", "id": 9658613, "result": null}
+[03/18 00:00:23.573] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 9658613, "result": null} Queue amq.gen-hu1y4XPZWCc-a88SzniHvw #5398
+[03/18 00:00:24.948] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req: u'rpc_coin' Payload: '{"method":"get_last_harvest_value","params":[],"jsonrpc":"2.0","id":9658634}'
+[03/18 00:00:24.949] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint coin response {"jsonrpc": "2.0", "id": 9658634, "result": 0}
+[03/18 00:00:24.999] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 9658634, "result": 0} Queue amq.gen-nHI2nmnVZwyqsflgWfvvMQ #5399
+[03/18 00:00:26.085] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req: u'rpc_coin' Payload: '{"method":"get_coins_inserted","params":[],"jsonrpc":"2.0","id":9658651}'
+[03/18 00:00:26.085] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint coin response {"jsonrpc": "2.0", "id": 9658651, "result": 42}
+[03/18 00:00:26.140] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 9658651, "result": 42} Queue amq.gen-NLFjbKkFlGGAdIHZGhDy4w #5400

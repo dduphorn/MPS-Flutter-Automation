@@ -1,0 +1,104 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Excelsior-ManualViolations" verbose="1" thread-count="1">
+	<parameter name="strBrowser" value="Chrome"></parameter>
+	<parameter name="strEnvironment" value="SG"></parameter>
+	<parameter name="strRemotePath" value="http://localhost:5554"></parameter>
+	<parameter name="strMunicipality" value="Excelsior, MN"></parameter>
+	<parameter name="strRole" value="admin"></parameter>
+	<parameter name="strMeterGroup" value="Screen Test"></parameter>
+	<parameter name="strAVDName" value="Nexus 6 API 22"></parameter>
+	<parameter name="strIOSDeviceName" value="iPhone 6"></parameter>
+	<parameter name="strIOSVersion" value="2.0.6"></parameter>
+	<parameter name="strIOSBuild" value="125"></parameter>
+	
+	<test name = "IOS_ValidateInvalidCredentialMessage_QA_iPhone6">
+		<parameter name="strRole" value="parker"></parameter>
+		<parameter name="strEnvironment" value="QA"></parameter>
+		<parameter name="strMunicipality" value="MPS"></parameter>
+		<parameter name="strIOSDeviceName" value="iPhone 6"></parameter>
+		<parameter name="strIOSVersion" value="2.0.6"></parameter>
+		<parameter name="strIOSBuild" value="125"></parameter>
+		<classes>
+	    	<class name="AutomationCode.TestCases">
+	    		<methods>
+	                    <include name="IOS_ValidateInvalidCredentialMessage"></include>
+	            </methods>
+	      	</class>
+		</classes>
+	</test>
+	<test name = "IOS_ValidateInvalidCredentialMessage_SG_iPhone6">
+		<parameter name="strRole" value="parker"></parameter>
+		<parameter name="strEnvironment" value="SG"></parameter>
+		<parameter name="strMunicipality" value="Excelsior, MN"></parameter>
+		<parameter name="strIOSDeviceName" value="iPhone 6"></parameter>
+		<parameter name="strIOSVersion" value="2.0.6"></parameter>
+		<parameter name="strIOSBuild" value="125"></parameter>
+		<classes>
+	    	<class name="AutomationCode.TestCases">
+	    		<methods>
+	                    <include name="IOS_ValidateInvalidCredentialMessage"></include>
+	            </methods>
+	      	</class>
+		</classes>
+	</test>
+	<test name = "IOS_ValidateInvalidCredentialMessage_PROD_iPhone6">
+		<parameter name="strRole" value="parker"></parameter>
+		<parameter name="strEnvironment" value="PROD"></parameter>
+		<parameter name="strMunicipality" value="MPS Test"></parameter>
+		<parameter name="strIOSDeviceName" value="iPhone 6"></parameter>
+		<parameter name="strIOSVersion" value="2.0.6"></parameter>
+		<parameter name="strIOSBuild" value="125"></parameter>
+		<classes>
+	    	<class name="AutomationCode.TestCases">
+	    		<methods>
+	                    <include name="IOS_ValidateInvalidCredentialMessage"></include>
+	            </methods>
+	      	</class>
+		</classes>
+	</test>
+	<test name = "IOS_ValidateInvalidCredentialMessage_QA_iPhone5">
+		<parameter name="strRole" value="parker"></parameter>
+		<parameter name="strEnvironment" value="QA"></parameter>
+		<parameter name="strMunicipality" value="MPS"></parameter>
+		<parameter name="strIOSDeviceName" value="iPhone 5"></parameter>
+		<parameter name="strIOSVersion" value="2.0.6"></parameter>
+		<parameter name="strIOSBuild" value="125"></parameter>
+		<classes>
+	    	<class name="AutomationCode.TestCases">
+	    		<methods>
+	                    <include name="IOS_ValidateInvalidCredentialMessage"></include>
+	            </methods>
+	      	</class>
+		</classes>
+	</test>
+	<test name = "IOS_ValidateInvalidCredentialMessage_SG_iPhone5">
+		<parameter name="strRole" value="parker"></parameter>
+		<parameter name="strEnvironment" value="SG"></parameter>
+		<parameter name="strMunicipality" value="Excelsior, MN"></parameter>
+		<parameter name="strIOSDeviceName" value="iPhone 5"></parameter>
+		<parameter name="strIOSVersion" value="2.0.6"></parameter>
+		<parameter name="strIOSBuild" value="125"></parameter>
+		<classes>
+	    	<class name="AutomationCode.TestCases">
+	    		<methods>
+	                    <include name="IOS_ValidateInvalidCredentialMessage"></include>
+	            </methods>
+	      	</class>
+		</classes>
+	</test>
+	<test name = "IOS_ValidateInvalidCredentialMessage_PROD_iPhone5">
+		<parameter name="strRole" value="parker"></parameter>
+		<parameter name="strEnvironment" value="PROD"></parameter>
+		<parameter name="strMunicipality" value="MPS Test"></parameter>
+		<parameter name="strIOSDeviceName" value="iPhone 5"></parameter>
+		<parameter name="strIOSVersion" value="2.0.6"></parameter>
+		<parameter name="strIOSBuild" value="125"></parameter>
+		<classes>
+	    	<class name="AutomationCode.TestCases">
+	    		<methods>
+	                    <include name="IOS_ValidateInvalidCredentialMessage"></include>
+	            </methods>
+	      	</class>
+		</classes>
+	</test>
+</suite>

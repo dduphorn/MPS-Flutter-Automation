@@ -1,0 +1,936 @@
+[03/29 21:37:07.290] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x00d\xff\xff' (1 q_len tx_seqno #152 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:37:07.291] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x01' (2 q_len tx_seqno #152 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:37:07.311] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 153 (tx_seqno 153 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/29 21:37:07.332] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 154 (tx_seqno 154 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe8'
+[03/29 21:37:07.356] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x01d\xff\xff' (1 q_len tx_seqno #155 tx_failed 3) STATE_IDLE
+[03/29 21:37:07.367] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 155 (tx_seqno 155 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/29 21:37:10.414] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[03/29 21:37:10.415] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[03/29 21:37:15.144] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[03/29 21:37:24.480] | INFO     | micro.wdog | main_reactor | qml_ping_handler(): Received QML ping response
+[03/29 21:38:02.894] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting IDLE_TIMEOUT_SECONDS_MULTI value 15
+[03/29 21:38:02.915] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2_user_detect message_len: 137 total_sent: 137 message: {"queued_dt": "2023-03-29T21:38:02Z", "type": "SETTINGS_UPDATE", "value": {"IDLE_TIMEOUT_SECONDS_MULTI": 15}, "requires_response": false}
+[03/29 21:38:04.300] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting COIN_ERROR_RATE_MODE_OVERLAY value 
+[03/29 21:38:04.300] | INFO     | parking.event_mon | SentryJSONRPCServer | _onchanged_coin_error(): COIN_ERROR_RATE_MODE_OVERLAY changed to 
+[03/29 21:38:04.303] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /alert/parking_monitor_coin_overlay_setting_changed-fc9f8a88ce7911eda54f00c0089df311.json
+[03/29 21:38:04.325] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2_user_detect message_len: 139 total_sent: 139 message: {"queued_dt": "2023-03-29T21:38:04Z", "type": "SETTINGS_UPDATE", "value": {"COIN_ERROR_RATE_MODE_OVERLAY": ""}, "requires_response": false}
+[03/29 21:38:04.436] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting SYS_FORCE_MULTI value True
+[03/29 21:38:04.458] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2_user_detect message_len: 128 total_sent: 128 message: {"queued_dt": "2023-03-29T21:38:04Z", "type": "SETTINGS_UPDATE", "value": {"SYS_FORCE_MULTI": true}, "requires_response": false}
+[03/29 21:38:04.515] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_CARD_PAY_TIMEOUT value 30
+[03/29 21:38:04.537] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2_user_detect message_len: 135 total_sent: 135 message: {"queued_dt": "2023-03-29T21:38:04Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_CARD_PAY_TIMEOUT": 30}, "requires_response": false}
+[03/29 21:38:04.572] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting COIN_SCREEN_IDLE_TIMEOUT value 15
+[03/29 21:38:04.596] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2_user_detect message_len: 135 total_sent: 135 message: {"queued_dt": "2023-03-29T21:38:04Z", "type": "SETTINGS_UPDATE", "value": {"COIN_SCREEN_IDLE_TIMEOUT": 15}, "requires_response": false}
+[03/29 21:38:04.679] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting EPAY_AUTO_AUTHORIZE_AMOUNT value 1000
+[03/29 21:38:04.700] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2_user_detect message_len: 139 total_sent: 139 message: {"queued_dt": "2023-03-29T21:38:04Z", "type": "SETTINGS_UPDATE", "value": {"EPAY_AUTO_AUTHORIZE_AMOUNT": 1000}, "requires_response": false}
+[03/29 21:38:04.758] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting SYS_GLOBAL_PAY_MUNI_SINGLE_RATE_SCHEDULE value True
+[03/29 21:38:04.782] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2_user_detect message_len: 153 total_sent: 153 message: {"queued_dt": "2023-03-29T21:38:04Z", "type": "SETTINGS_UPDATE", "value": {"SYS_GLOBAL_PAY_MUNI_SINGLE_RATE_SCHEDULE": true}, "requires_response": false}
+[03/29 21:38:04.808] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting SYS_DEBUG_MASK value 0
+[03/29 21:38:04.809] | INFO     | sl_api     | SentryJSONRPCServer | SlApiService()::_onchanged_sys_debug_mask(): SYS_DEBUG_MASK changed to 0
+[03/29 21:38:04.810] | INFO     | congestion_policy | SentryJSONRPCServer | CongestionPolicy()::_onchanged_sys_debug_mask(): SYS_DEBUG_MASK changed to 0
+[03/29 21:38:04.810] | INFO     | ui.multi   | SentryJSONRPCServer | _onchanged_sys_debug_mask(): SYS_DEBUG_MASK changed to 0
+[03/29 21:38:04.810] | INFO     | gui        | SentryJSONRPCServer | Gui()::_onchanged_sys_debug_mask(): SYS_DEBUG_MASK changed to 0
+[03/29 21:38:04.832] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2_user_detect message_len: 124 total_sent: 124 message: {"queued_dt": "2023-03-29T21:38:04Z", "type": "SETTINGS_UPDATE", "value": {"SYS_DEBUG_MASK": 0}, "requires_response": false}
+[03/29 21:38:04.834] | INFO     | microcomm  | SentryJSONRPCServer | MicroCommsController::_onchanged_sys_debug_mask(): SYS_DEBUG_MASK changed to 0
+[03/29 21:38:04.835] | INFO     | rates      | SentryJSONRPCServer | GlobalPayRateProvider()::_onchanged_sys_debug_mask(): SYS_DEBUG_MASK 0
+[03/29 21:38:04.836] | INFO     | parking.rsrv | SentryJSONRPCServer | _onchanged_sys_debug_mask(): SYS_DEBUG_MASK changed to 0
+[03/29 21:38:04.837] | INFO     | rates      | SentryJSONRPCServer | RateProvider()::_onchanged_sys_debug_mask(): SYS_DEBUG_MASK 0
+[03/29 21:38:04.837] | INFO     | interaction | SentryJSONRPCServer | _onchanged_sys_debug_mask(): SYS_DEBUG_MASK changed to 0
+[03/29 21:38:04.861] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting SYS_SOFT_VIOLATION value False
+[03/29 21:38:04.868] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"mac_address": "00:C0:08:9D:F3:11", "message": "COIN_ERROR_RATE_MODE_OVERLAY changed", "msg_id": "0x20001b", "ip_addr": "10.10.101.104", "desc_str": "The parking event monitor detected a COIN_ERROR_RATE_MODE_OVERLAY setting change"}, "class": "alert", "queued_dt": "2023-03-29T21:38:04Z", "type": "parking_monitor_coin_overlay_setting_changed", "id": "584c664f-df6f-4ecd-8676-a4fb14b0b3bc", "device_id": "m:00C0089DF311"}
+[03/29 21:38:04.882] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2_user_detect message_len: 132 total_sent: 132 message: {"queued_dt": "2023-03-29T21:38:04Z", "type": "SETTINGS_UPDATE", "value": {"SYS_SOFT_VIOLATION": false}, "requires_response": false}
+[03/29 21:38:04.901] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PUCK_ERROR_RATE_MODE_OVERLAY value 
+[03/29 21:38:04.924] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2_user_detect message_len: 139 total_sent: 139 message: {"queued_dt": "2023-03-29T21:38:04Z", "type": "SETTINGS_UPDATE", "value": {"PUCK_ERROR_RATE_MODE_OVERLAY": ""}, "requires_response": false}
+[03/29 21:38:04.940] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at staging-rabbitmq-vpc-1810471814.us-east-1.elb.amazonaws.com:5671 (200): Normal shutdown
+[03/29 21:38:05.591] | INFO     | credit_call | credit_call_reactor | _retry_offline_messages(): deferring cpu_load 4.64 > 3.5 - #0 messages waiting
+[03/29 21:38:05.846] | INFO     | sl_api     | credit_call_reactor | _retry_offline_msgs(): deferring cpu_load 4.64 > 3.5 - #0 messages waiting
+[03/29 21:38:07.223] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43641 rp_min_to_free 43641
+[03/29 21:38:07.224] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x00' (1 q_len tx_seqno #156 tx_failed 3) STATE_IDLE
+[03/29 21:38:07.237] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 156 (tx_seqno 156 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe5'
+[03/29 21:38:07.238] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x00d\xff\xff' (1 q_len tx_seqno #156 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:38:07.238] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x01' (2 q_len tx_seqno #156 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:38:07.258] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 157 (tx_seqno 157 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/29 21:38:07.279] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 158 (tx_seqno 158 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe3'
+[03/29 21:38:07.303] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x01d\xff\xff' (1 q_len tx_seqno #159 tx_failed 3) STATE_IDLE
+[03/29 21:38:07.315] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 159 (tx_seqno 159 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/29 21:38:09.060] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_SHOW_UNLOCK_TIME value True
+[03/29 21:38:09.081] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2_user_detect message_len: 137 total_sent: 137 message: {"queued_dt": "2023-03-29T21:38:09Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_SHOW_UNLOCK_TIME": true}, "requires_response": false}
+[03/29 21:38:09.119] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting COIN_ACCEPTOR_FULL_DISABLE_PERCENTAGE value 100
+[03/29 21:38:09.119] | INFO     | coin       | SentryJSONRPCServer | Canister is 0% full
+[03/29 21:38:09.120] | INFO     | ui.multi   | SentryJSONRPCServer | UI_STATE_IDLE::_onchanged_cjf_disable_percent(): jar 0.9 full, disable_percentage 100
+[03/29 21:38:09.142] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2_user_detect message_len: 149 total_sent: 149 message: {"queued_dt": "2023-03-29T21:38:09Z", "type": "SETTINGS_UPDATE", "value": {"COIN_ACCEPTOR_FULL_DISABLE_PERCENTAGE": 100}, "requires_response": false}
+[03/29 21:38:11.460] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[03/29 21:38:11.461] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[03/29 21:38:24.198] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/system_alive-087b3fface7a11eda54f00c0089df311.json
+[03/29 21:38:24.475] | INFO     | micro.wdog | main_reactor | qml_ping_handler(): Received QML ping response
+[03/29 21:38:24.701] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"ip_addr": "10.10.101.104", "rmq_responses_attempted": 799, "msg_id": "0x8000002eL", "rmq_api_bytes_sent": 304, "message": "5580-5581", "rmq_image_bytes_sent": 0, "rmq_response_bytes_sent": 772860, "coin_jar_full": 0.9, "rmq_images_attempted": 0, "desc_str": "Sentry is alive and normal", "rmq_image_errors": 0, "rmq_images_sent": 0, "rmq_json_errors": 0, "rmq_responses_sent": 799, "rmq_apis_attempted": 2, "rmq_jsons_attempted": 1173, "sentry_thread_hung": false, "rmq_api_errors": 0, "rmq_response_errors": 0, "rmq_json_bytes_sent": 3356587, "rmq_jsons_sent": 1173, "rmq_apis_sent": 2}, "class": "event", "queued_dt": "2023-03-29T21:38:24Z", "type": "system_alive", "id": "83004061-58ae-4335-b9f3-818b49fa4b4a", "device_id": "m:00C0089DF311"}
+[03/29 21:38:24.767] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at staging-rabbitmq-vpc-1810471814.us-east-1.elb.amazonaws.com:5671 (200): Normal shutdown
+[03/29 21:38:41.457] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[03/29 21:38:41.457] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[03/29 21:38:41.489] | INFO     | lib.seco   | watchdog   | SecoLib()::check_temp(): SECO cpu temperature is:  Kelvin 3121 Celsius 38
+[03/29 21:39:05.661] | INFO     | credit_call | credit_call_reactor | _retry_offline_messages(): #0 messages waiting cpu_load 3.3
+[03/29 21:39:05.910] | INFO     | sl_api     | credit_call_reactor | _retry_offline_msgs(): #0 messages waiting cpu_load 3.3
+[03/29 21:39:07.290] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43640 rp_min_to_free 43640
+[03/29 21:39:07.292] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x00' (1 q_len tx_seqno #160 tx_failed 3) STATE_IDLE
+[03/29 21:39:07.304] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 160 (tx_seqno 160 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe6'
+[03/29 21:39:07.305] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x00d\xff\xff' (1 q_len tx_seqno #160 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:39:07.306] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x01' (2 q_len tx_seqno #160 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:39:07.326] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 161 (tx_seqno 161 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/29 21:39:07.347] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 162 (tx_seqno 162 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe5'
+[03/29 21:39:07.371] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x01d\xff\xff' (1 q_len tx_seqno #163 tx_failed 3) STATE_IDLE
+[03/29 21:39:07.383] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 163 (tx_seqno 163 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/29 21:39:12.927] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting SYS_DEBUG_MASK value 0
+[03/29 21:39:12.928] | INFO     | sl_api     | SentryJSONRPCServer | SlApiService()::_onchanged_sys_debug_mask(): SYS_DEBUG_MASK changed to 0
+[03/29 21:39:12.935] | INFO     | congestion_policy | SentryJSONRPCServer | CongestionPolicy()::_onchanged_sys_debug_mask(): SYS_DEBUG_MASK changed to 0
+[03/29 21:39:12.936] | INFO     | ui.multi   | SentryJSONRPCServer | _onchanged_sys_debug_mask(): SYS_DEBUG_MASK changed to 0
+[03/29 21:39:12.936] | INFO     | gui        | SentryJSONRPCServer | Gui()::_onchanged_sys_debug_mask(): SYS_DEBUG_MASK changed to 0
+[03/29 21:39:12.958] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2_user_detect message_len: 124 total_sent: 124 message: {"queued_dt": "2023-03-29T21:39:12Z", "type": "SETTINGS_UPDATE", "value": {"SYS_DEBUG_MASK": 0}, "requires_response": false}
+[03/29 21:39:12.960] | INFO     | microcomm  | SentryJSONRPCServer | MicroCommsController::_onchanged_sys_debug_mask(): SYS_DEBUG_MASK changed to 0
+[03/29 21:39:12.961] | INFO     | rates      | SentryJSONRPCServer | GlobalPayRateProvider()::_onchanged_sys_debug_mask(): SYS_DEBUG_MASK 0
+[03/29 21:39:12.962] | INFO     | parking.rsrv | SentryJSONRPCServer | _onchanged_sys_debug_mask(): SYS_DEBUG_MASK changed to 0
+[03/29 21:39:12.963] | INFO     | rates      | SentryJSONRPCServer | RateProvider()::_onchanged_sys_debug_mask(): SYS_DEBUG_MASK 0
+[03/29 21:39:12.964] | INFO     | interaction | SentryJSONRPCServer | _onchanged_sys_debug_mask(): SYS_DEBUG_MASK changed to 0
+[03/29 21:39:13.007] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_INIT_GRACE_PERIOD value 120
+[03/29 21:39:13.028] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2_user_detect message_len: 137 total_sent: 137 message: {"queued_dt": "2023-03-29T21:39:13Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_INIT_GRACE_PERIOD": 120}, "requires_response": false}
+[03/29 21:39:13.274] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[03/29 21:39:13.274] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[03/29 21:39:13.419] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_NO_PARKING_GRACE_PERIOD value 60
+[03/29 21:39:13.440] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2_user_detect message_len: 142 total_sent: 142 message: {"queued_dt": "2023-03-29T21:39:13Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_NO_PARKING_GRACE_PERIOD": 60}, "requires_response": false}
+[03/29 21:39:14.461] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_VIOLATION_GRACE_PERIOD value 180
+[03/29 21:39:14.482] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2_user_detect message_len: 142 total_sent: 142 message: {"queued_dt": "2023-03-29T21:39:14Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_VIOLATION_GRACE_PERIOD": 180}, "requires_response": false}
+[03/29 21:39:14.946] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_FREE_TIME_ON_FIRST_PAYMENT value 0
+[03/29 21:39:14.967] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2_user_detect message_len: 144 total_sent: 144 message: {"queued_dt": "2023-03-29T21:39:14Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_FREE_TIME_ON_FIRST_PAYMENT": 0}, "requires_response": false}
+[03/29 21:39:15.199] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[03/29 21:39:15.463] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_ACCEPT_COIN_NO_SPOT_SCREEN_TIMEOUT value 5
+[03/29 21:39:15.484] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2_user_detect message_len: 152 total_sent: 152 message: {"queued_dt": "2023-03-29T21:39:15Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_ACCEPT_COIN_NO_SPOT_SCREEN_TIMEOUT": 5}, "requires_response": false}
+[03/29 21:39:15.997] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_DISCONNECT_FREE value True
+[03/29 21:39:16.019] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2_user_detect message_len: 136 total_sent: 136 message: {"queued_dt": "2023-03-29T21:39:15Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_DISCONNECT_FREE": true}, "requires_response": false}
+[03/29 21:39:16.063] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_UNLOCK_ENABLED value True
+[03/29 21:39:16.084] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2_user_detect message_len: 135 total_sent: 135 message: {"queued_dt": "2023-03-29T21:39:16Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_UNLOCK_ENABLED": true}, "requires_response": false}
+[03/29 21:39:16.499] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_TRUEUP_ENABLED value False
+[03/29 21:39:16.520] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2_user_detect message_len: 136 total_sent: 136 message: {"queued_dt": "2023-03-29T21:39:16Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_TRUEUP_ENABLED": false}, "requires_response": false}
+[03/29 21:39:16.562] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_UNLOCK_TIME value 1
+[03/29 21:39:16.584] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2_user_detect message_len: 129 total_sent: 129 message: {"queued_dt": "2023-03-29T21:39:16Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_UNLOCK_TIME": 1}, "requires_response": false}
+[03/29 21:39:17.024] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_UNLOCK_MAX value 1
+[03/29 21:39:17.045] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2_user_detect message_len: 128 total_sent: 128 message: {"queued_dt": "2023-03-29T21:39:17Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_UNLOCK_MAX": 1}, "requires_response": false}
+[03/29 21:39:18.026] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_IMAGE_SEND_BEFORE_VIOLATION value 45
+[03/29 21:39:18.047] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2_user_detect message_len: 146 total_sent: 146 message: {"queued_dt": "2023-03-29T21:39:18Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_IMAGE_SEND_BEFORE_VIOLATION": 45}, "requires_response": false}
+[03/29 21:39:18.550] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_MAXIMUM_DURATION_MINUTES value 240
+[03/29 21:39:18.572] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2_user_detect message_len: 144 total_sent: 144 message: {"queued_dt": "2023-03-29T21:39:18Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_MAXIMUM_DURATION_MINUTES": 240}, "requires_response": false}
+[03/29 21:39:19.041] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_SHORT_SESSION value 15
+[03/29 21:39:19.062] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2_user_detect message_len: 132 total_sent: 132 message: {"queued_dt": "2023-03-29T21:39:19Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_SHORT_SESSION": 15}, "requires_response": false}
+[03/29 21:39:19.577] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_RATE_DEFAULT_MINIMUM_TIME value 60
+[03/29 21:39:24.479] | INFO     | micro.wdog | main_reactor | qml_ping_handler(): Received QML ping response
+[03/29 21:39:25.835] | WARNING  | net_monitor | main_reactor | check_network_connectivity_async(): Skipping due to high CPU load (3.67 > 3.5)
+[03/29 21:40:05.674] | INFO     | credit_call | credit_call_reactor | _retry_offline_messages(): #0 messages waiting cpu_load 3.34
+[03/29 21:40:05.933] | INFO     | sl_api     | credit_call_reactor | _retry_offline_msgs(): #0 messages waiting cpu_load 3.34
+[03/29 21:40:07.221] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43639 rp_min_to_free 43639
+[03/29 21:40:07.222] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x00' (1 q_len tx_seqno #164 tx_failed 3) STATE_IDLE
+[03/29 21:40:07.235] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 164 (tx_seqno 164 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe6'
+[03/29 21:40:07.236] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x00d\xff\xff' (1 q_len tx_seqno #164 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:40:07.237] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x01' (2 q_len tx_seqno #164 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:40:07.257] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 165 (tx_seqno 165 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/29 21:40:07.279] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 166 (tx_seqno 166 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe5'
+[03/29 21:40:07.301] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x01d\xff\xff' (1 q_len tx_seqno #167 tx_failed 3) STATE_IDLE
+[03/29 21:40:07.313] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 167 (tx_seqno 167 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/29 21:40:10.735] | INFO     | sys_serv   | main_reactor | _check_system_resources(): started
+[03/29 21:40:10.735] | INFO     | sys_serv   | main_reactor | Memory info: {'swap_total': 0, 'total': 4029808000L, 'free': 1929344000, 'used': 1269092000, 'swap_free': 0}
+[03/29 21:40:10.755] | INFO     | sys_serv   | main_reactor | _check_system_resources(): completed
+[03/29 21:40:15.104] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[03/29 21:40:15.106] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[03/29 21:40:24.470] | INFO     | micro.wdog | main_reactor | qml_ping_handler(): Received QML ping response
+[03/29 21:40:25.906] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req: u'rpc_parking' Payload: '{"method":"add_rate_blocks","params":[[]],"jsonrpc":"2.0","id":48329306}'
+[03/29 21:40:25.907] | INFO     | parking_serv | SentryJSONRPCServer | parking_service: add_rate_blocks()
+[03/29 21:40:25.908] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint parking response {"jsonrpc": "2.0", "id": 48329306, "result": true}
+[03/29 21:40:25.944] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 48329306, "result": true} Queue amq.gen-UU1BYhjFtZT9AkEl787OhA #800
+[03/29 21:40:26.176] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req Disabled gatelot blob logs Target: u'rpc_file_io'
+[03/29 21:40:26.182] | INFO     | file_io    | SentryJSONRPCServer | save: filename /media/realroot/ads/parking_schedule_weekly.png
+[03/29 21:40:26.191] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint file_io response {"jsonrpc": "2.0", "id": 48329307, "result": true}
+[03/29 21:40:26.228] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 48329307, "result": true} Queue amq.gen-TpLfnQUw2kocw2KpuLaOcA #801
+[03/29 21:41:05.655] | INFO     | credit_call | credit_call_reactor | _retry_offline_messages(): deferring cpu_load 3.56 > 3.5 - #0 messages waiting
+[03/29 21:41:05.898] | INFO     | sl_api     | credit_call_reactor | _retry_offline_msgs(): deferring cpu_load 3.56 > 3.5 - #0 messages waiting
+[03/29 21:41:07.283] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43638 rp_min_to_free 43638
+[03/29 21:41:07.285] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x00' (1 q_len tx_seqno #168 tx_failed 3) STATE_IDLE
+[03/29 21:41:07.297] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 168 (tx_seqno 168 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe6'
+[03/29 21:41:07.298] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x00d\xff\xff' (1 q_len tx_seqno #168 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:41:07.299] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x01' (2 q_len tx_seqno #168 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:41:07.318] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 169 (tx_seqno 169 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/29 21:41:07.340] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 170 (tx_seqno 170 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe4'
+[03/29 21:41:07.363] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x01d\xff\xff' (1 q_len tx_seqno #171 tx_failed 3) STATE_IDLE
+[03/29 21:41:07.374] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 171 (tx_seqno 171 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/29 21:41:15.231] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[03/29 21:41:16.965] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[03/29 21:41:16.966] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[03/29 21:41:24.478] | INFO     | micro.wdog | main_reactor | qml_ping_handler(): Received QML ping response
+[03/29 21:41:41.581] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[03/29 21:41:41.581] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[03/29 21:41:41.612] | INFO     | lib.seco   | watchdog   | SecoLib()::check_temp(): SECO cpu temperature is:  Kelvin 3121 Celsius 38
+[03/29 21:42:05.483] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req Disabled gatelot blob logs Target: u'rpc_file_io'
+[03/29 21:42:05.488] | INFO     | file_io    | SentryJSONRPCServer | save: filename /media/realroot/ads/parking_schedule_weekly.png
+[03/29 21:42:05.494] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint file_io response {"jsonrpc": "2.0", "id": 48329315, "result": true}
+[03/29 21:42:05.530] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 48329315, "result": true} Queue amq.gen-VY7gEcfTf8hQgAjHtOQxqg #802
+[03/29 21:42:05.574] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req Disabled gatelot blob logs Target: u'rpc_parking'
+[03/29 21:42:05.580] | INFO     | parking_serv | SentryJSONRPCServer | parking_service: add_rate_blocks()
+[03/29 21:42:05.582] | INFO     | FixedRate  | SentryJSONRPCServer | FR():__init__(): __repr__(): <FixedRate (PARKER_TYPE_NORMAL): 25¢:15:240, (PARKER_TYPE_HANDICAP): 25¢:15:240, (PARKER_TYPE_SENIOR): 25¢:15:240, (PARKER_TYPE_MUNI): 25¢:15:240, (PARKER_TYPE_VETERAN): 25¢:15:240, >
+[03/29 21:42:05.583] | INFO     | rate       | SentryJSONRPCServer | R()::__init__(): <RateBlock (fixed296449)[P7]: 01/21-03/29, 00:00-23:59-240-0-15-False-True-60-100-60-<mps.parking.rate_models.rate_types.RateBlockSchedule object at 0x9384fccc>>
+[03/29 21:42:05.584] | INFO     | fixed_rb   | SentryJSONRPCServer | FRB()::__init__(): __repr__(): <RateBlock (fixed296449)[P7]: 01/21-03/29, 00:00-23:59-240-0-15-False-True-60-100-60-<mps.parking.rate_models.rate_types.RateBlockSchedule object at 0x9384fccc>> __str__(): rate <FixedRate (PARKER_TYPE_NORMAL): 25¢:15:240, (PARKER_TYPE_HANDICAP): 25¢:15:240, (PARKER_TYPE_SENIOR): 25¢:15:240, (PARKER_TYPE_MUNI): 25¢:15:240, (PARKER_TYPE_VETERAN): 25¢:15:240, > max_time 240 first_payment_free_time 0 card_increment_time 15                 default_minimum_cost 100 default_minimum_time 60 disconnect_free True                 mins_accept_free_before_rate 60 unenforced False
+[03/29 21:42:05.584] | INFO     | parking_serv | SentryJSONRPCServer | add_rate_blocks(): Adding to rate_provider rate block: rate <FixedRate (PARKER_TYPE_NORMAL): 25¢:15:240, (PARKER_TYPE_HANDICAP): 25¢:15:240, (PARKER_TYPE_SENIOR): 25¢:15:240, (PARKER_TYPE_MUNI): 25¢:15:240, (PARKER_TYPE_VETERAN): 25¢:15:240, > max_time 240 first_payment_free_time 0 card_increment_time 15                 default_minimum_cost 100 default_minimum_time 60 disconnect_free True                 mins_accept_free_before_rate 60 unenforced False
+[03/29 21:42:05.585] | INFO     | rates      | SentryJSONRPCServer | RateBlocksPDO()::add_rate_block(): rate_blocks [<RateBlock (fixed296449)[P7]: 01/21-03/29, 00:00-23:59-240-0-15-False-True-60-100-60-<mps.parking.rate_models.rate_types.RateBlockSchedule object at 0x9384fccc>>, <RateBlock (fixed-1)[P-2147483647]: null-null, 00:00-23:59-120-0-30-False-True-60-75-0-<mps.parking.rate_models.rate_types.RateBlockSchedule object at 0xb398eaec>>]
+[03/29 21:42:05.617] | INFO     | rates      | SentryJSONRPCServer | grs(): resetting - cached-start=2023-02-27 15:26:04.364872 cached-duration=60 days, 0:00:00 cached-end=2023-04-28 15:26:04.364872 req-start=2023-02-26 15:26:04.364872 req-end=2023-04-28 15:26:04.364872
+[03/29 21:42:05.617] | INFO     | rates      | SentryJSONRPCServer | grs(): readjust new sch (cached-start=2023-02-27 15:42:05.617853 cached-duration=60 days, 0:00:00 cached-end=2023-04-28 15:26:04.364872 req-start=2023-02-26 15:26:04.364872 req-end=2023-04-28 15:26:04.364872) #days 60 days, 0:00:00
+[03/29 21:42:05.630] | INFO     | credit_call | credit_call_reactor | _retry_offline_messages(): deferring cpu_load 3.96 > 3.5 - #0 messages waiting
+[03/29 21:42:05.794] | INFO     | rates      | SentryJSONRPCServer | grs(): new scheduled_rate_blocks [<ScheduleRateBlock (296449)[P7]: 02/27_00:00 - 02/27_23:59)>, <ScheduleRateBlock (296449)[P7]: 02/28_00:00 - 02/28_23:59)>, <ScheduleRateBlock (296449)[P7]: 03/01_00:00 - 03/01_23:59)>, <ScheduleRateBlock (296449)[P7]: 03/02_00:00 - 03/02_23:59)>, <ScheduleRateBlock (296449)[P7]: 03/03_00:00 - 03/03_23:59)>, <ScheduleRateBlock (296449)[P7]: 03/04_00:00 - 03/04_23:59)>, <ScheduleRateBlock (296449)[P7]: 03/05_00:00 - 03/05_23:59)>, <ScheduleRateBlock (296449)[P7]: 03/06_00:00 - 03/06_23:59)>, <ScheduleRateBlock (296449)[P7]: 03/07_00:00 - 03/07_23:59)>, <ScheduleRateBlock (296449)[P7]: 03/08_00:00 - 03/08_23:59)>, <ScheduleRateBlock (296449)[P7]: 03/09_00:00 - 03/09_23:59)>, <ScheduleRateBlock (296449)[P7]: 03/10_00:00 - 03/10_23:59)>, <ScheduleRateBlock (296449)[P7]: 03/11_00:00 - 03/11_23:59)>, <ScheduleRateBlock (296449)[P7]: 03/12_00:00 - 03/12_23:59)>, <ScheduleRateBlock (296449)[P7]: 03/13_00:00 - 03/13_23:59)>, <ScheduleRateBlock (296449)[P7]: 03/14_00:00 - 03/14_23:59)>, <ScheduleRateBlock (296449)[P7]: 03/15_00:00 - 03/15_23:59)>, <ScheduleRateBlock (296449)[P7]: 03/16_00:00 - 03/16_23:59)>, <ScheduleRateBlock (296449)[P7]: 03/17_00:00 - 03/17_23:59)>, <ScheduleRateBlock (296449)[P7]: 03/18_00:00 - 03/18_23:59)>, <ScheduleRateBlock (296449)[P7]: 03/19_00:00 - 03/19_23:59)>, <ScheduleRateBlock (296449)[P7]: 03/20_00:00 - 03/20_23:59)>, <ScheduleRateBlock (296449)[P7]: 03/21_00:00 - 03/21_23:59)>, <ScheduleRateBlock (296449)[P7]: 03/22_00:00 - 03/22_23:59)>, <ScheduleRateBlock (296449)[P7]: 03/23_00:00 - 03/23_23:59)>, <ScheduleRateBlock (296449)[P7]: 03/24_00:00 - 03/24_23:59)>, <ScheduleRateBlock (296449)[P7]: 03/25_00:00 - 03/25_23:59)>, <ScheduleRateBlock (296449)[P7]: 03/26_00:00 - 03/26_23:59)>, <ScheduleRateBlock (296449)[P7]: 03/27_00:00 - 03/27_23:59)>, <ScheduleRateBlock (296449)[P7]: 03/28_00:00 - 03/28_23:59)>, <ScheduleRateBlock (296449)[P7]: 03/29_00:00 - 03/29_23:59)>, <ScheduleRateBlock (296449)[P7]: 03/30_00:00 - 03/30_23:59)>, <ScheduleRateBlock (296449)[P7]: 03/31_00:00 - 03/31_23:59)>, <ScheduleRateBlock (296449)[P7]: 04/01_00:00 - 04/01_23:59)>, <ScheduleRateBlock (296449)[P7]: 04/02_00:00 - 04/02_23:59)>, <ScheduleRateBlock (296449)[P7]: 04/03_00:00 - 04/03_23:59)>, <ScheduleRateBlock (296449)[P7]: 04/04_00:00 - 04/04_23:59)>, <ScheduleRateBlock (296449)[P7]: 04/05_00:00 - 04/05_23:59)>, <ScheduleRateBlock (296449)[P7]: 04/06_00:00 - 04/06_23:59)>, <ScheduleRateBlock (296449)[P7]: 04/07_00:00 - 04/07_23:59)>, <ScheduleRateBlock (296449)[P7]: 04/08_00:00 - 04/08_23:59)>, <ScheduleRateBlock (296449)[P7]: 04/09_00:00 - 04/09_23:59)>, <ScheduleRateBlock (296449)[P7]: 04/10_00:00 - 04/10_23:59)>, <ScheduleRateBlock (296449)[P7]: 04/11_00:00 - 04/11_23:59)>, <ScheduleRateBlock (296449)[P7]: 04/12_00:00 - 04/12_23:59)>, <ScheduleRateBlock (296449)[P7]: 04/13_00:00 - 04/13_23:59)>, <ScheduleRateBlock (296449)[P7]: 04/14_00:00 - 04/14_23:59)>, <ScheduleRateBlock (296449)[P7]: 04/15_00:00 - 04/15_23:59)>, <ScheduleRateBlock (296449)[P7]: 04/16_00:00 - 04/16_23:59)>, <ScheduleRateBlock (296449)[P7]: 04/17_00:00 - 04/17_23:59)>, <ScheduleRateBlock (296449)[P7]: 04/18_00:00 - 04/18_23:59)>, <ScheduleRateBlock (296449)[P7]: 04/19_00:00 - 04/19_23:59)>, <ScheduleRateBlock (296449)[P7]: 04/20_00:00 - 04/20_23:59)>, <ScheduleRateBlock (296449)[P7]: 04/21_00:00 - 04/21_23:59)>, <ScheduleRateBlock (296449)[P7]: 04/22_00:00 - 04/22_23:59)>, <ScheduleRateBlock (296449)[P7]: 04/23_00:00 - 04/23_23:59)>, <ScheduleRateBlock (296449)[P7]: 04/24_00:00 - 04/24_23:59)>, <ScheduleRateBlock (296449)[P7]: 04/25_00:00 - 04/25_23:59)>, <ScheduleRateBlock (296449)[P7]: 04/26_00:00 - 04/26_23:59)>, <ScheduleRateBlock (296449)[P7]: 04/27_00:00 - 04/27_23:59)>, <ScheduleRateBlock (296449)[P7]: 04/28_00:00 - 04/28_23:59)>]
+[03/29 21:42:05.803] | INFO     | rates      | SentryJSONRPCServer | grs(): compressed scheduled_rate_blocks [<ScheduleRateBlock (296449)[P7]: 02/27_00:00 - 04/28_23:59)>]
+[03/29 21:42:05.803] | INFO     | rates      | SentryJSONRPCServer | grs(): final_scheduled_rate_blocks [<ScheduleRateBlock (296449)[P7]: 02/27_00:00 - 04/28_23:59)>]
+[03/29 21:42:05.804] | INFO     | rates      | SentryJSONRPCServer | _schedule_changed(): 
+[03/29 21:42:05.805] | INFO     | mps.ui     | SentryJSONRPCServer | _on_rate_schedule_update(): handling rate schedule update
+[03/29 21:42:05.816] | INFO     | gui        | SentryJSONRPCServer | rate_schedule_changed_callback(): updating self.rate_schedule
+[03/29 21:42:05.816] | INFO     | rates      | SentryJSONRPCServer | _schedule_changed(): 
+[03/29 21:42:05.817] | INFO     | mps.ui     | SentryJSONRPCServer | _on_rate_schedule_update(): handling rate schedule update
+[03/29 21:42:05.823] | INFO     | gui        | SentryJSONRPCServer | rate_schedule_changed_callback(): updating self.rate_schedule
+[03/29 21:42:05.835] | INFO     | parking_serv | SentryJSONRPCServer | add_rate_blocks(): Adding to global_rate_provider rate block: rate <FixedRate (PARKER_TYPE_NORMAL): 25¢:15:240, (PARKER_TYPE_HANDICAP): 25¢:15:240, (PARKER_TYPE_SENIOR): 25¢:15:240, (PARKER_TYPE_MUNI): 25¢:15:240, (PARKER_TYPE_VETERAN): 25¢:15:240, > max_time 240 first_payment_free_time 0 card_increment_time 15                 default_minimum_cost 100 default_minimum_time 60 disconnect_free True                 mins_accept_free_before_rate 60 unenforced False
+[03/29 21:42:05.836] | INFO     | rates      | SentryJSONRPCServer | RateBlocksPDO()::add_rate_block(): rate_blocks [<RateBlock (fixed296449)[P7]: 01/21-03/29, 00:00-23:59-240-0-15-False-True-60-100-60-<mps.parking.rate_models.rate_types.RateBlockSchedule object at 0x9384fccc>>]
+[03/29 21:42:05.861] | INFO     | rates      | SentryJSONRPCServer | grs(): new cached-start=2023-02-27 15:25:41.757890 cached-duration=60 days, 0:00:00 cached-end=2023-04-28 15:25:41.757890 req-start=2023-02-26 15:25:41.757890 req-end=2023-04-28 15:25:41.757890
+[03/29 21:42:05.907] | INFO     | sl_api     | credit_call_reactor | _retry_offline_msgs(): deferring cpu_load 3.96 > 3.5 - #0 messages waiting
+[03/29 21:42:05.966] | INFO     | rates      | SentryJSONRPCServer | _schedule_changed(): 
+[03/29 21:42:05.967] | INFO     | rates      | SentryJSONRPCServer | _schedule_changed(): 
+[03/29 21:42:05.968] | INFO     | rates      | SentryJSONRPCServer | GlobalPayRateProvider()::_prune_rate_blocks(): Pruning rate blocks before 2023-02-24 15:25:41.757890
+[03/29 21:42:05.968] | INFO     | rates      | SentryJSONRPCServer | RateBlocksPDO()::prune_rate_blocks(): Remaining rate block: block_id 296449 rate <FixedRate (PARKER_TYPE_NORMAL): 25¢:15:240, (PARKER_TYPE_HANDICAP): 25¢:15:240, (PARKER_TYPE_SENIOR): 25¢:15:240, (PARKER_TYPE_MUNI): 25¢:15:240, (PARKER_TYPE_VETERAN): 25¢:15:240, > max_time 240 first_payment_free_time 0 card_increment_time 15                 default_minimum_cost 100 default_minimum_time 60 disconnect_free True                 mins_accept_free_before_rate 60 unenforced False
+[03/29 21:42:05.992] | INFO     | sl_api     | SentryJSONRPCServer | _reset_cached_rates()
+[03/29 21:42:05.992] | INFO     | sl_api     | SentryJSONRPCServer | _reset_cached_rates(): self._rate_blocks is None, not fetching rates.
+[03/29 21:42:05.993] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint parking response {"jsonrpc": "2.0", "id": 48329318, "result": true}
+[03/29 21:42:06.029] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 48329318, "result": true} Queue amq.gen-T5UkeZ0lu42htp8qmybFbg #803
+[03/29 21:42:07.303] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43637 rp_min_to_free 43637
+[03/29 21:42:07.304] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x00' (1 q_len tx_seqno #172 tx_failed 3) STATE_IDLE
+[03/29 21:42:07.316] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 172 (tx_seqno 172 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe5'
+[03/29 21:42:07.317] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x00d\xff\xff' (1 q_len tx_seqno #172 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:42:07.318] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x01' (2 q_len tx_seqno #172 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:42:07.338] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 173 (tx_seqno 173 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/29 21:42:07.359] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 174 (tx_seqno 174 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe8'
+[03/29 21:42:07.382] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x01d\xff\xff' (1 q_len tx_seqno #175 tx_failed 3) STATE_IDLE
+[03/29 21:42:07.394] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 175 (tx_seqno 175 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/29 21:42:10.300] | INFO     | detection  | main_reactor | Vehicle Arrival Event for PUCK 1 event ts 1680126129 SUM energy 0 first movement 1680126129 0 Z energy 0
+[03/29 21:42:10.302] | WARNING  | parking.session.SPOT_1 | main_reactor | set_lpr_detected(): ignoring empty/None plate text = 
+[03/29 21:42:10.312] | INFO     | parking.spot.SPOT_1 | main_reactor | PSIGP::enter_state(): INITIAL GRACE
+[03/29 21:42:10.313] | INFO     | detection  | main_reactor | COS cos_puck_ids = {}
+[03/29 21:42:10.313] | INFO     | detection  | main_reactor | comment: comment,1,10.10.101.104 INITIAL GRACE,
+[03/29 21:42:10.316] | INFO     | parking.session.SPOT_1 | main_reactor | set_max_time(): unstarted session - setting max to 240 was 240
+[03/29 21:42:10.316] | WARNING  | parking.session.SPOT_1 | main_reactor | set_max_time(): resetting _maxtime_minutes_possible from 240 to 240
+[03/29 21:42:10.497] | INFO     | parking_serv | main_reactor | _generate_parking_session_json: Caller  /home/mpsadmin/projects/Sentry_test/src/mps/services/parking_service.py:1381
+[03/29 21:42:10.499] | INFO     | parking.session.SPOT_1 | main_reactor | get_all_payments: return 0 payments
+[03/29 21:42:10.500] | INFO     | parking_serv | main_reactor | _generate_parking_session_json(): Payments len 0
+[03/29 21:42:10.503] | INFO     | parking.session.SPOT_1 | main_reactor | get_all_payments: return 0 payments
+[03/29 21:42:10.516] | INFO     | parking.controller | main_reactor | calculate_hours_offset(): hour = 5
+[03/29 21:42:10.517] | INFO     | parking_serv | main_reactor | _generate_parking_session_json(): hours 5 original_park_timestamp None park_timestamp None
+[03/29 21:42:10.631] | INFO     | parking_serv | main_reactor | _generate_parking_session_json(): SPOT_1 payment_history []
+[03/29 21:42:10.659] | INFO     | parking_serv | main_reactor | PAYMENTS #2 []
+[03/29 21:42:10.673] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/parking_session_update-8f781be0ce7a11eda54f00c0089df311.json
+[03/29 21:42:10.661] | INFO     | parking.controller | main_reactor | Puck time parked 1680126129 for SPOT_1 puck_id 1
+[03/29 21:42:10.686] | INFO     | parking.spot.SPOT_1 | main_reactor | _record_park(): time_parked 1680126129
+[03/29 21:42:10.688] | INFO     | parking.spot.SPOT_1 | main_reactor | _record_park(): time_parked_dt 2023-03-29 16:42:09-05:00 TZ tzfile(u'/usr/share/zoneinfo/America/Chicago')
+[03/29 21:42:10.688] | WARNING  | parking.spot.SPOT_1 | main_reactor | _record_park(): get_park_timestamp() is None set to NOW
+[03/29 21:42:10.692] | INFO     | parking.session.SPOT_1 | main_reactor | set_park_timestamp: return 2023-03-29 16:42:09-05:00
+[03/29 21:42:10.715] | INFO     | parking.spot.SPOT_1 | main_reactor | _record_park(): now 1680126130.66 time_parked 1680126129 time_lookback_value 1 session_id 66666ec1ce7811eda54f00c0089df311
+[03/29 21:42:10.716] | INFO     | parking.controller | main_reactor | calculate_hours_offset(): hour = 5
+[03/29 21:42:10.716] | INFO     | parking.spot | main_reactor | _record_park(): hours 5 original_park_timestamp 2023-03-29 16:42:09-05:00 UTC park_timestamp 2023-03-29 21:42:09-05:00
+[03/29 21:42:10.716] | INFO     | parking.controller | main_reactor | Puck first movement 1680126129 for SPOT_1 puck_id 1
+[03/29 21:42:10.739] | INFO     | camera     | main_reactor | _send(): -> name: sock_1_2_user_detect message_len: 413 total_sent: 413 message: {"queued_dt": "2023-03-29T21:42:10Z", "type": "ENTRANCE", "value": {"first_movement": "1680126129", "start": 9, "length": 8, "parking_spot_state": "PARKING_STATE_INIT_GRACE_PERIOD", "spot_id": "SPOT_1", "look_ahead_start": 1.6617190837860107, "park_timestamp": "2023-03-29T21:42:09Z", "time_parked": 1680126129, "session_id": "66666ec1ce7811eda54f00c0089df311", "look_ahead_length": 4}, "requires_response": true}
+[03/29 21:42:11.248] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"void_timestamp": null, "violation": null, "merchant_validated": false, "merchant_id": 0, "exit_pictures": null, "lpr_plate": null, "entrance_plate_info": null, "maintenance_no": false, "handicap_pin": null, "free_to_reservation": false, "merchant_offer_name": "", "maintenance": false, "max_time_allowed": 240, "true_up": 0, "violation_reason": null, "session_error_status": "0x0", "payments": [], "violation_pictures": null, "card_error_details": [], "park_timestamp": null, "is_no_parking_now": false, "violation_plate_info": null, "maintenance_unenforced": false, "spot_identifier": "SPOT_1", "concierge_id": 4765, "close_timestamp": null, "total_time_purchased": 0, "sms": null, "warning_period": false, "exit_plate_info": null, "exit_timestamp": null, "entrance_pictures": null, "email": null, "is_free_parking_now": false, "handicap": false, "coin_error_status": [], "parker_type": "normal", "no_fine_fee": 0, "additional_violations": [], "payment_history": [], "maintenance_free": false, "coin_error_details": [], "session_id": "66666ec1ce7811eda54f00c0089df311", "card_error_status": [], "handicap_spot": false}, "class": "event", "queued_dt": "2023-03-29T21:42:10Z", "type": "parking_session_update", "id": "2d1db52e-baba-4ab3-9c5c-9c8f1069ddbf", "device_id": "m:00C0089DF311"}
+[03/29 21:42:11.321] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at staging-rabbitmq-vpc-1810471814.us-east-1.elb.amazonaws.com:5671 (200): Normal shutdown
+[03/29 21:42:13.086] | INFO     | camera     | main_reactor | _recv(): <- request_len: 61 header_len: 8
+[03/29 21:42:13.087] | INFO     | parking.spot.SPOT_1 | main_reactor | PSIGP::enter_state(): valid_time_remaining 0
+[03/29 21:42:13.088] | INFO     | mps.ui     | main_reactor | _on_init_grace_period(): SPOT_1
+[03/29 21:42:13.088] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_SET_VIOLATION_LEDS (0x0020), '\x00\x00\x00' (1 q_len tx_seqno #176 tx_failed 3) STATE_IDLE
+[03/29 21:42:13.101] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 176 (tx_seqno 176 tx_failed 3) MPS_REPLY_SET_VIOLATION_LEDS (0xFF20), ''
+[03/29 21:42:13.103] | INFO     | micro.vio_leds | main_reactor | Turning off LED for spot SPOT_1 args 0 0
+[03/29 21:42:13.104] | INFO     | micro.vio_leds | main_reactor | blink_yellow()
+[03/29 21:42:13.104] | INFO     | micro.vio_leds | main_reactor | add_command 1 command {'cmd_arg_1': 2, 'cmd_arg_2': 2, 'spot_id': 'SPOT_1'}
+[03/29 21:42:13.105] | INFO     | micro.vio_leds | main_reactor | QUEUEING cmd #1: Blinking yellow LED for spot SPOT_1 arg 1 2 arg 2 2
+[03/29 21:42:13.107] | INFO     | psv_fsm.SPOT_1 | main_reactor | on_init_grace_period: Current state PSV_STATE_AVAILABLE
+[03/29 21:42:13.117] | INFO     | psv_fsm    | main_reactor | PSV_STATE_AVAILABLE -> PSV_STATE_INIT_GRACE_PERIOD (initial grace period)
+[03/29 21:42:13.118] | INFO     | parking.spot.SPOT_1 | main_reactor | PARKING_STATE_EMPTY -> PARKING_STATE_INIT_GRACE_PERIOD (PSE - Vehicle parked)
+[03/29 21:42:13.118] | INFO     | mps.ui     | main_reactor | suspend_background_tasks(): change to True
+[03/29 21:42:13.118] | INFO     | parking_serv | main_reactor | suspend_transfers(): True
+[03/29 21:42:13.119] | INFO     | ui.multi   | main_reactor | UISI: Vehicle parked in spot SPOT_1
+[03/29 21:42:13.131] | INFO     | parking.session.SPOT_1 | main_reactor | get_all_payments: return 0 payments
+[03/29 21:42:13.131] | INFO     | parking.controller | main_reactor | calculate_hours_offset(): hour = 5
+[03/29 21:42:13.132] | INFO     | parking_serv | main_reactor | _generate_start_parking_session_json(): hours 5 original_park_timestamp 2023-03-29 16:42:09-05:00 park_timestamp 2023-03-29 21:42:09-05:00
+[03/29 21:42:13.157] | INFO     | gui        | MainThread | QT: DualParkingSpotView: SPOT_1  transition to PSV_STATE_INIT_GRACE_PERIOD (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/components/DualParkingSpotView.qml:4843)
+[03/29 21:42:13.163] | INFO     | gui        | MainThread | QT: Home: transition to PSV_STATE_INIT_GRACE_PERIOD (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[03/29 21:42:13.189] | INFO     | gui        | MainThread | QT: ParkingSpotView: transition to PSV_STATE_INIT_GRACE_PERIOD (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/components/ParkingSpotView.qml:4247)
+[03/29 21:42:13.214] | INFO     | gui        | MainThread | QT: ParkingSpotView: transition to PSV_STATE_INIT_GRACE_PERIOD (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/components/ParkingSpotView.qml:4247)
+[03/29 21:42:13.264] | INFO     | parking_serv | main_reactor | _generate_start_parking_session_json(): payment_history []
+[03/29 21:42:13.285] | INFO     | parking_serv | main_reactor | PAYMENTS #4 []
+[03/29 21:42:13.292] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/parking_session_park-9107fa98ce7a11eda54f00c0089df311.json
+[03/29 21:42:13.325] | INFO     | playback   | main_reactor | help_end
+[03/29 21:42:13.326] | INFO     | mps.ui     | main_reactor | concierge_reset
+[03/29 21:42:13.326] | INFO     | phone      | main_reactor | should_run(): SECO detected - returning
+[03/29 21:42:13.326] | INFO     | ui.multi   | main_reactor | No Skype call
+[03/29 21:42:13.327] | INFO     | mps.ui     | main_reactor | RESWIPE OFF
+[03/29 21:42:13.327] | INFO     | interaction | main_reactor | cash_out_or_void_payment: No payment
+[03/29 21:42:13.339] | INFO     | gui        | MainThread | QT: concierge_reset  (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/main.qml:974)
+[03/29 21:42:13.402] | INFO     | gui        | MainThread | QT: ParkingSpotView: transition to conciergeReset (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/components/ParkingSpotView.qml:4247)
+[03/29 21:42:13.429] | INFO     | gui        | MainThread | QT: ParkingSpotView: conciergeReset (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/components/ParkingSpotView.qml:4217)
+[03/29 21:42:13.460] | INFO     | gui        | MainThread | QT: ParkingSpotView: transition to PSV_STATE_INIT_GRACE_PERIOD (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/components/ParkingSpotView.qml:4247)
+[03/29 21:42:13.468] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to processingoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[03/29 21:42:13.469] | INFO     | gui        | MainThread | QT: Home: transition to processingoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[03/29 21:42:13.471] | INFO     | gui        | MainThread | QT: MultiHome: transition to processingoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[03/29 21:42:13.472] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to reswipeoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[03/29 21:42:13.473] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: calling reswipeoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:913)
+[03/29 21:42:13.475] | INFO     | gui        | MainThread | QT: Home: transition to reswipeoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[03/29 21:42:13.476] | INFO     | gui        | MainThread | QT: Home: calling reswipeoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:400)
+[03/29 21:42:13.477] | INFO     | gui        | MainThread | QT: MultiHome: transition to reswipeoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[03/29 21:42:13.479] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to declineoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[03/29 21:42:13.481] | INFO     | gui        | MainThread | QT: MultiHome: transition to declineoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[03/29 21:42:13.566] | INFO     | interaction | main_reactor | set_active_spot: ACTIVE SPOT None /home/mpsadmin/projects/Sentry_test/src/mps/ui/multi_user_interaction.py:2260
+[03/29 21:42:13.575] | INFO     | ui.multi   | main_reactor | UISI::on_push_button(): 
+[03/29 21:42:13.587] | INFO     | ui.multi   | main_reactor | set_state(): UI_STATE_IDLE performing pre_exit_state() actions UISI: button pressed
+[03/29 21:42:13.587] | INFO     | interaction | main_reactor | pre_exit_state(): completing actions before next_state UI_STATE_HOME
+[03/29 21:42:13.588] | INFO     | interaction | main_reactor | pre_exit_state(): completed actions complete True
+[03/29 21:42:13.588] | INFO     | ui.multi   | main_reactor | set_state(): UI_STATE_IDLE completed pre_exit_state() actions proceed True
+[03/29 21:42:13.589] | INFO     | ui.multi   | main_reactor | Secs in Idle 196352.482114
+[03/29 21:42:13.589] | INFO     | interaction | main_reactor | cash_out_or_void_payment: No payment
+[03/29 21:42:13.590] | INFO     | ui.multi   | main_reactor | CONFIRM FALSE
+[03/29 21:42:13.590] | INFO     | ui.multi   | main_reactor | UISH: enter_state active_spot is None
+[03/29 21:42:13.590] | INFO     | interaction | main_reactor | return_coins(): ignoring credit cards and returning coins
+[03/29 21:42:13.590] | INFO     | epay       | main_reactor | enable_credit_cards: enable False
+[03/29 21:42:13.591] | INFO     | interaction | main_reactor | return_coins(): acceptor currently accepting - cfg to reject
+[03/29 21:42:13.591] | INFO     | coin       | main_reactor | return_all_coins(): configuring rejection
+[03/29 21:42:13.593] | INFO     | gui        | MainThread | QT: Home: transition to PSV_STATE_INIT_GRACE_PERIOD (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[03/29 21:42:13.793] | INFO     | ui.multi   | main_reactor | CHECK POP  False
+[03/29 21:42:13.793] | INFO     | ui.multi   | main_reactor | UISH::enter_state(): No expired for None
+[03/29 21:42:13.803] | INFO     | gui        | main_reactor | Screen changed to SCREEN_MULTI_SELECT_SPACE en
+[03/29 21:42:13.804] | INFO     | playback   | main_reactor | play: en_space_number.mp3
+[03/29 21:42:13.809] | INFO     | gui        | MainThread | QT: MultiSelectSpace: transition to spacemapoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiSelectSpace.qml:984)
+[03/29 21:42:13.817] | WARNING  | interaction | main_reactor | _stop_idle_timeout: NO TIMER
+[03/29 21:42:13.817] | INFO     | ui.multi   | main_reactor | UI_STATE_IDLE -> UI_STATE_HOME (UISI: button pressed)
+[03/29 21:42:13.820] | INFO     | gui        | MainThread | _signal_goto_screen: multi_select_space
+[03/29 21:42:13.820] | INFO     | gui        | MainThread | QT: Current:  multi_idle Next:  multi_select_space (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/main.qml:1422)
+[03/29 21:42:13.865] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"void_timestamp": null, "is_free_parking_now": false, "violation_plate_info": null, "additional_violations": [], "violation": null, "session_error_status": "0x0", "violation_pictures": null, "coin_error_status": [], "maintenance_unenforced": false, "merchant_validated": false, "max_time_allowed": 240, "spot_identifier": "SPOT_1", "merchant_id": 0, "handicap_pin": null, "lpr_plate": null, "close_timestamp": null, "exit_plate_info": null, "no_fine_fee": 0, "payment_history": [], "maintenance_no": false, "maintenance_free": false, "parker_type": "normal", "total_time_purchased": 0, "true_up": 0, "violation_reason": null, "con_id": 4765, "sms": null, "coin_error_details": [], "session_id": "66666ec1ce7811eda54f00c0089df311", "exit_pictures": null, "handicap": false, "free_to_reservation": false, "card_error_status": [], "is_no_parking_now": false, "payments": [], "maintenance": false, "exit_timestamp": null, "merchant_offer_name": "", "handicap_spot": false, "card_error_details": [], "email": null, "park_timestamp": "2023-03-29T21:42:09Z"}, "class": "event", "queued_dt": "2023-03-29T21:42:13Z", "type": "parking_session_park", "id": "1da7f0df-25f8-4912-ae65-0099750df476", "device_id": "m:00C0089DF311"}
+[03/29 21:42:13.938] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at staging-rabbitmq-vpc-1810471814.us-east-1.elb.amazonaws.com:5671 (200): Normal shutdown
+[03/29 21:42:14.103] | INFO     | micro.vio_leds | microcomm_reactor | MPS_CMD_SET_VIOLATION_LEDS result: MPS_REPLY_SET_VIOLATION_LEDS (0xFF20), ''
+[03/29 21:42:14.103] | INFO     | micro.vio_leds | microcomm_reactor | sub_command 1
+[03/29 21:42:14.104] | INFO     | micro.vio_leds | microcomm_reactor | COMMAND {'cmd_arg_1': 2, 'cmd_arg_2': 2, 'spot_id': 'SPOT_1'}
+[03/29 21:42:14.104] | INFO     | micro.vio_leds | microcomm_reactor | Sending queued cmd 2 2 for spot SPOT_1
+[03/29 21:42:14.104] | WARNING  | microcomm  | microcomm_reactor | send_command(): queued MPS_CMD_SET_VIOLATION_LEDS (0x0020), '\x00\x02\x02' (1 q_len tx_seqno #176 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:42:14.124] | INFO     | coin_event | Coin Vault | Coin acceptor configured to return coins
+[03/29 21:42:14.126] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 177 (tx_seqno 177 tx_failed 3) MPS_REPLY_SET_VIOLATION_LEDS (0xFF20), ''
+[03/29 21:42:14.233] | INFO     | interaction | SentryJSONRPCServer | on_test_automation_space_entered: SPACE 5580
+[03/29 21:42:14.235] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): user selected space 5580
+[03/29 21:42:14.237] | INFO     | gui        | MainThread | QT: MultiSelectSpace: transition to loadon (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiSelectSpace.qml:984)
+[03/29 21:42:14.239] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): check space 5580 for local
+[03/29 21:42:14.240] | WARNING  | interaction | main_reactor | _stop_idle_timeout: NO TIMER
+[03/29 21:42:14.240] | INFO     | parking.controller | main_reactor | map_space_to_spot: indx 0 spot SPOT_1
+[03/29 21:42:14.240] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): 5580 is a LOCAL space number, setting active spot SPOT_1
+[03/29 21:42:14.241] | INFO     | parking.session.SPOT_1 | main_reactor | is_init_grace(): True
+[03/29 21:42:14.241] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/parking_event_user_entered_space-9107fa99ce7a11eda54f00c0089df311.json
+[03/29 21:42:14.242] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): has NOT paid for max time
+[03/29 21:42:14.370] | INFO     | interaction | main_reactor | set_active_spot: ACTIVE SPOT SPOT_1 /home/mpsadmin/projects/Sentry_test/src/mps/ui/multi_user_interaction.py:2720
+[03/29 21:42:14.372] | INFO     | interaction | main_reactor | set_active_spot(): to SPOT_1
+[03/29 21:42:14.373] | INFO     | parking.controller | main_reactor | set_active_spot(): to SPOT_1
+[03/29 21:42:14.406] | INFO     | coin_event | Coin Vault | Info: REQUEST_MASTER_INHIBIT_STATUS indicates acceptor blocked
+[03/29 21:42:14.487] | INFO     | ui.multi   | main_reactor | config_payment_acceptance: Caller /home/mpsadmin/projects/Sentry_test/src/mps/ui/multi_user_interaction.py:2726
+[03/29 21:42:14.488] | INFO     | ui.multi   | main_reactor | config_payment_acceptance(UISH(): LOCAL valid space number): is_rate_schedule_payment_allowed_now() = True
+[03/29 21:42:14.489] | INFO     | epay       | main_reactor | enable_credit_cards: enable True
+[03/29 21:42:14.489] | INFO     | interaction | main_reactor | accept_coins(): acceptor currently blocking - cfg to accept
+[03/29 21:42:14.489] | INFO     | coin       | main_reactor | accept_all_coins(): configuring acceptance
+[03/29 21:42:14.490] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): PSV PSV_STATE_INIT_GRACE_PERIOD parking_state PARKING_STATE_INIT_GRACE_PERIOD
+[03/29 21:42:14.491] | INFO     | gui        | main_reactor | prompt_on
+[03/29 21:42:14.491] | INFO     | playback   | main_reactor | play: en_coin_card.mp3
+[03/29 21:42:14.497] | INFO     | gui        | main_reactor | Screen changed to SCREEN_MULTI_HOME en
+[03/29 21:42:14.498] | INFO     | ui.multi   | main_reactor | update_last_session_data(): space 5580 spot_id SPOT_1 parking_session_id 66666ec1ce7811eda54f00c0089df311 NO payment
+[03/29 21:42:14.499] | INFO     | gui        | MainThread | _signal_prompt_on
+[03/29 21:42:14.500] | INFO     | gui        | MainThread | QT: MultiHome: transition to prompton (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[03/29 21:42:14.501] | INFO     | gui        | MainThread | QT: MultiSelectSpace: transition to loadoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiSelectSpace.qml:984)
+[03/29 21:42:14.512] | INFO     | gui        | MainThread | _signal_goto_screen: multi_home
+[03/29 21:42:14.513] | INFO     | gui        | MainThread | QT: Current:  multi_select_space Next:  multi_home (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/main.qml:1422)
+[03/29 21:42:14.842] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"user_space_entered": "5580", "event_time": "2023-03-29T21:42:14Z", "mac_address": "00:C0:08:9D:F3:11"}, "class": "event", "queued_dt": "2023-03-29T21:42:14Z", "type": "parking_event_user_entered_space", "id": "71b4f3f3-4cb7-484b-8906-bfcecae30d49", "device_id": "m:00C0089DF311"}
+[03/29 21:42:14.913] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at staging-rabbitmq-vpc-1810471814.us-east-1.elb.amazonaws.com:5671 (200): Normal shutdown
+[03/29 21:42:15.064] | INFO     | coin_event | Coin Vault | Coin acceptor configured to accept coins (command sent)
+[03/29 21:42:15.127] | INFO     | micro.vio_leds | microcomm_reactor | MPS_CMD_SET_VIOLATION_LEDS result: MPS_REPLY_SET_VIOLATION_LEDS (0xFF20), ''
+[03/29 21:42:15.336] | INFO     | coin_event | Coin Vault | Info: REQUEST_MASTER_INHIBIT_STATUS indicates acceptor released
+[03/29 21:42:18.058] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[03/29 21:42:18.059] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[03/29 21:42:19.577] | INFO     | gui        | main_reactor | prompt_off
+[03/29 21:42:19.585] | INFO     | gui        | MainThread | QT: MultiHome: transition to promptoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[03/29 21:42:24.474] | INFO     | micro.wdog | main_reactor | qml_ping_handler(): Received QML ping response
+[03/29 21:42:29.519] | INFO     | mps.ui     | main_reactor | RESWIPE OFF
+[03/29 21:42:29.521] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to reswipeoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[03/29 21:42:29.522] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: calling reswipeoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:913)
+[03/29 21:42:29.522] | INFO     | gui        | MainThread | QT: Home: transition to reswipeoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[03/29 21:42:29.523] | INFO     | gui        | MainThread | QT: Home: calling reswipeoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:400)
+[03/29 21:42:29.524] | INFO     | gui        | MainThread | QT: MultiHome: transition to reswipeoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[03/29 21:42:29.524] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to processingoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[03/29 21:42:29.525] | INFO     | gui        | MainThread | QT: Home: transition to processingoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[03/29 21:42:29.526] | INFO     | gui        | MainThread | QT: MultiHome: transition to processingoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[03/29 21:42:29.526] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to declineoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[03/29 21:42:29.527] | INFO     | gui        | MainThread | QT: MultiHome: transition to declineoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[03/29 21:42:29.530] | INFO     | ui.multi   | main_reactor | set_state(): UI_STATE_HOME performing pre_exit_state() actions _on_timeout(): 
+[03/29 21:42:29.531] | INFO     | interaction | main_reactor | pre_exit_state(): completing actions before next_state UI_STATE_IDLE
+[03/29 21:42:29.531] | INFO     | interaction | main_reactor | return_coins(): ignoring credit cards and returning coins
+[03/29 21:42:29.532] | INFO     | epay       | main_reactor | enable_credit_cards: enable False
+[03/29 21:42:29.532] | INFO     | interaction | main_reactor | return_coins(): acceptor currently accepting - cfg to reject
+[03/29 21:42:29.532] | INFO     | coin       | main_reactor | return_all_coins(): configuring rejection
+[03/29 21:42:29.733] | INFO     | interaction | main_reactor | is_acceptor_blocked(): waiting for coin acceptor disabled confirmation
+[03/29 21:42:29.733] | INFO     | interaction | main_reactor | pre_exit_state(): coin acceptor is blocking with no new deposits
+[03/29 21:42:29.734] | INFO     | interaction | main_reactor | pre_exit_state(): completed actions complete True
+[03/29 21:42:29.734] | INFO     | ui.multi   | main_reactor | set_state(): UI_STATE_HOME completed pre_exit_state() actions proceed True
+[03/29 21:42:29.735] | INFO     | gui        | main_reactor | prompt_off
+[03/29 21:42:29.735] | INFO     | ui.multi   | main_reactor | clear_last_session_data(): cleared data
+[03/29 21:42:29.736] | INFO     | mps.ui     | main_reactor | concierge_reset
+[03/29 21:42:29.736] | INFO     | interaction | main_reactor | return_coins(): ignoring credit cards and returning coins
+[03/29 21:42:29.737] | INFO     | gui        | MainThread | QT: MultiHome: transition to promptoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[03/29 21:42:29.738] | INFO     | gui        | MainThread | QT: MultiHome: transition to declineoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[03/29 21:42:29.739] | INFO     | gui        | MainThread | QT: concierge_reset SPOT_1 (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/main.qml:974)
+[03/29 21:42:29.758] | INFO     | gui        | MainThread | QT: ParkingSpotView: transition to conciergeReset (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/components/ParkingSpotView.qml:4247)
+[03/29 21:42:29.769] | INFO     | gui        | MainThread | QT: ParkingSpotView: conciergeReset (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/components/ParkingSpotView.qml:4217)
+[03/29 21:42:29.785] | INFO     | gui        | MainThread | QT: ParkingSpotView: transition to PSV_STATE_INIT_GRACE_PERIOD (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/components/ParkingSpotView.qml:4247)
+[03/29 21:42:29.937] | WARNING  | interaction | main_reactor | _stop_idle_timeout: NO TIMER
+[03/29 21:42:29.938] | INFO     | gui        | main_reactor | Screen changed to SCREEN_MULTI_IDLE en
+[03/29 21:42:29.939] | INFO     | gui        | MainThread | _signal_goto_screen: multi_idle
+[03/29 21:42:29.939] | INFO     | gui        | MainThread | QT: Current:  multi_home Next:  multi_idle (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/main.qml:1422)
+[03/29 21:42:29.949] | INFO     | interaction | main_reactor | cash_out_or_void_payment: No payment
+[03/29 21:42:30.068] | INFO     | interaction | main_reactor | set_active_spot: ACTIVE SPOT None /home/mpsadmin/projects/Sentry_test/src/mps/ui/multi_user_interaction.py:1868
+[03/29 21:42:30.068] | INFO     | interaction | main_reactor | set_active_spot(): to None
+[03/29 21:42:30.069] | INFO     | parking.controller | main_reactor | set_active_spot(): to None
+[03/29 21:42:30.074] | INFO     | mps.ui     | main_reactor | suspend_background_tasks(): change to False
+[03/29 21:42:30.075] | INFO     | parking_serv | main_reactor | suspend_transfers(): False
+[03/29 21:42:30.075] | INFO     | epay       | main_reactor | auto_authorize(): Setting auto_authorize amount for 1000
+[03/29 21:42:30.081] | INFO     | ui.multi   | main_reactor | UI_STATE_HOME -> UI_STATE_IDLE (_on_timeout(): )
+[03/29 21:42:30.093] | INFO     | gui        | MainThread | QT: Home: transition to PSV_STATE_INIT_GRACE_PERIOD (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[03/29 21:42:30.432] | INFO     | coin_event | Coin Vault | Coin acceptor configured to return coins
+[03/29 21:42:30.704] | INFO     | coin_event | Coin Vault | Info: REQUEST_MASTER_INHIBIT_STATUS indicates acceptor blocked
+[03/29 21:42:44.981] | INFO     | mps.ui     | main_reactor | RESWIPE OFF
+[03/29 21:42:44.988] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to reswipeoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[03/29 21:42:44.989] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: calling reswipeoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:913)
+[03/29 21:42:44.990] | INFO     | gui        | MainThread | QT: Home: transition to reswipeoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[03/29 21:42:44.990] | INFO     | gui        | MainThread | QT: Home: calling reswipeoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:400)
+[03/29 21:42:44.991] | INFO     | gui        | MainThread | QT: MultiHome: transition to reswipeoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[03/29 21:42:44.991] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to processingoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[03/29 21:42:44.992] | INFO     | gui        | MainThread | QT: Home: transition to processingoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[03/29 21:42:44.993] | INFO     | gui        | MainThread | QT: MultiHome: transition to processingoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[03/29 21:42:44.993] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to declineoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[03/29 21:42:44.994] | INFO     | gui        | MainThread | QT: MultiHome: transition to declineoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[03/29 21:43:00.126] | INFO     | gui        | MainThread | QT: Home: transition to PSV_STATE_INIT_GRACE_PERIOD (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[03/29 21:43:01.223] | INFO     | rss        | rss_thread | _get_rss_feeds
+[03/29 21:43:05.626] | INFO     | credit_call | credit_call_reactor | _retry_offline_messages(): deferring cpu_load 4.63 > 3.5 - #0 messages waiting
+[03/29 21:43:05.923] | INFO     | sl_api     | credit_call_reactor | _retry_offline_msgs(): deferring cpu_load 4.63 > 3.5 - #0 messages waiting
+[03/29 21:43:07.296] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43636 rp_min_to_free 43636
+[03/29 21:43:07.301] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x00' (1 q_len tx_seqno #178 tx_failed 3) STATE_IDLE
+[03/29 21:43:07.321] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 178 (tx_seqno 178 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe5'
+[03/29 21:43:07.323] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x00d\xff\xff' (1 q_len tx_seqno #178 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:43:07.324] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x01' (2 q_len tx_seqno #178 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:43:07.344] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 179 (tx_seqno 179 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/29 21:43:07.367] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 180 (tx_seqno 180 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe6'
+[03/29 21:43:07.408] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x01d\xff\xff' (1 q_len tx_seqno #181 tx_failed 3) STATE_IDLE
+[03/29 21:43:07.420] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 181 (tx_seqno 181 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/29 21:43:10.116] | INFO     | phone      | SentryJSONRPCServer | should_run(): SECO detected - returning
+[03/29 21:43:10.117] | INFO     | mps.ui     | SentryJSONRPCServer | suspend_background_tasks(): change to True
+[03/29 21:43:10.117] | INFO     | parking_serv | SentryJSONRPCServer | suspend_transfers(): True
+[03/29 21:43:10.135] | INFO     | ui.multi   | SentryJSONRPCServer | set_state(): UI_STATE_IDLE performing pre_exit_state() actions UISI: screen touched
+[03/29 21:43:10.137] | INFO     | interaction | SentryJSONRPCServer | pre_exit_state(): completing actions before next_state UI_STATE_HOME
+[03/29 21:43:10.138] | INFO     | interaction | SentryJSONRPCServer | pre_exit_state(): completed actions complete True
+[03/29 21:43:10.140] | INFO     | ui.multi   | SentryJSONRPCServer | set_state(): UI_STATE_IDLE completed pre_exit_state() actions proceed True
+[03/29 21:43:10.141] | INFO     | ui.multi   | SentryJSONRPCServer | Secs in Idle 196392.685972
+[03/29 21:43:10.142] | INFO     | interaction | SentryJSONRPCServer | cash_out_or_void_payment: No payment
+[03/29 21:43:10.142] | INFO     | ui.multi   | SentryJSONRPCServer | CONFIRM FALSE
+[03/29 21:43:10.142] | INFO     | ui.multi   | SentryJSONRPCServer | UISH: enter_state active_spot is None
+[03/29 21:43:10.143] | INFO     | interaction | SentryJSONRPCServer | return_coins(): ignoring credit cards and returning coins
+[03/29 21:43:10.346] | INFO     | ui.multi   | SentryJSONRPCServer | CHECK POP  False
+[03/29 21:43:10.347] | INFO     | ui.multi   | SentryJSONRPCServer | UISH::enter_state(): No expired for None
+[03/29 21:43:10.358] | INFO     | gui        | MainThread | QT: MultiSelectSpace: transition to spacemapoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiSelectSpace.qml:984)
+[03/29 21:43:10.359] | INFO     | gui        | SentryJSONRPCServer | Screen changed to SCREEN_MULTI_SELECT_SPACE en
+[03/29 21:43:10.371] | INFO     | playback   | SentryJSONRPCServer | play: en_space_number.mp3
+[03/29 21:43:10.384] | WARNING  | interaction | SentryJSONRPCServer | _stop_idle_timeout: NO TIMER
+[03/29 21:43:10.385] | INFO     | ui.multi   | SentryJSONRPCServer | UI_STATE_IDLE -> UI_STATE_HOME (UISI: screen touched)
+[03/29 21:43:10.385] | INFO     | gui        | MainThread | _signal_goto_screen: multi_select_space
+[03/29 21:43:10.386] | INFO     | gui        | MainThread | QT: Current:  multi_idle Next:  multi_select_space (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/main.qml:1422)
+[03/29 21:43:12.997] | INFO     | phone      | SentryJSONRPCServer | should_run(): SECO detected - returning
+[03/29 21:43:12.997] | INFO     | interaction | SentryJSONRPCServer | _start_idle_timeout: kill timer
+[03/29 21:43:15.308] | INFO     | interaction | SentryJSONRPCServer | on_test_automation_space_entered: SPACE 5580
+[03/29 21:43:15.315] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): user selected space 5580
+[03/29 21:43:15.316] | INFO     | gui        | MainThread | QT: MultiSelectSpace: transition to loadon (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiSelectSpace.qml:984)
+[03/29 21:43:15.321] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): check space 5580 for local
+[03/29 21:43:15.322] | WARNING  | interaction | main_reactor | _stop_idle_timeout: NO TIMER
+[03/29 21:43:15.322] | INFO     | parking.controller | main_reactor | map_space_to_spot: indx 0 spot SPOT_1
+[03/29 21:43:15.323] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): 5580 is a LOCAL space number, setting active spot SPOT_1
+[03/29 21:43:15.323] | INFO     | parking.session.SPOT_1 | main_reactor | is_init_grace(): True
+[03/29 21:43:15.323] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): has NOT paid for max time
+[03/29 21:43:15.336] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/parking_event_user_entered_space-b6034d70ce7a11eda54f00c0089df311.json
+[03/29 21:43:15.653] | INFO     | interaction | main_reactor | set_active_spot: ACTIVE SPOT SPOT_1 /home/mpsadmin/projects/Sentry_test/src/mps/ui/multi_user_interaction.py:2720
+[03/29 21:43:15.653] | INFO     | interaction | main_reactor | set_active_spot(): to SPOT_1
+[03/29 21:43:15.653] | INFO     | parking.controller | main_reactor | set_active_spot(): to SPOT_1
+[03/29 21:43:15.863] | INFO     | ui.multi   | main_reactor | config_payment_acceptance: Caller /home/mpsadmin/projects/Sentry_test/src/mps/ui/multi_user_interaction.py:2726
+[03/29 21:43:15.864] | INFO     | ui.multi   | main_reactor | config_payment_acceptance(UISH(): LOCAL valid space number): is_rate_schedule_payment_allowed_now() = True
+[03/29 21:43:15.865] | INFO     | epay       | main_reactor | enable_credit_cards: enable True
+[03/29 21:43:15.866] | INFO     | interaction | main_reactor | accept_coins(): acceptor currently blocking - cfg to accept
+[03/29 21:43:15.866] | INFO     | coin       | main_reactor | accept_all_coins(): configuring acceptance
+[03/29 21:43:15.867] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): PSV PSV_STATE_INIT_GRACE_PERIOD parking_state PARKING_STATE_INIT_GRACE_PERIOD
+[03/29 21:43:15.869] | INFO     | gui        | main_reactor | prompt_on
+[03/29 21:43:15.871] | INFO     | playback   | main_reactor | play: en_coin_card.mp3
+[03/29 21:43:15.882] | INFO     | gui        | main_reactor | Screen changed to SCREEN_MULTI_HOME en
+[03/29 21:43:15.883] | INFO     | ui.multi   | main_reactor | update_last_session_data(): space 5580 spot_id SPOT_1 parking_session_id 66666ec1ce7811eda54f00c0089df311 NO payment
+[03/29 21:43:15.897] | INFO     | gui        | MainThread | _signal_prompt_on
+[03/29 21:43:15.898] | INFO     | gui        | MainThread | QT: MultiHome: transition to prompton (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[03/29 21:43:15.899] | INFO     | gui        | MainThread | QT: MultiSelectSpace: transition to loadoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiSelectSpace.qml:984)
+[03/29 21:43:15.915] | INFO     | gui        | MainThread | _signal_goto_screen: multi_home
+[03/29 21:43:15.916] | INFO     | gui        | MainThread | QT: Current:  multi_select_space Next:  multi_home (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/main.qml:1422)
+[03/29 21:43:16.094] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"user_space_entered": "5580", "event_time": "2023-03-29T21:43:15Z", "mac_address": "00:C0:08:9D:F3:11"}, "class": "event", "queued_dt": "2023-03-29T21:43:15Z", "type": "parking_event_user_entered_space", "id": "d4787822-fb50-44e9-97b0-299e3f8b19ee", "device_id": "m:00C0089DF311"}
+[03/29 21:43:16.168] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at staging-rabbitmq-vpc-1810471814.us-east-1.elb.amazonaws.com:5671 (200): Normal shutdown
+[03/29 21:43:16.297] | INFO     | coin_event | Coin Vault | Coin acceptor configured to accept coins (command sent)
+[03/29 21:43:16.602] | INFO     | coin_event | Coin Vault | Info: REQUEST_MASTER_INHIBIT_STATUS indicates acceptor released
+[03/29 21:43:19.906] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[03/29 21:43:19.911] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[03/29 21:43:20.913] | INFO     | gui        | main_reactor | prompt_off
+[03/29 21:43:20.956] | INFO     | gui        | MainThread | QT: MultiHome: transition to promptoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[03/29 21:43:24.522] | INFO     | micro.wdog | main_reactor | qml_ping_handler(): Received QML ping response
+[03/29 21:43:24.621] | INFO     | phone      | SentryJSONRPCServer | should_run(): SECO detected - returning
+[03/29 21:43:24.621] | INFO     | interaction | SentryJSONRPCServer | _start_idle_timeout: kill timer
+[03/29 21:43:24.650] | INFO     | gui        | MainThread | QT: MultiHome: transition to declineoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[03/29 21:43:24.805] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/system_alive-bba8570cce7a11eda54f00c0089df311.json
+[03/29 21:43:25.523] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"ip_addr": "10.10.101.104", "rmq_responses_attempted": 803, "msg_id": "0x8000002eL", "rmq_api_bytes_sent": 304, "message": "5580-5581", "rmq_image_bytes_sent": 0, "rmq_response_bytes_sent": 773132, "coin_jar_full": 0.9, "rmq_images_attempted": 0, "desc_str": "Sentry is alive and normal", "rmq_image_errors": 0, "rmq_images_sent": 0, "rmq_json_errors": 0, "rmq_responses_sent": 803, "rmq_apis_attempted": 2, "rmq_jsons_attempted": 1178, "sentry_thread_hung": false, "rmq_api_errors": 0, "rmq_response_errors": 0, "rmq_json_bytes_sent": 3360450, "rmq_jsons_sent": 1178, "rmq_apis_sent": 2}, "class": "event", "queued_dt": "2023-03-29T21:43:24Z", "type": "system_alive", "id": "025371a4-6602-4020-bdb9-2b5740aa4777", "device_id": "m:00C0089DF311"}
+[03/29 21:43:25.602] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at staging-rabbitmq-vpc-1810471814.us-east-1.elb.amazonaws.com:5671 (200): Normal shutdown
+[03/29 21:43:27.460] | INFO     | phone      | SentryJSONRPCServer | should_run(): SECO detected - returning
+[03/29 21:43:27.461] | INFO     | interaction | SentryJSONRPCServer | _start_idle_timeout: kill timer
+[03/29 21:43:28.162] | INFO     | camera     | main_reactor | _send(): -> name: sock_1_2_user_detect message_len: 168 total_sent: 168 message: {"queued_dt": "2023-03-29T21:43:28Z", "type": "BEGIN_SEND", "value": {"session_id": "66666ec1ce7811eda54f00c0089df311", "spot_id": "SPOT_1"}, "requires_response": true}
+[03/29 21:43:28.273] | INFO     | camera     | main_reactor | _recv(): <- request_len: 63 header_len: 8
+[03/29 21:43:28.273] | INFO     | parking.spot.SPOT_1 | main_reactor | send_spot_images_early(): sb_send_msg(BEGIN_SEND) returned ApiResult(api_data=[], error_result=0) for spot SPOT_1 session_id 66666ec1ce7811eda54f00c0089df311
+[03/29 21:43:30.324] | INFO     | phone      | SentryJSONRPCServer | should_run(): SECO detected - returning
+[03/29 21:43:30.325] | INFO     | interaction | SentryJSONRPCServer | _start_idle_timeout: kill timer
+[03/29 21:43:33.095] | INFO     | phone      | SentryJSONRPCServer | should_run(): SECO detected - returning
+[03/29 21:43:33.095] | INFO     | interaction | SentryJSONRPCServer | _start_idle_timeout: kill timer
+[03/29 21:43:35.821] | INFO     | phone      | SentryJSONRPCServer | should_run(): SECO detected - returning
+[03/29 21:43:35.821] | INFO     | interaction | SentryJSONRPCServer | _start_idle_timeout: kill timer
+[03/29 21:43:38.579] | INFO     | phone      | SentryJSONRPCServer | should_run(): SECO detected - returning
+[03/29 21:43:38.579] | INFO     | interaction | SentryJSONRPCServer | _start_idle_timeout: kill timer
+[03/29 21:43:41.354] | INFO     | phone      | SentryJSONRPCServer | should_run(): SECO detected - returning
+[03/29 21:43:41.355] | INFO     | interaction | SentryJSONRPCServer | _start_idle_timeout: kill timer
+[03/29 21:43:44.102] | INFO     | phone      | SentryJSONRPCServer | should_run(): SECO detected - returning
+[03/29 21:43:44.103] | INFO     | interaction | SentryJSONRPCServer | _start_idle_timeout: kill timer
+[03/29 21:43:46.790] | INFO     | phone      | SentryJSONRPCServer | should_run(): SECO detected - returning
+[03/29 21:43:46.790] | INFO     | interaction | SentryJSONRPCServer | _start_idle_timeout: kill timer
+[03/29 21:43:49.552] | INFO     | phone      | SentryJSONRPCServer | should_run(): SECO detected - returning
+[03/29 21:43:49.552] | INFO     | interaction | SentryJSONRPCServer | _start_idle_timeout: kill timer
+[03/29 21:43:52.236] | INFO     | phone      | SentryJSONRPCServer | should_run(): SECO detected - returning
+[03/29 21:43:52.236] | INFO     | interaction | SentryJSONRPCServer | _start_idle_timeout: kill timer
+[03/29 21:43:55.013] | INFO     | phone      | SentryJSONRPCServer | should_run(): SECO detected - returning
+[03/29 21:43:55.013] | INFO     | interaction | SentryJSONRPCServer | _start_idle_timeout: kill timer
+[03/29 21:43:57.822] | INFO     | phone      | SentryJSONRPCServer | should_run(): SECO detected - returning
+[03/29 21:43:57.822] | INFO     | interaction | SentryJSONRPCServer | _start_idle_timeout: kill timer
+[03/29 21:44:00.519] | INFO     | phone      | SentryJSONRPCServer | should_run(): SECO detected - returning
+[03/29 21:44:00.519] | INFO     | interaction | SentryJSONRPCServer | _start_idle_timeout: kill timer
+[03/29 21:44:03.281] | INFO     | phone      | SentryJSONRPCServer | should_run(): SECO detected - returning
+[03/29 21:44:03.281] | INFO     | interaction | SentryJSONRPCServer | _start_idle_timeout: kill timer
+[03/29 21:44:05.639] | INFO     | credit_call | credit_call_reactor | _retry_offline_messages(): deferring cpu_load 5.37 > 3.5 - #0 messages waiting
+[03/29 21:44:05.897] | INFO     | sl_api     | credit_call_reactor | _retry_offline_msgs(): deferring cpu_load 5.37 > 3.5 - #0 messages waiting
+[03/29 21:44:06.068] | INFO     | phone      | SentryJSONRPCServer | should_run(): SECO detected - returning
+[03/29 21:44:06.069] | INFO     | interaction | SentryJSONRPCServer | _start_idle_timeout: kill timer
+[03/29 21:44:07.237] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43635 rp_min_to_free 43635
+[03/29 21:44:07.239] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x00' (1 q_len tx_seqno #182 tx_failed 3) STATE_IDLE
+[03/29 21:44:07.251] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 182 (tx_seqno 182 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe5'
+[03/29 21:44:07.252] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x00d\xff\xff' (1 q_len tx_seqno #182 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:44:07.252] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x01' (2 q_len tx_seqno #182 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:44:07.272] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 183 (tx_seqno 183 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/29 21:44:07.294] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 184 (tx_seqno 184 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe1'
+[03/29 21:44:07.321] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x01d\xff\xff' (1 q_len tx_seqno #185 tx_failed 3) STATE_IDLE
+[03/29 21:44:07.334] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 185 (tx_seqno 185 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/29 21:44:08.789] | INFO     | phone      | SentryJSONRPCServer | should_run(): SECO detected - returning
+[03/29 21:44:08.790] | INFO     | interaction | SentryJSONRPCServer | _start_idle_timeout: kill timer
+[03/29 21:44:11.482] | INFO     | phone      | SentryJSONRPCServer | should_run(): SECO detected - returning
+[03/29 21:44:11.483] | INFO     | interaction | SentryJSONRPCServer | _start_idle_timeout: kill timer
+[03/29 21:44:13.090] | INFO     | parking.spot.SPOT_1 | main_reactor | PSIGP::_grace_period_expiry(): EXPIRY for active UI is SPOT_1
+[03/29 21:44:13.101] | INFO     | detection  | main_reactor | COS cos_puck_ids = {}
+[03/29 21:44:13.101] | INFO     | detection  | main_reactor | comment: comment,1,10.10.101.104 VIOLATION,
+[03/29 21:44:13.102] | INFO     | parking.spot.SPOT_1 | main_reactor | PSV::enter_state(): PARKING_STATE_VIOLATION entered, reason: initial_grace_period_exceeded
+[03/29 21:44:13.233] | INFO     | parking.session.SPOT_1 | main_reactor | record_violation: Caller /home/mpsadmin/projects/Sentry_test/src/mps/parking/parking_spot.py:1571
+[03/29 21:44:13.233] | INFO     | parking.session.SPOT_1 | main_reactor | record_violation(): dt None epoch None
+[03/29 21:44:13.233] | INFO     | parking.session.SPOT_1 | main_reactor | record_violation(): initial_violation_timestamp 2023-03-29 21:44:13.233690+00:00
+[03/29 21:44:13.234] | INFO     | parking.session.SPOT_1 | main_reactor | record_violation(): No payments - max_time 240
+[03/29 21:44:13.234] | INFO     | parking.session.SPOT_1 | main_reactor | record_violation(): dt 2023-03-29 21:44:13.233690+00:00 epoch 1680126253.23 last vio dt 2023-03-29 21:44:13.233690+00:00
+[03/29 21:44:13.282] | INFO     | camera     | main_reactor | _send(): -> name: sock_1_2_user_detect message_len: 179 total_sent: 179 message: {"queued_dt": "2023-03-29T21:44:13Z", "type": "VIOLATION", "value": {"count": 1, "session_id": "66666ec1ce7811eda54f00c0089df311", "spot_id": "SPOT_1"}, "requires_response": true}
+[03/29 21:44:14.254] | INFO     | phone      | SentryJSONRPCServer | should_run(): SECO detected - returning
+[03/29 21:44:14.254] | INFO     | interaction | SentryJSONRPCServer | _start_idle_timeout: kill timer
+[03/29 21:44:16.122] | INFO     | camera     | main_reactor | _recv(): <- request_len: 62 header_len: 8
+[03/29 21:44:16.123] | INFO     | ui.multi   | main_reactor | on_parking_violation: VIOLATION on spot SPOT_1 at 4:44 PM
+[03/29 21:44:16.124] | INFO     | psv_fsm.SPOT_1 | main_reactor | on_parking_violation: Spot SPOT_1
+[03/29 21:44:16.134] | INFO     | psv_fsm    | main_reactor | PSV_STATE_INIT_GRACE_PERIOD -> PSV_STATE_VIOLATION (violation)
+[03/29 21:44:16.135] | INFO     | micro.vio_leds | main_reactor | blink_red()
+[03/29 21:44:16.135] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_SET_VIOLATION_LEDS (0x0020), '\x00\x02\x00' (1 q_len tx_seqno #186 tx_failed 3) STATE_IDLE
+[03/29 21:44:16.147] | INFO     | micro.vio_leds | main_reactor | Blinking red LED for spot SPOT_1 args 2 0
+[03/29 21:44:16.148] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 186 (tx_seqno 186 tx_failed 3) MPS_REPLY_SET_VIOLATION_LEDS (0xFF20), ''
+[03/29 21:44:16.158] | INFO     | ui.multi   | main_reactor | set_state(): UI_STATE_HOME performing pre_exit_state() actions on_parking_violation()
+[03/29 21:44:16.160] | INFO     | interaction | main_reactor | pre_exit_state(): completing actions before next_state UI_STATE_VIOLATION
+[03/29 21:44:16.161] | INFO     | interaction | main_reactor | pre_exit_state(): completed actions complete True
+[03/29 21:44:16.163] | INFO     | ui.multi   | main_reactor | set_state(): UI_STATE_HOME completed pre_exit_state() actions proceed True
+[03/29 21:44:16.163] | INFO     | gui        | main_reactor | prompt_off
+[03/29 21:44:16.164] | INFO     | ui.multi   | main_reactor | clear_last_session_data(): cleared data
+[03/29 21:44:16.164] | INFO     | parking.controller | main_reactor | get_valid_local_spots: Return ['SPOT_1', 'SPOT_2']
+[03/29 21:44:16.164] | INFO     | interaction | main_reactor | cash_out_or_void_payment: No payment
+[03/29 21:44:16.168] | INFO     | gui        | MainThread | QT: MultiHome: transition to promptoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[03/29 21:44:16.169] | INFO     | gui        | MainThread | QT: MultiHome: transition to declineoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[03/29 21:44:16.175] | INFO     | ui.multi   | main_reactor | set_state(): UI_STATE_VIOLATION performing pre_exit_state() actions UISVi: enter_state()
+[03/29 21:44:16.175] | WARNING  | interaction | main_reactor | _stop_idle_timeout: NO TIMER
+[03/29 21:44:16.178] | INFO     | interaction | main_reactor | pre_exit_state(): completing actions before next_state UI_STATE_HOME
+[03/29 21:44:16.178] | INFO     | interaction | main_reactor | pre_exit_state(): completed actions complete True
+[03/29 21:44:16.181] | INFO     | ui.multi   | main_reactor | set_state(): UI_STATE_VIOLATION completed pre_exit_state() actions proceed True
+[03/29 21:44:16.181] | INFO     | interaction | main_reactor | cash_out_or_void_payment: No payment
+[03/29 21:44:16.181] | INFO     | ui.multi   | main_reactor | CONFIRM FALSE
+[03/29 21:44:16.182] | INFO     | ui.multi   | main_reactor | UISH: enter_state active_spot is SPOT_1
+[03/29 21:44:16.391] | INFO     | ui.multi   | main_reactor | config_payment_acceptance: Caller /home/mpsadmin/projects/Sentry_test/src/mps/ui/multi_user_interaction.py:2445
+[03/29 21:44:16.392] | INFO     | ui.multi   | main_reactor | config_payment_acceptance(UISH): is_rate_schedule_payment_allowed_now() = True
+[03/29 21:44:16.399] | INFO     | ui.multi   | main_reactor | UISH::enter_state(): No expired for SPOT_1
+[03/29 21:44:16.415] | INFO     | gui        | main_reactor | Screen changed to SCREEN_MULTI_HOME en
+[03/29 21:44:16.428] | WARNING  | interaction | main_reactor | _stop_idle_timeout: NO TIMER
+[03/29 21:44:16.431] | INFO     | ui.multi   | main_reactor | UISH: PSV State PSV_STATE_VIOLATION
+[03/29 21:44:16.431] | INFO     | ui.multi   | main_reactor | UI_STATE_VIOLATION -> UI_STATE_HOME (UISVi: enter_state())
+[03/29 21:44:16.431] | INFO     | ui.multi   | main_reactor | UI_STATE_HOME -> UI_STATE_VIOLATION (on_parking_violation())
+[03/29 21:44:16.432] | INFO     | ui.multi   | main_reactor | UISH: on_parking_violation start idle timeout
+[03/29 21:44:16.432] | INFO     | interaction | main_reactor | _start_idle_timeout: kill timer
+[03/29 21:44:16.456] | INFO     | gui        | MainThread | QT: DualParkingSpotView: SPOT_1  transition to PSV_STATE_VIOLATION (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/components/DualParkingSpotView.qml:4843)
+[03/29 21:44:16.524] | INFO     | gui        | MainThread | QT: Home: transition to PSV_STATE_VIOLATION (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[03/29 21:44:16.631] | INFO     | parking_serv | main_reactor | _generate_parking_session_json: Caller  /home/mpsadmin/projects/Sentry_test/src/mps/services/parking_service.py:1239
+[03/29 21:44:16.631] | INFO     | parking.session.SPOT_1 | main_reactor | get_all_payments: return 0 payments
+[03/29 21:44:16.631] | INFO     | parking_serv | main_reactor | _generate_parking_session_json(): Payments len 0
+[03/29 21:44:16.632] | INFO     | parking.session.SPOT_1 | main_reactor | get_all_payments: return 0 payments
+[03/29 21:44:16.641] | INFO     | gui        | MainThread | QT: ParkingSpotView: transition to PSV_STATE_VIOLATION (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/components/ParkingSpotView.qml:4247)
+[03/29 21:44:16.642] | INFO     | parking.controller | main_reactor | calculate_hours_offset(): hour = 5
+[03/29 21:44:16.643] | INFO     | parking_serv | main_reactor | _generate_parking_session_json(): hours 5 original_park_timestamp 2023-03-29 16:42:09-05:00 park_timestamp 2023-03-29 21:42:09-05:00
+[03/29 21:44:16.666] | INFO     | gui        | MainThread | QT: ParkingSpotView: transition to PSV_STATE_VIOLATION (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/components/ParkingSpotView.qml:4247)
+[03/29 21:44:16.676] | INFO     | gui        | MainThread | QT: DualParkingSpotView: SPOT_2  transition to noshowleft (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/components/DualParkingSpotView.qml:4843)
+[03/29 21:44:16.689] | INFO     | gui        | MainThread | _signal_goto_screen: multi_home
+[03/29 21:44:16.689] | INFO     | gui        | MainThread | QT: Current:  multi_home Next:  multi_home (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/main.qml:1422)
+[03/29 21:44:16.696] | INFO     | camera     | main_reactor | _send(): -> name: sock_1_2_user_detect message_len: 178 total_sent: 178 message: {"queued_dt": "2023-03-29T21:44:16Z", "type": "ENTRANCE_PICTURE_IDS", "value": {"session_id": "66666ec1ce7811eda54f00c0089df311", "spot_id": "SPOT_1"}, "requires_response": true}
+[03/29 21:44:16.807] | INFO     | camera     | main_reactor | _recv(): <- request_len: 5122 header_len: 8
+[03/29 21:44:16.840] | INFO     | camera     | main_reactor | _send(): -> name: sock_1_2_user_detect message_len: 177 total_sent: 177 message: {"queued_dt": "2023-03-29T21:44:16Z", "type": "ENTRANCE_PLATE_INFO", "value": {"session_id": "66666ec1ce7811eda54f00c0089df311", "spot_id": "SPOT_1"}, "requires_response": true}
+[03/29 21:44:17.042] | INFO     | camera     | main_reactor | _recv(): <- request_len: 18347 header_len: 8
+[03/29 21:44:17.099] | INFO     | camera     | main_reactor | _send(): -> name: sock_1_2_user_detect message_len: 179 total_sent: 179 message: {"queued_dt": "2023-03-29T21:44:17Z", "type": "VIOLATION_PICTURE_IDS", "value": {"session_id": "66666ec1ce7811eda54f00c0089df311", "spot_id": "SPOT_1"}, "requires_response": true}
+[03/29 21:44:17.149] | INFO     | micro.vio_leds | microcomm_reactor | MPS_CMD_SET_VIOLATION_LEDS result: MPS_REPLY_SET_VIOLATION_LEDS (0xFF20), ''
+[03/29 21:44:17.231] | INFO     | camera     | main_reactor | _recv(): <- request_len: 304 header_len: 8
+[03/29 21:44:17.263] | INFO     | camera     | main_reactor | _send(): -> name: sock_1_2_user_detect message_len: 178 total_sent: 178 message: {"queued_dt": "2023-03-29T21:44:17Z", "type": "VIOLATION_PLATE_INFO", "value": {"session_id": "66666ec1ce7811eda54f00c0089df311", "spot_id": "SPOT_1"}, "requires_response": true}
+[03/29 21:44:17.394] | INFO     | camera     | main_reactor | _recv(): <- request_len: 629 header_len: 8
+[03/29 21:44:17.466] | INFO     | parking_serv | main_reactor | _generate_parking_session_json(): SPOT_1 payment_history []
+[03/29 21:44:17.487] | INFO     | parking_serv | main_reactor | PAYMENTS #2 []
+[03/29 21:44:17.490] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/parking_session_violation-db0f6ad6ce7a11eda54f00c0089df311.json
+[03/29 21:44:17.511] | INFO     | camera     | main_reactor | _send(): -> name: sock_1_2_user_detect message_len: 172 total_sent: 172 message: {"queued_dt": "2023-03-29T21:44:17Z", "type": "VIOLATION_SEND", "value": {"session_id": "66666ec1ce7811eda54f00c0089df311", "spot_id": "SPOT_1"}, "requires_response": true}
+[03/29 21:44:17.683] | INFO     | camera     | main_reactor | _recv(): <- request_len: 67 header_len: 8
+[03/29 21:44:17.702] | INFO     | parking.spot.SPOT_1 | main_reactor | PSV::enter_state(): Illuminating blinking red violation_led
+[03/29 21:44:17.703] | INFO     | micro.vio_leds | main_reactor | blink_red()
+[03/29 21:44:17.704] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_SET_VIOLATION_LEDS (0x0020), '\x00\x02\x00' (1 q_len tx_seqno #187 tx_failed 3) STATE_IDLE
+[03/29 21:44:17.717] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 187 (tx_seqno 187 tx_failed 3) MPS_REPLY_SET_VIOLATION_LEDS (0xFF20), ''
+[03/29 21:44:17.718] | INFO     | micro.vio_leds | main_reactor | Blinking red LED for spot SPOT_1 args 2 0
+[03/29 21:44:17.746] | INFO     | parking.spot.SPOT_1 | main_reactor | stop_vio_timer(): 
+[03/29 21:44:17.747] | INFO     | parking.spot.SPOT_1 | main_reactor | start_vio_timer(): seconds 60
+[03/29 21:44:17.747] | INFO     | parking.spot.SPOT_1 | main_reactor | start_vio_timer: Add 60 secs to now dt 2023-03-29 21:44:17.747218+00:00 end 2023-03-29 21:45:17.747218+00:00
+[03/29 21:44:17.747] | INFO     | parking.session.SPOT_1 | main_reactor | set_lock_end_dt: dt 2023-03-29 21:45:17.747218+00:00
+[03/29 21:44:17.748] | INFO     | parking.spot.SPOT_1 | main_reactor | PARKING_STATE_INIT_GRACE_PERIOD -> PARKING_STATE_VIOLATION (PSIGP - Initial grace period expired and extensions exhausted)
+[03/29 21:44:18.065] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"void_timestamp": null, "violation": {"timestamp": "2023-03-29T21:44:13Z", "rate_block": 296449, "epoch": 1680126253.23371}, "merchant_validated": false, "merchant_id": 0, "exit_pictures": null, "lpr_plate": null, "entrance_plate_info": [{"plate": "", "confidence": 0, "vehicle_present": null, "country": 104, "camera": "2", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:07Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": false, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:03Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": false, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:09Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": false, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:03Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": null, "country": 104, "camera": "2", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:08Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": null, "country": 104, "camera": "2", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:09Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": false, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:10Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": false, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:02Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": null, "country": 104, "camera": "2", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:03Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": true, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:07Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": null, "country": 104, "camera": "2", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:09Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": true, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:08Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": true, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:08Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": null, "country": 104, "camera": "2", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:02Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": null, "country": 104, "camera": "2", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:06Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": null, "country": 104, "camera": "2", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:05Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": false, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:02Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": true, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:07Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": null, "country": 104, "camera": "2", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:05Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": true, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:07Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": null, "country": 104, "camera": "2", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:04Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": null, "country": 104, "camera": "2", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:04Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": false, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:03Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": null, "country": 104, "camera": "2", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:05Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": null, "country": 104, "camera": "2", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:03Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": null, "country": 104, "camera": "2", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:03Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": null, "country": 104, "camera": "2", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:08Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": null, "country": 104, "camera": "2", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:03Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": false, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:05Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": true, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:08Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": false, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:04Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": true, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:07Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": null, "country": 104, "camera": "2", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:08Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": true, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:06Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": null, "country": 104, "camera": "2", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:03Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": false, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:02Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": null, "country": 104, "camera": "2", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:07Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": null, "country": 104, "camera": "2", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:06Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": false, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:03Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": false, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:09Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": true, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:06Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": true, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:06Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": null, "country": 104, "camera": "2", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:04Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": false, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:09Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": null, "country": 104, "camera": "2", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:04Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": false, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:09Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": false, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:04Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": false, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:05Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": null, "country": 104, "camera": "2", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:02Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": true, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:06Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": null, "country": 104, "camera": "2", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:08Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": false, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:05Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": true, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:08Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": null, "country": 104, "camera": "2", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:05Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": null, "country": 104, "camera": "2", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:02Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": null, "country": 104, "camera": "2", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:09Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": false, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:03Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": true, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:07Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": null, "country": 104, "camera": "2", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:06Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": false, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:04Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": null, "country": 104, "camera": "2", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:04Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": false, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:04Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": null, "country": 104, "camera": "2", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:10Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": null, "country": 104, "camera": "2", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:07Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": true, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:05Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": null, "country": 104, "camera": "2", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:07Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": null, "country": 104, "camera": "2", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:04Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": true, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:02Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": true, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:06Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": null, "country": 104, "camera": "2", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:07Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": null, "country": 104, "camera": "2", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:08Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": null, "country": 104, "camera": "2", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:05Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": true, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:08Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": false, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:09Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": null, "country": 104, "camera": "2", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:09Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": true, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:05Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": false, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:02Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": false, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:04Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": null, "country": 104, "camera": "2", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:06Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": true, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:01Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": null, "country": 104, "camera": "2", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:42:09Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}], "maintenance_no": false, "handicap_pin": null, "free_to_reservation": false, "merchant_offer_name": "", "maintenance": false, "max_time_allowed": 240, "true_up": 0, "violation_reason": "initial_grace_period_exceeded", "session_error_status": "0x0", "payments": [], "violation_pictures": ["SPOT_1_1680126253142_dad87507ce7a11ed98fd00c0089df311.jpg", "SPOT_1_1680126255011_dad87b02ce7a11edbb6b00c0089df311.jpg"], "card_error_details": [], "park_timestamp": "2023-03-29T21:42:09Z", "is_no_parking_now": false, "violation_plate_info": [{"plate": "", "confidence": 0, "vehicle_present": true, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:44:13Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}, {"plate": "", "confidence": 0, "vehicle_present": true, "country": 104, "camera": "1", "location": [44.972583, -93.436904], "taken": "2023-03-29T21:44:15Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}], "maintenance_unenforced": false, "spot_identifier": "SPOT_1", "concierge_id": 4765, "close_timestamp": null, "total_time_purchased": 0, "sms": null, "warning_period": false, "exit_plate_info": null, "exit_timestamp": null, "entrance_pictures": ["SPOT_2_1680126127403_92eaec3ace7a11ed91e600c0089df311.jpg", "SPOT_1_1680126123881_8fe2ff9ece7a11edbef200c0089df311.jpg", "SPOT_1_1680126129110_8fe37f82ce7a11ed916a00c0089df311.jpg", "SPOT_1_1680126123267_8fdd094cce7a11ed890000c0089df311.jpg", "SPOT_2_1680126128446_92eb00b3ce7a11edb19700c0089df311.jpg", "SPOT_2_1680126129508_92eb15b5ce7a11ed963200c0089df311.jpg", "SPOT_1_1680126130130_92ea8eabce7a11ed93bd00c0089df311.jpg", "SPOT_1_1680126122260_8fdcf8bace7a11edbd4700c0089df311.jpg", "SPOT_2_1680126123182_92eaa191ce7a11eda5bd00c0089df311.jpg", "SPOT_1_1680126127084_8fe340face7a11edaa8a00c0089df311.jpg", "SPOT_2_1680126129943_92eb1dc2ce7a11ed94f100c0089df311.jpg", "SPOT_1_1680126128089_8fe36a1cce7a11ed80e200c0089df311.jpg", "SPOT_1_1680126128290_8fe36e21ce7a11eda6a500c0089df311.jpg", "SPOT_2_1680126122613_92ea96d7ce7a11ed9e0200c0089df311.jpg", "SPOT_2_1680126126398_92ead9dcce7a11edbd0600c0089df311.jpg", "SPOT_2_1680126125593_92eacba6ce7a11edb9cd00c0089df311.jpg", "SPOT_1_1680126122879_8fdd029ece7a11ed860900c0089df311.jpg", "SPOT_1_1680126127905_8fe350ccce7a11edaf8d00c0089df311.jpg", "SPOT_2_1680126125392_92eac835ce7a11edb89e00c0089df311.jpg", "SPOT_1_1680126127285_8fe3451ece7a11ed993200c0089df311.jpg", "SPOT_2_1680126124998_92eac154ce7a11edaf5000c0089df311.jpg", "SPOT_2_1680126124221_92eab30ace7a11edb99a00c0089df311.jpg", "SPOT_1_1680126123667_8fe2fa28ce7a11ed98b800c0089df311.jpg", "SPOT_2_1680126125999_92ead2c2ce7a11edb54e00c0089df311.jpg", "SPOT_2_1680126123588_92eaa8b0ce7a11ed8bb900c0089df311.jpg", "SPOT_2_1680126123823_92eaac21ce7a11ed8a6200c0089df311.jpg", "SPOT_2_1680126128632_92eb0511ce7a11ed8bec00c0089df311.jpg", "SPOT_2_1680126123005_92ea9e2ece7a11ed935200c0089df311.jpg", "SPOT_1_1680126125527_8fe31fa6ce7a11eda1fd00c0089df311.jpg", "SPOT_1_1680126128698_8fe377dcce7a11ed8d5e00c0089df311.jpg", "SPOT_1_1680126124271_8fe30782ce7a11edb78500c0089df311.jpg", "SPOT_1_1680126127687_8fe34d0ace7a11ed8c7700c0089df311.jpg", "SPOT_2_1680126128208_92eafccace7a11ed993900c0089df311.jpg", "SPOT_1_1680126126885_8fe33d61ce7a11ed9bf700c0089df311.jpg", "SPOT_2_1680126123382_92eaa505ce7a11edb2f200c0089df311.jpg", "SPOT_1_1680126122663_8fdcff61ce7a11ed8a8700c0089df311.jpg", "SPOT_2_1680126127237_92eae847ce7a11ed976300c0089df311.jpg", "SPOT_2_1680126126799_92eae10cce7a11eda0ee00c0089df311.jpg", "SPOT_1_1680126123481_8fdd2d63ce7a11ed87a000c0089df311.jpg", "SPOT_1_1680126129713_8fe3945ece7a11eda2d400c0089df311.jpg", "SPOT_1_1680126126484_8fe33323ce7a11edbee400c0089df311.jpg", "SPOT_1_1680126126682_8fe33928ce7a11ed919200c0089df311.jpg", "SPOT_2_1680126124825_92eabd97ce7a11edb9a500c0089df311.jpg", "SPOT_1_1680126129340_8fe3833ace7a11ed9ffa00c0089df311.jpg", "SPOT_2_1680126124014_92eaaf99ce7a11edbfde00c0089df311.jpg", "SPOT_1_1680126129509_8fe3904fce7a11ed9f8a00c0089df311.jpg", "SPOT_1_1680126124070_8fe30373ce7a11edb46100c0089df311.jpg", "SPOT_1_1680126125074_8fe317e3ce7a11edb9d900c0089df311.jpg", "SPOT_2_1680126122855_92ea9a5cce7a11ed8aa800c0089df311.jpg", "SPOT_1_1680126126280_8fe32f47ce7a11ed876a00c0089df311.jpg", "SPOT_2_1680126128809_92eb0923ce7a11edaaa300c0089df311.jpg", "SPOT_1_1680126125298_8fe31b97ce7a11edbbb800c0089df311.jpg", "SPOT_1_1680126128490_8fe3746bce7a11ed9cad00c0089df311.jpg", "SPOT_2_1680126125191_92eac4d1ce7a11ed851600c0089df311.jpg", "SPOT_2_1680126122436_92ea9242ce7a11edbedb00c0089df311.jpg", "SPOT_2_1680126129086_92eb0d0ace7a11ed86e000c0089df311.jpg", "SPOT_1_1680126123066_8fdd0605ce7a11eda29900c0089df311.jpg", "SPOT_1_1680126127486_8fe348face7a11ed9c3000c0089df311.jpg", "SPOT_2_1680126126606_92eadd59ce7a11ed8f8b00c0089df311.jpg", "SPOT_1_1680126124487_8fe30b30ce7a11edadf200c0089df311.jpg", "SPOT_2_1680126124588_92eaba26ce7a11edba9500c0089df311.jpg", "SPOT_1_1680126124883_8fe313c7ce7a11ed9d8100c0089df311.jpg", "SPOT_2_1680126130131_92eb222bce7a11edb4cd00c0089df311.jpg", "SPOT_2_1680126127005_92eae473ce7a11ed879600c0089df311.jpg", "SPOT_1_1680126125687_8fe32340ce7a11ed972000c0089df311.jpg", "SPOT_2_1680126127811_92eaf48cce7a11ed80b200c0089df311.jpg", "SPOT_2_1680126124388_92eab6c0ce7a11eda4fb00c0089df311.jpg", "SPOT_1_1680126122062_8fdcf505ce7a11edab5000c0089df311.jpg", "SPOT_1_1680126126126_8fe32b19ce7a11ed9b1900c0089df311.jpg", "SPOT_2_1680126127603_92eaf04ace7a11ed921c00c0089df311.jpg", "SPOT_2_1680126128028_92eaf8b0ce7a11ed84ae00c0089df311.jpg", "SPOT_2_1680126125799_92eacf5cce7a11edbef200c0089df311.jpg", "SPOT_1_1680126128905_8fe37be1ce7a11ed822100c0089df311.jpg", "SPOT_1_1680126129943_92ea884fce7a11ed935400c0089df311.jpg", "SPOT_2_1680126129712_92eb19a8ce7a11edb0b500c0089df311.jpg", "SPOT_1_1680126125972_8fe32751ce7a11eda8a900c0089df311.jpg", "SPOT_1_1680126122461_8fdcfc17ce7a11edb10900c0089df311.jpg", "SPOT_1_1680126124672_8fe30fe8ce7a11edac9700c0089df311.jpg", "SPOT_2_1680126126196_92ead628ce7a11ed997700c0089df311.jpg", "SPOT_1_1680126121936_8fdcef5cce7a11eda6b800c0089df311.jpg", "SPOT_2_1680126129286_92eb117dce7a11edb8f700c0089df311.jpg"], "email": null, "is_free_parking_now": false, "handicap": false, "coin_error_status": [], "parker_type": "normal", "no_fine_fee": 0, "additional_violations": [], "payment_history": [], "maintenance_free": false, "coin_error_details": [], "session_id": "66666ec1ce7811eda54f00c0089df311", "card_error_status": [], "handicap_spot": false}, "class": "event", "queued_dt": "2023-03-29T21:44:17Z", "type": "parking_session_violation", "id": "29c8124b-234d-4209-bdb5-ef34f7411ec2", "device_id": "m:00C0089DF311"}
+[03/29 21:44:18.141] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at staging-rabbitmq-vpc-1810471814.us-east-1.elb.amazonaws.com:5671 (200): Normal shutdown
+[03/29 21:44:18.719] | INFO     | micro.vio_leds | microcomm_reactor | MPS_CMD_SET_VIOLATION_LEDS result: MPS_REPLY_SET_VIOLATION_LEDS (0xFF20), ''
+[03/29 21:44:18.936] | INFO     | phone      | SentryJSONRPCServer | should_run(): SECO detected - returning
+[03/29 21:44:18.937] | INFO     | interaction | SentryJSONRPCServer | _start_idle_timeout: kill timer
+[03/29 21:44:21.030] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[03/29 21:44:21.031] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[03/29 21:44:21.666] | INFO     | phone      | SentryJSONRPCServer | should_run(): SECO detected - returning
+[03/29 21:44:21.667] | INFO     | interaction | SentryJSONRPCServer | _start_idle_timeout: kill timer
+[03/29 21:44:24.477] | INFO     | micro.wdog | main_reactor | qml_ping_handler(): Received QML ping response
+[03/29 21:44:31.274] | INFO     | mps.ui     | main_reactor | RESWIPE OFF
+[03/29 21:44:31.285] | INFO     | ui.multi   | main_reactor | set_state(): UI_STATE_HOME performing pre_exit_state() actions _on_timeout(): 
+[03/29 21:44:31.289] | INFO     | interaction | main_reactor | pre_exit_state(): completing actions before next_state UI_STATE_IDLE
+[03/29 21:44:31.289] | INFO     | interaction | main_reactor | return_coins(): ignoring credit cards and returning coins
+[03/29 21:44:31.289] | INFO     | epay       | main_reactor | enable_credit_cards: enable False
+[03/29 21:44:31.290] | INFO     | interaction | main_reactor | return_coins(): acceptor currently accepting - cfg to reject
+[03/29 21:44:31.290] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to reswipeoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[03/29 21:44:31.290] | INFO     | coin       | main_reactor | return_all_coins(): configuring rejection
+[03/29 21:44:31.291] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: calling reswipeoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:913)
+[03/29 21:44:31.291] | INFO     | gui        | MainThread | QT: Home: transition to reswipeoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[03/29 21:44:31.292] | INFO     | gui        | MainThread | QT: Home: calling reswipeoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:400)
+[03/29 21:44:31.292] | INFO     | gui        | MainThread | QT: MultiHome: transition to reswipeoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[03/29 21:44:31.293] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to processingoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[03/29 21:44:31.294] | INFO     | gui        | MainThread | QT: Home: transition to processingoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[03/29 21:44:31.294] | INFO     | gui        | MainThread | QT: MultiHome: transition to processingoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[03/29 21:44:31.295] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to declineoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[03/29 21:44:31.295] | INFO     | gui        | MainThread | QT: MultiHome: transition to declineoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[03/29 21:44:31.491] | INFO     | interaction | main_reactor | is_acceptor_blocked(): waiting for coin acceptor disabled confirmation
+[03/29 21:44:31.492] | INFO     | interaction | main_reactor | pre_exit_state(): coin acceptor is blocking with no new deposits
+[03/29 21:44:31.492] | INFO     | interaction | main_reactor | pre_exit_state(): completed actions complete True
+[03/29 21:44:31.494] | INFO     | ui.multi   | main_reactor | set_state(): UI_STATE_HOME completed pre_exit_state() actions proceed True
+[03/29 21:44:31.495] | INFO     | gui        | main_reactor | prompt_off
+[03/29 21:44:31.495] | INFO     | ui.multi   | main_reactor | clear_last_session_data(): cleared data
+[03/29 21:44:31.495] | INFO     | mps.ui     | main_reactor | concierge_reset
+[03/29 21:44:31.496] | INFO     | interaction | main_reactor | return_coins(): ignoring credit cards and returning coins
+[03/29 21:44:31.503] | INFO     | gui        | MainThread | QT: MultiHome: transition to promptoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[03/29 21:44:31.504] | INFO     | gui        | MainThread | QT: MultiHome: transition to declineoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[03/29 21:44:31.504] | INFO     | gui        | MainThread | QT: concierge_reset SPOT_1 (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/main.qml:974)
+[03/29 21:44:31.533] | INFO     | gui        | MainThread | QT: ParkingSpotView: transition to conciergeReset (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/components/ParkingSpotView.qml:4247)
+[03/29 21:44:31.544] | INFO     | gui        | MainThread | QT: ParkingSpotView: conciergeReset (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/components/ParkingSpotView.qml:4217)
+[03/29 21:44:31.564] | INFO     | gui        | MainThread | QT: ParkingSpotView: transition to PSV_STATE_VIOLATION (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/components/ParkingSpotView.qml:4247)
+[03/29 21:44:31.697] | WARNING  | interaction | main_reactor | _stop_idle_timeout: NO TIMER
+[03/29 21:44:31.699] | INFO     | gui        | main_reactor | Screen changed to SCREEN_MULTI_IDLE en
+[03/29 21:44:31.700] | INFO     | gui        | MainThread | _signal_goto_screen: multi_idle
+[03/29 21:44:31.701] | INFO     | gui        | MainThread | QT: Current:  multi_home Next:  multi_idle (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/main.qml:1422)
+[03/29 21:44:31.710] | INFO     | interaction | main_reactor | cash_out_or_void_payment: No payment
+[03/29 21:44:31.800] | INFO     | coin_event | Coin Vault | Coin acceptor configured to return coins
+[03/29 21:44:31.828] | INFO     | interaction | main_reactor | set_active_spot: ACTIVE SPOT None /home/mpsadmin/projects/Sentry_test/src/mps/ui/multi_user_interaction.py:1868
+[03/29 21:44:31.829] | INFO     | interaction | main_reactor | set_active_spot(): to None
+[03/29 21:44:31.829] | INFO     | parking.controller | main_reactor | set_active_spot(): to None
+[03/29 21:44:31.857] | INFO     | mps.ui     | main_reactor | suspend_background_tasks(): change to False
+[03/29 21:44:31.857] | INFO     | parking_serv | main_reactor | suspend_transfers(): False
+[03/29 21:44:31.858] | INFO     | epay       | main_reactor | auto_authorize(): Setting auto_authorize amount for 1000
+[03/29 21:44:31.859] | INFO     | gui        | MainThread | QT: Home: transition to PSV_STATE_VIOLATION (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[03/29 21:44:31.877] | INFO     | ui.multi   | main_reactor | UI_STATE_HOME -> UI_STATE_IDLE (_on_timeout(): )
+[03/29 21:44:31.877] | WARNING  | interaction | main_reactor | _stop_idle_timeout: NO TIMER
+[03/29 21:44:31.890] | WARNING  | interaction | main_reactor | _on_timeout(): too soon (0:00:00.603158 seconds) resetting timeout
+[03/29 21:44:32.082] | INFO     | coin_event | Coin Vault | Info: REQUEST_MASTER_INHIBIT_STATUS indicates acceptor blocked
+[03/29 21:44:41.713] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[03/29 21:44:41.713] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[03/29 21:44:41.739] | INFO     | lib.seco   | watchdog   | SecoLib()::check_temp(): SECO cpu temperature is:  Kelvin 3131 Celsius 39
+[03/29 21:44:46.790] | INFO     | mps.ui     | main_reactor | RESWIPE OFF
+[03/29 21:44:46.792] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to reswipeoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[03/29 21:44:46.792] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: calling reswipeoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:913)
+[03/29 21:44:46.793] | INFO     | gui        | MainThread | QT: Home: transition to reswipeoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[03/29 21:44:46.793] | INFO     | gui        | MainThread | QT: Home: calling reswipeoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:400)
+[03/29 21:44:46.794] | INFO     | gui        | MainThread | QT: MultiHome: transition to reswipeoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[03/29 21:44:46.794] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to processingoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[03/29 21:44:46.795] | INFO     | gui        | MainThread | QT: Home: transition to processingoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[03/29 21:44:46.795] | INFO     | gui        | MainThread | QT: MultiHome: transition to processingoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[03/29 21:44:46.796] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to declineoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[03/29 21:44:46.796] | INFO     | gui        | MainThread | QT: MultiHome: transition to declineoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[03/29 21:44:46.905] | WARNING  | interaction | main_reactor | _on_timeout(): too soon (0:00:00.111223 seconds) resetting timeout
+[03/29 21:45:00.127] | INFO     | gui        | MainThread | QT: Home: transition to PSV_STATE_VIOLATION (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[03/29 21:45:01.923] | INFO     | mps.ui     | main_reactor | RESWIPE OFF
+[03/29 21:45:01.925] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to reswipeoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[03/29 21:45:01.925] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: calling reswipeoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:913)
+[03/29 21:45:01.926] | INFO     | gui        | MainThread | QT: Home: transition to reswipeoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[03/29 21:45:01.927] | INFO     | gui        | MainThread | QT: Home: calling reswipeoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:400)
+[03/29 21:45:01.927] | INFO     | gui        | MainThread | QT: MultiHome: transition to reswipeoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[03/29 21:45:01.928] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to processingoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[03/29 21:45:01.929] | INFO     | gui        | MainThread | QT: Home: transition to processingoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[03/29 21:45:01.930] | INFO     | gui        | MainThread | QT: MultiHome: transition to processingoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[03/29 21:45:01.931] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to declineoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[03/29 21:45:01.931] | INFO     | gui        | MainThread | QT: MultiHome: transition to declineoff (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[03/29 21:45:05.643] | INFO     | credit_call | credit_call_reactor | _retry_offline_messages(): deferring cpu_load 4.29 > 3.5 - #0 messages waiting
+[03/29 21:45:05.883] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req: u'rpc_file_io' Payload: '{"method":"directory","params":["/media/realroot/ads/"],"jsonrpc":"2.0","id":48329327}'
+[03/29 21:45:05.885] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint file_io response {"jsonrpc": "2.0", "id": 48329327, "result": ["SentryHowToPay.png", "parking_schedule_weekly_90.png", "parking_schedule_weekly_100.png", "parking_schedule_weekly.png", "parking_schedule_weekly_84.png", "parking_schedule_weekly_64.png", "parking_schedule_weekly_68.png", "parking_schedule_weekly_81.png", "lost+found", "SentryFreeParking.png", "parking_schedule_weekly_74.png", "forecast.png", "parking_schedule_weekly_83.png", "parking_schedule_weekly_79.png", "parking_schedule_weekly_78.png", "parking_schedule_weekly_71.png", "parking_schedule_weekly_85.png", "parking_schedule_weekly_129.png"]}
+[03/29 21:45:05.899] | INFO     | sl_api     | credit_call_reactor | _retry_offline_msgs(): deferring cpu_load 4.29 > 3.5 - #0 messages waiting
+[03/29 21:45:05.921] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 48329327, "result": ["SentryHowToPay.png", "parking_schedule_weekly_90.png", "parking_schedule_weekly_100.png", "parking_schedule_weekly.png", "parking_schedule_weekly_84.png", "parking_schedule_weekly_64.png", "parking_schedule_weekly_68.png", "parking_schedule_weekly_81.png", "lost+found", "SentryFreeParking.png", "parking_schedule_weekly_74.png", "forecast.png", "parking_schedule_weekly_83.png", "parking_schedule_weekly_79.png", "parking_schedule_weekly_78.png", "parking_schedule_weekly_71.png", "parking_schedule_weekly_85.png", "parking_schedule_weekly_129.png"]} Queue amq.gen-qZU78YYC0gmvF0djOR7utw #804
+[03/29 21:45:07.253] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43634 rp_min_to_free 43634
+[03/29 21:45:07.254] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x00' (1 q_len tx_seqno #188 tx_failed 3) STATE_IDLE
+[03/29 21:45:07.265] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 188 (tx_seqno 188 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe8'
+[03/29 21:45:07.266] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x00d\xff\xff' (1 q_len tx_seqno #188 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:45:07.267] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x01' (2 q_len tx_seqno #188 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:45:07.287] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 189 (tx_seqno 189 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/29 21:45:07.309] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 190 (tx_seqno 190 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe3'
+[03/29 21:45:07.332] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x01d\xff\xff' (1 q_len tx_seqno #191 tx_failed 3) STATE_IDLE
+[03/29 21:45:07.343] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 191 (tx_seqno 191 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/29 21:45:10.785] | INFO     | camera     | time_checker | _send(): -> name: sock_1_2_user_detect message_len: 97 total_sent: 97 message: {"queued_dt": "2023-03-29T21:45:10Z", "type": "GET_TIME", "value": {}, "requires_response": true}
+[03/29 21:45:10.896] | INFO     | camera     | time_checker | _recv(): <- request_len: 69 header_len: 8
+[03/29 21:45:11.073] | INFO     | sys_serv   | time_checker | _log_ntp_peer_info(): 1/3/10 (primary/good+primary/total) - primary:*50.205.57.38    .GPS.            1 u 115m 1024  300   35.765   -0.554   0.267 good:+162.159.200.1   10.72.8.222      3 u 1942 1024  166    0.830   -0.558   0.553, +162.159.200.123 10.72.8.222      3 u  88m 1024   60    0.853   -0.251   0.272 bad:-91.189.91.157   145.238.203.14   2 u  958 1024  375   28.853   -2.846   0.562, -185.125.190.57  145.238.203.14   2 u  938 1024  361   96.414   -4.572   1.365 other: 0.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 1.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 2.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 3.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, ntp.ubuntu.com  .POOL.          16 p    -   64    0    0.000    0.000   0.000
+[03/29 21:45:11.247] | INFO     | sys_serv   | time_checker | get_primary_reference(): Found primary_ref: *50.205.57.38    .GPS.            1 u 115m 1024  300   35.765   -0.554   0.267
+[03/29 21:45:11.248] | INFO     | idigi      | time_checker | clear_ntp_reloaded(): clearing ntp_reloaded controlling watchdog checks
+[03/29 21:45:17.810] | INFO     | parking.spot.SPOT_1 | main_reactor | vio_lock(): LOCK timer
+[03/29 21:45:17.810] | INFO     | parking.session.SPOT_1 | main_reactor | lock(): is LOCKED
+[03/29 21:45:17.811] | INFO     | parking.controller | main_reactor | Session_locked(): session_id 66666ec1ce7811eda54f00c0089df311
+[03/29 21:45:17.811] | INFO     | mps.ui     | main_reactor | _on_session_locked: spot_id SPOT_1
+[03/29 21:45:17.839] | INFO     | gui        | MainThread | QT: Home: transition to PSV_STATE_VIOLATION (file:///tmp/tmptUOxkS/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[03/29 21:45:22.907] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[03/29 21:45:22.907] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[03/29 21:45:24.477] | INFO     | micro.wdog | main_reactor | qml_ping_handler(): Received QML ping response
+[03/29 21:46:05.609] | INFO     | credit_call | credit_call_reactor | _retry_offline_messages(): deferring cpu_load 4.03 > 3.5 - #0 messages waiting
+[03/29 21:46:05.862] | INFO     | sl_api     | credit_call_reactor | _retry_offline_msgs(): deferring cpu_load 4.03 > 3.5 - #0 messages waiting
+[03/29 21:46:07.284] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43633 rp_min_to_free 43633
+[03/29 21:46:07.286] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x00' (1 q_len tx_seqno #192 tx_failed 3) STATE_IDLE
+[03/29 21:46:07.298] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 192 (tx_seqno 192 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe7'
+[03/29 21:46:07.299] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x00d\xff\xff' (1 q_len tx_seqno #192 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:46:07.299] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x01' (2 q_len tx_seqno #192 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:46:07.319] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 193 (tx_seqno 193 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/29 21:46:07.341] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 194 (tx_seqno 194 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe4'
+[03/29 21:46:07.364] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x01d\xff\xff' (1 q_len tx_seqno #195 tx_failed 3) STATE_IDLE
+[03/29 21:46:07.375] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 195 (tx_seqno 195 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/29 21:46:23.329] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[03/29 21:46:23.330] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[03/29 21:46:24.486] | INFO     | micro.wdog | main_reactor | qml_ping_handler(): Received QML ping response
+[03/29 21:46:31.736] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[03/29 21:47:05.667] | INFO     | credit_call | credit_call_reactor | _retry_offline_messages(): #0 messages waiting cpu_load 3.41
+[03/29 21:47:05.921] | INFO     | sl_api     | credit_call_reactor | _retry_offline_msgs(): #0 messages waiting cpu_load 3.41
+[03/29 21:47:07.295] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43632 rp_min_to_free 43632
+[03/29 21:47:07.296] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x00' (1 q_len tx_seqno #196 tx_failed 3) STATE_IDLE
+[03/29 21:47:07.309] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 196 (tx_seqno 196 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe6'
+[03/29 21:47:07.311] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x00d\xff\xff' (1 q_len tx_seqno #196 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:47:07.312] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x01' (2 q_len tx_seqno #196 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:47:07.331] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 197 (tx_seqno 197 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/29 21:47:07.352] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 198 (tx_seqno 198 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe5'
+[03/29 21:47:07.376] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x01d\xff\xff' (1 q_len tx_seqno #199 tx_failed 3) STATE_IDLE
+[03/29 21:47:07.388] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 199 (tx_seqno 199 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/29 21:47:24.477] | INFO     | micro.wdog | main_reactor | qml_ping_handler(): Received QML ping response
+[03/29 21:47:25.142] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[03/29 21:47:25.143] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[03/29 21:47:41.837] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[03/29 21:47:41.838] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[03/29 21:47:41.864] | INFO     | lib.seco   | watchdog   | SecoLib()::check_temp(): SECO cpu temperature is:  Kelvin 3121 Celsius 38
+[03/29 21:48:05.631] | INFO     | credit_call | credit_call_reactor | _retry_offline_messages(): #0 messages waiting cpu_load 3.33
+[03/29 21:48:05.884] | INFO     | sl_api     | credit_call_reactor | _retry_offline_msgs(): #0 messages waiting cpu_load 3.33
+[03/29 21:48:07.247] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43631 rp_min_to_free 43631
+[03/29 21:48:07.249] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x00' (1 q_len tx_seqno #200 tx_failed 3) STATE_IDLE
+[03/29 21:48:07.261] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 200 (tx_seqno 200 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe7'
+[03/29 21:48:07.263] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x00d\xff\xff' (1 q_len tx_seqno #200 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:48:07.263] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x01' (2 q_len tx_seqno #200 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:48:07.283] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 201 (tx_seqno 201 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/29 21:48:07.304] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 202 (tx_seqno 202 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe6'
+[03/29 21:48:07.328] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x01d\xff\xff' (1 q_len tx_seqno #203 tx_failed 3) STATE_IDLE
+[03/29 21:48:07.339] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 203 (tx_seqno 203 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/29 21:48:24.469] | INFO     | micro.wdog | main_reactor | qml_ping_handler(): Received QML ping response
+[03/29 21:48:25.616] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/system_alive-6ef470e8ce7b11eda54f00c0089df311.json
+[03/29 21:48:26.158] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"ip_addr": "10.10.101.104", "rmq_responses_attempted": 804, "msg_id": "0x8000002eL", "rmq_api_bytes_sent": 304, "message": "5580-5581", "rmq_image_bytes_sent": 0, "rmq_response_bytes_sent": 773932, "coin_jar_full": 0.9, "rmq_images_attempted": 0, "desc_str": "Sentry is alive and normal", "rmq_image_errors": 0, "rmq_images_sent": 0, "rmq_json_errors": 0, "rmq_responses_sent": 804, "rmq_apis_attempted": 2, "rmq_jsons_attempted": 1180, "sentry_thread_hung": false, "rmq_api_errors": 0, "rmq_response_errors": 0, "rmq_json_bytes_sent": 3386296, "rmq_jsons_sent": 1180, "rmq_apis_sent": 2}, "class": "event", "queued_dt": "2023-03-29T21:48:25Z", "type": "system_alive", "id": "d7fa0cd2-a5b2-4067-b737-6b494a68d4ff", "device_id": "m:00C0089DF311"}
+[03/29 21:48:26.228] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at staging-rabbitmq-vpc-1810471814.us-east-1.elb.amazonaws.com:5671 (200): Normal shutdown
+[03/29 21:48:26.924] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[03/29 21:48:26.924] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[03/29 21:48:31.756] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[03/29 21:49:05.602] | INFO     | credit_call | credit_call_reactor | _retry_offline_messages(): #0 messages waiting cpu_load 3.49
+[03/29 21:49:05.855] | INFO     | sl_api     | credit_call_reactor | _retry_offline_msgs(): #0 messages waiting cpu_load 3.49
+[03/29 21:49:07.216] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43630 rp_min_to_free 43630
+[03/29 21:49:07.218] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x00' (1 q_len tx_seqno #204 tx_failed 3) STATE_IDLE
+[03/29 21:49:07.230] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 204 (tx_seqno 204 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe5'
+[03/29 21:49:07.230] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x00d\xff\xff' (1 q_len tx_seqno #204 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:49:07.231] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x01' (2 q_len tx_seqno #204 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:49:07.251] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 205 (tx_seqno 205 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/29 21:49:07.273] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 206 (tx_seqno 206 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe1'
+[03/29 21:49:07.295] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x01d\xff\xff' (1 q_len tx_seqno #207 tx_failed 3) STATE_IDLE
+[03/29 21:49:07.307] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 207 (tx_seqno 207 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/29 21:49:24.480] | INFO     | micro.wdog | main_reactor | qml_ping_handler(): Received QML ping response
+[03/29 21:49:27.427] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[03/29 21:49:27.429] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[03/29 21:49:35.837] | INFO     | net_monitor | check_network_connectivity | check_network_connectivity(): Starting network connectivity checks
+[03/29 21:49:37.926] | INFO     | net_monitor | check_network_connectivity | check_network_connectivity(): Finished - lan_up:True network_up:True rcs:['10.10.100.1 rc:0', u'8.8.8.8 rc:0'] time:2.088s
+[03/29 21:50:05.671] | INFO     | credit_call | credit_call_reactor | _retry_offline_messages(): #0 messages waiting cpu_load 3.1
+[03/29 21:50:05.929] | INFO     | sl_api     | credit_call_reactor | _retry_offline_msgs(): #0 messages waiting cpu_load 3.1
+[03/29 21:50:07.242] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43629 rp_min_to_free 43629
+[03/29 21:50:07.243] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x00' (1 q_len tx_seqno #208 tx_failed 3) STATE_IDLE
+[03/29 21:50:07.255] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 208 (tx_seqno 208 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe8'
+[03/29 21:50:07.256] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x00d\xff\xff' (1 q_len tx_seqno #208 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:50:07.257] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x01' (2 q_len tx_seqno #208 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:50:07.277] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 209 (tx_seqno 209 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/29 21:50:07.298] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 210 (tx_seqno 210 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe4'
+[03/29 21:50:07.326] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x01d\xff\xff' (1 q_len tx_seqno #211 tx_failed 3) STATE_IDLE
+[03/29 21:50:07.337] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 211 (tx_seqno 211 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/29 21:50:24.471] | INFO     | micro.wdog | main_reactor | qml_ping_handler(): Received QML ping response
+[03/29 21:50:29.273] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[03/29 21:50:29.274] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[03/29 21:50:31.789] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[03/29 21:50:41.965] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[03/29 21:50:41.965] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[03/29 21:50:41.992] | INFO     | lib.seco   | watchdog   | SecoLib()::check_temp(): SECO cpu temperature is:  Kelvin 3121 Celsius 38
+[03/29 21:51:05.654] | INFO     | credit_call | credit_call_reactor | _retry_offline_messages(): #0 messages waiting cpu_load 2.82
+[03/29 21:51:05.904] | INFO     | sl_api     | credit_call_reactor | _retry_offline_msgs(): #0 messages waiting cpu_load 2.82
+[03/29 21:51:07.250] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43628 rp_min_to_free 43628
+[03/29 21:51:07.252] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x00' (1 q_len tx_seqno #212 tx_failed 3) STATE_IDLE
+[03/29 21:51:07.263] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 212 (tx_seqno 212 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe8'
+[03/29 21:51:07.264] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x00d\xff\xff' (1 q_len tx_seqno #212 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:51:07.265] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x01' (2 q_len tx_seqno #212 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:51:07.285] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 213 (tx_seqno 213 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/29 21:51:07.306] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 214 (tx_seqno 214 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe4'
+[03/29 21:51:07.329] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x01d\xff\xff' (1 q_len tx_seqno #215 tx_failed 3) STATE_IDLE
+[03/29 21:51:07.341] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 215 (tx_seqno 215 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/29 21:51:24.476] | INFO     | micro.wdog | main_reactor | qml_ping_handler(): Received QML ping response
+[03/29 21:51:31.070] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[03/29 21:51:31.071] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[03/29 21:52:05.612] | INFO     | credit_call | credit_call_reactor | _retry_offline_messages(): deferring cpu_load 4.19 > 3.5 - #0 messages waiting
+[03/29 21:52:05.865] | INFO     | sl_api     | credit_call_reactor | _retry_offline_msgs(): deferring cpu_load 4.19 > 3.5 - #0 messages waiting
+[03/29 21:52:07.241] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43627 rp_min_to_free 43627
+[03/29 21:52:07.242] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x00' (1 q_len tx_seqno #216 tx_failed 3) STATE_IDLE
+[03/29 21:52:07.254] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 216 (tx_seqno 216 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe6'
+[03/29 21:52:07.255] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x00d\xff\xff' (1 q_len tx_seqno #216 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:52:07.255] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x01' (2 q_len tx_seqno #216 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:52:07.276] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 217 (tx_seqno 217 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/29 21:52:07.297] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 218 (tx_seqno 218 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe3'
+[03/29 21:52:07.320] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x01d\xff\xff' (1 q_len tx_seqno #219 tx_failed 3) STATE_IDLE
+[03/29 21:52:07.332] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 219 (tx_seqno 219 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/29 21:52:24.472] | INFO     | micro.wdog | main_reactor | qml_ping_handler(): Received QML ping response
+[03/29 21:52:31.819] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[03/29 21:52:32.867] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[03/29 21:52:32.868] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[03/29 21:53:05.673] | INFO     | credit_call | credit_call_reactor | _retry_offline_messages(): deferring cpu_load 4.14 > 3.5 - #0 messages waiting
+[03/29 21:53:05.921] | INFO     | sl_api     | credit_call_reactor | _retry_offline_msgs(): deferring cpu_load 4.14 > 3.5 - #0 messages waiting
+[03/29 21:53:07.229] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43626 rp_min_to_free 43626
+[03/29 21:53:07.233] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x00' (1 q_len tx_seqno #220 tx_failed 3) STATE_IDLE
+[03/29 21:53:07.246] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 220 (tx_seqno 220 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe7'
+[03/29 21:53:07.246] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x00d\xff\xff' (1 q_len tx_seqno #220 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:53:07.247] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x01' (2 q_len tx_seqno #220 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:53:07.267] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 221 (tx_seqno 221 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/29 21:53:07.289] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 222 (tx_seqno 222 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe1'
+[03/29 21:53:07.311] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x01d\xff\xff' (1 q_len tx_seqno #223 tx_failed 3) STATE_IDLE
+[03/29 21:53:07.323] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 223 (tx_seqno 223 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/29 21:53:24.476] | INFO     | micro.wdog | main_reactor | qml_ping_handler(): Received QML ping response
+[03/29 21:53:26.327] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/system_alive-223140f0ce7c11eda54f00c0089df311.json
+[03/29 21:53:26.844] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"ip_addr": "10.10.101.104", "rmq_responses_attempted": 804, "msg_id": "0x8000002eL", "rmq_api_bytes_sent": 304, "message": "5580-5581", "rmq_image_bytes_sent": 0, "rmq_response_bytes_sent": 773932, "coin_jar_full": 0.9, "rmq_images_attempted": 0, "desc_str": "Sentry is alive and normal", "rmq_image_errors": 0, "rmq_images_sent": 0, "rmq_json_errors": 0, "rmq_responses_sent": 804, "rmq_apis_attempted": 2, "rmq_jsons_attempted": 1181, "sentry_thread_hung": false, "rmq_api_errors": 0, "rmq_response_errors": 0, "rmq_json_bytes_sent": 3387052, "rmq_jsons_sent": 1181, "rmq_apis_sent": 2}, "class": "event", "queued_dt": "2023-03-29T21:53:26Z", "type": "system_alive", "id": "51069ef1-5561-401b-b4c1-35bc1c4dc0b5", "device_id": "m:00C0089DF311"}
+[03/29 21:53:26.912] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at staging-rabbitmq-vpc-1810471814.us-east-1.elb.amazonaws.com:5671 (200): Normal shutdown
+[03/29 21:53:33.337] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[03/29 21:53:33.338] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[03/29 21:53:42.089] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[03/29 21:53:42.090] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[03/29 21:53:42.124] | INFO     | lib.seco   | watchdog   | SecoLib()::check_temp(): SECO cpu temperature is:  Kelvin 3121 Celsius 38
+[03/29 21:54:05.638] | INFO     | credit_call | credit_call_reactor | _retry_offline_messages(): deferring cpu_load 3.84 > 3.5 - #0 messages waiting
+[03/29 21:54:05.894] | INFO     | sl_api     | credit_call_reactor | _retry_offline_msgs(): deferring cpu_load 3.84 > 3.5 - #0 messages waiting
+[03/29 21:54:07.308] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43625 rp_min_to_free 43625
+[03/29 21:54:07.309] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x00' (1 q_len tx_seqno #224 tx_failed 3) STATE_IDLE
+[03/29 21:54:07.321] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 224 (tx_seqno 224 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe8'
+[03/29 21:54:07.322] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x00d\xff\xff' (1 q_len tx_seqno #224 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:54:07.322] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x01' (2 q_len tx_seqno #224 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:54:07.343] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 225 (tx_seqno 225 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/29 21:54:07.364] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 226 (tx_seqno 226 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe3'
+[03/29 21:54:07.387] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x01d\xff\xff' (1 q_len tx_seqno #227 tx_failed 3) STATE_IDLE
+[03/29 21:54:07.398] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 227 (tx_seqno 227 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/29 21:54:24.484] | INFO     | micro.wdog | main_reactor | qml_ping_handler(): Received QML ping response
+[03/29 21:54:31.832] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[03/29 21:54:35.183] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[03/29 21:54:35.183] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[03/29 21:55:05.611] | INFO     | credit_call | credit_call_reactor | _retry_offline_messages(): #0 messages waiting cpu_load 3.41
+[03/29 21:55:05.861] | INFO     | sl_api     | credit_call_reactor | _retry_offline_msgs(): #0 messages waiting cpu_load 3.41
+[03/29 21:55:07.216] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43624 rp_min_to_free 43624
+[03/29 21:55:07.217] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x00' (1 q_len tx_seqno #228 tx_failed 3) STATE_IDLE
+[03/29 21:55:07.229] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 228 (tx_seqno 228 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe8'
+[03/29 21:55:07.230] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x00d\xff\xff' (1 q_len tx_seqno #228 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:55:07.233] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x01' (2 q_len tx_seqno #228 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:55:07.251] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 229 (tx_seqno 229 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/29 21:55:07.273] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 230 (tx_seqno 230 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe6'
+[03/29 21:55:07.297] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x01d\xff\xff' (1 q_len tx_seqno #231 tx_failed 3) STATE_IDLE
+[03/29 21:55:07.309] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 231 (tx_seqno 231 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/29 21:55:10.730] | INFO     | sys_serv   | main_reactor | _check_system_resources(): started
+[03/29 21:55:10.731] | INFO     | sys_serv   | main_reactor | Memory info: {'swap_total': 0, 'total': 4029808000L, 'free': 1924356000, 'used': 1272040000, 'swap_free': 0}
+[03/29 21:55:10.751] | INFO     | sys_serv   | main_reactor | _check_system_resources(): completed
+[03/29 21:55:10.773] | INFO     | camera     | time_checker | _send(): -> name: sock_1_2_user_detect message_len: 97 total_sent: 97 message: {"queued_dt": "2023-03-29T21:55:10Z", "type": "GET_TIME", "value": {}, "requires_response": true}
+[03/29 21:55:10.914] | INFO     | camera     | time_checker | _recv(): <- request_len: 69 header_len: 8
+[03/29 21:55:11.089] | INFO     | sys_serv   | time_checker | _log_ntp_peer_info(): 1/3/10 (primary/good+primary/total) - primary:*91.189.91.157   132.163.96.1     2 u  518 1024  373   28.797   -3.027   0.705 good:+185.125.190.57  145.238.203.14   2 u  502 1024  343   96.281   -5.177   1.720, +162.159.200.1   10.72.8.222      3 u  410 1024  355    0.849   -0.632   0.264 bad:-50.205.57.38    .GPS.            1 u 125m 1024  200   35.765   -0.554   0.267, -162.159.200.123 10.72.8.222      3 u  98m 1024  140    0.853   -0.251   0.272 other: 0.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 1.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 2.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 3.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, ntp.ubuntu.com  .POOL.          16 p    -   64    0    0.000    0.000   0.000
+[03/29 21:55:11.264] | INFO     | sys_serv   | time_checker | get_primary_reference(): Found primary_ref: *91.189.91.157   132.163.96.1     2 u  518 1024  373   28.797   -3.027   0.705
+[03/29 21:55:11.265] | INFO     | idigi      | time_checker | clear_ntp_reloaded(): clearing ntp_reloaded controlling watchdog checks
+[03/29 21:55:24.475] | INFO     | micro.wdog | main_reactor | qml_ping_handler(): Received QML ping response
+[03/29 21:55:36.517] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[03/29 21:55:36.518] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[03/29 21:56:05.683] | INFO     | credit_call | credit_call_reactor | _retry_offline_messages(): #0 messages waiting cpu_load 3.11
+[03/29 21:56:05.929] | INFO     | sl_api     | credit_call_reactor | _retry_offline_msgs(): #0 messages waiting cpu_load 3.11
+[03/29 21:56:07.250] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43623 rp_min_to_free 43623
+[03/29 21:56:07.252] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x00' (1 q_len tx_seqno #232 tx_failed 3) STATE_IDLE
+[03/29 21:56:07.264] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 232 (tx_seqno 232 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe6'
+[03/29 21:56:07.265] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x00d\xff\xff' (1 q_len tx_seqno #232 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:56:07.266] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x01' (2 q_len tx_seqno #232 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:56:07.286] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 233 (tx_seqno 233 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/29 21:56:07.307] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 234 (tx_seqno 234 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe6'
+[03/29 21:56:07.332] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x01d\xff\xff' (1 q_len tx_seqno #235 tx_failed 3) STATE_IDLE
+[03/29 21:56:07.343] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 235 (tx_seqno 235 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/29 21:56:24.485] | INFO     | micro.wdog | main_reactor | qml_ping_handler(): Received QML ping response
+[03/29 21:56:31.934] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[03/29 21:56:37.611] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[03/29 21:56:37.611] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[03/29 21:56:42.225] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[03/29 21:56:42.225] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[03/29 21:56:42.254] | INFO     | lib.seco   | watchdog   | SecoLib()::check_temp(): SECO cpu temperature is:  Kelvin 3121 Celsius 38
+[03/29 21:57:05.663] | INFO     | credit_call | credit_call_reactor | _retry_offline_messages(): #0 messages waiting cpu_load 2.92
+[03/29 21:57:05.924] | INFO     | sl_api     | credit_call_reactor | _retry_offline_msgs(): #0 messages waiting cpu_load 2.92
+[03/29 21:57:07.244] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43622 rp_min_to_free 43622
+[03/29 21:57:07.245] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x00' (1 q_len tx_seqno #236 tx_failed 3) STATE_IDLE
+[03/29 21:57:07.257] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 236 (tx_seqno 236 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe6'
+[03/29 21:57:07.258] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x00d\xff\xff' (1 q_len tx_seqno #236 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:57:07.259] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x01' (2 q_len tx_seqno #236 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/29 21:57:07.278] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 237 (tx_seqno 237 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/29 21:57:07.300] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 238 (tx_seqno 238 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe5'
+[03/29 21:57:07.323] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x01d\xff\xff' (1 q_len tx_seqno #239 tx_failed 3) STATE_IDLE
+[03/29 21:57:07.335] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 239 (tx_seqno 239 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/29 21:57:24.474] | INFO     | micro.wdog | main_reactor | qml_ping_handler(): Received QML ping response

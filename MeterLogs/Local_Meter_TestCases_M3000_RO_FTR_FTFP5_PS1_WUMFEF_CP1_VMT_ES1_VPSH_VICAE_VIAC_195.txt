@@ -1,0 +1,12 @@
+[03/18 00:01:25.577] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at quality-rabbitmq-lb-1284426831.us-east-1.elb.amazonaws.com:5671 (200): Normal shutdown
+[03/18 00:01:33.675] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43498 rp_min_to_free 43498
+[03/18 00:01:37.315] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[03/18 00:01:37.318] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[03/18 00:01:37.319] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[03/18 00:01:37.319] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1742256097,2,2
+
+[03/18 00:01:37.489] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[03/18 00:01:37.490] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[03/18 00:01:37.490] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[03/18 00:01:37.490] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1742256097,2,2
+

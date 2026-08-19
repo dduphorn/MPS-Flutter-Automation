@@ -1,0 +1,27 @@
+[08/13 04:42:04.768] | INFO     | micro.vio_leds | microcomm_reactor | COMMAND {'cmd_arg_1': 0, 'cmd_arg_2': 0, 'spot_id': 'SPOT_2'}
+[08/13 04:42:04.769] | INFO     | micro.vio_leds | microcomm_reactor | Sending queued cmd 0 0 for spot SPOT_2
+[08/13 04:42:04.769] | WARNING  | microcomm  | microcomm_reactor | send_command(): queued MPS_CMD_SET_VIOLATION_LEDS (0x0020), '\x01\x00\x00' (1 q_len tx_seqno #6 rx_seqno #0 tx_failed #4) processing_rx_msg STATE_WAIT_REPLY
+[08/13 04:42:04.866] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 7 (tx_seqno 7 tx_failed 4) MPS_REPLY_SET_VIOLATION_LEDS (0xFF20), ''
+[08/13 04:42:04.942] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"message": "Exiting FREE parking", "msg_id": "0x200004", "ip_addr": "10.10.101.168", "desc_str": "The parking logic received a rate schedule change to exit FREE parking"}, "class": "alert", "queued_dt": "2026-08-13T04:42:03Z", "type": "parking_event_exit_free_parking", "id": "1d1411e9-0a14-4d64-953e-d6f6775330f5", "device_id": "m:00C008947D30"}
+[08/13 04:42:05.080] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at rabbitmq.staging.sentry-link.com:5671 (200): Normal shutdown
+[08/13 04:42:05.868] | INFO     | micro.vio_leds | microcomm_reactor | MPS_CMD_SET_VIOLATION_LEDS result: MPS_REPLY_SET_VIOLATION_LEDS (0xFF20), ''
+[08/13 04:42:08.376] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/system_alive-5764ef1296d111f1b9e700c008947d30.json
+[08/13 04:42:09.313] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"ip_addr": "10.10.101.168", "rmq_responses_attempted": 472, "msg_id": "0x8000002eL", "rmq_api_bytes_sent": 304, "message": "9010-9011", "rmq_image_bytes_sent": 0, "rmq_response_bytes_sent": 1615384, "coin_jar_full": 0.0, "rmq_images_attempted": 0, "desc_str": "Sentry is alive and normal", "rmq_image_errors": 0, "rmq_images_sent": 0, "rmq_json_errors": 0, "rmq_responses_sent": 472, "rmq_apis_attempted": 2, "rmq_jsons_attempted": 239, "sentry_thread_hung": false, "rmq_api_errors": 0, "rmq_response_errors": 0, "rmq_json_bytes_sent": 435953, "rmq_jsons_sent": 239, "rmq_apis_sent": 2}, "class": "event", "queued_dt": "2026-08-13T04:42:08Z", "type": "system_alive", "id": "e68927ee-242f-4177-9910-6db0cc8b4893", "device_id": "m:00C008947D30"}
+[08/13 04:42:09.405] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at rabbitmq.staging.sentry-link.com:5671 (200): Normal shutdown
+[08/13 04:42:33.467] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[08/13 04:42:33.468] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[08/13 04:43:03.434] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 1434 rp_min_to_free 1434
+[08/13 04:43:34.480] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[08/13 04:43:34.481] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[08/13 04:43:37.500] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[08/13 04:43:37.501] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[08/13 04:43:37.540] | INFO     | lib.seco   | watchdog   | SecoLib()::check_temp(): SECO cpu temperature is:  Kelvin 3221 Celsius 48
+[08/13 04:43:48.876] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[08/13 04:44:03.503] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 1433 rp_min_to_free 1433
+[08/13 04:44:05.712] | INFO     | ui.multi   | main_reactor | UISI::_suspend_tasks_timeout(): still in Idle - for 136.89656 seconds; unsuspending background task
+[08/13 04:44:35.478] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[08/13 04:44:35.479] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[08/13 04:45:01.741] | INFO     | micro.wdog | microcomm_reactor | qml_ping_sender(): Sending QML ping
+[08/13 04:45:03.490] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 1432 rp_min_to_free 1432
+[08/13 04:45:36.538] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[08/13 04:45:36.539] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0

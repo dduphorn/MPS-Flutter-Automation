@@ -1,0 +1,15 @@
+[02/25 03:03:59.118] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[02/25 03:03:59.119] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[02/25 03:03:59.120] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[02/25 03:03:59.120] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1740452639,2,2
+
+[02/25 03:03:59.293] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[02/25 03:03:59.295] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[02/25 03:03:59.295] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[02/25 03:03:59.295] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1740452639,2,2
+
+[02/25 03:04:00.434] | INFO     | gui        | MainThread | QT: Home: transition to PSV_STATE_AVAILABLE (file:///tmp/tmp2YLDMH/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[02/25 03:04:07.827] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43375 rp_min_to_free 43375
+[02/25 03:04:24.073] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[02/25 03:04:24.073] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[02/25 03:04:24.102] | INFO     | lib.seco   | watchdog   | SecoLib()::check_temp(): SECO cpu temperature is:  Kelvin 3161 Celsius 42

@@ -1,0 +1,58 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<!--<suite name="RunAllTestSuitesInParallel-SG" verbose="1" parallel ="tests" thread-count="10">-->
+<suite name="Regression_PEO" verbose="1"  parallel ="tests"  thread-count="9">
+	<test name = "PEO_TestCases">
+	   <parameter name="strStopAndStartAppiumServer" value="True"></parameter>
+	    <parameter name="strAppiumPort" value="7777"></parameter>
+	    <parameter name="strDeviceAppiumPort" value="7778"></parameter>
+<!-- 	    <parameter name="strAndroidUdid" value="4d58424e5a373498"></parameter> -->
+	    <parameter name="strAndroidUdid" value="1115fb7b5be42405"></parameter>
+	    <parameter name="strAVDName" value = ""></parameter>
+	    <parameter name="strDeviceId" value="9000-9001"></parameter>
+<!-- 	   	<parameter name="strDeviceId" value="9092"></parameter> -->
+	   	<classes>
+	   		<class name="AutomationCode.PEO_TestCases">
+		   		<methods>
+<!-- 		   			<include name="P4001_ValidateInvalidCredentialMessage"></include> -->
+<!-- 		   			<include name="P4002_PEO_CMV_IGPE_VVXD"></include> -->
+<!-- 	    		    <include name="P4003_PEO_CMV2_IGPE_VVXD"></include> -->
+<!-- 	    		    <include name="P4004_PEO_CMV_EIO60D_VVXD"></include> -->
+<!-- 	    		    <include name="P4005_FTFP0_CGPV_AV_CV_PLI_IT_PV_VPVE_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="P4006_FTFP0_CGPV_PLI_AV_CV_IT_DV_DWDV_PDV_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="P4007_FTFP0_CGPV_PLI_AV_CV_CLI_IT_VLI_DV_AWDV_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="P4008_FTFP0_CGPV_AV_CV_TNI_VSM_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="P4009_FTFP0_CGPV_AV_CV_VIPV_TNI_VSM_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="P4010_FTFP0_CGPV_AV_CV_VIPV_CAV_RCV_TNI_VSM_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="P4011_FTFP0_CGPV_AV_SV_USV_CV_IT_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="P4012_FTFP0_CGPV_AV_CV_CNIT_RA_VIR_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="P4013_FTFP0_CGPV_AV_CV_CNIT_RDV_VIR_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="P4014_FTFP0_CGPV_AV_CV_CNIT_RDIV_VIR_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="P4015_FTFP0_CGPV_AV_CV_CNIT_RBCE_VIR_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="P4016_FTFP0_CGPV_AV_CV_CNIT_RBS_VIR_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="P4017_FTFP0_CGPV_AV_CV_CNIT_RTC_VIR_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="P4018_FTFP0_CGPV_AV_CV_CNIT_RVU_VIR_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="P4019_FTFP0_CGPV_AV_CV_CNIT_RO_VIR_ES1_VPSH_VIACE_VIAC"></include> -->
+<!-- 					<include name="P4020_FTFP0_CGPV_AV_PCV_CP1_VMU_VPVR_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="P4021_CGPV1_AV_PCV_PIT_CP1_VMU_VPVR_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="P4022_FTFP0_CGPV1_AV_PCV_PIT_PGT_CP1_VML_MPO2_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="P4023_PEO_CGPV1_NTAAV_PAIT_GT_RBT_VVR"></include> -->
+<!-- 					<include name="P4024_PEO_CGPV1_NTAAV_CAVV_CNIT_RV_RAV_GT_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="P4025_FTFP0_MUON_CGPV1_NTAAV_SV_CP1_USBDNE_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="P4026_FTFP10_MUON_CGPV1_NTAAV_SV_CP1_USBDNE_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="P4027_AMMOEE_MUON_CGPV1_NTAAV_SV_LS1_USBDNE_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="P4028_DPEOU_CPEOU_MIL_UU_VPEOL"></include> -->
+<!-- 					<include name="P4029_FTFP0_CGPV_AV_ES1_VVR_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="P4030_FTFP0_CGPV_AV_CV_ES1_VVR_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="P4031_FTFP0_CGPV_AV_CV_IT_ES1_VVR_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="P4032_CSLV_AV_CV_IT_ES1_VVR_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="P4033_AMMOE_CGPV1_AV_VAE_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="P4034_SLPE_CGPV1_AV_VVV_ES1_VPSH"></include> -->
+<!-- 					<include name="P4035_SLPE_CMV_IGPE_ES1_VPSH"></include> -->
+<!-- 					<include name="P4036_FTFP0_MUON_CGPV1_UM_CP1_LMV_AP_CV_SV_LSTE_ES_VPSH"></include> -->
+<!-- 					<include name="P4037_FTFP10_MUON_CGPV1_UM_CP1_LMV_AP_CV_SV_LSTE_ES_VPSH"></include> -->
+<!-- 					<include name="P4038_VM_JMP_VPLS_CLS_VPSH"></include> -->
+				</methods>
+	   		</class>
+	    </classes>
+	</test>
+</suite>

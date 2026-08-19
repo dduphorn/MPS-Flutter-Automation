@@ -1,0 +1,29 @@
+[04/11 15:23:32.920] | INFO     | parking.session.SPOT_1 | main_reactor | is_unlocked: UNLOCK feature not enabled - violation always locks
+[04/11 15:23:32.934] | INFO     | gui        | MainThread | QT: Home: transition to PSV_STATE_VIOLATION (file:///tmp/tmpwsa6do/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[04/11 15:23:34.707] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/11 15:23:34.709] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/11 15:23:34.709] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/11 15:23:34.709] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744385014,2,2
+
+[04/11 15:23:34.883] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/11 15:23:34.884] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/11 15:23:34.885] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/11 15:23:34.885] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744385014,2,2
+
+[04/11 15:24:00.856] | INFO     | parking.session.SPOT_1 | main_reactor | is_unlocked: UNLOCK feature not enabled - violation always locks
+[04/11 15:24:10.542] | INFO     | rss        | rss_thread | _get_rss_feeds
+[04/11 15:24:16.703] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[04/11 15:24:16.704] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[04/11 15:24:16.731] | INFO     | lib.seco   | watchdog   | SecoLib()::check_temp(): SECO cpu temperature is:  Kelvin 3161 Celsius 42
+[04/11 15:24:18.021] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 44015 rp_min_to_free 44015
+[04/11 15:24:36.528] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/11 15:24:36.529] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/11 15:24:36.529] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/11 15:24:36.530] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744385076,2,2
+
+[04/11 15:24:36.704] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/11 15:24:36.704] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/11 15:24:36.704] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/11 15:24:36.705] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744385076,2,2
+
+[04/11 15:24:46.583] | INFO     | net_monitor | check_network_connectivity | check_network_connectivity(): Starting network connectivity checks

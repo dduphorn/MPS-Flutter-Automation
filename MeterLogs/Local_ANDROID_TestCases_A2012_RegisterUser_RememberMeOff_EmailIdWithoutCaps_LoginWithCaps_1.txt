@@ -1,0 +1,46 @@
+[04/14 23:27:03.223] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[04/14 23:27:41.524] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/14 23:27:41.526] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/14 23:27:41.526] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/14 23:27:41.527] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744673261,2,2
+
+[04/14 23:27:41.700] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/14 23:27:41.701] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/14 23:27:41.701] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/14 23:27:41.701] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744673261,2,2
+
+[04/14 23:28:02.169] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 40651 rp_min_to_free 40651
+[04/14 23:28:43.376] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/14 23:28:43.377] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/14 23:28:43.377] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/14 23:28:43.378] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744673323,2,2
+
+[04/14 23:28:43.551] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/14 23:28:43.552] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/14 23:28:43.552] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/14 23:28:43.553] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744673323,2,2
+
+[04/14 23:29:00.589] | INFO     | credit_call | credit_call_reactor | _retry_offline_messages(): #0 messages waiting cpu_load 2.48
+[04/14 23:29:00.601] | INFO     | micro.wdog | microcomm_reactor | qml_ping_sender(): Sending QML ping
+[04/14 23:29:02.211] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 40650 rp_min_to_free 40650
+[04/14 23:29:03.315] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[04/14 23:29:05.451] | INFO     | sys_serv   | main_reactor | _check_system_resources(): started
+[04/14 23:29:05.452] | INFO     | sys_serv   | main_reactor | Memory info: {'swap_total': 0, 'total': 4029424000L, 'free': 2007492000, 'used': 1159876000, 'swap_free': 0}
+[04/14 23:29:05.453] | INFO     | sys_serv   | main_reactor | _check_system_resources(): completed
+[04/14 23:29:30.193] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[04/14 23:29:30.193] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[04/14 23:29:30.219] | INFO     | lib.seco   | watchdog   | SecoLib()::check_temp(): SECO cpu temperature is:  Kelvin 3161 Celsius 42
+[04/14 23:29:45.212] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/14 23:29:45.213] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/14 23:29:45.214] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/14 23:29:45.214] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744673385,2,2
+
+[04/14 23:29:45.387] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/14 23:29:45.388] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/14 23:29:45.389] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/14 23:29:45.389] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744673385,2,2
+
+[04/14 23:30:02.247] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 40649 rp_min_to_free 40649
+[04/14 23:30:11.556] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req: u'rpc_file_io' Payload: '{"method":"directory","params":["/media/realroot/ads/"],"jsonrpc":"2.0","id":10321302}'
+[04/14 23:30:11.558] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint file_io response {"jsonrpc": "2.0", "id": 10321302, "result": ["SentryHowToPay.png", "en_posts.jpg", "parking_schedule_weekly_49.png", "parking_schedule_weekly.png", "parking_schedule_weekly_73.png", "parking_schedule_weekly_70.png", "en_rules.jpg", "parking_schedule_weekly_84.png", "parking_schedule_weekly_37.png", "parking_schedule_weekly_64.png", "parking_schedule_weekly_54.png", "street_map.png", "lost+found", "parking_schedule_weekly_82.png", "SentryFreeParking.png", "parking_schedule_weekly_74.png", "forecast.png", "parking_schedule_weekly_48.png", "parking_schedule_weekly_71.png", "parking_schedule_weekly_89.png"]}
+[04/14 23:30:11.615] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 10321302, "result": ["SentryHowToPay.png", "en_posts.jpg", "parking_schedule_weekly_49.png", "parking_schedule_weekly.png", "parking_schedule_weekly_73.png", "parking_schedule_weekly_70.png", "en_rules.jpg", "parking_schedule_weekly_84.png", "parking_schedule_weekly_37.png", "parking_schedule_weekly_64.png", "parking_schedule_weekly_54.png", "street_map.png", "lost+found", "parking_schedule_weekly_82.png", "SentryFreeParking.png", "parking_schedule_weekly_74.png", "forecast.png", "parking_schedule_weekly_48.png", "parking_schedule_weekly_71.png", "parking_schedule_weekly_89.png"]} Queue amq.gen-bmfQ9b94EOvwFSRAbHFk8w #521

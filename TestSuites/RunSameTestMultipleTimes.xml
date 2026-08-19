@@ -1,0 +1,41 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Regression_ANDROID" verbose="1"   thread-count="9">
+    <parameter name="strStopAndStartAppiumServer" value="True"></parameter>
+    <parameter name="strAppiumPort" value="4723"></parameter>
+    <parameter name="strAndroidUdid" value="VS986a4741414"></parameter>
+<!-- 	    <parameter name="strAndroidUdid" value=""></parameter> -->
+    <parameter name="strAVDName" value = "Nexus 6P API 25"></parameter>
+    <parameter name="strDeviceId" value="Jack-Lydia"></parameter>
+	<parameter name="strRemotePath" value="http://localhost:6666"></parameter>
+	<test name = "ANDROID_TestCases01"><classes><class name="PackageTestCases.ClassTestCases"><methods><include name="A49_FTFP10_PS1_CP1_PRT_MP1_ES1_VPSH_VICAE_VIAC"></include></methods></class> </classes></test>
+	<test name = "ANDROID_TestCases02"><classes><class name="PackageTestCases.ClassTestCases"><methods><include name="A49_FTFP10_PS1_CP1_PRT_MP1_ES1_VPSH_VICAE_VIAC"></include></methods></class> </classes></test>
+	<test name = "ANDROID_TestCases03"><classes><class name="PackageTestCases.ClassTestCases"><methods><include name="A49_FTFP10_PS1_CP1_PRT_MP1_ES1_VPSH_VICAE_VIAC"></include></methods></class> </classes></test>
+	<test name = "ANDROID_TestCases04"><classes><class name="PackageTestCases.ClassTestCases"><methods><include name="A49_FTFP10_PS1_CP1_PRT_MP1_ES1_VPSH_VICAE_VIAC"></include></methods></class> </classes></test>
+	<test name = "ANDROID_TestCases05"><classes><class name="PackageTestCases.ClassTestCases"><methods><include name="A49_FTFP10_PS1_CP1_PRT_MP1_ES1_VPSH_VICAE_VIAC"></include></methods></class> </classes></test>
+	<test name = "ANDROID_TestCases06"><classes><class name="PackageTestCases.ClassTestCases"><methods><include name="A49_FTFP10_PS1_CP1_PRT_MP1_ES1_VPSH_VICAE_VIAC"></include></methods></class> </classes></test>
+	<test name = "ANDROID_TestCases07"><classes><class name="PackageTestCases.ClassTestCases"><methods><include name="A49_FTFP10_PS1_CP1_PRT_MP1_ES1_VPSH_VICAE_VIAC"></include></methods></class> </classes></test>
+	<test name = "ANDROID_TestCases08"><classes><class name="PackageTestCases.ClassTestCases"><methods><include name="A49_FTFP10_PS1_CP1_PRT_MP1_ES1_VPSH_VICAE_VIAC"></include></methods></class> </classes></test>
+	<test name = "ANDROID_TestCases09"><classes><class name="PackageTestCases.ClassTestCases"><methods><include name="A49_FTFP10_PS1_CP1_PRT_MP1_ES1_VPSH_VICAE_VIAC"></include></methods></class> </classes></test>
+	<test name = "ANDROID_TestCases10"><classes><class name="PackageTestCases.ClassTestCases"><methods><include name="A49_FTFP10_PS1_CP1_PRT_MP1_ES1_VPSH_VICAE_VIAC"></include></methods></class> </classes></test>
+<!-- 	<test name = "ANDROID_TestCases11"><classes><class name="PackageTestCases.ClassTestCases"><methods><include name="A49_FTFP10_PS1_CP1_PRT_MP1_ES1_VPSH_VICAE_VIAC"></include></methods></class> </classes></test> -->
+<!-- 	<test name = "ANDROID_TestCases12"><classes><class name="PackageTestCases.ClassTestCases"><methods><include name="A49_FTFP10_PS1_CP1_PRT_MP1_ES1_VPSH_VICAE_VIAC"></include></methods></class> </classes></test> -->
+<!-- 	<test name = "ANDROID_TestCases13"><classes><class name="PackageTestCases.ClassTestCases"><methods><include name="A49_FTFP10_PS1_CP1_PRT_MP1_ES1_VPSH_VICAE_VIAC"></include></methods></class> </classes></test> -->
+<!-- 	<test name = "ANDROID_TestCases14"><classes><class name="PackageTestCases.ClassTestCases"><methods><include name="A49_FTFP10_PS1_CP1_PRT_MP1_ES1_VPSH_VICAE_VIAC"></include></methods></class> </classes></test> -->
+<!-- 	<test name = "ANDROID_TestCases15"><classes><class name="PackageTestCases.ClassTestCases"><methods><include name="A49_FTFP10_PS1_CP1_PRT_MP1_ES1_VPSH_VICAE_VIAC"></include></methods></class> </classes></test> -->
+<!-- 	<test name = "ANDROID_TestCases16"><classes><class name="PackageTestCases.ClassTestCases"><methods><include name="A49_FTFP10_PS1_CP1_PRT_MP1_ES1_VPSH_VICAE_VIAC"></include></methods></class> </classes></test> -->
+<!-- 	<test name = "ANDROID_TestCases17"><classes><class name="PackageTestCases.ClassTestCases"><methods><include name="A49_FTFP10_PS1_CP1_PRT_MP1_ES1_VPSH_VICAE_VIAC"></include></methods></class> </classes></test> -->
+<!-- 	<test name = "ANDROID_TestCases18"><classes><class name="PackageTestCases.ClassTestCases"><methods><include name="A49_FTFP10_PS1_CP1_PRT_MP1_ES1_VPSH_VICAE_VIAC"></include></methods></class> </classes></test> -->
+<!-- 	<test name = "ANDROID_TestCases19"><classes><class name="PackageTestCases.ClassTestCases"><methods><include name="A49_FTFP10_PS1_CP1_PRT_MP1_ES1_VPSH_VICAE_VIAC"></include></methods></class> </classes></test> -->
+<!-- 	<test name = "ANDROID_TestCases20"><classes><class name="PackageTestCases.ClassTestCases"><methods><include name="A49_FTFP10_PS1_CP1_PRT_MP1_ES1_VPSH_VICAE_VIAC"></include></methods></class> </classes></test> -->
+<!-- 	<test name = "ANDROID_TestCases30"><classes><class name="PackageTestCases.ClassTestCases"><methods><include name="A49_FTFP10_PS1_CP1_PRT_MP1_ES1_VPSH_VICAE_VIAC"></include></methods></class> </classes></test> -->
+<!-- 	<test name = "ANDROID_TestCases31"><classes><class name="PackageTestCases.ClassTestCases"><methods><include name="A49_FTFP10_PS1_CP1_PRT_MP1_ES1_VPSH_VICAE_VIAC"></include></methods></class> </classes></test> -->
+<!-- 	<test name = "ANDROID_TestCases32"><classes><class name="PackageTestCases.ClassTestCases"><methods><include name="A49_FTFP10_PS1_CP1_PRT_MP1_ES1_VPSH_VICAE_VIAC"></include></methods></class> </classes></test> -->
+<!-- 	<test name = "ANDROID_TestCases33"><classes><class name="PackageTestCases.ClassTestCases"><methods><include name="A49_FTFP10_PS1_CP1_PRT_MP1_ES1_VPSH_VICAE_VIAC"></include></methods></class> </classes></test> -->
+<!-- 	<test name = "ANDROID_TestCases34"><classes><class name="PackageTestCases.ClassTestCases"><methods><include name="A49_FTFP10_PS1_CP1_PRT_MP1_ES1_VPSH_VICAE_VIAC"></include></methods></class> </classes></test> -->
+<!-- 	<test name = "ANDROID_TestCases35"><classes><class name="PackageTestCases.ClassTestCases"><methods><include name="A49_FTFP10_PS1_CP1_PRT_MP1_ES1_VPSH_VICAE_VIAC"></include></methods></class> </classes></test> -->
+<!-- 	<test name = "ANDROID_TestCases36"><classes><class name="PackageTestCases.ClassTestCases"><methods><include name="A49_FTFP10_PS1_CP1_PRT_MP1_ES1_VPSH_VICAE_VIAC"></include></methods></class> </classes></test> -->
+<!-- 	<test name = "ANDROID_TestCases37"><classes><class name="PackageTestCases.ClassTestCases"><methods><include name="A49_FTFP10_PS1_CP1_PRT_MP1_ES1_VPSH_VICAE_VIAC"></include></methods></class> </classes></test> -->
+<!-- 	<test name = "ANDROID_TestCases38"><classes><class name="PackageTestCases.ClassTestCases"><methods><include name="A49_FTFP10_PS1_CP1_PRT_MP1_ES1_VPSH_VICAE_VIAC"></include></methods></class> </classes></test> -->
+<!-- 	<test name = "ANDROID_TestCases39"><classes><class name="PackageTestCases.ClassTestCases"><methods><include name="A49_FTFP10_PS1_CP1_PRT_MP1_ES1_VPSH_VICAE_VIAC"></include></methods></class> </classes></test> -->
+<!-- 	<test name = "ANDROID_TestCases40"><classes><class name="PackageTestCases.ClassTestCases"><methods><include name="A49_FTFP10_PS1_CP1_PRT_MP1_ES1_VPSH_VICAE_VIAC"></include></methods></class> </classes></test> -->
+	</suite>

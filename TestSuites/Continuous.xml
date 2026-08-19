@@ -1,0 +1,108 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<!--<suite name="RunAllTestSuitesInParallel-SG" verbose="1" parallel ="tests" thread-count="10">-->
+<suite name="RunAllTestSuitesInParallel-SG" verbose="1" parallel ="tests" thread-count="10">
+	<test name = "ANDROID_TestCases">
+	    <!--<parameter name="strStopAndStartAppiumServer" value="False"></parameter>
+	    <parameter name="strAppiumPort" value="6001"></parameter>
+	    <parameter name="strAVDName" value="Nexus 6 API 22"></parameter>
+	    <parameter name="strAVDName" value=""></parameter>
+	    <parameter name="strAndroidUdid" value="43008003d3bec0df"></parameter>
+		<parameter name="strBootstrapPort" value="6614"></parameter>
+		<parameter name="strRole" value="parker"></parameter>
+		<parameter name="strRemotePath" value="http://10.10.101.148:5558"></parameter>
+		<parameter name="strMunicipality" value="Excelsior, MN"></parameter>
+		<parameter name="strMeterGroup" value="AutomationMeterGroup"></parameter>
+		<parameter name="strMeterName" value="John"></parameter>
+		<parameter name="strMeterSpotName" value="John"></parameter>
+		<parameter name="strDeviceId" value="John-tudor"></parameter>
+		<parameter name="strHost" value="10.10.102.182"></parameter>
+		<parameter name="strLocation" value="-93.4307587 44.957938999999996"></parameter>
+		<parameter name="strRole" value="parker"></parameter>
+	    <parameter name="strAppiumPort" value="4726"></parameter>
+		<parameter name="strAVDName" value=""></parameter>
+		<parameter name="strBootstrapPort" value="2252"></parameter>
+		<parameter name="strDeviceId" value="9090"></parameter>
+		<parameter name="strEnvironment" value="SG"></parameter>
+		<parameter name="strHost" value="10.10.103.138"></parameter>
+		<parameter name="strLocation" value="-123.0983360000000002 44.9722322"></parameter>
+		<parameter name="strMeterGroup" value="AutomationMeterGroup"></parameter>
+		<parameter name="strMeterName" value="9090"></parameter>
+		<parameter name="strMunicipality" value="VIA Rail Canada Test"></parameter>
+		<parameter name="strRemotePath" value="http://10.10.101.146:5559"></parameter>
+		<parameter name="strRole" value="parker"></parameter>
+		<parameter name="strAndroidUdid" value="VK8104G9a23263c"></parameter>-->
+		<parameter name="strUniqueId" value="aa"></parameter>
+		<classes>
+	    	<class name="AutomationCode.TestCases">
+	    		<methods>
+	    			<include name="Continuous"></include>
+	    		    <!--<include name="A1_ANDROID_ValidateInvalidCredentialMessage"></include>
+				   	<include name="A2_ANDROID_RegisterUser_RememberMeOff_EmailIdWithCaps_LoginWithCaps"></include>
+				   	<include name="A3_ANDROID_RegisterUser_RememberMeOff_EmailIdWithCaps_LoginWithoutCaps"></include>
+				   	<include name="A4_ANDROID_RegisterUser_RememberMeOff_EmailIdWithoutCaps_LoginWithCaps"></include>
+				   	<include name="A5_ANDROID_RegisterUser_RememberMeOff_EmailIdWithoutCaps_LoginWithoutCaps"></include>
+				   	<include name="A6_ANDROID_RegisterUser_RememberMeOn_EmailIdWithCaps"></include>
+				   	<include name="A7_ANDROID_RegisterUser_RememberMeOn_EmailIdWithoutCaps"></include>
+				   	<include name="A8_ANDRIOD_RegisterUser_ParkThenPay_ValidateParkingSession"></include>
+				   	<include name="A9_ANDROID_RegisterUser_PayThenPark_ValidateParkingSession"></include>
+				   	<include name="A10_ANDROID_ReimburseParker_ValidateMobileAccountBalance"></include>
+				   	<include name="A11_ANDROID_ParkThenPay_ValidateParkingSession"></include>
+				   	<include name="A12_ANDRIOD_IncrementTimePurchased_ParkThenPay_ValidateParkingSession"></include>
+				   	<include name="A13_ANDROID_PayThenPark_ValidateParkingSession"></include>
+				   	<include name="A14_ANDROID_FreeToRate_ParkThenPay_ValidateParkingSession"></include>
+				   	<include name="A15_ANDROID_FreeToRate_PayThenPark_ValidateParkingSession"></include>
+				   	<include name="A16_ANDROID_RateToFree_ParkThenPay_ValidateParkingSession"></include>
+				   	<include name="A17_ANDROID_LockUserUnlockUsingSentryLink"></include>
+				   	<include name="A18_PEO_CreateManualViolationToValidateViolationDescriptionAndStatuteCode"></include>
+	               	<include name="A19_PEO_CGPV_ApproveViolation_ClaimViolation_PopulateLicenseInformation_IssueTicket"></include>
+	               	<include name="A20_PEO_CGPV_PopulateLicense_ApproveAndClaimViolation_IssueTicket"></include>
+	               	<include name="A21_PEO_CGPV_PopulateLicense_ApproveAndClaimViolation_ChangeLicense_IssueTicket_ValidateLicense"></include>
+	               	<include name="A22_PEO_CGPV_ApproveViolation_ClaimViolation_TicketNotIssued_ValidateStatusMissed"></include>
+	               	<include name="A23_PEO_CGPV_ApproveViolation_ClaimViolation_Snooze_ValidateStatusSnooze"></include>
+	               	<include name="A24_PEO_CGPV_ApproveViolation_ClaimViolation_CouldNotIssueTicket_ValidateIssueReason"></include>-->
+				</methods>
+	   		</class>
+	    </classes>
+	</test>
+	<!--<test name = "IOS_TestCases">
+	    <parameter name="strStopAndStartAppiumServer" value="False"></parameter>
+	    <parameter name="strAppiumPort" value="4723"></parameter>
+		<parameter name="strAVDName" value="Nexus 6 API 22"></parameter>
+		<parameter name="strBootstrapPort" value="2267"></parameter>
+		<parameter name="strDeviceId" value="CD05"></parameter>
+		<parameter name="strEnvironment" value="SG"></parameter>
+		<parameter name="strHost" value="10.10.102.240"></parameter>
+		<parameter name="strLocation" value="-93.4329995 44.9765394"></parameter>
+		<parameter name="strMeterGroup" value="AutomationMeterGroup"></parameter>
+		<parameter name="strMeterName" value="CD05"></parameter>
+		<parameter name="strMeterSpotName" value="CD05"></parameter>
+		<parameter name="strMunicipality" value="Excelsior, MN"></parameter>
+		<parameter name="strRemotePath" value="http://localhost:6666"></parameter>
+		<parameter name="strRole" value="parker"></parameter>
+		<parameter name="strUdid" value=""></parameter>
+		<parameter name="strUniqueId" value="bb"></parameter>
+		<classes>
+    		<class name="AutomationCode.TestCases">
+    		    <methods>
+    				<include name="A1_IOS_ValidateInvalidCredentialMessage"></include>
+				   	<include name="A2_IOS_RegisterUser_RememberMeOff_EmailIdWithCaps_LoginWithCaps"></include>
+				   	<include name="A3_IOS_RegisterUser_RememberMeOff_EmailIdWithCaps_LoginWithoutCaps"></include>
+				   	<include name="A4_IOS_RegisterUser_RememberMeOff_EmailIdWithoutCaps_LoginWithCaps"></include>
+				   	<include name="A5_IOS_RegisterUser_RememberMeOff_EmailIdWithoutCaps_LoginWithoutCaps"></include>
+				   	<include name="A6_IOS_RegisterUser_RememberMeOn_EmailIdWithCaps"></include>
+				   	<include name="A7_IOS_Register_RememberMeOff_EmailIdWithoutCaps"></include>
+				   	<include name="A8_IOS_RegisterUser_ParkThenPay_ValidateParkingSession"></include>
+				   	<include name="A9_IOS_RegisterUser_PayThenPark_ValidateParkingSession"></include>
+				   	<include name="A10_IOS_ReimburseParker_ValidateMobileAccountBalance"></include>
+				   	<include name="A11_IOS_ParkThenPay_ValidateParkingSession"></include>
+				   	<include name="A12_IOS_IncrementTimePurchased_ParkThenPay_ValidateParkingSession"></include>
+				   	<include name="A13_IOS_PayThenPark_ValidateParkingSession"></include>
+				   	<include name="A14_IOS_FreeToRate_ParkThenPay_ValidateParkingSession"></include>
+				   	<include name="A15_IOS_FreeToRate_PayThenPay_ValidateParkingSession"></include>
+				   	<include name="A16_IOS_RateToFree_ParkThenPay_ValidateParkingSession"></include>
+				   	<include name="A17_IOS_LockUserUnlockUsingSentryLink"></include>
+    	    	</methods>
+    	    </class>
+	    </classes>
+	</test>-->
+</suite>

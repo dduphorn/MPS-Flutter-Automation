@@ -1,0 +1,404 @@
+[12/01 20:24:41.142] | ERROR    | rates      | MainThread | cfmip(): 2nd attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:24:41.147] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:24:41.150] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:24:41.153] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:24:41.155] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:24:41.157] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:24:41.160] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:24:42.868] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/system_alive-c529534acef311f0abee00c00892a10b.json
+[12/01 20:24:43.679] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"ip_addr": "10.10.101.6", "rmq_responses_attempted": 5184, "msg_id": "0x8000002eL", "rmq_api_bytes_sent": 997512, "message": "Lot Auto One Pay", "rmq_image_bytes_sent": 0, "rmq_response_bytes_sent": 382140, "coin_jar_full": 0, "rmq_images_attempted": 0, "desc_str": "Sentry is alive and normal", "rmq_image_errors": 0, "rmq_images_sent": 0, "rmq_json_errors": 0, "rmq_responses_sent": 5184, "rmq_apis_attempted": 6521, "rmq_jsons_attempted": 17638, "sentry_thread_hung": true, "rmq_api_errors": 0, "rmq_response_errors": 0, "rmq_json_bytes_sent": 13558052, "rmq_jsons_sent": 17638, "rmq_apis_sent": 6521}, "class": "event", "queued_dt": "2025-12-01T20:24:42Z", "type": "system_alive", "id": "7b975f3b-7773-433a-974a-83c4b9090b70", "device_id": "m:00C00892A10B"}
+[12/01 20:24:43.773] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at rabbitmq.staging.sentry-link.com:5671 (200): Normal shutdown
+[12/01 20:24:49.516] | INFO     | micro.wdog | microcomm_reactor | qml_ping_sender(): Sending QML ping
+[12/01 20:24:49.517] | ERROR    | micro.wdog | microcomm_reactor | qml_ping_sender(): microcomm.ui_controller not regiestered yet
+[12/01 20:24:51.037] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:24:51.040] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:24:51.044] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:24:51.047] | ERROR    | rates      | MainThread | cfmip(): 1st attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:24:51.049] | ERROR    | rates      | MainThread | cfmip(): 2nd attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:24:51.055] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:24:51.058] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:24:51.062] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:24:51.065] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:24:51.068] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:24:51.070] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:24:54.481] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_INIT_GRACE_PERIOD value 300
+[12/01 20:24:54.954] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_NO_PARKING_GRACE_PERIOD value 0
+[12/01 20:24:55.418] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_VIOLATION_GRACE_PERIOD value 0
+[12/01 20:24:55.917] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_FREE_TIME_ON_FIRST_PAYMENT value 0
+[12/01 20:24:56.414] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_ACCEPT_COIN_NO_SPOT_SCREEN_TIMEOUT value 5
+[12/01 20:24:56.916] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_PAY_BY_PLATE value False
+[12/01 20:24:57.417] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_DISCONNECT_FREE value True
+[12/01 20:24:57.921] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_UNLOCK_ENABLED value False
+[12/01 20:24:58.447] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_TRUEUP_ENABLED value False
+[12/01 20:24:58.965] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_UNLOCK_TIME value 1
+[12/01 20:24:59.470] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_UNLOCK_MAX value 1
+[12/01 20:24:59.926] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_IMAGE_SEND_BEFORE_VIOLATION value 45
+[12/01 20:25:00.386] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_MAXIMUM_DURATION_MINUTES value 240
+[12/01 20:25:00.865] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_SHORT_SESSION value 15
+[12/01 20:25:01.105] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:01.107] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:01.110] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:01.113] | ERROR    | rates      | MainThread | cfmip(): 1st attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:25:01.114] | ERROR    | rates      | MainThread | cfmip(): 2nd attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:25:01.120] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:01.122] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:01.125] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:01.127] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:01.129] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:01.132] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:01.359] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_RATE_DEFAULT_MINIMUM_TIME value 60
+[12/01 20:25:01.841] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting SYS_OUT_OF_SERVICE value False
+[12/01 20:25:09.800] | INFO     | net_monitor | check_network_connectivity | check_network_connectivity(): Starting network connectivity checks
+[12/01 20:25:11.111] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:11.114] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:11.117] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:11.120] | ERROR    | rates      | MainThread | cfmip(): 1st attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:25:11.121] | ERROR    | rates      | MainThread | cfmip(): 2nd attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:25:11.127] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:11.129] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:11.131] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:11.134] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:11.136] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:11.138] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:11.926] | INFO     | net_monitor | check_network_connectivity | check_network_connectivity(): Finished - lan_up:True network_up:True rcs:['10.10.100.1 rc:0', '8.8.8.8 rc:0'] time:2.126s
+[12/01 20:25:21.053] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:21.056] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:21.059] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:21.061] | ERROR    | rates      | MainThread | cfmip(): 1st attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:25:21.062] | ERROR    | rates      | MainThread | cfmip(): 2nd attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:25:21.068] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:21.070] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:21.073] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:21.075] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:21.077] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:21.080] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:22.966] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req: u'rpc_system' Payload: '{"method":"get_software_version","params":[],"jsonrpc":"2.0","id":74738286}'
+[12/01 20:25:22.968] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint system response {"jsonrpc": "2.0", "id": 74738286, "result": "openlot-mjm"}
+[12/01 20:25:23.020] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 74738286, "result": "openlot-mjm"} Queue amq.gen-3mSHTQ_612CnI5CzH8400Q #5185
+[12/01 20:25:23.568] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req Disabled gatelot blob logs Target: u'rpc_openlot_rates'
+[12/01 20:25:23.570] | INFO     | lot_rates_service | SentryJSONRPCServer | set_rates(): enter rates ({u'sales_tax_round': u'ROUND', u'name': u'Daily', u'min': 1, u'max': 10, u'valid_days': [u'SUN', u'MON', u'TUE', u'WED', u'THU', u'FRI', u'SAT'], u'enabled': True, u'days': 1, u'enabled_to': u'2025-12-08 00:00:00', u'rate': 1200, u'base': 0, u'enabled_from': u'2025-11-24 00:00:00', u'sales_tax_rate': u'0.0', u'group_id': 225, u'type': u'daily', u'id': 808}, {u'sales_tax_round': u'ROUND', u'name': u'Hourly 1', u'min': 1, u'max': 4, u'valid_days': [u'SUN', u'MON', u'TUE', u'WED', u'THU', u'FRI', u'SAT'], u'enabled': True, u'days': 0, u'enabled_to': u'2025-11-24 00:00:00', u'rate': 1200, u'base': 0, u'enabled_from': u'2025-11-17 00:00:00', u'sales_tax_rate': u'0.0', u'group_id': 225, u'type': u'hourly', u'id': 807})
+[12/01 20:25:23.572] | INFO     | lot_rates  | SentryJSONRPCServer | get_permit_table(): entered
+[12/01 20:25:23.573] | INFO     | lot_rates  | SentryJSONRPCServer | get_permit_table(): {'api_name': '/permit_rates', 'api_params': u'permit_holder_category_name= ', 'api_method': 'GET', 'api_body': ''}
+[12/01 20:25:23.573] | INFO     | rabbitmq   | SentryJSONRPCServer | Create connection
+[12/01 20:25:25.984] | INFO     | rabbitmq   | SentryJSONRPCServer | create_connection: Complete - SSL True (timings: co 0.632133960724 ch 0.0678110122681 d 0.287281990051 x -0.150356054306 b 0.075902223587 d 0.074453830719 a 0.000545978546143 conf 0.0690929889679 cons 0.0699081420898 )
+[12/01 20:25:25.985] | INFO     | idigi      | SentryJSONRPCServer | send_rmq_http_msg(): rmq_payload {'api_name': '/permit_rates', 'api_params': u'permit_holder_category_name= ', 'api_method': 'GET', 'api_body': ''} timeout 30
+[12/01 20:25:25.987] | INFO     | idigi      | SentryJSONRPCServer | send_msg: Reply To amq.gen-pNaM-1E3eYQ_6z2RUcdMlA, path apirequest_06c31028-8ba2-4c6e-9de9-7ffd358eb952, len contents 152
+[12/01 20:25:26.056] | INFO     | rabbitmq   | SentryJSONRPCServer | send_msg: sent {'api_name': '/permit_rates', 'api_params': u'permit_holder_category_name= ', 'api_method': 'GET', 'api_body': ''}
+[12/01 20:25:26.140] | INFO     | rabbitmq   | SentryJSONRPCServer | RabbitMQToSLConnector::on_response: ID 06c31028-8ba2-4c6e-9de9-7ffd358eb952 len body 6137
+[12/01 20:25:26.142] | INFO     | rabbitmq   | SentryJSONRPCServer | send_msg: response {"permit_rates":[{"id":808,"rate_type":"daily","name":"Daily","min":1,"max":10,"base":0,"rate":1200,"days":1,"enabled_from":"2025-11-24T00:00:00-06:00","enabled_to":"2025-12-08T00:00:00-06:00","daily_start_hour":8,"daily_end_hour":23,"parker_type":"Normal","auto_renewable":false,"payroll_deduction_available":false,"enabled":true,"payroll_deduction_auto_renewable":false,"permit_holder_category_name":null,"transaction_fee":[],"valid_dow":{"id":127,"description":"Every Day","representation":"UMTWRFS","valid_days":"sun,mon,tue,wed,thu,fri,sat"},"sales_tax_rate":"0.0","sales_tax_round":"ROUND","permit_group":{"id":225,"municipality_id":7,"name":"Student","created_at":"2024-12-02T11:14:25-06:00","updated_at":"2025-10-29T08:46:30-05:00","upload_username":"acdddae1b3d755284e4a7cb3","upload_password":"f90a798b4f85c77a2a3f2cbca92505385218a94bdc2d0eb1","daily_pool_limit":100,"currently_used":0,"send_permits_to_meters":false,"sync_complete":false,"valet_timeframe":60,"generate_url":true,"secret_url":"61147c1014d84a","location_code":"1717","confirmation_request_message":"\"Reply with {CODE} to opt-in to SMS parking.\\nLearn more: https://","confirmation_response_message":"\"Hello! This is Lot Automation Parking, you are now opted-in. For help, reply HELP, to opt-out, reply STOP. Follow the link to pay for parking: https://lotautomation.staging.sentry-link.com/qrcode/61147c1014d84a","help_received_message":"","stop_received_message":"","max_time_response_message":"","timezone":"America/Chicago","parking_lots":[{"id":175,"name":"Lot Auto One","created_at":"2023-02-16T17:05:19-06:00","updated_at":"2025-12-01T13:20:05-06:00","sys_default_language":null,"phone_numbers":null,"send_sms_notifications":false,"municipality_id":7,"access_point_ip":"","violation_tow_grace_period":0,"address_street_1":"","address_street_2":"","city":"","state":"","postal_code":"","latitude":"44.95782","longitude":"-93.1073474","tax_rate":"0.0","rpc_settings":null,"rpc_settings_requiring_reboot":null,"max_hours_without_sessions":{"sun":12,"mon":6,"tue":6,"wed":6,"thu":6,"fri":6,"sat":6},"spaces":200,"max_hours_to_match_sessions":null,"gated":false,"associated_event_interval":4,"sentry_settings_template_id":1016,"congestion":null,"gis_path":null,"color":null,"pucked":false,"max_days_open_session":1,"general_location_id":13,"ticket_service_id":100,"lookup_service_id":79,"environment_type":"lot","parking_init_grace_period":60,"parking_violation_grace_period":0,"parking_nofine_cost":null,"parking_ticket_full_fine":3500,"parking_ticket_reduced_fine":0,"rate_tax_text":"","parking_maximum_duration_minutes":14400,"end_app_permits_on_exit":false,"auto_entry":false,"purge_exited_sessions_without_payments":false,"purge_plate_reads_and_consolidate_photos":false,"confidence_considered":true,"exit_search_offset":2,"consolidation_method":"by_time","consolidation_time":2,"vehicle_tag_method":"confidence_ignored","vehicle_count":0,"automatically_reconcile":false,"permit_match_tolerance":0,"automatically_move_picture_pairs":true,"extreme_only_after_grace":false,"zone":false,"void_violations_incoming_plate_read":false,"timezone":"America/Chicago","transient_spaces":null,"exit_consolidation_time":2,"additional_days_back_violation":0,"allow_true_up":false,"skip_ticketing":null,"openlot_placeholder_sessions":false,"valet_lot":false,"allowed_days_since_permit_expired":30,"allowed_length_of_previous_permit":30,"unpaid_parking_fee":null,"no_violations_with_handicap_permits":false,"show_external_ticket_number":null,"recent_exit_consolidation_seconds":20,"max_permit_unlock_minutes":1440,"unlock_requires_true_up":false,"can_unlock_violations":true,"unlock_sessions_in_review_after_minutes":30,"unlock_previous_session_for_user_after_minutes":300,"external_identifier":"","external_terminal_identifier":"","violations_require_admin_approval_for_non_ticketable_states":true,"redo_owner_for_non_ticketable_states":null,"ignore_lot_for_skynet":false,"perform_remote_permit_check":false,"letter_service_municipality_id":null,"permit_match_session_look_back_hours":72,"violation_leniency":false,"levenshtein_threshold":1,"ticket_processing_fee":null}]}}]}
+[12/01 20:25:26.143] | INFO     | lot_rates  | SentryJSONRPCServer | get_permit_table(): {"permit_rates":[{"id":808,"rate_type":"daily","name":"Daily","min":1,"max":10,"base":0,"rate":1200,"days":1,"enabled_from":"2025-11-24T00:00:00-06:00","enabled_to":"2025-12-08T00:00:00-06:00","daily_start_hour":8,"daily_end_hour":23,"parker_type":"Normal","auto_renewable":false,"payroll_deduction_available":false,"enabled":true,"payroll_deduction_auto_renewable":false,"permit_holder_category_name":null,"transaction_fee":[],"valid_dow":{"id":127,"description":"Every Day","representation":"UMTWRFS","valid_days":"sun,mon,tue,wed,thu,fri,sat"},"sales_tax_rate":"0.0","sales_tax_round":"ROUND","permit_group":{"id":225,"municipality_id":7,"name":"Student","created_at":"2024-12-02T11:14:25-06:00","updated_at":"2025-10-29T08:46:30-05:00","upload_username":"acdddae1b3d755284e4a7cb3","upload_password":"f90a798b4f85c77a2a3f2cbca92505385218a94bdc2d0eb1","daily_pool_limit":100,"currently_used":0,"send_permits_to_meters":false,"sync_complete":false,"valet_timeframe":60,"generate_url":true,"secret_url":"61147c1014d84a","location_code":"1717","confirmation_request_message":"\"Reply with {CODE} to opt-in to SMS parking.\\nLearn more: https://","confirmation_response_message":"\"Hello! This is Lot Automation Parking, you are now opted-in. For help, reply HELP, to opt-out, reply STOP. Follow the link to pay for parking: https://lotautomation.staging.sentry-link.com/qrcode/61147c1014d84a","help_received_message":"","stop_received_message":"","max_time_response_message":"","timezone":"America/Chicago","parking_lots":[{"id":175,"name":"Lot Auto One","created_at":"2023-02-16T17:05:19-06:00","updated_at":"2025-12-01T13:20:05-06:00","sys_default_language":null,"phone_numbers":null,"send_sms_notifications":false,"municipality_id":7,"access_point_ip":"","violation_tow_grace_period":0,"address_street_1":"","address_street_2":"","city":"","state":"","postal_code":"","latitude":"44.95782","longitude":"-93.1073474","tax_rate":"0.0","rpc_settings":null,"rpc_settings_requiring_reboot":null,"max_hours_without_sessions":{"sun":12,"mon":6,"tue":6,"wed":6,"thu":6,"fri":6,"sat":6},"spaces":200,"max_hours_to_match_sessions":null,"gated":false,"associated_event_interval":4,"sentry_settings_template_id":1016,"congestion":null,"gis_path":null,"color":null,"pucked":false,"max_days_open_session":1,"general_location_id":13,"ticket_service_id":100,"lookup_service_id":79,"environment_type":"lot","parking_init_grace_period":60,"parking_violation_grace_period":0,"parking_nofine_cost":null,"parking_ticket_full_fine":3500,"parking_ticket_reduced_fine":0,"rate_tax_text":"","parking_maximum_duration_minutes":14400,"end_app_permits_on_exit":false,"auto_entry":false,"purge_exited_sessions_without_payments":false,"purge_plate_reads_and_consolidate_photos":false,"confidence_considered":true,"exit_search_offset":2,"consolidation_method":"by_time","consolidation_time":2,"vehicle_tag_method":"confidence_ignored","vehicle_count":0,"automatically_reconcile":false,"permit_match_tolerance":0,"automatically_move_picture_pairs":true,"extreme_only_after_grace":false,"zone":false,"void_violations_incoming_plate_read":false,"timezone":"America/Chicago","transient_spaces":null,"exit_consolidation_time":2,"additional_days_back_violation":0,"allow_true_up":false,"skip_ticketing":null,"openlot_placeholder_sessions":false,"valet_lot":false,"allowed_days_since_permit_expired":30,"allowed_length_of_previous_permit":30,"unpaid_parking_fee":null,"no_violations_with_handicap_permits":false,"show_external_ticket_number":null,"recent_exit_consolidation_seconds":20,"max_permit_unlock_minutes":1440,"unlock_requires_true_up":false,"can_unlock_violations":true,"unlock_sessions_in_review_after_minutes":30,"unlock_previous_session_for_user_after_minutes":300,"external_identifier":"","external_terminal_identifier":"","violations_require_admin_approval_for_non_ticketable_states":true,"redo_owner_for_non_ticketable_states":null,"ignore_lot_for_skynet":false,"perform_remote_permit_check":false,"letter_service_municipality_id":null,"permit_match_session_look_back_hours":72,"violation_leniency":false,"levenshtein_threshold":1,"ticket_processing_fee":null}]}}]}
+[12/01 20:25:26.144] | INFO     | lot_rates  | SentryJSONRPCServer | get_permit_table(): basestring response
+[12/01 20:25:26.145] | INFO     | lot_rates  | SentryJSONRPCServer | get_permit_table(): processing 1 permit_rates in response
+[12/01 20:25:26.146] | INFO     | lot_rates  | SentryJSONRPCServer | get_permit_table: Name MATCH Lot Auto One Lot Auto One
+[12/01 20:25:26.147] | INFO     | lot_rates  | SentryJSONRPCServer | get_permit_table: parker_type Normal
+[12/01 20:25:26.151] | INFO     | lot_rates  | SentryJSONRPCServer | get_permit_table: ID 808 Name Lot Auto One 
+[12/01 20:25:26.152] | INFO     | lot_rates  | SentryJSONRPCServer | get_permit_table: description Every Day
+[12/01 20:25:26.152] | INFO     | lot_rates  | SentryJSONRPCServer | get_permit_table: representation UMTWRFS
+[12/01 20:25:26.153] | INFO     | lot_rates  | SentryJSONRPCServer | get_permit_table: name = Daily
+[12/01 20:25:26.153] | INFO     | lot_rates  | SentryJSONRPCServer | get_permit_table: rate = 1200
+[12/01 20:25:26.153] | INFO     | lot_rates  | SentryJSONRPCServer | get_permit_table: days = 1
+[12/01 20:25:26.153] | INFO     | lot_rates  | SentryJSONRPCServer | get_permit_table: min = 1
+[12/01 20:25:26.154] | INFO     | lot_rates  | SentryJSONRPCServer | get_permit_table: max = 10
+[12/01 20:25:26.154] | INFO     | lot_rates  | SentryJSONRPCServer | get_permit_table: base = 0
+[12/01 20:25:26.154] | INFO     | lot_rates  | SentryJSONRPCServer | get_permit_table: sales tax rate = 0.0
+[12/01 20:25:26.155] | INFO     | lot_rates  | SentryJSONRPCServer | get_permit_table: sales tax round = ROUND
+[12/01 20:25:26.155] | INFO     | lot_rates  | SentryJSONRPCServer | get_permit_table: enabled_from = 2025-11-24T00:00:00-06:00
+[12/01 20:25:26.155] | INFO     | lot_rates  | SentryJSONRPCServer | get_permit_table: enabled_to = 2025-12-08T00:00:00-06:00
+[12/01 20:25:26.156] | INFO     | lot_rates  | SentryJSONRPCServer | get_permit_table: rate_type = daily
+[12/01 20:25:26.156] | INFO     | lot_rates  | SentryJSONRPCServer | get_permit_table: permit_holder_category_name = None
+[12/01 20:25:26.156] | INFO     | lot_rates  | SentryJSONRPCServer | LotRateTablePDO(set_rate_table): received rate table {u'permit_rates': [{u'sales_tax_round': u'ROUND', u'permit_group': {u'updated_at': u'2025-10-29T08:46:30-05:00', u'parking_lots': [{u'max_days_open_session': 1, u'consolidation_method': u'by_time', u'auto_entry': False, u'allow_true_up': False, u'spaces': 200, u'postal_code': u'', u'gated': False, u'unlock_sessions_in_review_after_minutes': 30, u'parking_init_grace_period': 60, u'skip_ticketing': None, u'gis_path': None, u'zone': False, u'max_hours_to_match_sessions': None, u'additional_days_back_violation': 0, u'recent_exit_consolidation_seconds': 20, u'levenshtein_threshold': 1, u'latitude': u'44.95782', u'sentry_settings_template_id': 1016, u'parking_maximum_duration_minutes': 14400, u'ticket_processing_fee': None, u'openlot_placeholder_sessions': False, u'perform_remote_permit_check': False, u'name': u'Lot Auto One', u'confidence_considered': True, u'rpc_settings': None, u'automatically_move_picture_pairs': True, u'municipality_id': 7, u'exit_search_offset': 2, u'rate_tax_text': u'', u'external_identifier': u'', u'void_violations_incoming_plate_read': False, u'vehicle_tag_method': u'confidence_ignored', u'consolidation_time': 2, u'send_sms_notifications': False, u'lookup_service_id': 79, u'state': u'', u'access_point_ip': u'', u'tax_rate': u'0.0', u'permit_match_tolerance': 0, u'allowed_days_since_permit_expired': 30, u'congestion': None, u'violation_tow_grace_period': 0, u'ignore_lot_for_skynet': False, u'unpaid_parking_fee': None, u'color': None, u'max_permit_unlock_minutes': 1440, u'ticket_service_id': 100, u'phone_numbers': None, u'city': u'', u'permit_match_session_look_back_hours': 72, u'max_hours_without_sessions': {u'wed': 6, u'sun': 12, u'thu': 6, u'tue': 6, u'mon': 6, u'fri': 6, u'sat': 6}, u'general_location_id': 13, u'parking_ticket_reduced_fine': 0, u'exit_consolidation_time': 2, u'valet_lot': False, u'parking_ticket_full_fine': 3500, u'can_unlock_violations': True, u'end_app_permits_on_exit': False, u'unlock_requires_true_up': False, u'longitude': u'-93.1073474', u'associated_event_interval': 4, u'letter_service_municipality_id': None, u'updated_at': u'2025-12-01T13:20:05-06:00', u'external_terminal_identifier': u'', u'timezone': u'America/Chicago', u'unlock_previous_session_for_user_after_minutes': 300, u'id': 175, u'environment_type': u'lot', u'extreme_only_after_grace': False, u'purge_exited_sessions_without_payments': False, u'show_external_ticket_number': None, u'sys_default_language': None, u'violations_require_admin_approval_for_non_ticketable_states': True, u'vehicle_count': 0, u'transient_spaces': None, u'rpc_settings_requiring_reboot': None, u'no_violations_with_handicap_permits': False, u'purge_plate_reads_and_consolidate_photos': False, u'parking_nofine_cost': None, u'address_street_2': u'', u'address_street_1': u'', u'redo_owner_for_non_ticketable_states': None, u'allowed_length_of_previous_permit': 30, u'created_at': u'2023-02-16T17:05:19-06:00', u'automatically_reconcile': False, u'parking_violation_grace_period': 0, u'violation_leniency': False, u'pucked': False}], u'send_permits_to_meters': False, u'timezone': u'America/Chicago', u'id': 225, u'confirmation_response_message': u'"Hello! This is Lot Automation Parking, you are now opted-in. For help, reply HELP, to opt-out, reply STOP. Follow the link to pay for parking: https://lotautomation.staging.sentry-link.com/qrcode/61147c1014d84a', u'location_code': u'1717', u'stop_received_message': u'', u'confirmation_request_message': u'"Reply with {CODE} to opt-in to SMS parking.\\nLearn more: https://', u'generate_url': True, u'max_time_response_message': u'', u'help_received_message': u'', u'upload_password': u'f90a798b4f85c77a2a3f2cbca92505385218a94bdc2d0eb1', u'name': u'Student', u'created_at': u'2024-12-02T11:14:25-06:00', u'daily_pool_limit': 100, u'currently_used': 0, u'secret_url': u'61147c1014d84a', u'upload_username': u'acdddae1b3d755284e4a7cb3', u'valet_timeframe': 60, u'municipality_id': 7, u'sync_complete': False}, u'rate': 1200, u'payroll_deduction_available': False, u'id': 808, u'parker_type': u'Normal', u'min': 1, u'rate_type': u'daily', u'enabled_to': u'2025-12-08T00:00:00-06:00', u'payroll_deduction_auto_renewable': False, u'transaction_fee': [], u'max': 10, u'daily_start_hour': 8, u'auto_renewable': False, u'base': 0, u'enabled_from': u'2025-11-24T00:00:00-06:00', u'daily_end_hour': 23, u'name': u'Daily', u'permit_holder_category_name': None, u'sales_tax_rate': u'0.0', u'enabled': True, u'days': 1, u'valid_dow': {u'representation': u'UMTWRFS', u'valid_days': u'sun,mon,tue,wed,thu,fri,sat', u'id': 127, u'description': u'Every Day'}}]}
+[12/01 20:25:26.187] | INFO     | lot_rates  | SentryJSONRPCServer | LotRateTablePDO(set_rate_table): exit
+[12/01 20:25:26.187] | INFO     | lot_rates  | SentryJSONRPCServer | get_permit_table(): NUM RATES 1
+[12/01 20:25:26.188] | INFO     | lot_rates  | SentryJSONRPCServer | LotRateTablePDO(set_rate_table): received rate table ({u'sales_tax_round': u'ROUND', u'name': u'Daily', u'min': 1, u'max': 10, u'valid_days': [u'SUN', u'MON', u'TUE', u'WED', u'THU', u'FRI', u'SAT'], u'enabled': True, u'days': 1, u'enabled_to': u'2025-12-08 00:00:00', u'rate': 1200, u'base': 0, u'enabled_from': u'2025-11-24 00:00:00', u'sales_tax_rate': u'0.0', u'group_id': 225, u'type': u'daily', u'id': 808}, {u'sales_tax_round': u'ROUND', u'name': u'Hourly 1', u'min': 1, u'max': 4, u'valid_days': [u'SUN', u'MON', u'TUE', u'WED', u'THU', u'FRI', u'SAT'], u'enabled': True, u'days': 0, u'enabled_to': u'2025-11-24 00:00:00', u'rate': 1200, u'base': 0, u'enabled_from': u'2025-11-17 00:00:00', u'sales_tax_rate': u'0.0', u'group_id': 225, u'type': u'hourly', u'id': 807})
+[12/01 20:25:26.193] | INFO     | lot_rates  | SentryJSONRPCServer | LotRateTablePDO(set_rate_table): exit
+[12/01 20:25:26.195] | INFO     | lot_rates_service | SentryJSONRPCServer | set_rates(): exit rates ({u'sales_tax_round': u'ROUND', u'name': u'Daily', u'min': 1, u'max': 10, u'valid_days': [u'SUN', u'MON', u'TUE', u'WED', u'THU', u'FRI', u'SAT'], u'enabled': True, u'days': 1, u'enabled_to': u'2025-12-08 00:00:00', u'rate': 1200, u'base': 0, u'enabled_from': u'2025-11-24 00:00:00', u'sales_tax_rate': u'0.0', u'group_id': 225, u'type': u'daily', u'id': 808}, {u'sales_tax_round': u'ROUND', u'name': u'Hourly 1', u'min': 1, u'max': 4, u'valid_days': [u'SUN', u'MON', u'TUE', u'WED', u'THU', u'FRI', u'SAT'], u'enabled': True, u'days': 0, u'enabled_to': u'2025-11-24 00:00:00', u'rate': 1200, u'base': 0, u'enabled_from': u'2025-11-17 00:00:00', u'sales_tax_rate': u'0.0', u'group_id': 225, u'type': u'hourly', u'id': 807})
+[12/01 20:25:26.196] | INFO     | lot_gui    | main_reactor | _rate_changed_callback(): called
+[12/01 20:25:26.196] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint openlot_rates response {"jsonrpc": "2.0", "id": 74738287, "result": null}
+[12/01 20:25:26.242] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 74738287, "result": null} Queue amq.gen-PuQ1kDEYDaXGTquBrKOUwA #5186
+[12/01 20:25:31.122] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:31.125] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:31.129] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:31.132] | ERROR    | rates      | MainThread | cfmip(): 1st attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:25:31.132] | ERROR    | rates      | MainThread | cfmip(): 2nd attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:25:31.138] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:31.140] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:31.143] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:31.145] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:31.147] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:31.149] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:31.152] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:31.154] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:31.156] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:31.340] | INFO     | lot_gui    | MainThread | QT: Loading complete  Daily (file:///tmp/tmpmMPuit/sentry.egg-tmp/mps/resources/qml/screens/single/LotPermit.qml:181)
+[12/01 20:25:41.056] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:41.058] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:41.061] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:41.065] | ERROR    | rates      | MainThread | cfmip(): 1st attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:25:41.066] | ERROR    | rates      | MainThread | cfmip(): 2nd attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:25:41.072] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:41.074] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:41.077] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:41.079] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:41.081] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:41.084] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:41.087] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:41.089] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:41.092] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:51.081] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:51.085] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:51.088] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:51.090] | ERROR    | rates      | MainThread | cfmip(): 1st attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:25:51.091] | ERROR    | rates      | MainThread | cfmip(): 2nd attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:25:51.096] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:51.099] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:51.101] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:51.103] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:51.105] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:51.108] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:51.110] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:51.112] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:25:51.115] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:01.129] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:01.131] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:01.134] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:01.138] | ERROR    | rates      | MainThread | cfmip(): 1st attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:26:01.139] | ERROR    | rates      | MainThread | cfmip(): 2nd attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:26:01.144] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:01.147] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:01.149] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:01.152] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:01.154] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:01.157] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:01.159] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:01.162] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:01.164] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:11.060] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:11.063] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:11.066] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:11.070] | ERROR    | rates      | MainThread | cfmip(): 1st attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:26:11.071] | ERROR    | rates      | MainThread | cfmip(): 2nd attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:26:11.076] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:11.079] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:11.081] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:11.083] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:11.085] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:11.088] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:11.090] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:11.092] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:11.095] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:21.096] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:21.099] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:21.102] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:21.105] | ERROR    | rates      | MainThread | cfmip(): 1st attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:26:21.106] | ERROR    | rates      | MainThread | cfmip(): 2nd attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:26:21.112] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:21.114] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:21.117] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:21.119] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:21.121] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:21.123] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:21.126] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:21.128] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:21.131] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:31.131] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:31.136] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:31.138] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:31.141] | ERROR    | rates      | MainThread | cfmip(): 1st attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:26:31.142] | ERROR    | rates      | MainThread | cfmip(): 2nd attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:26:31.147] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:31.150] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:31.152] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:31.154] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:31.156] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:31.159] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:31.161] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:31.163] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:31.166] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:37.780] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[12/01 20:26:37.781] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[12/01 20:26:37.814] | INFO     | lib.seco   | watchdog   | SecoLib()::check_temp(): SECO cpu temperature is:  Kelvin 3121 Celsius 38
+[12/01 20:26:41.065] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:41.068] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:41.071] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:41.075] | ERROR    | rates      | MainThread | cfmip(): 1st attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:26:41.076] | ERROR    | rates      | MainThread | cfmip(): 2nd attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:26:41.082] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:41.084] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:41.087] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:41.089] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:41.091] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:41.094] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:41.096] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:41.098] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:41.101] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:51.101] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:51.105] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:51.108] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:51.111] | ERROR    | rates      | MainThread | cfmip(): 1st attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:26:51.112] | ERROR    | rates      | MainThread | cfmip(): 2nd attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:26:51.117] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:51.119] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:51.122] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:51.124] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:51.126] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:51.128] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:51.131] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:51.133] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:26:51.135] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:01.125] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:01.128] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:01.131] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:01.135] | ERROR    | rates      | MainThread | cfmip(): 1st attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:27:01.135] | ERROR    | rates      | MainThread | cfmip(): 2nd attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:27:01.141] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:01.143] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:01.146] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:01.148] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:01.150] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:01.152] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:01.155] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:01.157] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:01.159] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:11.055] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:11.058] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:11.061] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:11.065] | ERROR    | rates      | MainThread | cfmip(): 1st attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:27:11.066] | ERROR    | rates      | MainThread | cfmip(): 2nd attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:27:11.072] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:11.074] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:11.077] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:11.079] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:11.081] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:11.084] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:11.086] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:11.089] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:11.091] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:21.088] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:21.091] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:21.094] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:21.100] | ERROR    | rates      | MainThread | cfmip(): 1st attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:27:21.100] | ERROR    | rates      | MainThread | cfmip(): 2nd attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:27:21.106] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:21.109] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:21.112] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:21.114] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:21.116] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:21.119] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:21.121] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:21.124] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:21.126] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:31.125] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:31.129] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:31.132] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:31.135] | ERROR    | rates      | MainThread | cfmip(): 1st attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:27:31.135] | ERROR    | rates      | MainThread | cfmip(): 2nd attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:27:31.141] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:31.144] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:31.146] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:31.149] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:31.151] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:31.153] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:31.156] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:31.159] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:31.161] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:41.057] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:41.060] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:41.063] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:41.066] | ERROR    | rates      | MainThread | cfmip(): 1st attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:27:41.067] | ERROR    | rates      | MainThread | cfmip(): 2nd attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:27:41.073] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:41.075] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:41.078] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:41.080] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:41.083] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:41.085] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:41.088] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:41.090] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:41.093] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:51.092] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:51.096] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:51.099] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:51.102] | ERROR    | rates      | MainThread | cfmip(): 1st attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:27:51.103] | ERROR    | rates      | MainThread | cfmip(): 2nd attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:27:51.108] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:51.111] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:51.113] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:51.115] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:51.117] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:51.120] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:51.122] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:51.125] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:27:51.127] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:01.114] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:01.118] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:01.122] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:01.125] | ERROR    | rates      | MainThread | cfmip(): 1st attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:28:01.126] | ERROR    | rates      | MainThread | cfmip(): 2nd attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:28:01.131] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:01.134] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:01.136] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:01.138] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:01.140] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:01.143] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:01.145] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:01.147] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:01.150] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:11.060] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:11.063] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:11.066] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:11.069] | ERROR    | rates      | MainThread | cfmip(): 1st attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:28:11.070] | ERROR    | rates      | MainThread | cfmip(): 2nd attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:28:11.076] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:11.078] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:11.081] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:11.083] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:11.086] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:11.088] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:11.091] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:11.093] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:11.096] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:15.210] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:15.213] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:15.216] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:15.219] | ERROR    | rates      | MainThread | cfmip(): 1st attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:28:15.219] | ERROR    | rates      | MainThread | cfmip(): 2nd attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:28:15.225] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:15.228] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:15.231] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:15.233] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:15.235] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:15.238] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:15.241] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:15.243] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:15.246] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:20.676] | INFO     | ui.openlot | SentryJSONRPCServer | on_touch_screen
+[12/01 20:28:20.687] | INFO     | ui.openlot | SentryJSONRPCServer | _disable_debug: Timer debug disabled
+[12/01 20:28:20.688] | INFO     | micro.button | SentryJSONRPCServer | Enable button
+[12/01 20:28:20.688] | INFO     | lot_gui    | SentryJSONRPCServer | qml.resetAllScreenState
+[12/01 20:28:20.688] | INFO     | lot_controller | SentryJSONRPCServer | reset_permit_purchase: get_plate() None
+[12/01 20:28:20.689] | INFO     | lot_controller | SentryJSONRPCServer | reset_permit_purchase: park_time None
+[12/01 20:28:20.689] | INFO     | lot_controller | SentryJSONRPCServer | reset_permit_purchase: true_up False handicap False
+[12/01 20:28:20.690] | INFO     | lot_controller | SentryJSONRPCServer | reset_permit_purchase: Publish complete - Discarding current permit object
+[12/01 20:28:20.691] | INFO     | lot_controller | SentryJSONRPCServer | __init__: self._debug_mask = False
+[12/01 20:28:21.086] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:21.089] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:21.093] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:21.096] | ERROR    | rates      | MainThread | cfmip(): 1st attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:28:21.097] | ERROR    | rates      | MainThread | cfmip(): 2nd attempt failed srb not within block, srb=<ScheduleRateBlock (592253)[P7]: 11/01_00:00 - 12/31_23:59)> start_dt=2025-11-01 00:00:00
+[12/01 20:28:21.102] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:21.105] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:21.107] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:21.110] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:21.112] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:21.114] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:21.117] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:21.119] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:21.122] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-01 00:04:00 iteration 10
+[12/01 20:28:21.986] | INFO     | playback   | SentryJSONRPCServer | play: en_select_permit.mp3
+[12/01 20:28:22.019] | INFO     | lot_gui    | SentryJSONRPCServer | Screen changed to SCREEN_LOT_PERMIT
+[12/01 20:28:22.020] | INFO     | ui.openlot | SentryJSONRPCServer | UI_STATE_LOT_HOME -> UI_STATE_SELECT_PAYMENT_TYPE (UISLH::enter_state(): No home page)
+[12/01 20:28:22.020] | INFO     | ui.openlot | SentryJSONRPCServer | UI_STATE_IDLE -> UI_STATE_LOT_HOME (UISI::on_touch_screen(): )
+[12/01 20:28:22.024] | INFO     | lot_gui    | MainThread | qml.goToScreen lot_permit <PySide2.QtQuick.QQuickItem object at 0xa7046ecc>
+[12/01 20:28:22.025] | INFO     | lot_gui    | MainThread | QT: Current:  lot_idle Next:  lot_permit (file:///tmp/tmpmMPuit/sentry.egg-tmp/mps/resources/qml/main.qml:1597)
+[12/01 20:28:22.034] | INFO     | lot_gui    | MainThread | qml.goToScreen complete
+[12/01 20:28:25.049] | INFO     | ui.openlot | SentryJSONRPCServer | on_touch_screen

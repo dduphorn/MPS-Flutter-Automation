@@ -1,0 +1,117 @@
+[04/11 17:14:50.711] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/11 17:14:50.711] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/11 17:14:50.711] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744391690,2,2
+
+[04/11 17:15:00.841] | INFO     | parking.session.SPOT_1 | main_reactor | is_unlocked: UNLOCK feature not enabled - violation always locks
+[04/11 17:15:12.879] | INFO     | parking.session.SPOT_1 | main_reactor | is_unlocked: UNLOCK feature not enabled - violation always locks
+[04/11 17:15:16.391] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[04/11 17:15:16.609] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req: u'rpc_file_io' Payload: '{"method":"directory","params":["/media/realroot/ads/"],"jsonrpc":"2.0","id":10245134}'
+[04/11 17:15:16.612] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint file_io response {"jsonrpc": "2.0", "id": 10245134, "result": ["SentryHowToPay.png", "en_posts.jpg", "parking_schedule_weekly_49.png", "parking_schedule_weekly.png", "parking_schedule_weekly_73.png", "parking_schedule_weekly_70.png", "en_rules.jpg", "parking_schedule_weekly_84.png", "parking_schedule_weekly_37.png", "parking_schedule_weekly_64.png", "parking_schedule_weekly_54.png", "street_map.png", "lost+found", "parking_schedule_weekly_82.png", "SentryFreeParking.png", "parking_schedule_weekly_74.png", "forecast.png", "parking_schedule_weekly_48.png", "parking_schedule_weekly_71.png", "parking_schedule_weekly_89.png"]}
+[04/11 17:15:16.668] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 10245134, "result": ["SentryHowToPay.png", "en_posts.jpg", "parking_schedule_weekly_49.png", "parking_schedule_weekly.png", "parking_schedule_weekly_73.png", "parking_schedule_weekly_70.png", "en_rules.jpg", "parking_schedule_weekly_84.png", "parking_schedule_weekly_37.png", "parking_schedule_weekly_64.png", "parking_schedule_weekly_54.png", "street_map.png", "lost+found", "parking_schedule_weekly_82.png", "SentryFreeParking.png", "parking_schedule_weekly_74.png", "forecast.png", "parking_schedule_weekly_48.png", "parking_schedule_weekly_71.png", "parking_schedule_weekly_89.png"]} Queue amq.gen-6qaUKMq6y1kuFSG2lvqltA #326
+[04/11 17:15:18.032] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43904 rp_min_to_free 43904
+[04/11 17:15:52.386] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/11 17:15:52.389] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/11 17:15:52.389] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/11 17:15:52.390] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744391752,2,2
+
+[04/11 17:15:52.561] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/11 17:15:52.562] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/11 17:15:52.562] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/11 17:15:52.562] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744391752,2,2
+
+[04/11 17:16:00.889] | INFO     | parking.session.SPOT_1 | main_reactor | is_unlocked: UNLOCK feature not enabled - violation always locks
+[04/11 17:16:18.044] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43903 rp_min_to_free 43903
+[04/11 17:16:36.659] | WARNING  | net_monitor | main_reactor | check_network_connectivity_async(): Skipping due to high CPU load (3.53 > 3.5)
+[04/11 17:16:54.173] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/11 17:16:54.174] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/11 17:16:54.174] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/11 17:16:54.175] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744391814,2,2
+
+[04/11 17:16:54.348] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/11 17:16:54.350] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/11 17:16:54.350] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/11 17:16:54.350] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744391814,2,2
+
+[04/11 17:16:59.992] | INFO     | phone      | SentryJSONRPCServer | should_run(): SECO detected - returning
+[04/11 17:16:59.993] | INFO     | playback   | SentryJSONRPCServer | play_clip: PID 15964 is running
+[04/11 17:17:00.019] | INFO     | mps.ui     | SentryJSONRPCServer | suspend_background_tasks(): change to True
+[04/11 17:17:00.020] | INFO     | parking_serv | SentryJSONRPCServer | suspend_transfers(): True
+[04/11 17:17:00.031] | INFO     | ui.multi   | SentryJSONRPCServer | set_state(): UI_STATE_IDLE performing pre_exit_state() actions UISI: screen touched
+[04/11 17:17:00.032] | INFO     | parking.session.SPOT_1 | SentryJSONRPCServer | is_unlocked: UNLOCK feature not enabled - violation always locks
+[04/11 17:17:00.033] | INFO     | interaction | SentryJSONRPCServer | pre_exit_state(): completing actions before next_state UI_STATE_HOME
+[04/11 17:17:00.033] | INFO     | interaction | SentryJSONRPCServer | pre_exit_state(): completed actions complete True
+[04/11 17:17:00.034] | INFO     | parking.session.SPOT_1 | SentryJSONRPCServer | is_unlocked: UNLOCK feature not enabled - violation always locks
+[04/11 17:17:00.034] | INFO     | ui.multi   | SentryJSONRPCServer | set_state(): UI_STATE_IDLE completed pre_exit_state() actions proceed True
+[04/11 17:17:00.035] | INFO     | ui.multi   | SentryJSONRPCServer | Secs in Idle 69630.304374
+[04/11 17:17:00.040] | INFO     | interaction | SentryJSONRPCServer | cash_out_or_void_payment: No payment
+[04/11 17:17:00.041] | INFO     | ui.multi   | SentryJSONRPCServer | CONFIRM FALSE
+[04/11 17:17:00.043] | INFO     | ui.multi   | SentryJSONRPCServer | UISH: enter_state active_spot is None
+[04/11 17:17:00.044] | INFO     | interaction | SentryJSONRPCServer | return_coins(): ignoring credit cards and returning coins
+[04/11 17:17:00.245] | INFO     | ui.multi   | SentryJSONRPCServer | CHECK POP  False
+[04/11 17:17:00.245] | INFO     | ui.multi   | SentryJSONRPCServer | UISH::enter_state(): No expired for None
+[04/11 17:17:00.248] | INFO     | parking.session.SPOT_1 | SentryJSONRPCServer | is_unlocked: UNLOCK feature not enabled - violation always locks
+[04/11 17:17:00.251] | INFO     | gui        | MainThread | QT: MultiSelectSpace: transition to spacemapoff (file:///tmp/tmpwsa6do/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiSelectSpace.qml:984)
+[04/11 17:17:00.253] | INFO     | gui        | SentryJSONRPCServer | Screen changed to SCREEN_MULTI_SELECT_SPACE en
+[04/11 17:17:00.254] | INFO     | playback   | SentryJSONRPCServer | play: en_space_number.mp3
+[04/11 17:17:00.297] | INFO     | gui        | MainThread | _signal_goto_screen: multi_select_space
+[04/11 17:17:00.298] | WARNING  | interaction | SentryJSONRPCServer | _stop_idle_timeout: NO TIMER
+[04/11 17:17:00.299] | INFO     | parking.session.SPOT_1 | SentryJSONRPCServer | is_unlocked: UNLOCK feature not enabled - violation always locks
+[04/11 17:17:00.301] | INFO     | ui.multi   | SentryJSONRPCServer | UI_STATE_IDLE -> UI_STATE_HOME (UISI: screen touched)
+[04/11 17:17:00.304] | INFO     | gui        | MainThread | QT: Current:  multi_idle Next:  multi_select_space (file:///tmp/tmpwsa6do/sentry.egg-tmp/mps/resources/qml/main.qml:1445)
+[04/11 17:17:00.887] | INFO     | parking.session.SPOT_1 | main_reactor | is_unlocked: UNLOCK feature not enabled - violation always locks
+[04/11 17:17:02.868] | INFO     | parking.session.SPOT_1 | SentryJSONRPCServer | is_unlocked: UNLOCK feature not enabled - violation always locks
+[04/11 17:17:02.902] | INFO     | parking.session.SPOT_1 | main_reactor | is_unlocked: UNLOCK feature not enabled - violation always locks
+[04/11 17:17:03.463] | INFO     | phone      | SentryJSONRPCServer | should_run(): SECO detected - returning
+[04/11 17:17:03.463] | INFO     | parking.session.SPOT_1 | SentryJSONRPCServer | is_unlocked: UNLOCK feature not enabled - violation always locks
+[04/11 17:17:04.918] | INFO     | parking.session.SPOT_1 | main_reactor | is_unlocked: UNLOCK feature not enabled - violation always locks
+[04/11 17:17:05.782] | INFO     | interaction | SentryJSONRPCServer | on_test_automation_space_entered: SPACE 5591
+[04/11 17:17:05.783] | INFO     | parking.session.SPOT_1 | SentryJSONRPCServer | is_unlocked: UNLOCK feature not enabled - violation always locks
+[04/11 17:17:05.784] | INFO     | playback   | main_reactor | play_clip: PID 17704 is running
+[04/11 17:17:05.820] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): user selected space 5591
+[04/11 17:17:05.822] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): check space 5591 for local
+[04/11 17:17:05.823] | WARNING  | interaction | main_reactor | _stop_idle_timeout: NO TIMER
+[04/11 17:17:05.823] | INFO     | parking.session.SPOT_1 | main_reactor | is_unlocked: UNLOCK feature not enabled - violation always locks
+[04/11 17:17:05.824] | INFO     | parking.controller | main_reactor | map_space_to_spot: indx 0 spot SPOT_1
+[04/11 17:17:05.824] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): 5591 is a LOCAL space number, setting active spot SPOT_1
+[04/11 17:17:05.825] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): has NOT paid for max time
+[04/11 17:17:05.830] | INFO     | gui        | MainThread | QT: MultiSelectSpace: transition to loadon (file:///tmp/tmpwsa6do/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiSelectSpace.qml:984)
+[04/11 17:17:05.832] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/parking_event_user_entered_space-cac86cc216f811f0bc3200c0089e93e0.json
+[04/11 17:17:05.837] | INFO     | parking.session.SPOT_1 | main_reactor | is_unlocked: UNLOCK feature not enabled - violation always locks
+[04/11 17:17:05.954] | INFO     | interaction | main_reactor | set_active_spot: ACTIVE SPOT SPOT_1 /home/mpsadmin/projects/Sentry_test/src/mps/ui/multi_user_interaction.py:2750
+[04/11 17:17:05.955] | INFO     | interaction | main_reactor | set_active_spot(): to SPOT_1
+[04/11 17:17:05.955] | INFO     | parking.controller | main_reactor | set_active_spot(): to SPOT_1
+[04/11 17:17:05.959] | INFO     | parking.session.SPOT_1 | main_reactor | is_unlocked: UNLOCK feature not enabled - violation always locks
+[04/11 17:17:05.962] | INFO     | parking.session.SPOT_1 | main_reactor | is_unlocked: UNLOCK feature not enabled - violation always locks
+[04/11 17:17:05.969] | INFO     | parking.session.SPOT_1 | MainThread | is_unlocked: UNLOCK feature not enabled - violation always locks
+[04/11 17:17:06.096] | INFO     | ui.multi   | main_reactor | config_payment_acceptance: Caller /home/mpsadmin/projects/Sentry_test/src/mps/ui/multi_user_interaction.py:2756
+[04/11 17:17:06.098] | INFO     | ui.multi   | main_reactor | config_payment_acceptance(UISH(): LOCAL valid space number): is_rate_schedule_payment_allowed_now() = True
+[04/11 17:17:06.098] | INFO     | parking.session.SPOT_1 | main_reactor | is_unlocked: UNLOCK feature not enabled - violation always locks
+[04/11 17:17:06.099] | INFO     | interaction | main_reactor | return_coins(): ignoring credit cards and returning coins
+[04/11 17:17:06.189] | INFO     | parking.session.SPOT_1 | SentryJSONRPCServer | is_unlocked: UNLOCK feature not enabled - violation always locks
+[04/11 17:17:06.299] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): PSV PSV_STATE_VIOLATION parking_state PARKING_STATE_VIOLATION
+[04/11 17:17:06.300] | INFO     | parking.session.SPOT_1 | main_reactor | is_unlocked: UNLOCK feature not enabled - violation always locks
+[04/11 17:17:06.302] | INFO     | parking.session.SPOT_1 | main_reactor | is_unlocked: UNLOCK feature not enabled - violation always locks
+[04/11 17:17:06.305] | INFO     | gui        | main_reactor | Screen changed to SCREEN_MULTI_HOME en
+[04/11 17:17:06.306] | INFO     | playback   | main_reactor | play: en_limit_max_time.mp3
+[04/11 17:17:06.318] | INFO     | gui        | MainThread | QT: MultiSelectSpace: transition to loadoff (file:///tmp/tmpwsa6do/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiSelectSpace.qml:984)
+[04/11 17:17:06.328] | INFO     | parking.session.SPOT_1 | MainThread | is_unlocked: UNLOCK feature not enabled - violation always locks
+[04/11 17:17:06.342] | INFO     | gui        | MainThread | _signal_goto_screen: multi_home
+[04/11 17:17:06.343] | INFO     | gui        | MainThread | QT: Current:  multi_select_space Next:  multi_home (file:///tmp/tmpwsa6do/sentry.egg-tmp/mps/resources/qml/main.qml:1445)
+[04/11 17:17:06.344] | INFO     | parking.session.SPOT_1 | main_reactor | is_unlocked: UNLOCK feature not enabled - violation always locks
+[04/11 17:17:06.344] | INFO     | ui.multi   | main_reactor | update_last_session_data(): space 5591 spot_id SPOT_1 parking_session_id 16352bd9167b11f0bc3200c0089e93e0 NO payment
+[04/11 17:17:06.653] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"user_space_entered": "5591", "event_time": "2025-04-11T17:17:05Z", "mac_address": "00:C0:08:9E:93:E0"}, "class": "event", "queued_dt": "2025-04-11T17:17:05Z", "type": "parking_event_user_entered_space", "id": "0737d13c-1c60-4697-92e0-f75598900de9", "device_id": "m:00C0089E93E0"}
+[04/11 17:17:06.752] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at quality-rabbitmq-lb-1284426831.us-east-1.elb.amazonaws.com:5671 (200): Normal shutdown
+[04/11 17:17:06.849] | INFO     | parking.session.SPOT_1 | SentryJSONRPCServer | is_unlocked: UNLOCK feature not enabled - violation always locks
+[04/11 17:17:06.853] | INFO     | parking.session.SPOT_1 | main_reactor | is_unlocked: UNLOCK feature not enabled - violation always locks
+[04/11 17:17:06.862] | INFO     | parking.session.SPOT_1 | MainThread | is_unlocked: UNLOCK feature not enabled - violation always locks
+[04/11 17:17:08.864] | INFO     | parking.session.SPOT_1 | main_reactor | is_unlocked: UNLOCK feature not enabled - violation always locks
+[04/11 17:17:08.873] | INFO     | parking.session.SPOT_1 | MainThread | is_unlocked: UNLOCK feature not enabled - violation always locks
+[04/11 17:17:09.863] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/system_alive-cd2f86f816f811f0bc3200c0089e93e0.json
+[04/11 17:17:10.633] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"ip_addr": "10.10.100.201", "rmq_responses_attempted": 326, "msg_id": "0x8000002eL", "rmq_api_bytes_sent": 304, "message": "5591-5592", "rmq_image_bytes_sent": 0, "rmq_response_bytes_sent": 276148, "coin_jar_full": 19.1, "rmq_images_attempted": 0, "desc_str": "Sentry is alive and normal", "rmq_image_errors": 0, "rmq_images_sent": 0, "rmq_json_errors": 0, "rmq_responses_sent": 326, "rmq_apis_attempted": 2, "rmq_jsons_attempted": 386, "sentry_thread_hung": false, "rmq_api_errors": 0, "rmq_response_errors": 0, "rmq_json_bytes_sent": 842664, "rmq_jsons_sent": 386, "rmq_apis_sent": 2}, "class": "event", "queued_dt": "2025-04-11T17:17:09Z", "type": "system_alive", "id": "31bd00f7-2627-4510-8385-27223b748a48", "device_id": "m:00C0089E93E0"}
+[04/11 17:17:10.731] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at quality-rabbitmq-lb-1284426831.us-east-1.elb.amazonaws.com:5671 (200): Normal shutdown
+[04/11 17:17:10.875] | INFO     | parking.session.SPOT_1 | main_reactor | is_unlocked: UNLOCK feature not enabled - violation always locks
+[04/11 17:17:10.882] | INFO     | parking.session.SPOT_1 | MainThread | is_unlocked: UNLOCK feature not enabled - violation always locks
+[04/11 17:17:12.885] | INFO     | parking.session.SPOT_1 | main_reactor | is_unlocked: UNLOCK feature not enabled - violation always locks
+[04/11 17:17:12.893] | INFO     | parking.session.SPOT_1 | MainThread | is_unlocked: UNLOCK feature not enabled - violation always locks
+[04/11 17:17:14.895] | INFO     | parking.session.SPOT_1 | main_reactor | is_unlocked: UNLOCK feature not enabled - violation always locks
+[04/11 17:17:14.907] | INFO     | parking.session.SPOT_1 | MainThread | is_unlocked: UNLOCK feature not enabled - violation always locks

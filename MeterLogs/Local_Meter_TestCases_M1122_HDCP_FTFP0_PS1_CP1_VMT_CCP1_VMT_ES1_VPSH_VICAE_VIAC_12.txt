@@ -1,0 +1,19 @@
+[08/30 02:30:01.729] | INFO     | gui        | MainThread | GRAY tmpSpot = 
+[08/30 02:30:03.740] | INFO     | gui        | MainThread | GRAY tmpSpot = 
+[08/30 02:30:15.663] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[08/30 02:30:15.665] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[08/30 02:30:15.665] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[08/30 02:30:15.665] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1724985015,2,2
+
+[08/30 02:30:15.839] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[08/30 02:30:15.840] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[08/30 02:30:15.840] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[08/30 02:30:15.841] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1724985015,2,2
+
+[08/30 02:30:26.277] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43349 rp_min_to_free 43349
+[08/30 02:30:28.654] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting SYS_HANDICAP_FREE value False
+[08/30 02:30:28.675] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 131 total_sent: 131
+[08/30 02:30:32.182] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req: u'rpc_file_io' Payload: '{"method":"directory","params":["/media/realroot/ads/"],"jsonrpc":"2.0","id":5359152}'
+[08/30 02:30:32.183] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint file_io response {"jsonrpc": "2.0", "id": 5359152, "result": ["SentryHowToPay.png", "en_posts.jpg", "parking_schedule_weekly_49.png", "parking_schedule_weekly.png", "parking_schedule_weekly_73.png", "parking_schedule_weekly_70.png", "en_rules.jpg", "parking_schedule_weekly_84.png", "parking_schedule_weekly_37.png", "parking_schedule_weekly_64.png", "parking_schedule_weekly_54.png", "street_map.png", "lost+found", "parking_schedule_weekly_82.png", "SentryFreeParking.png", "parking_schedule_weekly_74.png", "forecast.png", "parking_schedule_weekly_48.png", "parking_schedule_weekly_71.png", "parking_schedule_weekly_89.png"]}
+[08/30 02:30:32.219] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 5359152, "result": ["SentryHowToPay.png", "en_posts.jpg", "parking_schedule_weekly_49.png", "parking_schedule_weekly.png", "parking_schedule_weekly_73.png", "parking_schedule_weekly_70.png", "en_rules.jpg", "parking_schedule_weekly_84.png", "parking_schedule_weekly_37.png", "parking_schedule_weekly_64.png", "parking_schedule_weekly_54.png", "street_map.png", "lost+found", "parking_schedule_weekly_82.png", "SentryFreeParking.png", "parking_schedule_weekly_74.png", "forecast.png", "parking_schedule_weekly_48.png", "parking_schedule_weekly_71.png", "parking_schedule_weekly_89.png"]} Queue amq.gen-WHZ52utqZykrR-ZwAqrofA #1671
+[08/30 02:30:40.278] | INFO     | micro.wdog | main_reactor | qml_ping_handler(): Received QML ping response

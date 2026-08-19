@@ -1,0 +1,57 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<!--<suite name="RunAllTestSuitesInParallel-SG" verbose="1" parallel ="tests" thread-count="10">-->
+<suite name="ProdValidationScenarios" verbose="1"  parallel ="tests"  thread-count="9">
+	<test name = "ProdValidation">
+	   	<parameter name="strStopAndStartAppiumServer" value="True"></parameter>
+	    <parameter name="strAppiumPort" value="5555"></parameter>
+	    <parameter name="strDeviceAppiumPort" value="5556"></parameter>
+<!-- 		<parameter name="strAndroidUdid" value="R5CW42VHVZY"></parameter> -->
+		<parameter name="strAndroidUdid" value="R5CW120Y06W"></parameter>
+  	    <parameter name="strAVDName" value = ""></parameter>
+	    <parameter name="strDeviceId" value="9107-9108"></parameter>
+	   	<parameter name="strRemotePath" value="http://localhost:4723"></parameter>
+	    <parameter name="strMobileAPK" value="SENTRYMOBILE-Production-9.8.436.apk"></parameter>
+	   	<classes>
+	   		
+	   		<class name="AutomationCode.Android_TestCases">
+		   		<methods>
+<!-- 		   			<include name="A2001_ValidateInvalidCredentialMessage"></include> -->
+<!--  		   			<include name="A2021_FTFP0_PS1_MP1_ES1_VPSH_VICAE_VIAC"></include>  -->
+<!--  		   			<include name="A2023_FTFP0_PS1_MP1_VPSVD_ES1_VPSH_VICAE_VIAC"></include>  -->
+<!--  					<include name="A2025_FTFP0_PS1_MP1_BMT_ES1_VPSH_VICAE_VIAC"></include>  -->
+<!--  					<include name="A2027_FTFP0_PS1_PMT_ES1_VPSH_VICAE_VIAC"></include>  -->
+<!--  					<include name="A2027_A_FTFP0_PS1_MP1_PMT_LPRM_e_MTIV_ES1_VPSH_VICAE_VIAC"></include>  -->
+<!-- 					<include name="A2029_FTFP0_PS1_MP1_PMT_MTIV_gt_LPRM_ES1_VPSH_VICAE_VIAC"></include> -->
+<!--  					<include name="A2031_FTFP0_PS1_CP1_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!--  					<include name="A2032_FTFP0_PS1_CP1_PRT_MP1_ES1_VPSH_VICAE_VIAC"></include>  -->
+<!--  					<include name="A2033_FTFP0_PS1_MP1_CP1_ES1_VPSH_VICAE_VIAC"></include>  -->
+<!--  					<include name="A2034_FTFP0_PS1_MP1_PRT_CP1_ES1_VPSH_VICAE_VIAC"></include>  -->
+<!-- 					<include name="A2035_FTFP0_PS1_CCP1_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!--  					<include name="A2035_A_FTFP0_PS1_CCP1_RM_MP1_ES1_VPSH_VICAE_VIAC"></include>  -->
+<!--   					<include name="A2036_FTFP0_PS1_CCP1_PRT_MP1_ES1_VPSH_VICAE_VIAC"></include>   -->
+<!--  					<include name="A2037_FTFP0_PS1_MP1_CCP1_ES1_VPSH_VICAE_VIAC"></include>  -->
+<!--  					<include name="A2038_FTFP0_PS1_MP1_PRT_CCP1_ES1_VPSH_VICAE_VIAC"></include>  -->
+<!--  					<include name="A2039_FTFP0_MP1_PS1_ES1_VPSH_VICAE_VIAC"></include>  -->
+<!--  					<include name="A2041_FTFP10_PS1_MP1_ES1_VPSH_VICAE_VIAC"></include>  -->
+<!--  					<include name="A2043_FTFP10_PS1_MP1_BMT_ES1_VPSH_VICAE_VIAC"></include>  -->
+<!--  					<include name="A2045_FTFP10_PS1_PMT_ES1_VPSH_VICAE_VIAC"></include>  -->
+<!--  					<include name="A2045_A_FTFP10_PS1_MP1_PMT_LPRM_e_MTIV_ES1_VPSH_VICAE_VIAC"></include>  -->
+<!--  					<include name="A2046_FTFP10_PS1_MP1_PMT_MTIV_gt_LPRM_ES1_VPSH_VICAE_VIAC"></include>  -->
+<!--  					<include name="A2048_FTFP10_PS1_CP1_MP1_ES1_VPSH_VICAE_VIAC"></include>  -->
+<!--  					<include name="A2049_FTFP10_PS1_CP1_PRT_MP1_ES1_VPSH_VICAE_VIAC"></include>  -->
+<!-- 					<include name="A2091_FTFP0_TUON_UON_PS1_GPV1_AV_wo_LP_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A2092_FTFP0_TUON_UON_PS1_GPV1_AV_wm_LP_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A2093_FTFP0_TUON_UON_PS1_GPV1_AV_wm_LP_CSMLP_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A2094_FTFP0_TUON_UON_PS1_GPV1_AV_wom_LP_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A2095_FTFP0_TUON_UON_PS1_GPV1_RV_wo_LP_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A2096_FTFP0_TUON_UON_PS1_GPV1_RV_wm_LP_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A2097_FTFP0_TUON_UON_PS1_GPV1_RV_wom_LP_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+
+<!-- 					<include name="A2301_CS_PSWL_VMT_VPSH"></include> -->
+<!--  					<include name="A2303_CS_PS1_GPV1_WFFACTNVT_ALPTPS_VMT_VPSH"></include>  -->
+ 				</methods>
+ 	   		</class>
+	   		
+	    </classes>
+	</test>
+</suite>

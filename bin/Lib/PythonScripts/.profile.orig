@@ -1,0 +1,63 @@
+# Miscellaneous short cuts
+alias e0="cp /home/root/apcc.cfg.e0 /home/root/apcc.cfg"
+alias e4="cp /home/root/apcc.cfg.e4 /home/root/apcc.cfg"
+alias e00="cp /home/root/apcc.cfg.e0e0 /home/root/apcc.cfg"
+alias e04="cp /home/root/apcc.cfg.e0e4 /home/root/apcc.cfg"
+alias e40="cp /home/root/apcc.cfg.e4e0 /home/root/apcc.cfg"
+alias e44="cp /home/root/apcc.cfg.e4e4 /home/root/apcc.cfg"
+alias d2ts="date +%s"
+alias d2tz='env TZ="America/Chicago" date -d "@`date +%s`"'
+alias gapcc='ps | grep apcc'
+alias gbc1='grep "Buffered credit error: 1" /var/log/Xsession.log | wc'
+alias gfp='grep "found plate" /var/log/Xsession.log | sed -e "s/#~> //g"'
+alias gfpf='grep "found plate" '
+alias gpu='grep -E "\- BOOT|puck" /var/log/Xsession.log | sed -e "s/#~> //g"'
+alias gpuf='grep -E "\- BOOT|puck" '
+alias gtb='grep -A 1 Traceback /var/log/Xsession.log | sed -e "s/#~> //g"'
+alias gtbb='grep -E "\- BOOT|Traceback" /var/log/Xsession.log | sed -e "s/#~> //g"'
+alias gtbf='grep -A 1 Traceback '
+alias gtbbf='grep -E "\- BOOT|Traceback" '
+alias guh='grep -E "\- BOOT|Unhandled" /var/log/Xsession.log | sed -e "s/#~> //g"'
+alias guhf='grep -E "\- BOOT|Unhandled" '
+alias gvd='grep vdetect /var/lib/sentry/log.txt'
+alias gvmdf='grep -E "puck|vmd_buffer|VIOLATION on" '
+alias gvo='grep -E "Vehicle Arrival Event|VIOLATION on|Vehicle Exit Event" /var/log/Xsession.log | sed -e "s/#~> //g"'
+alias gvof='grep -E "Vehicle Arrival Event|VIOLATION on|Vehicle Exit Event" '
+alias ifa='ifconfig -a'
+alias if0='ifconfig eth0'
+alias llds='ls -alF /dev/sentry/'
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+alias lth="ls -lt | head"
+alias mps="cd /opt/mps"
+alias rb='strings /var/lib/sentry/repo/main/rates.pdo | grep "^{" | sed "s|}}q|}}|" | while read line; do echo $line |  python -mjson.tool; done'
+alias rbt='strings /var/lib/sentry/repo/main/rates.pdo | grep "^{" | sed "s|}}q|}}|" | while read line; do echo $line |  python -mjson.tool; done | grep -E "type|time"'
+alias repo="cd /var/lib/sentry/repo/main"
+alias rps='nohup /usr/bin/python /home/root/apcc_server.py &'
+alias sgs="/usr/local/bin/sys_get_sw_version.py"
+alias ta="tail /var/lib/sentry/apcc_server_log.txt"
+alias tfa="tail -f /var/lib/sentry/apcc_server_log.txt"
+alias tl="tail /var/lib/sentry/log.txt"
+alias tfl="tail -f /var/lib/sentry/log.txt"
+alias tm="tail /var/lib/sentry/messages"
+alias tfm="tail -f /var/lib/sentry/messages"
+alias tx='tail /var/log/Xsession.log | sed -e "s/#~> //g"'
+alias tfx='tail -f /var/log/Xsession.log | sed -e "s/#~> //g"'
+alias ulb="cd /usr/local/bin"
+alias up="cd .."
+alias up2="cd ../.."
+alias vix="vi /var/log/Xsession.log"
+alias vl="cd /var/log"
+alias vlx="less /var/log/Xsession.log"
+alias vls="cd /var/lib/sentry"
+alias vll="less /var/lib/sentry/log.txt"
+ts2dz() {
+	env TZ="America/Chicago" date -d "@$1"
+}
+ts2du() {
+	echo $1 | awk '{ print strftime("%c", $0); }'
+}
+ts2d() {
+	date -d "@$1"
+}

@@ -1,0 +1,659 @@
+[03/27 23:47:01.958] | INFO     | micro.vio_leds | microcomm_reactor | MPS_CMD_SET_VIOLATION_LEDS result: MPS_REPLY_SET_VIOLATION_LEDS (0xFF20), ''
+[03/27 23:47:01.960] | INFO     | micro.vio_leds | microcomm_reactor | sub_command 1
+[03/27 23:47:01.961] | INFO     | micro.vio_leds | microcomm_reactor | COMMAND {'cmd_arg_1': 2, 'cmd_arg_2': 2, 'spot_id': 'SPOT_1'}
+[03/27 23:47:01.963] | INFO     | micro.vio_leds | microcomm_reactor | Sending queued cmd 2 2 for spot SPOT_1
+[03/27 23:47:01.964] | WARNING  | microcomm  | microcomm_reactor | send_command(): queued MPS_CMD_SET_VIOLATION_LEDS (0x0020), '\x00\x02\x02' (1 q_len tx_seqno #143 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/27 23:47:01.986] | CRITICAL | comport    | microcomm_reactor | write(): inWaiting() is 9
+[03/27 23:47:02.002] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 144 (tx_seqno 144 tx_failed 3) MPS_REPLY_SET_VIOLATION_LEDS (0xFF20), ''
+[03/27 23:47:02.712] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"void_timestamp": null, "is_free_parking_now": false, "violation_plate_info": null, "additional_violations": [], "violation": null, "session_error_status": "0x0", "violation_pictures": null, "coin_error_status": [], "maintenance_unenforced": false, "merchant_validated": false, "max_time_allowed": 250, "spot_identifier": "SPOT_1", "merchant_id": 0, "handicap_pin": null, "lpr_plate": null, "close_timestamp": null, "exit_plate_info": null, "no_fine_fee": 0, "payment_history": [], "maintenance_no": false, "maintenance_free": false, "parker_type": "normal", "total_time_purchased": 0, "true_up": 0, "violation_reason": null, "con_id": 4572, "sms": null, "coin_error_details": [], "session_id": "8f2865a62a3311f1a41f0013951476b4", "exit_pictures": null, "handicap": false, "free_to_reservation": false, "card_error_status": [], "is_no_parking_now": false, "payments": [], "maintenance": false, "exit_timestamp": null, "merchant_offer_name": "", "handicap_spot": false, "card_error_details": [], "email": null, "park_timestamp": "2026-03-27T23:47:00Z"}, "class": "event", "queued_dt": "2026-03-27T23:47:01Z", "type": "parking_session_park", "id": "eefe5e9e-4331-4597-84c1-a26487f50028", "device_id": "m:0013951476B4"}
+[03/27 23:47:02.812] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at rabbitmq.staging.sentry-link.com:5671 (200): Normal shutdown
+[03/27 23:47:03.004] | INFO     | micro.vio_leds | microcomm_reactor | MPS_CMD_SET_VIOLATION_LEDS result: MPS_REPLY_SET_VIOLATION_LEDS (0xFF20), ''
+[03/27 23:47:05.006] | INFO     | ui.multi   | SentryJSONRPCServer | set_state(): UI_STATE_IDLE performing pre_exit_state() actions UISI: screen touched
+[03/27 23:47:05.008] | INFO     | interaction | SentryJSONRPCServer | pre_exit_state(): completing actions before next_state UI_STATE_HOME
+[03/27 23:47:05.009] | INFO     | interaction | SentryJSONRPCServer | pre_exit_state(): completed actions complete True
+[03/27 23:47:05.012] | INFO     | ui.multi   | SentryJSONRPCServer | set_state(): UI_STATE_IDLE completed pre_exit_state() actions proceed True
+[03/27 23:47:05.013] | INFO     | ui.multi   | SentryJSONRPCServer | Secs in Idle 3448637.87165
+[03/27 23:47:05.016] | INFO     | interaction | SentryJSONRPCServer | cash_out_or_void_payment: No payment
+[03/27 23:47:05.024] | INFO     | ui.multi   | SentryJSONRPCServer | CONFIRM FALSE
+[03/27 23:47:05.026] | INFO     | ui.multi   | SentryJSONRPCServer | UISH: enter_state active_spot is None
+[03/27 23:47:05.027] | INFO     | interaction | SentryJSONRPCServer | return_coins(): ignoring credit cards and returning coins
+[03/27 23:47:05.229] | INFO     | ui.multi   | SentryJSONRPCServer | CHECK POP  False
+[03/27 23:47:05.231] | INFO     | ui.multi   | SentryJSONRPCServer | UISH::enter_state(): No expired for None
+[03/27 23:47:05.253] | INFO     | gui        | MainThread | QT: MultiSelectSpace: transition to spacemapoff
+[03/27 23:47:05.279] | INFO     | gui        | SentryJSONRPCServer | Screen changed to SCREEN_MULTI_SELECT_SPACE en
+[03/27 23:47:05.297] | WARNING  | interaction | SentryJSONRPCServer | _stop_idle_timeout: NO TIMER
+[03/27 23:47:05.299] | INFO     | ui.multi   | SentryJSONRPCServer | UI_STATE_IDLE -> UI_STATE_HOME (UISI: screen touched)
+[03/27 23:47:05.363] | INFO     | gui        | MainThread | _signal_goto_screen: multi_select_space
+[03/27 23:47:05.365] | INFO     | gui        | MainThread | QT: Current:  multi_idle Next:  multi_select_space
+[03/27 23:47:08.027] | INFO     | interaction | SentryJSONRPCServer | on_test_automation_space_entered: SPACE 9096
+[03/27 23:47:08.033] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): user selected space 9096
+[03/27 23:47:08.039] | INFO     | gui        | MainThread | QT: MultiSelectSpace: transition to loadon
+[03/27 23:47:08.049] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/parking_event_user_entered_space-442be9de2a3711f194340013951476b4.json
+[03/27 23:47:08.057] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): check space 9096 for local
+[03/27 23:47:08.064] | WARNING  | interaction | main_reactor | _stop_idle_timeout: NO TIMER
+[03/27 23:47:08.073] | INFO     | parking.controller | main_reactor | map_space_to_spot: indx 0 spot SPOT_1
+[03/27 23:47:08.082] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): 9096 is a LOCAL space number, setting active spot SPOT_1
+[03/27 23:47:08.083] | INFO     | parking.session.SPOT_1 | main_reactor | is_init_grace(): True
+[03/27 23:47:08.085] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): has NOT paid for max time
+[03/27 23:47:08.789] | INFO     | interaction | main_reactor | set_active_spot: ACTIVE SPOT SPOT_1 /home/mpsadmin/projects/Sentry_test/src/mps/ui/multi_user_interaction.py:2750
+[03/27 23:47:08.790] | INFO     | interaction | main_reactor | set_active_spot(): to SPOT_1
+[03/27 23:47:08.791] | INFO     | parking.controller | main_reactor | set_active_spot(): to SPOT_1
+[03/27 23:47:09.237] | INFO     | ui.multi   | main_reactor | config_payment_acceptance: Caller /home/mpsadmin/projects/Sentry_test/src/mps/ui/multi_user_interaction.py:2756
+[03/27 23:47:09.240] | INFO     | ui.multi   | main_reactor | config_payment_acceptance(UISH(): LOCAL valid space number): is_rate_schedule_payment_allowed_now() = True
+[03/27 23:47:09.243] | INFO     | epay       | main_reactor | enable_credit_cards: enable True
+[03/27 23:47:09.245] | INFO     | interaction | main_reactor | accept_coins(): acceptor currently blocking - cfg to accept
+[03/27 23:47:09.247] | INFO     | coin       | main_reactor | accept_all_coins(): configuring acceptance
+[03/27 23:47:09.248] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): PSV PSV_STATE_INIT_GRACE_PERIOD parking_state PARKING_STATE_INIT_GRACE_PERIOD
+[03/27 23:47:09.255] | INFO     | gui        | main_reactor | prompt_on
+[03/27 23:47:09.276] | INFO     | gui        | MainThread | _signal_prompt_on
+[03/27 23:47:09.279] | INFO     | gui        | MainThread | QT: MultiHome: transition to prompton
+[03/27 23:47:09.283] | INFO     | gui        | MainThread | QT: MultiSelectSpace: transition to loadoff
+[03/27 23:47:09.274] | INFO     | gui        | main_reactor | Screen changed to SCREEN_MULTI_HOME en
+[03/27 23:47:09.289] | INFO     | ui.multi   | main_reactor | update_last_session_data(): space 9096 spot_id SPOT_1 parking_session_id 8f2865a62a3311f1a41f0013951476b4 NO payment
+[03/27 23:47:09.376] | INFO     | gui        | MainThread | _signal_goto_screen: multi_home
+[03/27 23:47:09.378] | INFO     | gui        | MainThread | QT: Current:  multi_select_space Next:  multi_home
+[03/27 23:47:09.452] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"user_space_entered": "9096", "event_time": "2026-03-27T23:47:08Z", "mac_address": "00:13:95:14:76:B4"}, "class": "event", "queued_dt": "2026-03-27T23:47:08Z", "type": "parking_event_user_entered_space", "id": "2a654d8f-36f6-42fa-92f7-eba38f2b7384", "device_id": "m:0013951476B4"}
+[03/27 23:47:09.558] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at rabbitmq.staging.sentry-link.com:5671 (200): Normal shutdown
+[03/27 23:47:09.877] | INFO     | coin_event | Coin Vault | Coin acceptor configured to accept coins (command sent)
+[03/27 23:47:10.144] | INFO     | coin_event | Coin Vault | Info: REQUEST_MASTER_INHIBIT_STATUS indicates acceptor released
+[03/27 23:47:13.669] | INFO     | ui.multi   | SentryJSONRPCServer | set_state(): UI_STATE_HOME performing pre_exit_state() actions selected card payment
+[03/27 23:47:13.671] | INFO     | interaction | SentryJSONRPCServer | pre_exit_state(): completing actions before next_state UI_STATE_PAYING_CARD
+[03/27 23:47:13.673] | INFO     | interaction | SentryJSONRPCServer | pre_exit_state(): completed actions complete True
+[03/27 23:47:13.682] | INFO     | ui.multi   | SentryJSONRPCServer | set_state(): UI_STATE_HOME completed pre_exit_state() actions proceed True
+[03/27 23:47:13.690] | INFO     | ui.multi   | SentryJSONRPCServer | clear_last_session_data(): cleared data
+[03/27 23:47:13.693] | INFO     | ui.multi   | SentryJSONRPCServer | UISPCa: start_card_pay_timer 1 for PARKING_CARD_PAY_TIMEOUT
+[03/27 23:47:13.697] | INFO     | gui        | MainThread | QT: MultiHome: transition to declineoff
+[03/27 23:47:13.698] | INFO     | interaction | SentryJSONRPCServer | return_coins(): acceptor currently accepting - cfg to reject
+[03/27 23:47:13.703] | INFO     | coin       | SentryJSONRPCServer | return_all_coins(): configuring rejection
+[03/27 23:47:13.906] | INFO     | mps.ui     | SentryJSONRPCServer | Invalidating the maxtime remaining cache
+[03/27 23:47:13.935] | INFO     | interaction | SentryJSONRPCServer | _make_new_rate_schedule_if_needed: max_potential_payment_mins 4:10:00
+[03/27 23:47:13.940] | WARNING  | rates      | SentryJSONRPCServer | _gvsat(): TODAY MITIGIATION srb None using new_srbs _scheduled_rate_blocks [<ScheduleRateBlock (618365)[P7]: 02/25_00:00 - 04/26_23:59)>] new cur_dt 2026-03-27 18:47:00 orig_cur_dt 2026-04-27 00:04:00
+[03/27 23:47:13.961] | INFO     | interaction | SentryJSONRPCServer | UI_STATE_PAYING_CARD::ro_start_dt: RETURN #1 2026-02-25 00:01:48.897053
+[03/27 23:47:13.963] | INFO     | interaction | SentryJSONRPCServer | create_card_payment_if_needed(): start_dt 2026-02-25 00:01:48.897053
+[03/27 23:47:13.966] | CRITICAL | payment    | SentryJSONRPCServer | set_reference_id to None
+[03/27 23:47:13.968] | INFO     | payment    | SentryJSONRPCServer | set_reference_id(): to None
+[03/27 23:47:13.971] | INFO     | interaction | SentryJSONRPCServer | create_card_payment_if_needed(): already purchased 0 reference_id None session_id None
+[03/27 23:47:13.977] | INFO     | ui.multi   | SentryJSONRPCServer | UISPCa: SPOT_1 spot_name 9096
+[03/27 23:47:13.988] | INFO     | mps.ui     | SentryJSONRPCServer | Invalidating the maxtime remaining cache
+[03/27 23:47:14.014] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): PAYMENT SUBTOTAL #0 potential 0 purchased 0 total purchased 0 active_spot SPOT_1 valid_until 2026-03-27 18:57:00
+[03/27 23:47:14.017] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): PAYMENT SUBTOTAL payment purchased 0 already purchased 0
+[03/27 23:47:14.025] | INFO     | rates      | SentryJSONRPCServer | mfm(): srb=fixed min 0 p_type normal cur_min_pur 0 rate_minutes 0 origin_dt 2026-03-27 18:47:00
+[03/27 23:47:14.029] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): PAYMENT SUBTOTAL #1 100.0
+[03/27 23:47:14.037] | INFO     | rates      | SentryJSONRPCServer | mfm(): srb=fixed min 0 p_type normal cur_min_pur 0 rate_minutes 0 origin_dt 2026-03-27 18:47:00
+[03/27 23:47:14.040] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): PAYMENT TIME #2 payment.get_time_puchased() = 0, free_mins_first_payment 10
+[03/27 23:47:14.041] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): PAYMENT TIME #3 payment.get_time_purchased 0
+[03/27 23:47:14.043] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): PAYMENT TIME #4 add 10 min FREE 10
+[03/27 23:47:14.045] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): PAYMENT TIME TOTAL #1 10
+[03/27 23:47:14.048] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): PAYMENT TIME #14 10 PAYMENT_time_total 10
+[03/27 23:47:14.049] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): ** PAYMENT TIME total = 10
+[03/27 23:47:14.052] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): FINAL payment_time_remaining #5 240
+[03/27 23:47:14.062] | INFO     | rates      | SentryJSONRPCServer | mfm(): srb=fixed min 0 p_type normal cur_min_pur 0 rate_minutes 0 origin_dt 2026-03-27 18:47:00
+[03/27 23:47:14.067] | INFO     | interaction | SentryJSONRPCServer | _make_new_rate_schedule_if_needed: max_potential_payment_mins 4:10:00
+[03/27 23:47:14.073] | INFO     | parking.session.SPOT_1 | SentryJSONRPCServer | set_update_payment_time_required
+[03/27 23:47:14.091] | INFO     | interaction | SentryJSONRPCServer | UI_STATE_PAYING_CARD::enter_state(): is_vio False session_id 8f2865a62a3311f1a41f0013951476b4 spot SPOT_1 parker_type normal cur_min_purchased 0 true_up 0
+[03/27 23:47:14.108] | INFO     | rates      | SentryJSONRPCServer | mfm(): srb=fixed min 15 p_type normal cur_min_pur 0 rate_minutes 15 origin_dt 2026-03-27 18:47:00
+[03/27 23:47:14.112] | WARNING  | rates      | SentryJSONRPCServer | _gvsat(): TODAY MITIGIATION srb None using new_srbs _scheduled_rate_blocks [<ScheduleRateBlock (618365)[P7]: 02/25_00:00 - 04/26_23:59)>] new cur_dt 2026-03-27 18:47:00 orig_cur_dt 2026-04-27 00:04:00
+[03/27 23:47:14.114] | INFO     | interaction | SentryJSONRPCServer | UI_STATE_PAYING_CARD::ro_start_dt: RETURN #1 2026-02-25 00:01:48.897053
+[03/27 23:47:14.153] | WARNING  | rates      | SentryJSONRPCServer | gnri(): curdt 2026-02-25 00:17:00 not within schedule, origin_dt 2026-02-25 00:01:00
+[03/27 23:47:14.154] | INFO     | interaction | SentryJSONRPCServer | UI_STATE_PAYING_CARD::enter_state(): get_next_rate_increment mincost 25.0 mintime 15 start_dt 2026-02-25 00:01:48.897053
+[03/27 23:47:14.160] | INFO     | rates      | SentryJSONRPCServer | pmfm(): money 100 origin_dt 2026-02-25 00:01:48.897053 start_dt 2026-03-27 18:47:00 curdt 2026-02-25 00:01:48.897053
+[03/27 23:47:14.162] | INFO     | rates      | SentryJSONRPCServer | pmfm(): money=100 p_type normal cur_min_purchased 0 start_dt 2026-03-27 18:47:00
+[03/27 23:47:14.176] | INFO     | rates      | SentryJSONRPCServer | pmfm(): exit returning 60.0 60.000000 money 1.66666666667 origin_dt 2026-02-25 00:01:48.897053 curdt 2026-02-25 01:00:48.897053 start_dt 2026-03-27 18:47:00 srbs_used [618365]
+[03/27 23:47:14.180] | WARNING  | rates      | SentryJSONRPCServer | _gvsat(): TODAY MITIGIATION srb None using new_srbs _scheduled_rate_blocks [<ScheduleRateBlock (618365)[P7]: 02/25_00:00 - 04/26_23:59)>] new cur_dt 2026-03-27 18:47:00 orig_cur_dt 2026-04-27 00:04:00
+[03/27 23:47:14.182] | INFO     | interaction | SentryJSONRPCServer | UI_STATE_PAYING_CARD::ro_start_dt: RETURN #1 2026-02-25 00:01:48.897053
+[03/27 23:47:14.186] | INFO     | rates      | SentryJSONRPCServer | mfm(): srb=fixed min 60.0 p_type normal cur_min_pur 0 rate_minutes 60.0 origin_dt 2026-02-25 00:01:00
+[03/27 23:47:14.189] | INFO     | mps.ui     | SentryJSONRPCServer | Set the maxtime remaining cache for SPOT_1 to 250
+[03/27 23:47:14.191] | INFO     | interaction | SentryJSONRPCServer | UI_STATE_PAYING_CARD::enter_state(): first payment SUBTRACTING 10 minutes remaining_maxtime 240
+[03/27 23:47:14.193] | INFO     | interaction | SentryJSONRPCServer | UI_STATE_PAYING_CARD::enter_state(): setting cur_end_dt to 2026-03-27 18:47:00
+[03/27 23:47:14.195] | WARNING  | rates      | SentryJSONRPCServer | _gvsat(): TODAY MITIGIATION srb None using new_srbs _scheduled_rate_blocks [<ScheduleRateBlock (618365)[P7]: 02/25_00:00 - 04/26_23:59)>] new cur_dt 2026-03-27 18:47:00 orig_cur_dt 2026-04-27 00:04:00
+[03/27 23:47:14.197] | INFO     | interaction | SentryJSONRPCServer | UI_STATE_PAYING_CARD::ro_start_dt: RETURN #1 2026-02-25 00:01:48.897053
+[03/27 23:47:14.202] | INFO     | rates      | SentryJSONRPCServer | mfm(): srb=fixed min 240 p_type normal cur_min_pur 0 rate_minutes 240 origin_dt 2026-02-25 00:01:00
+[03/27 23:47:14.205] | INFO     | interaction | SentryJSONRPCServer | UI_STATE_PAYING_CARD::enter_state(): HOW LONG 240
+[03/27 23:47:14.210] | INFO     | interaction | SentryJSONRPCServer | UI_STATE_PAYING_CARD::enter_state(): mintime 60.0 mincost 100.0 remaining_maxtime 240 subtotal 400.0 free_or_no 43512 how_long 240 time remaining 0 time purchased 0 free_time_granted 0
+[03/27 23:47:14.212] | INFO     | mps.ui     | SentryJSONRPCServer | Set the maxtime remaining cache for SPOT_1 to 250
+[03/27 23:47:14.213] | INFO     | interaction | SentryJSONRPCServer | UI_STATE_PAYING_CARD::enter_state(): DEFAULTING - first payment SUBTRACTING 10 minutes remaining_maxtime 240
+[03/27 23:47:14.217] | INFO     | rates      | SentryJSONRPCServer | pmfm(): money 100.0 origin_dt 2026-02-25 00:01:48.897053 start_dt 2026-03-27 18:47:00 curdt 2026-02-25 00:01:48.897053
+[03/27 23:47:14.219] | INFO     | rates      | SentryJSONRPCServer | pmfm(): money=100.0 p_type normal cur_min_purchased 0 start_dt 2026-03-27 18:47:00
+[03/27 23:47:14.233] | INFO     | rates      | SentryJSONRPCServer | pmfm(): exit returning 60.0 60.000000 money 1.66666666667 origin_dt 2026-02-25 00:01:48.897053 curdt 2026-02-25 01:00:48.897053 start_dt 2026-03-27 18:47:00 srbs_used [618365]
+[03/27 23:47:14.234] | INFO     | coin_event | Coin Vault | Coin acceptor configured to return coins
+[03/27 23:47:14.236] | INFO     | interaction | SentryJSONRPCServer | UI_STATE_PAYING_CARD::enter_state(): prorated_minutes_for_money returns 60.0 min for 100.0 cur_end_dt 2026-03-27 18:47:00 remaining_maxtime 240
+[03/27 23:47:14.240] | INFO     | interaction | SentryJSONRPCServer | UI_STATE_PAYING_CARD::enter_state(): #12 payment.set_time() 60.0 get_potential_time() 60.0 rmt 250
+[03/27 23:47:14.255] | INFO     | rates      | SentryJSONRPCServer | mfm(): srb=fixed min 60.0 p_type normal cur_min_pur 0 rate_minutes 60.0 origin_dt 2026-03-27 18:47:00
+[03/27 23:47:14.273] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): PAYMENT SUBTOTAL #0 potential 60.0 purchased 60.0 total purchased 0 active_spot SPOT_1 valid_until 2026-03-27 19:57:00
+[03/27 23:47:14.277] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): PAYMENT SUBTOTAL payment purchased 60.0 already purchased 0
+[03/27 23:47:14.279] | WARNING  | rates      | SentryJSONRPCServer | _gvsat(): TODAY MITIGIATION srb None using new_srbs _scheduled_rate_blocks [<ScheduleRateBlock (618365)[P7]: 02/25_00:00 - 04/26_23:59)>] new cur_dt 2026-03-27 18:47:00 orig_cur_dt 2026-04-27 00:04:00
+[03/27 23:47:14.281] | INFO     | interaction | SentryJSONRPCServer | UI_STATE_PAYING_CARD::ro_start_dt: RETURN #1 2026-02-25 00:01:48.897053
+[03/27 23:47:14.286] | INFO     | rates      | SentryJSONRPCServer | mfm(): srb=fixed min 60.0 p_type normal cur_min_pur 60.0 rate_minutes 60.0 origin_dt 2026-02-25 00:01:00
+[03/27 23:47:14.288] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): PAYMENT SUBTOTAL money_for_minutes returns 100.0 for 60.0 minutes 60.0 get_time_purchased 2026-02-25 00:01:48.897053 start_dt 0 free_min_rem
+[03/27 23:47:14.291] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): PAYMENT SUBTOTAL #3 subtotal 100.0 tmp_payment_subtotal 100 get_money() 100
+[03/27 23:47:14.293] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): PAYMENT SUBTOTAL #2 100 # payments 0 payment_subtotal 100
+[03/27 23:47:14.296] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): PAYMENT TIME #2 payment.get_time_puchased() = 60.0, free_mins_first_payment 10
+[03/27 23:47:14.297] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): PAYMENT TIME #3 payment.get_time_purchased 60.0
+[03/27 23:47:14.299] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): PAYMENT TIME #4 add 10 min FREE 70.0
+[03/27 23:47:14.301] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): PAYMENT TIME TOTAL #1 70.0
+[03/27 23:47:14.304] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): PAYMENT TIME #14 70.0 PAYMENT_time_total 70.0
+[03/27 23:47:14.306] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): ** PAYMENT TIME total = 70.0
+[03/27 23:47:14.309] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): FINAL payment_time_remaining #5 180.0
+[03/27 23:47:14.313] | INFO     | epay       | SentryJSONRPCServer | auto_authorize(): Setting auto_authorize amount for 100.0
+[03/27 23:47:14.337] | INFO     | interaction | SentryJSONRPCServer | UI_STATE_PAYING_CARD::enter_state(): PAYMENT TIME TOTAL #4 60.0 TURBO calc remaining_maxtime 240 mintime 60.0 mincost 100.0 time_purchased 60.0 total_time_purchased 0
+[03/27 23:47:14.338] | INFO     | interaction | SentryJSONRPCServer | UI_STATE_PAYING_CARD::enter_state(): NOT TURBO_PAY calc mincost=100.0 mintime=60.0 remaining_maxtime=240
+[03/27 23:47:14.365] | INFO     | psv_fsm    | SentryJSONRPCServer | PSV_STATE_INIT_GRACE_PERIOD -> PSV_STATE_CARD_PAYMENT (card payment)
+[03/27 23:47:14.380] | INFO     | rates      | SentryJSONRPCServer | mfm(): srb=fixed min 60.0 p_type normal cur_min_pur 0 rate_minutes 60.0 origin_dt 2026-03-27 18:47:00
+[03/27 23:47:14.397] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): PAYMENT SUBTOTAL #0 potential 60.0 purchased 60.0 total purchased 0 active_spot SPOT_1 valid_until 2026-03-27 19:57:00
+[03/27 23:47:14.400] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): PAYMENT SUBTOTAL payment purchased 60.0 already purchased 0
+[03/27 23:47:14.403] | WARNING  | rates      | SentryJSONRPCServer | _gvsat(): TODAY MITIGIATION srb None using new_srbs _scheduled_rate_blocks [<ScheduleRateBlock (618365)[P7]: 02/25_00:00 - 04/26_23:59)>] new cur_dt 2026-03-27 18:47:00 orig_cur_dt 2026-04-27 00:04:00
+[03/27 23:47:14.405] | INFO     | interaction | SentryJSONRPCServer | UI_STATE_PAYING_CARD::ro_start_dt: RETURN #1 2026-02-25 00:01:48.897053
+[03/27 23:47:14.409] | INFO     | rates      | SentryJSONRPCServer | mfm(): srb=fixed min 60.0 p_type normal cur_min_pur 60.0 rate_minutes 60.0 origin_dt 2026-02-25 00:01:00
+[03/27 23:47:14.410] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): PAYMENT SUBTOTAL money_for_minutes returns 100.0 for 60.0 minutes 60.0 get_time_purchased 2026-02-25 00:01:48.897053 start_dt 0 free_min_rem
+[03/27 23:47:14.414] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): PAYMENT SUBTOTAL #3 subtotal 100.0 tmp_payment_subtotal 100 get_money() 100
+[03/27 23:47:14.415] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): PAYMENT SUBTOTAL #2 100 # payments 0 payment_subtotal 100
+[03/27 23:47:14.418] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): PAYMENT TIME #2 payment.get_time_puchased() = 60.0, free_mins_first_payment 10
+[03/27 23:47:14.419] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): PAYMENT TIME #3 payment.get_time_purchased 60.0
+[03/27 23:47:14.421] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): PAYMENT TIME #4 add 10 min FREE 70.0
+[03/27 23:47:14.423] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): PAYMENT TIME TOTAL #1 70.0
+[03/27 23:47:14.426] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): PAYMENT TIME #14 70.0 PAYMENT_time_total 70.0
+[03/27 23:47:14.427] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): ** PAYMENT TIME total = 70.0
+[03/27 23:47:14.430] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): FINAL payment_time_remaining #5 180.0
+[03/27 23:47:14.435] | INFO     | gui        | SentryJSONRPCServer | Screen changed to SCREEN_PAYING_CARD en
+[03/27 23:47:14.457] | INFO     | interaction | SentryJSONRPCServer | UI_STATE_PAYING_CARD::enter_state(): PAYMENT SUB TOTAL 100
+[03/27 23:47:14.460] | WARNING  | rates      | SentryJSONRPCServer | _gvsat(): TODAY MITIGIATION srb None using new_srbs _scheduled_rate_blocks [<ScheduleRateBlock (618365)[P7]: 02/25_00:00 - 04/26_23:59)>] new cur_dt 2026-03-27 18:47:00 orig_cur_dt 2026-04-27 00:04:00
+[03/27 23:47:14.462] | INFO     | interaction | SentryJSONRPCServer | UI_STATE_PAYING_CARD::ro_start_dt: RETURN #1 2026-02-25 00:01:48.897053
+[03/27 23:47:14.470] | WARNING  | rates      | SentryJSONRPCServer | gnri(): curdt 2026-02-25 01:17:00 not within schedule, origin_dt 2026-02-25 00:01:00
+[03/27 23:47:14.472] | INFO     | interaction | SentryJSONRPCServer | UI_STATE_PAYING_CARD::enter_state(): get_next_rate_increment mincost 25.0 mintime 75.0 start_dt 2026-02-25 00:01:48.897053
+[03/27 23:47:14.557] | INFO     | gui        | MainThread | QT: DualParkingSpotView: SPOT_1  transition to PSV_STATE_CARD_PAYMENT
+[03/27 23:47:14.573] | INFO     | rates      | main_reactor | mfm(): srb=fixed min 60.0 p_type normal cur_min_pur 0 rate_minutes 60.0 origin_dt 2026-03-27 18:47:00
+[03/27 23:47:14.574] | INFO     | coin_event | Coin Vault | Info: REQUEST_MASTER_INHIBIT_STATUS indicates acceptor blocked
+[03/27 23:47:14.598] | INFO     | gui        | MainThread | QT: Home: transition to PSV_STATE_CARD_PAYMENT
+[03/27 23:47:14.667] | INFO     | gui        | MainThread | QT: ParkingSpotView: transition to PSV_STATE_CARD_PAYMENT
+[03/27 23:47:14.681] | INFO     | interaction | main_reactor | get_session_data(): PAYMENT SUBTOTAL #0 potential 60.0 purchased 60.0 total purchased 0 active_spot SPOT_1 valid_until 2026-03-27 19:57:00
+[03/27 23:47:14.764] | INFO     | gui        | MainThread | QT: ParkingSpotView: transition to PSV_STATE_CARD_PAYMENT
+[03/27 23:47:14.765] | INFO     | interaction | SentryJSONRPCServer | UI_STATE_PAYING_CARD::enter_state(): End time remaining 0 _mincost 25.0 _mintime 15.0
+[03/27 23:47:14.770] | INFO     | interaction | main_reactor | get_session_data(): PAYMENT SUBTOTAL payment purchased 60.0 already purchased 0
+[03/27 23:47:14.806] | INFO     | gui        | MainThread | QT: DualParkingSpotView: SPOT_2  transition to noshowleft
+[03/27 23:47:14.823] | INFO     | rates      | SentryJSONRPCServer | mfm(): srb=fixed min 60.0 p_type normal cur_min_pur 0 rate_minutes 60.0 origin_dt 2026-03-27 18:47:00
+[03/27 23:47:14.825] | WARNING  | rates      | main_reactor | _gvsat(): TODAY MITIGIATION srb None using new_srbs _scheduled_rate_blocks [<ScheduleRateBlock (618365)[P7]: 02/25_00:00 - 04/26_23:59)>] new cur_dt 2026-03-27 18:47:00 orig_cur_dt 2026-04-27 00:04:00
+[03/27 23:47:14.840] | INFO     | interaction | main_reactor | UI_STATE_PAYING_CARD::ro_start_dt: RETURN #1 2026-02-25 00:01:48.897053
+[03/27 23:47:14.841] | INFO     | gui        | MainThread | _signal_goto_screen: paying_card
+[03/27 23:47:14.849] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): PAYMENT SUBTOTAL #0 potential 60.0 purchased 60.0 total purchased 0 active_spot SPOT_1 valid_until 2026-03-27 19:57:00
+[03/27 23:47:14.853] | INFO     | rates      | main_reactor | mfm(): srb=fixed min 60.0 p_type normal cur_min_pur 60.0 rate_minutes 60.0 origin_dt 2026-02-25 00:01:00
+[03/27 23:47:14.855] | INFO     | gui        | MainThread | QT: Current:  multi_home Next:  paying_card
+[03/27 23:47:14.858] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): PAYMENT SUBTOTAL payment purchased 60.0 already purchased 0
+[03/27 23:47:14.860] | INFO     | interaction | main_reactor | get_session_data(): PAYMENT SUBTOTAL money_for_minutes returns 100.0 for 60.0 minutes 60.0 get_time_purchased 2026-02-25 00:01:48.897053 start_dt 0 free_min_rem
+[03/27 23:47:14.877] | WARNING  | rates      | SentryJSONRPCServer | _gvsat(): TODAY MITIGIATION srb None using new_srbs _scheduled_rate_blocks [<ScheduleRateBlock (618365)[P7]: 02/25_00:00 - 04/26_23:59)>] new cur_dt 2026-03-27 18:47:00 orig_cur_dt 2026-04-27 00:04:00
+[03/27 23:47:14.884] | INFO     | interaction | SentryJSONRPCServer | UI_STATE_PAYING_CARD::ro_start_dt: RETURN #1 2026-02-25 00:01:48.897053
+[03/27 23:47:14.882] | INFO     | interaction | main_reactor | get_session_data(): PAYMENT SUBTOTAL #3 subtotal 100.0 tmp_payment_subtotal 100 get_money() 100
+[03/27 23:47:14.889] | INFO     | rates      | SentryJSONRPCServer | mfm(): srb=fixed min 60.0 p_type normal cur_min_pur 60.0 rate_minutes 60.0 origin_dt 2026-02-25 00:01:00
+[03/27 23:47:14.891] | INFO     | interaction | main_reactor | get_session_data(): PAYMENT SUBTOTAL #2 100 # payments 0 payment_subtotal 100
+[03/27 23:47:14.893] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): PAYMENT SUBTOTAL money_for_minutes returns 100.0 for 60.0 minutes 60.0 get_time_purchased 2026-02-25 00:01:48.897053 start_dt 0 free_min_rem
+[03/27 23:47:14.897] | INFO     | interaction | main_reactor | get_session_data(): PAYMENT TIME #2 payment.get_time_puchased() = 60.0, free_mins_first_payment 10
+[03/27 23:47:14.901] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): PAYMENT SUBTOTAL #3 subtotal 100.0 tmp_payment_subtotal 100 get_money() 100
+[03/27 23:47:14.905] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): PAYMENT SUBTOTAL #2 100 # payments 0 payment_subtotal 100
+[03/27 23:47:14.903] | INFO     | interaction | main_reactor | get_session_data(): PAYMENT TIME #3 payment.get_time_purchased 60.0
+[03/27 23:47:14.909] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): PAYMENT TIME #2 payment.get_time_puchased() = 60.0, free_mins_first_payment 10
+[03/27 23:47:14.913] | INFO     | interaction | main_reactor | get_session_data(): PAYMENT TIME #4 add 10 min FREE 70.0
+[03/27 23:47:14.915] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): PAYMENT TIME #3 payment.get_time_purchased 60.0
+[03/27 23:47:14.917] | INFO     | interaction | main_reactor | get_session_data(): PAYMENT TIME TOTAL #1 70.0
+[03/27 23:47:14.920] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): PAYMENT TIME #4 add 10 min FREE 70.0
+[03/27 23:47:14.923] | INFO     | interaction | main_reactor | get_session_data(): PAYMENT TIME #14 70.0 PAYMENT_time_total 70.0
+[03/27 23:47:14.928] | INFO     | interaction | main_reactor | get_session_data(): ** PAYMENT TIME total = 70.0
+[03/27 23:47:14.926] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): PAYMENT TIME TOTAL #1 70.0
+[03/27 23:47:14.934] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): PAYMENT TIME #14 70.0 PAYMENT_time_total 70.0
+[03/27 23:47:14.938] | INFO     | interaction | main_reactor | get_session_data(): FINAL payment_time_remaining #5 180.0
+[03/27 23:47:14.939] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): ** PAYMENT TIME total = 70.0
+[03/27 23:47:14.951] | INFO     | interaction | SentryJSONRPCServer | get_session_data(): FINAL payment_time_remaining #5 180.0
+[03/27 23:47:14.956] | INFO     | parking.controller | SentryJSONRPCServer | get_valid_local_spots: Return ['SPOT_1', 'SPOT_2']
+[03/27 23:47:14.958] | INFO     | ui.multi   | SentryJSONRPCServer | UI_STATE_HOME -> UI_STATE_PAYING_CARD (selected card payment)
+[03/27 23:47:16.592] | INFO     | rates      | main_reactor | mfm(): srb=fixed min 60.0 p_type normal cur_min_pur 0 rate_minutes 60.0 origin_dt 2026-03-27 18:47:00
+[03/27 23:47:16.599] | WARNING  | interaction | SentryJSONRPCServer | on_test_automation_accept_payment: called
+[03/27 23:47:16.649] | INFO     | interaction | main_reactor | get_session_data(): PAYMENT SUBTOTAL #0 potential 60.0 purchased 60.0 total purchased 0 active_spot SPOT_1 valid_until 2026-03-27 19:57:00
+[03/27 23:47:16.655] | INFO     | interaction | main_reactor | get_session_data(): PAYMENT SUBTOTAL payment purchased 60.0 already purchased 0
+[03/27 23:47:16.662] | WARNING  | rates      | main_reactor | _gvsat(): TODAY MITIGIATION srb None using new_srbs _scheduled_rate_blocks [<ScheduleRateBlock (618365)[P7]: 02/25_00:00 - 04/26_23:59)>] new cur_dt 2026-03-27 18:47:00 orig_cur_dt 2026-04-27 00:04:00
+[03/27 23:47:16.665] | INFO     | interaction | main_reactor | UI_STATE_PAYING_CARD::ro_start_dt: RETURN #1 2026-02-25 00:01:48.897053
+[03/27 23:47:16.671] | INFO     | rates      | main_reactor | mfm(): srb=fixed min 60.0 p_type normal cur_min_pur 60.0 rate_minutes 60.0 origin_dt 2026-02-25 00:01:00
+[03/27 23:47:16.673] | INFO     | interaction | main_reactor | get_session_data(): PAYMENT SUBTOTAL money_for_minutes returns 100.0 for 60.0 minutes 60.0 get_time_purchased 2026-02-25 00:01:48.897053 start_dt 0 free_min_rem
+[03/27 23:47:16.681] | INFO     | interaction | main_reactor | get_session_data(): PAYMENT SUBTOTAL #3 subtotal 100.0 tmp_payment_subtotal 100 get_money() 100
+[03/27 23:47:16.683] | INFO     | interaction | main_reactor | get_session_data(): PAYMENT SUBTOTAL #2 100 # payments 0 payment_subtotal 100
+[03/27 23:47:16.687] | INFO     | interaction | main_reactor | get_session_data(): PAYMENT TIME #2 payment.get_time_puchased() = 60.0, free_mins_first_payment 10
+[03/27 23:47:16.688] | INFO     | interaction | main_reactor | get_session_data(): PAYMENT TIME #3 payment.get_time_purchased 60.0
+[03/27 23:47:16.691] | INFO     | interaction | main_reactor | get_session_data(): PAYMENT TIME #4 add 10 min FREE 70.0
+[03/27 23:47:16.693] | INFO     | interaction | main_reactor | get_session_data(): PAYMENT TIME TOTAL #1 70.0
+[03/27 23:47:16.697] | INFO     | interaction | main_reactor | get_session_data(): PAYMENT TIME #14 70.0 PAYMENT_time_total 70.0
+[03/27 23:47:16.698] | INFO     | interaction | main_reactor | get_session_data(): ** PAYMENT TIME total = 70.0
+[03/27 23:47:16.702] | INFO     | interaction | main_reactor | get_session_data(): FINAL payment_time_remaining #5 180.0
+[03/27 23:47:16.706] | INFO     | ui.multi   | main_reactor | UISPCa::on_accept_payment(): for SPOT_1 last_epay_msg CCTRANSACTION_INSERTCARD
+[03/27 23:47:16.727] | INFO     | parking.spot.SPOT_1 | main_reactor | PSIGP::on_reset_init_grace_period(): resetting grace period - expiry while GUI active for this spot
+[03/27 23:47:16.728] | INFO     | parking.spot.SPOT_1 | main_reactor | PSIGP::on_reset_init_grace_period(): self._ext_count = 0
+[03/27 23:47:16.730] | INFO     | parking.spot.SPOT_1 | main_reactor | inc_grace_ext_count(): to 1
+[03/27 23:47:16.731] | INFO     | parking.spot.SPOT_1 | main_reactor | PSIGP::on_reset_init_grace_period(): Resetting spot's grace period to 600 sec
+[03/27 23:47:16.735] | INFO     | mps.ui     | main_reactor | Set the maxtime remaining cache for SPOT_1 to 250
+[03/27 23:47:16.737] | INFO     | ui.multi   | main_reactor | UISPCa::on_accept_payment(): GET MONEY 100
+[03/27 23:47:16.739] | INFO     | ui.multi   | main_reactor | UISPCa::on_accept_payment(): SUBTOTAL 100 time_purchased 60.0
+[03/27 23:47:16.740] | INFO     | ui.multi   | main_reactor | UISPCa::on_accept_payment(): ** SUBTOTAL call EPAY PAY 100 **
+[03/27 23:47:16.742] | INFO     | epay       | main_reactor | auto_authorize(): Setting auto_authorize amount for 100
+[03/27 23:47:16.745] | INFO     | epay       | main_reactor | pay(): Meter variant Pay 100 session_id 8f2865a62a3311f1a41f0013951476b4
+[03/27 23:47:16.746] | INFO     | epay       | main_reactor | Transaction::__init__(): dbg_str do_pay():  service_id None parking_session_id 8f2865a62a3311f1a41f0013951476b4
+[03/27 23:47:16.751] | INFO     | epay       | main_reactor | started_transaction(): service_id 959a06c8-239a-4f70-addc-7c33c66e4be9 FSM state STATE_IDLE
+[03/27 23:47:16.764] | INFO     | epay       | main_reactor | notify_observers(): event transaction_started args ()
+[03/27 23:47:16.766] | INFO     | epay       | main_reactor | do_pay(): requested value 100 parking_session_id 8f2865a62a3311f1a41f0013951476b4
+[03/27 23:47:16.778] | INFO     | epay       | main_reactor | StateWaitingForInsert::enter_state(): card NOT inserted
+[03/27 23:47:16.779] | INFO     | epay       | main_reactor | notify_observers(): event message_present_card args ('INSERT CARD',)
+[03/27 23:47:16.780] | INFO     | ui.multi   | main_reactor | on_message_present_card
+[03/27 23:47:16.781] | INFO     | gui        | main_reactor | on_epay_message_changed: message=CCTRANSACTION_INSERTCARD
+[03/27 23:47:16.783] | INFO     | ui.multi   | main_reactor | UISPCa::on_message_present_card(): for SPOT_1 last_epay_msg CCTRANSACTION_INSERTCARD
+[03/27 23:47:16.785] | INFO     | gui        | MainThread | CC STATE insertcard
+[03/27 23:47:16.788] | INFO     | epay       | main_reactor | STATE_IDLE -> STATE_WAITING_FOR_INSERT (StateIdle::on_payment_requested(): Payment requested)
+[03/27 23:47:16.790] | INFO     | gui        | MainThread | QT: main: setCCTransactionState insertcard
+[03/27 23:47:16.794] | INFO     | gui        | MainThread | QT: CardTransaction: transition to insertcard
+[03/27 23:47:16.797] | INFO     | gui        | MainThread | QT: CardTransaction: insertcard
+[03/27 23:47:16.799] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to insertcard
+[03/27 23:47:16.802] | INFO     | ui.multi   | main_reactor | set_state(): UI_STATE_PAYING_CARD performing pre_exit_state() actions UISPCa: on_accept_payment()
+[03/27 23:47:16.804] | INFO     | interaction | main_reactor | pre_exit_state(): completing actions before next_state UI_STATE_CARD_TRANSACTION
+[03/27 23:47:16.806] | INFO     | interaction | main_reactor | pre_exit_state(): completed actions complete True
+[03/27 23:47:16.808] | INFO     | ui.multi   | main_reactor | set_state(): UI_STATE_PAYING_CARD completed pre_exit_state() actions proceed True
+[03/27 23:47:16.809] | INFO     | ui.multi   | main_reactor | UISPCa: stop_card_pay_timer
+[03/27 23:47:16.810] | INFO     | psv_fsm.SPOT_1 | main_reactor | clear_card_transaction: Spot state PARKING_STATE_INIT_GRACE_PERIOD
+[03/27 23:47:16.812] | INFO     | parking.session.SPOT_1 | main_reactor | set_update_payment_time_required
+[03/27 23:47:16.814] | INFO     | psv_fsm.SPOT_1 | main_reactor | clear_card_transaction: exit_timestamp None get_vio_grace None valid_time_remaining 0
+[03/27 23:47:16.825] | INFO     | psv_fsm    | main_reactor | PSV_STATE_CARD_PAYMENT -> PSV_STATE_INIT_GRACE_PERIOD (SPOT_1: clear_card_transaction: cancelled payment)
+[03/27 23:47:16.827] | INFO     | ui.multi   | main_reactor | UISCT enter_state active spot SPOT_1
+[03/27 23:47:16.832] | INFO     | parking.session.SPOT_1 | main_reactor | set_update_payment_time_required
+[03/27 23:47:16.833] | INFO     | gui        | main_reactor | on_epay_message_changed: message=CCTRANSACTION_PROCESSING
+[03/27 23:47:16.834] | INFO     | psv_fsm.SPOT_1 | main_reactor | set_card_transaction
+[03/27 23:47:16.836] | INFO     | gui        | MainThread | CC STATE authorizing
+[03/27 23:47:16.837] | INFO     | gui        | MainThread | QT: main: setCCTransactionState authorizing
+[03/27 23:47:16.842] | INFO     | gui        | MainThread | QT: CardTransaction: transition to authorizing
+[03/27 23:47:16.849] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to authorizing
+[03/27 23:47:16.849] | INFO     | psv_fsm    | main_reactor | PSV_STATE_INIT_GRACE_PERIOD -> PSV_STATE_CARD_TRANSACTION (SPOT_1: card transaction)
+[03/27 23:47:16.863] | INFO     | gui        | main_reactor | Screen changed to SCREEN_CARD_TRANSACTION en
+[03/27 23:47:16.875] | INFO     | ui.multi   | main_reactor | epay_reader.get_state() STATE_WAITING_FOR_INSERT
+[03/27 23:47:16.881] | INFO     | gui        | MainThread | _signal_goto_screen: card_transaction
+[03/27 23:47:16.883] | INFO     | gui        | MainThread | QT: Current:  paying_card Next:  card_transaction
+[03/27 23:47:17.079] | WARNING  | interaction | main_reactor | _stop_idle_timeout: NO TIMER
+[03/27 23:47:17.082] | INFO     | ui.multi   | main_reactor | UISCT: _reset_cardpay_timeout
+[03/27 23:47:17.100] | INFO     | rates      | main_reactor | mfm(): srb=fixed min 60.0 p_type normal cur_min_pur 0 rate_minutes 60.0 origin_dt 2026-03-27 18:47:00
+[03/27 23:47:17.121] | INFO     | interaction | main_reactor | get_session_data(): PAYMENT SUBTOTAL #0 potential 60.0 purchased 60.0 total purchased 0 active_spot SPOT_1 valid_until 2026-03-27 19:57:00
+[03/27 23:47:17.124] | INFO     | interaction | main_reactor | get_session_data(): PAYMENT SUBTOTAL payment purchased 60.0 already purchased 0
+[03/27 23:47:17.132] | WARNING  | rates      | main_reactor | _gvsat(): TODAY MITIGIATION srb None using new_srbs _scheduled_rate_blocks [<ScheduleRateBlock (618365)[P7]: 02/25_00:00 - 04/26_23:59)>] new cur_dt 2026-03-27 18:47:00 orig_cur_dt 2026-04-27 00:04:00
+[03/27 23:47:17.134] | INFO     | interaction | main_reactor | UI_STATE_CARD_TRANSACTION::ro_start_dt: RETURN #1 2026-02-25 00:01:48.897053
+[03/27 23:47:17.144] | INFO     | rates      | main_reactor | mfm(): srb=fixed min 60.0 p_type normal cur_min_pur 60.0 rate_minutes 60.0 origin_dt 2026-02-25 00:01:00
+[03/27 23:47:17.146] | INFO     | interaction | main_reactor | get_session_data(): PAYMENT SUBTOTAL money_for_minutes returns 100.0 for 60.0 minutes 60.0 get_time_purchased 2026-02-25 00:01:48.897053 start_dt 0 free_min_rem
+[03/27 23:47:17.151] | INFO     | interaction | main_reactor | get_session_data(): PAYMENT SUBTOTAL #3 subtotal 100.0 tmp_payment_subtotal 100 get_money() 100
+[03/27 23:47:17.152] | INFO     | interaction | main_reactor | get_session_data(): PAYMENT SUBTOTAL #2 100 # payments 0 payment_subtotal 100
+[03/27 23:47:17.157] | INFO     | interaction | main_reactor | get_session_data(): PAYMENT TIME #2 payment.get_time_puchased() = 60.0, free_mins_first_payment 10
+[03/27 23:47:17.159] | INFO     | interaction | main_reactor | get_session_data(): PAYMENT TIME #3 payment.get_time_purchased 60.0
+[03/27 23:47:17.162] | INFO     | interaction | main_reactor | get_session_data(): PAYMENT TIME #4 add 10 min FREE 70.0
+[03/27 23:47:17.169] | INFO     | interaction | main_reactor | get_session_data(): PAYMENT TIME TOTAL #1 70.0
+[03/27 23:47:17.173] | INFO     | interaction | main_reactor | get_session_data(): PAYMENT TIME #14 70.0 PAYMENT_time_total 70.0
+[03/27 23:47:17.175] | INFO     | interaction | main_reactor | get_session_data(): ** PAYMENT TIME total = 70.0
+[03/27 23:47:17.180] | INFO     | interaction | main_reactor | get_session_data(): FINAL payment_time_remaining #5 180.0
+[03/27 23:47:17.185] | INFO     | parking.controller | main_reactor | get_valid_local_spots: Return ['SPOT_1', 'SPOT_2']
+[03/27 23:47:17.187] | INFO     | ui.multi   | main_reactor | UI_STATE_PAYING_CARD -> UI_STATE_CARD_TRANSACTION (UISPCa: on_accept_payment())
+[03/27 23:47:17.203] | INFO     | rates      | main_reactor | mfm(): srb=fixed min 60.0 p_type normal cur_min_pur 0 rate_minutes 60.0 origin_dt 2026-03-27 18:47:00
+[03/27 23:47:17.222] | INFO     | interaction | main_reactor | get_session_data(): PAYMENT SUBTOTAL #0 potential 60.0 purchased 60.0 total purchased 0 active_spot SPOT_1 valid_until 2026-03-27 19:57:00
+[03/27 23:47:17.226] | INFO     | interaction | main_reactor | get_session_data(): PAYMENT SUBTOTAL payment purchased 60.0 already purchased 0
+[03/27 23:47:17.246] | WARNING  | rates      | main_reactor | _gvsat(): TODAY MITIGIATION srb None using new_srbs _scheduled_rate_blocks [<ScheduleRateBlock (618365)[P7]: 02/25_00:00 - 04/26_23:59)>] new cur_dt 2026-03-27 18:47:00 orig_cur_dt 2026-04-27 00:04:00
+[03/27 23:47:17.249] | INFO     | interaction | main_reactor | UI_STATE_CARD_TRANSACTION::ro_start_dt: RETURN #1 2026-02-25 00:01:48.897053
+[03/27 23:47:17.254] | INFO     | rates      | main_reactor | mfm(): srb=fixed min 60.0 p_type normal cur_min_pur 60.0 rate_minutes 60.0 origin_dt 2026-02-25 00:01:00
+[03/27 23:47:17.256] | INFO     | interaction | main_reactor | get_session_data(): PAYMENT SUBTOTAL money_for_minutes returns 100.0 for 60.0 minutes 60.0 get_time_purchased 2026-02-25 00:01:48.897053 start_dt 0 free_min_rem
+[03/27 23:47:17.261] | INFO     | interaction | main_reactor | get_session_data(): PAYMENT SUBTOTAL #3 subtotal 100.0 tmp_payment_subtotal 100 get_money() 100
+[03/27 23:47:17.263] | INFO     | interaction | main_reactor | get_session_data(): PAYMENT SUBTOTAL #2 100 # payments 0 payment_subtotal 100
+[03/27 23:47:17.267] | INFO     | interaction | main_reactor | get_session_data(): PAYMENT TIME #2 payment.get_time_puchased() = 60.0, free_mins_first_payment 10
+[03/27 23:47:17.269] | INFO     | interaction | main_reactor | get_session_data(): PAYMENT TIME #3 payment.get_time_purchased 60.0
+[03/27 23:47:17.274] | INFO     | interaction | main_reactor | get_session_data(): PAYMENT TIME #4 add 10 min FREE 70.0
+[03/27 23:47:17.286] | INFO     | gui        | MainThread | QT: SKIP UPDATE
+[03/27 23:47:17.289] | INFO     | interaction | main_reactor | get_session_data(): PAYMENT TIME TOTAL #1 70.0
+[03/27 23:47:17.344] | INFO     | gui        | MainThread | QT: DualParkingSpotView: SPOT_1  transition to PSV_STATE_CARD_TRANSACTION
+[03/27 23:47:17.348] | INFO     | interaction | main_reactor | get_session_data(): PAYMENT TIME #14 70.0 PAYMENT_time_total 70.0
+[03/27 23:47:17.384] | INFO     | gui        | MainThread | QT: Home: transition to PSV_STATE_CARD_TRANSACTION
+[03/27 23:47:17.387] | INFO     | interaction | main_reactor | get_session_data(): ** PAYMENT TIME total = 70.0
+[03/27 23:47:17.390] | INFO     | gui        | MainThread | QT: ParkingSpotView: transition to PSV_STATE_CARD_TRANSACTION
+[03/27 23:47:17.394] | INFO     | interaction | main_reactor | get_session_data(): FINAL payment_time_remaining #5 180.0
+[03/27 23:47:17.396] | INFO     | gui        | MainThread | QT: ParkingSpotView: transition to PSV_STATE_CARD_TRANSACTION
+[03/27 23:47:17.461] | INFO     | gui        | MainThread | QT: SKIP UPDATE
+[03/27 23:47:18.480] | WARNING  | interaction | SentryJSONRPCServer | on_test_automation_message_pass: called
+[03/27 23:47:18.486] | WARNING  | interaction | main_reactor | _stop_idle_timeout: NO TIMER
+[03/27 23:47:18.488] | INFO     | ui.multi   | main_reactor | UISCT: _reset_cardpay_timeout
+[03/27 23:47:18.495] | INFO     | ui.multi   | main_reactor | UISCT::on_message_pass(): 
+[03/27 23:47:18.496] | INFO     | ui.multi   | main_reactor | UISCT::on_message_pass(): WAIT is false
+[03/27 23:47:18.498] | INFO     | gui        | main_reactor | on_epay_message_changed: message=CCTRANSACTION_INSERTCARD
+[03/27 23:47:18.499] | WARNING  | interaction | main_reactor | _stop_idle_timeout: NO TIMER
+[03/27 23:47:18.500] | WARNING  | interaction | SentryJSONRPCServer | on_test_automation_complete_payment: called
+[03/27 23:47:18.506] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to processingoff
+[03/27 23:47:18.507] | INFO     | ui.multi   | main_reactor | UISCT: _reset_cardpay_timeout
+[03/27 23:47:18.511] | INFO     | gui        | MainThread | QT: Home: transition to processingoff
+[03/27 23:47:18.516] | INFO     | ui.multi   | main_reactor | UISCT::on_message_pass(): subtotal 100 time 60.0
+[03/27 23:47:18.523] | INFO     | ui.multi   | main_reactor | UISCT::on_message_pass(): add_payment 60.0
+[03/27 23:47:18.524] | INFO     | parking.session.SPOT_1 | main_reactor | set_update_payment_time_required
+[03/27 23:47:18.521] | INFO     | gui        | MainThread | QT: MultiHome: transition to processingoff
+[03/27 23:47:18.531] | INFO     | gui        | MainThread | CC STATE insertcard
+[03/27 23:47:18.534] | INFO     | parking.session.SPOT_1 | main_reactor | set_max_time(): ELSE ignore _maxtime_minutes_possible update 250 >= 250
+[03/27 23:47:18.536] | WARNING  | parking.session.SPOT_1 | main_reactor | set_max_time(): ignoring setting max to 250 is already 250 max_time_changed False
+[03/27 23:47:18.538] | INFO     | parking.session.SPOT_1 | main_reactor | add_payment(): payment #0 set max_time to 250
+[03/27 23:47:18.539] | INFO     | parking.session.SPOT_1 | main_reactor | add_payment(): 1 <mps.parking.payment.CardPayment object at 0xf3939cc> time None method card GP False
+[03/27 23:47:18.540] | INFO     | gui        | MainThread | QT: main: setCCTransactionState insertcard
+[03/27 23:47:18.547] | INFO     | gui        | MainThread | QT: CardTransaction: transition to insertcard
+[03/27 23:47:18.541] | INFO     | parking.controller | main_reactor | get_valid_local_spots: Return ['SPOT_1', 'SPOT_2']
+[03/27 23:47:18.552] | INFO     | parking.session.SPOT_1 | main_reactor | add_payment(): AFTER Session has 1 payments
+[03/27 23:47:18.553] | INFO     | parking.session.SPOT_1 | main_reactor | add_payment(): AFTER purchased time None
+[03/27 23:47:18.554] | INFO     | parking.session.SPOT_1 | main_reactor | add_payment(): CALL CALC VALID
+[03/27 23:47:18.556] | INFO     | parking.session.SPOT_1 | main_reactor | set_update_payment_time_required
+[03/27 23:47:18.550] | INFO     | gui        | MainThread | QT: CardTransaction: insertcard
+[03/27 23:47:18.565] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to insertcard
+[03/27 23:47:18.596] | INFO     | parking.session.SPOT_1 | main_reactor | get_session_valid_timestamp(): RETURN pay_dt #4 2026-03-27 23:47:13.965907+00:00
+[03/27 23:47:18.605] | INFO     | parking.session.SPOT_1 | main_reactor | set_session_valid_end_timestamp: 2026-03-28 00:47:14.014017+00:00
+[03/27 23:47:18.637] | INFO     | parking.session.SPOT_1 | main_reactor | add_payment(): VALID TIME REMAINING 59.9221813 minutes
+[03/27 23:47:19.225] | INFO     | parking.session.SPOT_1 | main_reactor | set_time_purchased: Caller /home/mpsadmin/projects/Sentry_test/src/mps/parking/parking_spot.py:2398
+[03/27 23:47:19.227] | INFO     | parking.session.SPOT_1 | main_reactor | set_time_purchased(): added 60.0 total 60.0
+[03/27 23:47:19.270] | INFO     | detection  | main_reactor | COS cos_puck_ids = {}
+[03/27 23:47:19.273] | INFO     | detection  | main_reactor | comment: comment,1,10.10.102.172 VALID,
+[03/27 23:47:19.279] | INFO     | parking.spot.SPOT_1 | main_reactor | PSV::_reset_timer(): RESET VALID TIMER TO 3594.690838 (seconds) 59.9115139667 (minutes)
+[03/27 23:47:19.332] | INFO     | mps.ui     | main_reactor | _on_valid(): SPOT_1
+[03/27 23:47:19.336] | INFO     | ui.multi   | main_reactor | on_parking_valid[SPOT_1]
+[03/27 23:47:19.337] | INFO     | micro.vio_leds | main_reactor | steady_green()
+[03/27 23:47:19.351] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_SET_VIOLATION_LEDS (0x0020), '\x00\x00\x01' (1 q_len tx_seqno #145 tx_failed 3) STATE_IDLE
+[03/27 23:47:19.368] | INFO     | micro.vio_leds | main_reactor | Turning on green LED for spot SPOT_1 args 1 1
+[03/27 23:47:19.389] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 145 (tx_seqno 145 tx_failed 3) MPS_REPLY_SET_VIOLATION_LEDS (0xFF20), ''
+[03/27 23:47:19.390] | INFO     | psv_fsm.SPOT_1 | main_reactor | on_parking_valid: state PSV_STATE_CARD_TRANSACTION return
+[03/27 23:47:19.393] | INFO     | parking.spot.SPOT_1 | main_reactor | PARKING_STATE_INIT_GRACE_PERIOD -> PARKING_STATE_VALID (PSIGP - Added payment)
+[03/27 23:47:19.389] | INFO     | gui        | MainThread | QT: SKIP UPDATE
+[03/27 23:47:19.400] | INFO     | parking.controller | main_reactor | add_payment: RUN PAYMENT CALLBACK SPOT_1
+[03/27 23:47:19.428] | INFO     | parking.session.SPOT_1 | main_reactor | set_update_payment_time_required
+[03/27 23:47:19.430] | INFO     | ui.multi   | main_reactor | UISCT::on_message_pass(): calling set_update_payment_time_required()
+[03/27 23:47:19.431] | INFO     | interaction | main_reactor | calc_and_add_paid_free_time: ADD PAID FREE spot:SPOT_1 mobile_payment:False parker_type:normal free_mins_on_first_payment:None
+[03/27 23:47:19.434] | INFO     | gui        | MainThread | QT: Home: transition to PSV_STATE_CARD_TRANSACTION
+[03/27 23:47:19.439] | INFO     | interaction | main_reactor | calc_and_add_paid_free_time(): purchasable_time 190 to purchasable_time 190
+[03/27 23:47:19.441] | INFO     | parking.session.SPOT_1 | main_reactor | set_update_payment_time_required
+[03/27 23:47:19.442] | INFO     | interaction | main_reactor | calc_and_add_paid_free_time(): NOT mobile payment parker_type normal
+[03/27 23:47:19.445] | INFO     | interaction | main_reactor | calc_and_add_paid_free_time(): amount 17 amount 17 free_mins_on_first_payment 10
+[03/27 23:47:19.446] | INFO     | interaction | main_reactor | create_and_add_virt_payment(): SPOT_1 amount 17 mobile False concierge False merchant False merchant_id 0 gp_or_csr False free_on_first True preset_fixed_time 10 sl_payment_dt None start_dt None
+[03/27 23:47:19.447] | INFO     | interaction | main_reactor | create_and_add_virt_payment(): cur_min_purchased 60 payment_dt 2026-03-27 23:47:19.447233+00:00 start_dt 2026-03-27 23:47:13.965907+00:00
+[03/27 23:47:19.452] | INFO     | interaction | main_reactor | create_and_add_virt_payment(): valid_min_purchased 60
+[03/27 23:47:19.455] | WARNING  | rates      | main_reactor | _gvsat(): TODAY MITIGIATION srb None using new_srbs _scheduled_rate_blocks [<ScheduleRateBlock (618365)[P7]: 02/25_00:00 - 04/26_23:59)>] new cur_dt 2026-03-27 18:47:00 orig_cur_dt 2026-04-27 00:04:00
+[03/27 23:47:19.457] | INFO     | interaction | main_reactor | UI_STATE_CARD_TRANSACTION::ro_start_dt: RETURN #1 2026-02-25 00:01:48.897053
+[03/27 23:47:19.458] | INFO     | interaction | main_reactor | create_and_add_virt_payment(): ZZ payment_start_time 2026-02-25 00:01:48.897053 mobile False concierge False merchant_validation False
+[03/27 23:47:19.460] | INFO     | interaction | main_reactor | create_and_add_virt_payment(): BEFORE add_money 1
+[03/27 23:47:19.461] | INFO     | mps.ui     | main_reactor | Set the maxtime remaining cache for SPOT_1 to 190.0
+[03/27 23:47:19.462] | WARNING  | payment    | main_reactor | get_tot_time_granted(): using origin_dt 2026-02-25 00:01:48.897053 => payment_start_dt 2026-02-25 00:01:48.897053
+[03/27 23:47:19.464] | WARNING  | rates      | main_reactor | _gvsat(): TODAY MITIGIATION srb None using new_srbs _scheduled_rate_blocks [<ScheduleRateBlock (618365)[P7]: 02/25_00:00 - 04/26_23:59)>] new cur_dt 2026-03-27 18:47:00 orig_cur_dt 2026-04-27 00:04:00
+[03/27 23:47:19.467] | INFO     | rates      | main_reactor | pmfm(): money 17 origin_dt 2026-02-25 00:01:48.897053 start_dt 2026-03-27 18:47:00 curdt 2026-02-25 00:01:48.897053
+[03/27 23:47:19.469] | INFO     | rates      | main_reactor | pmfm(): money=17 p_type normal cur_min_purchased 60 start_dt 2026-03-27 18:47:00
+[03/27 23:47:19.475] | INFO     | rates      | main_reactor | pmfm(): exit returning 10.2 10.200000 money 0.333333333333 origin_dt 2026-02-25 00:01:48.897053 curdt 2026-02-25 00:11:48.897053 start_dt 2026-03-27 18:47:00 srbs_used [618365]
+[03/27 23:47:19.476] | INFO     | interaction | main_reactor | create_and_add_virt_payment(): add_money() complete
+[03/27 23:47:19.477] | INFO     | interaction | main_reactor | create_and_add_virt_payment(): set_purchased_time 10
+[03/27 23:47:19.479] | INFO     | mps.ui     | main_reactor | Set the maxtime remaining cache for SPOT_1 to 190.0
+[03/27 23:47:19.480] | INFO     | interaction | main_reactor | create_and_add_virt_payment(): granted 10 remaining 190
+[03/27 23:47:19.481] | INFO     | parking.session.SPOT_1 | main_reactor | set_update_payment_time_required
+[03/27 23:47:19.482] | INFO     | parking.session.SPOT_1 | main_reactor | add_payment(): 2 <mps.parking.payment.VirtPayment object at 0xf2ba4cc> time 10 method virt GP False
+[03/27 23:47:19.483] | INFO     | parking.controller | main_reactor | get_valid_local_spots: Return ['SPOT_1', 'SPOT_2']
+[03/27 23:47:19.485] | INFO     | parking.session.SPOT_1 | main_reactor | add_payment(): AFTER Session has 2 payments
+[03/27 23:47:19.486] | INFO     | parking.session.SPOT_1 | main_reactor | add_payment(): AFTER purchased time None
+[03/27 23:47:19.487] | INFO     | parking.session.SPOT_1 | main_reactor | add_payment(): AFTER purchased time 10
+[03/27 23:47:19.488] | INFO     | parking.session.SPOT_1 | main_reactor | add_payment(): CALL CALC VALID
+[03/27 23:47:19.489] | INFO     | parking.session.SPOT_1 | main_reactor | set_update_payment_time_required
+[03/27 23:47:19.499] | INFO     | parking.session.SPOT_1 | main_reactor | set_session_valid_end_timestamp: 2026-03-28 00:57:13.974430+00:00
+[03/27 23:47:19.536] | INFO     | parking.session.SPOT_1 | main_reactor | add_payment(): VALID TIME REMAINING 69.9072809667 minutes
+[03/27 23:47:19.572] | INFO     | parking.spot.SPOT_1 | main_reactor | PSV::_reset_timer(): RESET VALID TIMER TO 4194.400169 (seconds) 69.9066694833 (minutes)
+[03/27 23:47:19.678] | INFO     | parking.controller | main_reactor | add_payment: RUN PAYMENT CALLBACK SPOT_1
+[03/27 23:47:19.740] | INFO     | gui        | MainThread | QT: SKIP UPDATE
+[03/27 23:47:19.785] | INFO     | ui.multi   | main_reactor | UISCT::on_message_pass(): has NOT paid for max time
+[03/27 23:47:19.787] | WARNING  | interaction | main_reactor | _stop_idle_timeout: NO TIMER
+[03/27 23:47:19.806] | INFO     | ui.multi   | main_reactor | UISCT::_set_complete_timeout(): 
+[03/27 23:47:19.856] | INFO     | gui        | MainThread | QT: SKIP UPDATE
+[03/27 23:47:20.040] | INFO     | ui.multi   | main_reactor | config_payment_acceptance: Caller /home/mpsadmin/projects/Sentry_test/src/mps/ui/multi_user_interaction.py:6039
+[03/27 23:47:20.043] | INFO     | ui.multi   | main_reactor | config_payment_acceptance(UISCT::on_message_pass(): ): is_rate_schedule_payment_allowed_now() = True
+[03/27 23:47:20.049] | INFO     | interaction | main_reactor | accept_coins(): acceptor currently blocking - cfg to accept
+[03/27 23:47:20.051] | INFO     | coin       | main_reactor | accept_all_coins(): configuring acceptance
+[03/27 23:47:20.053] | INFO     | ui.multi   | main_reactor | UISCT::on_complete_payment(): global_pay_transaction_in_progress False
+[03/27 23:47:20.057] | INFO     | ui.multi   | main_reactor | UISCT::on_complete_payment(): set_valid_state
+[03/27 23:47:20.069] | INFO     | psv_fsm    | main_reactor | PSV_STATE_CARD_TRANSACTION -> PSV_STATE_VALID (SPOT_1 set_valid: parking valid)
+[03/27 23:47:20.070] | INFO     | psv_fsm.SPOT_1 | main_reactor | clear_card_transaction: Spot state PARKING_STATE_VALID
+[03/27 23:47:20.072] | INFO     | parking.session.SPOT_1 | main_reactor | set_update_payment_time_required
+[03/27 23:47:20.083] | INFO     | parking.session.SPOT_1 | main_reactor | set_session_valid_end_timestamp: 2026-03-28 00:57:13.974610+00:00
+[03/27 23:47:20.151] | INFO     | psv_fsm.SPOT_1 | main_reactor | clear_card_transaction: exit_timestamp None get_vio_grace False valid_time_remaining 4193.891226
+[03/27 23:47:20.189] | INFO     | parking.controller | main_reactor | get_valid_local_spots: Return ['SPOT_1', 'SPOT_2']
+[03/27 23:47:20.202] | INFO     | ui.multi   | main_reactor | set_state(): UI_STATE_CARD_TRANSACTION performing pre_exit_state() actions UISCT::on_complete_payment(): 
+[03/27 23:47:20.204] | WARNING  | interaction | main_reactor | _stop_idle_timeout: NO TIMER
+[03/27 23:47:20.206] | INFO     | interaction | main_reactor | pre_exit_state(): completing actions before next_state UI_STATE_HOME
+[03/27 23:47:20.207] | INFO     | interaction | main_reactor | pre_exit_state(): completed actions complete True
+[03/27 23:47:20.210] | INFO     | ui.multi   | main_reactor | set_state(): UI_STATE_CARD_TRANSACTION completed pre_exit_state() actions proceed True
+[03/27 23:47:20.214] | INFO     | ui.multi   | main_reactor | UISCT::exit_state(): - get_last_epay_state_message CCTRANSACTION_INSERTCARD
+[03/27 23:47:20.223] | INFO     | ui.multi   | main_reactor | UISCT::exit_state(): spot SPOT_1 get_valid_time_remaining() 4193.750065
+[03/27 23:47:20.236] | INFO     | ui.multi   | main_reactor | UISCT::exit_state(): SPOT_1 time remaining 4193.735078
+[03/27 23:47:20.237] | INFO     | psv_fsm.SPOT_1 | main_reactor | clear_card_transaction: Spot state PARKING_STATE_VALID
+[03/27 23:47:20.239] | INFO     | parking.session.SPOT_1 | main_reactor | set_update_payment_time_required
+[03/27 23:47:20.248] | INFO     | parking.session.SPOT_1 | main_reactor | set_session_valid_end_timestamp: 2026-03-28 00:57:13.973938+00:00
+[03/27 23:47:20.277] | INFO     | psv_fsm.SPOT_1 | main_reactor | clear_card_transaction: exit_timestamp None get_vio_grace False valid_time_remaining 4193.725117
+[03/27 23:47:20.302] | WARNING  | ui.multi   | main_reactor | UISCT::exit_state() - incomplete transaction service_id 959a06c8-239a-4f70-addc-7c33c66e4be9 payment_value 100
+[03/27 23:47:20.305] | INFO     | mps.ui     | main_reactor | RESWIPE OFF
+[03/27 23:47:20.340] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to reswipeoff
+[03/27 23:47:20.354] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: calling reswipeoff
+[03/27 23:47:20.366] | INFO     | gui        | MainThread | QT: Home: transition to reswipeoff
+[03/27 23:47:20.379] | INFO     | gui        | MainThread | QT: Home: calling reswipeoff
+[03/27 23:47:20.410] | INFO     | micro.vio_leds | microcomm_reactor | MPS_CMD_SET_VIOLATION_LEDS result: MPS_REPLY_SET_VIOLATION_LEDS (0xFF20), ''
+[03/27 23:47:20.437] | INFO     | gui        | MainThread | QT: MultiHome: transition to reswipeoff
+[03/27 23:47:20.549] | INFO     | gui        | MainThread | QT: CardTransaction: transition to reswipeoff
+[03/27 23:47:20.592] | INFO     | ui.multi   | main_reactor | config_payment_acceptance: Caller /home/mpsadmin/projects/Sentry_test/src/mps/ui/multi_user_interaction.py:5839
+[03/27 23:47:20.595] | INFO     | ui.multi   | main_reactor | config_payment_acceptance(UISCT: exit_state()): is_rate_schedule_payment_allowed_now() = True
+[03/27 23:47:20.601] | INFO     | interaction | main_reactor | cash_out_or_void_payment: No payment
+[03/27 23:47:20.602] | INFO     | epay       | main_reactor | void(): void current transaction service_id 959a06c8-239a-4f70-addc-7c33c66e4be9 session_id 8f2865a62a3311f1a41f0013951476b4
+[03/27 23:47:20.603] | INFO     | epay       | main_reactor | _close_transaction(): service_id 959a06c8-239a-4f70-addc-7c33c66e4be9 req_value 100 auth_value None comp_value None pay_value 0 history [('transaction_started', ()), ('message_present_card', ('INSERT CARD',))]
+[03/27 23:47:20.604] | INFO     | epay       | main_reactor | notify_observers(): event transaction_voided args ()
+[03/27 23:47:20.606] | INFO     | epay       | main_reactor | voided_transaction(): FSM state STATE_WAITING_FOR_INSERT service_id 959a06c8-239a-4f70-addc-7c33c66e4be9 history [('transaction_started', ()), ('message_present_card', ('INSERT CARD',)), ('transaction_voided', ())]
+[03/27 23:47:20.628] | INFO     | epay       | main_reactor | STATE_RETURNING -> STATE_IDLE (StateReturning::enter_state(): Card already returned)
+[03/27 23:47:20.629] | INFO     | epay       | main_reactor | STATE_WAITING_FOR_INSERT -> STATE_RETURNING (StateWaitingForInsert::on_card_reader_event(): Void before card inserted)
+[03/27 23:47:20.630] | INFO     | ui.multi   | main_reactor | CONFIRM FALSE
+[03/27 23:47:20.636] | INFO     | ui.multi   | main_reactor | UISH: enter_state active_spot is SPOT_1
+[03/27 23:47:20.817] | INFO     | coin_event | Coin Vault | Coin acceptor configured to accept coins (command sent)
+[03/27 23:47:20.892] | INFO     | ui.multi   | main_reactor | config_payment_acceptance: Caller /home/mpsadmin/projects/Sentry_test/src/mps/ui/multi_user_interaction.py:2475
+[03/27 23:47:20.896] | INFO     | ui.multi   | main_reactor | config_payment_acceptance(UISH): is_rate_schedule_payment_allowed_now() = True
+[03/27 23:47:20.901] | INFO     | ui.multi   | main_reactor | UISH::enter_state(): No expired for SPOT_1
+[03/27 23:47:20.936] | INFO     | gui        | main_reactor | Screen changed to SCREEN_MULTI_HOME en
+[03/27 23:47:20.957] | WARNING  | interaction | main_reactor | _stop_idle_timeout: NO TIMER
+[03/27 23:47:20.959] | INFO     | ui.multi   | main_reactor | UISH: PSV State PSV_STATE_VALID
+[03/27 23:47:20.960] | INFO     | ui.multi   | main_reactor | UI_STATE_CARD_TRANSACTION -> UI_STATE_HOME (UISCT::on_complete_payment(): )
+[03/27 23:47:21.016] | INFO     | rates      | main_reactor | mfm(): srb=fixed min 60.0 p_type normal cur_min_pur 0 rate_minutes 60.0 origin_dt 2026-03-27 18:47:00
+[03/27 23:47:21.035] | INFO     | gui        | MainThread | QT: SKIP UPDATE
+[03/27 23:47:21.094] | INFO     | gui        | MainThread | QT: DualParkingSpotView: SPOT_1  transition to PSV_STATE_VALID
+[03/27 23:47:21.115] | INFO     | gui        | MainThread | QT: Home: transition to PSV_STATE_VALID
+[03/27 23:47:21.232] | INFO     | gui        | MainThread | QT: ParkingSpotView: transition to PSV_STATE_VALID
+[03/27 23:47:21.233] | INFO     | coin_event | Coin Vault | Info: REQUEST_MASTER_INHIBIT_STATUS indicates acceptor released
+[03/27 23:47:21.349] | INFO     | gui        | MainThread | QT: ParkingSpotView: transition to PSV_STATE_VALID
+[03/27 23:47:21.391] | INFO     | gui        | MainThread | QT: DualParkingSpotView: SPOT_2  transition to showleft
+[03/27 23:47:21.393] | INFO     | parking.controller | main_reactor | calculate_hours_offset(): hour = 5
+[03/27 23:47:21.397] | INFO     | gui        | MainThread | _signal_goto_screen: multi_home
+[03/27 23:47:21.398] | INFO     | gui        | MainThread | QT: Current:  card_transaction Next:  multi_home
+[03/27 23:47:21.488] | INFO     | camera     | main_reactor | _send(): -> name: sock_1_2 message_len: 178 total_sent: 178
+[03/27 23:47:21.631] | INFO     | camera     | main_reactor | _recv(): <- request_len: 177 header_len: 8
+[03/27 23:47:21.677] | INFO     | camera     | main_reactor | _send(): -> name: sock_1_2 message_len: 177 total_sent: 177
+[03/27 23:47:21.829] | INFO     | camera     | main_reactor | _recv(): <- request_len: 176 header_len: 8
+[03/27 23:47:21.953] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/parking_session_payment-4c75768c2a3711f194340013951476b4.json
+[03/27 23:47:21.982] | INFO     | rates      | main_reactor | mfm(): srb=fixed min 60.0 p_type normal cur_min_pur 0 rate_minutes 60.0 origin_dt 2026-03-27 18:47:00
+[03/27 23:47:22.045] | INFO     | parking.controller | main_reactor | calculate_hours_offset(): hour = 5
+[03/27 23:47:22.107] | INFO     | camera     | main_reactor | _send(): -> name: sock_1_2 message_len: 178 total_sent: 178
+[03/27 23:47:22.240] | INFO     | camera     | main_reactor | _recv(): <- request_len: 177 header_len: 8
+[03/27 23:47:22.276] | INFO     | camera     | main_reactor | _send(): -> name: sock_1_2 message_len: 177 total_sent: 177
+[03/27 23:47:22.429] | INFO     | camera     | main_reactor | _recv(): <- request_len: 176 header_len: 8
+[03/27 23:47:22.911] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"void_timestamp": null, "violation": null, "merchant_validated": false, "merchant_id": 0, "exit_pictures": null, "lpr_plate": null, "entrance_plate_info": [], "maintenance_no": false, "handicap_pin": null, "free_to_reservation": false, "merchant_offer_name": "", "maintenance": false, "max_time_allowed": 250, "true_up": 0, "violation_reason": null, "session_error_status": "0x0", "payments": [{"rate_blocks": [], "payment_method": "card", "time_purchased": 60.0, "reference_id": null, "mobile_payment": false, "valid_time_remaining": 4192.9647679999998, "tax_amount": 0, "payment_received_timestamp": "2026-03-27T23:47:13Z", "payment_timestamp": "2026-03-27T23:47:13Z", "free_time_purchased": 0, "payment_amount": 100, "payment_type": "normal_payment", "subtotal_amount": 100}, {"rate_blocks": ["2026-03-27T18:47:21Z", 618365], "payment_method": "virt", "time_purchased": 10.0, "reference_id": null, "mobile_payment": false, "valid_time_remaining": 4192.929924, "tax_amount": 0, "payment_received_timestamp": "2026-03-27T23:47:19Z", "payment_timestamp": "2026-03-27T23:47:19Z", "free_time_purchased": 0, "payment_amount": 17, "payment_type": "normal_payment", "subtotal_amount": 17}], "violation_pictures": null, "card_error_details": [], "park_timestamp": "2026-03-27T23:47:00Z", "is_no_parking_now": false, "violation_plate_info": null, "maintenance_unenforced": false, "spot_identifier": "SPOT_1", "concierge_id": 4572, "close_timestamp": null, "total_time_purchased": 70.0, "sms": null, "warning_period": false, "exit_plate_info": null, "exit_timestamp": null, "entrance_pictures": [], "email": null, "is_free_parking_now": false, "handicap": false, "coin_error_status": [], "parker_type": "normal", "no_fine_fee": 0, "additional_violations": [], "payment_history": [{"error": "", "amount": 100, "payment_type": "card", "active_spot": "SPOT_1", "parking_state": "PARKING_STATE_VALID", "event_dt": "2026-03-27T23:47:19Z"}, {"error": "", "amount": 17, "payment_type": "virt", "active_spot": "SPOT_1", "parking_state": "PARKING_STATE_VALID", "event_dt": "2026-03-27T23:47:19Z"}], "maintenance_free": false, "coin_error_details": [], "session_id": "8f2865a62a3311f1a41f0013951476b4", "card_error_status": [], "handicap_spot": false}, "class": "event", "queued_dt": "2026-03-27T23:47:21Z", "type": "parking_session_payment", "id": "3fde0fa5-9333-48c0-8b04-eb67deb2dbea", "device_id": "m:0013951476B4"}
+[03/27 23:47:23.021] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at rabbitmq.staging.sentry-link.com:5671 (200): Normal shutdown
+[03/27 23:47:23.026] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/parking_session_payment-4d1926d82a3711f194340013951476b4.json
+[03/27 23:47:23.970] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"void_timestamp": null, "violation": null, "merchant_validated": false, "merchant_id": 0, "exit_pictures": null, "lpr_plate": null, "entrance_plate_info": [], "maintenance_no": false, "handicap_pin": null, "free_to_reservation": false, "merchant_offer_name": "", "maintenance": false, "max_time_allowed": 250, "true_up": 0, "violation_reason": null, "session_error_status": "0x0", "payments": [{"rate_blocks": [], "payment_method": "card", "time_purchased": 60.0, "reference_id": null, "mobile_payment": false, "valid_time_remaining": 4192.0101379999996, "tax_amount": 0, "payment_received_timestamp": "2026-03-27T23:47:13Z", "payment_timestamp": "2026-03-27T23:47:13Z", "free_time_purchased": 0, "payment_amount": 100, "payment_type": "normal_payment", "subtotal_amount": 100}, {"rate_blocks": ["2026-03-27T18:47:22Z", 618365], "payment_method": "virt", "time_purchased": 10.0, "reference_id": null, "mobile_payment": false, "valid_time_remaining": 4191.9656260000002, "tax_amount": 0, "payment_received_timestamp": "2026-03-27T23:47:19Z", "payment_timestamp": "2026-03-27T23:47:19Z", "free_time_purchased": 0, "payment_amount": 17, "payment_type": "normal_payment", "subtotal_amount": 17}], "violation_pictures": null, "card_error_details": [], "park_timestamp": "2026-03-27T23:47:00Z", "is_no_parking_now": false, "violation_plate_info": null, "maintenance_unenforced": false, "spot_identifier": "SPOT_1", "concierge_id": 4572, "close_timestamp": null, "total_time_purchased": 70.0, "sms": null, "warning_period": false, "exit_plate_info": null, "exit_timestamp": null, "entrance_pictures": [], "email": null, "is_free_parking_now": false, "handicap": false, "coin_error_status": [], "parker_type": "normal", "no_fine_fee": 0, "additional_violations": [], "payment_history": [{"error": "", "amount": 100, "payment_type": "card", "active_spot": "SPOT_1", "parking_state": "PARKING_STATE_VALID", "event_dt": "2026-03-27T23:47:19Z"}, {"error": "", "amount": 17, "payment_type": "virt", "active_spot": "SPOT_1", "parking_state": "PARKING_STATE_VALID", "event_dt": "2026-03-27T23:47:19Z"}], "maintenance_free": false, "coin_error_details": [], "session_id": "8f2865a62a3311f1a41f0013951476b4", "card_error_status": [], "handicap_spot": false}, "class": "event", "queued_dt": "2026-03-27T23:47:23Z", "type": "parking_session_payment", "id": "7ab98870-747b-4795-9806-5015f80fd128", "device_id": "m:0013951476B4"}
+[03/27 23:47:24.091] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at rabbitmq.staging.sentry-link.com:5671 (200): Normal shutdown
+[03/27 23:47:27.455] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x00' (1 q_len tx_seqno #146 tx_failed 3) STATE_IDLE
+[03/27 23:47:27.470] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 146 (tx_seqno 146 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\x81'
+[03/27 23:47:27.473] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 3969 photocell state 1
+[03/27 23:47:27.474] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[03/27 23:47:27.475] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1774655247,2,0
+
+[03/27 23:47:27.623] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 3969 photocell state 1
+[03/27 23:47:27.626] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[03/27 23:47:27.627] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1774655247,2,0
+
+[03/27 23:47:30.700] | INFO     | detection  | SentryJSONRPCServer | force_simulated_leave(): spot 1 plate 
+[03/27 23:47:30.701] | INFO     | detection  | SentryJSONRPCServer | force_simulated_leave(): Vehicle Exit Event for spot SPOT_1 PUCK 1 event ts 1774655250 plate 
+[03/27 23:47:30.716] | INFO     | detection  | main_reactor | COS cos_puck_ids = {}
+[03/27 23:47:30.718] | INFO     | detection  | main_reactor | comment: comment,1,10.10.102.172 VEHICLE LEFT,
+[03/27 23:47:30.720] | WARNING  | parking.spot.SPOT_1 | main_reactor | PSVL::enter_state(): vio is None - id 8f2865a62a3311f1a41f0013951476b4
+[03/27 23:47:30.722] | INFO     | parking.spot.SPOT_1 | main_reactor | CONCIERGE False False
+[03/27 23:47:30.723] | INFO     | parking.spot.SPOT_1 | main_reactor | PSVL::get_session_length(): start 2026-03-27 23:47:13.965907+00:00 end 2026-03-28 00:57:13.973938+00:00
+[03/27 23:47:30.727] | INFO     | parking.spot.SPOT_1 | main_reactor | PSVL::get_session_length(): total_time_purchased 70.0
+[03/27 23:47:30.737] | INFO     | parking.spot.SPOT_1 | main_reactor | PSVL::get_session_length(): now 2026-03-27 18:47:30.729916 orig 2026-03-27 18:47:13.965907 valid 2026-03-27 18:47:13.973938
+[03/27 23:47:30.739] | INFO     | parking.spot.SPOT_1 | main_reactor | PSVL::get_session_length(): 16.755978 seconds
+[03/27 23:47:30.742] | INFO     | parking.controller | main_reactor | Puck time exited 1774655250 for SPOT_1
+[03/27 23:47:30.748] | ERROR    | parking.session.SPOT_1 | main_reactor | set_exit_timestamp(): session_id 8f2865a62a3311f1a41f0013951476b4 mismatched TZ found exit dt 2026-03-27 18:47:30 <= park dt 2026-03-27 18:47:00-05:00 e can't compare offset-naive and offset-aware datetimes
+[03/27 23:47:30.750] | INFO     | parking.session.SPOT_1 | main_reactor | set_exit_timestamp(): session_id 8f2865a62a3311f1a41f0013951476b4 _park_timestamp 2026-03-27 18:47:00-05:00 _exit_timestamp 2026-03-27 23:47:30 exit_dt 2026-03-27 18:47:30
+[03/27 23:47:30.894] | INFO     | parking.spot.SPOT_1 | main_reactor | PSVL::enter_state(): now 1774655250.89 time_exited 1774655250 time_lookback_value 0
+[03/27 23:47:30.896] | INFO     | parking.spot.SPOT_1 | main_reactor | PSVL::get_session_length(): start 2026-03-27 23:47:13.965907+00:00 end 2026-03-28 00:57:13.973938+00:00
+[03/27 23:47:30.897] | INFO     | parking.spot.SPOT_1 | main_reactor | PSVL::get_session_length(): total_time_purchased 70.0
+[03/27 23:47:30.903] | INFO     | parking.spot.SPOT_1 | main_reactor | PSVL::get_session_length(): now 2026-03-27 18:47:30.898445 orig 2026-03-27 18:47:13.965907 valid 2026-03-27 18:47:13.973938
+[03/27 23:47:30.904] | INFO     | parking.spot.SPOT_1 | main_reactor | PSVL::get_session_length(): 16.924507 seconds
+[03/27 23:47:30.906] | INFO     | parking.spot.SPOT_1 | main_reactor | PSVL::enter_state(): session_id = 8f2865a62a3311f1a41f0013951476b4
+[03/27 23:47:30.907] | INFO     | detection  | main_reactor | spot_status: return False for spot SPOT_1
+[03/27 23:47:30.932] | INFO     | camera     | main_reactor | _send(): -> name: sock_1_2 message_len: 224 total_sent: 224
+[03/27 23:47:31.078] | INFO     | camera     | main_reactor | _recv(): <- request_len: 57 header_len: 8
+[03/27 23:47:31.081] | WARNING  | parking.spot.SPOT_1 | main_reactor | PSVL::enter_state(): removing entrance pictures
+[03/27 23:47:31.112] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_SET_VIOLATION_LEDS (0x0020), '\x00\x00\x00' (1 q_len tx_seqno #147 tx_failed 3) STATE_IDLE
+[03/27 23:47:31.126] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 147 (tx_seqno 147 tx_failed 3) MPS_REPLY_SET_VIOLATION_LEDS (0xFF20), ''
+[03/27 23:47:31.127] | INFO     | micro.vio_leds | main_reactor | Turning off LED for spot SPOT_1 args 0 0
+[03/27 23:47:31.139] | INFO     | psv_fsm    | main_reactor | PSV_STATE_VALID -> PSV_STATE_AVAILABLE (vehicle left)
+[03/27 23:47:31.181] | INFO     | ui.multi   | main_reactor | UISH: Vehicle left spot SPOT_1
+[03/27 23:47:31.242] | INFO     | parking.spot.SPOT_1 | main_reactor | roll_session(): Starting new session
+[03/27 23:47:31.243] | INFO     | parking.spot.SPOT_1 | main_reactor | roll_session(): destroyed PDO for session_id 8f2865a62a3311f1a41f0013951476b4
+[03/27 23:47:31.333] | INFO     | gui        | MainThread | QT: DualParkingSpotView: SPOT_1  transition to PSV_STATE_AVAILABLE
+[03/27 23:47:31.359] | INFO     | gui        | MainThread | QT: Home: transition to PSV_STATE_AVAILABLE
+[03/27 23:47:31.439] | INFO     | gui        | MainThread | QT: ParkingSpotView: transition to PSV_STATE_AVAILABLE
+[03/27 23:47:31.475] | INFO     | gui        | MainThread | QT: ParkingSpotView: PSV_STATE_AVAILABLE
+[03/27 23:47:31.556] | INFO     | gui        | MainThread | QT: ParkingSpotView: transition to PSV_STATE_AVAILABLE
+[03/27 23:47:31.592] | INFO     | gui        | MainThread | QT: ParkingSpotView: PSV_STATE_AVAILABLE
+[03/27 23:47:31.793] | INFO     | parking.session | main_reactor | Spot SPOT_1 Session ID 5252db9e2a3711f1a41f0013951476b4 Concierge ID 7275
+[03/27 23:47:31.796] | INFO     | parking.session.SPOT_1 | main_reactor | __init__: Set base to None
+[03/27 23:47:31.798] | INFO     | parking.session | main_reactor | DEBUG MASKs: session False time False max False valid False true up False payment False
+[03/27 23:47:32.128] | INFO     | micro.vio_leds | microcomm_reactor | MPS_CMD_SET_VIOLATION_LEDS result: MPS_REPLY_SET_VIOLATION_LEDS (0xFF20), ''
+[03/27 23:47:33.210] | INFO     | parking.session.SPOT_1 | main_reactor | set_max_time(): _session_maxtime_minutes 0 global_pay False reset _session_maxtime_minutes to 250
+[03/27 23:47:33.217] | INFO     | parking.session.SPOT_1 | main_reactor | set_max_time(): unstarted session - setting max to 250 was 250
+[03/27 23:47:33.220] | WARNING  | parking.session.SPOT_1 | main_reactor | set_max_time(): resetting _maxtime_minutes_possible from 250 to 250
+[03/27 23:47:33.223] | INFO     | parking.spot.SPOT_1 | main_reactor | roll_session(): Started session 5252db9e2a3711f1a41f0013951476b4 with max time of 250
+[03/27 23:47:33.225] | INFO     | coin       | main_reactor | Canister is 46% full
+[03/27 23:47:33.787] | INFO     | parking.spot.SPOT_1 | main_reactor | PSE::enter_state(): Turning off parker leds
+[03/27 23:47:33.791] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_SET_VIOLATION_LEDS (0x0020), '\x00\x00\x00' (1 q_len tx_seqno #148 tx_failed 3) STATE_IDLE
+[03/27 23:47:33.809] | INFO     | micro.vio_leds | main_reactor | Turning off LED for spot SPOT_1 args 0 0
+[03/27 23:47:33.813] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 148 (tx_seqno 148 tx_failed 3) MPS_REPLY_SET_VIOLATION_LEDS (0xFF20), ''
+[03/27 23:47:33.816] | INFO     | parking.spot.SPOT_1 | main_reactor | PARKING_STATE_VEHICLE_LEFT -> PARKING_STATE_EMPTY (PSVL - Empty spot)
+[03/27 23:47:33.820] | INFO     | parking.spot.SPOT_1 | main_reactor | PARKING_STATE_VALID -> PARKING_STATE_VEHICLE_LEFT (PSV - Vehicle left)
+[03/27 23:47:33.880] | INFO     | rates      | main_reactor | mfm(): srb=fixed min 60.0 p_type normal cur_min_pur 0 rate_minutes 60.0 origin_dt 2026-03-27 18:47:00
+[03/27 23:47:33.983] | INFO     | parking.controller | main_reactor | calculate_hours_offset(): hour = 5
+[03/27 23:47:34.043] | INFO     | camera     | main_reactor | _send(): -> name: sock_1_2 message_len: 178 total_sent: 178
+[03/27 23:47:34.178] | INFO     | camera     | main_reactor | _recv(): <- request_len: 177 header_len: 8
+[03/27 23:47:34.179] | WARNING  | camera     | main_reactor | sb_send_msg(): Silver Bullet returned 0 ENTRANCE_PICTURE_IDS! camera_id: SPOT_1
+[03/27 23:47:34.180] | INFO     | parking.session.SPOT_1 | main_reactor | set_session_error_status(): Adding new error value 0x8 to 0x0, now 0x8
+[03/27 23:47:34.483] | INFO     | camera     | main_reactor | _send(): -> name: sock_1_2 message_len: 177 total_sent: 177
+[03/27 23:47:34.647] | INFO     | camera     | main_reactor | _recv(): <- request_len: 176 header_len: 8
+[03/27 23:47:34.685] | INFO     | camera     | main_reactor | _send(): -> name: sock_1_2 message_len: 174 total_sent: 174
+[03/27 23:47:34.797] | INFO     | camera     | main_reactor | _recv(): <- request_len: 232 header_len: 8
+[03/27 23:47:34.818] | INFO     | micro.vio_leds | microcomm_reactor | MPS_CMD_SET_VIOLATION_LEDS result: MPS_REPLY_SET_VIOLATION_LEDS (0xFF20), ''
+[03/27 23:47:34.835] | INFO     | camera     | main_reactor | _send(): -> name: sock_1_2 message_len: 173 total_sent: 173
+[03/27 23:47:34.968] | INFO     | camera     | main_reactor | _recv(): <- request_len: 393 header_len: 8
+[03/27 23:47:35.085] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/parking_session_end-54494c1c2a3711f194340013951476b4.json
+[03/27 23:47:35.114] | INFO     | camera     | main_reactor | _send(): -> name: sock_1_2 message_len: 189 total_sent: 189
+[03/27 23:47:35.351] | INFO     | camera     | main_reactor | _recv(): <- request_len: 66 header_len: 8
+[03/27 23:47:36.228] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"void_timestamp": null, "violation": null, "merchant_validated": false, "merchant_id": 0, "exit_pictures": ["SPOT_1_1774655250924_540c6cf02a3711f1818e00044b2c2235.jpg"], "lpr_plate": null, "entrance_plate_info": [], "maintenance_no": false, "handicap_pin": null, "free_to_reservation": false, "merchant_offer_name": "", "maintenance": false, "max_time_allowed": 250, "true_up": 0, "violation_reason": null, "session_error_status": "0x8", "payments": [{"rate_blocks": [], "payment_method": "card", "time_purchased": 60.0, "reference_id": null, "mobile_payment": false, "valid_time_remaining": 4180.1034300000001, "tax_amount": 0, "payment_received_timestamp": "2026-03-27T23:47:13Z", "payment_timestamp": "2026-03-27T23:47:13Z", "free_time_purchased": 0, "payment_amount": 100, "payment_type": "normal_payment", "subtotal_amount": 100}, {"rate_blocks": ["2026-03-27T18:47:33Z", 618365], "payment_method": "virt", "time_purchased": 10.0, "reference_id": null, "mobile_payment": false, "valid_time_remaining": 4180.0249059999996, "tax_amount": 0, "payment_received_timestamp": "2026-03-27T23:47:19Z", "payment_timestamp": "2026-03-27T23:47:19Z", "free_time_purchased": 0, "payment_amount": 17, "payment_type": "normal_payment", "subtotal_amount": 17}], "violation_pictures": null, "card_error_details": [], "park_timestamp": "2026-03-27T23:47:00Z", "is_no_parking_now": false, "violation_plate_info": null, "maintenance_unenforced": false, "spot_identifier": "SPOT_1", "concierge_id": 4572, "close_timestamp": null, "total_time_purchased": 70.0, "sms": null, "warning_period": false, "exit_plate_info": [{"plate": "", "confidence": 0, "vehicle_present": null, "country": 68, "camera": "1", "location": [44.972025000000002, -93.436147000000005], "taken": "2026-03-27T23:47:30Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}], "exit_timestamp": "2026-03-27T23:47:30Z", "entrance_pictures": [], "email": null, "is_free_parking_now": false, "handicap": false, "coin_error_status": [], "parker_type": "normal", "no_fine_fee": 0, "additional_violations": [], "payment_history": [{"error": "", "amount": 100, "payment_type": "card", "active_spot": "SPOT_1", "parking_state": "PARKING_STATE_VALID", "event_dt": "2026-03-27T23:47:19Z"}, {"error": "", "amount": 17, "payment_type": "virt", "active_spot": "SPOT_1", "parking_state": "PARKING_STATE_VALID", "event_dt": "2026-03-27T23:47:19Z"}], "maintenance_free": false, "coin_error_details": [], "session_id": "8f2865a62a3311f1a41f0013951476b4", "card_error_status": [], "handicap_spot": false}, "class": "event", "queued_dt": "2026-03-27T23:47:35Z", "type": "parking_session_end", "id": "afd0f953-7ba8-444e-b136-34ac74c2e2f6", "device_id": "m:0013951476B4"}
+[03/27 23:47:36.340] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at rabbitmq.staging.sentry-link.com:5671 (200): Normal shutdown
+[03/27 23:47:41.046] | INFO     | mps.ui     | main_reactor | RESWIPE OFF
+[03/27 23:47:41.055] | INFO     | gui        | MainThread | QT: Home: transition to reswipeoff
+[03/27 23:47:41.058] | INFO     | gui        | MainThread | QT: Home: calling reswipeoff
+[03/27 23:47:41.062] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to processingoff
+[03/27 23:47:41.063] | INFO     | ui.multi   | main_reactor | set_state(): UI_STATE_HOME performing pre_exit_state() actions _on_timeout(): 
+[03/27 23:47:41.065] | INFO     | gui        | MainThread | QT: Home: transition to processingoff
+[03/27 23:47:41.066] | INFO     | interaction | main_reactor | pre_exit_state(): completing actions before next_state UI_STATE_IDLE
+[03/27 23:47:41.070] | INFO     | gui        | MainThread | QT: MultiHome: transition to processingoff
+[03/27 23:47:41.071] | INFO     | interaction | main_reactor | return_coins(): ignoring credit cards and returning coins
+[03/27 23:47:41.075] | INFO     | epay       | main_reactor | enable_credit_cards: enable False
+[03/27 23:47:41.077] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to declineoff
+[03/27 23:47:41.078] | INFO     | interaction | main_reactor | return_coins(): acceptor currently accepting - cfg to reject
+[03/27 23:47:41.082] | INFO     | gui        | MainThread | QT: MultiHome: transition to declineoff
+[03/27 23:47:41.084] | INFO     | coin       | main_reactor | return_all_coins(): configuring rejection
+[03/27 23:47:41.289] | INFO     | interaction | main_reactor | is_acceptor_blocked(): waiting for coin acceptor disabled confirmation
+[03/27 23:47:41.290] | INFO     | interaction | main_reactor | pre_exit_state(): coin acceptor is blocking with no new deposits
+[03/27 23:47:41.291] | INFO     | interaction | main_reactor | pre_exit_state(): completed actions complete True
+[03/27 23:47:41.293] | INFO     | ui.multi   | main_reactor | set_state(): UI_STATE_HOME completed pre_exit_state() actions proceed True
+[03/27 23:47:41.296] | INFO     | ui.multi   | main_reactor | clear_last_session_data(): cleared data
+[03/27 23:47:41.297] | INFO     | mps.ui     | main_reactor | concierge_reset
+[03/27 23:47:41.300] | INFO     | interaction | main_reactor | return_coins(): ignoring credit cards and returning coins
+[03/27 23:47:41.303] | INFO     | gui        | MainThread | QT: concierge_reset SPOT_1
+[03/27 23:47:41.307] | INFO     | gui        | MainThread | QT: ParkingSpotView: transition to conciergeReset
+[03/27 23:47:41.311] | INFO     | gui        | MainThread | QT: ParkingSpotView: conciergeReset
+[03/27 23:47:41.316] | INFO     | gui        | MainThread | QT: ParkingSpotView: transition to PSV_STATE_AVAILABLE
+[03/27 23:47:41.319] | INFO     | gui        | MainThread | QT: ParkingSpotView: PSV_STATE_AVAILABLE
+[03/27 23:47:41.504] | WARNING  | interaction | main_reactor | _stop_idle_timeout: NO TIMER
+[03/27 23:47:41.509] | INFO     | gui        | main_reactor | Screen changed to SCREEN_MULTI_IDLE en
+[03/27 23:47:41.514] | INFO     | gui        | MainThread | _signal_goto_screen: multi_idle
+[03/27 23:47:41.517] | INFO     | gui        | MainThread | QT: Current:  multi_home Next:  multi_idle
+[03/27 23:47:41.539] | INFO     | interaction | main_reactor | cash_out_or_void_payment: No payment
+[03/27 23:47:41.811] | INFO     | interaction | main_reactor | set_active_spot: ACTIVE SPOT None /home/mpsadmin/projects/Sentry_test/src/mps/ui/multi_user_interaction.py:1897
+[03/27 23:47:41.812] | INFO     | interaction | main_reactor | set_active_spot(): to None
+[03/27 23:47:41.814] | INFO     | parking.controller | main_reactor | set_active_spot(): to None
+[03/27 23:47:41.833] | INFO     | mps.ui     | main_reactor | suspend_background_tasks(): change to False
+[03/27 23:47:41.835] | INFO     | parking_serv | main_reactor | suspend_transfers(): False
+[03/27 23:47:41.849] | INFO     | epay       | main_reactor | auto_authorize(): Setting auto_authorize amount for 1000
+[03/27 23:47:41.883] | INFO     | ui.multi   | main_reactor | UI_STATE_HOME -> UI_STATE_IDLE (_on_timeout(): )
+[03/27 23:47:41.912] | INFO     | gui        | MainThread | QT: Home: transition to PSV_STATE_AVAILABLE
+[03/27 23:47:42.005] | INFO     | coin_event | Coin Vault | Coin acceptor configured to return coins
+[03/27 23:47:42.271] | INFO     | coin_event | Coin Vault | Info: REQUEST_MASTER_INHIBIT_STATUS indicates acceptor blocked
+[03/27 23:47:44.647] | INFO     | mps.ui     | SentryJSONRPCServer | suspend_background_tasks(): change to True
+[03/27 23:47:44.649] | INFO     | parking_serv | SentryJSONRPCServer | suspend_transfers(): True
+[03/27 23:47:44.662] | INFO     | ui.multi   | SentryJSONRPCServer | set_state(): UI_STATE_IDLE performing pre_exit_state() actions UISI: screen touched
+[03/27 23:47:44.664] | INFO     | interaction | SentryJSONRPCServer | pre_exit_state(): completing actions before next_state UI_STATE_HOME
+[03/27 23:47:44.666] | INFO     | interaction | SentryJSONRPCServer | pre_exit_state(): completed actions complete True
+[03/27 23:47:44.670] | INFO     | ui.multi   | SentryJSONRPCServer | set_state(): UI_STATE_IDLE completed pre_exit_state() actions proceed True
+[03/27 23:47:44.673] | INFO     | ui.multi   | SentryJSONRPCServer | Secs in Idle 3448641.04072
+[03/27 23:47:44.677] | INFO     | interaction | SentryJSONRPCServer | cash_out_or_void_payment: No payment
+[03/27 23:47:44.678] | INFO     | ui.multi   | SentryJSONRPCServer | CONFIRM FALSE
+[03/27 23:47:44.680] | INFO     | ui.multi   | SentryJSONRPCServer | UISH: enter_state active_spot is None
+[03/27 23:47:44.681] | INFO     | interaction | SentryJSONRPCServer | return_coins(): ignoring credit cards and returning coins
+[03/27 23:47:44.884] | INFO     | ui.multi   | SentryJSONRPCServer | CHECK POP  False
+[03/27 23:47:44.886] | INFO     | ui.multi   | SentryJSONRPCServer | UISH::enter_state(): No expired for None
+[03/27 23:47:44.905] | INFO     | gui        | SentryJSONRPCServer | Screen changed to SCREEN_MULTI_SELECT_SPACE en
+[03/27 23:47:44.907] | INFO     | gui        | MainThread | QT: MultiSelectSpace: transition to spacemapoff
+[03/27 23:47:44.925] | WARNING  | interaction | SentryJSONRPCServer | _stop_idle_timeout: NO TIMER
+[03/27 23:47:44.927] | INFO     | ui.multi   | SentryJSONRPCServer | UI_STATE_IDLE -> UI_STATE_HOME (UISI: screen touched)
+[03/27 23:47:44.960] | INFO     | gui        | MainThread | _signal_goto_screen: multi_select_space
+[03/27 23:47:44.963] | INFO     | gui        | MainThread | QT: Current:  multi_idle Next:  multi_select_space
+[03/27 23:47:51.538] | INFO     | interaction | SentryJSONRPCServer | on_test_automation_space_entered: SPACE 9096
+[03/27 23:47:51.546] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): user selected space 9096
+[03/27 23:47:51.551] | INFO     | gui        | MainThread | QT: MultiSelectSpace: transition to loadon
+[03/27 23:47:51.566] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/parking_event_user_entered_space-5e1c016c2a3711f194340013951476b4.json
+[03/27 23:47:51.572] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): check space 9096 for local
+[03/27 23:47:51.574] | WARNING  | interaction | main_reactor | _stop_idle_timeout: NO TIMER
+[03/27 23:47:51.583] | INFO     | parking.controller | main_reactor | map_space_to_spot: indx 0 spot SPOT_1
+[03/27 23:47:51.596] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): 9096 is a LOCAL space number, setting active spot SPOT_1
+[03/27 23:47:51.598] | INFO     | parking.session.SPOT_1 | main_reactor | is_init_grace(): None
+[03/27 23:47:51.599] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): has NOT paid for max time
+[03/27 23:47:52.278] | INFO     | interaction | main_reactor | set_active_spot: ACTIVE SPOT SPOT_1 /home/mpsadmin/projects/Sentry_test/src/mps/ui/multi_user_interaction.py:2750
+[03/27 23:47:52.279] | INFO     | interaction | main_reactor | set_active_spot(): to SPOT_1
+[03/27 23:47:52.283] | INFO     | parking.controller | main_reactor | set_active_spot(): to SPOT_1
+[03/27 23:47:52.779] | INFO     | ui.multi   | main_reactor | config_payment_acceptance: Caller /home/mpsadmin/projects/Sentry_test/src/mps/ui/multi_user_interaction.py:2756
+[03/27 23:47:52.783] | INFO     | ui.multi   | main_reactor | config_payment_acceptance(UISH(): LOCAL valid space number): is_rate_schedule_payment_allowed_now() = True
+[03/27 23:47:52.787] | INFO     | epay       | main_reactor | enable_credit_cards: enable True
+[03/27 23:47:52.789] | INFO     | interaction | main_reactor | accept_coins(): acceptor currently blocking - cfg to accept
+[03/27 23:47:52.790] | INFO     | coin       | main_reactor | accept_all_coins(): configuring acceptance
+[03/27 23:47:52.792] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): PSV PSV_STATE_AVAILABLE parking_state PARKING_STATE_EMPTY
+[03/27 23:47:52.797] | INFO     | gui        | main_reactor | prompt_on
+[03/27 23:47:52.817] | INFO     | gui        | main_reactor | Screen changed to SCREEN_MULTI_HOME en
+[03/27 23:47:52.819] | INFO     | ui.multi   | main_reactor | update_last_session_data(): space 9096 spot_id SPOT_1 parking_session_id 5252db9e2a3711f1a41f0013951476b4 NO payment
+[03/27 23:47:52.826] | INFO     | gui        | MainThread | QT: MultiSelectSpace: transition to loadoff
+[03/27 23:47:52.851] | INFO     | gui        | MainThread | _signal_prompt_on
+[03/27 23:47:52.855] | INFO     | gui        | MainThread | QT: MultiHome: transition to prompton
+[03/27 23:47:52.905] | INFO     | gui        | MainThread | _signal_goto_screen: multi_home
+[03/27 23:47:52.907] | INFO     | gui        | MainThread | QT: Current:  multi_select_space Next:  multi_home
+[03/27 23:47:53.032] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"user_space_entered": "9096", "event_time": "2026-03-27T23:47:51Z", "mac_address": "00:13:95:14:76:B4"}, "class": "event", "queued_dt": "2026-03-27T23:47:51Z", "type": "parking_event_user_entered_space", "id": "2f43bb0b-d9f2-4959-95ef-8b80f19cd385", "device_id": "m:0013951476B4"}
+[03/27 23:47:53.122] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at rabbitmq.staging.sentry-link.com:5671 (200): Normal shutdown
+[03/27 23:47:53.349] | INFO     | coin_event | Coin Vault | Coin acceptor configured to accept coins (command sent)
+[03/27 23:47:53.616] | INFO     | coin_event | Coin Vault | Info: REQUEST_MASTER_INHIBIT_STATUS indicates acceptor released
+[03/27 23:47:59.993] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x00' (1 q_len tx_seqno #149 tx_failed 3) STATE_IDLE
+[03/27 23:48:00.013] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 149 (tx_seqno 149 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\x81'
+[03/27 23:48:00.016] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x00d\xff\xff' (1 q_len tx_seqno #149 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/27 23:48:00.018] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x01' (2 q_len tx_seqno #149 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[03/27 23:48:00.038] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 150 (tx_seqno 150 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/27 23:48:00.065] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 151 (tx_seqno 151 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xad'
+[03/27 23:48:00.084] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x01d\xff\xff' (1 q_len tx_seqno #152 tx_failed 3) STATE_IDLE
+[03/27 23:48:00.098] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 152 (tx_seqno 152 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[03/27 23:48:00.113] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43511 rp_min_to_free 43511

@@ -1,0 +1,36 @@
+[04/11 21:35:24.295] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/11 21:35:24.295] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/11 21:35:24.295] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744407324,2,2
+
+[04/11 21:35:24.296] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/11 21:35:24.296] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/11 21:35:24.296] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/11 21:35:24.297] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744407324,2,2
+
+[04/11 21:35:24.558] | INFO     | micro.vio_leds | microcomm_reactor | MPS_CMD_SET_VIOLATION_LEDS result: MPS_REPLY_SET_VIOLATION_LEDS (0xFF20), ''
+[04/11 21:35:24.928] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"void_timestamp": null, "violation": null, "merchant_validated": false, "merchant_id": 0, "exit_pictures": ["SPOT_1_1744407322226_e0461c68171c11f0bd4e00c0089e93e0.jpg"], "lpr_plate": "05591AA", "entrance_plate_info": [], "maintenance_no": false, "handicap_pin": null, "free_to_reservation": false, "merchant_offer_name": "", "maintenance": false, "max_time_allowed": 239, "true_up": 0, "violation_reason": null, "session_error_status": "0x80000008L", "payments": [{"rate_blocks": ["2025-04-11T16:35:23Z", 11716], "payment_method": "virt", "time_purchased": 15.0, "reference_id": null, "mobile_payment": true, "valid_time_remaining": 837.748199, "tax_amount": 0, "payment_received_timestamp": "2025-04-11T21:34:21Z", "payment_timestamp": "2025-04-11T21:34:21Z", "free_time_purchased": 0, "payment_amount": 25, "payment_type": "normal_payment", "subtotal_amount": 25}], "violation_pictures": null, "card_error_details": [], "park_timestamp": "2025-04-11T21:34:21Z", "is_no_parking_now": false, "violation_plate_info": null, "maintenance_unenforced": false, "spot_identifier": "SPOT_1", "concierge_id": 5978, "close_timestamp": null, "total_time_purchased": 15.0, "sms": null, "warning_period": false, "exit_plate_info": [{"plate": "", "confidence": 0, "vehicle_present": true, "country": 104, "camera": "1", "location": [44.9579389, -93.4307587], "taken": "2025-04-11T21:35:22Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}], "exit_timestamp": "2025-04-11T21:35:22Z", "entrance_pictures": [], "email": null, "is_free_parking_now": false, "handicap": false, "coin_error_status": [], "parker_type": "normal", "no_fine_fee": 0, "additional_violations": [], "payment_history": [{"error": "", "amount": 25, "payment_type": "virt", "active_spot": null, "parking_state": "PARKING_STATE_VALID_PRESUMED_OCCUPIED", "event_dt": "2025-04-11T21:34:21Z"}], "maintenance_free": false, "coin_error_details": [], "session_id": "f68aec73171b11f0be3100c0089e93e0", "card_error_status": [], "handicap_spot": false}, "class": "event", "queued_dt": "2025-04-11T21:35:24Z", "type": "parking_session_end", "id": "b60f45f0-5eac-422b-9cc9-5ae2274c6c96", "device_id": "m:00C0089E93E0"}
+[04/11 21:35:25.026] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at quality-rabbitmq-lb-1284426831.us-east-1.elb.amazonaws.com:5671 (200): Normal shutdown
+[04/11 21:36:10.845] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 50843 rp_min_to_free 50843
+[04/11 21:36:24.796] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/11 21:36:24.797] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/11 21:36:24.797] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/11 21:36:24.797] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744407384,2,2
+
+[04/11 21:36:24.971] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/11 21:36:24.973] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/11 21:36:24.973] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/11 21:36:24.973] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744407384,2,2
+
+[04/11 21:36:30.088] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[04/11 21:37:10.843] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 50842 rp_min_to_free 50842
+[04/11 21:37:26.618] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/11 21:37:26.621] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/11 21:37:26.621] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/11 21:37:26.621] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744407446,2,2
+
+[04/11 21:37:26.792] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/11 21:37:26.794] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/11 21:37:26.795] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/11 21:37:26.795] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744407446,2,2
+
+[04/11 21:38:10.837] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 50841 rp_min_to_free 50841

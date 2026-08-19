@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="AllSuites">
+    <suite-files>
+        <suite-file path="TestSuites/Regression_Android.xml"></suite-file>
+        <suite-file path="TestSuites/Regression_IOS.xml"></suite-file>
+         <!--<suite-file path="TestSuites/Regression_PEO.xml"></suite-file>
+       	<suite-file path="TestSuites/Regression_Meter.xml"></suite-file>-->
+    </suite-files>
+</suite>

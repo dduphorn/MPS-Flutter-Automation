@@ -1,0 +1,132 @@
+[06/13 14:42:37.356] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to reswipeoff
+[06/13 14:42:37.358] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: calling reswipeoff
+[06/13 14:42:37.359] | INFO     | gui        | MainThread | QT: Home: transition to reswipeoff
+[06/13 14:42:37.361] | INFO     | gui        | MainThread | QT: Home: calling reswipeoff
+[06/13 14:42:37.364] | INFO     | gui        | MainThread | QT: MultiHome: transition to reswipeoff
+[06/13 14:42:37.368] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to processingoff
+[06/13 14:42:37.370] | INFO     | gui        | MainThread | QT: Home: transition to processingoff
+[06/13 14:42:37.373] | INFO     | gui        | MainThread | QT: MultiHome: transition to processingoff
+[06/13 14:42:37.377] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to declineoff
+[06/13 14:42:37.380] | INFO     | gui        | MainThread | QT: MultiHome: transition to declineoff
+[06/13 14:43:01.504] | INFO     | gui        | MainThread | QT: Home: transition to PSV_STATE_AVAILABLE
+[06/13 14:43:01.771] | INFO     | detection  | main_reactor | is_daytime(): URL https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0
+[06/13 14:43:01.874] | ERROR    | detection  | main_reactor | is_daytime: Error processing url https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0 read - exception <urlopen error [Errno 1] _ssl.c:504: error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure>
+[06/13 14:43:01.877] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[06/13 14:43:01.879] | INFO     | detection  | main_reactor | is_daytime(): URL https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0
+[06/13 14:43:01.981] | ERROR    | detection  | main_reactor | is_daytime: Error processing url https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0 read - exception <urlopen error [Errno 1] _ssl.c:504: error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure>
+[06/13 14:43:01.985] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[06/13 14:43:15.797] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 44056 rp_min_to_free 44056
+[06/13 14:43:57.679] | INFO     | mps.ui     | SentryJSONRPCServer | suspend_background_tasks(): change to True
+[06/13 14:43:57.681] | INFO     | parking_serv | SentryJSONRPCServer | suspend_transfers(): True
+[06/13 14:43:57.693] | INFO     | ui.multi   | SentryJSONRPCServer | set_state(): UI_STATE_IDLE performing pre_exit_state() actions UISI: screen touched
+[06/13 14:43:57.695] | INFO     | interaction | SentryJSONRPCServer | pre_exit_state(): completing actions before next_state UI_STATE_HOME
+[06/13 14:43:57.696] | INFO     | interaction | SentryJSONRPCServer | pre_exit_state(): completed actions complete True
+[06/13 14:43:57.699] | INFO     | ui.multi   | SentryJSONRPCServer | set_state(): UI_STATE_IDLE completed pre_exit_state() actions proceed True
+[06/13 14:43:57.701] | INFO     | ui.multi   | SentryJSONRPCServer | Secs in Idle 81152.742266
+[06/13 14:43:57.704] | INFO     | interaction | SentryJSONRPCServer | cash_out_or_void_payment: No payment
+[06/13 14:43:57.706] | INFO     | ui.multi   | SentryJSONRPCServer | CONFIRM FALSE
+[06/13 14:43:57.707] | INFO     | ui.multi   | SentryJSONRPCServer | UISH: enter_state active_spot is None
+[06/13 14:43:57.708] | INFO     | interaction | SentryJSONRPCServer | return_coins(): ignoring credit cards and returning coins
+[06/13 14:43:57.911] | INFO     | ui.multi   | SentryJSONRPCServer | CHECK POP  False
+[06/13 14:43:57.913] | INFO     | ui.multi   | SentryJSONRPCServer | UISH::enter_state(): No expired for None
+[06/13 14:43:57.933] | INFO     | gui        | SentryJSONRPCServer | Screen changed to SCREEN_MULTI_SELECT_SPACE en
+[06/13 14:43:57.936] | INFO     | playback   | SentryJSONRPCServer | play: en_space_number.mp3
+[06/13 14:43:57.938] | INFO     | gui        | MainThread | QT: MultiSelectSpace: transition to spacemapoff
+[06/13 14:43:57.955] | WARNING  | interaction | SentryJSONRPCServer | _stop_idle_timeout: NO TIMER
+[06/13 14:43:57.957] | INFO     | ui.multi   | SentryJSONRPCServer | UI_STATE_IDLE -> UI_STATE_HOME (UISI: screen touched)
+[06/13 14:43:57.996] | INFO     | gui        | MainThread | _signal_goto_screen: multi_select_space
+[06/13 14:43:58.005] | INFO     | gui        | MainThread | QT: Current:  multi_idle Next:  multi_select_space
+[06/13 14:44:02.857] | INFO     | detection  | main_reactor | is_daytime(): URL https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0
+[06/13 14:44:02.948] | ERROR    | detection  | main_reactor | is_daytime: Error processing url https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0 read - exception <urlopen error [Errno 1] _ssl.c:504: error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure>
+[06/13 14:44:02.954] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[06/13 14:44:02.958] | INFO     | detection  | main_reactor | is_daytime(): URL https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0
+[06/13 14:44:03.044] | ERROR    | detection  | main_reactor | is_daytime: Error processing url https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0 read - exception <urlopen error [Errno 1] _ssl.c:504: error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure>
+[06/13 14:44:03.049] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[06/13 14:44:04.574] | INFO     | interaction | SentryJSONRPCServer | on_test_automation_space_entered: SPACE 9000
+[06/13 14:44:04.580] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): user selected space 9000
+[06/13 14:44:04.584] | INFO     | gui        | MainThread | QT: MultiSelectSpace: transition to loadon
+[06/13 14:44:04.592] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/parking_event_user_entered_space-53237a74673611f1b719001395129121.json
+[06/13 14:44:04.602] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): check space 9000 for local
+[06/13 14:44:04.603] | WARNING  | interaction | main_reactor | _stop_idle_timeout: NO TIMER
+[06/13 14:44:04.615] | INFO     | parking.controller | main_reactor | map_space_to_spot: indx 0 spot SPOT_1
+[06/13 14:44:04.622] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): 9000 is a LOCAL space number, setting active spot SPOT_1
+[06/13 14:44:04.624] | INFO     | parking.session.SPOT_1 | main_reactor | is_init_grace(): None
+[06/13 14:44:04.627] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): has NOT paid for max time
+[06/13 14:44:05.310] | INFO     | interaction | main_reactor | set_active_spot: ACTIVE SPOT SPOT_1 /home/mpsadmin/projects/Sentry_test/src/mps/ui/multi_user_interaction.py:2750
+[06/13 14:44:05.313] | INFO     | interaction | main_reactor | set_active_spot(): to SPOT_1
+[06/13 14:44:05.324] | INFO     | parking.controller | main_reactor | set_active_spot(): to SPOT_1
+[06/13 14:44:05.773] | INFO     | ui.multi   | main_reactor | config_payment_acceptance: Caller /home/mpsadmin/projects/Sentry_test/src/mps/ui/multi_user_interaction.py:2756
+[06/13 14:44:05.776] | INFO     | ui.multi   | main_reactor | config_payment_acceptance(UISH(): LOCAL valid space number): is_rate_schedule_payment_allowed_now() = True
+[06/13 14:44:05.784] | INFO     | epay       | main_reactor | enable_credit_cards: enable True
+[06/13 14:44:05.786] | INFO     | interaction | main_reactor | accept_coins(): acceptor currently blocking - cfg to accept
+[06/13 14:44:05.788] | INFO     | coin       | main_reactor | accept_all_coins(): configuring acceptance
+[06/13 14:44:05.789] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): PSV PSV_STATE_AVAILABLE parking_state PARKING_STATE_EMPTY
+[06/13 14:44:05.793] | INFO     | gui        | main_reactor | prompt_on
+[06/13 14:44:05.795] | INFO     | playback   | main_reactor | play: en_coin_card.mp3
+[06/13 14:44:05.815] | INFO     | gui        | main_reactor | Screen changed to SCREEN_MULTI_HOME en
+[06/13 14:44:05.818] | INFO     | ui.multi   | main_reactor | update_last_session_data(): space 9000 spot_id SPOT_1 parking_session_id ba46655a673511f1a3c5001395129121 NO payment
+[06/13 14:44:05.843] | INFO     | gui        | MainThread | QT: MultiSelectSpace: transition to loadoff
+[06/13 14:44:05.851] | INFO     | gui        | MainThread | _signal_prompt_on
+[06/13 14:44:05.854] | INFO     | gui        | MainThread | QT: MultiHome: transition to prompton
+[06/13 14:44:05.905] | INFO     | gui        | MainThread | _signal_goto_screen: multi_home
+[06/13 14:44:05.907] | INFO     | gui        | MainThread | QT: Current:  multi_select_space Next:  multi_home
+[06/13 14:44:06.014] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"user_space_entered": "9000", "event_time": "2026-06-13T14:44:04Z", "mac_address": "00:13:95:12:91:21"}, "class": "event", "queued_dt": "2026-06-13T14:44:04Z", "type": "parking_event_user_entered_space", "id": "f2c39381-1b56-4eb9-8164-45d826b5cf60", "device_id": "m:001395129121"}
+[06/13 14:44:06.120] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at rabbitmq.staging.sentry-link.com:5671 (200): Normal shutdown
+[06/13 14:44:06.153] | INFO     | coin_event | Coin Vault | Coin acceptor configured to accept coins (command sent)
+[06/13 14:44:06.421] | INFO     | coin_event | Coin Vault | Info: REQUEST_MASTER_INHIBIT_STATUS indicates acceptor released
+[06/13 14:44:15.761] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 44055 rp_min_to_free 44055
+[06/13 14:44:15.865] | INFO     | mps.ui     | main_reactor | RESWIPE OFF
+[06/13 14:44:15.871] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to reswipeoff
+[06/13 14:44:15.875] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: calling reswipeoff
+[06/13 14:44:15.879] | INFO     | gui        | MainThread | QT: Home: transition to reswipeoff
+[06/13 14:44:15.881] | INFO     | ui.multi   | main_reactor | set_state(): UI_STATE_HOME performing pre_exit_state() actions _on_timeout(): 
+[06/13 14:44:15.885] | INFO     | gui        | MainThread | QT: Home: calling reswipeoff
+[06/13 14:44:15.890] | INFO     | interaction | main_reactor | pre_exit_state(): completing actions before next_state UI_STATE_IDLE
+[06/13 14:44:15.897] | INFO     | gui        | MainThread | QT: MultiHome: transition to reswipeoff
+[06/13 14:44:15.899] | INFO     | interaction | main_reactor | return_coins(): ignoring credit cards and returning coins
+[06/13 14:44:15.909] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to processingoff
+[06/13 14:44:15.911] | INFO     | epay       | main_reactor | enable_credit_cards: enable False
+[06/13 14:44:15.916] | INFO     | gui        | MainThread | QT: Home: transition to processingoff
+[06/13 14:44:15.919] | INFO     | interaction | main_reactor | return_coins(): acceptor currently accepting - cfg to reject
+[06/13 14:44:15.926] | INFO     | gui        | MainThread | QT: MultiHome: transition to processingoff
+[06/13 14:44:15.930] | INFO     | coin       | main_reactor | return_all_coins(): configuring rejection
+[06/13 14:44:15.938] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to declineoff
+[06/13 14:44:15.946] | INFO     | gui        | MainThread | QT: MultiHome: transition to declineoff
+[06/13 14:44:16.141] | INFO     | interaction | main_reactor | is_acceptor_blocked(): waiting for coin acceptor disabled confirmation
+[06/13 14:44:16.143] | INFO     | interaction | main_reactor | pre_exit_state(): coin acceptor is blocking with no new deposits
+[06/13 14:44:16.145] | INFO     | interaction | main_reactor | pre_exit_state(): completed actions complete True
+[06/13 14:44:16.149] | INFO     | ui.multi   | main_reactor | set_state(): UI_STATE_HOME completed pre_exit_state() actions proceed True
+[06/13 14:44:16.153] | INFO     | ui.multi   | main_reactor | clear_last_session_data(): cleared data
+[06/13 14:44:16.157] | INFO     | mps.ui     | main_reactor | concierge_reset
+[06/13 14:44:16.159] | INFO     | interaction | main_reactor | return_coins(): ignoring credit cards and returning coins
+[06/13 14:44:16.160] | INFO     | gui        | MainThread | QT: concierge_reset SPOT_1
+[06/13 14:44:16.163] | INFO     | gui        | MainThread | QT: ParkingSpotView: transition to conciergeReset
+[06/13 14:44:16.167] | INFO     | gui        | MainThread | QT: ParkingSpotView: conciergeReset
+[06/13 14:44:16.171] | INFO     | gui        | MainThread | QT: ParkingSpotView: transition to PSV_STATE_AVAILABLE
+[06/13 14:44:16.174] | INFO     | gui        | MainThread | QT: ParkingSpotView: PSV_STATE_AVAILABLE
+[06/13 14:44:16.362] | WARNING  | interaction | main_reactor | _stop_idle_timeout: NO TIMER
+[06/13 14:44:16.365] | INFO     | gui        | main_reactor | Screen changed to SCREEN_MULTI_IDLE en
+[06/13 14:44:16.368] | INFO     | gui        | MainThread | _signal_goto_screen: multi_idle
+[06/13 14:44:16.369] | INFO     | gui        | MainThread | QT: Current:  multi_home Next:  multi_idle
+[06/13 14:44:16.381] | INFO     | interaction | main_reactor | cash_out_or_void_payment: No payment
+[06/13 14:44:16.646] | INFO     | interaction | main_reactor | set_active_spot: ACTIVE SPOT None /home/mpsadmin/projects/Sentry_test/src/mps/ui/multi_user_interaction.py:1897
+[06/13 14:44:16.647] | INFO     | interaction | main_reactor | set_active_spot(): to None
+[06/13 14:44:16.649] | INFO     | parking.controller | main_reactor | set_active_spot(): to None
+[06/13 14:44:16.666] | INFO     | mps.ui     | main_reactor | suspend_background_tasks(): change to False
+[06/13 14:44:16.668] | INFO     | parking_serv | main_reactor | suspend_transfers(): False
+[06/13 14:44:16.669] | INFO     | epay       | main_reactor | auto_authorize(): Setting auto_authorize amount for 1000
+[06/13 14:44:16.696] | INFO     | ui.multi   | main_reactor | UI_STATE_HOME -> UI_STATE_IDLE (_on_timeout(): )
+[06/13 14:44:16.748] | INFO     | gui        | MainThread | QT: Home: transition to PSV_STATE_AVAILABLE
+[06/13 14:44:16.786] | INFO     | coin_event | Coin Vault | Coin acceptor configured to return coins
+[06/13 14:44:17.054] | INFO     | coin_event | Coin Vault | Info: REQUEST_MASTER_INHIBIT_STATUS indicates acceptor blocked
+[06/13 14:44:26.396] | INFO     | mps.ui     | main_reactor | RESWIPE OFF
+[06/13 14:44:26.412] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to reswipeoff
+[06/13 14:44:26.414] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: calling reswipeoff
+[06/13 14:44:26.416] | INFO     | gui        | MainThread | QT: Home: transition to reswipeoff
+[06/13 14:44:26.418] | INFO     | gui        | MainThread | QT: Home: calling reswipeoff
+[06/13 14:44:26.421] | INFO     | gui        | MainThread | QT: MultiHome: transition to reswipeoff
+[06/13 14:44:26.425] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to processingoff
+[06/13 14:44:26.427] | INFO     | gui        | MainThread | QT: Home: transition to processingoff
+[06/13 14:44:26.430] | INFO     | gui        | MainThread | QT: MultiHome: transition to processingoff
+[06/13 14:44:26.434] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to declineoff
+[06/13 14:44:26.437] | INFO     | gui        | MainThread | QT: MultiHome: transition to declineoff

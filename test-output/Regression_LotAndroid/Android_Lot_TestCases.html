@@ -1,0 +1,883 @@
+<html>
+<head>
+<title>TestNG:  Android_Lot_TestCases</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Android_Lot_TestCases</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>2/1/0</td>
+</tr><tr>
+<td>Started on:</td><td>Tue Aug 04 14:12:36 CDT 2026</td>
+</tr>
+<tr><td>Total time:</td><td>1298 seconds (1298709 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='AutomationCode.Android_Lot_TestCases.AL3000_LP_BN_UEV_VV_LE_VSPS()'><b>AL3000_LP_BN_UEV_VV_LE_VSPS</b><br>Test class: AutomationCode.Android_Lot_TestCases<br/>
+<a href="#Output-1490942261" onClick='toggleBox("Output-1490942261", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1490942261" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1490942261">
+************************************************************<br/>
+Environment:  SG                           <br/>
+Version:      SENTRYMOBILE-Staging-9.13.446.apk                             <br/>
+Municipality: Lot Automation                          <br/>
+Meter Name:   Lot Auto One                             <br/>
+Meter IP:     10.10.101.6                                  <br/>
+Meter Version:"openlot-mjm"
+                          <br/>
+Meter MD5SUM Version:                  <br/>
+Sentry Link Version:Version 9.8               <br/>
+SilverBullet Version:5.1.1-1            <br/>
+RemotePath:   http://localhost:4723                            <br/>
+AndroidUdid:  R5CT71MQ2MM                           <br/>
+************************************************************<br/>
+<font color='green'>Meter Start Time 19:18:</font><br/>
+****************METER MEMORY******************<br/>
+total		used		free<br/>
+4029936		329436		2681692<br/>
+***************TestCase Description*****************************<br/>
+LP: Lot Park                                                    <br/>
+BN: Boot Notice                                                 <br/>
+UEV: Unpermitted Entrance Violation                             <br/>
+VV: Violation Voided                                            <br/>
+LE: Lot Exit                                                    <br/>
+VSPS: Validate Sentry Parking Session                           <br/>
+****************************************************************<br/>
+strHeadless: True<br/>
+<font color='orange'>     SENTRYLINK_OpenLoginPage</font><br/>
+<font color='orange'>     SENTRYLINK_AdminLoginIn</font><br/>
+The (Login) page existed<br/>
+<font color='orange'>     SENTRYLINK_UserLoginIn</font><br/>
+The text name (Version) value (Version 9.8) was stored as variable name (strSentryLinkVersion)<br/>
+The (Login) field(s) were populated correctly - Values(Email,z3lotautomationadmin@gmail.com|Password,z3LotAutomationadmin10!)<br/>
+The Button (Sign in) with index (1) was clicked successfully<br/>
+<font color='orange'>     SENTRYLINK_NavigateToPage2-Editing Municipality</font><br/>
+The Link (Lot Automation) with index (1) was clicked successfully.<br/>
+The Link (Lot Automation) with index (1) was clicked successfully.<br/>
+The text name (UserName) value (z3LotAutomation admin) was stored as variable name (strVarUserName)<br/>
+The Link (z3LotAutomation admin) with index (1) was clicked successfully.<br/>
+The Link (z3LotAutomation admin) with index (1) was clicked successfully.<br/>
+The Link (SentryLink Admin) with index (1) was clicked successfully.<br/>
+The Link (SentryLink Admin) with index (1) was clicked successfully.<br/>
+The link (Edit) in row (33) of the (Municipalities) table was clicked successfully<br/>
+The Link (Ticket Services) with index (1) was clicked successfully.<br/>
+The Link (Ticket Services) with index (1) was clicked successfully.<br/>
+The (Ticket Service) field(s) were populated correctly - Values(Enabled,UnChecked|Primary service,UnChecked)<br/>
+The Button (Submit) with index (1) was clicked successfully<br/>
+The Link (Ticket Services) with index (1) was clicked successfully.<br/>
+The Link (Ticket Services) with index (1) was clicked successfully.<br/>
+The (Ticket Service) field(s) were populated correctly - Values(Enabled,Checked|Primary service,Checked)<br/>
+The Button (Submit) with index (1) was clicked successfully<br/>
+The Link (Ticket Services) with index (1) was clicked successfully.<br/>
+The Link (Ticket Services) with index (1) was clicked successfully.<br/>
+strHeadless: True<br/>
+<font color='orange'>     SENTRYLINK_OpenLoginPage</font><br/>
+<font color='orange'>     SENTRYLINK_AdminLoginIn</font><br/>
+The (Login) page existed<br/>
+<font color='orange'>     SENTRYLINK_UserLoginIn</font><br/>
+The text name (Version) value (Version 9.8) was stored as variable name (strSentryLinkVersion)<br/>
+The (Login) field(s) were populated correctly - Values(Email,z3lotautomationadmin@gmail.com|Password,z3LotAutomationadmin10!)<br/>
+The Button (Sign in) with index (1) was clicked successfully<br/>
+<font color='orange'>     SENTRYLINK_NavigateToPage2-Editing Municipality</font><br/>
+The Link (Lot Automation) with index (1) was clicked successfully.<br/>
+The Link (Lot Automation) with index (1) was clicked successfully.<br/>
+The text name (UserName) value (z3LotAutomation admin) was stored as variable name (strVarUserName)<br/>
+The Link (z3LotAutomation admin) with index (1) was clicked successfully.<br/>
+The Link (z3LotAutomation admin) with index (1) was clicked successfully.<br/>
+The Link (SentryLink Admin) with index (1) was clicked successfully.<br/>
+The Link (SentryLink Admin) with index (1) was clicked successfully.<br/>
+The link (Edit) in row (33) of the (Municipalities) table was clicked successfully<br/>
+The Link (Lookup Services) with index (1) was clicked successfully.<br/>
+The Link (Lookup Services) with index (1) was clicked successfully.<br/>
+The (Owner Lookup Service) field(s) were populated correctly - Values(Enabled,UnChecked|Primary service,UnChecked)<br/>
+The Button (Submit) with index (1) was clicked successfully<br/>
+The Link (Lookup Services) with index (1) was clicked successfully.<br/>
+The Link (Lookup Services) with index (1) was clicked successfully.<br/>
+The (Owner Lookup Service) field(s) were populated correctly - Values(Enabled,Checked|Primary service,Checked)<br/>
+The Button (Submit) with index (1) was clicked successfully<br/>
+The Link (Lookup Services) with index (1) was clicked successfully.<br/>
+The Link (Lookup Services) with index (1) was clicked successfully.<br/>
+strHeadless: True<br/>
+<font color='orange'>     SENTRYLINK_OpenLoginPage</font><br/>
+<font color='orange'>     SENTRYLINK_AdminLoginIn</font><br/>
+The (Login) page existed<br/>
+<font color='orange'>     SENTRYLINK_UserLoginIn</font><br/>
+The text name (Version) value (Version 9.8) was stored as variable name (strSentryLinkVersion)<br/>
+The (Login) field(s) were populated correctly - Values(Email,z3lotautomationadmin@gmail.com|Password,z3LotAutomationadmin10!)<br/>
+The Button (Sign in) with index (1) was clicked successfully<br/>
+<font color='orange'>     SENTRYLINK_NavigateToPage2-Lot Group</font><br/>
+The Link (Lot Automation) with index (1) was clicked successfully.<br/>
+The Link (Lot Automation) with index (1) was clicked successfully.<br/>
+The Link (Settings) with index (1) was clicked successfully.<br/>
+The Link (Settings) with index (1) was clicked successfully.<br/>
+The Link (Lot Auto One) with index (1) was clicked successfully.<br/>
+The Link (Lot Auto One) with index (1) was clicked successfully.<br/>
+The Link (Kiosks) with index (1) was clicked successfully.<br/>
+The Link (Kiosks) with index (1) was clicked successfully.<br/>
+The Button (Edit This Open Parking Lot) with index (1) was clicked successfully<br/>
+The (Ticket Service) field(s) were populated correctly - Values(Ticket Service,Lob Mailing|Lookup Service,AutomationLookUp)<br/>
+The Button (Update) with index (1) was clicked successfully<br/>
+strHeadless: True<br/>
+<font color='orange'>     SENTRYLINK_OpenLoginPage</font><br/>
+<font color='orange'>     SENTRYLINK_AdminLoginIn</font><br/>
+The (Login) page existed<br/>
+<font color='orange'>     SENTRYLINK_UserLoginIn</font><br/>
+The text name (Version) value (Version 9.8) was stored as variable name (strSentryLinkVersion)<br/>
+The (Login) field(s) were populated correctly - Values(Email,z3lotautomationadmin@gmail.com|Password,z3LotAutomationadmin10!)<br/>
+The Button (Sign in) with index (1) was clicked successfully<br/>
+<font color='orange'>     SENTRYLINK_NavigateToPage2-Lot Group</font><br/>
+The Link (Lot Automation) with index (1) was clicked successfully.<br/>
+The Link (Lot Automation) with index (1) was clicked successfully.<br/>
+The Link (Settings) with index (1) was clicked successfully.<br/>
+The Link (Settings) with index (1) was clicked successfully.<br/>
+The Link (Lot Auto One) with index (1) was clicked successfully.<br/>
+The Link (Lot Auto One) with index (1) was clicked successfully.<br/>
+The Link (Kiosks) with index (1) was clicked successfully.<br/>
+The Link (Kiosks) with index (1) was clicked successfully.<br/>
+The Button (Edit This Open Parking Lot) with index (1) was clicked successfully<br/>
+The (Can unlock violations) field(s) were populated correctly - Values(Can unlock violations,UnChecked)<br/>
+The (Consumer Concierge Settings) field(s) were populated correctly - Values(Parking init grace period,60|Parking violation grace period,0|Parking maximum duration minutes,14400)<br/>
+The Button (Update) with index (1) was clicked successfully<br/>
+The Text (Lot was successfully updated) with index (1) contained (Lot was successfully updated.)<br/>
+<font color='orange'>     StoreJsonAdminToken</font><br/>
+The value (13633) was stored as variable name (strJsonUserId)<br/>
+The value (96x1p3vqY6XTRyHrxvR7) was stored as variable name (strJsonToken)<br/>
+<font color='orange'>     StoreJsonAdminToken</font><br/>
+The value (96x1p3vqY6XTRyHrxvR7) was stored as variable name (strJsonToken)<br/>
+<font color='orange'>     SENTRYLINK_KioskDeleteFreeAndNoParkingRateSetFromRateBlock</font><br/>
+The strKioskId was set to (2794)-Sentry Meter<br/>
+strHeadless: True<br/>
+<font color='orange'>     SENTRYLINK_OpenLoginPage</font><br/>
+The (Login) page existed<br/>
+<font color='orange'>     SENTRYLINK_UserLoginIn</font><br/>
+The text name (Version) value (Version 9.8) was stored as variable name (strSentryLinkVersion)<br/>
+The (Login) field(s) were populated correctly - Values(Email,z3lotautomationadmin@gmail.com|Password,z3LotAutomationadmin10!)<br/>
+The Button (Sign in) with index (1) was clicked successfully<br/>
+<font color='orange'>     SENTRYLINK_NavigateToPage2-Kiosk Rate Block Group</font><br/>
+Rate Block Group path: https://lotautomation.staging.sentry-link.com/devices/kiosks/2794<br/>
+The Link (LotAutomationRateBlockGroup6) with index (1) was clicked successfully.<br/>
+The Link (LotAutomationRateBlockGroup6) with index (1) was clicked successfully.<br/>
+The Link (FixedRateBlock) with index (1) was clicked successfully.<br/>
+The Link (FixedRateBlock) with index (1) was clicked successfully.<br/>
+The Button (Delete Rate Block) with index (1) was clicked successfully<br/>
+The Button (Send to all) with index (1) was clicked successfully<br/>
+<font color='green'>The Python Script (parking_delete_rate_blk.py 641591) was executed successfully on host (10.10.101.6)-System Time: 02:21:17 UTC Time:19:21:17.093</font><br/>
+<font color='orange'>     SENTRYMETER_UpdateKioskSetting</font><br/>
+<font color='green'>The Python Script (set_initgrace.py 60) was executed successfully on host (10.10.101.6)-System Time: 02:21:19 UTC Time:19:21:19.903</font><br/>
+<font color='green'>The Python Script (set_no_parking_grace.py 0) was executed successfully on host (10.10.101.6)-System Time: 02:21:20 UTC Time:19:21:20.204</font><br/>
+<font color='green'>The Python Script (set_violation_grace.py 0) was executed successfully on host (10.10.101.6)-System Time: 02:21:20 UTC Time:19:21:20.508</font><br/>
+<font color='green'>The Python Script (set_free_time_first_payment.py 0) was executed successfully on host (10.10.101.6)-System Time: 02:21:20 UTC Time:19:21:20.824</font><br/>
+<font color='green'>The Python Script (set_apply_payment_screen_timeout.py 5) was executed successfully on host (10.10.101.6)-System Time: 02:21:21 UTC Time:19:21:21.123</font><br/>
+<font color='green'>The Python Script (settings_set_setting_false.py PARKING_PAY_BY_PLATE) was executed successfully on host (10.10.101.6)-System Time: 02:21:21 UTC Time:19:21:21.426</font><br/>
+<font color='green'>The Python Script (set_free_disconnect_on.py) was executed successfully on host (10.10.101.6)-System Time: 02:21:21 UTC Time:19:21:21.727</font><br/>
+<font color='green'>The Python Script (set_unlock_off.py) was executed successfully on host (10.10.101.6)-System Time: 02:21:22 UTC Time:19:21:22.035</font><br/>
+<font color='green'>The Python Script (settings_set_setting_false.py PARKING_TRUEUP_ENABLED) was executed successfully on host (10.10.101.6)-System Time: 02:21:22 UTC Time:19:21:22.333</font><br/>
+<font color='green'>The Python Script (set_unlock_time.py 1) was executed successfully on host (10.10.101.6)-System Time: 02:21:22 UTC Time:19:21:22.657</font><br/>
+<font color='green'>The Python Script (set_unlock_max.py 1) was executed successfully on host (10.10.101.6)-System Time: 02:21:22 UTC Time:19:21:22.956</font><br/>
+<font color='green'>The Python Script (set_image_send_before_violation.py 45) was executed successfully on host (10.10.101.6)-System Time: 02:21:23 UTC Time:19:21:23.259</font><br/>
+<font color='green'>The Python Script (set_maximum_duration.py 240) was executed successfully on host (10.10.101.6)-System Time: 02:21:23 UTC Time:19:21:23.565</font><br/>
+<font color='green'>The Python Script (set_parking_short_session.py 15) was executed successfully on host (10.10.101.6)-System Time: 02:21:23 UTC Time:19:21:23.853</font><br/>
+<font color='green'>The Python Script (settings_set_setting.py PARKING_RATE_DEFAULT_MINIMUM_TIME 60) was executed successfully on host (10.10.101.6)-System Time: 02:21:24 UTC Time:19:21:24.163</font><br/>
+<font color='green'>The Python Script (settings_set_setting_false.py SYS_OUT_OF_SERVICE) was executed successfully on host (10.10.101.6)-System Time: 02:21:24 UTC Time:19:21:24.462</font><br/>
+<font color='orange'>   SENTRYLINK_KioskUpdateRateSetValues</font><br/>
+***********Current Meter Rate Blocks*************10.10.101.6<br/>
+{"disconnect_free": true, "block_type": "fixed", "block_id": -1, "default_minimum_cost": 75, "schedule": {"start_time": "00:00", "valid_days": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"], "start_date": null, "end_date": null, "end_time": "23:59"}, "unenforced": false, "default_minimum_time": 0, "rate": {"senior_minutes": 30, "muni_price": 25, "senior_max_time": 120, "price": 25, "veteran_max_time": 120, "senior_price": 25, "muni_max_time": 120, "handicap_minutes": 30, "handicap_price": 25, "veteran_minutes": 30, "veteran_price": 25, "muni_minutes": 30, "max_time": 120, "handicap_max_time": 120, "minutes": 30}, "card_increment_time": 30, "first_payment_free_time": 0, "maximum_duration_minutes": 120, "priority": -2147483647, "free_time_first_payment": 0, "max_time": 120, "mins_accept_free_before_rate": 60}q<br/>
+*************************************************<br/>
+Previous Rate Block Id--1<br/>
+The value (pyY27somvuhA6bzmsj-j) was stored as variable name (strJsonToken)<br/>
+strHeadless: True<br/>
+<font color='orange'>     SENTRYLINK_OpenLoginPage</font><br/>
+<font color='orange'>     SENTRYLINK_AdminLoginIn</font><br/>
+The (Login) page existed<br/>
+<font color='orange'>     SENTRYLINK_UserLoginIn</font><br/>
+The text name (Version) value (Version 9.8) was stored as variable name (strSentryLinkVersion)<br/>
+The (Login) field(s) were populated correctly - Values(Email,z3lotautomationadmin@gmail.com|Password,z3LotAutomationadmin10!)<br/>
+The Button (Sign in) with index (1) was clicked successfully<br/>
+<font color='orange'>     SENTRYLINK_NavigateToPage2-Showing Kiosk</font><br/>
+The Link (Rate Sets) with index (1) was clicked successfully.<br/>
+The Link (Rate Sets) with index (1) was clicked successfully.<br/>
+<font color='orange'>     SENTRYLINK_UpdateRateSet</font><br/>
+The Link (LotAutomationRateSet6Fixed) with index (1) was clicked successfully.<br/>
+The Link (LotAutomationRateSet6Fixed) with index (1) was clicked successfully.<br/>
+The Button (Edit) with index (1) was clicked successfully<br/>
+<font color='orange'>     SENTRYLINK_PopulateFixedRateBlock</font><br/>
+The (Free Time with Free Payment) field(s) were populated correctly - Values(Maximum Duration,240|Coin Time Puchase Limit,240|Free Time with First Payment,0|Credit Card Increment Time,15|Initial Grace,1|Violation Grace,0|Handicap Initial Grace,0|Handicap Violation Grace,0|No Parking Grace,0|Default Minimum Cost,0|Default Minimum Time,0)<br/>
+The (Rate Set) field(s) were populated correctly - Values(Family,Normal)<br/>
+The (Buys Minutes) field(s) were populated correctly - Values(Price,25|Buys Minutes,15|Max Time,240)<br/>
+The Button (Save) with index (1) was clicked successfully<br/>
+The Button (Save Rate Set) with index (1) was clicked successfully<br/>
+The Link (Rate Block Groups) with index (1) was clicked successfully.<br/>
+The Link (Rate Block Groups) with index (1) was clicked successfully.<br/>
+The Link (LotAutomationRateBlockGroup6) with index (1) was clicked successfully.<br/>
+The Link (LotAutomationRateBlockGroup6) with index (1) was clicked successfully.<br/>
+The (Add Set to This Group) field(s) were populated correctly - Values(Add Set to This Group,LotAutomationRateSet6Fixed)<br/>
+The Button (Add Set to This Group) with index (1) was clicked successfully<br/>
+The TextField (Rate Block Name) existed on page (Rate Block Setting)-GlobalObjectWait<br/>
+The (Specific Times of Day) field(s) were populated correctly - Values(Rate Block Name,FixedRateBlock|Start Date,05/29/2026|Time Options,All Day)<br/>
+The Button (Save Rate Block) with index (1) was clicked successfully<br/>
+The Button (Send to all) with index (1) was clicked successfully<br/>
+GlobalWait: Rate Block values existed that were not -1<br/>
+Current Rate Block Id-641592<br/>
+***********Current Meter Rate Blocks*************10.10.101.6<br/>
+{"disconnect_free": true, "block_type": "fixed", "block_id": 641592, "default_minimum_cost": 0, "schedule": {"start_time": "00:00", "valid_days": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"], "start_date": "2026-05-29", "end_date": "2030-08-04", "end_time": "23:59"}, "unenforced": false, "default_minimum_time": 0, "rate": {"senior_minutes": 15, "muni_price": 25, "senior_max_time": 240, "price": 25, "veteran_max_time": 240, "senior_price": 25, "muni_max_time": 240, "handicap_minutes": 15, "handicap_price": 25, "veteran_minutes": 15, "veteran_price": 25, "muni_minutes": 15, "max_time": 240, "handicap_max_time": 240, "minutes": 15}, "card_increment_time": 15, "first_payment_free_time": 0, "maximum_duration_minutes": 240, "priority": 7, "free_time_first_payment": 0, "max_time": 240, "mins_accept_free_before_rate": 60}q<br/>
+{"disconnect_free": true, "block_type": "fixed", "block_id": -1, "default_minimum_cost": 75, "schedule": {"start_time": "00:00", "valid_days": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"], "start_date": null, "end_date": null, "end_time": "23:59"}, "unenforced": false, "default_minimum_time": 0, "rate": {"senior_minutes": 30, "muni_price": 25, "senior_max_time": 120, "price": 25, "veteran_max_time": 120, "senior_price": 25, "muni_max_time": 120, "handicap_minutes": 30, "handicap_price": 25, "veteran_minutes": 30, "veteran_price": 25, "muni_minutes": 30, "max_time": 120, "handicap_max_time": 120, "minutes": 30}, "card_increment_time": 30, "first_payment_free_time": 0, "maximum_duration_minutes": 120, "priority": -2147483647, "free_time_first_payment": 0, "max_time": 120, "mins_accept_free_before_rate": 60}q<br/>
+*************************************************<br/>
+The value (13634) was stored as variable name (strJsonUserId)<br/>
+strConciergeEnrolled: false<br/>
+The user was already deenrolled in Concierge<br/>
+<font color='orange'>     SENTRYMETER_UpdateMetertSetting</font><br/>
+<font color='green'>The Python Script (set_initgrace.py 60) was executed successfully on host (10.10.101.6)-System Time: 02:22:46 UTC Time:19:22:46.099</font><br/>
+<font color='green'>The Python Script (set_no_parking_grace.py 0) was executed successfully on host (10.10.101.6)-System Time: 02:22:46 UTC Time:19:22:46.403</font><br/>
+<font color='green'>The Python Script (set_violation_grace.py 0) was executed successfully on host (10.10.101.6)-System Time: 02:22:46 UTC Time:19:22:46.708</font><br/>
+<font color='green'>The Python Script (set_free_time_first_payment.py 0) was executed successfully on host (10.10.101.6)-System Time: 02:22:47 UTC Time:19:22:47.018</font><br/>
+<font color='green'>The Python Script (set_apply_payment_screen_timeout.py 5) was executed successfully on host (10.10.101.6)-System Time: 02:22:47 UTC Time:19:22:47.342</font><br/>
+<font color='green'>The Python Script (settings_set_setting_false.py PARKING_PAY_BY_PLATE) was executed successfully on host (10.10.101.6)-System Time: 02:22:47 UTC Time:19:22:47.640</font><br/>
+<font color='green'>The Python Script (set_free_disconnect_on.py) was executed successfully on host (10.10.101.6)-System Time: 02:22:47 UTC Time:19:22:47.957</font><br/>
+<font color='green'>The Python Script (set_unlock_off.py) was executed successfully on host (10.10.101.6)-System Time: 02:22:48 UTC Time:19:22:48.252</font><br/>
+<font color='green'>The Python Script (settings_set_setting_false.py PARKING_TRUEUP_ENABLED) was executed successfully on host (10.10.101.6)-System Time: 02:22:48 UTC Time:19:22:48.568</font><br/>
+<font color='green'>The Python Script (set_unlock_time.py 1) was executed successfully on host (10.10.101.6)-System Time: 02:22:48 UTC Time:19:22:48.851</font><br/>
+<font color='green'>The Python Script (set_unlock_max.py 1) was executed successfully on host (10.10.101.6)-System Time: 02:22:49 UTC Time:19:22:49.164</font><br/>
+<font color='green'>The Python Script (set_image_send_before_violation.py 45) was executed successfully on host (10.10.101.6)-System Time: 02:22:49 UTC Time:19:22:49.451</font><br/>
+<font color='green'>The Python Script (set_maximum_duration.py 240) was executed successfully on host (10.10.101.6)-System Time: 02:22:49 UTC Time:19:22:49.750</font><br/>
+<font color='green'>The Python Script (set_parking_short_session.py 15) was executed successfully on host (10.10.101.6)-System Time: 02:22:50 UTC Time:19:22:50.054</font><br/>
+<font color='green'>The Python Script (settings_set_setting.py PARKING_RATE_DEFAULT_MINIMUM_TIME 60) was executed successfully on host (10.10.101.6)-System Time: 02:22:50 UTC Time:19:22:50.347</font><br/>
+<font color='green'>The Python Script (settings_set_setting_false.py SYS_OUT_OF_SERVICE) was executed successfully on host (10.10.101.6)-System Time: 02:22:50 UTC Time:19:22:50.647</font><br/>
+The vehicle with license plate (LA1LOTAA) and State (MN) has exited the lot<br/>
+strHeadless: True<br/>
+<font color='orange'>     SENTRYLINK_OpenLoginPage</font><br/>
+<font color='orange'>     SENTRYLINK_AdminLoginIn</font><br/>
+The (Login) page existed<br/>
+<font color='orange'>     SENTRYLINK_UserLoginIn</font><br/>
+The text name (Version) value (Version 9.8) was stored as variable name (strSentryLinkVersion)<br/>
+The (Login) field(s) were populated correctly - Values(Email,z3lotautomationadmin@gmail.com|Password,z3LotAutomationadmin10!)<br/>
+The Button (Sign in) with index (1) was clicked successfully<br/>
+<font color='orange'>     SENTRYLINK_NavigateToPage2-Permit Groups</font><br/>
+The Link (Lot Automation) with index (1) was clicked successfully.<br/>
+The Link (Lot Automation) with index (1) was clicked successfully.<br/>
+The Link (Settings) with index (1) was clicked successfully.<br/>
+The Link (Settings) with index (1) was clicked successfully.<br/>
+The Link (Permit Groups) with index (1) was clicked successfully.<br/>
+The Link (Permit Groups) with index (1) was clicked successfully.<br/>
+The Link (Student) with index (1) was clicked successfully.<br/>
+The Link (Student) with index (1) was clicked successfully.<br/>
+The Button (View Permit Rates) with index (1) was clicked successfully<br/>
+The Link (Hourly 1) with index (1) was clicked successfully.<br/>
+The Link (Hourly 1) with index (1) was clicked successfully.<br/>
+The (New Permit Rate) field(s) were populated correctly - Values(Sunday,Checked|Monday,Checked|Tuesday,Checked|Wednesday,Checked|Thursday,Checked|Friday,Checked|Saturday,Checked|Min,1|Max,4|Base,0.00|Rate,2.00|Start hour,7|End hour,23|Permit Holder category,|Sales tax rate,(0.000%)-Lot Auto One-ParkingFeeLineItem|Enabled from,2026/07/28|Enabled to,2026/08/11)<br/>
+The Button (Save Permit Rate) with index (1) was clicked successfully<br/>
+The Button (Resend Permit Rates to Kiosks) with index (1) was clicked successfully<br/>
+<font color='orange'>     StoreJsonAdminToken</font><br/>
+The value (96x1p3vqY6XTRyHrxvR7) was stored as variable name (strJsonToken)<br/>
+<font color='orange'>     StoreJsonAdminToken</font><br/>
+The value (96x1p3vqY6XTRyHrxvR7) was stored as variable name (strJsonToken)<br/>
+The Parking Permint (428217) was Deleted<br/>
+The value (pyY27somvuhA6bzmsj-j) was stored as variable name (strJsonToken)<br/>
+<font color='orange'>     StoreJsonAdminToken</font><br/>
+The value (96x1p3vqY6XTRyHrxvR7) was stored as variable name (strJsonToken)<br/>
+The License Plate (LA1LOTAA) for state (Minnesota) was added for user (z3lotautomationparker@gmail.com)<br/>
+strParkTimestamp: 2:23 PM<br/>
+The vehicle with license plate (LA1LOTAA) and State (MN) has entered the lot<br/>
+The value (pyY27somvuhA6bzmsj-j) was stored as variable name (strJsonToken)<br/>
+The value (96x1p3vqY6XTRyHrxvR7) was stored as variable name (strJsonToken)<br/>
+<font color='Green'>Meter End Time 19:25:</font><br/>
+Unable to take screenshot: driver is null.<br/>
+<font color='green'>The Python Script (testautof_touch_screen.py) was executed successfully on host (10.10.101.6)-System Time: 02:25:57 UTC Time:19:25:57.786</font><br/>
+The meter UI State equaled () on spot (1)-UTC: 19:26:01.228<br/>
+<font color='green'>The Python Script (testautof_touch_screen.py) was executed successfully on host (10.10.101.6)-System Time: 02:26:01 UTC Time:19:26:01.527</font><br/>
+<a href=https://i.imgur.com/gLzni7R.png/>Meter Screen Shot</a><br/>
+<img src="https://i.imgur.com/gLzni7R.png" alt=""/><br /><br/>
+Local meter log did not contain Callstack<br/>
+Local meter log did not contain STACKTRACE<br/>
+Local meter log did not contain Traceback<br/>
+Local meter log did not contain Space Failed To Load error<br/>
+Error Remain Parked (15) seconds-Spot 1<br/>
+</div>
+</td>
+<td><div><pre>java.lang.AssertionError: There was no Violation in Sentry Link For This Session
+	at AutomationCode.CommonWeb.UpdateErrorMessageWithPivotalData(CommonWeb.java:1265)
+	at AutomationCode.HttpConnections.GetJsonViolationIdUsingParkingSession(HttpConnections.java:6207)
+	at AutomationCode.Android_Lot_TestCases.AL3000_LP_BN_UEV_VV_LE_VSPS(Android_Lot_TestCases.java:7656)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+... Removed 15 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1490942261", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1490942261'><pre>java.lang.AssertionError: There was no Violation in Sentry Link For This Session
+	at org.testng.Assert.fail(Assert.java:96)
+	at AutomationCode.CommonWeb.UpdateErrorMessageWithPivotalData(CommonWeb.java:1265)
+	at AutomationCode.HttpConnections.GetJsonViolationIdUsingParkingSession(HttpConnections.java:6207)
+	at AutomationCode.Android_Lot_TestCases.AL3000_LP_BN_UEV_VV_LE_VSPS(Android_Lot_TestCases.java:7656)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:40)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:489)
+	at org.testng.internal.thread.ThreadUtil$1.call(ThreadUtil.java:52)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+</pre></div></td>
+<td>478</td>
+<td>AutomationCode.Android_Lot_TestCases@441772e</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='AutomationCode.Android_Lot_TestCases.AL2801_UL_LP_PPK_VCAPS_LE_VSPS()'><b>AL2801_UL_LP_PPK_VCAPS_LE_VSPS</b><br>Test class: AutomationCode.Android_Lot_TestCases<br/>
+<a href="#Output-1929528278" onClick='toggleBox("Output-1929528278", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1929528278" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1929528278">
+************************************************************<br/>
+Environment:  SG                           <br/>
+Version:      SENTRYMOBILE-Staging-9.13.446.apk                             <br/>
+Municipality: Lot Automation                          <br/>
+Meter Name:   Lot Auto One                             <br/>
+Meter IP:     10.10.101.6                                  <br/>
+Meter Version:"openlot-mjm"
+                          <br/>
+Meter MD5SUM Version:                  <br/>
+Sentry Link Version:Version 9.8               <br/>
+SilverBullet Version:5.1.1-1            <br/>
+RemotePath:   http://localhost:4723                            <br/>
+AndroidUdid:  R5CT71MQ2MM                           <br/>
+************************************************************<br/>
+<font color='green'>Meter Start Time 19:12:</font><br/>
+****************METER MEMORY******************<br/>
+total		used		free<br/>
+4029936		324984		2680040<br/>
+***************TestCase Description*****************************<br/>
+UL: Unlock                                                      <br/>
+LP: Lot Park                                                    <br/>
+PPK: Purchase Permit Kiosk                                      <br/>
+VCAPS: Validate CA Parking Session                              <br/>
+LE: Lot Exit                                                    <br/>
+VSPS: Validate Sentry Parking Session                           <br/>
+****************************************************************<br/>
+<font color='orange'>     SENTRYMETER_UpdateMetertSetting</font><br/>
+<font color='green'>The Python Script (set_initgrace.py 600) was executed successfully on host (10.10.101.6)-System Time: 02:12:44 UTC Time:19:12:44.204</font><br/>
+<font color='green'>The Python Script (set_no_parking_grace.py 0) was executed successfully on host (10.10.101.6)-System Time: 02:12:44 UTC Time:19:12:44.513</font><br/>
+<font color='green'>The Python Script (set_violation_grace.py 0) was executed successfully on host (10.10.101.6)-System Time: 02:12:44 UTC Time:19:12:44.821</font><br/>
+<font color='green'>The Python Script (set_free_time_first_payment.py 0) was executed successfully on host (10.10.101.6)-System Time: 02:12:45 UTC Time:19:12:45.132</font><br/>
+<font color='green'>The Python Script (set_apply_payment_screen_timeout.py 5) was executed successfully on host (10.10.101.6)-System Time: 02:12:45 UTC Time:19:12:45.434</font><br/>
+<font color='green'>The Python Script (settings_set_setting_false.py PARKING_PAY_BY_PLATE) was executed successfully on host (10.10.101.6)-System Time: 02:12:45 UTC Time:19:12:45.755</font><br/>
+<font color='green'>The Python Script (set_free_disconnect_on.py) was executed successfully on host (10.10.101.6)-System Time: 02:12:46 UTC Time:19:12:46.107</font><br/>
+<font color='green'>The Python Script (settings_set_setting_true.py PARKING_SHOW_UNLOCK_TIME) was executed successfully on host (10.10.101.6)-System Time: 02:12:46 UTC Time:19:12:46.404</font><br/>
+<font color='green'>The Python Script (set_unlock_on.py) was executed successfully on host (10.10.101.6)-System Time: 02:12:46 UTC Time:19:12:46.718</font><br/>
+<font color='green'>The Python Script (settings_set_setting_false.py PARKING_TRUEUP_ENABLED) was executed successfully on host (10.10.101.6)-System Time: 02:12:47 UTC Time:19:12:47.010</font><br/>
+<font color='green'>The Python Script (set_unlock_time.py 1) was executed successfully on host (10.10.101.6)-System Time: 02:12:47 UTC Time:19:12:47.306</font><br/>
+<font color='green'>The Python Script (set_unlock_max.py 1) was executed successfully on host (10.10.101.6)-System Time: 02:12:47 UTC Time:19:12:47.629</font><br/>
+<font color='green'>The Python Script (set_image_send_before_violation.py 45) was executed successfully on host (10.10.101.6)-System Time: 02:12:47 UTC Time:19:12:47.924</font><br/>
+<font color='green'>The Python Script (set_maximum_duration.py 240) was executed successfully on host (10.10.101.6)-System Time: 02:12:48 UTC Time:19:12:48.231</font><br/>
+<font color='green'>The Python Script (set_parking_short_session.py 15) was executed successfully on host (10.10.101.6)-System Time: 02:12:48 UTC Time:19:12:48.536</font><br/>
+<font color='green'>The Python Script (settings_set_setting.py PARKING_RATE_DEFAULT_MINIMUM_TIME 60) was executed successfully on host (10.10.101.6)-System Time: 02:12:48 UTC Time:19:12:48.845</font><br/>
+<font color='green'>The Python Script (settings_set_setting_false.py SYS_OUT_OF_SERVICE) was executed successfully on host (10.10.101.6)-System Time: 02:12:49 UTC Time:19:12:49.144</font><br/>
+The vehicle with license plate (LA1LOTAA) and State (MN) has exited the lot<br/>
+<font color='orange'>     StoreJsonAdminToken</font><br/>
+The value (13633) was stored as variable name (strJsonUserId)<br/>
+The value (96x1p3vqY6XTRyHrxvR7) was stored as variable name (strJsonToken)<br/>
+<font color='orange'>     StoreJsonAdminToken</font><br/>
+The value (96x1p3vqY6XTRyHrxvR7) was stored as variable name (strJsonToken)<br/>
+The Parking Permint (428216) was Deleted<br/>
+The value (pyY27somvuhA6bzmsj-j) was stored as variable name (strJsonToken)<br/>
+The value (13634) was stored as variable name (strJsonUserId)<br/>
+The value (pyY27somvuhA6bzmsj-j) was stored as variable name (strJsonToken)<br/>
+<font color='orange'>     StoreJsonAdminToken</font><br/>
+The value (96x1p3vqY6XTRyHrxvR7) was stored as variable name (strJsonToken)<br/>
+The License Plate (LA1LOTAA) for state (Minnesota) was added for user (z3lotautomationparker@gmail.com)<br/>
+strHeadless: True<br/>
+<font color='orange'>     SENTRYLINK_OpenLoginPage</font><br/>
+<font color='orange'>     SENTRYLINK_AdminLoginIn</font><br/>
+The (Login) page existed<br/>
+<font color='orange'>     SENTRYLINK_UserLoginIn</font><br/>
+The text name (Version) value (Version 9.8) was stored as variable name (strSentryLinkVersion)<br/>
+The (Login) field(s) were populated correctly - Values(Email,z3lotautomationadmin@gmail.com|Password,z3LotAutomationadmin10!)<br/>
+The Button (Sign in) with index (1) was clicked successfully<br/>
+<font color='orange'>     SENTRYLINK_NavigateToPage2-Permit Groups</font><br/>
+The Link (Lot Automation) with index (1) was clicked successfully.<br/>
+The Link (Lot Automation) with index (1) was clicked successfully.<br/>
+The Link (Settings) with index (1) was clicked successfully.<br/>
+The Link (Settings) with index (1) was clicked successfully.<br/>
+The Link (Permit Groups) with index (1) was clicked successfully.<br/>
+The Link (Permit Groups) with index (1) was clicked successfully.<br/>
+The Link (Student) with index (1) was clicked successfully.<br/>
+The Link (Student) with index (1) was clicked successfully.<br/>
+The Button (View Permit Rates) with index (1) was clicked successfully<br/>
+The Link (Daily) with index (1) was clicked successfully.<br/>
+The Link (Daily) with index (1) was clicked successfully.<br/>
+The (New Permit Rate) field(s) were populated correctly - Values(Enabled,Checked|Sunday,Checked|Monday,Checked|Tuesday,Checked|Wednesday,Checked|Thursday,Checked|Friday,Checked|Saturday,Checked|Min,1|Max,10|Max days allowed,5|Base,0.00|Rate,12.00|Start hour,6|End hour,23|Permit Holder category,|Sales tax rate,(0.000%)-Lot Auto One-ParkingFeeLineItem|Enabled from,2026/07/28|Enabled to,2026/08/11)<br/>
+The Button (Save Permit Rate) with index (1) was clicked successfully<br/>
+The Button (Resend Permit Rates to Kiosks) with index (1) was clicked successfully<br/>
+strHeadless: True<br/>
+<font color='orange'>     SENTRYLINK_OpenLoginPage</font><br/>
+<font color='orange'>     SENTRYLINK_AdminLoginIn</font><br/>
+The (Login) page existed<br/>
+<font color='orange'>     SENTRYLINK_UserLoginIn</font><br/>
+The text name (Version) value (Version 9.8) was stored as variable name (strSentryLinkVersion)<br/>
+The (Login) field(s) were populated correctly - Values(Email,z3lotautomationadmin@gmail.com|Password,z3LotAutomationadmin10!)<br/>
+The Button (Sign in) with index (1) was clicked successfully<br/>
+<font color='orange'>     SENTRYLINK_NavigateToPage2-Permit Groups</font><br/>
+The Link (Lot Automation) with index (1) was clicked successfully.<br/>
+The Link (Lot Automation) with index (1) was clicked successfully.<br/>
+The Link (Settings) with index (1) was clicked successfully.<br/>
+The Link (Settings) with index (1) was clicked successfully.<br/>
+The Link (Permit Groups) with index (1) was clicked successfully.<br/>
+The Link (Permit Groups) with index (1) was clicked successfully.<br/>
+The Link (Student) with index (1) was clicked successfully.<br/>
+The Link (Student) with index (1) was clicked successfully.<br/>
+The Button (View Permit Rates) with index (1) was clicked successfully<br/>
+The Link (Hourly 1) with index (1) was clicked successfully.<br/>
+The Link (Hourly 1) with index (1) was clicked successfully.<br/>
+The (New Permit Rate) field(s) were populated correctly - Values(Sunday,Checked|Monday,Checked|Tuesday,Checked|Wednesday,Checked|Thursday,Checked|Friday,Checked|Saturday,Checked|Min,1|Max,4|Base,0.00|Rate,2.00|Start hour,7|End hour,23|Permit Holder category,|Sales tax rate,(0.000%)-Lot Auto One-ParkingFeeLineItem|Enabled from,2026/07/21|Enabled to,2026/07/28)<br/>
+The Button (Save Permit Rate) with index (1) was clicked successfully<br/>
+The Button (Resend Permit Rates to Kiosks) with index (1) was clicked successfully<br/>
+strHeadless: True<br/>
+<font color='orange'>     SENTRYLINK_OpenLoginPage</font><br/>
+<font color='orange'>     SENTRYLINK_AdminLoginIn</font><br/>
+The (Login) page existed<br/>
+<font color='orange'>     SENTRYLINK_UserLoginIn</font><br/>
+The text name (Version) value (Version 9.8) was stored as variable name (strSentryLinkVersion)<br/>
+The (Login) field(s) were populated correctly - Values(Email,z3lotautomationadmin@gmail.com|Password,z3LotAutomationadmin10!)<br/>
+The Button (Sign in) with index (1) was clicked successfully<br/>
+<font color='orange'>     SENTRYLINK_NavigateToPage2-Lot Group</font><br/>
+The Link (Lot Automation) with index (1) was clicked successfully.<br/>
+The Link (Lot Automation) with index (1) was clicked successfully.<br/>
+The Link (Settings) with index (1) was clicked successfully.<br/>
+The Link (Settings) with index (1) was clicked successfully.<br/>
+The Link (Lot Auto One) with index (1) was clicked successfully.<br/>
+The Link (Lot Auto One) with index (1) was clicked successfully.<br/>
+The Link (Kiosks) with index (1) was clicked successfully.<br/>
+The Link (Kiosks) with index (1) was clicked successfully.<br/>
+The Button (Edit This Open Parking Lot) with index (1) was clicked successfully<br/>
+The (Can unlock violations) field(s) were populated correctly - Values(Can unlock violations,Checked)<br/>
+The (Consumer Concierge Settings) field(s) were populated correctly - Values(Parking init grace period,600|Parking violation grace period,0|Parking maximum duration minutes,14400)<br/>
+The Button (Update) with index (1) was clicked successfully<br/>
+The Text (Lot was successfully updated) with index (1) contained (Lot was successfully updated.)<br/>
+<font color='orange'>     StoreJsonAdminToken</font><br/>
+The value (96x1p3vqY6XTRyHrxvR7) was stored as variable name (strJsonToken)<br/>
+<font color='orange'>     StoreJsonAdminToken</font><br/>
+The value (96x1p3vqY6XTRyHrxvR7) was stored as variable name (strJsonToken)<br/>
+<font color='orange'>     SENTRYLINK_KioskDeleteFreeAndNoParkingRateSetFromRateBlock</font><br/>
+The strKioskId was set to (2794)-Sentry Meter<br/>
+strHeadless: True<br/>
+<font color='orange'>     SENTRYLINK_OpenLoginPage</font><br/>
+The (Login) page existed<br/>
+<font color='orange'>     SENTRYLINK_UserLoginIn</font><br/>
+The text name (Version) value (Version 9.8) was stored as variable name (strSentryLinkVersion)<br/>
+The (Login) field(s) were populated correctly - Values(Email,z3lotautomationadmin@gmail.com|Password,z3LotAutomationadmin10!)<br/>
+The Button (Sign in) with index (1) was clicked successfully<br/>
+<font color='orange'>     SENTRYLINK_NavigateToPage2-Kiosk Rate Block Group</font><br/>
+Rate Block Group path: https://lotautomation.staging.sentry-link.com/devices/kiosks/2794<br/>
+The Link (LotAutomationRateBlockGroup6) with index (1) was clicked successfully.<br/>
+The Link (LotAutomationRateBlockGroup6) with index (1) was clicked successfully.<br/>
+The Link (FixedRateBlock) with index (1) was clicked successfully.<br/>
+The Link (FixedRateBlock) with index (1) was clicked successfully.<br/>
+The Button (Delete Rate Block) with index (1) was clicked successfully<br/>
+The Button (Send to all) with index (1) was clicked successfully<br/>
+<font color='green'>The Python Script (parking_delete_rate_blk.py 641563) was executed successfully on host (10.10.101.6)-System Time: 02:15:40 UTC Time:19:15:40.958</font><br/>
+<font color='orange'>     SENTRYMETER_UpdateKioskSetting</font><br/>
+<font color='green'>The Python Script (set_initgrace.py 600) was executed successfully on host (10.10.101.6)-System Time: 02:15:43 UTC Time:19:15:43.772</font><br/>
+<font color='green'>The Python Script (set_no_parking_grace.py 0) was executed successfully on host (10.10.101.6)-System Time: 02:15:44 UTC Time:19:15:44.070</font><br/>
+<font color='green'>The Python Script (set_violation_grace.py 0) was executed successfully on host (10.10.101.6)-System Time: 02:15:44 UTC Time:19:15:44.370</font><br/>
+<font color='green'>The Python Script (set_free_time_first_payment.py 0) was executed successfully on host (10.10.101.6)-System Time: 02:15:44 UTC Time:19:15:44.689</font><br/>
+<font color='green'>The Python Script (set_apply_payment_screen_timeout.py 5) was executed successfully on host (10.10.101.6)-System Time: 02:15:45 UTC Time:19:15:45.018</font><br/>
+<font color='green'>The Python Script (settings_set_setting_false.py PARKING_PAY_BY_PLATE) was executed successfully on host (10.10.101.6)-System Time: 02:15:45 UTC Time:19:15:45.322</font><br/>
+<font color='green'>The Python Script (set_free_disconnect_on.py) was executed successfully on host (10.10.101.6)-System Time: 02:15:45 UTC Time:19:15:45.632</font><br/>
+<font color='green'>The Python Script (settings_set_setting_true.py PARKING_SHOW_UNLOCK_TIME) was executed successfully on host (10.10.101.6)-System Time: 02:15:45 UTC Time:19:15:45.976</font><br/>
+<font color='green'>The Python Script (set_unlock_on.py) was executed successfully on host (10.10.101.6)-System Time: 02:15:46 UTC Time:19:15:46.283</font><br/>
+<font color='green'>The Python Script (settings_set_setting_false.py PARKING_TRUEUP_ENABLED) was executed successfully on host (10.10.101.6)-System Time: 02:15:46 UTC Time:19:15:46.591</font><br/>
+<font color='green'>The Python Script (set_unlock_time.py 1) was executed successfully on host (10.10.101.6)-System Time: 02:15:46 UTC Time:19:15:46.895</font><br/>
+<font color='green'>The Python Script (set_unlock_max.py 1) was executed successfully on host (10.10.101.6)-System Time: 02:15:47 UTC Time:19:15:47.215</font><br/>
+<font color='green'>The Python Script (set_image_send_before_violation.py 45) was executed successfully on host (10.10.101.6)-System Time: 02:15:47 UTC Time:19:15:47.522</font><br/>
+<font color='green'>The Python Script (set_maximum_duration.py 240) was executed successfully on host (10.10.101.6)-System Time: 02:15:47 UTC Time:19:15:47.826</font><br/>
+<font color='green'>The Python Script (set_parking_short_session.py 15) was executed successfully on host (10.10.101.6)-System Time: 02:15:48 UTC Time:19:15:48.126</font><br/>
+<font color='green'>The Python Script (settings_set_setting.py PARKING_RATE_DEFAULT_MINIMUM_TIME 60) was executed successfully on host (10.10.101.6)-System Time: 02:15:48 UTC Time:19:15:48.445</font><br/>
+<font color='green'>The Python Script (settings_set_setting_false.py SYS_OUT_OF_SERVICE) was executed successfully on host (10.10.101.6)-System Time: 02:15:48 UTC Time:19:15:48.761</font><br/>
+<font color='orange'>   SENTRYLINK_KioskUpdateRateSetValues</font><br/>
+***********Current Meter Rate Blocks*************10.10.101.6<br/>
+{"disconnect_free": true, "block_type": "fixed", "block_id": -1, "default_minimum_cost": 75, "schedule": {"start_time": "00:00", "valid_days": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"], "start_date": null, "end_date": null, "end_time": "23:59"}, "unenforced": false, "default_minimum_time": 0, "rate": {"senior_minutes": 30, "muni_price": 25, "senior_max_time": 120, "price": 25, "veteran_max_time": 120, "senior_price": 25, "muni_max_time": 120, "handicap_minutes": 30, "handicap_price": 25, "veteran_minutes": 30, "veteran_price": 25, "muni_minutes": 30, "max_time": 120, "handicap_max_time": 120, "minutes": 30}, "card_increment_time": 30, "first_payment_free_time": 0, "maximum_duration_minutes": 120, "priority": -2147483647, "free_time_first_payment": 0, "max_time": 120, "mins_accept_free_before_rate": 60}q<br/>
+*************************************************<br/>
+Previous Rate Block Id--1<br/>
+The value (pyY27somvuhA6bzmsj-j) was stored as variable name (strJsonToken)<br/>
+strHeadless: True<br/>
+<font color='orange'>     SENTRYLINK_OpenLoginPage</font><br/>
+<font color='orange'>     SENTRYLINK_AdminLoginIn</font><br/>
+The (Login) page existed<br/>
+<font color='orange'>     SENTRYLINK_UserLoginIn</font><br/>
+The text name (Version) value (Version 9.8) was stored as variable name (strSentryLinkVersion)<br/>
+The (Login) field(s) were populated correctly - Values(Email,z3lotautomationadmin@gmail.com|Password,z3LotAutomationadmin10!)<br/>
+The Button (Sign in) with index (1) was clicked successfully<br/>
+<font color='orange'>     SENTRYLINK_NavigateToPage2-Showing Kiosk</font><br/>
+The Link (Rate Sets) with index (1) was clicked successfully.<br/>
+The Link (Rate Sets) with index (1) was clicked successfully.<br/>
+<font color='orange'>     SENTRYLINK_UpdateRateSet</font><br/>
+The Link (LotAutomationRateSet6Fixed) with index (1) was clicked successfully.<br/>
+The Link (LotAutomationRateSet6Fixed) with index (1) was clicked successfully.<br/>
+The Button (Edit) with index (1) was clicked successfully<br/>
+<font color='orange'>     SENTRYLINK_PopulateFixedRateBlock</font><br/>
+The (Free Time with Free Payment) field(s) were populated correctly - Values(Maximum Duration,240|Coin Time Puchase Limit,240|Free Time with First Payment,0|Credit Card Increment Time,15|Initial Grace,10|Violation Grace,0|Handicap Initial Grace,0|Handicap Violation Grace,0|No Parking Grace,0|Default Minimum Cost,0|Default Minimum Time,0)<br/>
+The (Rate Set) field(s) were populated correctly - Values(Family,Normal)<br/>
+The (Buys Minutes) field(s) were populated correctly - Values(Price,25|Buys Minutes,15|Max Time,240)<br/>
+The Button (Save) with index (1) was clicked successfully<br/>
+The Button (Save Rate Set) with index (1) was clicked successfully<br/>
+The Link (Rate Block Groups) with index (1) was clicked successfully.<br/>
+The Link (Rate Block Groups) with index (1) was clicked successfully.<br/>
+The Link (LotAutomationRateBlockGroup6) with index (1) was clicked successfully.<br/>
+The Link (LotAutomationRateBlockGroup6) with index (1) was clicked successfully.<br/>
+The (Add Set to This Group) field(s) were populated correctly - Values(Add Set to This Group,LotAutomationRateSet6Fixed)<br/>
+The Button (Add Set to This Group) with index (1) was clicked successfully<br/>
+The TextField (Rate Block Name) existed on page (Rate Block Setting)-GlobalObjectWait<br/>
+The (Specific Times of Day) field(s) were populated correctly - Values(Rate Block Name,FixedRateBlock|Start Date,05/29/2026|Time Options,All Day)<br/>
+The Button (Save Rate Block) with index (1) was clicked successfully<br/>
+The Button (Send to all) with index (1) was clicked successfully<br/>
+GlobalWait: Rate Block values existed that were not -1<br/>
+Current Rate Block Id-641591<br/>
+***********Current Meter Rate Blocks*************10.10.101.6<br/>
+{"disconnect_free": true, "block_type": "fixed", "block_id": 641591, "default_minimum_cost": 0, "schedule": {"start_time": "00:00", "valid_days": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"], "start_date": "2026-05-29", "end_date": "2030-08-04", "end_time": "23:59"}, "unenforced": false, "default_minimum_time": 0, "rate": {"senior_minutes": 15, "muni_price": 25, "senior_max_time": 240, "price": 25, "veteran_max_time": 240, "senior_price": 25, "muni_max_time": 240, "handicap_minutes": 15, "handicap_price": 25, "veteran_minutes": 15, "veteran_price": 25, "muni_minutes": 15, "max_time": 240, "handicap_max_time": 240, "minutes": 15}, "card_increment_time": 15, "first_payment_free_time": 0, "maximum_duration_minutes": 240, "priority": 7, "free_time_first_payment": 0, "max_time": 240, "mins_accept_free_before_rate": 60}q<br/>
+{"disconnect_free": true, "block_type": "fixed", "block_id": -1, "default_minimum_cost": 75, "schedule": {"start_time": "00:00", "valid_days": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"], "start_date": null, "end_date": null, "end_time": "23:59"}, "unenforced": false, "default_minimum_time": 0, "rate": {"senior_minutes": 30, "muni_price": 25, "senior_max_time": 120, "price": 25, "veteran_max_time": 120, "senior_price": 25, "muni_max_time": 120, "handicap_minutes": 30, "handicap_price": 25, "veteran_minutes": 30, "veteran_price": 25, "muni_minutes": 30, "max_time": 120, "handicap_max_time": 120, "minutes": 30}, "card_increment_time": 30, "first_payment_free_time": 0, "maximum_duration_minutes": 120, "priority": -2147483647, "free_time_first_payment": 0, "max_time": 120, "mins_accept_free_before_rate": 60}q<br/>
+*************************************************<br/>
+strParkTimestamp: 2:17 PM<br/>
+The vehicle with license plate (LA1LOTAA) and State (MN) has entered the lot<br/>
+<font color='green'>The Python Script (testautof_touch_screen.py) was executed successfully on host (10.10.101.6)-System Time: 02:17:28 UTC Time:19:17:28.244</font><br/>
+<font color='green'>The Python Script (parking_lot_select_permit.py 0) was executed successfully on host (10.10.101.6)-System Time: 02:17:31 UTC Time:19:17:31.552</font><br/>
+<font color='green'>The Python Script (parking_lot_enter_plate.py LA1LOTAA) was executed successfully on host (10.10.101.6)-System Time: 02:17:34 UTC Time:19:17:34.861</font><br/>
+<font color='green'>The Python Script (parking_lot_add_hour.py) was executed successfully on host (10.10.101.6)-System Time: 02:17:40 UTC Time:19:17:40.161</font><br/>
+<font color='green'>The Python Script (parking_lot_card_pay.sh) was executed successfully on host (10.10.101.6)-System Time: 02:17:42 UTC Time:19:17:42.475</font><br/>
+<font color='green'>The Python Script (parking_lot_no_receipt.py) was executed successfully on host (10.10.101.6)-System Time: 02:17:45 UTC Time:19:17:45.777</font><br/>
+<font color='orange'>     StoreJsonAdminToken</font><br/>
+The value (96x1p3vqY6XTRyHrxvR7) was stored as variable name (strJsonToken)<br/>
+The Permit Start Time (05:50 AM) was correct<br/>
+The Permit End Time (11:00 PM) was correct<br/>
+<font color='orange'>     StoreJsonAdminToken</font><br/>
+The value (96x1p3vqY6XTRyHrxvR7) was stored as variable name (strJsonToken)<br/>
+The Permit Start Time (null) was correct<br/>
+The Permit End Time (11:00 PM) was correct<br/>
+The value (pyY27somvuhA6bzmsj-j) was stored as variable name (strJsonToken)<br/>
+The vehicle with license plate (LA1LOTAA) and State (MN) has exited the lot<br/>
+strHeadless: True<br/>
+<font color='orange'>     SENTRYLINK_OpenLoginPage</font><br/>
+<font color='orange'>     SENTRYLINK_AdminLoginIn</font><br/>
+The (Login) page existed<br/>
+<font color='orange'>     SENTRYLINK_UserLoginIn</font><br/>
+The text name (Version) value (Version 9.8) was stored as variable name (strSentryLinkVersion)<br/>
+The (Login) field(s) were populated correctly - Values(Email,z3lotautomationadmin@gmail.com|Password,z3LotAutomationadmin10!)<br/>
+The Button (Sign in) with index (1) was clicked successfully<br/>
+https://lotautomation.staging.sentry-link.com/parking_sessions/4074341<br/>
+The cell value in row (1) column (3) of the table (Parking Session History) was (Parked)<br/>
+The value (pyY27somvuhA6bzmsj-j) was stored as variable name (strJsonToken)<br/>
+The cell value in row (2) column (3) of the table (Parking Session History) was (Credit card Payment #0)<br/>
+The cell value in row (2) column (4) of the table (Parking Session History) was ($ 12.00)<br/>
+The cell value in row (2) column (5) of the table (Parking Session History) was (Permit Payment)<br/>
+The cell value in row (3) column (3) of the table (Parking Session History) was (Permit Purchase)<br/>
+The cell value in row (3) column (4) of the table (Parking Session History) was ($12.00)<br/>
+The cell value in row (3) column (5) of the table (Parking Session History) was (Plate LA1LOTAA EXACT matched permit Valid From 08/04/2026 5:50 AM CDT Valid To 08/05/2026 11:00 PM CDT)<br/>
+The cell value in row (4) column (3) of the table (Parking Session History) was (Exited)<br/>
+The cell value in row (4) column (5) of the table (Parking Session History) was (Plate Read)<br/>
+The row (5) did not exist in the table (Parking Session History)<br/>
+<font color='Green'>Meter End Time 19:18:</font><br/>
+<a href=/Users/darinduphorn/git/TestAutomation/MeterLogs/Android_Lot_TestCases_AL2801_UL_LP_PPK_VCAPS_LE_VSPS_1.txt/>Meter Logs</a><br/>
+<a href=/Users/darinduphorn/git/TestAutomation/MessageLogs/Android_Lot_TestCases_AL2801_UL_LP_PPK_VCAPS_LE_VSPS_1.txt/>Message Logs</a><br/>
+</div>
+</td>
+<td></td>
+<td>338</td>
+<td>AutomationCode.Android_Lot_TestCases@441772e</td></tr>
+<tr>
+<td title='AutomationCode.Android_Lot_TestCases.AL3001_LP_UEV_BN_VV_LE_VSPS()'><b>AL3001_LP_UEV_BN_VV_LE_VSPS</b><br>Test class: AutomationCode.Android_Lot_TestCases<br/>
+<a href="#Output-2057853910" onClick='toggleBox("Output-2057853910", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-2057853910" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2057853910">
+************************************************************<br/>
+Environment:  SG                           <br/>
+Version:      SENTRYMOBILE-Staging-9.13.446.apk                             <br/>
+Municipality: Lot Automation                          <br/>
+Meter Name:   Lot Auto One                             <br/>
+Meter IP:     10.10.101.6                                  <br/>
+Meter Version:"openlot-mjm"
+                          <br/>
+Meter MD5SUM Version:                  <br/>
+Sentry Link Version:Version 9.8               <br/>
+SilverBullet Version:5.1.1-1            <br/>
+RemotePath:   http://localhost:4723                            <br/>
+AndroidUdid:  R5CT71MQ2MM                           <br/>
+************************************************************<br/>
+<font color='green'>Meter Start Time 19:26:</font><br/>
+****************METER MEMORY******************<br/>
+total		used		free<br/>
+4029936		333228		2675812<br/>
+***************TestCase Description*****************************<br/>
+LP: Lot Park                                                    <br/>
+UEV: Unpermitted Entrance Violation                             <br/>
+BN: Boot Notice                                                 <br/>
+VV: Violation Voided                                            <br/>
+LE: Lot Exit                                                    <br/>
+VSPS: Validate Sentry Parking Session                           <br/>
+****************************************************************<br/>
+strHeadless: True<br/>
+<font color='orange'>     SENTRYLINK_OpenLoginPage</font><br/>
+<font color='orange'>     SENTRYLINK_AdminLoginIn</font><br/>
+The (Login) page existed<br/>
+<font color='orange'>     SENTRYLINK_UserLoginIn</font><br/>
+The text name (Version) value (Version 9.8) was stored as variable name (strSentryLinkVersion)<br/>
+The (Login) field(s) were populated correctly - Values(Email,z3lotautomationadmin@gmail.com|Password,z3LotAutomationadmin10!)<br/>
+The Button (Sign in) with index (1) was clicked successfully<br/>
+<font color='orange'>     SENTRYLINK_NavigateToPage2-Lot Group</font><br/>
+The Link (Lot Automation) with index (1) was clicked successfully.<br/>
+The Link (Lot Automation) with index (1) was clicked successfully.<br/>
+The Link (Settings) with index (1) was clicked successfully.<br/>
+The Link (Settings) with index (1) was clicked successfully.<br/>
+The Link (Lot Auto One) with index (1) was clicked successfully.<br/>
+The Link (Lot Auto One) with index (1) was clicked successfully.<br/>
+The Link (Kiosks) with index (1) was clicked successfully.<br/>
+The Link (Kiosks) with index (1) was clicked successfully.<br/>
+The Button (Edit This Open Parking Lot) with index (1) was clicked successfully<br/>
+The (Consumer Concierge Settings) field(s) were populated correctly - Values(Parking init grace period,60|Parking violation grace period,0|Parking maximum duration minutes,14400)<br/>
+The Button (Update) with index (1) was clicked successfully<br/>
+The Text (Lot was successfully updated) with index (1) contained (Lot was successfully updated.)<br/>
+<font color='orange'>     StoreJsonAdminToken</font><br/>
+The value (13633) was stored as variable name (strJsonUserId)<br/>
+The value (96x1p3vqY6XTRyHrxvR7) was stored as variable name (strJsonToken)<br/>
+<font color='orange'>     StoreJsonAdminToken</font><br/>
+The value (96x1p3vqY6XTRyHrxvR7) was stored as variable name (strJsonToken)<br/>
+<font color='orange'>     SENTRYLINK_KioskDeleteFreeAndNoParkingRateSetFromRateBlock</font><br/>
+The strKioskId was set to (2794)-Sentry Meter<br/>
+strHeadless: True<br/>
+<font color='orange'>     SENTRYLINK_OpenLoginPage</font><br/>
+The (Login) page existed<br/>
+<font color='orange'>     SENTRYLINK_UserLoginIn</font><br/>
+The text name (Version) value (Version 9.8) was stored as variable name (strSentryLinkVersion)<br/>
+The (Login) field(s) were populated correctly - Values(Email,z3lotautomationadmin@gmail.com|Password,z3LotAutomationadmin10!)<br/>
+The Button (Sign in) with index (1) was clicked successfully<br/>
+<font color='orange'>     SENTRYLINK_NavigateToPage2-Kiosk Rate Block Group</font><br/>
+Rate Block Group path: https://lotautomation.staging.sentry-link.com/devices/kiosks/2794<br/>
+The Link (LotAutomationRateBlockGroup6) with index (1) was clicked successfully.<br/>
+The Link (LotAutomationRateBlockGroup6) with index (1) was clicked successfully.<br/>
+The Link (FixedRateBlock) with index (1) was clicked successfully.<br/>
+The Link (FixedRateBlock) with index (1) was clicked successfully.<br/>
+The Button (Delete Rate Block) with index (1) was clicked successfully<br/>
+The Button (Send to all) with index (1) was clicked successfully<br/>
+<font color='green'>The Python Script (parking_delete_rate_blk.py 641592) was executed successfully on host (10.10.101.6)-System Time: 02:27:49 UTC Time:19:27:49.532</font><br/>
+<font color='orange'>     SENTRYMETER_UpdateKioskSetting</font><br/>
+<font color='green'>The Python Script (set_initgrace.py 60) was executed successfully on host (10.10.101.6)-System Time: 02:27:52 UTC Time:19:27:52.322</font><br/>
+<font color='green'>The Python Script (set_no_parking_grace.py 0) was executed successfully on host (10.10.101.6)-System Time: 02:27:52 UTC Time:19:27:52.618</font><br/>
+<font color='green'>The Python Script (set_violation_grace.py 0) was executed successfully on host (10.10.101.6)-System Time: 02:27:52 UTC Time:19:27:52.923</font><br/>
+<font color='green'>The Python Script (set_free_time_first_payment.py 0) was executed successfully on host (10.10.101.6)-System Time: 02:27:53 UTC Time:19:27:53.227</font><br/>
+<font color='green'>The Python Script (set_apply_payment_screen_timeout.py 5) was executed successfully on host (10.10.101.6)-System Time: 02:27:53 UTC Time:19:27:53.534</font><br/>
+<font color='green'>The Python Script (settings_set_setting_false.py PARKING_PAY_BY_PLATE) was executed successfully on host (10.10.101.6)-System Time: 02:27:53 UTC Time:19:27:53.830</font><br/>
+<font color='green'>The Python Script (set_free_disconnect_on.py) was executed successfully on host (10.10.101.6)-System Time: 02:27:54 UTC Time:19:27:54.138</font><br/>
+<font color='green'>The Python Script (set_unlock_off.py) was executed successfully on host (10.10.101.6)-System Time: 02:27:54 UTC Time:19:27:54.444</font><br/>
+<font color='green'>The Python Script (settings_set_setting_false.py PARKING_TRUEUP_ENABLED) was executed successfully on host (10.10.101.6)-System Time: 02:27:54 UTC Time:19:27:54.742</font><br/>
+<font color='green'>The Python Script (set_unlock_time.py 1) was executed successfully on host (10.10.101.6)-System Time: 02:27:55 UTC Time:19:27:55.037</font><br/>
+<font color='green'>The Python Script (set_unlock_max.py 1) was executed successfully on host (10.10.101.6)-System Time: 02:27:55 UTC Time:19:27:55.331</font><br/>
+<font color='green'>The Python Script (set_image_send_before_violation.py 45) was executed successfully on host (10.10.101.6)-System Time: 02:27:55 UTC Time:19:27:55.622</font><br/>
+<font color='green'>The Python Script (set_maximum_duration.py 240) was executed successfully on host (10.10.101.6)-System Time: 02:27:55 UTC Time:19:27:55.930</font><br/>
+<font color='green'>The Python Script (set_parking_short_session.py 15) was executed successfully on host (10.10.101.6)-System Time: 02:27:56 UTC Time:19:27:56.224</font><br/>
+<font color='green'>The Python Script (settings_set_setting.py PARKING_RATE_DEFAULT_MINIMUM_TIME 60) was executed successfully on host (10.10.101.6)-System Time: 02:27:56 UTC Time:19:27:56.535</font><br/>
+<font color='green'>The Python Script (settings_set_setting_false.py SYS_OUT_OF_SERVICE) was executed successfully on host (10.10.101.6)-System Time: 02:27:56 UTC Time:19:27:56.833</font><br/>
+<font color='orange'>   SENTRYLINK_KioskUpdateRateSetValues</font><br/>
+***********Current Meter Rate Blocks*************10.10.101.6<br/>
+{"disconnect_free": true, "block_type": "fixed", "block_id": -1, "default_minimum_cost": 75, "schedule": {"start_time": "00:00", "valid_days": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"], "start_date": null, "end_date": null, "end_time": "23:59"}, "unenforced": false, "default_minimum_time": 0, "rate": {"senior_minutes": 30, "muni_price": 25, "senior_max_time": 120, "price": 25, "veteran_max_time": 120, "senior_price": 25, "muni_max_time": 120, "handicap_minutes": 30, "handicap_price": 25, "veteran_minutes": 30, "veteran_price": 25, "muni_minutes": 30, "max_time": 120, "handicap_max_time": 120, "minutes": 30}, "card_increment_time": 30, "first_payment_free_time": 0, "maximum_duration_minutes": 120, "priority": -2147483647, "free_time_first_payment": 0, "max_time": 120, "mins_accept_free_before_rate": 60}q<br/>
+*************************************************<br/>
+Previous Rate Block Id--1<br/>
+The value (pyY27somvuhA6bzmsj-j) was stored as variable name (strJsonToken)<br/>
+strHeadless: True<br/>
+<font color='orange'>     SENTRYLINK_OpenLoginPage</font><br/>
+<font color='orange'>     SENTRYLINK_AdminLoginIn</font><br/>
+The (Login) page existed<br/>
+<font color='orange'>     SENTRYLINK_UserLoginIn</font><br/>
+The text name (Version) value (Version 9.8) was stored as variable name (strSentryLinkVersion)<br/>
+The (Login) field(s) were populated correctly - Values(Email,z3lotautomationadmin@gmail.com|Password,z3LotAutomationadmin10!)<br/>
+The Button (Sign in) with index (1) was clicked successfully<br/>
+<font color='orange'>     SENTRYLINK_NavigateToPage2-Showing Kiosk</font><br/>
+The Link (Rate Sets) with index (1) was clicked successfully.<br/>
+The Link (Rate Sets) with index (1) was clicked successfully.<br/>
+<font color='orange'>     SENTRYLINK_UpdateRateSet</font><br/>
+The Link (LotAutomationRateSet6Fixed) with index (1) was clicked successfully.<br/>
+The Link (LotAutomationRateSet6Fixed) with index (1) was clicked successfully.<br/>
+The Button (Edit) with index (1) was clicked successfully<br/>
+<font color='orange'>     SENTRYLINK_PopulateFixedRateBlock</font><br/>
+The (Free Time with Free Payment) field(s) were populated correctly - Values(Maximum Duration,240|Coin Time Puchase Limit,240|Free Time with First Payment,0|Credit Card Increment Time,15|Initial Grace,1|Violation Grace,0|Handicap Initial Grace,0|Handicap Violation Grace,0|No Parking Grace,0|Default Minimum Cost,0|Default Minimum Time,0)<br/>
+The (Rate Set) field(s) were populated correctly - Values(Family,Normal)<br/>
+The (Buys Minutes) field(s) were populated correctly - Values(Price,25|Buys Minutes,15|Max Time,240)<br/>
+The Button (Save) with index (1) was clicked successfully<br/>
+The Button (Save Rate Set) with index (1) was clicked successfully<br/>
+The Link (Rate Block Groups) with index (1) was clicked successfully.<br/>
+The Link (Rate Block Groups) with index (1) was clicked successfully.<br/>
+The Link (LotAutomationRateBlockGroup6) with index (1) was clicked successfully.<br/>
+The Link (LotAutomationRateBlockGroup6) with index (1) was clicked successfully.<br/>
+The (Add Set to This Group) field(s) were populated correctly - Values(Add Set to This Group,LotAutomationRateSet6Fixed)<br/>
+The Button (Add Set to This Group) with index (1) was clicked successfully<br/>
+The TextField (Rate Block Name) existed on page (Rate Block Setting)-GlobalObjectWait<br/>
+The (Specific Times of Day) field(s) were populated correctly - Values(Rate Block Name,FixedRateBlock|Start Date,05/29/2026|Time Options,All Day)<br/>
+The Button (Save Rate Block) with index (1) was clicked successfully<br/>
+The Button (Send to all) with index (1) was clicked successfully<br/>
+GlobalWait: Rate Block values existed that were not -1<br/>
+Current Rate Block Id-641597<br/>
+***********Current Meter Rate Blocks*************10.10.101.6<br/>
+{"disconnect_free": true, "block_type": "fixed", "block_id": 641597, "default_minimum_cost": 0, "schedule": {"start_time": "00:00", "valid_days": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"], "start_date": "2026-05-29", "end_date": "2030-08-04", "end_time": "23:59"}, "unenforced": false, "default_minimum_time": 0, "rate": {"senior_minutes": 15, "muni_price": 25, "senior_max_time": 240, "price": 25, "veteran_max_time": 240, "senior_price": 25, "muni_max_time": 240, "handicap_minutes": 15, "handicap_price": 25, "veteran_minutes": 15, "veteran_price": 25, "muni_minutes": 15, "max_time": 240, "handicap_max_time": 240, "minutes": 15}, "card_increment_time": 15, "first_payment_free_time": 0, "maximum_duration_minutes": 240, "priority": 7, "free_time_first_payment": 0, "max_time": 240, "mins_accept_free_before_rate": 60}q<br/>
+{"disconnect_free": true, "block_type": "fixed", "block_id": -1, "default_minimum_cost": 75, "schedule": {"start_time": "00:00", "valid_days": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"], "start_date": null, "end_date": null, "end_time": "23:59"}, "unenforced": false, "default_minimum_time": 0, "rate": {"senior_minutes": 30, "muni_price": 25, "senior_max_time": 120, "price": 25, "veteran_max_time": 120, "senior_price": 25, "muni_max_time": 120, "handicap_minutes": 30, "handicap_price": 25, "veteran_minutes": 30, "veteran_price": 25, "muni_minutes": 30, "max_time": 120, "handicap_max_time": 120, "minutes": 30}, "card_increment_time": 30, "first_payment_free_time": 0, "maximum_duration_minutes": 120, "priority": -2147483647, "free_time_first_payment": 0, "max_time": 120, "mins_accept_free_before_rate": 60}q<br/>
+*************************************************<br/>
+The value (13634) was stored as variable name (strJsonUserId)<br/>
+strConciergeEnrolled: false<br/>
+The user was already deenrolled in Concierge<br/>
+<font color='orange'>     SENTRYMETER_UpdateMetertSetting</font><br/>
+<font color='green'>The Python Script (set_initgrace.py 60) was executed successfully on host (10.10.101.6)-System Time: 02:29:44 UTC Time:19:29:44.912</font><br/>
+<font color='green'>The Python Script (set_no_parking_grace.py 0) was executed successfully on host (10.10.101.6)-System Time: 02:29:45 UTC Time:19:29:45.209</font><br/>
+<font color='green'>The Python Script (set_violation_grace.py 0) was executed successfully on host (10.10.101.6)-System Time: 02:29:45 UTC Time:19:29:45.513</font><br/>
+<font color='green'>The Python Script (set_free_time_first_payment.py 0) was executed successfully on host (10.10.101.6)-System Time: 02:29:45 UTC Time:19:29:45.829</font><br/>
+<font color='green'>The Python Script (set_apply_payment_screen_timeout.py 5) was executed successfully on host (10.10.101.6)-System Time: 02:29:46 UTC Time:19:29:46.128</font><br/>
+<font color='green'>The Python Script (settings_set_setting_false.py PARKING_PAY_BY_PLATE) was executed successfully on host (10.10.101.6)-System Time: 02:29:46 UTC Time:19:29:46.438</font><br/>
+<font color='green'>The Python Script (set_free_disconnect_on.py) was executed successfully on host (10.10.101.6)-System Time: 02:29:46 UTC Time:19:29:46.737</font><br/>
+<font color='green'>The Python Script (set_unlock_off.py) was executed successfully on host (10.10.101.6)-System Time: 02:29:47 UTC Time:19:29:47.031</font><br/>
+<font color='green'>The Python Script (settings_set_setting_false.py PARKING_TRUEUP_ENABLED) was executed successfully on host (10.10.101.6)-System Time: 02:29:47 UTC Time:19:29:47.321</font><br/>
+<font color='green'>The Python Script (set_unlock_time.py 1) was executed successfully on host (10.10.101.6)-System Time: 02:29:47 UTC Time:19:29:47.627</font><br/>
+<font color='green'>The Python Script (set_unlock_max.py 1) was executed successfully on host (10.10.101.6)-System Time: 02:29:47 UTC Time:19:29:47.927</font><br/>
+<font color='green'>The Python Script (set_image_send_before_violation.py 45) was executed successfully on host (10.10.101.6)-System Time: 02:29:48 UTC Time:19:29:48.231</font><br/>
+<font color='green'>The Python Script (set_maximum_duration.py 240) was executed successfully on host (10.10.101.6)-System Time: 02:29:48 UTC Time:19:29:48.531</font><br/>
+<font color='green'>The Python Script (set_parking_short_session.py 15) was executed successfully on host (10.10.101.6)-System Time: 02:29:48 UTC Time:19:29:48.827</font><br/>
+<font color='green'>The Python Script (settings_set_setting.py PARKING_RATE_DEFAULT_MINIMUM_TIME 60) was executed successfully on host (10.10.101.6)-System Time: 02:29:49 UTC Time:19:29:49.116</font><br/>
+<font color='green'>The Python Script (settings_set_setting_false.py SYS_OUT_OF_SERVICE) was executed successfully on host (10.10.101.6)-System Time: 02:29:49 UTC Time:19:29:49.406</font><br/>
+The vehicle with license plate (LA1LOTAA) and State (MN) has exited the lot<br/>
+strHeadless: True<br/>
+<font color='orange'>     SENTRYLINK_OpenLoginPage</font><br/>
+<font color='orange'>     SENTRYLINK_AdminLoginIn</font><br/>
+The (Login) page existed<br/>
+<font color='orange'>     SENTRYLINK_UserLoginIn</font><br/>
+The text name (Version) value (Version 9.8) was stored as variable name (strSentryLinkVersion)<br/>
+The (Login) field(s) were populated correctly - Values(Email,z3lotautomationadmin@gmail.com|Password,z3LotAutomationadmin10!)<br/>
+The Button (Sign in) with index (1) was clicked successfully<br/>
+<font color='orange'>     SENTRYLINK_NavigateToPage2-Permit Groups</font><br/>
+The Link (Lot Automation) with index (1) was clicked successfully.<br/>
+The Link (Lot Automation) with index (1) was clicked successfully.<br/>
+The Link (Settings) with index (1) was clicked successfully.<br/>
+The Link (Settings) with index (1) was clicked successfully.<br/>
+The Link (Permit Groups) with index (1) was clicked successfully.<br/>
+The Link (Permit Groups) with index (1) was clicked successfully.<br/>
+The Link (Student) with index (1) was clicked successfully.<br/>
+The Link (Student) with index (1) was clicked successfully.<br/>
+The Button (View Permit Rates) with index (1) was clicked successfully<br/>
+The Link (Hourly 1) with index (1) was clicked successfully.<br/>
+The Link (Hourly 1) with index (1) was clicked successfully.<br/>
+The (New Permit Rate) field(s) were populated correctly - Values(Sunday,Checked|Monday,Checked|Tuesday,Checked|Wednesday,Checked|Thursday,Checked|Friday,Checked|Saturday,Checked|Min,1|Max,4|Base,0.00|Rate,2.00|Start hour,7|End hour,23|Permit Holder category,|Sales tax rate,(0.000%)-Lot Auto One-ParkingFeeLineItem|Enabled from,2026/07/28|Enabled to,2026/08/11)<br/>
+The Button (Save Permit Rate) with index (1) was clicked successfully<br/>
+The Button (Resend Permit Rates to Kiosks) with index (1) was clicked successfully<br/>
+<font color='orange'>     StoreJsonAdminToken</font><br/>
+The value (96x1p3vqY6XTRyHrxvR7) was stored as variable name (strJsonToken)<br/>
+The value (pyY27somvuhA6bzmsj-j) was stored as variable name (strJsonToken)<br/>
+<font color='orange'>     StoreJsonAdminToken</font><br/>
+The value (96x1p3vqY6XTRyHrxvR7) was stored as variable name (strJsonToken)<br/>
+The License Plate (LA1LOTAA) for state (Minnesota) was added for user (z3lotautomationparker@gmail.com)<br/>
+strParkTimestamp: 2:30 PM<br/>
+The vehicle with license plate (LA1LOTAA) and State (MN) has entered the lot<br/>
+The value (pyY27somvuhA6bzmsj-j) was stored as variable name (strJsonToken)<br/>
+The value (96x1p3vqY6XTRyHrxvR7) was stored as variable name (strJsonToken)<br/>
+The vehicle with license plate (LA1LOTAA) and State (MN) has exited the lot<br/>
+strHeadless: True<br/>
+<font color='orange'>     SENTRYLINK_OpenLoginPage</font><br/>
+<font color='orange'>     SENTRYLINK_AdminLoginIn</font><br/>
+The (Login) page existed<br/>
+<font color='orange'>     SENTRYLINK_UserLoginIn</font><br/>
+The text name (Version) value (Version 9.8) was stored as variable name (strSentryLinkVersion)<br/>
+The (Login) field(s) were populated correctly - Values(Email,z3lotautomationadmin@gmail.com|Password,z3LotAutomationadmin10!)<br/>
+The Button (Sign in) with index (1) was clicked successfully<br/>
+https://lotautomation.staging.sentry-link.com/parking_sessions/4074352<br/>
+The cell value in row (1) column (3) of the table (Parking Session History) was (Parked)<br/>
+The cell value in row (2) column (3) of the table (Parking Session History) was (Violation 12334)<br/>
+The cell value in row (2) column (4) of the table (Parking Session History) was ($ 55.00)<br/>
+The cell value in row (2) column (5) of the table (Parking Session History) was (Unpermitted Entrance)<br/>
+The table value (Exited) from row (3) column (3) in the table (Parking Session History) was stored as variable name (strRow3Column3)<br/>
+The cell value in row (3) column (3) of the table (Parking Session History) was (Exited)<br/>
+The cell value in row (3) column (5) of the table (Parking Session History) was (Plate Read)<br/>
+The cell value in row (4) column (3) of the table (Parking Session History) was (Booted)<br/>
+The cell value in row (5) column (3) of the table (Parking Session History) was (Voided 12334)<br/>
+The cell value in row (5) column (5) of the table (Parking Session History) was (Reason: booted)<br/>
+The row (6) did not exist in the table (Parking Session History)<br/>
+<font color='Green'>Meter End Time 19:34:</font><br/>
+<a href=/Users/darinduphorn/git/TestAutomation/MeterLogs/Android_Lot_TestCases_AL3001_LP_UEV_BN_VV_LE_VSPS_3.txt/>Meter Logs</a><br/>
+<a href=/Users/darinduphorn/git/TestAutomation/MessageLogs/Android_Lot_TestCases_AL3001_LP_UEV_BN_VV_LE_VSPS_3.txt/>Message Logs</a><br/>
+</div>
+</td>
+<td></td>
+<td>469</td>
+<td>AutomationCode.Android_Lot_TestCases@441772e</td></tr>
+</table><p>
+</body>
+</html>

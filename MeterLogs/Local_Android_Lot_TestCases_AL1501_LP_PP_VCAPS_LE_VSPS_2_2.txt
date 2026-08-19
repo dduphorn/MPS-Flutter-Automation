@@ -1,0 +1,267 @@
+[12/18 21:10:07.338] | ERROR    | rates      | MainThread | cfmip(): 2nd attempt failed srb not within block, srb=<ScheduleRateBlock (14329)[P7]: 11/18_00:00 - 01/17_23:59)> start_dt=2025-11-18 00:00:00
+[12/18 21:10:07.343] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:07.345] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:07.347] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:07.349] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:07.351] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:07.353] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:07.354] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:07.356] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:07.358] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:17.098] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_INIT_GRACE_PERIOD value 300
+[12/18 21:10:17.121] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 137 total_sent: 137 message: {"queued_dt": "2025-12-18T21:10:17Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_INIT_GRACE_PERIOD": 300}, "requires_response": false}
+[12/18 21:10:17.353] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_NO_PARKING_GRACE_PERIOD value 0
+[12/18 21:10:17.360] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:17.362] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:17.364] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:17.366] | ERROR    | rates      | MainThread | cfmip(): 1st attempt failed srb not within block, srb=<ScheduleRateBlock (14329)[P7]: 11/18_00:00 - 01/17_23:59)> start_dt=2025-11-18 00:00:00
+[12/18 21:10:17.367] | ERROR    | rates      | MainThread | cfmip(): 2nd attempt failed srb not within block, srb=<ScheduleRateBlock (14329)[P7]: 11/18_00:00 - 01/17_23:59)> start_dt=2025-11-18 00:00:00
+[12/18 21:10:17.371] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:17.373] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:17.375] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:17.377] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:17.379] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:17.381] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:17.383] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:17.385] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:17.387] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:17.398] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 141 total_sent: 141 message: {"queued_dt": "2025-12-18T21:10:17Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_NO_PARKING_GRACE_PERIOD": 0}, "requires_response": false}
+[12/18 21:10:17.609] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_VIOLATION_GRACE_PERIOD value 0
+[12/18 21:10:17.630] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 140 total_sent: 140 message: {"queued_dt": "2025-12-18T21:10:17Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_VIOLATION_GRACE_PERIOD": 0}, "requires_response": false}
+[12/18 21:10:17.869] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_FREE_TIME_ON_FIRST_PAYMENT value 0
+[12/18 21:10:17.890] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 144 total_sent: 144 message: {"queued_dt": "2025-12-18T21:10:17Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_FREE_TIME_ON_FIRST_PAYMENT": 0}, "requires_response": false}
+[12/18 21:10:18.115] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_ACCEPT_COIN_NO_SPOT_SCREEN_TIMEOUT value 5
+[12/18 21:10:18.136] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 152 total_sent: 152 message: {"queued_dt": "2025-12-18T21:10:18Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_ACCEPT_COIN_NO_SPOT_SCREEN_TIMEOUT": 5}, "requires_response": false}
+[12/18 21:10:18.364] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_PAY_BY_PLATE value False
+[12/18 21:10:18.387] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 134 total_sent: 134 message: {"queued_dt": "2025-12-18T21:10:18Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_PAY_BY_PLATE": false}, "requires_response": false}
+[12/18 21:10:18.612] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_DISCONNECT_FREE value True
+[12/18 21:10:18.634] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 136 total_sent: 136 message: {"queued_dt": "2025-12-18T21:10:18Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_DISCONNECT_FREE": true}, "requires_response": false}
+[12/18 21:10:18.871] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_UNLOCK_ENABLED value False
+[12/18 21:10:18.892] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 136 total_sent: 136 message: {"queued_dt": "2025-12-18T21:10:18Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_UNLOCK_ENABLED": false}, "requires_response": false}
+[12/18 21:10:19.110] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_TRUEUP_ENABLED value False
+[12/18 21:10:19.131] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 136 total_sent: 136 message: {"queued_dt": "2025-12-18T21:10:19Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_TRUEUP_ENABLED": false}, "requires_response": false}
+[12/18 21:10:19.355] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_UNLOCK_TIME value 1
+[12/18 21:10:19.377] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 129 total_sent: 129 message: {"queued_dt": "2025-12-18T21:10:19Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_UNLOCK_TIME": 1}, "requires_response": false}
+[12/18 21:10:19.625] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_UNLOCK_MAX value 1
+[12/18 21:10:19.648] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 128 total_sent: 128 message: {"queued_dt": "2025-12-18T21:10:19Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_UNLOCK_MAX": 1}, "requires_response": false}
+[12/18 21:10:19.908] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_IMAGE_SEND_BEFORE_VIOLATION value 45
+[12/18 21:10:19.930] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 146 total_sent: 146 message: {"queued_dt": "2025-12-18T21:10:19Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_IMAGE_SEND_BEFORE_VIOLATION": 45}, "requires_response": false}
+[12/18 21:10:20.152] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_MAXIMUM_DURATION_MINUTES value 240
+[12/18 21:10:20.173] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 144 total_sent: 144 message: {"queued_dt": "2025-12-18T21:10:20Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_MAXIMUM_DURATION_MINUTES": 240}, "requires_response": false}
+[12/18 21:10:20.418] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_SHORT_SESSION value 15
+[12/18 21:10:20.441] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 132 total_sent: 132 message: {"queued_dt": "2025-12-18T21:10:20Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_SHORT_SESSION": 15}, "requires_response": false}
+[12/18 21:10:20.715] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_RATE_DEFAULT_MINIMUM_TIME value 60
+[12/18 21:10:21.015] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting SYS_OUT_OF_SERVICE value False
+[12/18 21:10:21.037] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 132 total_sent: 132 message: {"queued_dt": "2025-12-18T21:10:21Z", "type": "SETTINGS_UPDATE", "value": {"SYS_OUT_OF_SERVICE": false}, "requires_response": false}
+[12/18 21:10:27.396] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:27.399] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:27.402] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:27.406] | ERROR    | rates      | MainThread | cfmip(): 1st attempt failed srb not within block, srb=<ScheduleRateBlock (14329)[P7]: 11/18_00:00 - 01/17_23:59)> start_dt=2025-11-18 00:00:00
+[12/18 21:10:27.407] | ERROR    | rates      | MainThread | cfmip(): 2nd attempt failed srb not within block, srb=<ScheduleRateBlock (14329)[P7]: 11/18_00:00 - 01/17_23:59)> start_dt=2025-11-18 00:00:00
+[12/18 21:10:27.412] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:27.413] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:27.415] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:27.417] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:27.419] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:27.421] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:27.422] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:27.424] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:27.426] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:37.320] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:37.323] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:37.326] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:37.329] | ERROR    | rates      | MainThread | cfmip(): 1st attempt failed srb not within block, srb=<ScheduleRateBlock (14329)[P7]: 11/18_00:00 - 01/17_23:59)> start_dt=2025-11-18 00:00:00
+[12/18 21:10:37.330] | ERROR    | rates      | MainThread | cfmip(): 2nd attempt failed srb not within block, srb=<ScheduleRateBlock (14329)[P7]: 11/18_00:00 - 01/17_23:59)> start_dt=2025-11-18 00:00:00
+[12/18 21:10:37.334] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:37.336] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:37.338] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:37.339] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:37.341] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:37.343] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:37.344] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:37.346] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:37.348] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:47.351] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:47.355] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:47.357] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:47.359] | ERROR    | rates      | MainThread | cfmip(): 1st attempt failed srb not within block, srb=<ScheduleRateBlock (14329)[P7]: 11/18_00:00 - 01/17_23:59)> start_dt=2025-11-18 00:00:00
+[12/18 21:10:47.360] | ERROR    | rates      | MainThread | cfmip(): 2nd attempt failed srb not within block, srb=<ScheduleRateBlock (14329)[P7]: 11/18_00:00 - 01/17_23:59)> start_dt=2025-11-18 00:00:00
+[12/18 21:10:47.364] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:47.366] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:47.368] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:47.370] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:47.371] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:47.373] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:47.375] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:47.377] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:47.379] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:57.384] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:57.387] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:57.390] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:57.393] | ERROR    | rates      | MainThread | cfmip(): 1st attempt failed srb not within block, srb=<ScheduleRateBlock (14329)[P7]: 11/18_00:00 - 01/17_23:59)> start_dt=2025-11-18 00:00:00
+[12/18 21:10:57.394] | ERROR    | rates      | MainThread | cfmip(): 2nd attempt failed srb not within block, srb=<ScheduleRateBlock (14329)[P7]: 11/18_00:00 - 01/17_23:59)> start_dt=2025-11-18 00:00:00
+[12/18 21:10:57.399] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:57.400] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:57.402] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:57.404] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:57.405] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:57.407] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:57.409] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:57.410] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:10:57.412] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:11:01.861] | INFO     | micro.wdog | microcomm_reactor | qml_ping_sender(): Sending QML ping
+[12/18 21:11:01.862] | ERROR    | micro.wdog | microcomm_reactor | qml_ping_sender(): microcomm.ui_controller not regiestered yet
+[12/18 21:11:01.985] | INFO     | credit_call | credit_call_reactor | _retry_offline_messages(): #0 messages waiting cpu_load 1.0
+[12/18 21:11:03.479] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x00' (1 q_len tx_seqno #54 tx_failed 0) STATE_IDLE
+[12/18 21:11:03.493] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 54 (tx_seqno 54 tx_failed 0) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xed'
+[12/18 21:11:03.494] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x01' (1 q_len tx_seqno #54 rx_seqno #0 tx_failed #0) processing_rx_msg STATE_WAIT_REPLY
+[12/18 21:11:03.515] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 55 (tx_seqno 55 tx_failed 0) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe4'
+[12/18 21:11:03.627] | INFO     | sys_serv   | main_reactor | _check_system_resources(): started
+[12/18 21:11:03.628] | INFO     | sys_serv   | main_reactor | Memory info: {'swap_total': 0, 'total': 4029808000L, 'free': 2859232000L, 'used': 421504000, 'swap_free': 0}
+[12/18 21:11:03.629] | INFO     | sys_serv   | main_reactor | _check_system_resources(): completed
+[12/18 21:11:03.630] | INFO     | lot_rates  | main_reactor | get_permit_table(): entered
+[12/18 21:11:03.630] | INFO     | lot_rates  | main_reactor | get_permit_table(): {'api_name': '/permit_rates', 'api_params': u'permit_holder_category_name= ', 'api_method': 'GET', 'api_body': ''}
+[12/18 21:11:03.631] | INFO     | rabbitmq   | main_reactor | Create connection
+[12/18 21:11:05.725] | INFO     | rabbitmq   | main_reactor | create_connection: Complete - SSL True (timings: co 0.433640956879 ch 0.0536510944366 d 0.228660821915 x -0.112257957458 b 0.0560820102692 d 0.0561759471893 a 0.000570058822632 conf 0.049045085907 cons 0.0506029129028 )
+[12/18 21:11:05.726] | INFO     | idigi      | main_reactor | send_rmq_http_msg(): rmq_payload {'api_name': '/permit_rates', 'api_params': u'permit_holder_category_name= ', 'api_method': 'GET', 'api_body': ''} timeout 30
+[12/18 21:11:05.727] | INFO     | idigi      | main_reactor | send_msg: Reply To amq.gen-qXoR0jdYlVk4vX3Hq1yJDQ, path apirequest_74d5400b-acca-41ce-aadc-f5e21370db7a, len contents 152
+[12/18 21:11:05.780] | INFO     | rabbitmq   | main_reactor | send_msg: sent {'api_name': '/permit_rates', 'api_params': u'permit_holder_category_name= ', 'api_method': 'GET', 'api_body': ''}
+[12/18 21:11:31.308] | INFO     | rates      | SentryJSONRPCServer | grs(): resetting - cached-start=2025-11-18 13:03:03.321131 cached-duration=60 days, 0:00:00 cached-end=2026-01-17 13:03:03.321131 req-start=2025-11-17 13:03:03.321131 req-end=2026-01-17 13:03:03.321131
+[12/18 21:11:31.309] | INFO     | rates      | SentryJSONRPCServer | grs(): readjust new sch (cached-start=2025-11-18 15:11:31.309119 cached-duration=60 days, 0:00:00 cached-end=2026-01-17 13:03:03.321131 req-start=2025-11-17 13:03:03.321131 req-end=2026-01-17 13:03:03.321131) #days 60 days, 0:00:00
+[12/18 21:11:31.376] | INFO     | rates      | SentryJSONRPCServer | grs(): new scheduled_rate_blocks [<ScheduleRateBlock (-1)[P-2147483647]: 11/18_00:00 - 11/18_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 11/19_00:00 - 11/19_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 11/20_00:00 - 11/20_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 11/21_00:00 - 11/21_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 11/22_00:00 - 11/22_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 11/23_00:00 - 11/23_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 11/24_00:00 - 11/24_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 11/25_00:00 - 11/25_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 11/26_00:00 - 11/26_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 11/27_00:00 - 11/27_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 11/28_00:00 - 11/28_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 11/29_00:00 - 11/29_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 11/30_00:00 - 11/30_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 12/01_00:00 - 12/01_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 12/02_00:00 - 12/02_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 12/03_00:00 - 12/03_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 12/04_00:00 - 12/04_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 12/05_00:00 - 12/05_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 12/06_00:00 - 12/06_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 12/07_00:00 - 12/07_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 12/08_00:00 - 12/08_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 12/09_00:00 - 12/09_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 12/10_00:00 - 12/10_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 12/11_00:00 - 12/11_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 12/12_00:00 - 12/12_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 12/13_00:00 - 12/13_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 12/14_00:00 - 12/14_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 12/15_00:00 - 12/15_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 12/16_00:00 - 12/16_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 12/17_00:00 - 12/17_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 12/18_00:00 - 12/18_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 12/19_00:00 - 12/19_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 12/20_00:00 - 12/20_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 12/21_00:00 - 12/21_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 12/22_00:00 - 12/22_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 12/23_00:00 - 12/23_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 12/24_00:00 - 12/24_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 12/25_00:00 - 12/25_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 12/26_00:00 - 12/26_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 12/27_00:00 - 12/27_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 12/28_00:00 - 12/28_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 12/29_00:00 - 12/29_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 12/30_00:00 - 12/30_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 12/31_00:00 - 12/31_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 01/01_00:00 - 01/01_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 01/02_00:00 - 01/02_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 01/03_00:00 - 01/03_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 01/04_00:00 - 01/04_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 01/05_00:00 - 01/05_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 01/06_00:00 - 01/06_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 01/07_00:00 - 01/07_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 01/08_00:00 - 01/08_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 01/09_00:00 - 01/09_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 01/10_00:00 - 01/10_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 01/11_00:00 - 01/11_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 01/12_00:00 - 01/12_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 01/13_00:00 - 01/13_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 01/14_00:00 - 01/14_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 01/15_00:00 - 01/15_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 01/16_00:00 - 01/16_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 01/17_00:00 - 01/17_23:59)>]
+[12/18 21:11:31.380] | INFO     | rates      | SentryJSONRPCServer | grs(): compressed scheduled_rate_blocks [<ScheduleRateBlock (-1)[P-2147483647]: 11/18_00:00 - 01/17_23:59)>]
+[12/18 21:11:31.380] | INFO     | rates      | SentryJSONRPCServer | grs(): final_scheduled_rate_blocks [<ScheduleRateBlock (-1)[P-2147483647]: 11/18_00:00 - 01/17_23:59)>]
+[12/18 21:11:34.088] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_INIT_GRACE_PERIOD value 300
+[12/18 21:11:34.109] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 137 total_sent: 137 message: {"queued_dt": "2025-12-18T21:11:34Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_INIT_GRACE_PERIOD": 300}, "requires_response": false}
+[12/18 21:11:34.332] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_NO_PARKING_GRACE_PERIOD value 0
+[12/18 21:11:34.353] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 141 total_sent: 141 message: {"queued_dt": "2025-12-18T21:11:34Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_NO_PARKING_GRACE_PERIOD": 0}, "requires_response": false}
+[12/18 21:11:34.584] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_VIOLATION_GRACE_PERIOD value 0
+[12/18 21:11:34.605] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 140 total_sent: 140 message: {"queued_dt": "2025-12-18T21:11:34Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_VIOLATION_GRACE_PERIOD": 0}, "requires_response": false}
+[12/18 21:11:34.822] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_FREE_TIME_ON_FIRST_PAYMENT value 0
+[12/18 21:11:34.843] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 144 total_sent: 144 message: {"queued_dt": "2025-12-18T21:11:34Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_FREE_TIME_ON_FIRST_PAYMENT": 0}, "requires_response": false}
+[12/18 21:11:35.055] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_ACCEPT_COIN_NO_SPOT_SCREEN_TIMEOUT value 5
+[12/18 21:11:35.076] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 152 total_sent: 152 message: {"queued_dt": "2025-12-18T21:11:35Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_ACCEPT_COIN_NO_SPOT_SCREEN_TIMEOUT": 5}, "requires_response": false}
+[12/18 21:11:35.303] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_PAY_BY_PLATE value False
+[12/18 21:11:35.324] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 134 total_sent: 134 message: {"queued_dt": "2025-12-18T21:11:35Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_PAY_BY_PLATE": false}, "requires_response": false}
+[12/18 21:11:35.590] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_DISCONNECT_FREE value True
+[12/18 21:11:35.611] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 136 total_sent: 136 message: {"queued_dt": "2025-12-18T21:11:35Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_DISCONNECT_FREE": true}, "requires_response": false}
+[12/18 21:11:35.873] | INFO     | idigi      | rabbitmq_reactor | _send_watchdog_handler: No response
+[12/18 21:11:35.877] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_UNLOCK_ENABLED value False
+[12/18 21:11:35.894] | ERROR    | rabbitmq   | main_reactor | send_msg: timeout - setting response None
+[12/18 21:11:35.895] | ERROR    | lot_rates  | main_reactor | get_permit_table(): GET - No response received
+[12/18 21:11:35.897] | INFO     | lot_gui    | main_reactor | _rate_changed_callback(): called
+[12/18 21:11:35.898] | INFO     | lot_controller | main_reactor | restart_camera_socket(): entered
+[12/18 21:11:35.899] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 136 total_sent: 136 message: {"queued_dt": "2025-12-18T21:11:35Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_UNLOCK_ENABLED": false}, "requires_response": false}
+[12/18 21:11:36.039] | INFO     | sys_serv   | time_checker | _log_ntp_peer_info(): 1/3/12 (primary/good+primary/total) - primary:*107.191.55.233  253.59.98.63     2 u  207 1024  377   43.948   -4.634   1.714 good:+102.129.185.135 216.239.35.12    2 u  533 1024  377   47.570   -2.870   3.214, +66.42.86.174    17.253.6.45      2 u  873 1024  377   37.494   -5.328   3.849 bad:-198.71.50.75    0.185.19.164     3 u  774 1024  377   41.985    1.647   1.474, -23.150.40.242   204.9.54.119     2 u  852 1024  277   41.464    1.321   1.311, -185.125.190.58  183.160.133.132  2 u  957 1024  377  115.572   -1.328   1.475, -104.152.220.5   107.200.149.95   2 u  257 1024  377   68.551   -2.804   2.480 other: 0.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 1.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 2.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 3.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, ntp.ubuntu.com  .POOL.          16 p    -   64    0    0.000    0.000   0.000
+[12/18 21:11:36.153] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_TRUEUP_ENABLED value False
+[12/18 21:11:36.163] | INFO     | sys_serv   | time_checker | get_primary_reference(): Found primary_ref: *107.191.55.233  253.59.98.63     2 u  207 1024  377   43.948   -4.634   1.714
+[12/18 21:11:36.163] | INFO     | idigi      | time_checker | clear_ntp_reloaded(): clearing ntp_reloaded controlling watchdog checks
+[12/18 21:11:36.175] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 136 total_sent: 136 message: {"queued_dt": "2025-12-18T21:11:36Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_TRUEUP_ENABLED": false}, "requires_response": false}
+[12/18 21:11:36.439] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_UNLOCK_TIME value 1
+[12/18 21:11:36.460] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 129 total_sent: 129 message: {"queued_dt": "2025-12-18T21:11:36Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_UNLOCK_TIME": 1}, "requires_response": false}
+[12/18 21:11:36.686] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_UNLOCK_MAX value 1
+[12/18 21:11:36.710] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 128 total_sent: 128 message: {"queued_dt": "2025-12-18T21:11:36Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_UNLOCK_MAX": 1}, "requires_response": false}
+[12/18 21:11:36.942] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_IMAGE_SEND_BEFORE_VIOLATION value 45
+[12/18 21:11:36.963] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 146 total_sent: 146 message: {"queued_dt": "2025-12-18T21:11:36Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_IMAGE_SEND_BEFORE_VIOLATION": 45}, "requires_response": false}
+[12/18 21:11:37.230] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_MAXIMUM_DURATION_MINUTES value 240
+[12/18 21:11:37.251] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 144 total_sent: 144 message: {"queued_dt": "2025-12-18T21:11:37Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_MAXIMUM_DURATION_MINUTES": 240}, "requires_response": false}
+[12/18 21:11:37.529] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_SHORT_SESSION value 15
+[12/18 21:11:37.550] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 132 total_sent: 132 message: {"queued_dt": "2025-12-18T21:11:37Z", "type": "SETTINGS_UPDATE", "value": {"PARKING_SHORT_SESSION": 15}, "requires_response": false}
+[12/18 21:11:37.832] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_RATE_DEFAULT_MINIMUM_TIME value 60
+[12/18 21:11:38.078] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting SYS_OUT_OF_SERVICE value False
+[12/18 21:11:38.100] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 132 total_sent: 132 message: {"queued_dt": "2025-12-18T21:11:38Z", "type": "SETTINGS_UPDATE", "value": {"SYS_OUT_OF_SERVICE": false}, "requires_response": false}
+[12/18 21:11:38.320] | WARNING  | rates      | MainThread | _gvsat(): TODAY MITIGIATION srb None using new_srbs _scheduled_rate_blocks [<ScheduleRateBlock (-1)[P-2147483647]: 11/18_00:00 - 01/17_23:59)>] new cur_dt 2025-12-18 15:11:00 orig_cur_dt 2026-01-18 00:04:00
+[12/18 21:11:38.321] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:11:38.323] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:11:38.325] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:11:38.328] | ERROR    | rates      | MainThread | cfmip(): 1st attempt failed srb not within block, srb=<ScheduleRateBlock (-1)[P-2147483647]: 11/18_00:00 - 01/17_23:59)> start_dt=2025-11-18 00:00:00
+[12/18 21:11:38.328] | ERROR    | rates      | MainThread | cfmip(): 2nd attempt failed srb not within block, srb=<ScheduleRateBlock (-1)[P-2147483647]: 11/18_00:00 - 01/17_23:59)> start_dt=2025-11-18 00:00:00
+[12/18 21:11:38.332] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:11:38.334] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:11:38.336] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:11:38.338] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:11:38.339] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:11:38.341] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:11:38.343] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:11:38.345] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:11:38.347] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:11:48.358] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:11:48.361] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:11:48.364] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:11:48.367] | ERROR    | rates      | MainThread | cfmip(): 1st attempt failed srb not within block, srb=<ScheduleRateBlock (-1)[P-2147483647]: 11/18_00:00 - 01/17_23:59)> start_dt=2025-11-18 00:00:00
+[12/18 21:11:48.368] | ERROR    | rates      | MainThread | cfmip(): 2nd attempt failed srb not within block, srb=<ScheduleRateBlock (-1)[P-2147483647]: 11/18_00:00 - 01/17_23:59)> start_dt=2025-11-18 00:00:00
+[12/18 21:11:48.372] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:11:48.374] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:11:48.376] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:11:48.378] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:11:48.380] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:11:48.381] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:11:48.383] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:11:48.385] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:11:48.387] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:11:58.379] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:11:58.382] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:11:58.384] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:11:58.387] | ERROR    | rates      | MainThread | cfmip(): 1st attempt failed srb not within block, srb=<ScheduleRateBlock (-1)[P-2147483647]: 11/18_00:00 - 01/17_23:59)> start_dt=2025-11-18 00:00:00
+[12/18 21:11:58.388] | ERROR    | rates      | MainThread | cfmip(): 2nd attempt failed srb not within block, srb=<ScheduleRateBlock (-1)[P-2147483647]: 11/18_00:00 - 01/17_23:59)> start_dt=2025-11-18 00:00:00
+[12/18 21:11:58.392] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:11:58.394] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:11:58.396] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:11:58.398] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:11:58.399] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:11:58.401] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:11:58.403] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:11:58.404] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:11:58.406] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:12:02.021] | INFO     | credit_call | credit_call_reactor | _retry_offline_messages(): #0 messages waiting cpu_load 1.22
+[12/18 21:12:03.489] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x00' (1 q_len tx_seqno #56 tx_failed 0) STATE_IDLE
+[12/18 21:12:03.503] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 56 (tx_seqno 56 tx_failed 0) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xed'
+[12/18 21:12:03.504] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x01' (1 q_len tx_seqno #56 rx_seqno #0 tx_failed #0) processing_rx_msg STATE_WAIT_REPLY
+[12/18 21:12:03.524] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 57 (tx_seqno 57 tx_failed 0) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\xe5'
+[12/18 21:12:08.361] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:12:08.364] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:12:08.366] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:12:08.368] | ERROR    | rates      | MainThread | cfmip(): 1st attempt failed srb not within block, srb=<ScheduleRateBlock (-1)[P-2147483647]: 11/18_00:00 - 01/17_23:59)> start_dt=2025-11-18 00:00:00
+[12/18 21:12:08.369] | ERROR    | rates      | MainThread | cfmip(): 2nd attempt failed srb not within block, srb=<ScheduleRateBlock (-1)[P-2147483647]: 11/18_00:00 - 01/17_23:59)> start_dt=2025-11-18 00:00:00
+[12/18 21:12:08.375] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:12:08.377] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:12:08.380] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:12:08.382] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:12:08.384] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:12:08.386] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:12:08.388] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:12:08.391] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:12:08.393] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:12:12.674] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[12/18 21:12:12.675] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[12/18 21:12:12.701] | INFO     | lib.seco   | watchdog   | SecoLib()::check_temp(): SECO cpu temperature is:  Kelvin 3071 Celsius 33
+[12/18 21:12:15.618] | INFO     | ui.openlot | SentryJSONRPCServer | on_touch_screen
+[12/18 21:12:15.629] | INFO     | ui.openlot | SentryJSONRPCServer | _disable_debug: Timer debug disabled
+[12/18 21:12:15.630] | INFO     | micro.button | SentryJSONRPCServer | Enable button
+[12/18 21:12:15.630] | INFO     | lot_gui    | SentryJSONRPCServer | qml.resetAllScreenState
+[12/18 21:12:15.631] | INFO     | lot_controller | SentryJSONRPCServer | reset_permit_purchase: get_plate() None
+[12/18 21:12:15.631] | INFO     | lot_controller | SentryJSONRPCServer | reset_permit_purchase: park_time None
+[12/18 21:12:15.631] | INFO     | lot_controller | SentryJSONRPCServer | reset_permit_purchase: true_up False handicap False
+[12/18 21:12:15.632] | INFO     | lot_controller | SentryJSONRPCServer | reset_permit_purchase: Publish complete - Discarding current permit object
+[12/18 21:12:15.632] | INFO     | lot_controller | SentryJSONRPCServer | __init__: self._debug_mask = False
+[12/18 21:12:16.925] | INFO     | lot_gui    | SentryJSONRPCServer | Screen changed to SCREEN_LOT_PERMIT
+[12/18 21:12:16.926] | INFO     | ui.openlot | SentryJSONRPCServer | UI_STATE_LOT_HOME -> UI_STATE_SELECT_PAYMENT_TYPE (UISLH::enter_state(): No home page)
+[12/18 21:12:16.927] | INFO     | ui.openlot | SentryJSONRPCServer | UI_STATE_IDLE -> UI_STATE_LOT_HOME (UISI::on_touch_screen(): )
+[12/18 21:12:16.930] | INFO     | lot_gui    | MainThread | qml.goToScreen lot_permit <PySide2.QtQuick.QQuickItem object at 0xa6f298ec>
+[12/18 21:12:16.931] | INFO     | lot_gui    | MainThread | QT: Current:  lot_idle Next:  lot_permit (file:///tmp/tmpVuwmcP/sentry.egg-tmp/mps/resources/qml/main.qml:1597)
+[12/18 21:12:16.941] | INFO     | lot_gui    | MainThread | qml.goToScreen complete
+[12/18 21:12:17.381] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:12:17.383] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:12:17.386] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:12:17.388] | ERROR    | rates      | MainThread | cfmip(): 1st attempt failed srb not within block, srb=<ScheduleRateBlock (-1)[P-2147483647]: 11/18_00:00 - 01/17_23:59)> start_dt=2025-11-18 00:00:00
+[12/18 21:12:17.389] | ERROR    | rates      | MainThread | cfmip(): 2nd attempt failed srb not within block, srb=<ScheduleRateBlock (-1)[P-2147483647]: 11/18_00:00 - 01/17_23:59)> start_dt=2025-11-18 00:00:00
+[12/18 21:12:17.393] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:12:17.395] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:12:17.397] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:12:17.399] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:12:17.401] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:12:17.403] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:12:17.405] | ERROR    | rates      | MainThread | gnrbt(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:12:17.407] | ERROR    | rates      | MainThread | gnrbsd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:12:17.409] | ERROR    | rates      | MainThread | gnrbd(): no different srb type origin_dt 2026-01-18 00:04:00 iteration 10
+[12/18 21:12:19.016] | INFO     | ui.openlot | SentryJSONRPCServer | on_touch_screen

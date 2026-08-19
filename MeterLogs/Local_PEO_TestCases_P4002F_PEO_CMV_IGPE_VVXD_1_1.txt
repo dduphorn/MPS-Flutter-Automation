@@ -1,0 +1,148 @@
+[08/11 16:30:14.319] | INFO     | idigi      | time_checker | clear_ntp_reloaded(): clearing ntp_reloaded controlling watchdog checks
+[08/11 16:30:14.381] | INFO     | lib.cgos   | time_checker | Set RTC to 2026-08-11 16:30:14.321377+00:00
+[08/11 16:30:23.717] | INFO     | detection  | main_reactor | is_daytime(): URL https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0
+[08/11 16:30:23.857] | ERROR    | detection  | main_reactor | is_daytime: Error processing url https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0 read - exception <urlopen error [Errno 1] _ssl.c:504: error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure>
+[08/11 16:30:23.859] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/11 16:30:23.861] | INFO     | detection  | main_reactor | is_daytime(): URL https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0
+[08/11 16:30:23.969] | ERROR    | detection  | main_reactor | is_daytime: Error processing url https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0 read - exception <urlopen error [Errno 1] _ssl.c:504: error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure>
+[08/11 16:30:23.971] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/11 16:30:54.189] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[08/11 16:30:57.328] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 33869 rp_min_to_free 33869
+[08/11 16:31:24.447] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/system_alive-17f6962695a211f1a986001395129121.json
+[08/11 16:31:24.839] | INFO     | detection  | main_reactor | is_daytime(): URL https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0
+[08/11 16:31:24.950] | ERROR    | detection  | main_reactor | is_daytime: Error processing url https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0 read - exception <urlopen error [Errno 1] _ssl.c:504: error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure>
+[08/11 16:31:24.953] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/11 16:31:24.955] | INFO     | detection  | main_reactor | is_daytime(): URL https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0
+[08/11 16:31:25.073] | ERROR    | detection  | main_reactor | is_daytime: Error processing url https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0 read - exception <urlopen error [Errno 1] _ssl.c:504: error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure>
+[08/11 16:31:25.077] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/11 16:31:25.485] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"ip_addr": "10.10.102.242", "rmq_responses_attempted": 91, "msg_id": "0x8000002eL", "rmq_api_bytes_sent": 304, "message": "9000-9001", "rmq_image_bytes_sent": 0, "rmq_response_bytes_sent": 49280, "coin_jar_full": 0, "rmq_images_attempted": 0, "desc_str": "Sentry is alive and normal", "rmq_image_errors": 0, "rmq_images_sent": 0, "rmq_json_errors": 0, "rmq_responses_sent": 91, "rmq_apis_attempted": 2, "rmq_jsons_attempted": 52, "sentry_thread_hung": false, "rmq_api_errors": 0, "rmq_response_errors": 0, "rmq_json_bytes_sent": 42713, "rmq_jsons_sent": 52, "rmq_apis_sent": 2}, "class": "event", "queued_dt": "2026-08-11T16:31:24Z", "type": "system_alive", "id": "e304fea4-493f-4966-ad46-f0099d3cd49f", "device_id": "m:001395129121"}
+[08/11 16:31:25.597] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at rabbitmq.staging.sentry-link.com:5671 (200): Normal shutdown
+[08/11 16:31:57.325] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 33868 rp_min_to_free 33868
+[08/11 16:32:25.941] | INFO     | detection  | main_reactor | is_daytime(): URL https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0
+[08/11 16:32:26.072] | ERROR    | detection  | main_reactor | is_daytime: Error processing url https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0 read - exception <urlopen error [Errno 1] _ssl.c:504: error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure>
+[08/11 16:32:26.074] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/11 16:32:26.076] | INFO     | detection  | main_reactor | is_daytime(): URL https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0
+[08/11 16:32:26.213] | ERROR    | detection  | main_reactor | is_daytime: Error processing url https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0 read - exception <urlopen error [Errno 1] _ssl.c:504: error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure>
+[08/11 16:32:26.217] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/11 16:32:35.288] | WARNING  | net_monitor | main_reactor | check_network_connectivity_async(): Skipping due to high CPU load (0.78 > 0.7)
+[08/11 16:32:44.769] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[08/11 16:32:44.771] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[08/11 16:32:54.283] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[08/11 16:32:57.350] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 33867 rp_min_to_free 33867
+[08/11 16:33:26.324] | INFO     | detection  | main_reactor | is_daytime(): URL https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0
+[08/11 16:33:26.456] | ERROR    | detection  | main_reactor | is_daytime: Error processing url https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0 read - exception <urlopen error [Errno 1] _ssl.c:504: error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure>
+[08/11 16:33:26.458] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/11 16:33:26.460] | INFO     | detection  | main_reactor | is_daytime(): URL https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0
+[08/11 16:33:26.564] | ERROR    | detection  | main_reactor | is_daytime: Error processing url https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0 read - exception <urlopen error [Errno 1] _ssl.c:504: error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure>
+[08/11 16:33:26.566] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/11 16:33:57.321] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 33866 rp_min_to_free 33866
+[08/11 16:34:27.452] | INFO     | detection  | main_reactor | is_daytime(): URL https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0
+[08/11 16:34:27.573] | ERROR    | detection  | main_reactor | is_daytime: Error processing url https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0 read - exception <urlopen error [Errno 1] _ssl.c:504: error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure>
+[08/11 16:34:27.577] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/11 16:34:27.580] | INFO     | detection  | main_reactor | is_daytime(): URL https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0
+[08/11 16:34:27.708] | ERROR    | detection  | main_reactor | is_daytime: Error processing url https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0 read - exception <urlopen error [Errno 1] _ssl.c:504: error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure>
+[08/11 16:34:27.711] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/11 16:34:54.289] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[08/11 16:34:55.345] | INFO     | credit_call | credit_call_reactor | _retry_offline_messages(): deferring cpu_load 0.85 > 0.7 - #0 messages waiting
+[08/11 16:34:55.424] | INFO     | micro.wdog | microcomm_reactor | qml_ping_sender(): Sending QML ping
+[08/11 16:34:57.359] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 33865 rp_min_to_free 33865
+[08/11 16:35:28.588] | INFO     | detection  | main_reactor | is_daytime(): URL https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0
+[08/11 16:35:28.720] | ERROR    | detection  | main_reactor | is_daytime: Error processing url https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0 read - exception <urlopen error [Errno 1] _ssl.c:504: error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure>
+[08/11 16:35:28.723] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/11 16:35:28.725] | INFO     | detection  | main_reactor | is_daytime(): URL https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0
+[08/11 16:35:28.841] | ERROR    | detection  | main_reactor | is_daytime: Error processing url https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0 read - exception <urlopen error [Errno 1] _ssl.c:504: error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure>
+[08/11 16:35:28.844] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/11 16:35:44.849] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[08/11 16:35:44.850] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[08/11 16:35:48.849] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req Disabled gatelot blob logs Target: u'rpc_parking'
+[08/11 16:35:48.860] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint parking response {"jsonrpc": "2.0", "id": 78138099, "result": {"success": false}}
+[08/11 16:35:48.911] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 78138099, "result": {"success": false}} Queue amq.gen-p2guBquLzLGUo0vimslVrQ #92
+[08/11 16:35:53.417] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req Disabled gatelot blob logs Target: u'rpc_parking'
+[08/11 16:35:53.423] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint parking response {"jsonrpc": "2.0", "id": 78138099, "result": {"success": false}}
+[08/11 16:35:53.474] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 78138099, "result": {"success": false}} Queue amq.gen-st64k72nhiIx5Fe4oFsNNg #93
+[08/11 16:35:54.415] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req Disabled gatelot blob logs Target: u'rpc_parking'
+[08/11 16:35:54.418] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint parking response {"jsonrpc": "2.0", "id": 78138100, "result": {"success": false}}
+[08/11 16:35:54.470] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 78138100, "result": {"success": false}} Queue amq.gen-EbKpBKrrl_pqt6LDRktZvA #94
+[08/11 16:35:57.336] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 33864 rp_min_to_free 33864
+[08/11 16:35:58.979] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req Disabled gatelot blob logs Target: u'rpc_parking'
+[08/11 16:35:58.985] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint parking response {"jsonrpc": "2.0", "id": 78138100, "result": {"success": false}}
+[08/11 16:35:59.042] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 78138100, "result": {"success": false}} Queue amq.gen-GV_Z7ReVj0aIeWC3A13JAw #95
+[08/11 16:35:59.981] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req Disabled gatelot blob logs Target: u'rpc_parking'
+[08/11 16:35:59.984] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint parking response {"jsonrpc": "2.0", "id": 78138099, "result": {"success": false}}
+[08/11 16:36:00.040] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 78138099, "result": {"success": false}} Queue amq.gen-cx2ZZvMvXkTdMSo7nU0Lmg #96
+[08/11 16:36:05.546] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req Disabled gatelot blob logs Target: u'rpc_parking'
+[08/11 16:36:05.556] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint parking response {"jsonrpc": "2.0", "id": 78138100, "result": {"success": false}}
+[08/11 16:36:05.610] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 78138100, "result": {"success": false}} Queue amq.gen-GXqEajTHvaNr2FPQulK0tA #97
+[08/11 16:36:08.541] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req Disabled gatelot blob logs Target: u'rpc_parking'
+[08/11 16:36:08.545] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint parking response {"jsonrpc": "2.0", "id": 78138099, "result": {"success": false}}
+[08/11 16:36:08.599] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 78138099, "result": {"success": false}} Queue amq.gen-tDedceVaIZPJvBsT_JJd_w #98
+[08/11 16:36:14.118] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req Disabled gatelot blob logs Target: u'rpc_parking'
+[08/11 16:36:14.121] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint parking response {"jsonrpc": "2.0", "id": 78138100, "result": {"success": false}}
+[08/11 16:36:14.177] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 78138100, "result": {"success": false}} Queue amq.gen-xwUAcV_t2gIG9yIbyS2Hvw #99
+[08/11 16:36:19.103] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req Disabled gatelot blob logs Target: u'rpc_parking'
+[08/11 16:36:19.108] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint parking response {"jsonrpc": "2.0", "id": 78138099, "result": {"success": false}}
+[08/11 16:36:19.167] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 78138099, "result": {"success": false}} Queue amq.gen-MG4lWbUkLcLnID_7I4OBJw #100
+[08/11 16:36:23.086] | INFO     | mps.ui     | SentryJSONRPCServer | suspend_background_tasks(): change to True
+[08/11 16:36:23.087] | INFO     | parking_serv | SentryJSONRPCServer | suspend_transfers(): True
+[08/11 16:36:23.099] | INFO     | ui.multi   | SentryJSONRPCServer | set_state(): UI_STATE_IDLE performing pre_exit_state() actions UISI: screen touched
+[08/11 16:36:23.101] | INFO     | interaction | SentryJSONRPCServer | pre_exit_state(): completing actions before next_state UI_STATE_HOME
+[08/11 16:36:23.103] | INFO     | interaction | SentryJSONRPCServer | pre_exit_state(): completed actions complete True
+[08/11 16:36:23.105] | INFO     | ui.multi   | SentryJSONRPCServer | set_state(): UI_STATE_IDLE completed pre_exit_state() actions proceed True
+[08/11 16:36:23.107] | INFO     | ui.multi   | SentryJSONRPCServer | Secs in Idle 9931.477691
+[08/11 16:36:23.111] | INFO     | interaction | SentryJSONRPCServer | cash_out_or_void_payment: No payment
+[08/11 16:36:23.112] | INFO     | ui.multi   | SentryJSONRPCServer | CONFIRM FALSE
+[08/11 16:36:23.114] | INFO     | ui.multi   | SentryJSONRPCServer | UISH: enter_state active_spot is None
+[08/11 16:36:23.115] | INFO     | interaction | SentryJSONRPCServer | return_coins(): ignoring credit cards and returning coins
+[08/11 16:36:23.318] | INFO     | ui.multi   | SentryJSONRPCServer | CHECK POP  False
+[08/11 16:36:23.321] | INFO     | ui.multi   | SentryJSONRPCServer | UISH::enter_state(): No expired for None
+[08/11 16:36:23.324] | INFO     | gui        | MainThread | QT: MultiSelectSpace: transition to spacemapoff
+[08/11 16:36:23.345] | INFO     | gui        | SentryJSONRPCServer | Screen changed to SCREEN_MULTI_SELECT_SPACE en
+[08/11 16:36:23.347] | INFO     | playback   | SentryJSONRPCServer | play: en_space_number.mp3
+[08/11 16:36:23.379] | WARNING  | interaction | SentryJSONRPCServer | _stop_idle_timeout: NO TIMER
+[08/11 16:36:23.381] | INFO     | ui.multi   | SentryJSONRPCServer | UI_STATE_IDLE -> UI_STATE_HOME (UISI: screen touched)
+[08/11 16:36:23.383] | INFO     | gui        | MainThread | _signal_goto_screen: multi_select_space
+[08/11 16:36:23.386] | INFO     | gui        | MainThread | QT: Current:  multi_idle Next:  multi_select_space
+[08/11 16:36:24.690] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req Disabled gatelot blob logs Target: u'rpc_parking'
+[08/11 16:36:24.694] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint parking response {"jsonrpc": "2.0", "id": 78138100, "result": {"success": false}}
+[08/11 16:36:24.750] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 78138100, "result": {"success": false}} Queue amq.gen-2ST3ODoCO9Y2eFCY4_RYiA #101
+[08/11 16:36:25.720] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/system_alive-cb89221295a211f1a986001395129121.json
+[08/11 16:36:26.775] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"ip_addr": "10.10.102.242", "rmq_responses_attempted": 101, "msg_id": "0x8000002eL", "rmq_api_bytes_sent": 304, "message": "9000-9001", "rmq_image_bytes_sent": 0, "rmq_response_bytes_sent": 50160, "coin_jar_full": 0, "rmq_images_attempted": 0, "desc_str": "Sentry is alive and normal", "rmq_image_errors": 0, "rmq_images_sent": 0, "rmq_json_errors": 0, "rmq_responses_sent": 101, "rmq_apis_attempted": 2, "rmq_jsons_attempted": 53, "sentry_thread_hung": false, "rmq_api_errors": 0, "rmq_response_errors": 0, "rmq_json_bytes_sent": 43458, "rmq_jsons_sent": 53, "rmq_apis_sent": 2}, "class": "event", "queued_dt": "2026-08-11T16:36:25Z", "type": "system_alive", "id": "60645e70-a46a-45e9-aee9-798cf8691c77", "device_id": "m:001395129121"}
+[08/11 16:36:26.893] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at rabbitmq.staging.sentry-link.com:5671 (200): Normal shutdown
+[08/11 16:36:29.254] | INFO     | interaction | SentryJSONRPCServer | on_test_automation_space_entered: SPACE 9000
+[08/11 16:36:29.261] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): user selected space 9000
+[08/11 16:36:29.265] | INFO     | gui        | MainThread | QT: MultiSelectSpace: transition to loadon
+[08/11 16:36:29.274] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/parking_event_user_entered_space-cda77daa95a211f1a986001395129121.json
+[08/11 16:36:29.288] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): check space 9000 for local
+[08/11 16:36:29.299] | WARNING  | interaction | main_reactor | _stop_idle_timeout: NO TIMER
+[08/11 16:36:29.301] | INFO     | parking.controller | main_reactor | map_space_to_spot: indx 0 spot SPOT_1
+[08/11 16:36:29.302] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): 9000 is a LOCAL space number, setting active spot SPOT_1
+[08/11 16:36:29.305] | INFO     | parking.session.SPOT_1 | main_reactor | is_init_grace(): None
+[08/11 16:36:29.306] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): has NOT paid for max time
+[08/11 16:36:29.907] | INFO     | interaction | main_reactor | set_active_spot: ACTIVE SPOT SPOT_1 /home/mpsadmin/projects/Sentry_test/src/mps/ui/multi_user_interaction.py:2750
+[08/11 16:36:29.908] | INFO     | interaction | main_reactor | set_active_spot(): to SPOT_1
+[08/11 16:36:29.909] | INFO     | parking.controller | main_reactor | set_active_spot(): to SPOT_1
+[08/11 16:36:30.353] | INFO     | ui.multi   | main_reactor | config_payment_acceptance: Caller /home/mpsadmin/projects/Sentry_test/src/mps/ui/multi_user_interaction.py:2756
+[08/11 16:36:30.363] | INFO     | ui.multi   | main_reactor | config_payment_acceptance(UISH(): LOCAL valid space number): is_rate_schedule_payment_allowed_now() = True
+[08/11 16:36:30.374] | INFO     | epay       | main_reactor | enable_credit_cards: enable True
+[08/11 16:36:30.376] | INFO     | interaction | main_reactor | accept_coins(): acceptor currently blocking - cfg to accept
+[08/11 16:36:30.377] | INFO     | coin       | main_reactor | accept_all_coins(): configuring acceptance
+[08/11 16:36:30.390] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): PSV PSV_STATE_AVAILABLE parking_state PARKING_STATE_EMPTY
+[08/11 16:36:30.394] | INFO     | gui        | main_reactor | prompt_on
+[08/11 16:36:30.396] | INFO     | playback   | main_reactor | play: en_coin_card.mp3
+[08/11 16:36:30.421] | INFO     | gui        | main_reactor | Screen changed to SCREEN_MULTI_HOME en
+[08/11 16:36:30.424] | INFO     | gui        | MainThread | QT: MultiSelectSpace: transition to loadoff
+[08/11 16:36:30.433] | INFO     | ui.multi   | main_reactor | update_last_session_data(): space 9000 spot_id SPOT_1 parking_session_id c314309c959b11f1b5c1001395129121 NO payment
+[08/11 16:36:30.467] | INFO     | gui        | MainThread | _signal_prompt_on
+[08/11 16:36:30.473] | INFO     | detection  | main_reactor | is_daytime(): URL https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0
+[08/11 16:36:30.472] | INFO     | gui        | MainThread | QT: MultiHome: transition to prompton
+[08/11 16:36:30.529] | INFO     | gui        | MainThread | _signal_goto_screen: multi_home
+[08/11 16:36:30.532] | INFO     | gui        | MainThread | QT: Current:  multi_select_space Next:  multi_home
+[08/11 16:36:30.596] | ERROR    | detection  | main_reactor | is_daytime: Error processing url https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0 read - exception <urlopen error [Errno 1] _ssl.c:504: error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure>
+[08/11 16:36:30.599] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/11 16:36:30.601] | INFO     | detection  | main_reactor | is_daytime(): URL https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0
+[08/11 16:36:30.751] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"user_space_entered": "9000", "event_time": "2026-08-11T16:36:29Z", "mac_address": "00:13:95:12:91:21"}, "class": "event", "queued_dt": "2026-08-11T16:36:29Z", "type": "parking_event_user_entered_space", "id": "d5b5e5b2-638b-4c4f-9b0c-0dfbdb98e8a3", "device_id": "m:001395129121"}
+[08/11 16:36:30.856] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at rabbitmq.staging.sentry-link.com:5671 (200): Normal shutdown
+[08/11 16:36:31.142] | INFO     | coin_event | Coin Vault | Coin acceptor configured to accept coins (command sent)
+[08/11 16:36:31.408] | INFO     | coin_event | Coin Vault | Info: REQUEST_MASTER_INHIBIT_STATUS indicates acceptor released
+[08/11 16:36:35.732] | ERROR    | detection  | main_reactor | is_daytime: Error processing url https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0 read - exception <urlopen error [Errno 1] _ssl.c:504: error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure>
+[08/11 16:36:35.737] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0

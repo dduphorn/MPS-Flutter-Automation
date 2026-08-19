@@ -1,0 +1,29 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<!--<suite name="RunAllTestSuitesInParallel-SG" verbose="1" parallel ="tests" thread-count="10">-->
+<suite name="Regression_HEALTH" verbose="1"  parallel ="tests"  thread-count="9">
+	<test name = "HEALTH_TestCases">
+	   	<parameter name="strStopAndStartAppiumServer" value="True"></parameter>
+	    <parameter name="strAppiumPort" value="6666"></parameter>
+<!-- 	    <parameter name="strAndroidUdid" value="4a064e70"></parameter> -->
+<!-- 	    <parameter name="strAndroidUdid" value=""></parameter> -->
+	    <parameter name="strAVDName" value = ""></parameter>
+	    <parameter name="strDeviceId" value="SH79"></parameter>
+<!-- 	   	<parameter name="strDeviceId" value="9092"></parameter> -->
+	   	<parameter name="strRemotePath" value="http://localhost:4723"></parameter>
+	   	<classes>
+	   		<class name="AutomationCode.TestCases">
+		   		<methods>
+		   			
+		   			<include name="S1001_RU_VT_SA_NS_MOFF_NC_VHS"></include>
+		   			<include name="S1002_RU_VT_SA_NS_MON_NC_VHS"></include>
+		   			<include name="S1003_RU_IT_SS_SP_MOFF_NC_VHS"></include>
+		   			<include name="S1004_RU_VT_SS_SP_MOFF_NC_VHS"></include>
+		   			<include name="S1005_RU_VT_SS_SP_MON_NC_VHS"></include>
+		   			
+		   			<include name="S1006_UU_VT_SA_NS_MON_NC_VHS"></include>
+		   			<include name="S1007_UU_VT_SA_NS_MOFF_NC_VHS"></include>
+				</methods>
+	   		</class>
+	    </classes>
+	</test>
+</suite>

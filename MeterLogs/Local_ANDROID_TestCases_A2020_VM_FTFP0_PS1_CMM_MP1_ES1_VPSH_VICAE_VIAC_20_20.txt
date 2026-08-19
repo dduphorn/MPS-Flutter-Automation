@@ -1,0 +1,38 @@
+[02/24 22:25:58.878] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[02/24 22:25:58.878] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[02/24 22:25:58.879] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1740435958,2,2
+
+[02/24 22:26:06.105] | INFO     | micro.wdog | microcomm_reactor | qml_ping_sender(): Sending QML ping
+[02/24 22:26:07.818] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43653 rp_min_to_free 43653
+[02/24 22:26:10.648] | INFO     | camera     | time_checker | _send(): -> name: sock_1_2 message_len: 97 total_sent: 97
+[02/24 22:26:10.759] | INFO     | camera     | time_checker | _recv(): <- request_len: 69 header_len: 8
+[02/24 22:26:10.939] | INFO     | sys_serv   | time_checker | _log_ntp_peer_info(): 1/3/11 (primary/good+primary/total) - primary:*173.73.96.68    .E810.           1 u  145 1024  377   43.043   -0.731   2.043 good:+23.168.136.132  17.253.26.123    2 u  430 1024  377   32.688   -0.558   2.440, +135.134.111.122 69.89.207.199    2 u  695 1024  377   28.870   -1.057   3.139 bad:-134.215.155.177 216.239.35.0     2 u  111 1024  377   27.061   -2.924   3.727, -163.123.152.14  23.94.221.138    3 u  949 1024  377   36.173   -1.012   2.528, -50.205.57.38    .GPS.            1 u  647 1024  377   46.995    0.955   1.143 other: 0.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 1.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 2.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 3.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, ntp.ubuntu.com  .POOL.          16 p    -   64    0    0.000    0.000   0.000
+[02/24 22:26:11.118] | INFO     | sys_serv   | time_checker | get_primary_reference(): Found primary_ref: *173.73.96.68    .E810.           1 u  145 1024  377   43.043   -0.731   2.043
+[02/24 22:26:11.118] | INFO     | idigi      | time_checker | clear_ntp_reloaded(): clearing ntp_reloaded controlling watchdog checks
+[02/24 22:27:00.507] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[02/24 22:27:00.509] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[02/24 22:27:00.509] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[02/24 22:27:00.510] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1740436020,2,2
+
+[02/24 22:27:00.683] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[02/24 22:27:00.685] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[02/24 22:27:00.685] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[02/24 22:27:00.685] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1740436020,2,2
+
+[02/24 22:27:07.809] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43652 rp_min_to_free 43652
+[02/24 22:27:54.717] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[02/24 22:28:02.283] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[02/24 22:28:02.284] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[02/24 22:28:02.284] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[02/24 22:28:02.284] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1740436082,2,2
+
+[02/24 22:28:02.458] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[02/24 22:28:02.459] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[02/24 22:28:02.460] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[02/24 22:28:02.460] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1740436082,2,2
+
+[02/24 22:28:07.778] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43651 rp_min_to_free 43651
+[02/24 22:28:13.057] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[02/24 22:28:13.057] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[02/24 22:28:13.084] | INFO     | lib.seco   | watchdog   | SecoLib()::check_temp(): SECO cpu temperature is:  Kelvin 3161 Celsius 42
+[02/24 22:28:13.457] | INFO     | rss        | rss_thread | _get_rss_feeds

@@ -1,0 +1,225 @@
+[08/20 05:09:36.579] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to declineoff (file:///tmp/tmpEgrdLo/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[08/20 05:09:36.579] | INFO     | gui        | MainThread | QT: MultiHome: transition to declineoff (file:///tmp/tmpEgrdLo/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[08/20 05:09:41.491] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[08/20 05:09:41.493] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[08/20 05:09:41.493] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[08/20 05:09:41.493] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1724130581,2,2
+
+[08/20 05:09:41.671] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[08/20 05:09:41.672] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[08/20 05:09:41.672] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[08/20 05:09:41.673] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1724130581,2,2
+
+[08/20 05:09:59.781] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/system_alive-72f7f6b05eb211ef8e9900c0089e93e0.json
+[08/20 05:10:00.049] | INFO     | gui        | MainThread | GRAY tmpSpot = 
+[08/20 05:10:00.066] | INFO     | gui        | MainThread | QT: Home: transition to PSV_STATE_VIOLATION (file:///tmp/tmpEgrdLo/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[08/20 05:10:00.307] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"ip_addr": "10.10.100.201", "rmq_responses_attempted": 561, "msg_id": "0x8000002eL", "rmq_api_bytes_sent": 304, "message": "5591-5592", "rmq_image_bytes_sent": 0, "rmq_response_bytes_sent": 305028, "coin_jar_full": 19.1, "rmq_images_attempted": 0, "desc_str": "Sentry is alive and normal", "rmq_image_errors": 0, "rmq_images_sent": 0, "rmq_json_errors": 0, "rmq_responses_sent": 561, "rmq_apis_attempted": 2, "rmq_jsons_attempted": 1382, "sentry_thread_hung": false, "rmq_api_errors": 0, "rmq_response_errors": 0, "rmq_json_bytes_sent": 1162797, "rmq_jsons_sent": 1382, "rmq_apis_sent": 2}, "class": "event", "queued_dt": "2024-08-20T05:09:59Z", "type": "system_alive", "id": "922a35b9-ad05-4a78-a958-a2476c73078d", "device_id": "m:00C0089E93E0"}
+[08/20 05:10:00.373] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at quality-rabbitmq-lb-1284426831.us-east-1.elb.amazonaws.com:5671 (200): Normal shutdown
+[08/20 05:10:11.658] | INFO     | micro.wdog | microcomm_reactor | qml_ping_sender(): Sending QML ping
+[08/20 05:10:11.663] | INFO     | micro.wdog | main_reactor | qml_ping_handler(): Received QML ping response
+[08/20 05:10:13.348] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43189 rp_min_to_free 43189
+[08/20 05:10:17.281] | INFO     | camera     | time_checker | _send(): -> name: sock_1_2 message_len: 97 total_sent: 97
+[08/20 05:10:17.453] | INFO     | camera     | time_checker | _recv(): <- request_len: 69 header_len: 8
+[08/20 05:10:17.586] | INFO     | sys_serv   | time_checker | _log_ntp_peer_info(): 1/3/10 (primary/good+primary/total) - primary:*5.161.184.148   206.108.0.133    2 u  613 1024  355   27.934   -0.548   0.876 good:+162.159.200.123 10.72.8.222      3 u  35m 1024  154    0.816    0.234   1.776, +185.125.190.57  183.160.133.132  2 u  417 1024  377   90.908    0.204   3.075 bad:-185.125.190.58  183.160.133.132  2 u  47m 1024  204   95.912   -1.281   1.073, -185.125.190.56  79.243.60.50     2 u  424 1024  177   95.041   -2.045   1.520 other: 0.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 1.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 2.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 3.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, ntp.ubuntu.com  .POOL.          16 p    -   64    0    0.000    0.000   0.000
+[08/20 05:10:17.761] | INFO     | sys_serv   | time_checker | get_primary_reference(): Found primary_ref: *5.161.184.148   206.108.0.133    2 u  613 1024  355   27.934   -0.548   0.876
+[08/20 05:10:17.761] | INFO     | idigi      | time_checker | clear_ntp_reloaded(): clearing ntp_reloaded controlling watchdog checks
+[08/20 05:10:25.932] | INFO     | micro.wdog | main_reactor | qml_ping_handler(): Received QML ping response
+[08/20 05:10:28.068] | INFO     | gui        | MainThread | GRAY tmpSpot = 
+[08/20 05:10:43.311] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[08/20 05:10:43.312] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[08/20 05:10:43.312] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[08/20 05:10:43.312] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1724130643,2,2
+
+[08/20 05:10:43.486] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[08/20 05:10:43.487] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[08/20 05:10:43.488] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[08/20 05:10:43.488] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1724130643,2,2
+
+[08/20 05:11:00.059] | INFO     | gui        | MainThread | GRAY tmpSpot = 
+[08/20 05:11:13.293] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43188 rp_min_to_free 43188
+[08/20 05:11:25.940] | INFO     | micro.wdog | main_reactor | qml_ping_handler(): Received QML ping response
+[08/20 05:11:26.543] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[08/20 05:11:28.767] | INFO     | phone      | SentryJSONRPCServer | should_run(): SECO detected - returning
+[08/20 05:11:28.768] | INFO     | playback   | SentryJSONRPCServer | play_clip: PID 6791 is running
+[08/20 05:11:28.801] | INFO     | mps.ui     | SentryJSONRPCServer | suspend_background_tasks(): change to True
+[08/20 05:11:28.803] | INFO     | parking_serv | SentryJSONRPCServer | suspend_transfers(): True
+[08/20 05:11:28.815] | INFO     | ui.multi   | SentryJSONRPCServer | set_state(): UI_STATE_IDLE performing pre_exit_state() actions UISI: screen touched
+[08/20 05:11:28.816] | INFO     | interaction | SentryJSONRPCServer | pre_exit_state(): completing actions before next_state UI_STATE_HOME
+[08/20 05:11:28.816] | INFO     | interaction | SentryJSONRPCServer | pre_exit_state(): completed actions complete True
+[08/20 05:11:28.817] | INFO     | ui.multi   | SentryJSONRPCServer | set_state(): UI_STATE_IDLE completed pre_exit_state() actions proceed True
+[08/20 05:11:28.817] | INFO     | ui.multi   | SentryJSONRPCServer | Secs in Idle 376282.238474
+[08/20 05:11:28.818] | INFO     | interaction | SentryJSONRPCServer | cash_out_or_void_payment: No payment
+[08/20 05:11:28.818] | INFO     | ui.multi   | SentryJSONRPCServer | CONFIRM FALSE
+[08/20 05:11:28.818] | INFO     | ui.multi   | SentryJSONRPCServer | UISH: enter_state active_spot is None
+[08/20 05:11:28.819] | INFO     | interaction | SentryJSONRPCServer | return_coins(): ignoring credit cards and returning coins
+[08/20 05:11:29.020] | INFO     | ui.multi   | SentryJSONRPCServer | CHECK POP  False
+[08/20 05:11:29.020] | INFO     | ui.multi   | SentryJSONRPCServer | UISH::enter_state(): No expired for None
+[08/20 05:11:29.024] | INFO     | gui        | MainThread | QT: MultiSelectSpace: transition to spacemapoff (file:///tmp/tmpEgrdLo/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiSelectSpace.qml:984)
+[08/20 05:11:29.036] | INFO     | gui        | SentryJSONRPCServer | Screen changed to SCREEN_MULTI_SELECT_SPACE en
+[08/20 05:11:29.036] | INFO     | playback   | SentryJSONRPCServer | play: en_space_number.mp3
+[08/20 05:11:29.057] | INFO     | gui        | MainThread | GRAY tmpSpot = 
+[08/20 05:11:29.066] | INFO     | gui        | MainThread | _signal_goto_screen: multi_select_space
+[08/20 05:11:29.067] | INFO     | gui        | MainThread | QT: Current:  multi_idle Next:  multi_select_space (file:///tmp/tmpEgrdLo/sentry.egg-tmp/mps/resources/qml/main.qml:1444)
+[08/20 05:11:29.075] | WARNING  | interaction | SentryJSONRPCServer | _stop_idle_timeout: NO TIMER
+[08/20 05:11:29.076] | INFO     | ui.multi   | SentryJSONRPCServer | UI_STATE_IDLE -> UI_STATE_HOME (UISI: screen touched)
+[08/20 05:11:30.010] | INFO     | gui        | MainThread | GRAY tmpSpot = 
+[08/20 05:11:32.033] | INFO     | gui        | MainThread | GRAY tmpSpot = 
+[08/20 05:11:33.169] | INFO     | phone      | SentryJSONRPCServer | should_run(): SECO detected - returning
+[08/20 05:11:33.170] | INFO     | interaction | SentryJSONRPCServer | _start_idle_timeout: kill timer
+[08/20 05:11:34.061] | INFO     | gui        | MainThread | GRAY tmpSpot = 
+[08/20 05:11:35.951] | INFO     | interaction | SentryJSONRPCServer | on_test_automation_space_entered: SPACE 5591
+[08/20 05:11:35.953] | INFO     | playback   | main_reactor | play_clip: PID 6856 is running
+[08/20 05:11:35.994] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): user selected space 5591
+[08/20 05:11:35.996] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): check space 5591 for local
+[08/20 05:11:35.997] | WARNING  | interaction | main_reactor | _stop_idle_timeout: NO TIMER
+[08/20 05:11:35.997] | INFO     | parking.controller | main_reactor | map_space_to_spot: indx 0 spot SPOT_1
+[08/20 05:11:35.998] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): 5591 is a LOCAL space number, setting active spot SPOT_1
+[08/20 05:11:35.998] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): has NOT paid for max time
+[08/20 05:11:36.001] | INFO     | gui        | MainThread | QT: MultiSelectSpace: transition to loadon (file:///tmp/tmpEgrdLo/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiSelectSpace.qml:984)
+[08/20 05:11:36.004] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/parking_event_user_entered_space-ac5256805eb211ef8e9900c0089e93e0.json
+[08/20 05:11:36.038] | INFO     | gui        | MainThread | GRAY tmpSpot = 
+[08/20 05:11:36.164] | INFO     | interaction | main_reactor | set_active_spot: ACTIVE SPOT SPOT_1 /home/mpsadmin/projects/Sentry_test/src/mps/ui/multi_user_interaction.py:2750
+[08/20 05:11:36.165] | INFO     | interaction | main_reactor | set_active_spot(): to SPOT_1
+[08/20 05:11:36.165] | INFO     | parking.controller | main_reactor | set_active_spot(): to SPOT_1
+[08/20 05:11:36.166] | INFO     | parking.rsrv | main_reactor | has_reservation(): YES SPOT_1 plate 0M2013AA plates [u'0M2013AA'] start_dt 2024-08-18 22:43:00 end_dt 2025-08-19 23:43:59 valid_days [u'mon', u'tue', u'wed', u'thu', u'fri', u'sat', u'sun'] uuid 30933-25
+[08/20 05:11:36.167] | INFO     | parking.rsrv | main_reactor | has_reservation(): YES SPOT_1 plate 0M2013AA plates [u'0M2013AA'] start_dt 2024-08-18 22:43:00 end_dt 2025-08-19 23:43:59 valid_days [u'mon', u'tue', u'wed', u'thu', u'fri', u'sat', u'sun'] uuid 30933-25
+[08/20 05:11:36.167] | INFO     | parking.rsrv | main_reactor | get_reservation_day_mins_remaining(): SPOT_1 plate 0M2013AA now_naive_dt 2024-08-20 00:11:36.167366 before start_dt 2024-08-18 22:43:00
+[08/20 05:11:36.168] | INFO     | parking.rsrv | main_reactor | has_reservation(): YES SPOT_1 plate 0M2013AA plates [u'0M2013AA'] start_dt 2024-08-18 22:43:00 end_dt 2025-08-19 23:43:59 valid_days [u'mon', u'tue', u'wed', u'thu', u'fri', u'sat', u'sun'] uuid 30933-25
+[08/20 05:11:36.168] | INFO     | parking.rsrv | main_reactor | has_reservation(): YES SPOT_1 plate 0M2013AA plates [u'0M2013AA'] start_dt 2024-08-18 22:43:00 end_dt 2025-08-19 23:43:59 valid_days [u'mon', u'tue', u'wed', u'thu', u'fri', u'sat', u'sun'] uuid 30933-25
+[08/20 05:11:36.168] | INFO     | parking.rsrv | main_reactor | get_reservation_day_mins_remaining(): SPOT_1 plate 0M2013AA now_naive_dt 2024-08-20 00:11:36.168721 before start_dt 2024-08-18 22:43:00
+[08/20 05:11:36.185] | INFO     | gui        | MainThread | GRAY tmpSpot = SPOT_1
+[08/20 05:11:36.186] | INFO     | gui        | MainThread | GRAY spot ID SPOT_1
+[08/20 05:11:36.301] | INFO     | ui.multi   | main_reactor | config_payment_acceptance: Caller /home/mpsadmin/projects/Sentry_test/src/mps/ui/multi_user_interaction.py:2756
+[08/20 05:11:36.302] | INFO     | ui.multi   | main_reactor | config_payment_acceptance(UISH(): LOCAL valid space number): is_rate_schedule_payment_allowed_now() = True
+[08/20 05:11:36.302] | INFO     | interaction | main_reactor | return_coins(): ignoring credit cards and returning coins
+[08/20 05:11:36.505] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): PSV PSV_STATE_VIOLATION parking_state PARKING_STATE_VIOLATION
+[08/20 05:11:36.506] | INFO     | parking.rsrv | main_reactor | has_reservation(): YES SPOT_1 plate 0M2013AA plates [u'0M2013AA'] start_dt 2024-08-18 22:43:00 end_dt 2025-08-19 23:43:59 valid_days [u'mon', u'tue', u'wed', u'thu', u'fri', u'sat', u'sun'] uuid 30933-25
+[08/20 05:11:36.507] | INFO     | parking.rsrv | main_reactor | has_reservation(): YES SPOT_1 plate 0M2013AA plates [u'0M2013AA'] start_dt 2024-08-18 22:43:00 end_dt 2025-08-19 23:43:59 valid_days [u'mon', u'tue', u'wed', u'thu', u'fri', u'sat', u'sun'] uuid 30933-25
+[08/20 05:11:36.507] | INFO     | parking.rsrv | main_reactor | get_reservation_day_mins_remaining(): SPOT_1 plate 0M2013AA now_naive_dt 2024-08-20 00:11:36.507829 before start_dt 2024-08-18 22:43:00
+[08/20 05:11:36.508] | INFO     | parking.rsrv | main_reactor | has_reservation(): YES SPOT_1 plate 0M2013AA plates [u'0M2013AA'] start_dt 2024-08-18 22:43:00 end_dt 2025-08-19 23:43:59 valid_days [u'mon', u'tue', u'wed', u'thu', u'fri', u'sat', u'sun'] uuid 30933-25
+[08/20 05:11:36.509] | INFO     | parking.rsrv | main_reactor | has_reservation(): YES SPOT_1 plate 0M2013AA plates [u'0M2013AA'] start_dt 2024-08-18 22:43:00 end_dt 2025-08-19 23:43:59 valid_days [u'mon', u'tue', u'wed', u'thu', u'fri', u'sat', u'sun'] uuid 30933-25
+[08/20 05:11:36.509] | INFO     | parking.rsrv | main_reactor | get_reservation_day_mins_remaining(): SPOT_1 plate 0M2013AA now_naive_dt 2024-08-20 00:11:36.509796 before start_dt 2024-08-18 22:43:00
+[08/20 05:11:36.512] | INFO     | gui        | MainThread | QT: MultiSelectSpace: transition to loadoff (file:///tmp/tmpEgrdLo/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiSelectSpace.qml:984)
+[08/20 05:11:36.524] | INFO     | gui        | main_reactor | Screen changed to SCREEN_MULTI_HOME en
+[08/20 05:11:36.525] | INFO     | ui.multi   | main_reactor | update_last_session_data(): space 5591 spot_id SPOT_1 parking_session_id 5b6701095ead11ef8e9900c0089e93e0 NO payment
+[08/20 05:11:36.526] | INFO     | parking.rsrv | main_reactor | has_reservation(): YES SPOT_1 plate 0M2013AA plates [u'0M2013AA'] start_dt 2024-08-18 22:43:00 end_dt 2025-08-19 23:43:59 valid_days [u'mon', u'tue', u'wed', u'thu', u'fri', u'sat', u'sun'] uuid 30933-25
+[08/20 05:11:36.527] | INFO     | parking.rsrv | main_reactor | has_reservation(): YES SPOT_1 plate 0M2013AA plates [u'0M2013AA'] start_dt 2024-08-18 22:43:00 end_dt 2025-08-19 23:43:59 valid_days [u'mon', u'tue', u'wed', u'thu', u'fri', u'sat', u'sun'] uuid 30933-25
+[08/20 05:11:36.527] | INFO     | parking.rsrv | main_reactor | get_reservation_day_mins_remaining(): SPOT_1 plate 0M2013AA now_naive_dt 2024-08-20 00:11:36.527739 before start_dt 2024-08-18 22:43:00
+[08/20 05:11:36.528] | INFO     | parking.rsrv | main_reactor | has_reservation(): YES SPOT_1 plate 0M2013AA plates [u'0M2013AA'] start_dt 2024-08-18 22:43:00 end_dt 2025-08-19 23:43:59 valid_days [u'mon', u'tue', u'wed', u'thu', u'fri', u'sat', u'sun'] uuid 30933-25
+[08/20 05:11:36.529] | INFO     | parking.rsrv | main_reactor | has_reservation(): YES SPOT_1 plate 0M2013AA plates [u'0M2013AA'] start_dt 2024-08-18 22:43:00 end_dt 2025-08-19 23:43:59 valid_days [u'mon', u'tue', u'wed', u'thu', u'fri', u'sat', u'sun'] uuid 30933-25
+[08/20 05:11:36.533] | INFO     | gui        | MainThread | GRAY tmpSpot = SPOT_1
+[08/20 05:11:36.533] | INFO     | gui        | MainThread | GRAY spot ID SPOT_1
+[08/20 05:11:36.536] | INFO     | parking.rsrv | main_reactor | get_reservation_day_mins_remaining(): SPOT_1 plate 0M2013AA now_naive_dt 2024-08-20 00:11:36.529465 before start_dt 2024-08-18 22:43:00
+[08/20 05:11:36.567] | INFO     | gui        | MainThread | _signal_goto_screen: multi_home
+[08/20 05:11:36.568] | INFO     | gui        | MainThread | QT: Current:  multi_select_space Next:  multi_home (file:///tmp/tmpEgrdLo/sentry.egg-tmp/mps/resources/qml/main.qml:1444)
+[08/20 05:11:36.583] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"user_space_entered": "5591", "event_time": "2024-08-20T05:11:35Z", "mac_address": "00:C0:08:9E:93:E0"}, "class": "event", "queued_dt": "2024-08-20T05:11:36Z", "type": "parking_event_user_entered_space", "id": "12914882-5eae-477e-b5ba-2d06f8c31561", "device_id": "m:00C0089E93E0"}
+[08/20 05:11:36.585] | INFO     | gui        | MainThread | GRAY tmpSpot = SPOT_1
+[08/20 05:11:36.587] | INFO     | gui        | MainThread | GRAY spot ID SPOT_1
+[08/20 05:11:36.650] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at quality-rabbitmq-lb-1284426831.us-east-1.elb.amazonaws.com:5671 (200): Normal shutdown
+[08/20 05:11:37.994] | INFO     | parking.rsrv | main_reactor | has_reservation(): YES SPOT_1 plate 0M2013AA plates [u'0M2013AA'] start_dt 2024-08-18 22:43:00 end_dt 2025-08-19 23:43:59 valid_days [u'mon', u'tue', u'wed', u'thu', u'fri', u'sat', u'sun'] uuid 30933-25
+[08/20 05:11:37.995] | INFO     | parking.rsrv | main_reactor | has_reservation(): YES SPOT_1 plate 0M2013AA plates [u'0M2013AA'] start_dt 2024-08-18 22:43:00 end_dt 2025-08-19 23:43:59 valid_days [u'mon', u'tue', u'wed', u'thu', u'fri', u'sat', u'sun'] uuid 30933-25
+[08/20 05:11:37.995] | INFO     | parking.rsrv | main_reactor | get_reservation_day_mins_remaining(): SPOT_1 plate 0M2013AA now_naive_dt 2024-08-20 00:11:37.995709 before start_dt 2024-08-18 22:43:00
+[08/20 05:11:37.996] | INFO     | parking.rsrv | main_reactor | has_reservation(): YES SPOT_1 plate 0M2013AA plates [u'0M2013AA'] start_dt 2024-08-18 22:43:00 end_dt 2025-08-19 23:43:59 valid_days [u'mon', u'tue', u'wed', u'thu', u'fri', u'sat', u'sun'] uuid 30933-25
+[08/20 05:11:37.997] | INFO     | parking.rsrv | main_reactor | has_reservation(): YES SPOT_1 plate 0M2013AA plates [u'0M2013AA'] start_dt 2024-08-18 22:43:00 end_dt 2025-08-19 23:43:59 valid_days [u'mon', u'tue', u'wed', u'thu', u'fri', u'sat', u'sun'] uuid 30933-25
+[08/20 05:11:37.997] | INFO     | parking.rsrv | main_reactor | get_reservation_day_mins_remaining(): SPOT_1 plate 0M2013AA now_naive_dt 2024-08-20 00:11:37.997558 before start_dt 2024-08-18 22:43:00
+[08/20 05:11:38.015] | INFO     | gui        | MainThread | GRAY tmpSpot = SPOT_1
+[08/20 05:11:38.015] | INFO     | gui        | MainThread | GRAY spot ID SPOT_1
+[08/20 05:11:40.023] | INFO     | parking.rsrv | main_reactor | has_reservation(): YES SPOT_1 plate 0M2013AA plates [u'0M2013AA'] start_dt 2024-08-18 22:43:00 end_dt 2025-08-19 23:43:59 valid_days [u'mon', u'tue', u'wed', u'thu', u'fri', u'sat', u'sun'] uuid 30933-25
+[08/20 05:11:40.024] | INFO     | parking.rsrv | main_reactor | has_reservation(): YES SPOT_1 plate 0M2013AA plates [u'0M2013AA'] start_dt 2024-08-18 22:43:00 end_dt 2025-08-19 23:43:59 valid_days [u'mon', u'tue', u'wed', u'thu', u'fri', u'sat', u'sun'] uuid 30933-25
+[08/20 05:11:40.025] | INFO     | parking.rsrv | main_reactor | get_reservation_day_mins_remaining(): SPOT_1 plate 0M2013AA now_naive_dt 2024-08-20 00:11:40.024911 before start_dt 2024-08-18 22:43:00
+[08/20 05:11:40.025] | INFO     | parking.rsrv | main_reactor | has_reservation(): YES SPOT_1 plate 0M2013AA plates [u'0M2013AA'] start_dt 2024-08-18 22:43:00 end_dt 2025-08-19 23:43:59 valid_days [u'mon', u'tue', u'wed', u'thu', u'fri', u'sat', u'sun'] uuid 30933-25
+[08/20 05:11:40.026] | INFO     | parking.rsrv | main_reactor | has_reservation(): YES SPOT_1 plate 0M2013AA plates [u'0M2013AA'] start_dt 2024-08-18 22:43:00 end_dt 2025-08-19 23:43:59 valid_days [u'mon', u'tue', u'wed', u'thu', u'fri', u'sat', u'sun'] uuid 30933-25
+[08/20 05:11:40.026] | INFO     | parking.rsrv | main_reactor | get_reservation_day_mins_remaining(): SPOT_1 plate 0M2013AA now_naive_dt 2024-08-20 00:11:40.026854 before start_dt 2024-08-18 22:43:00
+[08/20 05:11:40.046] | INFO     | gui        | MainThread | GRAY tmpSpot = SPOT_1
+[08/20 05:11:40.047] | INFO     | gui        | MainThread | GRAY spot ID SPOT_1
+[08/20 05:11:41.955] | INFO     | parking.rsrv | main_reactor | has_reservation(): YES SPOT_1 plate 0M2013AA plates [u'0M2013AA'] start_dt 2024-08-18 22:43:00 end_dt 2025-08-19 23:43:59 valid_days [u'mon', u'tue', u'wed', u'thu', u'fri', u'sat', u'sun'] uuid 30933-25
+[08/20 05:11:41.956] | INFO     | parking.rsrv | main_reactor | has_reservation(): YES SPOT_1 plate 0M2013AA plates [u'0M2013AA'] start_dt 2024-08-18 22:43:00 end_dt 2025-08-19 23:43:59 valid_days [u'mon', u'tue', u'wed', u'thu', u'fri', u'sat', u'sun'] uuid 30933-25
+[08/20 05:11:41.957] | INFO     | parking.rsrv | main_reactor | get_reservation_day_mins_remaining(): SPOT_1 plate 0M2013AA now_naive_dt 2024-08-20 00:11:41.956912 before start_dt 2024-08-18 22:43:00
+[08/20 05:11:41.957] | INFO     | parking.rsrv | main_reactor | has_reservation(): YES SPOT_1 plate 0M2013AA plates [u'0M2013AA'] start_dt 2024-08-18 22:43:00 end_dt 2025-08-19 23:43:59 valid_days [u'mon', u'tue', u'wed', u'thu', u'fri', u'sat', u'sun'] uuid 30933-25
+[08/20 05:11:41.958] | INFO     | parking.rsrv | main_reactor | has_reservation(): YES SPOT_1 plate 0M2013AA plates [u'0M2013AA'] start_dt 2024-08-18 22:43:00 end_dt 2025-08-19 23:43:59 valid_days [u'mon', u'tue', u'wed', u'thu', u'fri', u'sat', u'sun'] uuid 30933-25
+[08/20 05:11:41.958] | INFO     | parking.rsrv | main_reactor | get_reservation_day_mins_remaining(): SPOT_1 plate 0M2013AA now_naive_dt 2024-08-20 00:11:41.958494 before start_dt 2024-08-18 22:43:00
+[08/20 05:11:41.978] | INFO     | gui        | MainThread | GRAY tmpSpot = SPOT_1
+[08/20 05:11:41.979] | INFO     | gui        | MainThread | GRAY spot ID SPOT_1
+[08/20 05:11:43.987] | INFO     | parking.rsrv | main_reactor | has_reservation(): YES SPOT_1 plate 0M2013AA plates [u'0M2013AA'] start_dt 2024-08-18 22:43:00 end_dt 2025-08-19 23:43:59 valid_days [u'mon', u'tue', u'wed', u'thu', u'fri', u'sat', u'sun'] uuid 30933-25
+[08/20 05:11:43.988] | INFO     | parking.rsrv | main_reactor | has_reservation(): YES SPOT_1 plate 0M2013AA plates [u'0M2013AA'] start_dt 2024-08-18 22:43:00 end_dt 2025-08-19 23:43:59 valid_days [u'mon', u'tue', u'wed', u'thu', u'fri', u'sat', u'sun'] uuid 30933-25
+[08/20 05:11:43.988] | INFO     | parking.rsrv | main_reactor | get_reservation_day_mins_remaining(): SPOT_1 plate 0M2013AA now_naive_dt 2024-08-20 00:11:43.988382 before start_dt 2024-08-18 22:43:00
+[08/20 05:11:43.989] | INFO     | parking.rsrv | main_reactor | has_reservation(): YES SPOT_1 plate 0M2013AA plates [u'0M2013AA'] start_dt 2024-08-18 22:43:00 end_dt 2025-08-19 23:43:59 valid_days [u'mon', u'tue', u'wed', u'thu', u'fri', u'sat', u'sun'] uuid 30933-25
+[08/20 05:11:43.989] | INFO     | parking.rsrv | main_reactor | has_reservation(): YES SPOT_1 plate 0M2013AA plates [u'0M2013AA'] start_dt 2024-08-18 22:43:00 end_dt 2025-08-19 23:43:59 valid_days [u'mon', u'tue', u'wed', u'thu', u'fri', u'sat', u'sun'] uuid 30933-25
+[08/20 05:11:43.990] | INFO     | parking.rsrv | main_reactor | get_reservation_day_mins_remaining(): SPOT_1 plate 0M2013AA now_naive_dt 2024-08-20 00:11:43.990211 before start_dt 2024-08-18 22:43:00
+[08/20 05:11:44.011] | INFO     | gui        | MainThread | GRAY tmpSpot = SPOT_1
+[08/20 05:11:44.012] | INFO     | gui        | MainThread | GRAY spot ID SPOT_1
+[08/20 05:11:45.180] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[08/20 05:11:45.181] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[08/20 05:11:45.181] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[08/20 05:11:45.182] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1724130705,2,2
+
+[08/20 05:11:45.355] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[08/20 05:11:45.356] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[08/20 05:11:45.356] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[08/20 05:11:45.356] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1724130705,2,2
+
+[08/20 05:11:45.960] | INFO     | parking.rsrv | main_reactor | has_reservation(): YES SPOT_1 plate 0M2013AA plates [u'0M2013AA'] start_dt 2024-08-18 22:43:00 end_dt 2025-08-19 23:43:59 valid_days [u'mon', u'tue', u'wed', u'thu', u'fri', u'sat', u'sun'] uuid 30933-25
+[08/20 05:11:45.960] | INFO     | parking.rsrv | main_reactor | has_reservation(): YES SPOT_1 plate 0M2013AA plates [u'0M2013AA'] start_dt 2024-08-18 22:43:00 end_dt 2025-08-19 23:43:59 valid_days [u'mon', u'tue', u'wed', u'thu', u'fri', u'sat', u'sun'] uuid 30933-25
+[08/20 05:11:45.961] | INFO     | parking.rsrv | main_reactor | get_reservation_day_mins_remaining(): SPOT_1 plate 0M2013AA now_naive_dt 2024-08-20 00:11:45.961161 before start_dt 2024-08-18 22:43:00
+[08/20 05:11:45.962] | INFO     | parking.rsrv | main_reactor | has_reservation(): YES SPOT_1 plate 0M2013AA plates [u'0M2013AA'] start_dt 2024-08-18 22:43:00 end_dt 2025-08-19 23:43:59 valid_days [u'mon', u'tue', u'wed', u'thu', u'fri', u'sat', u'sun'] uuid 30933-25
+[08/20 05:11:45.962] | INFO     | parking.rsrv | main_reactor | has_reservation(): YES SPOT_1 plate 0M2013AA plates [u'0M2013AA'] start_dt 2024-08-18 22:43:00 end_dt 2025-08-19 23:43:59 valid_days [u'mon', u'tue', u'wed', u'thu', u'fri', u'sat', u'sun'] uuid 30933-25
+[08/20 05:11:45.963] | INFO     | parking.rsrv | main_reactor | get_reservation_day_mins_remaining(): SPOT_1 plate 0M2013AA now_naive_dt 2024-08-20 00:11:45.963409 before start_dt 2024-08-18 22:43:00
+[08/20 05:11:45.982] | INFO     | gui        | MainThread | GRAY tmpSpot = SPOT_1
+[08/20 05:11:45.982] | INFO     | gui        | MainThread | GRAY spot ID SPOT_1
+[08/20 05:11:46.586] | INFO     | mps.ui     | main_reactor | RESWIPE OFF
+[08/20 05:11:46.587] | INFO     | playback   | main_reactor | Kill PID 7034
+[08/20 05:11:46.588] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to reswipeoff (file:///tmp/tmpEgrdLo/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[08/20 05:11:46.588] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: calling reswipeoff (file:///tmp/tmpEgrdLo/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:913)
+[08/20 05:11:46.589] | INFO     | gui        | MainThread | QT: Home: transition to reswipeoff (file:///tmp/tmpEgrdLo/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[08/20 05:11:46.590] | INFO     | gui        | MainThread | QT: Home: calling reswipeoff (file:///tmp/tmpEgrdLo/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:400)
+[08/20 05:11:46.590] | INFO     | gui        | MainThread | QT: MultiHome: transition to reswipeoff (file:///tmp/tmpEgrdLo/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[08/20 05:11:46.591] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to processingoff (file:///tmp/tmpEgrdLo/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[08/20 05:11:46.591] | INFO     | gui        | MainThread | QT: Home: transition to processingoff (file:///tmp/tmpEgrdLo/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[08/20 05:11:46.592] | INFO     | gui        | MainThread | QT: MultiHome: transition to processingoff (file:///tmp/tmpEgrdLo/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[08/20 05:11:46.592] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to declineoff (file:///tmp/tmpEgrdLo/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[08/20 05:11:46.593] | INFO     | gui        | MainThread | QT: MultiHome: transition to declineoff (file:///tmp/tmpEgrdLo/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[08/20 05:11:46.597] | INFO     | ui.multi   | main_reactor | set_state(): UI_STATE_HOME performing pre_exit_state() actions _on_timeout(): 
+[08/20 05:11:46.598] | INFO     | interaction | main_reactor | pre_exit_state(): completing actions before next_state UI_STATE_IDLE
+[08/20 05:11:46.598] | INFO     | interaction | main_reactor | return_coins(): ignoring credit cards and returning coins
+[08/20 05:11:46.799] | INFO     | interaction | main_reactor | is_acceptor_blocked(): waiting for coin acceptor disabled confirmation
+[08/20 05:11:46.800] | INFO     | interaction | main_reactor | pre_exit_state(): coin acceptor is blocking with no new deposits
+[08/20 05:11:46.800] | INFO     | interaction | main_reactor | pre_exit_state(): completed actions complete True
+[08/20 05:11:46.800] | INFO     | ui.multi   | main_reactor | set_state(): UI_STATE_HOME completed pre_exit_state() actions proceed True
+[08/20 05:11:46.801] | INFO     | ui.multi   | main_reactor | clear_last_session_data(): cleared data
+[08/20 05:11:46.802] | INFO     | mps.ui     | main_reactor | concierge_reset
+[08/20 05:11:46.802] | INFO     | interaction | main_reactor | return_coins(): ignoring credit cards and returning coins
+[08/20 05:11:46.809] | INFO     | gui        | MainThread | QT: concierge_reset SPOT_1 (file:///tmp/tmpEgrdLo/sentry.egg-tmp/mps/resources/qml/main.qml:996)
+[08/20 05:11:46.841] | INFO     | gui        | MainThread | QT: ParkingSpotView: transition to conciergeReset (file:///tmp/tmpEgrdLo/sentry.egg-tmp/mps/resources/qml/components/ParkingSpotView.qml:4247)
+[08/20 05:11:46.852] | INFO     | gui        | MainThread | QT: ParkingSpotView: conciergeReset (file:///tmp/tmpEgrdLo/sentry.egg-tmp/mps/resources/qml/components/ParkingSpotView.qml:4217)
+[08/20 05:11:46.871] | INFO     | gui        | MainThread | QT: ParkingSpotView: transition to PSV_STATE_VIOLATION (file:///tmp/tmpEgrdLo/sentry.egg-tmp/mps/resources/qml/components/ParkingSpotView.qml:4247)
+[08/20 05:11:47.003] | WARNING  | interaction | main_reactor | _stop_idle_timeout: NO TIMER
+[08/20 05:11:47.004] | INFO     | gui        | main_reactor | Screen changed to SCREEN_MULTI_IDLE en
+[08/20 05:11:47.004] | INFO     | gui        | MainThread | _signal_goto_screen: multi_idle
+[08/20 05:11:47.005] | INFO     | gui        | MainThread | QT: Current:  multi_home Next:  multi_idle (file:///tmp/tmpEgrdLo/sentry.egg-tmp/mps/resources/qml/main.qml:1444)
+[08/20 05:11:47.014] | INFO     | interaction | main_reactor | cash_out_or_void_payment: No payment
+[08/20 05:11:47.124] | INFO     | interaction | main_reactor | set_active_spot: ACTIVE SPOT None /home/mpsadmin/projects/Sentry_test/src/mps/ui/multi_user_interaction.py:1897
+[08/20 05:11:47.124] | INFO     | interaction | main_reactor | set_active_spot(): to None
+[08/20 05:11:47.124] | INFO     | parking.controller | main_reactor | set_active_spot(): to None
+[08/20 05:11:47.139] | INFO     | mps.ui     | main_reactor | suspend_background_tasks(): change to False
+[08/20 05:11:47.140] | INFO     | parking_serv | main_reactor | suspend_transfers(): False
+[08/20 05:11:47.140] | INFO     | epay       | main_reactor | auto_authorize(): Setting auto_authorize amount for 1000
+[08/20 05:11:47.148] | INFO     | gui        | MainThread | GRAY tmpSpot = 
+[08/20 05:11:47.158] | INFO     | ui.multi   | main_reactor | UI_STATE_HOME -> UI_STATE_IDLE (_on_timeout(): )
+[08/20 05:11:47.167] | INFO     | gui        | MainThread | QT: Home: transition to PSV_STATE_VIOLATION (file:///tmp/tmpEgrdLo/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[08/20 05:11:47.171] | INFO     | gui        | MainThread | GRAY tmpSpot = 
+[08/20 05:11:48.249] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[08/20 05:11:48.249] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[08/20 05:11:48.278] | INFO     | lib.seco   | watchdog   | SecoLib()::check_temp(): SECO cpu temperature is:  Kelvin 3141 Celsius 40
+[08/20 05:11:57.086] | INFO     | mps.ui     | main_reactor | RESWIPE OFF
+[08/20 05:11:57.093] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to reswipeoff (file:///tmp/tmpEgrdLo/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[08/20 05:11:57.094] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: calling reswipeoff (file:///tmp/tmpEgrdLo/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:913)
+[08/20 05:11:57.095] | INFO     | gui        | MainThread | QT: Home: transition to reswipeoff (file:///tmp/tmpEgrdLo/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[08/20 05:11:57.095] | INFO     | gui        | MainThread | QT: Home: calling reswipeoff (file:///tmp/tmpEgrdLo/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:400)
+[08/20 05:11:57.096] | INFO     | gui        | MainThread | QT: MultiHome: transition to reswipeoff (file:///tmp/tmpEgrdLo/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[08/20 05:11:57.096] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to processingoff (file:///tmp/tmpEgrdLo/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[08/20 05:11:57.097] | INFO     | gui        | MainThread | QT: Home: transition to processingoff (file:///tmp/tmpEgrdLo/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[08/20 05:11:57.098] | INFO     | gui        | MainThread | QT: MultiHome: transition to processingoff (file:///tmp/tmpEgrdLo/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[08/20 05:11:57.098] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to declineoff (file:///tmp/tmpEgrdLo/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[08/20 05:11:57.099] | INFO     | gui        | MainThread | QT: MultiHome: transition to declineoff (file:///tmp/tmpEgrdLo/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[08/20 05:12:00.031] | INFO     | gui        | MainThread | GRAY tmpSpot = 
+[08/20 05:12:00.046] | INFO     | gui        | MainThread | QT: Home: transition to PSV_STATE_VIOLATION (file:///tmp/tmpEgrdLo/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)

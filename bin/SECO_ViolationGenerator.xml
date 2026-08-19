@@ -1,0 +1,73 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="SECO_ViolationGenerator" verbose="1"  parallel ="tests"  thread-count="9">
+	<test name = "ViolationGenerator_5510_5511">
+		<parameter name="strStopAndStartAppiumServer" value="True"></parameter>
+	    <parameter name="strAppiumPort" value="4724"></parameter>
+	    <parameter name="strDeviceId" value="5510-5511"></parameter>
+	   	<parameter name="strRemotePath" value="http://localhost:4724"></parameter>
+	   	<parameter name="strUpdateRates" value="False"></parameter>
+	    <classes>
+			<class name="AutomationCode.TestCases">
+		   		<methods>
+					<include name="SECO_ViolationGenerator_SP1_SP2"></include>
+				</methods>
+	   		</class>
+	    </classes>
+	</test>
+	<test name = "ViolationGenerator_5560_5561">
+	    <parameter name="strStopAndStartAppiumServer" value="True"></parameter>
+	    <parameter name="strAppiumPort" value="4725"></parameter>
+	    <parameter name="strDeviceId" value="5560-5561"></parameter>
+	   	<parameter name="strRemotePath" value="http://localhost:4725"></parameter>
+	   	<parameter name="strUpdateRates" value="False"></parameter>
+	    <classes>
+			<class name="AutomationCode.TestCases">
+		   		<methods>
+					<include name="SECO_ViolationGenerator_SP1_SP2"></include>
+				</methods>
+	   		</class>
+	    </classes>
+	</test>
+	<test name = "ViolationGenerator_5570_5571">
+	    <parameter name="strStopAndStartAppiumServer" value="True"></parameter>
+	    <parameter name="strAppiumPort" value="4726"></parameter>
+	    <parameter name="strDeviceId" value="5570-5571"></parameter>
+	   	<parameter name="strRemotePath" value="http://localhost:4726"></parameter>
+	   	<parameter name="strUpdateRates" value="False"></parameter>
+	    <classes>
+			<class name="AutomationCode.TestCases">
+		   		<methods>
+					<include name="SECO_ViolationGenerator_SP1_SP2"></include>
+				</methods>
+	   		</class>
+	    </classes>
+	</test>
+	<test name = "ViolationGenerator_5580_5581">
+	    <parameter name="strStopAndStartAppiumServer" value="True"></parameter>
+	    <parameter name="strAppiumPort" value="4727"></parameter>
+	     <parameter name="strDeviceId" value="5580-5581"></parameter>
+	   	<parameter name="strRemotePath" value="http://localhost:4727"></parameter>
+	   	<parameter name="strUpdateRates" value="False"></parameter>
+	    <classes>
+			<class name="AutomationCode.TestCases">
+		   		<methods>
+					<include name="SECO_ViolationGenerator_SP1_SP2"></include>
+				</methods>
+	   		</class>
+	    </classes>
+	</test>
+	<test name = "ViolationGenerator_5591-5592">
+	    <parameter name="strStopAndStartAppiumServer" value="True"></parameter>
+	    <parameter name="strAppiumPort" value="4728"></parameter>
+	     <parameter name="strDeviceId" value="5591-5592"></parameter>
+	   	<parameter name="strRemotePath" value="http://localhost:4727"></parameter>
+	   	<parameter name="strUpdateRates" value="False"></parameter>
+	    <classes>
+			<class name="AutomationCode.TestCases">
+		   		<methods>
+					<include name="SECO_ViolationGenerator_SP1_SP2"></include>
+				</methods>
+	   		</class>
+	    </classes>
+	</test>
+</suite>

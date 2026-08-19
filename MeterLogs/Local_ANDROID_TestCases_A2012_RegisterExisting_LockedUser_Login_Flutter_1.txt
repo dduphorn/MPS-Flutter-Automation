@@ -1,0 +1,306 @@
+[05/05 19:58:30.912] | CRITICAL | watchdog   | main_reactor | 
+top - 19:58:30 up 1 day, 45 min,  0 users,  load average: 9.13, 7.08, 5.85
+Tasks: 152 total,   1 running,  82 sleeping,   0 stopped,   0 zombie
+%Cpu(s): 58.1 us, 11.3 sy,  0.0 ni, 30.5 id,  0.1 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem :  4029328 total,  1811852 free,  1309076 used,   908400 buff/cache
+KiB Swap:        0 total,        0 free,        0 used.  2259892 avail Mem 
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 1360 root      20   0 1360440 983616  60076 S 282.4 24.4   3526:47 python
+ 2239 root      20   0  744684 269572  90660 S  17.6  6.7 395:02.44 python
+   10 root      20   0       0      0      0 I   5.9  0.0   4:00.95 rcu_sched
+25158 root      20   0    7956   3376   2968 R   5.9  0.1   0:00.02 top
+    1 root      20   0    7032   5400   3720 S   0.0  0.1   2:39.46 systemd
+    2 root      20   0       0      0      0 S   0.0  0.0   0:00.13 kthreadd
+    3 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 rcu_gp
+    4 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 rcu_par_gp
+    8 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 mm_percpu_+
+    9 root      20   0       0      0      0 S   0.0  0.0   0:02.50 ksoftirqd/0
+   11 root      20   0       0      0      0 I   0.0  0.0   0:00.00 rcu_bh
+   12 root      rt   0       0      0      0 S   0.0  0.0   0:00.78 migration/0
+   13 root      rt   0       0      0      0 S   0.0  0.0   0:00.44 watchdog/0
+   14 root      20   0       0      0      0 S   0.0  0.0   0:00.00 cpuhp/0
+   15 root      20   0       0      0      0 S   0.0  0.0   0:00.00 cpuhp/1
+   16 root      rt   0       0      0      0 S   0.0  0.0   0:00.45 watchdog/1
+   17 root      rt   0       0      0      0 S   0.0  0.0   0:00.79 migration/1
+   18 root      20   0       0      0      0 S   0.0  0.0   0:01.44 ksoftirqd/1
+   21 root      20   0       0      0      0 S   0.0  0.0   0:00.00 cpuhp/2
+   22 root      rt   0       0      0      0 S   0.0  0.0   0:00.44 watchdog/2
+   23 root      rt   0       0      0      0 S   0.0  0.0   0:00.89 migration/2
+   24 root      20   0       0      0      0 S   0.0  0.0   0:03.59 ksoftirqd/2
+   27 root      20   0       0      0      0 S   0.0  0.0   0:00.00 cpuhp/3
+   28 root      rt   0       0      0      0 S   0.0  0.0   0:00.43 watchdog/3
+   29 root      rt   0       0      0      0 S   0.0  0.0   0:00.92 migration/3
+   30 root      20   0       0      0      0 S   0.0  0.0   0:02.92 ksoftirqd/3
+   33 root      20   0       0      0      0 S   0.0  0.0   0:00.00 kdevtmpfs
+   34 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 netns
+   35 root      20   0       0      0      0 S   0.0  0.0   0:00.00 rcu_tasks_+
+   36 root      20   0       0      0      0 S   0.0  0.0   0:00.00 kauditd
+   40 root      20   0       0      0      0 S   0.0  0.0   0:00.08 khungtaskd
+   41 root      20   0       0      0      0 S   0.0  0.0   0:00.00 oom_reaper
+   42 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 writeback
+   43 root      20   0       0      0      0 S   0.0  0.0   0:00.00 kcompactd0
+   44 root      25   5       0      0      0 S   0.0  0.0   0:00.00 ksmd
+   45 root      39  19       0      0      0 S   0.0  0.0   0:00.00 khugepaged
+   46 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 crypto
+   47 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 kintegrityd
+   48 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 kblockd
+   49 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 ata_sff
+   50 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 md
+   51 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 edac-poller
+   52 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 devfreq_wq
+   53 root      rt   0       0      0      0 S   0.0  0.0   0:00.00 watchdogd
+   58 root      20   0       0      0      0 S   0.0  0.0   0:00.00 kswapd0
+   59 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 kworker/u9+
+   60 root      20   0       0      0      0 S   0.0  0.0   0:00.00 ecryptfs-k+
+  105 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 kthrotld
+  106 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 acpi_therm+
+  107 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 nvme-wq
+  108 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 nvme-reset+
+  109 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 nvme-delet+
+  110 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 ipv6_addrc+
+  119 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 kstrp
+  136 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 charger_ma+
+  188 root     -51   0       0      0      0 S   0.0  0.0   0:00.00 irq/18-mmc0
+  191 root     -51   0       0      0      0 S   0.0  0.0   0:00.00 irq/23-mmc1
+  213 root      -2   0       0      0      0 S   0.0  0.0   1:12.48 i915/signa+
+  214 root      -2   0       0      0      0 S   0.0  0.0   0:00.00 i915/signa+
+  215 root      -2   0       0      0      0 S   0.0  0.0   0:00.00 i915/signa+
+  297 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 raid5wq
+  349 root      20   0       0      0      0 S   0.0  0.0   0:02.79 jbd2/mmcbl+
+  350 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 ext4-rsv-c+
+  403 root      20   0   21340   6032   5500 S   0.0  0.1   3:29.55 systemd-jo+
+  426 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 iscsi_eh
+  432 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 ib-comp-wq
+  433 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 ib_mcast
+  434 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 ib_nl_sa_wq
+  439 root      20   0   13284   1368   1212 S   0.0  0.0   0:00.00 lvmetad
+  446 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 rdma_cm
+  459 root      20   0   14512   3840   2844 S   0.0  0.1   0:01.62 systemd-ud+
+  512 root     -51   0       0      0      0 S   0.0  0.0   0:00.00 irq/94-mei+
+  761 root      20   0       0      0      0 S   0.0  0.0   0:00.00 jbd2/mmcbl+
+  763 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 ext4-rsv-c+
+  789 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 ext4-rsv-c+
+  793 root      20   0       0      0      0 S   0.0  0.0   0:00.00 jbd2/mmcbl+
+  794 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 ext4-rsv-c+
+  816 root      20   0       0      0      0 S   0.0  0.0   0:00.04 jbd2/mmcbl+
+  817 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 ext4-rsv-c+
+ 1233 root      20   0    2988    116     44 S   0.0  0.0   0:02.47 iscsid
+ 1234 root      10 -10    3448   2772   1912 S   0.0  0.1   0:12.80 iscsid
+ 1297 root      20   0   69048   1632   1356 S   0.0  0.0   0:02.37 lxcfs
+ 1307 root      20   0   10004   5584   5064 S   0.0  0.1   0:09.68 sshd
+ 1309 root      20   0    5584   2732   2512 S   0.0  0.1   0:00.16 cron
+ 1312 syslog    20   0   31656   3012   2604 S   0.0  0.1   0:00.02 rsyslogd
+ 1314 message+  20   0    7968   5500   3432 S   0.0  0.1   2:10.00 dbus-daemon
+ 1344 root      20   0    2372   1452   1360 S   0.0  0.0   0:15.30 zxy_device+
+ 1352 root      20   0    4356   3188   2680 S   0.0  0.1   0:48.11 systemd-lo+
+ 1363 avahi     20   0    6844   4092   3072 S   0.0  0.1   5:17.77 avahi-daem+
+ 1365 daemon    20   0    3484   2188   2028 S   0.0  0.1   0:00.00 atd
+ 1369 root      20   0   38704   5912   5408 S   0.0  0.1   0:25.77 accounts-d+
+ 1370 root      20   0    2248   1100   1036 S   0.0  0.0   0:00.00 acpid
+ 1377 root      20   0    2336    656    604 S   0.0  0.0   0:38.57 banner_apcc
+ 1379 avahi     20   0    5920    280      0 S   0.0  0.0   0:00.00 avahi-daem+
+ 1381 root      15  -5  883072  15732   9836 S   0.0  0.4   0:03.94 snapd
+ 1444 root      20   0    4440    204      0 S   0.0  0.0   0:07.82 irqbalance
+ 1451 root      20   0    3136    124     16 S   0.0  0.0   0:00.01 mdadm
+ 1453 ntp       20   0   15632   4396   3936 S   0.0  0.1   0:07.50 ntpd
+ 1464 root      20   0   36840   5628   5132 S   0.0  0.1   0:37.96 polkitd
+ 1473 root      20   0    4752   1704   1600 S   0.0  0.0   0:00.01 agetty
+ 2147 root      20   0    4296   2680   2456 S   0.0  0.1   0:00.00 nodm
+ 2151 root      20   0   67900  21612  15912 S   0.0  0.5  53:21.65 Xorg
+ 2166 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 kworker/u9+
+ 2170 root      20   0    5872   3136   2728 S   0.0  0.1   0:00.01 nodm
+ 2172 root      20   0    6096   4124   3496 S   0.0  0.1   0:00.10 systemd
+ 2183 root      20   0    7836   1584      0 S   0.0  0.0   0:00.00 (sd-pam)
+ 2194 root      20   0    2372    576    532 S   0.0  0.0   0:00.00 sh
+ 2210 root      20   0   20392  14372   6972 S   0.0  0.4   0:43.67 python
+ 2229 root      20   0    4608    192      0 S   0.0  0.0   0:00.40 ssh-agent
+ 2342 uuidd     20   0    6732   1268   1112 S   0.0  0.0   0:00.10 uuidd
+ 2561 root      20   0  276472 129032  16304 S   0.0  3.2   5:23.47 python
+ 3096 root       0 -20       0      0      0 I   0.0  0.0   0:01.18 kworker/2:+
+ 3861 seco      20   0    6372   4284   3732 S   0.0  0.1   0:00.07 systemd
+ 3869 seco      20   0    7836   1584      0 S   0.0  0.0   0:00.00 (sd-pam)
+ 4868 root      20   0       0      0      0 I   0.0  0.0   0:00.26 kworker/0:+
+ 5108 root      20   0       0      0      0 I   0.0  0.0   0:00.89 kworker/1:+
+ 5488 root      20   0       0      0      0 I   0.0  0.0   0:01.62 kworker/u8+
+ 7973 root      20   0       0      0      0 I   0.0  0.0   0:00.24 kworker/2:+
+ 9075 root      20   0       0      0      0 I   0.0  0.0   0:00.22 kworker/3:+
+ 9678 root      20   0       0      0      0 I   0.0  0.0   0:00.23 kworker/0:+
+ 9689 root      20   0       0      0      0 I   0.0  0.0   0:01.63 kworker/1:+
+12957 root      20   0       0      0      0 I   0.0  0.0   0:00.23 kworker/2:+
+13373 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 kworker/2:+
+14023 root      20   0       0      0      0 I   0.0  0.0   0:00.25 kworker/3:+
+14072 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 kworker/0:+
+14746 root      20   0       0      0      0 I   0.0  0.0   0:00.00 kworker/1:+
+14752 root      20   0       0      0      0 I   0.0  0.0   0:00.18 kworker/0:+
+16387 root      20   0       0      0      0 I   0.0  0.0   0:00.67 kworker/u8+
+18050 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 kworker/3:+
+18498 root      20   0       0      0      0 I   0.0  0.0   0:00.00 kworker/2:+
+18856 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 kworker/1:+
+19113 root       0 -20       0      0      0 I   0.0  0.0   0:00.41 kworker/0:+
+19230 seco      20   0    5456   2908   2760 S   0.0  0.1   0:00.00 bash
+19232 seco      20   0  121388   9004   8736 S   0.0  0.2   0:00.10 journalctl
+20208 root      20   0       0      0      0 I   0.0  0.0   0:00.01 kworker/3:+
+20473 root      20   0       0      0      0 I   0.0  0.0   0:00.13 kworker/0:+
+20561 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 kworker/2:+
+20593 root      20   0       0      0      0 I   0.0  0.0   0:00.16 kworker/1:+
+22332 root      20   0       0      0      0 I   0.0  0.0   0:00.13 kworker/u8+
+22425 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 kworker/0:+
+23503 root      20   0       0      0      0 I   0.0  0.0   0:00.03 kworker/2:+
+23906 root       0 -20       0      0      0 I   0.0  0.0   0:00.70 kworker/1:+
+24262 root      20   0       0      0      0 I   0.0  0.0   0:00.00 kworker/1:+
+24275 root      20   0       0      0      0 I   0.0  0.0   0:00.00 kworker/2:+
+24309 root      20   0       0      0      0 I   0.0  0.0   0:00.00 kworker/1:5
+24311 root      20   0       0      0      0 I   0.0  0.0   0:00.00 kworker/0:+
+24329 root      20   0       0      0      0 I   0.0  0.0   0:00.00 kworker/2:+
+24339 root      20   0       0      0      0 I   0.0  0.0   0:00.00 kworker/2:6
+25150 root      20   0    4280    564    520 S   0.0  0.0   0:00.00 sleep
+25157 root      20   0    2372    664    620 S   0.0  0.0   0:00.01 sh
+27708 root      20   0       0      0      0 D   0.0  0.0   0:10.10 kworker/u8+
+29956 root       0 -20       0      0      0 I   0.0  0.0   0:01.61 kworker/3:+
+
+[05/05 19:58:30.912] | CRITICAL | watchdog   | main_reactor | *** Top Output (cpu_load) - END ***
+[05/05 19:58:30.913] | WARNING  | net_monitor | main_reactor | check_network_connectivity_async(): Skipping due to high CPU load (9.13 > 3.5)
+[05/05 19:58:35.613] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[05/05 19:58:35.614] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[05/05 19:58:57.479] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[05/05 19:59:10.646] | INFO     | micro.wdog | microcomm_reactor | qml_ping_sender(): Sending QML ping
+[05/05 19:59:10.676] | INFO     | credit_call | credit_call_reactor | _retry_offline_messages(): deferring cpu_load 6.93 > 3.5 - #0 messages waiting
+[05/05 19:59:11.223] | INFO     | rss        | rss_thread | _get_rss_feeds
+[05/05 19:59:12.477] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43740 rp_min_to_free 43740
+[05/05 19:59:26.608] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[05/05 19:59:26.610] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[05/05 19:59:26.656] | INFO     | lib.seco   | watchdog   | SecoLib()::check_temp(): SECO cpu temperature is:  Kelvin 3231 Celsius 49
+[05/05 19:59:36.398] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[05/05 19:59:36.400] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[05/05 19:59:54.409] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/system_alive-fbffb00648bc11f19e9200c008947d30.json
+[05/05 19:59:55.466] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"ip_addr": "10.10.101.168", "rmq_responses_attempted": 1654, "msg_id": "0x8000002eL", "rmq_api_bytes_sent": 304, "message": "9010-9011", "rmq_image_bytes_sent": 0, "rmq_response_bytes_sent": 3917792, "coin_jar_full": 0.0, "rmq_images_attempted": 0, "desc_str": "Sentry is alive and normal", "rmq_image_errors": 0, "rmq_images_sent": 0, "rmq_json_errors": 0, "rmq_responses_sent": 1654, "rmq_apis_attempted": 2, "rmq_jsons_attempted": 808, "sentry_thread_hung": false, "rmq_api_errors": 0, "rmq_response_errors": 0, "rmq_json_bytes_sent": 3228002, "rmq_jsons_sent": 808, "rmq_apis_sent": 2}, "class": "event", "queued_dt": "2026-05-05T19:59:54Z", "type": "system_alive", "id": "60e622a4-2951-4750-827d-f9d240a6c248", "device_id": "m:00C008947D30"}
+[05/05 19:59:55.590] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at rabbitmq.staging.sentry-link.com:5671 (200): Normal shutdown
+[05/05 20:00:12.493] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43739 rp_min_to_free 43739
+[05/05 20:00:32.828] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req: u'rpc_coin' Payload: '{"method":"get_last_harvest_datetime","params":[],"jsonrpc":"2.0","id":77328281}'
+[05/05 20:00:32.830] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint coin response {"jsonrpc": "2.0", "id": 77328281, "result": null}
+[05/05 20:00:32.935] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 77328281, "result": null} Queue amq.gen-NzLv0RKxcpBJCuCMW79XDw #1655
+[05/05 20:00:33.642] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req: u'rpc_coin' Payload: '{"method":"get_last_harvest_value","params":[],"jsonrpc":"2.0","id":77328311}'
+[05/05 20:00:33.670] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint coin response {"jsonrpc": "2.0", "id": 77328311, "result": 0}
+[05/05 20:00:33.741] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 77328311, "result": 0} Queue amq.gen-FR7X6Snmy8ORcphfzQ5r5g #1656
+[05/05 20:00:34.267] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req: u'rpc_coin' Payload: '{"method":"get_coins_inserted","params":[],"jsonrpc":"2.0","id":77328334}'
+[05/05 20:00:34.268] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint coin response {"jsonrpc": "2.0", "id": 77328334, "result": 0}
+[05/05 20:00:34.322] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 77328334, "result": 0} Queue amq.gen-O3QeVK-9sTeSmy-sBi74xQ #1657
+[05/05 20:00:34.931] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req: u'rpc_coin' Payload: '{"method":"get_coins_inserted_by_type","params":[],"jsonrpc":"2.0","id":77328345}'
+[05/05 20:00:34.932] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint coin response {"jsonrpc": "2.0", "id": 77328345, "result": {}}
+[05/05 20:00:34.980] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 77328345, "result": {}} Queue amq.gen-yhDU9mzZTnJzylbKzMAaww #1658
+[05/05 20:00:35.561] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req: u'rpc_coin' Payload: '{"method":"get_percent_full","params":[],"jsonrpc":"2.0","id":77328353}'
+[05/05 20:00:35.562] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint coin response {"jsonrpc": "2.0", "id": 77328353, "result": 0.0}
+[05/05 20:00:35.609] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 77328353, "result": 0.0} Queue amq.gen-5g2Pm77OpZx7j_e5pqvrfg #1659
+[05/05 20:00:36.168] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req: u'rpc_coin' Payload: '{"method":"get_stored_value","params":[],"jsonrpc":"2.0","id":77328362}'
+[05/05 20:00:36.170] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint coin response {"jsonrpc": "2.0", "id": 77328362, "result": 0}
+[05/05 20:00:36.213] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 77328362, "result": 0} Queue amq.gen-lmgyDxFXcdo0CdGWT04yPw #1660
+[05/05 20:00:38.457] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[05/05 20:00:38.458] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[05/05 20:00:49.333] | INFO     | phone      | SentryJSONRPCServer | should_run(): SECO detected - returning
+[05/05 20:00:49.333] | INFO     | mps.ui     | SentryJSONRPCServer | suspend_background_tasks(): change to True
+[05/05 20:00:49.334] | INFO     | parking_serv | SentryJSONRPCServer | suspend_transfers(): True
+[05/05 20:00:49.345] | INFO     | ui.multi   | SentryJSONRPCServer | set_state(): UI_STATE_IDLE performing pre_exit_state() actions UISI: screen touched
+[05/05 20:00:49.346] | INFO     | interaction | SentryJSONRPCServer | pre_exit_state(): completing actions before next_state UI_STATE_HOME
+[05/05 20:00:49.346] | INFO     | interaction | SentryJSONRPCServer | pre_exit_state(): completed actions complete True
+[05/05 20:00:49.347] | INFO     | ui.multi   | SentryJSONRPCServer | set_state(): UI_STATE_IDLE completed pre_exit_state() actions proceed True
+[05/05 20:00:49.347] | INFO     | ui.multi   | SentryJSONRPCServer | Secs in Idle 87071.399636
+[05/05 20:00:49.348] | INFO     | interaction | SentryJSONRPCServer | cash_out_or_void_payment: No payment
+[05/05 20:00:49.349] | INFO     | ui.multi   | SentryJSONRPCServer | CONFIRM FALSE
+[05/05 20:00:49.349] | INFO     | ui.multi   | SentryJSONRPCServer | UISH: enter_state active_spot is None
+[05/05 20:00:49.350] | INFO     | interaction | SentryJSONRPCServer | return_coins(): ignoring credit cards and returning coins
+[05/05 20:00:49.551] | INFO     | ui.multi   | SentryJSONRPCServer | CHECK POP  False
+[05/05 20:00:49.551] | INFO     | ui.multi   | SentryJSONRPCServer | UISH::enter_state(): No expired for None
+[05/05 20:00:49.567] | INFO     | gui        | SentryJSONRPCServer | Screen changed to SCREEN_MULTI_SELECT_SPACE en
+[05/05 20:00:49.568] | INFO     | playback   | SentryJSONRPCServer | play: en_space_number.mp3
+[05/05 20:00:49.569] | INFO     | gui        | MainThread | QT: MultiSelectSpace: transition to spacemapoff (file:///tmp/tmp2yiVPa/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiSelectSpace.qml:984)
+[05/05 20:00:49.582] | WARNING  | interaction | SentryJSONRPCServer | _stop_idle_timeout: NO TIMER
+[05/05 20:00:49.583] | INFO     | ui.multi   | SentryJSONRPCServer | UI_STATE_IDLE -> UI_STATE_HOME (UISI: screen touched)
+[05/05 20:00:49.593] | INFO     | gui        | MainThread | _signal_goto_screen: multi_select_space
+[05/05 20:00:49.594] | INFO     | gui        | MainThread | QT: Current:  multi_idle Next:  multi_select_space (file:///tmp/tmp2yiVPa/sentry.egg-tmp/mps/resources/qml/main.qml:1445)
+[05/05 20:00:52.321] | INFO     | ui.multi   | main_reactor | UISI::_suspend_tasks_timeout(): still in Idle - for 234.862548 seconds; unsuspending background task
+[05/05 20:00:52.321] | INFO     | mps.ui     | main_reactor | suspend_background_tasks(): change to False
+[05/05 20:00:52.323] | INFO     | parking_serv | main_reactor | suspend_transfers(): False
+[05/05 20:00:53.248] | INFO     | phone      | SentryJSONRPCServer | should_run(): SECO detected - returning
+[05/05 20:00:55.568] | INFO     | interaction | SentryJSONRPCServer | on_test_automation_space_entered: SPACE 9010
+[05/05 20:00:55.572] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): user selected space 9010
+[05/05 20:00:55.576] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/parking_event_user_entered_space-207513e048bd11f19e9200c008947d30.json
+[05/05 20:00:55.577] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): check space 9010 for local
+[05/05 20:00:55.578] | WARNING  | interaction | main_reactor | _stop_idle_timeout: NO TIMER
+[05/05 20:00:55.579] | INFO     | parking.controller | main_reactor | map_space_to_spot: indx 0 spot SPOT_1
+[05/05 20:00:55.579] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): 9010 is a LOCAL space number, setting active spot SPOT_1
+[05/05 20:00:55.581] | INFO     | parking.session.SPOT_1 | main_reactor | is_init_grace(): False
+[05/05 20:00:55.581] | INFO     | psv_fsm    | main_reactor | force_set_valid
+[05/05 20:00:55.582] | INFO     | gui        | MainThread | QT: MultiSelectSpace: transition to loadon (file:///tmp/tmp2yiVPa/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiSelectSpace.qml:984)
+[05/05 20:00:55.594] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): has NOT paid for max time
+[05/05 20:00:55.785] | INFO     | interaction | main_reactor | set_active_spot: ACTIVE SPOT SPOT_1 /home/mpsadmin/projects/Sentry_test/src/mps/ui/multi_user_interaction.py:2750
+[05/05 20:00:55.785] | INFO     | interaction | main_reactor | set_active_spot(): to SPOT_1
+[05/05 20:00:55.786] | INFO     | parking.controller | main_reactor | set_active_spot(): to SPOT_1
+[05/05 20:00:56.032] | INFO     | ui.multi   | main_reactor | config_payment_acceptance: Caller /home/mpsadmin/projects/Sentry_test/src/mps/ui/multi_user_interaction.py:2756
+[05/05 20:00:56.034] | INFO     | ui.multi   | main_reactor | config_payment_acceptance(UISH(): LOCAL valid space number): is_rate_schedule_payment_allowed_now() = True
+[05/05 20:00:56.036] | INFO     | epay       | main_reactor | enable_credit_cards: enable True
+[05/05 20:00:56.037] | INFO     | interaction | main_reactor | accept_coins(): acceptor currently blocking - cfg to accept
+[05/05 20:00:56.037] | INFO     | coin       | main_reactor | accept_all_coins(): configuring acceptance
+[05/05 20:00:56.038] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): PSV PSV_STATE_VALID parking_state PARKING_STATE_VALID
+[05/05 20:00:56.058] | INFO     | gui        | main_reactor | Screen changed to SCREEN_MULTI_HOME en
+[05/05 20:00:56.061] | INFO     | gui        | MainThread | QT: MultiSelectSpace: transition to loadoff (file:///tmp/tmp2yiVPa/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiSelectSpace.qml:984)
+[05/05 20:00:56.061] | INFO     | ui.multi   | main_reactor | update_last_session_data(): space 9010 spot_id SPOT_1 parking_session_id dbaffa3d48bb11f19e9200c008947d30 NO payment
+[05/05 20:00:56.087] | INFO     | gui        | MainThread | _signal_goto_screen: multi_home
+[05/05 20:00:56.088] | INFO     | gui        | MainThread | QT: Current:  multi_select_space Next:  multi_home (file:///tmp/tmp2yiVPa/sentry.egg-tmp/mps/resources/qml/main.qml:1445)
+[05/05 20:00:56.401] | INFO     | coin_event | Coin Vault | Coin acceptor configured to accept coins (command sent)
+[05/05 20:00:56.494] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"user_space_entered": "9010", "event_time": "2026-05-05T20:00:55Z", "mac_address": "00:C0:08:94:7D:30"}, "class": "event", "queued_dt": "2026-05-05T20:00:55Z", "type": "parking_event_user_entered_space", "id": "d7297f03-b420-4a99-baa9-46656a8a771c", "device_id": "m:00C008947D30"}
+[05/05 20:00:56.588] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at rabbitmq.staging.sentry-link.com:5671 (200): Normal shutdown
+[05/05 20:00:56.673] | INFO     | coin_event | Coin Vault | Info: REQUEST_MASTER_INHIBIT_STATUS indicates acceptor released
+[05/05 20:01:06.087] | INFO     | mps.ui     | main_reactor | RESWIPE OFF
+[05/05 20:01:06.098] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to reswipeoff (file:///tmp/tmp2yiVPa/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[05/05 20:01:06.099] | INFO     | ui.multi   | main_reactor | set_state(): UI_STATE_HOME performing pre_exit_state() actions _on_timeout(): 
+[05/05 20:01:06.099] | INFO     | interaction | main_reactor | pre_exit_state(): completing actions before next_state UI_STATE_IDLE
+[05/05 20:01:06.099] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: calling reswipeoff (file:///tmp/tmp2yiVPa/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:913)
+[05/05 20:01:06.100] | INFO     | interaction | main_reactor | return_coins(): ignoring credit cards and returning coins
+[05/05 20:01:06.101] | INFO     | epay       | main_reactor | enable_credit_cards: enable False
+[05/05 20:01:06.101] | INFO     | interaction | main_reactor | return_coins(): acceptor currently accepting - cfg to reject
+[05/05 20:01:06.101] | INFO     | coin       | main_reactor | return_all_coins(): configuring rejection
+[05/05 20:01:06.102] | INFO     | gui        | MainThread | QT: Home: transition to reswipeoff (file:///tmp/tmp2yiVPa/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[05/05 20:01:06.102] | INFO     | gui        | MainThread | QT: Home: calling reswipeoff (file:///tmp/tmp2yiVPa/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:400)
+[05/05 20:01:06.103] | INFO     | gui        | MainThread | QT: MultiHome: transition to reswipeoff (file:///tmp/tmp2yiVPa/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[05/05 20:01:06.104] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to processingoff (file:///tmp/tmp2yiVPa/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[05/05 20:01:06.104] | INFO     | gui        | MainThread | QT: Home: transition to processingoff (file:///tmp/tmp2yiVPa/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[05/05 20:01:06.105] | INFO     | gui        | MainThread | QT: MultiHome: transition to processingoff (file:///tmp/tmp2yiVPa/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[05/05 20:01:06.105] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to declineoff (file:///tmp/tmp2yiVPa/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[05/05 20:01:06.106] | INFO     | gui        | MainThread | QT: MultiHome: transition to declineoff (file:///tmp/tmp2yiVPa/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[05/05 20:01:06.302] | INFO     | interaction | main_reactor | is_acceptor_blocked(): waiting for coin acceptor disabled confirmation
+[05/05 20:01:06.303] | INFO     | interaction | main_reactor | pre_exit_state(): coin acceptor is blocking with no new deposits
+[05/05 20:01:06.303] | INFO     | interaction | main_reactor | pre_exit_state(): completed actions complete True
+[05/05 20:01:06.304] | INFO     | ui.multi   | main_reactor | set_state(): UI_STATE_HOME completed pre_exit_state() actions proceed True
+[05/05 20:01:06.305] | INFO     | ui.multi   | main_reactor | clear_last_session_data(): cleared data
+[05/05 20:01:06.305] | INFO     | mps.ui     | main_reactor | concierge_reset
+[05/05 20:01:06.309] | INFO     | interaction | main_reactor | return_coins(): ignoring credit cards and returning coins
+[05/05 20:01:06.315] | INFO     | gui        | MainThread | QT: concierge_reset SPOT_1 (file:///tmp/tmp2yiVPa/sentry.egg-tmp/mps/resources/qml/main.qml:997)
+[05/05 20:01:06.356] | INFO     | gui        | MainThread | QT: ParkingSpotView: transition to conciergeReset (file:///tmp/tmp2yiVPa/sentry.egg-tmp/mps/resources/qml/components/ParkingSpotView.qml:4247)
+[05/05 20:01:06.372] | INFO     | gui        | MainThread | QT: ParkingSpotView: conciergeReset (file:///tmp/tmp2yiVPa/sentry.egg-tmp/mps/resources/qml/components/ParkingSpotView.qml:4217)
+[05/05 20:01:06.408] | INFO     | gui        | MainThread | QT: ParkingSpotView: transition to PSV_STATE_VALID (file:///tmp/tmp2yiVPa/sentry.egg-tmp/mps/resources/qml/components/ParkingSpotView.qml:4247)
+[05/05 20:01:06.510] | WARNING  | interaction | main_reactor | _stop_idle_timeout: NO TIMER
+[05/05 20:01:06.511] | INFO     | gui        | main_reactor | Screen changed to SCREEN_MULTI_IDLE en
+[05/05 20:01:06.514] | INFO     | gui        | MainThread | _signal_goto_screen: multi_idle
+[05/05 20:01:06.515] | INFO     | gui        | MainThread | QT: Current:  multi_home Next:  multi_idle (file:///tmp/tmp2yiVPa/sentry.egg-tmp/mps/resources/qml/main.qml:1445)
+[05/05 20:01:06.522] | INFO     | interaction | main_reactor | cash_out_or_void_payment: No payment
+[05/05 20:01:06.535] | INFO     | coin_event | Coin Vault | Coin acceptor configured to return coins
+[05/05 20:01:06.674] | INFO     | interaction | main_reactor | set_active_spot: ACTIVE SPOT None /home/mpsadmin/projects/Sentry_test/src/mps/ui/multi_user_interaction.py:1897
+[05/05 20:01:06.675] | INFO     | interaction | main_reactor | set_active_spot(): to None
+[05/05 20:01:06.677] | INFO     | parking.controller | main_reactor | set_active_spot(): to None
+[05/05 20:01:06.696] | INFO     | epay       | main_reactor | auto_authorize(): Setting auto_authorize amount for 200
+[05/05 20:01:06.712] | INFO     | ui.multi   | main_reactor | UI_STATE_HOME -> UI_STATE_IDLE (_on_timeout(): )
+[05/05 20:01:06.727] | INFO     | gui        | MainThread | QT: Home: transition to PSV_STATE_VALID (file:///tmp/tmp2yiVPa/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[05/05 20:01:06.810] | INFO     | coin_event | Coin Vault | Info: REQUEST_MASTER_INHIBIT_STATUS indicates acceptor blocked
+[05/05 20:01:12.537] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43738 rp_min_to_free 43738
+[05/05 20:01:16.550] | INFO     | mps.ui     | main_reactor | RESWIPE OFF
+[05/05 20:01:16.551] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to reswipeoff (file:///tmp/tmp2yiVPa/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[05/05 20:01:16.552] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: calling reswipeoff (file:///tmp/tmp2yiVPa/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:913)
+[05/05 20:01:16.552] | INFO     | gui        | MainThread | QT: Home: transition to reswipeoff (file:///tmp/tmp2yiVPa/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[05/05 20:01:16.553] | INFO     | gui        | MainThread | QT: Home: calling reswipeoff (file:///tmp/tmp2yiVPa/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:400)
+[05/05 20:01:16.553] | INFO     | gui        | MainThread | QT: MultiHome: transition to reswipeoff (file:///tmp/tmp2yiVPa/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[05/05 20:01:16.554] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to processingoff (file:///tmp/tmp2yiVPa/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[05/05 20:01:16.554] | INFO     | gui        | MainThread | QT: Home: transition to processingoff (file:///tmp/tmp2yiVPa/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[05/05 20:01:16.555] | INFO     | gui        | MainThread | QT: MultiHome: transition to processingoff (file:///tmp/tmp2yiVPa/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[05/05 20:01:16.556] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to declineoff (file:///tmp/tmp2yiVPa/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[05/05 20:01:16.557] | INFO     | gui        | MainThread | QT: MultiHome: transition to declineoff (file:///tmp/tmp2yiVPa/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)

@@ -1,0 +1,36 @@
+[03/02 00:57:48.719] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[03/02 00:58:08.646] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[03/02 00:58:08.647] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[03/02 00:58:25.261] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[03/02 00:58:25.261] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[03/02 00:58:25.298] | INFO     | lib.seco   | watchdog   | SecoLib()::check_temp(): SECO cpu temperature is:  Kelvin 3241 Celsius 50
+[03/02 00:58:32.128] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43501 rp_min_to_free 43501
+[03/02 00:58:43.085] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/system_alive-f578f69215d211f1bdec00c008947d30.json
+[03/02 00:58:43.852] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"ip_addr": "10.10.101.168", "rmq_responses_attempted": 4901, "msg_id": "0x8000002eL", "rmq_api_bytes_sent": 304, "message": "9010-9011", "rmq_image_bytes_sent": 0, "rmq_response_bytes_sent": 10979296, "coin_jar_full": 0.0, "rmq_images_attempted": 0, "desc_str": "Sentry is alive and normal", "rmq_image_errors": 0, "rmq_images_sent": 0, "rmq_json_errors": 0, "rmq_responses_sent": 4901, "rmq_apis_attempted": 2, "rmq_jsons_attempted": 3539, "sentry_thread_hung": false, "rmq_api_errors": 0, "rmq_response_errors": 0, "rmq_json_bytes_sent": 7538015, "rmq_jsons_sent": 3539, "rmq_apis_sent": 2}, "class": "event", "queued_dt": "2026-03-02T00:58:43Z", "type": "system_alive", "id": "ef4e5a93-9a64-4080-bc3a-62014ec7052b", "device_id": "m:00C008947D30"}
+[03/02 00:58:43.945] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at rabbitmq.staging.sentry-link.com:5671 (200): Normal shutdown
+[03/02 00:59:09.693] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[03/02 00:59:09.694] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[03/02 00:59:32.166] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43500 rp_min_to_free 43500
+[03/02 00:59:48.727] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[03/02 01:00:10.690] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[03/02 01:00:10.691] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[03/02 01:00:32.160] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43499 rp_min_to_free 43499
+[03/02 01:01:11.704] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[03/02 01:01:11.705] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[03/02 01:01:25.397] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[03/02 01:01:25.398] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[03/02 01:01:25.436] | INFO     | lib.seco   | watchdog   | SecoLib()::check_temp(): SECO cpu temperature is:  Kelvin 3221 Celsius 48
+[03/02 01:01:32.170] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43498 rp_min_to_free 43498
+[03/02 01:01:48.821] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[03/02 01:02:12.734] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[03/02 01:02:12.736] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[03/02 01:02:21.800] | INFO     | rss        | rss_thread | _get_rss_feeds
+[03/02 01:02:30.434] | INFO     | micro.wdog | microcomm_reactor | qml_ping_sender(): Sending QML ping
+[03/02 01:02:32.134] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43497 rp_min_to_free 43497
+[03/02 01:02:35.106] | INFO     | camera     | time_checker | _send(): -> name: sock_1_2 message_len: 97 total_sent: 97
+[03/02 01:02:35.237] | INFO     | camera     | time_checker | _recv(): <- request_len: 69 header_len: 8
+[03/02 01:02:35.584] | INFO     | sys_serv   | time_checker | _log_ntp_peer_info(): 1/3/11 (primary/good+primary/total) - primary:*96.19.94.82     .GPS2.           1 u  563 1024  377   67.988    0.039   2.207 good:+193.29.63.226   204.9.54.119     2 u  887 1024  377   28.451    2.905   2.191, +172.238.164.57  168.61.215.74    4 u  242 1024  377   27.015    2.844   1.683 bad:-108.61.215.221  102.129.185.135  3 u  948 1024  377   34.599   -3.596   3.475, -102.129.185.135 216.239.35.0     2 u  143 1024  377   48.767   -0.265   2.336, -144.202.66.214  198.46.254.130   3 u  130 1024  377   48.672   -0.343   2.161 other: 0.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 1.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 2.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 3.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, ntp.ubuntu.com  .POOL.          16 p    -   64    0    0.000    0.000   0.000
+[03/02 01:02:35.736] | INFO     | sys_serv   | time_checker | get_primary_reference(): Found primary_ref: *96.19.94.82     .GPS2.           1 u  563 1024  377   67.988    0.039   2.207
+[03/02 01:02:35.737] | INFO     | idigi      | time_checker | clear_ntp_reloaded(): clearing ntp_reloaded controlling watchdog checks
+[03/02 01:03:13.828] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[03/02 01:03:13.830] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0

@@ -1,0 +1,37 @@
+[05/05 21:13:16.994] | INFO     | gui        | MainThread | QT: Home: transition to reswipeoff (file:///tmp/tmp2yiVPa/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[05/05 21:13:16.994] | INFO     | gui        | MainThread | QT: Home: calling reswipeoff (file:///tmp/tmp2yiVPa/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:400)
+[05/05 21:13:16.995] | INFO     | gui        | MainThread | QT: MultiHome: transition to reswipeoff (file:///tmp/tmp2yiVPa/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[05/05 21:13:16.996] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to processingoff (file:///tmp/tmp2yiVPa/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[05/05 21:13:16.997] | INFO     | gui        | MainThread | QT: Home: transition to processingoff (file:///tmp/tmp2yiVPa/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[05/05 21:13:16.997] | INFO     | gui        | MainThread | QT: MultiHome: transition to processingoff (file:///tmp/tmp2yiVPa/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[05/05 21:13:16.998] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to declineoff (file:///tmp/tmp2yiVPa/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[05/05 21:13:16.999] | INFO     | gui        | MainThread | QT: MultiHome: transition to declineoff (file:///tmp/tmp2yiVPa/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[05/05 21:13:23.464] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[05/05 21:13:23.465] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[05/05 21:13:45.388] | INFO     | gui        | MainThread | QT: Home: transition to PSV_STATE_VALID (file:///tmp/tmp2yiVPa/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[05/05 21:14:10.570] | INFO     | micro.wdog | microcomm_reactor | qml_ping_sender(): Sending QML ping
+[05/05 21:14:10.670] | INFO     | credit_call | credit_call_reactor | _retry_offline_messages(): deferring cpu_load 3.99 > 3.5 - #0 messages waiting
+[05/05 21:14:12.563] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43665 rp_min_to_free 43665
+[05/05 21:14:15.600] | INFO     | camera     | time_checker | _send(): -> name: sock_1_2 message_len: 97 total_sent: 97
+[05/05 21:14:15.793] | INFO     | camera     | time_checker | _recv(): <- request_len: 69 header_len: 8
+[05/05 21:14:15.972] | INFO     | sys_serv   | time_checker | _log_ntp_peer_info(): 1/5/12 (primary/good+primary/total) - primary:*193.29.63.226   204.9.54.119     2 u  494 1024  377   24.424   -0.515  10.546 good:+172.104.209.204 168.61.215.74    4 u  107 1024  377   44.053    1.050   1.772, +107.172.222.7   194.0.5.123      3 u  977 1024  377   36.107    0.886   2.227, +162.159.200.1   10.72.8.151      3 u 1058 1024  377   19.808    1.819   2.725, +91.189.91.157   132.163.96.1     2 u  499 1024  377   50.726    1.705   3.592 bad:-23.186.168.129  132.163.97.6     2 u  505 1024  377   62.473   -2.785   3.628, -144.202.66.214  198.23.132.33    3 u  555 1024  377   44.391   -3.423   3.388 other: 0.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 1.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 2.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 3.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, ntp.ubuntu.com  .POOL.          16 p    -   64    0    0.000    0.000   0.000
+[05/05 21:14:16.149] | INFO     | sys_serv   | time_checker | get_primary_reference(): Found primary_ref: *193.29.63.226   204.9.54.119     2 u  494 1024  377   24.424   -0.515  10.546
+[05/05 21:14:16.150] | INFO     | idigi      | time_checker | clear_ntp_reloaded(): clearing ntp_reloaded controlling watchdog checks
+[05/05 21:14:25.150] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[05/05 21:14:25.152] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[05/05 21:15:07.048] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[05/05 21:15:09.006] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/system_alive-7ee8a4c848c711f19e9200c008947d30.json
+[05/05 21:15:09.757] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"ip_addr": "10.10.101.168", "rmq_responses_attempted": 1799, "msg_id": "0x8000002eL", "rmq_api_bytes_sent": 304, "message": "9010-9011", "rmq_image_bytes_sent": 0, "rmq_response_bytes_sent": 4332716, "coin_jar_full": 0.0, "rmq_images_attempted": 0, "desc_str": "Sentry is alive and normal", "rmq_image_errors": 0, "rmq_images_sent": 0, "rmq_json_errors": 0, "rmq_responses_sent": 1799, "rmq_apis_attempted": 2, "rmq_jsons_attempted": 857, "sentry_thread_hung": false, "rmq_api_errors": 0, "rmq_response_errors": 0, "rmq_json_bytes_sent": 3319707, "rmq_jsons_sent": 857, "rmq_apis_sent": 2}, "class": "event", "queued_dt": "2026-05-05T21:15:09Z", "type": "system_alive", "id": "094f240c-812c-4329-b02a-c7d1b6d88358", "device_id": "m:00C008947D30"}
+[05/05 21:15:09.855] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at rabbitmq.staging.sentry-link.com:5671 (200): Normal shutdown
+[05/05 21:15:12.571] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43664 rp_min_to_free 43664
+[05/05 21:15:26.852] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[05/05 21:15:26.853] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[05/05 21:16:12.486] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43663 rp_min_to_free 43663
+[05/05 21:16:28.442] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[05/05 21:16:28.443] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[05/05 21:17:07.145] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[05/05 21:17:12.566] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43662 rp_min_to_free 43662
+[05/05 21:17:16.980] | INFO     | ui.multi   | main_reactor | UISI::_suspend_tasks_timeout(): still in Idle - for 250.028889 seconds; unsuspending background task
+[05/05 21:17:30.031] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[05/05 21:17:30.032] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[05/05 21:18:12.485] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43661 rp_min_to_free 43661

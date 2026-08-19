@@ -1,0 +1,23 @@
+[06/25 20:41:06.281] | INFO     | parking.session.SPOT_1 | main_reactor | get_maxtime_minutes_remaining(): #1 mt_mins 240 mins_purchased_so_far 0
+[06/25 20:41:06.284] | INFO     | parking.session.SPOT_2 | main_reactor | get_maxtime_minutes_remaining(): #1 mt_mins 240 mins_purchased_so_far 0
+[06/25 20:41:29.895] | INFO     | rss        | rss_thread | _get_rss_feeds
+[06/25 20:41:51.418] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[06/25 20:41:54.307] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[06/25 20:41:54.361] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[06/25 20:41:57.527] | INFO     | micro.wdog | microcomm_reactor | qml_ping_sender(): Sending QML ping
+[06/25 20:41:59.254] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43698 rp_min_to_free 43698
+[06/25 20:42:00.278] | INFO     | parking.session.SPOT_1 | main_reactor | get_maxtime_minutes_remaining(): #1 mt_mins 240 mins_purchased_so_far 0
+[06/25 20:42:00.281] | INFO     | parking.session.SPOT_2 | main_reactor | get_maxtime_minutes_remaining(): #1 mt_mins 240 mins_purchased_so_far 0
+[06/25 20:42:55.988] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[06/25 20:42:55.989] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[06/25 20:42:59.204] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43697 rp_min_to_free 43697
+[06/25 20:43:00.212] | INFO     | parking.session.SPOT_1 | main_reactor | get_maxtime_minutes_remaining(): #1 mt_mins 240 mins_purchased_so_far 0
+[06/25 20:43:00.215] | INFO     | parking.session.SPOT_2 | main_reactor | get_maxtime_minutes_remaining(): #1 mt_mins 240 mins_purchased_so_far 0
+[06/25 20:43:02.083] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/system_alive-7570b7e670d611f1adf400c008947d30.json
+[06/25 20:43:02.850] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"ip_addr": "10.10.101.168", "rmq_responses_attempted": 1998, "msg_id": "0x8000002eL", "rmq_api_bytes_sent": 304, "message": "9010-9011", "rmq_image_bytes_sent": 0, "rmq_response_bytes_sent": 4612708, "coin_jar_full": 0.0, "rmq_images_attempted": 0, "desc_str": "Sentry is alive and normal", "rmq_image_errors": 0, "rmq_images_sent": 0, "rmq_json_errors": 0, "rmq_responses_sent": 1998, "rmq_apis_attempted": 2, "rmq_jsons_attempted": 921, "sentry_thread_hung": false, "rmq_api_errors": 0, "rmq_response_errors": 0, "rmq_json_bytes_sent": 3321665, "rmq_jsons_sent": 921, "rmq_apis_sent": 2}, "class": "event", "queued_dt": "2026-06-25T20:43:02Z", "type": "system_alive", "id": "35d188ad-e478-49b7-8d38-5bb71dd72b12", "device_id": "m:00C008947D30"}
+[06/25 20:43:02.952] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at rabbitmq.staging.sentry-link.com:5671 (200): Normal shutdown
+[06/25 20:43:06.239] | INFO     | parking.session.SPOT_1 | main_reactor | get_maxtime_minutes_remaining(): #1 mt_mins 240 mins_purchased_so_far 0
+[06/25 20:43:06.242] | INFO     | parking.session.SPOT_2 | main_reactor | get_maxtime_minutes_remaining(): #1 mt_mins 240 mins_purchased_so_far 0
+[06/25 20:43:18.412] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[06/25 20:43:18.413] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[06/25 20:43:18.457] | INFO     | lib.seco   | watchdog   | SecoLib()::check_temp(): SECO cpu temperature is:  Kelvin 3221 Celsius 48

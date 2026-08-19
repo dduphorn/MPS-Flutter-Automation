@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="9" parallel="tests" name="Failed suite [Regression_IOS]" guice-stage="DEVELOPMENT">
+  <test thread-count="9" parallel="tests" name="IOS_TestCases(failed)">
+    <parameter name="strIOSUdid" value="00008101-000A0CD81160001E"/>
+    <parameter name="strAppiumPort" value="6666"/>
+    <parameter name="strStopAndStartAppiumServer" value="True"/>
+    <parameter name="strDeviceId" value="9096-9097"/>
+    <parameter name="strIOSDeviceName" value="iPhone 12"/>
+    <parameter name="strHeadless" value="False"/>
+    <parameter name="strDeviceAppiumPort" value="4723"/>
+    <parameter name="strIOSVersion" value="1.0.12"/>
+    <parameter name="strChromeDriverPIDs" value="4"/>
+    <parameter name="strRemotePath" value="http://localhost:6666"/>
+    <classes>
+      <class name="AutomationCode.IOS_TestCases_Flutter">
+        <methods>
+          <include name="AfterMethod"/>
+          <include name="StartIOSServer"/>
+          <include name="BeforeMethod"/>
+          <include name="StopIOSServer"/>
+          <include name="I3010_RegisterUser_Login_Flutter"/>
+        </methods>
+      </class> <!-- AutomationCode.IOS_TestCases_Flutter -->
+    </classes>
+  </test> <!-- IOS_TestCases(failed) -->
+</suite> <!-- Failed suite [Regression_IOS] -->

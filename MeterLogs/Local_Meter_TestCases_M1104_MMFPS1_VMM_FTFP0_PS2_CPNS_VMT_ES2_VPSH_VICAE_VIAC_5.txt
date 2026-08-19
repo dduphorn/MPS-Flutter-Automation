@@ -1,0 +1,10 @@
+[08/16 14:58:46.984] | INFO     | micro.wdog | main_reactor | qml_ping_handler(): Received QML ping response
+[08/16 14:58:50.031] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[08/16 14:58:50.032] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[08/16 14:58:50.055] | INFO     | lib.seco   | watchdog   | SecoLib()::check_temp(): SECO cpu temperature is:  Kelvin 3221 Celsius 48
+[08/16 14:58:59.734] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x00' (1 q_len tx_seqno #41 tx_failed 0) STATE_IDLE
+[08/16 14:58:59.747] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 41 (tx_seqno 41 tx_failed 0) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0e\xff'
+[08/16 14:58:59.748] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 3839 photocell state 1
+[08/16 14:58:59.749] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 3839 photocell state 1
+[08/16 14:59:00.873] | INFO     | gui        | MainThread | GRAY tmpSpot = 
+[08/16 14:59:04.969] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3

@@ -1,0 +1,12 @@
+[11/26 00:48:13.967] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"ip_addr": "10.10.100.201", "rmq_responses_attempted": 1338, "msg_id": "0x8000002eL", "rmq_api_bytes_sent": 304, "message": "5591-5592", "rmq_image_bytes_sent": 0, "rmq_response_bytes_sent": 3252928, "coin_jar_full": 19.1, "rmq_images_attempted": 0, "desc_str": "Sentry is alive and normal", "rmq_image_errors": 0, "rmq_images_sent": 0, "rmq_json_errors": 0, "rmq_responses_sent": 1338, "rmq_apis_attempted": 2, "rmq_jsons_attempted": 1409, "sentry_thread_hung": false, "rmq_api_errors": 0, "rmq_response_errors": 0, "rmq_json_bytes_sent": 3206346, "rmq_jsons_sent": 1409, "rmq_apis_sent": 2}, "class": "event", "queued_dt": "2024-11-26T00:48:13Z", "type": "system_alive", "id": "5612d714-2d58-46e3-b3b2-4f57c9a544e4", "device_id": "m:00C0089E93E0"}
+[11/26 00:48:14.027] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at quality-rabbitmq-lb-1284426831.us-east-1.elb.amazonaws.com:5671 (200): Normal shutdown
+[11/26 00:48:27.308] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[11/26 00:48:27.309] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[11/26 00:48:27.310] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[11/26 00:48:27.310] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1732582107,2,2
+
+[11/26 00:48:27.484] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[11/26 00:48:27.485] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[11/26 00:48:27.485] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[11/26 00:48:27.486] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1732582107,2,2
+

@@ -1,0 +1,134 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<!--<suite name="RunAllTestSuitesInParallel-SG" verbose="1" parallel ="tests" thread-count="10">-->
+<suite name="Regression_METER" verbose="1"  parallel ="tests"  thread-count="10">
+	<test name = "Meter_TestCases">
+	   	<parameter name="strStopAndStartAppiumServer" value="False"></parameter>
+	    <parameter name="strAppiumPort" value="8831"></parameter>
+	    <parameter name="strAndroidUdid" value=""></parameter>
+	    <parameter name="strAVDName" value = ""></parameter>
+<!-- 	    <parameter name="strDeviceId" value="76A7L-76A7R"></parameter> -->
+		<parameter name="strDeviceId" value="9096-9097"></parameter>
+	   	<parameter name="strRemotePath" value="http://localhost:6666"></parameter>
+			<classes>
+				<class name="PackageTestCases.ClassTestCases">
+					<methods>
+					<include name="Meter_SetBegunEqualFalse"></include>
+					<include name="M1_FTFP0_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC_VCDEE"></include>
+<!-- 					<!-- <include name="M2_FTFP0_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC_VCDEDE"></include> -->
+					<include name="M3_FTFP0_PS1_CP1_VMT_BMT_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M4_FTFP0_PS1_CP1_PMT_LPRM_e_MTIV_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M5_FTFP0_PS1_CP1_PMT_MTIV_gt_LPRM_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M6_FTFP0_PS1_CP1_VMT_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M7_FTFP0_PS1_CP1_VMT_PRT_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M8_FTFP0_PS1_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M9_FTFP0_PS1_CCP1_VMT_BMT_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M10_FTFP0_PS1_CCP1_PMT_LPRM_e_MTIV_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M11_FTFP0_PS1_CCP1_PMT_LPRM_gt_MTIV_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M12_FTFP0_PS1_CCP1_VMT_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M13_FTFP0_PS1_CCP1_VMT_PRT_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M14_FTFP10_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M15_FTFP10_PS1_CP1_VMT_BMT_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M16_FTFP10_PS1_CP1_PMT_LPRM_e_MTIV_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M17_FTFP10_PS1_CP1_PMT_MTIV_gt_LPRM_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M18_FTFP10_PS1_CP1_VMT_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M19_FTFP10_PS1_CP1_VMT_PRT_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M20_FTFP10_PS1_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M21_FTFP10_PS1_CCP1_VMT_BMT_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M22_FTFP10_PS1_CCP1_PMT_LPRM_e_MTIV_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M23_FTFP10_PS1_CCP1_PMT_LPRM_gt_MTIV_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M24_FTFP10_PS1_CCP1_VMT_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M25_FTFP10_PS1_CCP1_VMT_PRT_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M26_FTFP0_FTR_RFT_gt_MTIV_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M27_FTFP0_FTR_MTIV_gt_RFT_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M28_FTFP0_FTR_RFT_gt_MTIV_PS1_CP1_VMT_BMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M29_FTFP0_FTR_RFT_gt_MTIV_PS1_CP1_PMT_LPRM_e_MTIV_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M30_FTFP0_FTR_RFT_gt_MTIV_PS1_CP1_PMT_LPRM_gt_MTIV_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M31_FTFP0_FTR_PS1_CP1_VMT_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M32_FTFP0_FTR_PS1_CP1_VMT_PRT_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M33_FTFP0_FTR_RFT_gt_MTIV_PS1_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M34_FTFP0_FTR_MTIV_gt_RFT_PS1_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M35_FTFP0_FTR_RFT_gt_MTIV_PS1_CCP1_VMT_BMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M36_FTFP0_FTR_RFT_gt_MTIV_PS1_CCP1_PMT_LPRM_e_MTIV_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M37_FTFP0_FTR_RFT_gt_MTIV_PS1_CCP1_PMT_LPRM_gt_MTIV_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M38_FTFP0_FTR_PS1_CCP1_VMT_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M39_FTFP0_FTR_PS1_CCP1_VMT_PRT_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M40_FTFP10_FTR_RFT_gt_MTIV_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M41_FTFP10_FTR_MTIV_gt_RFT_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M42_FTFP10_FTR_RFT_gt_MTIV_PS1_CP1_VMT_BMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M43_FTFP10_FTR_RFT_gt_MTIV_PS1_CP1_PMT_LPRM_e_MTIV_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M44_FTFP10_FTR_RFT_gt_MTIV_PS1_CP1_PMT_LPRM_gt_MTIV_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M45_FTFP10_FTR_PS1_CP1_VMT_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M46_FTFP10_FTR_PS1_CP1_VMT_PRT_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M47_FTFP10_FTR_RFT_gt_MTIV_PS1_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M48_FTFP10_FTR_MTIV_gt_RFT_PS1_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M49_FTFP10_FTR_RFT_gt_MTIV_PS1_CCP1_VMT_BMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M50_FTFP10_FTR_RFT_gt_MTIV_PS1_CCP1_PMT_LPRM_e_MTIV_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M51_FTFP10_FTR_RFT_gt_MTIV_PS1_CCP1_PMT_LPRM_gt_MTIV_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M52_FTFP10_FTR_PS1_CCP1_VMT_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M53_FTFP10_FTR_PS1_CCP1_VMT_PRT_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M54_FTFP0_FTNP_MBNB_gt_FTR_gt_MTIV_PS1_CP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M55_FTFP0_FTNP_MBNB_gt_MTIV_gt_FTR_PS1_CP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M56_FTFP0_FTNP_MBNB_gt_FTR_gt_MTIV_PS1_CCP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M57_FTFP0_FTNP_MBNB_gt_MTIV_gt_FTR_PS1_CCP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M58_FTFP10_FTNP_MBNB_gt_FTR_gt_MTIV_PS1_CP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M59_FTFP10_FTNP_MBNB_gt_MTIV_gt_FTR_PS1_CP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M60_FTFP10_FTNP_MBNB_gt_FTR_gt_MTIV_PS1_CCP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M61_FTFP10_FTNP_MBNB_gt_MTIV_gt_FTR_PS1_CCP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M62_FTFP0_FDON_RTF_MTIV_gt_MBF_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M63_FTFP0_FDOFF_RTF_MTIV_gt_MBF_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M64_FTFP10_FDON_RTF_MTIV_gt_MBF_gt_FTFP_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M65_FTFP10_FDON_RTF_MTIV_gt_FTFP_gt_MBF_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M66_FTFP10_FDON_RTF_FTFP_gt_MTIV_gt_MBF_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M67_FTFP10_FDON_RTF_FTFP_gt_MBF_gt_MTIV_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M68_FTFP10_FDON_RTF_MBF_gt_MTIV_gt_FTFP_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M69_FTFP10_FDON_RTF_MBF_gt_FTFP_gt_MTIV_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M70_FTFP10_FDOFF_RTF_MTIV_gt_MBF_gt_FTFP_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M71_FTFP10_FDOFF_RTF_MTIV_gt_FTFP_gt_MBF_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M72_FTFP10_FDOFF_RTF_FTFP_gt_MTIV_gt_MBF_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M73_FTFP10_FDOFF_RTF_FTFP_gt_MBF_gt_MTIV_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M74_FTFP10_FDOFF_RTF_MBF_gt_MTIV_gt_FTFP_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M75_FTFP10_FDOFF_RTF_MBF_gt_FTFP_gt_MTIV_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M76_FTFP0_FDON_RTF_MTIV_gt_MBF_PS1_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M77_FTFP0_FDOFF_RTF_MTIV_gt_MBF_PS1_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M78_FTFP10_FDON_RTF_MTIV_gt_MBF_gt_FTFP_PS1_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M79_FTFP10_FDON_RTF_MTIV_gt_FTFP_gt_MBF_PS1_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M80_FTFP10_FDON_RTF_MBF_gt_MTIV_gt_FTFP_PS1_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M81_FTFP10_FDOFF_RTF_MTIV_gt_MBF_gt_FTFP_PS1_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M82_FTFP10_FDOFF_RTF_MTIV_gt_FTFP_gt_MBF_PS1_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M83_FTFP10_FDOFF_RTF_MBF_gt_MTIV_gt_FTFP_PS1_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M84_AMMOEE_CGPV1_RV_VMVE_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M85_AMMOEE_CGPV1_RV_RES_VMVD_ES1_VPSH_VICAE_VIAC_PS1_CP1_VMT_ES1_VPSH"></include>
+					<include name="M86_AMMOEE_FTFP0_CGPV1_RV_RES_IP_VMVD_ES1_VPSH_VICAE_VIAC_PS1_ES1_VPSH"></include>
+					<include name="M87_AMMOEE_FTFP0_CGPV1_RV_RES_IP_VMVD_CP1_VMT_ES1_VPSH_VICAE_VIAC_PS1_CP1_VMT_ES1_VPSH"></include>
+					<include name="M88_AMMOEE_FTFP10_CGPV1_RV_RES_IP_VMVD_ES1_VPSH_VICAE_VIAC_PS1_CP1_VMT_ES1_VPSH"></include>
+					<include name="M89_FTFP0_PCUV_CGPV_AV_CP1_VMU_VPSH_VPSH_VICAE_VIAC"></include>
+					<include name="M90_FTFP0_PCNUV_CGPV_AV_CP1_VMU_VPSH_VPSH_VICAE_VIAC"></include>
+					<include name="M91_AMMOEE_MUOFF_CGPV1_CP1_VMV1_VMPO2_SES_EBS"></include>
+					<include name="M92_AMMOED_MUOFF_CGPV1_CP1_VMV1_VMPO2_SES_EBS"></include>
+					<include name="M93_AMMOEE_MUOFF_CGPV1_CP1_VMV1_VMPO2_RES_EBS"></include>
+					<include name="M94_AMMOED_MUOFF_CGPV1_CP1_VMV1_VMPO2_RES_EBS"></include>
+					<include name="M95_MMNP_VMM_FTFP0_PS1_CP1_VMT_ES1_VPSH"></include>
+					<include name="M96_MMFP_VMM_FTFP0_PS1_CP1_VMT_ES1_VPSH"></include>
+					<include name="M97_MMUP_VMM_FTFP0_PS1_CP1_VMT_ES1_VPSH"></include>
+					<include name="M98_MMM_VMM_FTFP0_PS1_CP1_VMT_ES1_VPSH"></include>
+					<include name="M99_PS1_CP1_MMNP_VMM_WUMV_VMM_CP1_VMM_ES1_VMM_RMM_VMM_VPSH"></include>
+					<include name="M100_PS1_CP1_MMFP_VMM_WUMV_VMM_CP1_VMM_ES1_VMM_RMM_VMM_VPSH"></include>
+					<include name="M101_PS1_CP1_MMUP_VMM_WUMV_VMM_CP1_VMM_ES1_VMM_RMM_VMM_VPSH"></include>
+					<include name="M102_PS1_CP1_MMMP_VMM_WUMV_VMM_CP1_VMM_ES1_VMM_RMM_VMM_VPSH"></include>
+					<include name="M103_MMNPS1_VMM_FTFP0_PS2_CPNS_VMT_ES2_VPSH_VICAE_VIAC"></include>
+					<include name="M104_MMFPS1_VMM_FTFP0_PS2_CPNS_VMT_ES2_VPSH_VICAE_VIAC"></include>
+					<include name="M105_MMUPS1_VMM_FTFP0_PS2_CPNS_VMT_ES2_VPSH_VICAE_VIAC"></include>
+					<include name="M106_MMMS1_VMM_FTFP0_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC_VCDEDE"></include>
+					<include name="M107_FTFP0_FDOFF_RTF_PS1_PMT_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M108_FTFP0_FDON_RTF_PS1_PMT_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M109_FTFP0_FDON_MUON_MUT5_RTF_CGPV_W4_PMT_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M110_FTFP0_TUON_FDON_MUON_MUT5_RTF_CGPV_W4_PMT_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M111_FTFP10_FTR_RFT_gt_MTIV_PS1_CCP1_PMT_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M112_FTFP0_TUOFF_MUON_PCUV_CGPV_CCP1_PMT_VMU_VPSH_VPSH_VICAE_VIAC"></include>
+					<include name="M113_FTFP0_TUON_MUON_PCUV_CGPV_CCP1_PMT_VMU_VPSH_VPSH_VICAE_VIAC"></include>
+					<include name="M114_FTFP0_TUON_MUON_PCUV_RSMDNEMT_CGPV_CCP1_PMT_VMU_VPSH_VPSH_VICAE_VIAC"></include> -->
+				</methods>
+	   		</class>
+	    </classes>
+	</test>
+</suite>

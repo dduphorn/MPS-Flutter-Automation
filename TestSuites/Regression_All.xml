@@ -1,0 +1,472 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<!--<suite name="RunAllTestSuitesInParallel-SG" verbose="1" parallel ="tests" thread-count="10">-->
+<suite name="ParallelTest" verbose="1"  parallel ="tests"  thread-count="10">
+<!-- 	<test name = "Android_Regression"> -->
+<!-- 		<parameter name="strStopAndStartAppiumServer" value="True"></parameter> -->
+<!-- 	    <parameter name="strAppiumPort" value="8828"></parameter> -->
+<!-- 	    <parameter name="strAndroidUdid" value="VS986a4741414"></parameter> -->
+<!-- 	    <parameter name="strAVDName" value = ""></parameter> -->
+<!-- 	    <parameter name="strDeviceId" value="900L-901R"></parameter> -->
+<!-- 		<parameter name="strRemotePath" value="http://10.10.100.246:5559"></parameter> -->
+<!-- 		<classes> -->
+<!-- 		    <class name="AutomationCode.TestCases"> -->
+<!-- 	    			<methods> -->
+<!-- 	    		    		<include name="Meter_SetBegunEqualFalse"></include> -->
+<!-- 		    		    <include name="A1_ValidateInvalidCredentialMessage"></include> -->
+<!-- 		    		  	<include name="A2_RegisterUser_PasswordShouldHaveAtleastOneDigitOrSpecialCharacter"></include> -->
+<!-- 					<include name="A3_RegisterUser_EmailHasAlreadyBeenTaken"></include> -->
+<!-- 					<include name="A4_RegisterUser_EmailIsInvalid"></include> -->
+<!-- 					<include name="A5_RegisterUser_EmailIdsDoNotMatch"></include> -->
+<!-- 					<include name="A6_RegisterUser_PasswordsDoNotMatchPleaseReEnter"></include> -->
+<!-- 					<include name="A7_RegisterUser_PasswordShouldBeAtleast8Characters"></include> -->
+<!-- 					<include name="A9_RegisterUser_FirstNameCannotBeBlank"></include> -->
+<!-- 					<include name="A10_RegisterUser_LastNameCannotBeBlank"></include> -->
+<!-- 					<include name="A11_RegisterUser_RememberMeOff_EmailIdWithCaps_LoginWithCaps"></include> -->
+<!-- 					<include name="A12_RegisterUser_RememberMeOff_EmailIdWithCaps_LoginWithoutCaps"></include> -->
+<!-- 					<include name="A13_RegisterUser_RememberMeOff_EmailIdWithoutCaps_LoginWithCaps"></include> -->
+<!-- 					<include name="A14_RegisterUser_RememberMeOff_EmailIdWithoutCaps_LoginWithoutCaps"></include> -->
+<!-- 					<include name="A15_RegisterUser_RememberMeOn_EmailIdWithCaps"></include> -->
+<!-- 					<include name="A16_RegisterUser_RememberMeOn_EmailIdWithoutCaps"></include> -->
+<!-- 					<include name="A17_CreateAndDeleteUser_AttemptMobileRegisterWithDeletedUser"></include> -->
+<!-- 					<include name="A18_CreateAndDeleteUser_AttemptLoginWithDeletedUser"></include> -->
+<!-- 					<include name="A19_ReimburseParker_ValidateMobileAccountBalance"></include> -->
+<!-- 					<include name="A20_FTFP0_PS1_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A21_FTFP0_PS1_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A22_FTFP0_PS1_MP1_VPSVD_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A23_FTFP0_PS1_MP1_BMT_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A24_FTFP0_PS1_MP1_PMT_LPRM_e_MTIV_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A25_FTFP0_PS1_MP1_PMT_MTIV_gt_LPRM_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A26_FTFP0_PS1_CP1_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A27_FTFP0_PS1_MP1_CP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A28_FTFP0_PS1_CCP1_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A29_FTFP0_PS1_MP1_CCP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A30_FTFP0_MP1_PS1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A31_FTFP10_PS1_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A32_FTFP10_PS1_MP1_BMT_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A33_FTFP10_PS1_MP1_PMT_LPRM_e_MTIV_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A34_FTFP10_PS1_MP1_PMT_MTIV_gt_LPRM_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A35_FTFP10_PS1_CP1_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A36_FTFP10_PS1_MP1_CP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A37_FTFP10_PS1_CCP1_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A38_FTFP10_PS1_MP1_CCP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A39_FTFP10_MP1_PS1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A40_GPSOFF_FTFP0_PS1_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A41_GPSOFF_RegisterUser_EnableGPSDialogNo"></include> -->
+<!-- 					<include name="A42_GPSOFF_RegisterUser_EnableGPSDialogYes"></include> -->
+<!-- 					<include name="A43_MUON_CGPV1_MP1_VMT_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A44_FTFP0_FTR_RFT_gt_MTIV_PS1_MP1_VMT_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A45_FTFP0_FTR_MTIV_gt_RFT_PS1_MP1_VMT_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A46_FTFP0_FTR_RFT_gt_MTIV_PS1_MP1_VMT_BMT_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A47_FTFP0_FTR_RFT_gt_MTIV_PS1_MP1_VMT_CP1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A48_FTFP10_FTR_RFT_gt_MTIV_PS1_MP1_VMT_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A49_FTFP10_FTR_MTIV_gt_RFT_PS1_MP1_VMT_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A50_FTFP10_FTR_RFT_gt_MTIV_PS1_MP1_BMT_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A51_FTFP10_FTR_RFT_gt_MTIV_PS1_MP1_VMT_CP1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A52_FTFP0_FDON_RTF_MTIV_gt_MBF_PS1_MP1_VMT_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A53_FTFP0_FDON_RTF_MBF_gt_MTIV_PS1_MP1_VMT_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A54_FTFP0_FDON_RTF_PS1_MP1_PMT_VMT_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A55_FTFP10_FDON_RTF_MTIV_gt_MBF_gt_FTFP_PS1_MP1_VMT_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A56_FTFP10_FDON_RTF_MTIV_gt_FTFP_gt_MBF_PS1_MP1_VMT_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A57_FTFP10_FDON_RTF_FTFP_gt_MTIV_gt_MBF_PS1_MP1_VMT_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A58_FTFP10_FDON_RTF_FTFP_gt_MBF_gt_MTIV_PS1_MP1_VMT_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A59_FTFP10_FDON_RTF_MBF_gt_MTIV_gt_FTFP_PS1_MP1_VMT_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A60_FTFP10_FDON_RTF_MBF_gt_FTFP_gt_MTIV_PS1_MP1_VMT_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A61_FTFP10_FDOFF_RTF_MTIV_gt_MBF_gt_FTFP_PS1_MP1_VMT_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A62_FTFP10_FDOFF_RTF_MTIV_gt_FTFP_gt_MBF_PS1_MP1_VMT_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A63_FTFP0_FDOFF_RTF_PS1_MP1_PMT_VMT_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A64_FTFP10_FDOFF_RTF_FTFP_gt_MTIV_gt_MBF_PS1_MP1_VMT_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A65_FTFP0_TUON_UON_PS1_GPV1_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A66_FTFP0_TUON_UON_PS1_GPV1_AV_wo_LP_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A67_FTFP0_TUON_UON_PS1_GPV1_AV_wm_LP_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A68_FTFP0_TUON_UON_PS1_GPV1_AV_wm_LP_CSMLP_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A69_FTFP0_TUON_UON_PS1_GPV1_AV_wom_LP_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A70_FTFP0_TUON_UON_PS1_GPV1_RV_wo_LP_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A71_FTFP0_TUON_UON_PS1_GPV1_RV_wm_LP_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A72_FTFP0_TUON_UON_PS1_GPV1_RV_wom_LP_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A73_FTFP0_TUON_UON_PS1_GPV1_RV_RES_wo_LP_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A74_FTFP0_TUON_UON_PS1_GPV1_RV_RES_wm_LP_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A75_FTFP0_TUON_UON_PS1_GPV1_RV_RES_wom_LP_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A76_FTFP0_TUON_UON_PS1_GPV1_RV_RES_IP_wo_LP_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A77_FTFP0_TUON_UON_PS1_GPV1_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A78_FTFP0_TUON_UON_PS1_GPV1_AV_wo_LP_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A79_FTFP0_TUON_UON_PS1_GPV1_AV_wm_LP_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A80_FTFP0_TUON_UON_PS1_GPV1_AV_wom_LP_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A81_FTFP0_TUON_UON_PS1_GPV1_RV_wo_LP_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A82_FTFP0_TUON_UON_PS1_GPV1_RV_wm_LP_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A83_FTFP0_TUON_UON_PS1_GPV1_RV_wom_LP_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A84_FTFP0_TUON_UON_PS1_GPV1_RV_RES_wo_LP_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A85_FTFP0_TUON_UON_PS1_GPV1_RV_RES_wm_LP_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A86_FTFP0_TUON_UON_PS1_GPV1_RV_RES_wom_LP_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A87_FTFP0_TUON_UON_PS1_GPV1_RV_RES_IP_wo_LP_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A88_FTFP0_TUON_UON_GPV1_MP1_LMV1_MP1_VMPSIV_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A89_FTFP0_TUON_UOff_PS1_GPV1_MP1_VMPSIV_VML_EBS_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A90_ForgotPassword_EnterTheUserEmailIdToResetPassword"></include> -->
+<!-- 					<include name="A91_ForgotPassword_AllFieldsWithAreMandatory"></include> -->
+<!-- 					<include name="A92_ForgotPassword_InvalidEmail"></include> -->
+<!-- 					<include name="A93_ForgotPassword_InvalidToken"></include> -->
+<!-- 					<include name="A94_ForgotPassword_DifferentPassword"></include> -->
+<!-- 					<include name="A95_ForgotPassword_SentResetInstructions_LoginWithCurrentPassword"></include> -->
+<!-- 					<include name="A96_ForgotPassword_ResendResetInstructionsTwice_UseFirstToken"></include> -->
+<!-- 					<include name="A97_ForgotPassword_ResendResetInstructionsTwice_UseSecondToken"></include> -->
+<!-- 					<include name="A98_ForgotPasswordRememberMeOn"></include> -->
+<!-- 					<include name="A99_ForgotPasswordRememberMeOff"></include> -->
+<!-- 					<include name="A100_LoginAttemptsExceededYourAccountHasBeenLocked"></include> -->
+<!-- 					<include name="A101_FTFP0_TUOFF_UON_PS1_GPV1_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A102_FTFP0_TUOFF_UON_PS1_GPV1_AV_wo_LP_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A103_FTFP0_TUOFF_UON_PS1_GPV1_AV_wm_LP_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A104_FTFP0_TUOFF_UON_PS1_GPV1_AV_wm_LP_CSMLP_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A105_FTFP0_TUOFF_UON_PS1_GPV1_AV_wom_LP_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A106_FTFP0_TUOFF_UON_PS1_GPV1_RV_wo_LP_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A107_FTFP0_TUOFF_UON_PS1_GPV1_RV_wm_LP_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A108_FTFP0_TUOFF_UON_PS1_GPV1_RV_wom_LP_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A109_FTFP0_TUOFF_UON_PS1_GPV1_RV_RES_wo_LP_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A110_FTFP0_TUOFF_UON_PS1_GPV1_RV_RES_wm_LP_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A111_FTFP0_TUOFF_UON_PS1_GPV1_RV_RES_wom_LP_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A112_FTFP0_TUOFF_UON_PS1_GPV1_RV_RES_IP_wo_LP_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A113_FTFP0_TUOFF_UON_PS1_GPV1_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A114_FTFP0_TUOFF_UON_PS1_GPV1_AV_wo_LP_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A115_FTFP0_TUOFF_UON_PS1_GPV1_AV_wm_LP_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A116_FTFP0_TUOFF_UON_PS1_GPV1_AV_wom_LP_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A117_FTFP0_TUOFF_UON_PS1_GPV1_RV_wo_LP_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A118_FTFP0_TUOFF_UON_PS1_GPV1_RV_wm_LP_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A119_FTFP0_TUOFF_UON_PS1_GPV1_RV_wom_LP_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A120_FTFP0_TUOFF_UON_PS1_GPV1_RV_RES_wo_LP_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A121_FTFP0_TUOFF_UON_PS1_GPV1_RV_RES_wm_LP_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A122_FTFP0_TUOFF_UON_PS1_GPV1_RV_RES_wom_LP_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A123_FTFP0_TUOFF_UON_PS1_GPV1_RV_RES_IP_wo_LP_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A124_FTFP0_TUOFF_UON_GPV1_MP1_LMV1_MP1_VMPSIV_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A125_FTFP0_TUOFF_UOff_PS1_GPV1_MP1_VMPSIV_VML_EBS_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A126_ValidateInvalidCreditCardDate"></include> -->
+<!-- 					<include name="AV20_FTFP0_PS1_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="AV21_FTFP0_PS1_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="AV22_FTFP0_PS1_MP1_VPSVD_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="AV23_FTFP0_PS1_MP1_BMT_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="AV24_FTFP0_PS1_MP1_PMT_LPRM_e_MTIV_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="AV25_FTFP0_PS1_MP1_PMT_MTIV_gt_LPRM_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="AV30_FTFP0_MP1_PS1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="AV31_FTFP10_PS1_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="AV32_FTFP10_PS1_MP1_BMT_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="AV33_FTFP10_PS1_MP1_PMT_LPRM_e_MTIV_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="AV34_FTFP10_PS1_MP1_PMT_MTIV_gt_LPRM_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="AV39_FTFP10_MP1_PS1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="AV44_FTFP0_FTR_RFT_gt_MTIV_PS1_MP1_VMT_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="AV45_FTFP0_FTR_MTIV_gt_RFT_PS1_MP1_VMT_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="AV46_FTFP0_FTR_RFT_gt_MTIV_PS1_MP1_VMT_BMT_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="AV47_FTFP0_FTR_RFT_gt_MTIV_PS1_MP1_VMT_CP1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="AV48_FTFP10_FTR_RFT_gt_MTIV_PS1_MP1_VMT_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="AV49_FTFP10_FTR_MTIV_gt_RFT_PS1_MP1_VMT_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="AV50_FTFP10_FTR_RFT_gt_MTIV_PS1_MP1_BMT_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="AV51_FTFP10_FTR_RFT_gt_MTIV_PS1_MP1_VMT_CP1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="AV52_FTFP0_FDON_RTF_MTIV_gt_MBF_PS1_MP1_VMT_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 				</methods> -->
+<!--    			</class> -->
+<!-- 	    </classes> -->
+<!-- 	</test> -->
+	<test name = "IOS_TestCases">
+	    <parameter name="strStopAndStartAppiumServer" value="True"></parameter>
+	    <parameter name="strAppiumPort" value="8829"></parameter>
+	    <parameter name="strDeviceId" value="Jack-Lydia"></parameter>
+	    <parameter name="strAndroidUdid" value = ""></parameter>
+	    <parameter name="strRemotePath" value="http://10.10.101.121:5560"></parameter>
+		<classes>
+		    <class name="AutomationCode.TestCases">
+	    			<methods>
+		    		    <include name="Meter_SetBegunEqualFalse"></include>
+		    		    <include name="I1_ValidateInvalidCredentialMessage"></include>
+		    		   	<include name="I2_RegisterUser_PasswordShouldHaveAtleastOneDigitOrSpecialCharacter"></include>
+					<include name="I3_RegisterUser_EmailHasAlreadyBeenTaken"></include>
+					<include name="I4_RegisterUser_EmailIsInvalid"></include>
+					<include name="I5_RegisterUser_EmailIdsDoNotMatch"></include>
+					<include name="I6_RegisterUser_PasswordsDoNotMatchPleaseReEnter"></include>
+					<include name="I7_RegisterUser_PasswordShouldBeAtleast8Characters"></include>
+					<include name="I9_RegisterUser_FirstNameCanntBeBlank"></include>
+					<include name="I10_RegisterUser_LastNameCannotBeBlank"></include>
+					<include name="I11_RegisterUser_RememberMeOff_EmailIdWithCaps_LoginWithCaps"></include>
+					<include name="I12_RegisterUser_RememberMeOff_EmailIdWithCaps_LoginWithoutCaps"></include>
+					<include name="I13_RegisterUser_RememberMeOff_EmailIdWithoutCaps_LoginWithCaps"></include>
+					<include name="I14_RegisterUser_RememberMeOff_EmailIdWithoutCaps_LoginWithoutCaps"></include>
+					<include name="I15_RegisterUser_RememberMeOn_EmailIdWithCaps"></include>
+					<include name="I16_RegisterUser_RememberMeOn_EmailIdWithoutCaps"></include>
+					<include name="I17_CreateAndDeleteUser_AttemptMobileRegisterWithDeletedUser"></include>
+					<include name="I18_CreateAndDeleteUser_AttemptLoginWithDeletedUser"></include>
+					<include name="I19_ReimburseParker_ValidateMobileAccountBalance"></include>
+					<include name="I20_FTFP0_PS1_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I21_FTFP0_PS1_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I22_FTFP0_PS1_MP1_VPSVD_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I23_FTFP0_PS1_MP1_BMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I24_FTFP0_PS1_MP1_PMT_LPRM_e_MTIV_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I25_FTFP0_PS1_MP1_PMT_MTIV_gt_LPRM_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I26_FTFP0_PS1_CP1_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I27_FTFP0_PS1_MP1_CP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I28_FTFP0_PS1_CCP1_M1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I29_FTFP0_PS1_MP1_CCP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I30_FTFP0_MP1_PS1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I31_FTFP10_PS1_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I32_FTFP10_PS1_MP1_BMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I33_FTFP10_PS1_MP1_PMT_LPRM_e_MTIV_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I34_FTFP10_PS1_MP1_PMT_MTIV_gt_LPRM_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I35_FTFP10_PS1_CP1_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I36_FTFP10_PS1_MP1_CP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I37_FTFP10_PS1_CCP1_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I38_FTFP10_PS1_MP1_CCP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I39_FTFP10_MP1_PS1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I40_GPSOFF_FTFP0_PS1_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I41_GPSOFF_RegisterUser_EnableGPSDialogNo"></include>
+					<include name="I42_GPSOFF_RegisterUser_EnableGPSDialogYes"></include>
+					<include name="I43_MUON_CGPV1_MP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I44_FTFP0_FTR_RFT_gt_MTIV_PS1_MP1_VMT_VPSH_VICAE_VIAC"></include>
+					<include name="I45_FTFP0_FTR_MTIV_gt_RFT_PS1_MP1_VMT_VPSH_VICAE_VIAC"></include>
+					<include name="I46_FTFP0_FTR_RFT_gt_MTIV_PS1_MP1_VMT_BMT_VPSH_VICAE_VIAC"></include>
+					<include name="I47_FTFP0_FTR_RFT_gt_MTIV_PS1_MP1_VMT_CP1_VPSH_VICAE_VIAC"></include>
+					<include name="I48_FTFP10_FTR_RFT_gt_MTIV_PS1_MP1_VMT_VPSH_VICAE_VIAC"></include>
+					<include name="I49_FTFP10_FTR_MTIV_gt_RFT_PS1_MP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I50_FTFP10_FTR_RFT_gt_MTIV_PS1_MP1_BMT_VPSH_VICAE_VIAC"></include>
+					<include name="I51_FTFP10_FTR_RFT_gt_MTIV_PS1_MP1_VMT_CP1_VPSH_VICAE_VIAC"></include>
+					<include name="I52_FTFP0_FDON_RTF_MTIV_gt_MBF_PS1_MP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I53_FTFP0_FDON_RTF_MBF_gt_MTIV_PS1_MP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I54_FTFP0_FDON_RTF_PS1_MP1_PMT_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I55_FTFP10_FDON_RTF_MTIV_gt_MBF_gt_FTFP_PS1_MP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I56_FTFP10_FDON_RTF_MTIV_gt_FTFP_gt_MBF_PS1_MP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I57_FTFP10_FDON_RTF_FTFP_gt_MTIV_gt_MBF_PS1_MP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I58_FTFP10_FDON_RTF_FTFP_gt_MBF_gt_MTIV_PS1_MP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I59_FTFP10_FDON_RTF_MBF_gt_MTIV_gt_FTFP_PS1_MP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I60_FTFP10_FDON_RTF_MBF_gt_FTFP_gt_MTIV_PS1_MP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I61_FTFP10_FDOFF_RTF_MTIV_gt_MBF_gt_FTFP_PS1_MP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I62_FTFP10_FDOFF_RTF_MTIV_gt_FTFP_gt_MBF_PS1_MP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I63_FTFP0_FDOFF_RTF_PS1_MP1_PMT_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I64_FTFP10_FDOFF_RTF_FTFP_gt_MTIV_gt_MBF_PS1_MP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I65_FTFP0_TUON_UON_PS1_GPV1_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I66_FTFP0_TUON_UON_PS1_GPV1_AV_wo_LP_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I67_FTFP0_TUON_UON_PS1_GPV1_AV_wm_LP_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I68_FTFP0_TUON_UON_PS1_GPV1_AV_wm_LP_CSMLP_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I69_FTFP0_TUON_UON_PS1_GPV1_AV_wom_LP_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I70_FTFP0_TUON_UON_PS1_GPV1_RV_wo_LP_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I71_FTFP0_TUON_UON_PS1_GPV1_RV_wm_LP_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I72_FTFP0_TUON_UON_PS1_GPV1_RV_wom_LP_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I73_FTFP0_TUON_UON_PS1_GPV1_RV_RES_wo_LP_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I74_FTFP0_TUON_UON_PS1_GPV1_RV_RES_wm_LP_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I75_FTFP0_TUON_UON_PS1_GPV1_RV_RES_wom_LP_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I76_FTFP0_TUON_UON_PS1_GPV1_RV_RES_IP_wo_LP_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I77_FTFP0_TUON_UON_PS1_GPV1_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I78_FTFP0_TUON_UON_PS1_GPV1_AV_wo_LP_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I79_FTFP0_TUON_UON_PS1_GPV1_AV_wm_LP_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I80_FTFP0_TUON_UON_PS1_GPV1_AV_wom_LP_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I81_FTFP0_TUON_UON_PS1_GPV1_RV_wo_LP_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I82_FTFP0_TUON_UON_PS1_GPV1_RV_wm_LP_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I83_FTFP0_TUON_UON_PS1_GPV1_RV_wom_LP_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I84_FTFP0_TUON_UON_PS1_GPV1_RV_RES_wo_LP_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I85_FTFP0_TUON_UON_PS1_GPV1_RV_RES_wm_LP_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I86_FTFP0_TUON_UON_PS1_GPV1_RV_RES_wom_LP_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I87_FTFP0_TUON_UON_PS1_GPV1_RV_RES_IP_wo_LP_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I88_FTFP0_TUON_UON_GPV1_MP1_LMV1_MP1_VMPSIV_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I89_FTFP0_TUON_UOff_PS1_GPV1_MP1_VMPSIV_VML_EBS_VPSH_VICAE_VIAC"></include>
+					<include name="I90_ForgotPassword_EnterTheUserEmailIdToResetPassword"></include>
+					<include name="I91_ForgotPassword_AllFieldsWithAreMandatory"></include>
+					<include name="I92_ForgotPassword_InvalidEmail"></include>
+					<include name="I93_ForgotPassword_InvalidToken"></include>
+					<include name="I94_ForgotPassword_DifferentPassword"></include>
+					<include name="I95_ForgotPassword_SentResetInstructions_LoginWithCurrentPassword"></include>
+					<include name="I96_ForgotPassword_ResendResetInstructionsTwice_UseFirstToken"></include>
+					<include name="I97_ForgotPassword_ResendResetInstructionsTwice_UseSecondToken"></include>
+					<include name="I98_ForgotPasswordRememberMeOn"></include>
+					<include name="I99_ForgotPasswordRememberMeOff"></include>
+					<include name="I100_LoginAttemptsExceededYourAccountHasBeenLocked"></include>
+					<include name="I101_FTFP0_TUOFF_UON_PS1_GPV1_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I102_FTFP0_TUOFF_UON_PS1_GPV1_AV_wo_LP_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I103_FTFP0_TUOFF_UON_PS1_GPV1_AV_wm_LP_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I104_FTFP0_TUOFF_UON_PS1_GPV1_AV_wm_LP_CSMLP_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I105_FTFP0_TUOFF_UON_PS1_GPV1_AV_wom_LP_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I106_FTFP0_TUOFF_UON_PS1_GPV1_RV_wo_LP_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I107_FTFP0_TUOFF_UON_PS1_GPV1_RV_wm_LP_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I108_FTFP0_TUOFF_UON_PS1_GPV1_RV_wom_LP_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I109_FTFP0_TUOFF_UON_PS1_GPV1_RV_RES_wo_LP_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I110_FTFP0_TUOFF_UON_PS1_GPV1_RV_RES_wm_LP_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I111_FTFP0_TUOFF_UON_PS1_GPV1_RV_RES_wom_LP_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I112_FTFP0_TUOFF_UON_PS1_GPV1_RV_RES_IP_wo_LP_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I113_FTFP0_TUOFF_UON_PS1_GPV1_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I114_FTFP0_TUOFF_UON_PS1_GPV1_AV_wo_LP_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I115_FTFP0_TUOFF_UON_PS1_GPV1_AV_wm_LP_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I116_FTFP0_TUOFF_UON_PS1_GPV1_AV_wom_LP_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I117_FTFP0_TUOFF_UON_PS1_GPV1_RV_wo_LP_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I118_FTFP0_TUOFF_UON_PS1_GPV1_RV_wm_LP_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I119_FTFP0_TUOFF_UON_PS1_GPV1_RV_wom_LP_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I120_FTFP0_TUOFF_UON_PS1_GPV1_RV_RES_wo_LP_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I121_FTFP0_TUOFF_UON_PS1_GPV1_RV_RES_wm_LP_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I122_FTFP0_TUOFF_UON_PS1_GPV1_RV_RES_wom_LP_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I123_FTFP0_TUOFF_UON_PS1_GPV1_RV_RES_IP_wo_LP_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I124_FTFP0_TUOFF_UON_GPV1_MP1_LMV1_MP1_VMPSIV_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="I125_FTFP0_TUOFF_UOff_PS1_GPV1_MP1_VMPSIV_VML_EBS_VPSH_VICAE_VIAC"></include>
+					<include name="I126_ValidateInvalidCreditCardDate"></include>
+					<include name="IV20_FTFP0_PS1_CMM_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="IV21_FTFP0_PS1_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="IV22_FTFP0_PS1_MP1_VPSVD_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="IV23_FTFP0_PS1_MP1_BMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="IV24_FTFP0_PS1_MP1_PMT_LPRM_e_MTIV_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="IV25_FTFP0_PS1_MP1_PMT_MTIV_gt_LPRM_ES1_VPSH_VICAE_VIA"></include>
+					<include name="IV30_FTFP0_MP1_PS1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="IV31_FTFP10_PS1_MP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="IV32_FTFP10_PS1_MP1_BMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="IV33_FTFP10_PS1_MP1_PMT_LPRM_e_MTIV_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="IV34_FTFP10_PS1_MP1_PMT_MTIV_gt_LPRM_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="IV39_FTFP10_MP1_PS1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="IV44_FTFP0_FTR_RFT_gt_MTIV_PS1_MP1_VMT_VPSH_VICAE_VIAC"></include>
+					<include name="IV45_FTFP0_FTR_MTIV_gt_RFT_PS1_MP1_VMT_VPSH_VICAE_VIAC"></include>
+					<include name="IV46_FTFP0_FTR_RFT_gt_MTIV_PS1_MP1_VMT_BMT_VPSH_VICAE_VIAC"></include>
+					<include name="IV47_FTFP0_FTR_RFT_gt_MTIV_PS1_MP1_VMT_CP1_VPSH_VICAE_VIAC"></include>
+					<include name="IV48_FTFP10_FTR_RFT_gt_MTIV_PS1_MP1_VMT_VPSH_VICAE_VIAC"></include>
+					<include name="IV49_FTFP10_FTR_MTIV_gt_RFT_PS1_MP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="IV50_FTFP10_FTR_MTIV_gt_RFT_PS1_MP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="IV51_FTFP10_FTR_RFT_gt_MTIV_PS1_MP1_VMT_CP1_VPSH_VICAE_VIAC"></include>
+					<include name="IV52_FTFP0_FDON_RTF_MTIV_gt_MBF_PS1_MP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+				</methods>
+   			</class>
+	    </classes>
+	</test>
+	<test name = "PEO_TestCases">
+	   	<parameter name="strStopAndStartAppiumServer" value="True"></parameter>
+	    <parameter name="strAppiumPort" value="8830"></parameter>
+	    <parameter name="strAndroidUdid" value="42f798625942af19"></parameter>
+	    <parameter name="strAVDName" value = ""></parameter>
+	   	<parameter name="strDeviceId" value="John-tudor"></parameter>
+	   	<parameter name="strRemotePath" value="http://10.10.100.245:5558"></parameter>
+		<classes>
+		    	<class name="AutomationCode.TestCases">
+		    		<methods>
+		    		    <include name="P1_ValidateInvalidCredentialMessage"></include>
+		    		    <include name="P2_PEO_CMV_IGPE_VVXD"></include>
+		    		    <include name="P3_PEO_CMV_EIO60D_VVXD"></include>
+		    		    <include name="P4_FTFP0_CGPV_AV_CV_PLI_IT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="P5_FTFP0_CGPV_PLI_AV_CV_IT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="P6_FTFP0_CGPV_PLI_AV_CV_CLI_IT_VLI_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="P7_FTFP0_CGPV_AV_CV_TNI_VSM_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="P8_FTFP0_CGPV_AV_SV_USV_CV_IT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="P9_FTFP0_CGPV_AV_CV_CNIT_RA_VIR_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="P10_FTFP0_CGPV_AV_CV_CNIT_RCD_VIR_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="P11_FTFP0_CGPV_AV_CV_CNIT_RDV_VIR_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="P12_FTFP0_CGPV_AV_CV_CNIT_RDIV_VIR_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="P13_FTFP0_CGPV_AV_CV_CNIT_RBCE_VIR_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="P14_FTFP0_CGPV_AV_CV_CNIT_RBS_VIR_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="P15_FTFP0_CGPV_AV_CV_CNIT_RTC_VIR_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="P16_FTFP0_CGPV_AV_CV_CNIT_RVU_VIR_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="P17_FTFP0_CGPV_AV_CV_CNIT_RO_VIR_ES1_VPSH_VIACE_VIAC"></include>
+					<include name="P18_FTFP0_CGPV_AV_PCV_CP1_VMU_VPVR_NTPS_VPSH_VICAE_VIAC"></include>
+					<include name="P19_CGPV1_AV_PCV_PIT_CP1_VMU_VPVR_VPSH_VICAE_VIAC"></include>
+					<include name="P20_FTFP0_CGPV1_AV_PCV_PIT_PGT_CP1_VML_MPO2_VPSH_VICAE_VIAC"></include>
+					<include name="P21_PEO_CGPV1_NTAAV_PAIT_GT_RBT_VVR"></include>
+					<include name="P22_PEO_CGPV1_NTAAV_CAVV_CNIT_RV_RAV_GT_VPSH_VICAE_VIAC"></include>
+					<include name="P23_MUON_CGPV1_NTAAV_SVTS_CP1_USBDNE_VPSH_VICAE_VIAC"></include>
+					<include name="P24_MUON_CGPV1_NTAAV_SVTS_LS1_USBDNE_VPSH_VICAE_VIAC"></include>
+					<include name="P25_DPEOU_CPEOU_MIL_UU_VPEOL"></include>
+					<include name="P26_FTFP0_CGPV_AV_ES1_VVR_VPSH_VICAE_VIAC"></include>
+					<include name="P27_FTFP0_CGPV_AV_CV_ES1_VVR_VPSH_VICAE_VIAC"></include>
+					<include name="P28_FTFP0_CGPV_AV_CV_IT_ES1_VVR_VPSH_VICAE_VIAC"></include>
+				</methods>
+	   		</class>
+	    </classes>
+	</test>
+	<test name = "Meter_TestCases">
+	   	<parameter name="strStopAndStartAppiumServer" value="False"></parameter>
+	    <parameter name="strAppiumPort" value="8831"></parameter>
+	    <parameter name="strAndroidUdid" value=""></parameter>
+	    <parameter name="strAVDName" value = ""></parameter>
+		<parameter name="strDeviceId" value="CD05"></parameter>
+	   	<parameter name="strRemotePath" value="http://localhost:6666"></parameter>
+			<classes>
+		    		<class name="AutomationCode.TestCases">
+		    			<methods>
+		    		    <include name="Meter_SetBegunEqualFalse"></include>
+	    		    		<include name="M1_FTFP0_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC_VCDEE"></include>
+					<include name="M2_FTFP0_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC_VCDEDE"></include>
+					<include name="M3_FTFP0_PS1_CP1_VMT_BMT_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M4_FTFP0_PS1_CP1_PMT_LPRM_e_MTIV_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M5_FTFP0_PS1_CP1_PMT_MTIV_gt_LPRM_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M6_FTFP0_PS1_CP1_VMT_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M7_FTFP0_PS1_CP1_VMT_PRT_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M8_FTFP0_PS1_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M9_FTFP0_PS1_CCP1_VMT_BMT_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M10_FTFP0_PS1_CCP1_PMT_LPRM_e_MTIV_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M11_FTFP0_PS1_CCP1_PMT_LPRM_gt_MTIV_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M12_FTFP0_PS1_CCP1_VMT_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M13_FTFP0_PS1_CCP1_VMT_PRT_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M14_FTFP10_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M15_FTFP10_PS1_CP1_VMT_BMT_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M16_FTFP10_PS1_CP1_PMT_LPRM_e_MTIV_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M17_FTFP10_PS1_CP1_PMT_MTIV_gt_LPRM_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M18FTFP10_PS1_CP1_VMT_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M19_FTFP10_PS1_CP1_VMT_PRT_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M20_FTFP10_PS1_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M21_FTFP10_PS1_CCP1_VMT_BMT_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M22_FTFP10_PS1_CCP1_PMT_LPRM_e_MTIV_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M23_FTFP10_PS1_CCP1_PMT_LPRM_gt_MTIV_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M24_FTFP10_PS1_CCP1_VMT_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M25_FTFP10_PS1_CCP1_VMT_PRT_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M26_FTFP0_FTR_RFT_gt_MTIV_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M27_FTFP0_FTR_MTIV_gt_RFT_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M28_FTFP0_FTR_RFT_gt_MTIV_PS1_CP1_VMT_BMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M29_FTFP0_FTR_RFT_gt_MTIV_PS1_CP1_PMT_LPRM_e_MTIV_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M30_FTFP0_FTR_RFT_gt_MTIV_PS1_CP1_PMT_LPRM_gt_MTIV_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M31_FTFP0_FTR_PS1_CP1_VMT_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M32_FTFP0_FTR_PS1_CP1_VMT_PRT_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M33_FTFP0_FTR_RFT_gt_MTIV_PS1_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M34_FTFP0_FTR_MTIV_gt_RFT_PS1_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M35_FTFP0_FTR_RFT_gt_MTIV_PS1_CCP1_VMT_BMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M36_FTFP0_FTR_RFT_gt_MTIV_PS1_CCP1_PMT_LPRM_e_MTIV_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M37_FTFP0_FTR_RFT_gt_MTIV_PS1_CCP1_PMT_LPRM_gt_MTIV_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M38_FTFP0_FTR_PS1_CP1_VMT_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M39_FTFP0_FTR_PS1_CCP1_VMT_PRT_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M40_FTFP10_FTR_RFT_gt_MTIV_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M41_FTFP10_FTR_MTIV_gt_RFT_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M42_FTFP10_FTR_RFT_gt_MTIV_PS1_CP1_VMT_BMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M43_FTFP10_FTR_RFT_gt_MTIV_PS1_CP1_PMT_LPRM_e_MTIV_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M44_FTFP10_FTR_RFT_gt_MTIV_PS1_CP1_PMT_LPRM_gt_MTIV_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M45_FTFP10_FTR_PS1_CP1_VMT_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M46_FTFP10_FTR_PS1_CP1_VMT_PRT_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M47_FTFP10_FTR_RFT_gt_MTIV_PS1_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M48_FTFP10_FTR_MTIV_gt_RFT_PS1_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M49_FTFP10_FTR_RFT_gt_MTIV_PS1_CCP1_VMT_BMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M50_FTFP10_FTR_RFT_gt_MTIV_PS1_CCP1_PMT_LPRM_e_MTIV_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M51_FTFP10_FTR_RFT_gt_MTIV_PS1_CCP1_PMT_LPRM_gt_MTIV_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M52_FTFP10_FTR_PS1_CCP1_VMT_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M53_FTFP10_FTR_PS1_CCP1_VMT_PRT_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M54_FTFP0_FTNP_MBNB_gt_FTR_gt_MTIV_PS1_CP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M55_FTFP0_FTNP_MBNB_gt_MTIV_gt_FTR_PS1_CP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M56_FTFP0_FTNP_MBNB_gt_FTR_gt_MTIV_PS1_CCP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M57_FTFP0_FTNP_MBNB_gt_MTIV_gt_FTR_PS1_CCP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M58_FTFP10_FTNP_MBNB_gt_FTR_gt_MTIV_PS1_CP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M59_FTFP10_FTNP_MBNB_gt_MTIV_gt_FTR_PS1_CP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M60_FTFP10_FTNP_MBNB_gt_FTR_gt_MTIV_PS1_CCP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M61_FTFP10_FTNP_MBNB_gt_MTIV_gt_FTR_PS1_CCP1_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M62_FTFP0_FDON_RTF_MTIV_gt_MBF_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M63_FTFP0_FDOFF_RTF_MTIV_gt_MBF_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M64_FTFP10_FDON_RTF_MTIV_gt_MBF_gt_FTFP_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M65_FTFP10_FDON_RTF_MTIV_gt_FTFP_gt_MBF_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M66_FTFP10_FDON_RTF_FTFP_gt_MTIV_gt_MBF_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M67_FTFP10_FDON_RTF_FTFP_gt_MBF_gt_MTIV_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M68_FTFP10_FDON_RTF_MBF_gt_MTIV_gt_FTFP_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M69_FTFP10_FDON_RTF_MBF_gt_FTFP_gt_MTIV_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M70_FTFP10_FDOFF_RTF_MTIV_gt_MBF_gt_FTFP_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M71_FTFP10_FDOFF_RTF_MTIV_gt_FTFP_gt_MBF_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M72_FTFP10_FDOFF_RTF_FTFP_gt_MTIV_gt_MBF_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M73_FTFP10_FDOFF_RTF_FTFP_gt_MBF_gt_MTIV_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M74_FTFP10_FDOFF_RTF_MBF_gt_MTIV_gt_FTFP_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M75_FTFP10_FDOFF_RTF_MBF_gt_FTFP_gt_MTIV_PS1_CP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M76_FTFP0_FDON_RTF_MTIV_gt_MBF_PS1_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M77_FTFP0_FDOFF_RTF_MTIV_gt_MBF_PS1_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M78_FTFP10_FDON_RTF_MTIV_gt_MBF_gt_FTFP_PS1_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M79_FTFP10_FDON_RTF_MTIV_gt_FTFP_gt_MBF_PS1_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M80_FTFP10_FDON_RTF_MBF_gt_MTIV_gt_FTFP_PS1_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M81_FTFP10_FDOFF_RTF_MTIV_gt_MBF_gt_FTFP_PS1_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M82_FTFP10_FDOFF_RTF_MTIV_gt_FTFP_gt_MBF_PS1_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M83_FTFP10_FDOFF_RTF_MBF_gt_MTIV_gt_FTFP_PS1_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M84_CGPV1_RV_VMVE_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="M85_CGPV1_RV_RES_VMVD_ES1_VPSH_VICAE_VIAC_PS1_CP1_VMT_ES1_VPSH"></include>
+					<include name="M86_FTFP0_CGPV1_RV_RES_IP_VMVD_ES1_VPSH_VICAE_VIAC_PS1_CP1_VMT_ES1_VPSH"></include>
+					<include name="M87_FTFP0_CGPV1_RV_RES_IP_VMVD_CP1_VMT_ES1_VPSH_VICAE_VIAC_PS1_CP1_VMT_ES1_VPSH"></include>
+					<include name="M88_FTFP10_CGPV1_RV_RES_IP_VMVD_ES1_VPSH_VICAE_VIAC_PS1_CP1_VMT_ES1_VPSH"></include>
+					<include name="M89_MUOFF_CGPV1_CP1_VMV1_VMPO2_SES_EBS"></include>
+					<include name="M90_MUOFF_CGPV1_CP1_VMV1_VMPO2_RES_EBS"></include>
+				</methods>
+	   		</class>
+	    </classes>
+	</test>
+</suite>

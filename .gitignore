@@ -1,0 +1,33 @@
+# Flutter / Dart
+.dart_tool/
+.packages
+.pub-cache/
+.pub/
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+*.iml
+.idea/
+.vscode/
+
+# Android / iOS build stuff
+**/android/.gradle
+**/android/local.properties
+**/android/**/GeneratedPluginRegistrant.java
+**/android/key.properties
+*.jks
+**/ios/Pods/
+**/ios/.symlinks/
+**/ios/Flutter/ephemeral
+**/ios/DerivedData/
+
+# Large binaries you don't want
+APK/
+*.apk
+*.aab
+*.ipa
+Lib/chromedriver*
+Lib/selenium-server-*.jar
+*.jar
+*.log
+.DS_Store

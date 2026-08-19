@@ -1,0 +1,47 @@
+[06/08 04:01:13.308] | INFO     | mps.ui     | main_reactor | _on_session_locked: spot_id SPOT_1
+[06/08 04:01:27.694] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[06/08 04:01:27.695] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[06/08 04:01:42.141] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[06/08 04:02:00.713] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43257 rp_min_to_free 43257
+[06/08 04:02:28.636] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[06/08 04:02:28.637] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[06/08 04:02:35.278] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/system_alive-e1a76a0e62ee11f198c300c008947d30.json
+[06/08 04:02:36.064] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"ip_addr": "10.10.101.168", "rmq_responses_attempted": 1940, "msg_id": "0x8000002eL", "rmq_api_bytes_sent": 304, "message": "9010-9011", "rmq_image_bytes_sent": 0, "rmq_response_bytes_sent": 3904928, "coin_jar_full": 0.0, "rmq_images_attempted": 0, "desc_str": "Sentry is alive and normal", "rmq_image_errors": 0, "rmq_images_sent": 0, "rmq_json_errors": 0, "rmq_responses_sent": 1940, "rmq_apis_attempted": 2, "rmq_jsons_attempted": 1491, "sentry_thread_hung": false, "rmq_api_errors": 0, "rmq_response_errors": 0, "rmq_json_bytes_sent": 2611311, "rmq_jsons_sent": 1491, "rmq_apis_sent": 2}, "class": "event", "queued_dt": "2026-06-08T04:02:35Z", "type": "system_alive", "id": "5dae98a5-add3-4020-b103-9116e9912aae", "device_id": "m:00C008947D30"}
+[06/08 04:02:36.166] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at rabbitmq.staging.sentry-link.com:5671 (200): Normal shutdown
+[06/08 04:02:59.314] | INFO     | net_monitor | check_network_connectivity | check_network_connectivity(): Starting network connectivity checks
+[06/08 04:03:00.731] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43256 rp_min_to_free 43256
+[06/08 04:03:01.420] | INFO     | net_monitor | check_network_connectivity | check_network_connectivity(): Finished - lan_up:True network_up:True rcs:['10.10.100.1 rc:0', u'8.8.8.8 rc:0'] time:2.105s
+[06/08 04:03:29.559] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[06/08 04:03:29.560] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[06/08 04:03:40.478] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[06/08 04:03:40.479] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[06/08 04:03:40.512] | INFO     | lib.seco   | watchdog   | SecoLib()::check_temp(): SECO cpu temperature is:  Kelvin 3241 Celsius 50
+[06/08 04:03:42.198] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[06/08 04:04:00.774] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43255 rp_min_to_free 43255
+[06/08 04:04:30.389] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[06/08 04:04:30.390] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[06/08 04:05:00.789] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43254 rp_min_to_free 43254
+[06/08 04:05:31.234] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[06/08 04:05:31.234] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[06/08 04:05:42.273] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[06/08 04:05:59.114] | INFO     | micro.wdog | microcomm_reactor | qml_ping_sender(): Sending QML ping
+[06/08 04:06:00.731] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43253 rp_min_to_free 43253
+[06/08 04:06:03.762] | INFO     | camera     | time_checker | _send(): -> name: sock_1_2 message_len: 97 total_sent: 97
+[06/08 04:06:03.903] | INFO     | camera     | time_checker | _recv(): <- request_len: 69 header_len: 8
+[06/08 04:06:04.082] | INFO     | sys_serv   | time_checker | _log_ntp_peer_info(): 1/4/11 (primary/good+primary/total) - primary:*138.89.14.60    .PPS.            1 u  418 1024  377   45.491   -0.243   1.788 good:+142.248.192.33  10.200.190.7     2 u  493 1024  377   46.219   -0.918   2.858, +5.161.111.190   225.254.30.190   4 u  249 1024  373   46.103   -1.107   2.301, +168.235.69.132  129.6.15.30      2 u  611 1024  377   36.340   -1.557   4.939 bad:-172.238.164.57  168.61.215.74    4 u   77 1024  377   27.839    3.010   1.468, -216.229.0.50    216.239.35.12    2 u  458 1024  377   39.364    3.328   1.554 other: 0.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 1.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 2.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 3.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, ntp.ubuntu.com  .POOL.          16 p    -   64    0    0.000    0.000   0.000
+[06/08 04:06:04.260] | INFO     | sys_serv   | time_checker | get_primary_reference(): Found primary_ref: *138.89.14.60    .PPS.            1 u  418 1024  377   45.491   -0.243   1.788
+[06/08 04:06:04.261] | INFO     | idigi      | time_checker | clear_ntp_reloaded(): clearing ntp_reloaded controlling watchdog checks
+[06/08 04:06:08.212] | INFO     | rss        | rss_thread | _get_rss_feeds
+[06/08 04:06:33.565] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[06/08 04:06:33.614] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[06/08 04:06:40.615] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[06/08 04:06:40.615] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[06/08 04:06:40.659] | INFO     | lib.seco   | watchdog   | SecoLib()::check_temp(): SECO cpu temperature is:  Kelvin 3221 Celsius 48
+[06/08 04:07:00.749] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43252 rp_min_to_free 43252
+[06/08 04:07:34.538] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[06/08 04:07:34.540] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[06/08 04:07:36.255] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/system_alive-950cf9e262ef11f198c300c008947d30.json
+[06/08 04:07:37.060] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"ip_addr": "10.10.101.168", "rmq_responses_attempted": 1940, "msg_id": "0x8000002eL", "rmq_api_bytes_sent": 304, "message": "9010-9011", "rmq_image_bytes_sent": 0, "rmq_response_bytes_sent": 3904928, "coin_jar_full": 0.0, "rmq_images_attempted": 0, "desc_str": "Sentry is alive and normal", "rmq_image_errors": 0, "rmq_images_sent": 0, "rmq_json_errors": 0, "rmq_responses_sent": 1940, "rmq_apis_attempted": 2, "rmq_jsons_attempted": 1492, "sentry_thread_hung": false, "rmq_api_errors": 0, "rmq_response_errors": 0, "rmq_json_bytes_sent": 2612070, "rmq_jsons_sent": 1492, "rmq_apis_sent": 2}, "class": "event", "queued_dt": "2026-06-08T04:07:36Z", "type": "system_alive", "id": "04876eaa-7b42-465d-bafd-9e8d2ed170bd", "device_id": "m:00C008947D30"}
+[06/08 04:07:37.159] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at rabbitmq.staging.sentry-link.com:5671 (200): Normal shutdown
+[06/08 04:07:42.365] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[06/08 04:08:00.738] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43251 rp_min_to_free 43251

@@ -1,0 +1,151 @@
+[04/12 14:37:19.610] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/12 14:37:19.611] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744468639,2,2
+
+[04/12 14:37:19.784] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/12 14:37:19.785] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/12 14:37:19.786] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/12 14:37:19.786] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744468639,2,2
+
+[04/12 14:38:07.922] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[04/12 14:38:07.922] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[04/12 14:38:07.946] | INFO     | lib.seco   | watchdog   | SecoLib()::check_temp(): SECO cpu temperature is:  Kelvin 3151 Celsius 41
+[04/12 14:38:10.876] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 44061 rp_min_to_free 44061
+[04/12 14:38:20.827] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/system_alive-c7d9d68c17ab11f0be3100c0089e93e0.json
+[04/12 14:38:21.412] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/12 14:38:21.413] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/12 14:38:21.414] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/12 14:38:21.414] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744468701,2,2
+
+[04/12 14:38:21.588] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/12 14:38:21.589] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/12 14:38:21.589] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/12 14:38:21.590] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744468701,2,2
+
+[04/12 14:38:21.621] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"ip_addr": "10.10.100.201", "rmq_responses_attempted": 307, "msg_id": "0x8000002eL", "rmq_api_bytes_sent": 304, "message": "5591-5592", "rmq_image_bytes_sent": 0, "rmq_response_bytes_sent": 458972, "coin_jar_full": 19.1, "rmq_images_attempted": 0, "desc_str": "Sentry is alive and normal", "rmq_image_errors": 0, "rmq_images_sent": 0, "rmq_json_errors": 0, "rmq_responses_sent": 307, "rmq_apis_attempted": 2, "rmq_jsons_attempted": 302, "sentry_thread_hung": false, "rmq_api_errors": 0, "rmq_response_errors": 0, "rmq_json_bytes_sent": 335098, "rmq_jsons_sent": 302, "rmq_apis_sent": 2}, "class": "event", "queued_dt": "2025-04-12T14:38:20Z", "type": "system_alive", "id": "0089e7a7-4cc8-46ec-bedb-2748d24c75d3", "device_id": "m:00C0089E93E0"}
+[04/12 14:38:21.719] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at quality-rabbitmq-lb-1284426831.us-east-1.elb.amazonaws.com:5671 (200): Normal shutdown
+[04/12 14:38:26.531] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[04/12 14:39:09.234] | INFO     | micro.wdog | microcomm_reactor | qml_ping_sender(): Sending QML ping
+[04/12 14:39:10.895] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 44060 rp_min_to_free 44060
+[04/12 14:39:13.827] | INFO     | camera     | time_checker | _send(): -> name: sock_1_2 message_len: 97 total_sent: 97
+[04/12 14:39:13.968] | INFO     | camera     | time_checker | _recv(): <- request_len: 69 header_len: 8
+[04/12 14:39:14.144] | INFO     | sys_serv   | time_checker | _log_ntp_peer_info(): 1/5/10 (primary/good+primary/total) - primary:*65.100.46.166   .SOCK.           1 u  360 1024  377   60.574   -2.462   3.247 good:+23.155.40.38    .GNSS.           1 u  878 1024  377   35.837   -2.524   3.024, +129.146.193.200 128.138.140.44   2 u  289 1024  377   82.733   -0.877   2.308, +74.50.48.56     132.163.96.2     2 u  921 1024  377   49.826   -2.817   2.026, +137.190.2.4     .PPS.            1 u  463 1024  377   45.308   -4.246   4.655 bad: other: 0.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 1.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 2.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 3.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, ntp.ubuntu.com  .POOL.          16 p    -   64    0    0.000    0.000   0.000
+[04/12 14:39:14.323] | INFO     | sys_serv   | time_checker | get_primary_reference(): Found primary_ref: *65.100.46.166   .SOCK.           1 u  360 1024  377   60.574   -2.462   3.247
+[04/12 14:39:14.324] | INFO     | idigi      | time_checker | clear_ntp_reloaded(): clearing ntp_reloaded controlling watchdog checks
+[04/12 14:39:23.217] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/12 14:39:23.218] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/12 14:39:23.218] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/12 14:39:23.219] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744468763,2,2
+
+[04/12 14:39:23.393] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/12 14:39:23.394] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/12 14:39:23.394] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/12 14:39:23.395] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744468763,2,2
+
+[04/12 14:40:10.846] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 44059 rp_min_to_free 44059
+[04/12 14:40:25.054] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/12 14:40:25.057] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/12 14:40:25.058] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/12 14:40:25.059] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744468825,2,2
+
+[04/12 14:40:25.228] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/12 14:40:25.229] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/12 14:40:25.230] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/12 14:40:25.230] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744468825,2,2
+
+[04/12 14:40:26.634] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[04/12 14:41:08.046] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[04/12 14:41:08.046] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[04/12 14:41:08.074] | INFO     | lib.seco   | watchdog   | SecoLib()::check_temp(): SECO cpu temperature is:  Kelvin 3141 Celsius 40
+[04/12 14:41:10.915] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 44058 rp_min_to_free 44058
+[04/12 14:41:22.096] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req: u'rpc_parking' Payload: '{"method":"add_rate_blocks","params":[[]],"jsonrpc":"2.0","id":10266412}'
+[04/12 14:41:22.097] | INFO     | parking_serv | SentryJSONRPCServer | parking_service: add_rate_blocks()
+[04/12 14:41:22.098] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint parking response {"jsonrpc": "2.0", "id": 10266412, "result": true}
+[04/12 14:41:22.146] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 10266412, "result": true} Queue amq.gen-nUxmjc7rQXm_SvsZ2rC9Wg #308
+[04/12 14:41:26.533] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req Disabled gatelot blob logs Target: u'rpc_file_io'
+[04/12 14:41:26.537] | INFO     | file_io    | SentryJSONRPCServer | save: filename /media/realroot/ads/parking_schedule_weekly.png
+[04/12 14:41:26.541] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint file_io response {"jsonrpc": "2.0", "id": 10266414, "result": true}
+[04/12 14:41:26.586] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 10266414, "result": true} Queue amq.gen-EgR3mM38k6iTmPaTRj_BnA #309
+[04/12 14:41:26.825] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/12 14:41:26.826] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/12 14:41:26.827] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/12 14:41:26.827] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744468886,2,2
+
+[04/12 14:41:27.001] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/12 14:41:27.002] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/12 14:41:27.002] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/12 14:41:27.002] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744468887,2,2
+
+[04/12 14:42:10.843] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 44057 rp_min_to_free 44057
+[04/12 14:42:26.732] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[04/12 14:42:28.615] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/12 14:42:28.616] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/12 14:42:28.616] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/12 14:42:28.617] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744468948,2,2
+
+[04/12 14:42:28.790] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/12 14:42:28.791] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/12 14:42:28.791] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/12 14:42:28.791] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744468948,2,2
+
+[04/12 14:43:10.844] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 44056 rp_min_to_free 44056
+[04/12 14:43:12.486] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req Disabled gatelot blob logs Target: u'rpc_parking'
+[04/12 14:43:12.487] | INFO     | parking_serv | SentryJSONRPCServer | parking_service: add_rate_blocks()
+[04/12 14:43:12.489] | INFO     | FixedRate  | SentryJSONRPCServer | FR():__init__(): __repr__(): <FixedRate (PARKER_TYPE_NORMAL): 25¢:45:240, (PARKER_TYPE_HANDICAP): 25¢:0:240, (PARKER_TYPE_SENIOR): 25¢:45:240, (PARKER_TYPE_MUNI): 25¢:45:240, (PARKER_TYPE_VETERAN): 25¢:45:240, >
+[04/12 14:43:12.489] | INFO     | rate       | SentryJSONRPCServer | R()::__init__(): <RateBlock (fixed11732)[P7]: 02/04-04/12, 00:00-23:59-240-0-45-False-True-60-100-180-<mps.parking.rate_models.rate_types.RateBlockSchedule object at 0x97a51f0c>>
+[04/12 14:43:12.490] | INFO     | fixed_rb   | SentryJSONRPCServer | FRB()::__init__(): __repr__(): <RateBlock (fixed11732)[P7]: 02/04-04/12, 00:00-23:59-240-0-45-False-True-60-100-180-<mps.parking.rate_models.rate_types.RateBlockSchedule object at 0x97a51f0c>> __str__(): rate <FixedRate (PARKER_TYPE_NORMAL): 25¢:45:240, (PARKER_TYPE_HANDICAP): 25¢:0:240, (PARKER_TYPE_SENIOR): 25¢:45:240, (PARKER_TYPE_MUNI): 25¢:45:240, (PARKER_TYPE_VETERAN): 25¢:45:240, > max_time 240 first_payment_free_time 0 card_increment_time 45                 default_minimum_cost 100 default_minimum_time 180 disconnect_free True                 mins_accept_free_before_rate 60 unenforced False
+[04/12 14:43:12.490] | INFO     | parking_serv | SentryJSONRPCServer | add_rate_blocks(): Adding to rate_provider rate block: rate <FixedRate (PARKER_TYPE_NORMAL): 25¢:45:240, (PARKER_TYPE_HANDICAP): 25¢:0:240, (PARKER_TYPE_SENIOR): 25¢:45:240, (PARKER_TYPE_MUNI): 25¢:45:240, (PARKER_TYPE_VETERAN): 25¢:45:240, > max_time 240 first_payment_free_time 0 card_increment_time 45                 default_minimum_cost 100 default_minimum_time 180 disconnect_free True                 mins_accept_free_before_rate 60 unenforced False
+[04/12 14:43:12.490] | INFO     | rates      | SentryJSONRPCServer | RateBlocksPDO()::add_rate_block(): rate_blocks [<RateBlock (fixed11732)[P7]: 02/04-04/12, 00:00-23:59-240-0-45-False-True-60-100-180-<mps.parking.rate_models.rate_types.RateBlockSchedule object at 0x97a51f0c>>, <RateBlock (fixed11731)[P7]: 02/04-04/12, 00:00-23:59-240-0-60-False-True-60-100-240-<mps.parking.rate_models.rate_types.RateBlockSchedule object at 0x9662ec8c>>, <RateBlock (fixed11730)[P7]: 02/04-04/12, 00:00-23:59-240-0-15-False-True-60-100-60-<mps.parking.rate_models.rate_types.RateBlockSchedule object at 0x97a65dcc>>, <RateBlock (fixed11729)[P7]: 02/04-04/12, 00:00-23:59-240-0-15-False-True-60-100-60-<mps.parking.rate_models.rate_types.RateBlockSchedule object at 0x9661feec>>, <RateBlock (fixed11728)[P7]: 02/04-04/12, 00:00-23:59-240-0-15-False-True-60-100-60-<mps.parking.rate_models.rate_types.RateBlockSchedule object at 0x96319eec>>, <RateBlock (fixed11727)[P7]: 02/04-04/12, 00:00-23:59-240-0-15-False-True-60-100-60-<mps.parking.rate_models.rate_types.RateBlockSchedule object at 0x97a65b0c>>, <RateBlock (fixed11726)[P7]: 02/03-04/11, 00:00-23:59-240-0-15-False-True-60-100-60-<mps.parking.rate_models.rate_types.RateBlockSchedule object at 0x96640b6c>>, <RateBlock (fixed11725)[P7]: 02/03-04/11, 00:00-23:59-250-10-15-False-True-60-100-60-<mps.parking.rate_models.rate_types.RateBlockSchedule object at 0x965a058c>>, <RateBlock (fixed-1)[P-2147483647]: null-null, 00:00-23:59-120-0-30-False-True-60-75-0-<mps.parking.rate_models.rate_types.RateBlockSchedule object at 0xb39adf4c>>]
+[04/12 14:43:12.517] | INFO     | rates      | SentryJSONRPCServer | grs(): resetting - cached-start=2025-03-13 09:35:20.197727 cached-duration=60 days, 0:00:00 cached-end=2025-05-12 09:35:20.197727 req-start=2025-03-12 09:35:20.197727 req-end=2025-05-12 09:35:20.197727
+[04/12 14:43:12.518] | INFO     | rates      | SentryJSONRPCServer | grs(): readjust new sch (cached-start=2025-03-13 09:43:12.517994 cached-duration=60 days, 0:00:00 cached-end=2025-05-12 09:35:20.197727 req-start=2025-03-12 09:35:20.197727 req-end=2025-05-12 09:35:20.197727) #days 60 days, 0:00:00
+[04/12 14:43:12.794] | INFO     | rates      | SentryJSONRPCServer | grs(): new scheduled_rate_blocks [<ScheduleRateBlock (11732)[P7]: 03/13_00:00 - 03/13_23:59)>, <ScheduleRateBlock (11732)[P7]: 03/14_00:00 - 03/14_23:59)>, <ScheduleRateBlock (11732)[P7]: 03/15_00:00 - 03/15_23:59)>, <ScheduleRateBlock (11732)[P7]: 03/16_00:00 - 03/16_23:59)>, <ScheduleRateBlock (11732)[P7]: 03/17_00:00 - 03/17_23:59)>, <ScheduleRateBlock (11732)[P7]: 03/18_00:00 - 03/18_23:59)>, <ScheduleRateBlock (11732)[P7]: 03/19_00:00 - 03/19_23:59)>, <ScheduleRateBlock (11732)[P7]: 03/20_00:00 - 03/20_23:59)>, <ScheduleRateBlock (11732)[P7]: 03/21_00:00 - 03/21_23:59)>, <ScheduleRateBlock (11732)[P7]: 03/22_00:00 - 03/22_23:59)>, <ScheduleRateBlock (11732)[P7]: 03/23_00:00 - 03/23_23:59)>, <ScheduleRateBlock (11732)[P7]: 03/24_00:00 - 03/24_23:59)>, <ScheduleRateBlock (11732)[P7]: 03/25_00:00 - 03/25_23:59)>, <ScheduleRateBlock (11732)[P7]: 03/26_00:00 - 03/26_23:59)>, <ScheduleRateBlock (11732)[P7]: 03/27_00:00 - 03/27_23:59)>, <ScheduleRateBlock (11732)[P7]: 03/28_00:00 - 03/28_23:59)>, <ScheduleRateBlock (11732)[P7]: 03/29_00:00 - 03/29_23:59)>, <ScheduleRateBlock (11732)[P7]: 03/30_00:00 - 03/30_23:59)>, <ScheduleRateBlock (11732)[P7]: 03/31_00:00 - 03/31_23:59)>, <ScheduleRateBlock (11732)[P7]: 04/01_00:00 - 04/01_23:59)>, <ScheduleRateBlock (11732)[P7]: 04/02_00:00 - 04/02_23:59)>, <ScheduleRateBlock (11732)[P7]: 04/03_00:00 - 04/03_23:59)>, <ScheduleRateBlock (11732)[P7]: 04/04_00:00 - 04/04_23:59)>, <ScheduleRateBlock (11732)[P7]: 04/05_00:00 - 04/05_23:59)>, <ScheduleRateBlock (11732)[P7]: 04/06_00:00 - 04/06_23:59)>, <ScheduleRateBlock (11732)[P7]: 04/07_00:00 - 04/07_23:59)>, <ScheduleRateBlock (11732)[P7]: 04/08_00:00 - 04/08_23:59)>, <ScheduleRateBlock (11732)[P7]: 04/09_00:00 - 04/09_23:59)>, <ScheduleRateBlock (11732)[P7]: 04/10_00:00 - 04/10_23:59)>, <ScheduleRateBlock (11732)[P7]: 04/11_00:00 - 04/11_23:59)>, <ScheduleRateBlock (11732)[P7]: 04/12_00:00 - 04/12_23:59)>, <ScheduleRateBlock (11732)[P7]: 04/13_00:00 - 04/13_23:59)>, <ScheduleRateBlock (11732)[P7]: 04/14_00:00 - 04/14_23:59)>, <ScheduleRateBlock (11732)[P7]: 04/15_00:00 - 04/15_23:59)>, <ScheduleRateBlock (11732)[P7]: 04/16_00:00 - 04/16_23:59)>, <ScheduleRateBlock (11732)[P7]: 04/17_00:00 - 04/17_23:59)>, <ScheduleRateBlock (11732)[P7]: 04/18_00:00 - 04/18_23:59)>, <ScheduleRateBlock (11732)[P7]: 04/19_00:00 - 04/19_23:59)>, <ScheduleRateBlock (11732)[P7]: 04/20_00:00 - 04/20_23:59)>, <ScheduleRateBlock (11732)[P7]: 04/21_00:00 - 04/21_23:59)>, <ScheduleRateBlock (11732)[P7]: 04/22_00:00 - 04/22_23:59)>, <ScheduleRateBlock (11732)[P7]: 04/23_00:00 - 04/23_23:59)>, <ScheduleRateBlock (11732)[P7]: 04/24_00:00 - 04/24_23:59)>, <ScheduleRateBlock (11732)[P7]: 04/25_00:00 - 04/25_23:59)>, <ScheduleRateBlock (11732)[P7]: 04/26_00:00 - 04/26_23:59)>, <ScheduleRateBlock (11732)[P7]: 04/27_00:00 - 04/27_23:59)>, <ScheduleRateBlock (11732)[P7]: 04/28_00:00 - 04/28_23:59)>, <ScheduleRateBlock (11732)[P7]: 04/29_00:00 - 04/29_23:59)>, <ScheduleRateBlock (11732)[P7]: 04/30_00:00 - 04/30_23:59)>, <ScheduleRateBlock (11732)[P7]: 05/01_00:00 - 05/01_23:59)>, <ScheduleRateBlock (11732)[P7]: 05/02_00:00 - 05/02_23:59)>, <ScheduleRateBlock (11732)[P7]: 05/03_00:00 - 05/03_23:59)>, <ScheduleRateBlock (11732)[P7]: 05/04_00:00 - 05/04_23:59)>, <ScheduleRateBlock (11732)[P7]: 05/05_00:00 - 05/05_23:59)>, <ScheduleRateBlock (11732)[P7]: 05/06_00:00 - 05/06_23:59)>, <ScheduleRateBlock (11732)[P7]: 05/07_00:00 - 05/07_23:59)>, <ScheduleRateBlock (11732)[P7]: 05/08_00:00 - 05/08_23:59)>, <ScheduleRateBlock (11732)[P7]: 05/09_00:00 - 05/09_23:59)>, <ScheduleRateBlock (11732)[P7]: 05/10_00:00 - 05/10_23:59)>, <ScheduleRateBlock (11732)[P7]: 05/11_00:00 - 05/11_23:59)>, <ScheduleRateBlock (11732)[P7]: 05/12_00:00 - 05/12_23:59)>]
+[04/12 14:43:12.798] | INFO     | rates      | SentryJSONRPCServer | grs(): compressed scheduled_rate_blocks [<ScheduleRateBlock (11732)[P7]: 03/13_00:00 - 05/12_23:59)>]
+[04/12 14:43:12.799] | INFO     | rates      | SentryJSONRPCServer | grs(): final_scheduled_rate_blocks [<ScheduleRateBlock (11732)[P7]: 03/13_00:00 - 05/12_23:59)>]
+[04/12 14:43:12.799] | INFO     | rates      | SentryJSONRPCServer | _schedule_changed(): 
+[04/12 14:43:12.800] | INFO     | gui        | SentryJSONRPCServer | rate_schedule_changed_callback(): updating self.rate_schedule
+[04/12 14:43:12.800] | INFO     | mps.ui     | SentryJSONRPCServer | _on_rate_schedule_update(): handling rate schedule update
+[04/12 14:43:12.816] | INFO     | rates      | SentryJSONRPCServer | _schedule_changed(): 
+[04/12 14:43:12.817] | INFO     | gui        | SentryJSONRPCServer | rate_schedule_changed_callback(): updating self.rate_schedule
+[04/12 14:43:12.817] | INFO     | mps.ui     | SentryJSONRPCServer | _on_rate_schedule_update(): handling rate schedule update
+[04/12 14:43:12.843] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint parking response {"jsonrpc": "2.0", "id": 10266419, "result": true}
+[04/12 14:43:12.900] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 10266419, "result": true} Queue amq.gen-D3eZXyvHZi4qTVRYPLdsRA #310
+[04/12 14:43:12.986] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req Disabled gatelot blob logs Target: u'rpc_file_io'
+[04/12 14:43:12.991] | INFO     | file_io    | SentryJSONRPCServer | save: filename /media/realroot/ads/parking_schedule_weekly.png
+[04/12 14:43:12.995] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint file_io response {"jsonrpc": "2.0", "id": 10266418, "result": true}
+[04/12 14:43:13.048] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 10266418, "result": true} Queue amq.gen-1vZ-3jO8r5RgezEcEvm7Pw #311
+[04/12 14:43:21.817] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/system_alive-7b41438617ac11f0be3100c0089e93e0.json
+[04/12 14:43:22.584] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"ip_addr": "10.10.100.201", "rmq_responses_attempted": 311, "msg_id": "0x8000002eL", "rmq_api_bytes_sent": 304, "message": "5591-5592", "rmq_image_bytes_sent": 0, "rmq_response_bytes_sent": 459244, "coin_jar_full": 19.1, "rmq_images_attempted": 0, "desc_str": "Sentry is alive and normal", "rmq_image_errors": 0, "rmq_images_sent": 0, "rmq_json_errors": 0, "rmq_responses_sent": 311, "rmq_apis_attempted": 2, "rmq_jsons_attempted": 303, "sentry_thread_hung": false, "rmq_api_errors": 0, "rmq_response_errors": 0, "rmq_json_bytes_sent": 335852, "rmq_jsons_sent": 303, "rmq_apis_sent": 2}, "class": "event", "queued_dt": "2025-04-12T14:43:21Z", "type": "system_alive", "id": "280107bd-bc7e-45ab-80ee-b027a958d4b3", "device_id": "m:00C0089E93E0"}
+[04/12 14:43:22.687] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at quality-rabbitmq-lb-1284426831.us-east-1.elb.amazonaws.com:5671 (200): Normal shutdown
+[04/12 14:43:30.450] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/12 14:43:30.451] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/12 14:43:30.451] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/12 14:43:30.451] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744469010,2,2
+
+[04/12 14:43:30.625] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/12 14:43:30.627] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/12 14:43:30.627] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/12 14:43:30.628] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744469010,2,2
+
+[04/12 14:44:08.174] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[04/12 14:44:08.174] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[04/12 14:44:08.199] | INFO     | lib.seco   | watchdog   | SecoLib()::check_temp(): SECO cpu temperature is:  Kelvin 3151 Celsius 41
+[04/12 14:44:09.241] | INFO     | micro.wdog | microcomm_reactor | qml_ping_sender(): Sending QML ping
+[04/12 14:44:09.263] | INFO     | credit_call | credit_call_reactor | _retry_offline_messages(): #0 messages waiting cpu_load 3.13
+[04/12 14:44:10.832] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 44055 rp_min_to_free 44055
+[04/12 14:44:13.841] | INFO     | sys_serv   | main_reactor | _check_system_resources(): started
+[04/12 14:44:13.842] | INFO     | sys_serv   | main_reactor | Memory info: {'swap_total': 0, 'total': 4029872000L, 'free': 2084900000, 'used': 1149152000, 'swap_free': 0}
+[04/12 14:44:13.843] | INFO     | sys_serv   | main_reactor | _check_system_resources(): completed
+[04/12 14:44:26.828] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[04/12 14:44:32.238] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/12 14:44:32.239] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/12 14:44:32.240] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/12 14:44:32.240] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744469072,2,2
+
+[04/12 14:44:32.413] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/12 14:44:32.420] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/12 14:44:32.421] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[04/12 14:44:32.421] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1744469072,2,2
+
+[04/12 14:45:07.039] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req: u'rpc_file_io' Payload: '{"method":"directory","params":["/media/realroot/ads/"],"jsonrpc":"2.0","id":10266425}'
+[04/12 14:45:07.040] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint file_io response {"jsonrpc": "2.0", "id": 10266425, "result": ["SentryHowToPay.png", "en_posts.jpg", "parking_schedule_weekly_49.png", "parking_schedule_weekly.png", "parking_schedule_weekly_73.png", "parking_schedule_weekly_70.png", "en_rules.jpg", "parking_schedule_weekly_84.png", "parking_schedule_weekly_37.png", "parking_schedule_weekly_64.png", "parking_schedule_weekly_54.png", "street_map.png", "lost+found", "parking_schedule_weekly_82.png", "SentryFreeParking.png", "parking_schedule_weekly_74.png", "forecast.png", "parking_schedule_weekly_48.png", "parking_schedule_weekly_71.png", "parking_schedule_weekly_89.png"]}
+[04/12 14:45:07.092] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 10266425, "result": ["SentryHowToPay.png", "en_posts.jpg", "parking_schedule_weekly_49.png", "parking_schedule_weekly.png", "parking_schedule_weekly_73.png", "parking_schedule_weekly_70.png", "en_rules.jpg", "parking_schedule_weekly_84.png", "parking_schedule_weekly_37.png", "parking_schedule_weekly_64.png", "parking_schedule_weekly_54.png", "street_map.png", "lost+found", "parking_schedule_weekly_82.png", "SentryFreeParking.png", "parking_schedule_weekly_74.png", "forecast.png", "parking_schedule_weekly_48.png", "parking_schedule_weekly_71.png", "parking_schedule_weekly_89.png"]} Queue amq.gen-382ihBC1ItwHamxpb2LfVw #312
+[04/12 14:45:10.858] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 44054 rp_min_to_free 44054

@@ -1,0 +1,26 @@
+[08/07 16:32:26.844] | ERROR    | detection  | main_reactor | is_daytime: Error processing url https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0 read - exception <urlopen error [Errno 1] _ssl.c:504: error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure>
+[08/07 16:32:26.848] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/07 16:32:28.475] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43947 rp_min_to_free 43947
+[08/07 16:32:39.990] | INFO     | camera     | time_checker | _send(): -> name: sock_1_2 message_len: 97 total_sent: 97
+[08/07 16:32:40.123] | INFO     | camera     | time_checker | _recv(): <- request_len: 69 header_len: 8
+[08/07 16:32:40.317] | INFO     | sys_serv   | time_checker | _log_ntp_peer_info(): 1/4/5 (primary/good+primary/total) - primary:*198.137.202.32  32.146.78.153    2 u  779 1024  377   68.614    2.561  13.314 good:+45.79.111.167   132.163.96.2     2 u 1030 1024  377   68.413    1.378   2.760, +172.232.15.202  80.192.165.246   2 u  960 1024  377   26.852    1.976   4.229, +185.125.190.56  29.88.99.4       2 u  615 1024  377  113.676    0.709   2.053 bad: other: 185.234.20.134  .STEP.          16 u    - 1024    0    0.000    0.000   0.000
+[08/07 16:32:40.405] | INFO     | sys_serv   | time_checker | get_primary_reference(): Found primary_ref: *198.137.202.32  32.146.78.153    2 u  779 1024  377   68.614    2.561  13.314
+[08/07 16:32:40.408] | INFO     | idigi      | time_checker | clear_ntp_reloaded(): clearing ntp_reloaded controlling watchdog checks
+[08/07 16:32:40.482] | INFO     | lib.cgos   | time_checker | Set RTC to 2026-08-07 16:32:40.411848+00:00
+[08/07 16:33:16.391] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[08/07 16:33:27.734] | INFO     | detection  | main_reactor | is_daytime(): URL https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0
+[08/07 16:33:27.842] | ERROR    | detection  | main_reactor | is_daytime: Error processing url https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0 read - exception <urlopen error [Errno 1] _ssl.c:504: error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure>
+[08/07 16:33:27.846] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/07 16:33:27.850] | INFO     | detection  | main_reactor | is_daytime(): URL https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0
+[08/07 16:33:27.951] | ERROR    | detection  | main_reactor | is_daytime: Error processing url https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0 read - exception <urlopen error [Errno 1] _ssl.c:504: error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure>
+[08/07 16:33:27.954] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/07 16:33:28.469] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43946 rp_min_to_free 43946
+[08/07 16:34:18.737] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[08/07 16:34:18.740] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[08/07 16:34:28.464] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43945 rp_min_to_free 43945
+[08/07 16:34:28.848] | INFO     | detection  | main_reactor | is_daytime(): URL https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0
+[08/07 16:34:28.954] | ERROR    | detection  | main_reactor | is_daytime: Error processing url https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0 read - exception <urlopen error [Errno 1] _ssl.c:504: error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure>
+[08/07 16:34:28.959] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/07 16:34:28.964] | INFO     | detection  | main_reactor | is_daytime(): URL https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0
+[08/07 16:34:29.062] | ERROR    | detection  | main_reactor | is_daytime: Error processing url https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0 read - exception <urlopen error [Errno 1] _ssl.c:504: error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure>
+[08/07 16:34:29.064] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0

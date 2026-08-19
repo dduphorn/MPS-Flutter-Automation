@@ -1,0 +1,676 @@
+[08/09 06:31:24.795] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to reswipeoff (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[08/09 06:31:24.797] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: calling reswipeoff (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:913)
+[08/09 06:31:24.799] | INFO     | gui        | MainThread | QT: Home: transition to reswipeoff (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[08/09 06:31:24.800] | INFO     | gui        | MainThread | QT: Home: calling reswipeoff (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:400)
+[08/09 06:31:24.802] | INFO     | gui        | MainThread | QT: MultiHome: transition to reswipeoff (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[08/09 06:31:24.803] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to processingoff (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[08/09 06:31:24.804] | INFO     | gui        | MainThread | QT: Home: transition to processingoff (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[08/09 06:31:24.805] | INFO     | gui        | MainThread | QT: MultiHome: transition to processingoff (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[08/09 06:31:24.806] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to declineoff (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[08/09 06:31:24.807] | INFO     | gui        | MainThread | QT: MultiHome: transition to declineoff (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[08/09 06:31:37.984] | INFO     | micro.wdog | microcomm_reactor | qml_ping_sender(): Sending QML ping
+[08/09 06:31:38.017] | INFO     | micro.wdog | main_reactor | qml_ping_handler(): Received QML ping response
+[08/09 06:31:39.525] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 44548 rp_min_to_free 44548
+[08/09 06:31:43.459] | INFO     | camera     | time_checker | _send(): -> name: sock_1_2 message_len: 97 total_sent: 97
+[08/09 06:31:43.570] | INFO     | camera     | time_checker | _recv(): <- request_len: 69 header_len: 8
+[08/09 06:31:43.746] | INFO     | sys_serv   | time_checker | _log_ntp_peer_info(): 1/4/10 (primary/good+primary/total) - primary:*162.159.200.1   10.72.8.222      3 u  898 1024  337    0.847    1.262   2.601 good:+162.159.200.123 10.72.8.222      3 u 1042 1024  377    1.123    1.193   1.888, +23.150.41.123   162.159.200.123  4 u   75 1024  363   18.375    1.498   5.209, +5.161.111.190   225.254.30.190   4 u 1023 1024  317   27.951    1.416   0.954 bad:-91.189.91.157   132.163.96.1     2 u  157 1024  301   30.286    1.118   2.329 other: 0.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 1.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 2.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 3.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, ntp.ubuntu.com  .POOL.          16 p    -   64    0    0.000    0.000   0.000
+[08/09 06:31:43.926] | INFO     | sys_serv   | time_checker | get_primary_reference(): Found primary_ref: *162.159.200.1   10.72.8.222      3 u  898 1024  337    0.847    1.262   2.601
+[08/09 06:31:43.926] | INFO     | idigi      | time_checker | clear_ntp_reloaded(): clearing ntp_reloaded controlling watchdog checks
+[08/09 06:31:50.734] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[08/09 06:31:50.735] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[08/09 06:31:50.735] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[08/09 06:31:50.736] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1723185110,2,2
+
+[08/09 06:31:50.909] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[08/09 06:31:50.911] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[08/09 06:31:50.911] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[08/09 06:31:50.911] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1723185110,2,2
+
+[08/09 06:31:52.415] | INFO     | micro.wdog | main_reactor | qml_ping_handler(): Received QML ping response
+[08/09 06:32:00.253] | INFO     | gui        | MainThread | GRAY tmpSpot = 
+[08/09 06:32:00.270] | INFO     | gui        | MainThread | QT: Home: transition to PSV_STATE_AVAILABLE (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[08/09 06:32:35.849] | INFO     | ui.multi   | main_reactor | UISI::_suspend_tasks_timeout(): still in Idle - for 81.139759 seconds; unsuspending background task
+[08/09 06:32:39.564] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 44547 rp_min_to_free 44547
+[08/09 06:32:46.296] | INFO     | gui        | MainThread | GRAY tmpSpot = 
+[08/09 06:32:52.409] | INFO     | micro.wdog | main_reactor | qml_ping_handler(): Received QML ping response
+[08/09 06:32:52.494] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[08/09 06:32:52.495] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[08/09 06:32:52.495] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[08/09 06:32:52.495] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1723185172,2,2
+
+[08/09 06:32:52.669] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[08/09 06:32:52.670] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[08/09 06:32:52.671] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[08/09 06:32:52.671] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1723185172,2,2
+
+[08/09 06:33:00.311] | INFO     | gui        | MainThread | GRAY tmpSpot = 
+[08/09 06:33:14.737] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[08/09 06:33:21.272] | INFO     | rates      | SentryJSONRPCServer | grs(): resetting - cached-start=2024-07-10 01:28:33.764437 cached-duration=60 days, 0:00:00 cached-end=2024-09-08 01:28:33.764437 req-start=2024-07-09 01:28:33.764437 req-end=2024-09-08 01:28:33.764437
+[08/09 06:33:21.273] | INFO     | rates      | SentryJSONRPCServer | grs(): readjust new sch (cached-start=2024-07-10 01:33:21.273323 cached-duration=60 days, 0:00:00 cached-end=2024-09-08 01:28:33.764437 req-start=2024-07-09 01:28:33.764437 req-end=2024-09-08 01:28:33.764437) #days 60 days, 0:00:00
+[08/09 06:33:21.354] | INFO     | rates      | SentryJSONRPCServer | grs(): new scheduled_rate_blocks [<ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 07/10_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/11_00:00 - 07/11_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/12_00:00 - 07/12_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/13_00:00 - 07/13_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/14_00:00 - 07/14_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/15_00:00 - 07/15_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/16_00:00 - 07/16_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/17_00:00 - 07/17_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/18_00:00 - 07/18_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/19_00:00 - 07/19_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/20_00:00 - 07/20_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/21_00:00 - 07/21_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/22_00:00 - 07/22_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/23_00:00 - 07/23_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/24_00:00 - 07/24_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/25_00:00 - 07/25_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/26_00:00 - 07/26_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/27_00:00 - 07/27_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/28_00:00 - 07/28_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/29_00:00 - 07/29_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/30_00:00 - 07/30_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/31_00:00 - 07/31_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 08/01_00:00 - 08/01_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 08/02_00:00 - 08/02_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 08/03_00:00 - 08/03_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 08/04_00:00 - 08/04_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 08/05_00:00 - 08/05_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 08/06_00:00 - 08/06_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 08/07_00:00 - 08/07_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 08/08_00:00 - 08/08_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 08/09_00:00 - 08/09_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 08/10_00:00 - 08/10_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 08/11_00:00 - 08/11_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 08/12_00:00 - 08/12_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 08/13_00:00 - 08/13_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 08/14_00:00 - 08/14_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 08/15_00:00 - 08/15_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 08/16_00:00 - 08/16_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 08/17_00:00 - 08/17_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 08/18_00:00 - 08/18_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 08/19_00:00 - 08/19_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 08/20_00:00 - 08/20_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 08/21_00:00 - 08/21_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 08/22_00:00 - 08/22_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 08/23_00:00 - 08/23_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 08/24_00:00 - 08/24_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 08/25_00:00 - 08/25_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 08/26_00:00 - 08/26_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 08/27_00:00 - 08/27_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 08/28_00:00 - 08/28_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 08/29_00:00 - 08/29_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 08/30_00:00 - 08/30_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 08/31_00:00 - 08/31_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 09/01_00:00 - 09/01_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 09/02_00:00 - 09/02_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 09/03_00:00 - 09/03_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 09/04_00:00 - 09/04_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 09/05_00:00 - 09/05_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 09/06_00:00 - 09/06_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 09/07_00:00 - 09/07_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 09/08_00:00 - 09/08_23:59)>]
+[08/09 06:33:21.359] | INFO     | rates      | SentryJSONRPCServer | grs(): compressed scheduled_rate_blocks [<ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)>]
+[08/09 06:33:21.359] | INFO     | rates      | SentryJSONRPCServer | grs(): final_scheduled_rate_blocks [<ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)>]
+[08/09 06:33:21.360] | INFO     | rates      | SentryJSONRPCServer | _schedule_changed(): 
+[08/09 06:33:21.360] | INFO     | mps.ui     | SentryJSONRPCServer | _on_rate_schedule_update(): handling rate schedule update
+[08/09 06:33:21.363] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.361918
+[08/09 06:33:21.365] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.364157
+[08/09 06:33:21.368] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.366488
+[08/09 06:33:21.370] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.368716
+[08/09 06:33:21.372] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:00
+[08/09 06:33:21.375] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.373589
+[08/09 06:33:21.377] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.375870
+[08/09 06:33:21.379] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.378125
+[08/09 06:33:21.382] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.380273
+[08/09 06:33:21.384] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:00
+[08/09 06:33:21.391] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.389486
+[08/09 06:33:21.394] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.392299
+[08/09 06:33:21.396] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.394781
+[08/09 06:33:21.399] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.397287
+[08/09 06:33:21.401] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.399680
+[08/09 06:33:21.404] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:00
+[08/09 06:33:21.406] | INFO     | gui        | SentryJSONRPCServer | rate_schedule_changed_callback(): updating self.rate_schedule
+[08/09 06:33:21.407] | INFO     | rates      | SentryJSONRPCServer | _schedule_changed(): 
+[08/09 06:33:21.407] | INFO     | mps.ui     | SentryJSONRPCServer | _on_rate_schedule_update(): handling rate schedule update
+[08/09 06:33:21.410] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.408966
+[08/09 06:33:21.413] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.411162
+[08/09 06:33:21.415] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.413552
+[08/09 06:33:21.417] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.415797
+[08/09 06:33:21.419] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:00
+[08/09 06:33:21.422] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.420510
+[08/09 06:33:21.424] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.422692
+[08/09 06:33:21.426] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.424999
+[08/09 06:33:21.428] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.427105
+[08/09 06:33:21.430] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:00
+[08/09 06:33:21.433] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.431765
+[08/09 06:33:21.435] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.434224
+[08/09 06:33:21.438] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.436426
+[08/09 06:33:21.440] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.438651
+[08/09 06:33:21.442] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.440901
+[08/09 06:33:21.445] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:00
+[08/09 06:33:21.446] | INFO     | gui        | SentryJSONRPCServer | rate_schedule_changed_callback(): updating self.rate_schedule
+[08/09 06:33:21.452] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:00
+[08/09 06:33:21.458] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:00
+[08/09 06:33:21.460] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:00
+[08/09 06:33:21.463] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 05:04:00
+[08/09 06:33:21.470] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.464344
+[08/09 06:33:21.472] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:00
+[08/09 06:33:21.473] | INFO     | gui        | MainThread | GRAY tmpSpot = 
+[08/09 06:33:21.475] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.473791
+[08/09 06:33:21.477] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.476089
+[08/09 06:33:21.479] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:00
+[08/09 06:33:21.484] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.480363
+[08/09 06:33:21.486] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.484907
+[08/09 06:33:21.489] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:00
+[08/09 06:33:21.492] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:00
+[08/09 06:33:21.494] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.492730
+[08/09 06:33:21.496] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.494911
+[08/09 06:33:21.499] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.497250
+[08/09 06:33:21.501] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.499611
+[08/09 06:33:21.504] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.502413
+[08/09 06:33:21.506] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:00
+[08/09 06:33:21.509] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:00
+[08/09 06:33:21.511] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.509663
+[08/09 06:33:21.536] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:00
+[08/09 06:33:21.538] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:00
+[08/09 06:33:21.540] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:00
+[08/09 06:33:21.543] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 05:04:00
+[08/09 06:33:21.545] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.543610
+[08/09 06:33:21.547] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:00
+[08/09 06:33:21.548] | INFO     | gui        | MainThread | GRAY tmpSpot = 
+[08/09 06:33:21.550] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.548807
+[08/09 06:33:21.552] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.551146
+[08/09 06:33:21.555] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:00
+[08/09 06:33:21.558] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.556091
+[08/09 06:33:21.560] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.558639
+[08/09 06:33:21.563] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:00
+[08/09 06:33:21.566] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:00
+[08/09 06:33:21.568] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.566742
+[08/09 06:33:21.571] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.569253
+[08/09 06:33:21.573] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.571647
+[08/09 06:33:21.576] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.574146
+[08/09 06:33:21.578] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.577185
+[08/09 06:33:21.581] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:00
+[08/09 06:33:21.583] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:00
+[08/09 06:33:21.586] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:21.584628
+[08/09 06:33:24.487] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req: u'rpc_parking' Payload: '{"method":"add_rate_blocks","params":[[]],"jsonrpc":"2.0","id":4945501}'
+[08/09 06:33:24.488] | INFO     | parking_serv | SentryJSONRPCServer | parking_service: add_rate_blocks()
+[08/09 06:33:24.489] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint parking response {"jsonrpc": "2.0", "id": 4945501, "result": true}
+[08/09 06:33:24.520] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 4945501, "result": true} Queue amq.gen-rN7U0OP6UKMeMvlOG_gveQ #3321
+[08/09 06:33:24.625] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req Disabled gatelot blob logs Target: u'rpc_file_io'
+[08/09 06:33:24.630] | INFO     | file_io    | SentryJSONRPCServer | save: filename /media/realroot/ads/parking_schedule_weekly.png
+[08/09 06:33:24.633] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint file_io response {"jsonrpc": "2.0", "id": 4945502, "result": true}
+[08/09 06:33:24.667] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 4945502, "result": true} Queue amq.gen-2jfPLt7HbBqg42gllehtsw #3322
+[08/09 06:33:25.707] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_INIT_GRACE_PERIOD value 60
+[08/09 06:33:25.729] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 136 total_sent: 136
+[08/09 06:33:26.228] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_NO_PARKING_GRACE_PERIOD value 60
+[08/09 06:33:26.250] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 142 total_sent: 142
+[08/09 06:33:26.749] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_VIOLATION_GRACE_PERIOD value 60
+[08/09 06:33:26.770] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 141 total_sent: 141
+[08/09 06:33:27.250] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_FREE_TIME_ON_FIRST_PAYMENT value 0
+[08/09 06:33:27.271] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 144 total_sent: 144
+[08/09 06:33:27.758] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_ACCEPT_COIN_NO_SPOT_SCREEN_TIMEOUT value 5
+[08/09 06:33:27.779] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 152 total_sent: 152
+[08/09 06:33:28.262] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_PAY_BY_PLATE value False
+[08/09 06:33:28.283] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 134 total_sent: 134
+[08/09 06:33:28.482] | INFO     | lib.seco   | MainThread | SecoLib()::get_version(): SECO lib version is:  0x1140000L
+[08/09 06:33:28.484] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:28.482720
+[08/09 06:33:28.486] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:28.485245
+[08/09 06:33:28.776] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_DISCONNECT_FREE value True
+[08/09 06:33:28.797] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 136 total_sent: 136
+[08/09 06:33:29.282] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_UNLOCK_ENABLED value False
+[08/09 06:33:29.304] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 136 total_sent: 136
+[08/09 06:33:29.832] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_TRUEUP_ENABLED value False
+[08/09 06:33:29.854] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 136 total_sent: 136
+[08/09 06:33:30.318] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_UNLOCK_TIME value 5
+[08/09 06:33:30.339] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 129 total_sent: 129
+[08/09 06:33:30.823] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_UNLOCK_MAX value 1
+[08/09 06:33:30.847] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 128 total_sent: 128
+[08/09 06:33:31.335] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_IMAGE_SEND_BEFORE_VIOLATION value 45
+[08/09 06:33:31.356] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 146 total_sent: 146
+[08/09 06:33:31.864] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_MAXIMUM_DURATION_MINUTES value 240
+[08/09 06:33:31.886] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 144 total_sent: 144
+[08/09 06:33:32.360] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_SHORT_SESSION value 15
+[08/09 06:33:32.381] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 132 total_sent: 132
+[08/09 06:33:32.888] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_RATE_DEFAULT_MINIMUM_TIME value 60
+[08/09 06:33:33.416] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting SYS_OUT_OF_SERVICE value False
+[08/09 06:33:33.437] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 132 total_sent: 132
+[08/09 06:33:39.601] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:00
+[08/09 06:33:39.604] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:00
+[08/09 06:33:39.606] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:38:00
+[08/09 06:33:39.609] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:48:00
+[08/09 06:33:39.611] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 05:03:00
+[08/09 06:33:39.613] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 05:23:00
+[08/09 06:33:39.615] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 05:48:00
+[08/09 06:33:39.617] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 06:18:00
+[08/09 06:33:39.620] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 06:53:00
+[08/09 06:33:39.622] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 07:33:00
+[08/09 06:33:39.624] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 08:18:00
+[08/09 06:33:39.626] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 09:08:00
+[08/09 06:33:39.628] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 10:03:00
+[08/09 06:33:39.631] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 11:03:00
+[08/09 06:33:39.633] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 12:08:00
+[08/09 06:33:39.635] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 13:18:00
+[08/09 06:33:39.637] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 14:33:00
+[08/09 06:33:39.639] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 15:53:00
+[08/09 06:33:39.641] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 17:18:00
+[08/09 06:33:39.642] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 18:48:00
+[08/09 06:33:39.644] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 20:23:00
+[08/09 06:33:39.647] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 22:03:00
+[08/09 06:33:39.649] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 23:48:00
+[08/09 06:33:39.651] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-19 01:38:00
+[08/09 06:33:39.653] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-19 03:33:00
+[08/09 06:33:39.656] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-19 05:33:00
+[08/09 06:33:39.658] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-19 07:38:00
+[08/09 06:33:39.660] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-19 09:48:00
+[08/09 06:33:39.662] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-19 12:03:00
+[08/09 06:33:39.664] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-19 14:23:00
+[08/09 06:33:39.666] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-19 16:48:00
+[08/09 06:33:39.669] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-19 19:18:00
+[08/09 06:33:39.671] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-19 21:53:00
+[08/09 06:33:39.673] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-20 00:33:00
+[08/09 06:33:39.675] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-20 03:18:00
+[08/09 06:33:39.677] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-20 06:08:00
+[08/09 06:33:39.679] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-20 09:03:00
+[08/09 06:33:39.682] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-20 12:03:00
+[08/09 06:33:39.684] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-20 15:08:00
+[08/09 06:33:39.687] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-20 18:18:00
+[08/09 06:33:39.689] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-20 21:33:00
+[08/09 06:33:39.691] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-21 00:53:00
+[08/09 06:33:39.693] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-21 04:18:00
+[08/09 06:33:39.695] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-21 07:48:00
+[08/09 06:33:39.697] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-21 11:23:00
+[08/09 06:33:39.699] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-21 15:03:00
+[08/09 06:33:39.701] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-21 18:48:00
+[08/09 06:33:39.703] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-21 22:38:00
+[08/09 06:33:39.705] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-22 02:33:00
+[08/09 06:33:39.707] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-22 06:33:00
+[08/09 06:33:39.709] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-22 10:38:00
+[08/09 06:33:39.711] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-22 14:48:00
+[08/09 06:33:39.713] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-22 19:03:00
+[08/09 06:33:39.715] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-22 23:23:00
+[08/09 06:33:39.717] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-23 03:48:00
+[08/09 06:33:39.719] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-23 08:18:00
+[08/09 06:33:39.721] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-23 12:53:00
+[08/09 06:33:39.722] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-23 17:33:00
+[08/09 06:33:39.724] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-23 22:18:00
+[08/09 06:33:39.726] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-24 03:08:00
+[08/09 06:33:39.728] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-24 08:03:00
+[08/09 06:33:39.730] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-24 13:03:00
+[08/09 06:33:39.732] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-24 18:08:00
+[08/09 06:33:39.734] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-24 23:18:00
+[08/09 06:33:39.737] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-25 04:33:00
+[08/09 06:33:39.738] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-25 09:53:00
+[08/09 06:33:39.740] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-25 15:18:00
+[08/09 06:33:39.742] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-25 20:48:00
+[08/09 06:33:39.744] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-26 02:23:00
+[08/09 06:33:39.746] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-26 08:03:00
+[08/09 06:33:39.749] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-26 13:48:00
+[08/09 06:33:39.750] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-26 19:38:00
+[08/09 06:33:39.752] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-27 01:33:00
+[08/09 06:33:39.755] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:00
+[08/09 06:33:39.757] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:00
+[08/09 06:33:39.758] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 44546 rp_min_to_free 44546
+[08/09 06:33:39.760] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:33:39.758301
+[08/09 06:33:52.419] | INFO     | micro.wdog | main_reactor | qml_ping_handler(): Received QML ping response
+[08/09 06:33:54.320] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[08/09 06:33:54.323] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[08/09 06:33:54.323] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[08/09 06:33:54.324] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1723185234,2,2
+
+[08/09 06:33:54.495] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[08/09 06:33:54.496] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[08/09 06:33:54.496] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[08/09 06:33:54.497] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1723185234,2,2
+
+[08/09 06:34:00.216] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00.213968
+[08/09 06:34:00.219] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00.216854
+[08/09 06:34:00.221] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00.219932
+[08/09 06:34:00.224] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00.222298
+[08/09 06:34:00.226] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00
+[08/09 06:34:00.230] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00.228235
+[08/09 06:34:00.232] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00.230857
+[08/09 06:34:00.235] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00.233223
+[08/09 06:34:00.237] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00.235691
+[08/09 06:34:00.239] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00
+[08/09 06:34:00.242] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00.241329
+[08/09 06:34:00.245] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00.243864
+[08/09 06:34:00.249] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00.246095
+[08/09 06:34:00.252] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00.250124
+[08/09 06:34:00.254] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00.252716
+[08/09 06:34:00.258] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00
+[08/09 06:34:00.263] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00
+[08/09 06:34:00.266] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00
+[08/09 06:34:00.269] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00
+[08/09 06:34:00.273] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 05:05:00
+[08/09 06:34:00.277] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00.275249
+[08/09 06:34:00.280] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00
+[08/09 06:34:00.281] | INFO     | gui        | MainThread | GRAY tmpSpot = 
+[08/09 06:34:00.283] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00.282267
+[08/09 06:34:00.286] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00.284571
+[08/09 06:34:00.288] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00
+[08/09 06:34:00.290] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00.289010
+[08/09 06:34:00.293] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00.291312
+[08/09 06:34:00.295] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00
+[08/09 06:34:00.298] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00
+[08/09 06:34:00.300] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00.298895
+[08/09 06:34:00.303] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00.301245
+[08/09 06:34:00.305] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00.303505
+[08/09 06:34:00.307] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00.305797
+[08/09 06:34:00.310] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00.308632
+[08/09 06:34:00.312] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00
+[08/09 06:34:00.314] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00
+[08/09 06:34:00.317] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00.315331
+[08/09 06:34:39.574] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00
+[08/09 06:34:39.577] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00
+[08/09 06:34:39.579] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:39:00
+[08/09 06:34:39.581] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:49:00
+[08/09 06:34:39.583] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 05:04:00
+[08/09 06:34:39.586] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 05:24:00
+[08/09 06:34:39.589] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 05:49:00
+[08/09 06:34:39.591] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 06:19:00
+[08/09 06:34:39.593] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 06:54:00
+[08/09 06:34:39.595] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 07:34:00
+[08/09 06:34:39.597] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 08:19:00
+[08/09 06:34:39.600] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 09:09:00
+[08/09 06:34:39.602] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 10:04:00
+[08/09 06:34:39.604] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 11:04:00
+[08/09 06:34:39.606] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 12:09:00
+[08/09 06:34:39.609] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 13:19:00
+[08/09 06:34:39.614] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 14:34:00
+[08/09 06:34:39.616] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 15:54:00
+[08/09 06:34:39.619] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 17:19:00
+[08/09 06:34:39.621] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 18:49:00
+[08/09 06:34:39.623] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 20:24:00
+[08/09 06:34:39.628] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 22:04:00
+[08/09 06:34:39.630] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 23:49:00
+[08/09 06:34:39.633] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-19 01:39:00
+[08/09 06:34:39.635] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-19 03:34:00
+[08/09 06:34:39.637] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-19 05:34:00
+[08/09 06:34:39.639] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-19 07:39:00
+[08/09 06:34:39.642] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-19 09:49:00
+[08/09 06:34:39.644] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-19 12:04:00
+[08/09 06:34:39.646] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-19 14:24:00
+[08/09 06:34:39.648] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-19 16:49:00
+[08/09 06:34:39.651] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-19 19:19:00
+[08/09 06:34:39.653] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-19 21:54:00
+[08/09 06:34:39.655] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-20 00:34:00
+[08/09 06:34:39.657] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-20 03:19:00
+[08/09 06:34:39.659] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-20 06:09:00
+[08/09 06:34:39.661] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-20 09:04:00
+[08/09 06:34:39.663] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-20 12:04:00
+[08/09 06:34:39.665] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-20 15:09:00
+[08/09 06:34:39.668] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-20 18:19:00
+[08/09 06:34:39.670] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-20 21:34:00
+[08/09 06:34:39.672] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-21 00:54:00
+[08/09 06:34:39.674] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-21 04:19:00
+[08/09 06:34:39.676] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-21 07:49:00
+[08/09 06:34:39.678] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-21 11:24:00
+[08/09 06:34:39.680] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-21 15:04:00
+[08/09 06:34:39.682] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-21 18:49:00
+[08/09 06:34:39.685] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-21 22:39:00
+[08/09 06:34:39.687] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-22 02:34:00
+[08/09 06:34:39.689] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-22 06:34:00
+[08/09 06:34:39.691] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-22 10:39:00
+[08/09 06:34:39.693] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-22 14:49:00
+[08/09 06:34:39.695] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-22 19:04:00
+[08/09 06:34:39.697] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-22 23:24:00
+[08/09 06:34:39.699] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-23 03:49:00
+[08/09 06:34:39.701] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-23 08:19:00
+[08/09 06:34:39.703] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-23 12:54:00
+[08/09 06:34:39.705] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-23 17:34:00
+[08/09 06:34:39.707] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-23 22:19:00
+[08/09 06:34:39.709] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-24 03:09:00
+[08/09 06:34:39.711] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-24 08:04:00
+[08/09 06:34:39.713] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-24 13:04:00
+[08/09 06:34:39.715] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-24 18:09:00
+[08/09 06:34:39.717] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-24 23:19:00
+[08/09 06:34:39.720] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-25 04:34:00
+[08/09 06:34:39.722] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-25 09:54:00
+[08/09 06:34:39.724] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-25 15:19:00
+[08/09 06:34:39.726] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-25 20:49:00
+[08/09 06:34:39.728] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-26 02:24:00
+[08/09 06:34:39.730] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-26 08:04:00
+[08/09 06:34:39.732] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-26 13:49:00
+[08/09 06:34:39.734] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-26 19:39:00
+[08/09 06:34:39.736] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-27 01:34:00
+[08/09 06:34:39.738] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00
+[08/09 06:34:39.740] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00
+[08/09 06:34:39.741] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 44545 rp_min_to_free 44545
+[08/09 06:34:39.743] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:39.741384
+[08/09 06:34:42.253] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:42.252249
+[08/09 06:34:42.256] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:42.254441
+[08/09 06:34:42.258] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:42.256800
+[08/09 06:34:42.260] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:42.259010
+[08/09 06:34:42.262] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00
+[08/09 06:34:42.265] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:42.263808
+[08/09 06:34:42.267] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:42.266115
+[08/09 06:34:42.270] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:42.268442
+[08/09 06:34:42.272] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:42.270839
+[08/09 06:34:42.275] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00
+[08/09 06:34:42.277] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:42.275882
+[08/09 06:34:42.280] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:42.278507
+[08/09 06:34:42.282] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:42.280784
+[08/09 06:34:42.285] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:42.283065
+[08/09 06:34:42.287] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:42.285562
+[08/09 06:34:42.289] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00
+[08/09 06:34:42.294] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00
+[08/09 06:34:42.296] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00
+[08/09 06:34:42.298] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00
+[08/09 06:34:42.301] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 05:05:00
+[08/09 06:34:42.304] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:42.302319
+[08/09 06:34:42.306] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00
+[08/09 06:34:42.306] | INFO     | gui        | MainThread | GRAY tmpSpot = 
+[08/09 06:34:42.308] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:42.307355
+[08/09 06:34:42.311] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:42.309535
+[08/09 06:34:42.313] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00
+[08/09 06:34:42.315] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:42.313693
+[08/09 06:34:42.317] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:42.315836
+[08/09 06:34:42.320] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00
+[08/09 06:34:42.322] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00
+[08/09 06:34:42.325] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:42.323294
+[08/09 06:34:42.327] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:42.325493
+[08/09 06:34:42.328] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:42.327395
+[08/09 06:34:42.330] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:42.329309
+[08/09 06:34:42.333] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:42.331610
+[08/09 06:34:42.335] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00
+[08/09 06:34:42.337] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:00
+[08/09 06:34:42.340] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:34:42.338253
+[08/09 06:34:52.409] | INFO     | micro.wdog | main_reactor | qml_ping_handler(): Received QML ping response
+[08/09 06:34:56.127] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[08/09 06:34:56.128] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[08/09 06:34:56.129] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[08/09 06:34:56.129] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1723185296,2,2
+
+[08/09 06:34:56.303] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[08/09 06:34:56.304] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[08/09 06:34:56.304] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[08/09 06:34:56.304] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1723185296,2,2
+
+[08/09 06:35:00.217] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:35:00.215475
+[08/09 06:35:00.219] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:35:00.217752
+[08/09 06:35:00.221] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:35:00.220011
+[08/09 06:35:00.224] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:35:00.222292
+[08/09 06:35:00.226] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:35:00
+[08/09 06:35:00.228] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:35:00.227112
+[08/09 06:35:00.230] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:35:00.229257
+[08/09 06:35:00.233] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:35:00.231392
+[08/09 06:35:00.235] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:35:00.233534
+[08/09 06:35:00.237] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:35:00
+[08/09 06:35:00.239] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:35:00.238185
+[08/09 06:35:00.242] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:35:00.240976
+[08/09 06:35:00.245] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:35:00.243350
+[08/09 06:35:00.247] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:35:00.245837
+[08/09 06:35:00.250] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:35:00.248164
+[08/09 06:35:00.252] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:35:00
+[08/09 06:35:00.257] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:35:00
+[08/09 06:35:00.259] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:35:00
+[08/09 06:35:00.261] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:35:00
+[08/09 06:35:00.265] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 05:06:00
+[08/09 06:35:00.267] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:35:00.265512
+[08/09 06:35:00.269] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:35:00
+[08/09 06:35:00.269] | INFO     | gui        | MainThread | GRAY tmpSpot = 
+[08/09 06:35:00.272] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:35:00.270485
+[08/09 06:35:00.274] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:35:00.272723
+[08/09 06:35:00.276] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:35:00
+[08/09 06:35:00.278] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:35:00.277230
+[08/09 06:35:00.281] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:35:00.279507
+[08/09 06:35:00.283] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:35:00
+[08/09 06:35:00.286] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:35:00
+[08/09 06:35:00.288] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:35:00.286694
+[08/09 06:35:00.290] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:35:00.288869
+[08/09 06:35:00.292] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:35:00.291102
+[08/09 06:35:00.295] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:35:00.293338
+[08/09 06:35:00.297] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:35:00.296003
+[08/09 06:35:00.300] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:35:00
+[08/09 06:35:00.302] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:35:00
+[08/09 06:35:00.304] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 09/08_23:59)> curdt 2024-08-18 04:35:00.302862
+[08/09 06:35:08.275] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req Disabled gatelot blob logs Target: u'rpc_file_io'
+[08/09 06:35:08.281] | INFO     | file_io    | SentryJSONRPCServer | save: filename /media/realroot/ads/parking_schedule_weekly.png
+[08/09 06:35:08.285] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint file_io response {"jsonrpc": "2.0", "id": 4945503, "result": true}
+[08/09 06:35:08.319] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 4945503, "result": true} Queue amq.gen-qNbLCT7M6IgCX2ikL4PnoA #3323
+[08/09 06:35:08.351] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req Disabled gatelot blob logs Target: u'rpc_parking'
+[08/09 06:35:08.352] | INFO     | parking_serv | SentryJSONRPCServer | parking_service: add_rate_blocks()
+[08/09 06:35:08.354] | INFO     | FixedRate  | SentryJSONRPCServer | FR():__init__(): __repr__(): <FixedRate (PARKER_TYPE_NORMAL): 25¢:15:240, (PARKER_TYPE_HANDICAP): 25¢:30:240, (PARKER_TYPE_SENIOR): 25¢:15:240, (PARKER_TYPE_MUNI): 25¢:15:240, (PARKER_TYPE_VETERAN): 25¢:15:240, >
+[08/09 06:35:08.355] | INFO     | rate       | SentryJSONRPCServer | R()::__init__(): <RateBlock (fixed6931)[P7]: 06/03-08/09, 00:00-23:59-240-0-15-False-True-60-100-60-<mps.parking.rate_models.rate_types.RateBlockSchedule object at 0x8fc6f78c>>
+[08/09 06:35:08.356] | INFO     | fixed_rb   | SentryJSONRPCServer | FRB()::__init__(): __repr__(): <RateBlock (fixed6931)[P7]: 06/03-08/09, 00:00-23:59-240-0-15-False-True-60-100-60-<mps.parking.rate_models.rate_types.RateBlockSchedule object at 0x8fc6f78c>> __str__(): rate <FixedRate (PARKER_TYPE_NORMAL): 25¢:15:240, (PARKER_TYPE_HANDICAP): 25¢:30:240, (PARKER_TYPE_SENIOR): 25¢:15:240, (PARKER_TYPE_MUNI): 25¢:15:240, (PARKER_TYPE_VETERAN): 25¢:15:240, > max_time 240 first_payment_free_time 0 card_increment_time 15                 default_minimum_cost 100 default_minimum_time 60 disconnect_free True                 mins_accept_free_before_rate 60 unenforced False
+[08/09 06:35:08.361] | INFO     | parking_serv | SentryJSONRPCServer | add_rate_blocks(): Adding to rate_provider rate block: rate <FixedRate (PARKER_TYPE_NORMAL): 25¢:15:240, (PARKER_TYPE_HANDICAP): 25¢:30:240, (PARKER_TYPE_SENIOR): 25¢:15:240, (PARKER_TYPE_MUNI): 25¢:15:240, (PARKER_TYPE_VETERAN): 25¢:15:240, > max_time 240 first_payment_free_time 0 card_increment_time 15                 default_minimum_cost 100 default_minimum_time 60 disconnect_free True                 mins_accept_free_before_rate 60 unenforced False
+[08/09 06:35:08.361] | INFO     | rates      | SentryJSONRPCServer | RateBlocksPDO()::add_rate_block(): rate_blocks [<RateBlock (fixed6931)[P7]: 06/03-08/09, 00:00-23:59-240-0-15-False-True-60-100-60-<mps.parking.rate_models.rate_types.RateBlockSchedule object at 0x8fc6f78c>>, <RateBlock (fixed-1)[P-2147483647]: null-null, 00:00-23:59-120-0-30-False-True-60-75-0-<mps.parking.rate_models.rate_types.RateBlockSchedule object at 0xb3aabe2c>>]
+[08/09 06:35:08.407] | INFO     | rates      | SentryJSONRPCServer | grs(): resetting - cached-start=2024-07-10 01:33:21.273323 cached-duration=60 days, 0:00:00 cached-end=2024-09-08 01:33:21.273323 req-start=2024-07-09 01:33:21.273323 req-end=2024-09-08 01:33:21.273323
+[08/09 06:35:08.408] | INFO     | rates      | SentryJSONRPCServer | grs(): readjust new sch (cached-start=2024-07-10 01:35:08.408108 cached-duration=60 days, 0:00:00 cached-end=2024-09-08 01:33:21.273323 req-start=2024-07-09 01:33:21.273323 req-end=2024-09-08 01:33:21.273323) #days 60 days, 0:00:00
+[08/09 06:35:08.532] | INFO     | rates      | SentryJSONRPCServer | grs(): new scheduled_rate_blocks [<ScheduleRateBlock (6931)[P7]: 07/10_00:00 - 07/10_23:59)>, <ScheduleRateBlock (6931)[P7]: 07/11_00:00 - 07/11_23:59)>, <ScheduleRateBlock (6931)[P7]: 07/12_00:00 - 07/12_23:59)>, <ScheduleRateBlock (6931)[P7]: 07/13_00:00 - 07/13_23:59)>, <ScheduleRateBlock (6931)[P7]: 07/14_00:00 - 07/14_23:59)>, <ScheduleRateBlock (6931)[P7]: 07/15_00:00 - 07/15_23:59)>, <ScheduleRateBlock (6931)[P7]: 07/16_00:00 - 07/16_23:59)>, <ScheduleRateBlock (6931)[P7]: 07/17_00:00 - 07/17_23:59)>, <ScheduleRateBlock (6931)[P7]: 07/18_00:00 - 07/18_23:59)>, <ScheduleRateBlock (6931)[P7]: 07/19_00:00 - 07/19_23:59)>, <ScheduleRateBlock (6931)[P7]: 07/20_00:00 - 07/20_23:59)>, <ScheduleRateBlock (6931)[P7]: 07/21_00:00 - 07/21_23:59)>, <ScheduleRateBlock (6931)[P7]: 07/22_00:00 - 07/22_23:59)>, <ScheduleRateBlock (6931)[P7]: 07/23_00:00 - 07/23_23:59)>, <ScheduleRateBlock (6931)[P7]: 07/24_00:00 - 07/24_23:59)>, <ScheduleRateBlock (6931)[P7]: 07/25_00:00 - 07/25_23:59)>, <ScheduleRateBlock (6931)[P7]: 07/26_00:00 - 07/26_23:59)>, <ScheduleRateBlock (6931)[P7]: 07/27_00:00 - 07/27_23:59)>, <ScheduleRateBlock (6931)[P7]: 07/28_00:00 - 07/28_23:59)>, <ScheduleRateBlock (6931)[P7]: 07/29_00:00 - 07/29_23:59)>, <ScheduleRateBlock (6931)[P7]: 07/30_00:00 - 07/30_23:59)>, <ScheduleRateBlock (6931)[P7]: 07/31_00:00 - 07/31_23:59)>, <ScheduleRateBlock (6931)[P7]: 08/01_00:00 - 08/01_23:59)>, <ScheduleRateBlock (6931)[P7]: 08/02_00:00 - 08/02_23:59)>, <ScheduleRateBlock (6931)[P7]: 08/03_00:00 - 08/03_23:59)>, <ScheduleRateBlock (6931)[P7]: 08/04_00:00 - 08/04_23:59)>, <ScheduleRateBlock (6931)[P7]: 08/05_00:00 - 08/05_23:59)>, <ScheduleRateBlock (6931)[P7]: 08/06_00:00 - 08/06_23:59)>, <ScheduleRateBlock (6931)[P7]: 08/07_00:00 - 08/07_23:59)>, <ScheduleRateBlock (6931)[P7]: 08/08_00:00 - 08/08_23:59)>, <ScheduleRateBlock (6931)[P7]: 08/09_00:00 - 08/09_23:59)>, <ScheduleRateBlock (6931)[P7]: 08/10_00:00 - 08/10_23:59)>, <ScheduleRateBlock (6931)[P7]: 08/11_00:00 - 08/11_23:59)>, <ScheduleRateBlock (6931)[P7]: 08/12_00:00 - 08/12_23:59)>, <ScheduleRateBlock (6931)[P7]: 08/13_00:00 - 08/13_23:59)>, <ScheduleRateBlock (6931)[P7]: 08/14_00:00 - 08/14_23:59)>, <ScheduleRateBlock (6931)[P7]: 08/15_00:00 - 08/15_23:59)>, <ScheduleRateBlock (6931)[P7]: 08/16_00:00 - 08/16_23:59)>, <ScheduleRateBlock (6931)[P7]: 08/17_00:00 - 08/17_23:59)>, <ScheduleRateBlock (6931)[P7]: 08/18_00:00 - 08/18_23:59)>, <ScheduleRateBlock (6931)[P7]: 08/19_00:00 - 08/19_23:59)>, <ScheduleRateBlock (6931)[P7]: 08/20_00:00 - 08/20_23:59)>, <ScheduleRateBlock (6931)[P7]: 08/21_00:00 - 08/21_23:59)>, <ScheduleRateBlock (6931)[P7]: 08/22_00:00 - 08/22_23:59)>, <ScheduleRateBlock (6931)[P7]: 08/23_00:00 - 08/23_23:59)>, <ScheduleRateBlock (6931)[P7]: 08/24_00:00 - 08/24_23:59)>, <ScheduleRateBlock (6931)[P7]: 08/25_00:00 - 08/25_23:59)>, <ScheduleRateBlock (6931)[P7]: 08/26_00:00 - 08/26_23:59)>, <ScheduleRateBlock (6931)[P7]: 08/27_00:00 - 08/27_23:59)>, <ScheduleRateBlock (6931)[P7]: 08/28_00:00 - 08/28_23:59)>, <ScheduleRateBlock (6931)[P7]: 08/29_00:00 - 08/29_23:59)>, <ScheduleRateBlock (6931)[P7]: 08/30_00:00 - 08/30_23:59)>, <ScheduleRateBlock (6931)[P7]: 08/31_00:00 - 08/31_23:59)>, <ScheduleRateBlock (6931)[P7]: 09/01_00:00 - 09/01_23:59)>, <ScheduleRateBlock (6931)[P7]: 09/02_00:00 - 09/02_23:59)>, <ScheduleRateBlock (6931)[P7]: 09/03_00:00 - 09/03_23:59)>, <ScheduleRateBlock (6931)[P7]: 09/04_00:00 - 09/04_23:59)>, <ScheduleRateBlock (6931)[P7]: 09/05_00:00 - 09/05_23:59)>, <ScheduleRateBlock (6931)[P7]: 09/06_00:00 - 09/06_23:59)>, <ScheduleRateBlock (6931)[P7]: 09/07_00:00 - 09/07_23:59)>, <ScheduleRateBlock (6931)[P7]: 09/08_00:00 - 09/08_23:59)>]
+[08/09 06:35:08.548] | INFO     | rates      | SentryJSONRPCServer | grs(): compressed scheduled_rate_blocks [<ScheduleRateBlock (6931)[P7]: 07/10_00:00 - 09/08_23:59)>]
+[08/09 06:35:08.548] | INFO     | rates      | SentryJSONRPCServer | grs(): final_scheduled_rate_blocks [<ScheduleRateBlock (6931)[P7]: 07/10_00:00 - 09/08_23:59)>]
+[08/09 06:35:08.549] | INFO     | rates      | SentryJSONRPCServer | _schedule_changed(): 
+[08/09 06:35:08.549] | INFO     | mps.ui     | SentryJSONRPCServer | _on_rate_schedule_update(): handling rate schedule update
+[08/09 06:35:08.556] | INFO     | gui        | SentryJSONRPCServer | rate_schedule_changed_callback(): updating self.rate_schedule
+[08/09 06:35:08.557] | INFO     | rates      | SentryJSONRPCServer | _schedule_changed(): 
+[08/09 06:35:08.557] | INFO     | mps.ui     | SentryJSONRPCServer | _on_rate_schedule_update(): handling rate schedule update
+[08/09 06:35:08.563] | INFO     | gui        | SentryJSONRPCServer | rate_schedule_changed_callback(): updating self.rate_schedule
+[08/09 06:35:08.574] | INFO     | gui        | MainThread | GRAY tmpSpot = 
+[08/09 06:35:08.576] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint parking response {"jsonrpc": "2.0", "id": 4945504, "result": true}
+[08/09 06:35:08.610] | INFO     | gui        | MainThread | GRAY tmpSpot = 
+[08/09 06:35:08.612] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 4945504, "result": true} Queue amq.gen-zdGxWDtLy2mSavS0ZeCExg #3324
+[08/09 06:35:14.809] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[08/09 06:35:22.219] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/system_alive-8da2a416561911ef8ade00c0089e93e0.json
+[08/09 06:35:22.747] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"ip_addr": "10.10.100.201", "rmq_responses_attempted": 3324, "msg_id": "0x8000002eL", "rmq_api_bytes_sent": 304, "message": "5591-5592", "rmq_image_bytes_sent": 0, "rmq_response_bytes_sent": 2794908, "coin_jar_full": 19.1, "rmq_images_attempted": 0, "desc_str": "Sentry is alive and normal", "rmq_image_errors": 0, "rmq_images_sent": 0, "rmq_json_errors": 0, "rmq_responses_sent": 3324, "rmq_apis_attempted": 2, "rmq_jsons_attempted": 6848, "sentry_thread_hung": false, "rmq_api_errors": 0, "rmq_response_errors": 0, "rmq_json_bytes_sent": 6564400, "rmq_jsons_sent": 6848, "rmq_apis_sent": 2}, "class": "event", "queued_dt": "2024-08-09T06:35:22Z", "type": "system_alive", "id": "871a96b3-2512-40a7-9bdc-2288823ceb24", "device_id": "m:00C0089E93E0"}
+[08/09 06:35:22.817] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at quality-rabbitmq-lb-1284426831.us-east-1.elb.amazonaws.com:5671 (200): Normal shutdown
+[08/09 06:35:39.614] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 44544 rp_min_to_free 44544
+[08/09 06:35:52.415] | INFO     | micro.wdog | main_reactor | qml_ping_handler(): Received QML ping response
+[08/09 06:35:57.967] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[08/09 06:35:57.969] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[08/09 06:35:57.969] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[08/09 06:35:57.970] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1723185357,2,2
+
+[08/09 06:35:58.143] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[08/09 06:35:58.145] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[08/09 06:35:58.146] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[08/09 06:35:58.146] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1723185358,2,2
+
+[08/09 06:36:00.268] | INFO     | gui        | MainThread | GRAY tmpSpot = 
+[08/09 06:36:37.902] | INFO     | micro.wdog | microcomm_reactor | qml_ping_sender(): Sending QML ping
+[08/09 06:36:37.949] | INFO     | micro.wdog | main_reactor | qml_ping_handler(): Received QML ping response
+[08/09 06:36:38.261] | INFO     | gui        | MainThread | GRAY tmpSpot = 
+[08/09 06:36:39.564] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 44543 rp_min_to_free 44543
+[08/09 06:36:52.422] | INFO     | micro.wdog | main_reactor | qml_ping_handler(): Received QML ping response
+[08/09 06:36:59.112] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[08/09 06:36:59.113] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[08/09 06:36:59.146] | INFO     | lib.seco   | watchdog   | SecoLib()::check_temp(): SECO cpu temperature is:  Kelvin 3141 Celsius 40
+[08/09 06:36:59.827] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[08/09 06:36:59.829] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[08/09 06:36:59.830] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[08/09 06:36:59.831] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1723185419,2,2
+
+[08/09 06:37:00.001] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[08/09 06:37:00.002] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[08/09 06:37:00.003] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[08/09 06:37:00.003] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1723185420,2,2
+
+[08/09 06:37:00.318] | INFO     | gui        | MainThread | GRAY tmpSpot = 
+[08/09 06:37:14.851] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[08/09 06:37:32.873] | INFO     | phone      | SentryJSONRPCServer | should_run(): SECO detected - returning
+[08/09 06:37:32.873] | INFO     | playback   | SentryJSONRPCServer | play_clip: PID 21652 is running
+[08/09 06:37:32.913] | INFO     | mps.ui     | SentryJSONRPCServer | suspend_background_tasks(): change to True
+[08/09 06:37:32.913] | INFO     | parking_serv | SentryJSONRPCServer | suspend_transfers(): True
+[08/09 06:37:32.924] | INFO     | ui.multi   | SentryJSONRPCServer | set_state(): UI_STATE_IDLE performing pre_exit_state() actions UISI: screen touched
+[08/09 06:37:32.927] | INFO     | interaction | SentryJSONRPCServer | pre_exit_state(): completing actions before next_state UI_STATE_HOME
+[08/09 06:37:32.928] | INFO     | interaction | SentryJSONRPCServer | pre_exit_state(): completed actions complete True
+[08/09 06:37:32.929] | INFO     | ui.multi   | SentryJSONRPCServer | set_state(): UI_STATE_IDLE completed pre_exit_state() actions proceed True
+[08/09 06:37:32.931] | INFO     | ui.multi   | SentryJSONRPCServer | Secs in Idle 1820292.28713
+[08/09 06:37:32.932] | INFO     | interaction | SentryJSONRPCServer | cash_out_or_void_payment: No payment
+[08/09 06:37:32.933] | INFO     | ui.multi   | SentryJSONRPCServer | CONFIRM FALSE
+[08/09 06:37:32.936] | INFO     | ui.multi   | SentryJSONRPCServer | UISH: enter_state active_spot is None
+[08/09 06:37:32.937] | INFO     | interaction | SentryJSONRPCServer | return_coins(): ignoring credit cards and returning coins
+[08/09 06:37:33.139] | INFO     | ui.multi   | SentryJSONRPCServer | CHECK POP  False
+[08/09 06:37:33.139] | INFO     | ui.multi   | SentryJSONRPCServer | UISH::enter_state(): No expired for None
+[08/09 06:37:33.148] | INFO     | gui        | SentryJSONRPCServer | Screen changed to SCREEN_MULTI_SELECT_SPACE en
+[08/09 06:37:33.149] | INFO     | playback   | SentryJSONRPCServer | play: en_space_number.mp3
+[08/09 06:37:33.163] | INFO     | gui        | MainThread | QT: MultiSelectSpace: transition to spacemapoff (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiSelectSpace.qml:984)
+[08/09 06:37:33.175] | INFO     | gui        | MainThread | GRAY tmpSpot = 
+[08/09 06:37:33.184] | INFO     | gui        | MainThread | _signal_goto_screen: multi_select_space
+[08/09 06:37:33.185] | INFO     | gui        | MainThread | QT: Current:  multi_idle Next:  multi_select_space (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/main.qml:1444)
+[08/09 06:37:33.194] | WARNING  | interaction | SentryJSONRPCServer | _stop_idle_timeout: NO TIMER
+[08/09 06:37:33.194] | INFO     | ui.multi   | SentryJSONRPCServer | UI_STATE_IDLE -> UI_STATE_HOME (UISI: screen touched)
+[08/09 06:37:34.265] | INFO     | gui        | MainThread | GRAY tmpSpot = 
+[08/09 06:37:36.265] | INFO     | gui        | MainThread | GRAY tmpSpot = 
+[08/09 06:37:37.050] | INFO     | phone      | SentryJSONRPCServer | should_run(): SECO detected - returning
+[08/09 06:37:37.050] | INFO     | interaction | SentryJSONRPCServer | _start_idle_timeout: kill timer
+[08/09 06:37:38.284] | INFO     | gui        | MainThread | GRAY tmpSpot = 
+[08/09 06:37:39.562] | INFO     | interaction | SentryJSONRPCServer | on_test_automation_space_entered: SPACE 5591
+[08/09 06:37:39.564] | INFO     | playback   | main_reactor | play_clip: PID 22040 is running
+[08/09 06:37:39.605] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): user selected space 5591
+[08/09 06:37:39.607] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): check space 5591 for local
+[08/09 06:37:39.608] | WARNING  | interaction | main_reactor | _stop_idle_timeout: NO TIMER
+[08/09 06:37:39.610] | INFO     | parking.controller | main_reactor | map_space_to_spot: indx 0 spot SPOT_1
+[08/09 06:37:39.611] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): 5591 is a LOCAL space number, setting active spot SPOT_1
+[08/09 06:37:39.612] | INFO     | parking.session.SPOT_1 | main_reactor | is_init_grace(): None
+[08/09 06:37:39.613] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): has NOT paid for max time
+[08/09 06:37:39.631] | INFO     | gui        | MainThread | QT: MultiSelectSpace: transition to loadon (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiSelectSpace.qml:984)
+[08/09 06:37:39.637] | INFO     | gui        | MainThread | GRAY tmpSpot = 
+[08/09 06:37:39.649] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/parking_event_user_entered_space-df8cc5ea561911ef8ade00c0089e93e0.json
+[08/09 06:37:39.770] | INFO     | interaction | main_reactor | set_active_spot: ACTIVE SPOT SPOT_1 /home/mpsadmin/projects/Sentry_test/src/mps/ui/multi_user_interaction.py:2750
+[08/09 06:37:39.770] | INFO     | interaction | main_reactor | set_active_spot(): to SPOT_1
+[08/09 06:37:39.770] | INFO     | parking.controller | main_reactor | set_active_spot(): to SPOT_1
+[08/09 06:37:39.790] | INFO     | gui        | MainThread | GRAY tmpSpot = SPOT_1
+[08/09 06:37:39.790] | INFO     | gui        | MainThread | GRAY spot ID SPOT_1
+[08/09 06:37:39.937] | INFO     | ui.multi   | main_reactor | config_payment_acceptance: Caller /home/mpsadmin/projects/Sentry_test/src/mps/ui/multi_user_interaction.py:2756
+[08/09 06:37:39.938] | INFO     | ui.multi   | main_reactor | config_payment_acceptance(UISH(): LOCAL valid space number): is_rate_schedule_payment_allowed_now() = True
+[08/09 06:37:39.939] | INFO     | epay       | main_reactor | enable_credit_cards: enable True
+[08/09 06:37:39.940] | INFO     | interaction | main_reactor | accept_coins(): acceptor currently blocking - cfg to accept
+[08/09 06:37:39.940] | INFO     | coin       | main_reactor | accept_all_coins(): configuring acceptance
+[08/09 06:37:39.940] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): PSV PSV_STATE_AVAILABLE parking_state PARKING_STATE_EMPTY
+[08/09 06:37:39.941] | INFO     | gui        | main_reactor | prompt_on
+[08/09 06:37:39.942] | INFO     | playback   | main_reactor | play: en_coin_card.mp3
+[08/09 06:37:39.944] | INFO     | gui        | MainThread | QT: MultiSelectSpace: transition to loadoff (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiSelectSpace.qml:984)
+[08/09 06:37:39.945] | INFO     | gui        | MainThread | _signal_prompt_on
+[08/09 06:37:39.946] | INFO     | gui        | MainThread | QT: MultiHome: transition to prompton (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[08/09 06:37:39.994] | INFO     | gui        | main_reactor | Screen changed to SCREEN_MULTI_HOME en
+[08/09 06:37:39.995] | INFO     | ui.multi   | main_reactor | update_last_session_data(): space 5591 spot_id SPOT_1 parking_session_id 580bbcc7561811ef8ade00c0089e93e0 NO payment
+[08/09 06:37:39.999] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 44542 rp_min_to_free 44542
+[08/09 06:37:40.010] | INFO     | gui        | MainThread | GRAY tmpSpot = SPOT_1
+[08/09 06:37:40.012] | INFO     | gui        | MainThread | GRAY spot ID SPOT_1
+[08/09 06:37:40.022] | INFO     | gui        | MainThread | _signal_goto_screen: multi_home
+[08/09 06:37:40.023] | INFO     | gui        | MainThread | QT: Current:  multi_select_space Next:  multi_home (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/main.qml:1444)
+[08/09 06:37:40.258] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"user_space_entered": "5591", "event_time": "2024-08-09T06:37:39Z", "mac_address": "00:C0:08:9E:93:E0"}, "class": "event", "queued_dt": "2024-08-09T06:37:39Z", "type": "parking_event_user_entered_space", "id": "6f0013ab-955e-4932-85e1-5a7d89affd0d", "device_id": "m:00C0089E93E0"}
+[08/09 06:37:40.315] | INFO     | gui        | MainThread | GRAY tmpSpot = SPOT_1
+[08/09 06:37:40.316] | INFO     | gui        | MainThread | GRAY spot ID SPOT_1
+[08/09 06:37:40.328] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at quality-rabbitmq-lb-1284426831.us-east-1.elb.amazonaws.com:5671 (200): Normal shutdown
+[08/09 06:37:40.660] | INFO     | coin_event | Coin Vault | Coin acceptor configured to accept coins (command sent)
+[08/09 06:37:40.932] | INFO     | coin_event | Coin Vault | Info: REQUEST_MASTER_INHIBIT_STATUS indicates acceptor released
+[08/09 06:37:42.220] | INFO     | gui        | MainThread | GRAY tmpSpot = SPOT_1
+[08/09 06:37:42.221] | INFO     | gui        | MainThread | GRAY spot ID SPOT_1
+[08/09 06:37:44.233] | INFO     | gui        | MainThread | GRAY tmpSpot = SPOT_1
+[08/09 06:37:44.233] | INFO     | gui        | MainThread | GRAY spot ID SPOT_1
+[08/09 06:37:46.250] | INFO     | gui        | MainThread | GRAY tmpSpot = SPOT_1
+[08/09 06:37:46.250] | INFO     | gui        | MainThread | GRAY spot ID SPOT_1
+[08/09 06:37:48.254] | INFO     | gui        | MainThread | GRAY tmpSpot = SPOT_1
+[08/09 06:37:48.255] | INFO     | gui        | MainThread | GRAY spot ID SPOT_1
+[08/09 06:37:50.054] | INFO     | mps.ui     | main_reactor | RESWIPE OFF
+[08/09 06:37:50.055] | INFO     | playback   | main_reactor | Kill PID 22227
+[08/09 06:37:50.063] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to reswipeoff (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[08/09 06:37:50.064] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: calling reswipeoff (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:913)
+[08/09 06:37:50.064] | INFO     | gui        | MainThread | QT: Home: transition to reswipeoff (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[08/09 06:37:50.065] | INFO     | gui        | MainThread | QT: Home: calling reswipeoff (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:400)
+[08/09 06:37:50.066] | INFO     | gui        | MainThread | QT: MultiHome: transition to reswipeoff (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[08/09 06:37:50.066] | INFO     | ui.multi   | main_reactor | set_state(): UI_STATE_HOME performing pre_exit_state() actions _on_timeout(): 
+[08/09 06:37:50.067] | INFO     | interaction | main_reactor | pre_exit_state(): completing actions before next_state UI_STATE_IDLE
+[08/09 06:37:50.068] | INFO     | interaction | main_reactor | return_coins(): ignoring credit cards and returning coins
+[08/09 06:37:50.068] | INFO     | epay       | main_reactor | enable_credit_cards: enable False
+[08/09 06:37:50.069] | INFO     | interaction | main_reactor | return_coins(): acceptor currently accepting - cfg to reject
+[08/09 06:37:50.069] | INFO     | coin       | main_reactor | return_all_coins(): configuring rejection
+[08/09 06:37:50.070] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to processingoff (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[08/09 06:37:50.070] | INFO     | gui        | MainThread | QT: Home: transition to processingoff (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[08/09 06:37:50.071] | INFO     | gui        | MainThread | QT: MultiHome: transition to processingoff (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[08/09 06:37:50.072] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to declineoff (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[08/09 06:37:50.073] | INFO     | gui        | MainThread | QT: MultiHome: transition to declineoff (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[08/09 06:37:50.270] | INFO     | interaction | main_reactor | is_acceptor_blocked(): waiting for coin acceptor disabled confirmation
+[08/09 06:37:50.271] | INFO     | interaction | main_reactor | pre_exit_state(): coin acceptor is blocking with no new deposits
+[08/09 06:37:50.271] | INFO     | interaction | main_reactor | pre_exit_state(): completed actions complete True
+[08/09 06:37:50.272] | INFO     | ui.multi   | main_reactor | set_state(): UI_STATE_HOME completed pre_exit_state() actions proceed True
+[08/09 06:37:50.273] | INFO     | ui.multi   | main_reactor | clear_last_session_data(): cleared data
+[08/09 06:37:50.274] | INFO     | mps.ui     | main_reactor | concierge_reset
+[08/09 06:37:50.275] | INFO     | interaction | main_reactor | return_coins(): ignoring credit cards and returning coins
+[08/09 06:37:50.281] | INFO     | gui        | MainThread | QT: concierge_reset SPOT_1 (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/main.qml:996)
+[08/09 06:37:50.283] | INFO     | gui        | MainThread | QT: ParkingSpotView: transition to conciergeReset (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/components/ParkingSpotView.qml:4247)
+[08/09 06:37:50.284] | INFO     | gui        | MainThread | QT: ParkingSpotView: conciergeReset (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/components/ParkingSpotView.qml:4217)
+[08/09 06:37:50.285] | INFO     | gui        | MainThread | QT: ParkingSpotView: transition to PSV_STATE_AVAILABLE (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/components/ParkingSpotView.qml:4247)
+[08/09 06:37:50.286] | INFO     | gui        | MainThread | QT: ParkingSpotView: PSV_STATE_AVAILABLE (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/components/ParkingSpotView.qml:4100)
+[08/09 06:37:50.409] | INFO     | coin_event | Coin Vault | Coin acceptor configured to return coins
+[08/09 06:37:50.476] | WARNING  | interaction | main_reactor | _stop_idle_timeout: NO TIMER
+[08/09 06:37:50.477] | INFO     | gui        | main_reactor | Screen changed to SCREEN_MULTI_IDLE en
+[08/09 06:37:50.481] | INFO     | gui        | MainThread | _signal_goto_screen: multi_idle
+[08/09 06:37:50.482] | INFO     | gui        | MainThread | QT: Current:  multi_home Next:  multi_idle (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/main.qml:1444)
+[08/09 06:37:50.489] | INFO     | interaction | main_reactor | cash_out_or_void_payment: No payment
+[08/09 06:37:50.610] | INFO     | interaction | main_reactor | set_active_spot: ACTIVE SPOT None /home/mpsadmin/projects/Sentry_test/src/mps/ui/multi_user_interaction.py:1897
+[08/09 06:37:50.611] | INFO     | interaction | main_reactor | set_active_spot(): to None
+[08/09 06:37:50.611] | INFO     | parking.controller | main_reactor | set_active_spot(): to None
+[08/09 06:37:50.617] | INFO     | mps.ui     | main_reactor | suspend_background_tasks(): change to False
+[08/09 06:37:50.618] | INFO     | parking_serv | main_reactor | suspend_transfers(): False
+[08/09 06:37:50.619] | INFO     | epay       | main_reactor | auto_authorize(): Setting auto_authorize amount for 1000
+[08/09 06:37:50.626] | INFO     | ui.multi   | main_reactor | UI_STATE_HOME -> UI_STATE_IDLE (_on_timeout(): )
+[08/09 06:37:50.632] | INFO     | gui        | MainThread | GRAY tmpSpot = 
+[08/09 06:37:50.641] | INFO     | gui        | MainThread | QT: Home: transition to PSV_STATE_AVAILABLE (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[08/09 06:37:50.646] | INFO     | gui        | MainThread | GRAY tmpSpot = 
+[08/09 06:37:50.681] | INFO     | coin_event | Coin Vault | Info: REQUEST_MASTER_INHIBIT_STATUS indicates acceptor blocked
+[08/09 06:37:52.414] | INFO     | micro.wdog | main_reactor | qml_ping_handler(): Received QML ping response
+[08/09 06:38:00.250] | INFO     | gui        | MainThread | GRAY tmpSpot = 
+[08/09 06:38:00.541] | INFO     | mps.ui     | main_reactor | RESWIPE OFF
+[08/09 06:38:00.546] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to reswipeoff (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[08/09 06:38:00.547] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: calling reswipeoff (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:913)
+[08/09 06:38:00.547] | INFO     | gui        | MainThread | QT: Home: transition to reswipeoff (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[08/09 06:38:00.548] | INFO     | gui        | MainThread | QT: Home: calling reswipeoff (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:400)
+[08/09 06:38:00.549] | INFO     | gui        | MainThread | QT: MultiHome: transition to reswipeoff (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[08/09 06:38:00.550] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to processingoff (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[08/09 06:38:00.550] | INFO     | gui        | MainThread | QT: Home: transition to processingoff (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[08/09 06:38:00.550] | INFO     | gui        | MainThread | QT: MultiHome: transition to processingoff (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[08/09 06:38:00.551] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to declineoff (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[08/09 06:38:00.551] | INFO     | gui        | MainThread | QT: MultiHome: transition to declineoff (file:///tmp/tmplDvkqH/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[08/09 06:38:01.682] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[08/09 06:38:01.683] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[08/09 06:38:01.684] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[08/09 06:38:01.684] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1723185481,2,2
+
+[08/09 06:38:01.857] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[08/09 06:38:01.858] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[08/09 06:38:01.858] | INFO     | detection  | main_reactor | _init_banner_socket: illegal_ids = [u'3', u'4']
+[08/09 06:38:01.859] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1723185481,2,2
+

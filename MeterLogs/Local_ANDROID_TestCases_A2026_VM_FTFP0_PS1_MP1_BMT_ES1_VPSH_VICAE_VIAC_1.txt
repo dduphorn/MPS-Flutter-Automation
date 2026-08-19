@@ -1,0 +1,44 @@
+[04/15 00:55:56.904] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[04/15 00:56:02.544] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43443 rp_min_to_free 43443
+[04/15 00:56:40.749] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[04/15 00:56:40.750] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[04/15 00:57:02.537] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43442 rp_min_to_free 43442
+[04/15 00:57:41.730] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[04/15 00:57:41.731] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[04/15 00:57:56.982] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[04/15 00:58:00.908] | INFO     | micro.wdog | microcomm_reactor | qml_ping_sender(): Sending QML ping
+[04/15 00:58:02.547] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43441 rp_min_to_free 43441
+[04/15 00:58:42.792] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[04/15 00:58:42.793] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[04/15 00:58:49.144] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[04/15 00:58:49.144] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[04/15 00:58:49.181] | INFO     | lib.seco   | watchdog   | SecoLib()::check_temp(): SECO cpu temperature is:  Kelvin 3221 Celsius 48
+[04/15 00:59:02.572] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43440 rp_min_to_free 43440
+[04/15 00:59:34.944] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/system_alive-5e8efb4e386611f19d9d00c008947d30.json
+[04/15 00:59:35.688] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"ip_addr": "10.10.101.168", "rmq_responses_attempted": 2302, "msg_id": "0x8000002eL", "rmq_api_bytes_sent": 304, "message": "9010-9011", "rmq_image_bytes_sent": 0, "rmq_response_bytes_sent": 4709184, "coin_jar_full": 0.0, "rmq_images_attempted": 0, "desc_str": "Sentry is alive and normal", "rmq_image_errors": 0, "rmq_images_sent": 0, "rmq_json_errors": 0, "rmq_responses_sent": 2302, "rmq_apis_attempted": 2, "rmq_jsons_attempted": 1643, "sentry_thread_hung": false, "rmq_api_errors": 0, "rmq_response_errors": 0, "rmq_json_bytes_sent": 4061524, "rmq_jsons_sent": 1643, "rmq_apis_sent": 2}, "class": "event", "queued_dt": "2026-04-15T00:59:34Z", "type": "system_alive", "id": "b5668d06-a386-4f16-bc8c-70068a63b231", "device_id": "m:00C008947D30"}
+[04/15 00:59:35.777] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at rabbitmq.staging.sentry-link.com:5671 (200): Normal shutdown
+[04/15 00:59:43.886] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[04/15 00:59:43.887] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[04/15 00:59:57.026] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[04/15 01:00:02.547] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43439 rp_min_to_free 43439
+[04/15 01:00:41.126] | WARNING  | net_monitor | main_reactor | check_network_connectivity_async(): Skipping due to high CPU load (4.47 > 3.5)
+[04/15 01:00:44.851] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[04/15 01:00:44.852] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[04/15 01:01:02.514] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43438 rp_min_to_free 43438
+[04/15 01:01:45.880] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[04/15 01:01:45.881] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[04/15 01:01:49.280] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[04/15 01:01:49.280] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[04/15 01:01:49.318] | INFO     | lib.seco   | watchdog   | SecoLib()::check_temp(): SECO cpu temperature is:  Kelvin 3211 Celsius 47
+[04/15 01:01:57.117] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[04/15 01:02:02.577] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43437 rp_min_to_free 43437
+[04/15 01:02:46.941] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[04/15 01:02:46.942] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[04/15 01:03:00.918] | INFO     | micro.wdog | microcomm_reactor | qml_ping_sender(): Sending QML ping
+[04/15 01:03:00.931] | INFO     | credit_call | credit_call_reactor | _retry_offline_messages(): deferring cpu_load 4.49 > 3.5 - #0 messages waiting
+[04/15 01:03:02.590] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43436 rp_min_to_free 43436
+[04/15 01:03:05.624] | INFO     | camera     | time_checker | _send(): -> name: sock_1_2 message_len: 97 total_sent: 97
+[04/15 01:03:05.859] | INFO     | camera     | time_checker | _recv(): <- request_len: 69 header_len: 8
+[04/15 01:03:06.038] | INFO     | sys_serv   | time_checker | _log_ntp_peer_info(): 1/6/12 (primary/good+primary/total) - primary:*68.234.48.70    .PPS0.           1 u  443 1024  377   46.086    1.108   1.797 good:+144.202.62.209  23.159.16.194    3 u  203 1024  377   23.227    0.617   2.988, +216.144.228.179 129.6.15.30      2 u  657 1024  377   43.732    0.577   1.579, +108.61.73.243   129.6.15.28      2 u  595 1024  377   41.486    0.128   1.786, +141.11.89.193   17.253.2.37      2 u 1039 1024  377   38.867   -0.767   1.781, +72.14.183.39    192.58.120.8     2 u  135 1024  377   46.574   -1.183   2.216 bad:-69.89.207.199   .GPS.            1 u  549 1024  377   45.561    2.341   3.485 other: 0.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 1.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 2.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 3.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, ntp.ubuntu.com  .POOL.          16 p    -   64    0    0.000    0.000   0.000
+[04/15 01:03:06.220] | INFO     | sys_serv   | time_checker | get_primary_reference(): Found primary_ref: *68.234.48.70    .PPS0.           1 u  443 1024  377   46.086    1.108   1.797
+[04/15 01:03:06.220] | INFO     | idigi      | time_checker | clear_ntp_reloaded(): clearing ntp_reloaded controlling watchdog checks

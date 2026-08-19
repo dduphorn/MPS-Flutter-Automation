@@ -1,0 +1,41 @@
+[04/23 18:03:10.936] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 3758 photocell state 1
+[04/23 18:03:10.940] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/23 18:03:10.942] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1776967390,2,0
+
+[04/23 18:03:11.086] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 3758 photocell state 1
+[04/23 18:03:11.089] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/23 18:03:11.091] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1776967391,2,0
+
+[04/23 18:03:17.526] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[04/23 18:03:17.527] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[04/23 18:03:47.120] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/system_alive-c636cfae3f3e11f18ea70013951476b4.json
+[04/23 18:03:48.067] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"ip_addr": "10.10.102.172", "rmq_responses_attempted": 122, "msg_id": "0x8000002eL", "rmq_api_bytes_sent": 0, "message": "9096-9097", "rmq_image_bytes_sent": 0, "rmq_response_bytes_sent": 9472, "coin_jar_full": 0, "rmq_images_attempted": 0, "desc_str": "Sentry is alive and normal", "rmq_image_errors": 0, "rmq_images_sent": 0, "rmq_json_errors": 0, "rmq_responses_sent": 122, "rmq_apis_attempted": 0, "rmq_jsons_attempted": 327, "sentry_thread_hung": false, "rmq_api_errors": 0, "rmq_response_errors": 0, "rmq_json_bytes_sent": 235081, "rmq_jsons_sent": 327, "rmq_apis_sent": 0}, "class": "event", "queued_dt": "2026-04-23T18:03:47Z", "type": "system_alive", "id": "154a1907-fc67-434e-a51e-5ad4d5c46398", "device_id": "m:0013951476B4"}
+[04/23 18:03:48.187] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at rabbitmq.staging.sentry-link.com:5671 (200): Normal shutdown
+[04/23 18:03:58.159] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x00' (1 q_len tx_seqno #235 tx_failed 3) STATE_IDLE
+[04/23 18:03:58.174] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 235 (tx_seqno 235 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0fr'
+[04/23 18:03:58.177] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x00d\xff\xff' (1 q_len tx_seqno #235 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[04/23 18:03:58.179] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x01' (2 q_len tx_seqno #235 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[04/23 18:03:58.201] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 236 (tx_seqno 236 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[04/23 18:03:58.229] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 237 (tx_seqno 237 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0fz'
+[04/23 18:03:58.246] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x01d\xff\xff' (1 q_len tx_seqno #238 tx_failed 3) STATE_IDLE
+[04/23 18:03:58.267] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 238 (tx_seqno 238 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[04/23 18:03:58.279] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 22256 rp_min_to_free 22256
+[04/23 18:04:11.367] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x00' (1 q_len tx_seqno #239 tx_failed 3) STATE_IDLE
+[04/23 18:04:11.384] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 239 (tx_seqno 239 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0fo'
+[04/23 18:04:11.387] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 3951 photocell state 1
+[04/23 18:04:11.391] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/23 18:04:11.393] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1776967451,2,0
+
+[04/23 18:04:11.531] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 3951 photocell state 1
+[04/23 18:04:11.536] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/23 18:04:11.538] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1776967451,2,0
+
+[04/23 18:04:58.066] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x00' (1 q_len tx_seqno #240 tx_failed 3) STATE_IDLE
+[04/23 18:04:58.088] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 240 (tx_seqno 240 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0fi'
+[04/23 18:04:58.092] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x00d\xff\xff' (1 q_len tx_seqno #240 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[04/23 18:04:58.096] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x01' (2 q_len tx_seqno #240 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[04/23 18:04:58.117] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 241 (tx_seqno 241 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[04/23 18:04:58.144] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 242 (tx_seqno 242 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f\x84'
+[04/23 18:04:58.163] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x01d\xff\xff' (1 q_len tx_seqno #243 tx_failed 3) STATE_IDLE
+[04/23 18:04:58.192] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 22255 rp_min_to_free 22255
+[04/23 18:04:58.196] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 243 (tx_seqno 243 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''

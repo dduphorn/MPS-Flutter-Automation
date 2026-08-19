@@ -1,0 +1,23 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Regression_ANDROID" verbose="1"  parallel ="tests"  thread-count="9">
+	<test name = "ANDROID_TestCases">	
+	    <parameter name="strStopAndStartAppiumServer" value="True"></parameter>
+	    <parameter name="strAppiumPort" value="4723"></parameter>
+	    <parameter name="strAndroidUdid" value="VS986a4741414"></parameter>
+<!-- 	    <parameter name="strAndroidUdid" value=""></parameter> -->
+	    <parameter name="strAVDName" value = "Nexus 6P API 25"></parameter>
+<!-- 	    <parameter name="strDeviceId" value="9094-9095"></parameter> -->
+	    <parameter name="strDeviceId" value="9092"></parameter>
+	    <parameter name="strRemotePath" value="http://localhost:6666"></parameter>
+	   	<classes>
+	   	<class name="AutomationCode.TestCases">
+		   		<methods>
+		   			<include name="A86_FTFP10_FDOFF_RTF_MTIV_gt_MBF_gt_FTFP_PS1_MP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="A87_FTFP10_FDOFF_RTF_MTIV_gt_FTFP_gt_MBF_PS1_MP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="A88_FTFP0_FDOFF_RTF_PS1_MP1_PMT_VMT_ES1_VPSH_VICAE_VIAC"></include>
+					<include name="A89_FTFP10_FDOFF_RTF_FTFP_gt_MTIV_gt_MBF_PS1_MP1_VMT_ES1_VPSH_VICAE_VIAC"></include>
+				</methods>
+	   		</class>
+	    </classes>
+	</test>
+</suite>

@@ -1,0 +1,17 @@
+[04/27 16:14:59.894] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/system_alive-3d562fc2425411f18f0a00c008947d30.json
+[04/27 16:15:00.696] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"ip_addr": "10.10.101.168", "rmq_responses_attempted": 2377, "msg_id": "0x8000002eL", "rmq_api_bytes_sent": 304, "message": "9010-9011", "rmq_image_bytes_sent": 0, "rmq_response_bytes_sent": 4892840, "coin_jar_full": 0.0, "rmq_images_attempted": 0, "desc_str": "Sentry is alive and normal", "rmq_image_errors": 0, "rmq_images_sent": 0, "rmq_json_errors": 0, "rmq_responses_sent": 2376, "rmq_apis_attempted": 2, "rmq_jsons_attempted": 1791, "sentry_thread_hung": false, "rmq_api_errors": 0, "rmq_response_errors": 0, "rmq_json_bytes_sent": 4004638, "rmq_jsons_sent": 1791, "rmq_apis_sent": 2}, "class": "event", "queued_dt": "2026-04-27T16:14:59Z", "type": "system_alive", "id": "33999873-cdb3-4b56-b318-714e4237bc86", "device_id": "m:00C008947D30"}
+[04/27 16:15:00.785] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at rabbitmq.staging.sentry-link.com:5671 (200): Normal shutdown
+[04/27 16:15:01.608] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[04/27 16:15:01.608] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[04/27 16:15:01.644] | INFO     | lib.seco   | watchdog   | SecoLib()::check_temp(): SECO cpu temperature is:  Kelvin 3211 Celsius 47
+[04/27 16:15:33.957] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43964 rp_min_to_free 43964
+[04/27 16:15:35.084] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/27 16:15:35.085] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/27 16:16:30.638] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[04/27 16:16:33.953] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43963 rp_min_to_free 43963
+[04/27 16:16:36.691] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/27 16:16:36.692] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/27 16:17:32.508] | WARNING  | net_monitor | main_reactor | check_network_connectivity_async(): Skipping due to high CPU load (3.65 > 3.5)
+[04/27 16:17:33.919] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43962 rp_min_to_free 43962
+[04/27 16:17:38.335] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[04/27 16:17:38.338] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0

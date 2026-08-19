@@ -1,0 +1,18 @@
+[01/21 18:13:10.645] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req: u'rpc_settings' Payload: '{"method":"get_setting","params":["PARKING_IMAGE_SILVER_BULLET_IP_ADDR"],"jsonrpc":"2.0","id":75611167}'
+[01/21 18:13:10.647] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint settings response {"jsonrpc": "2.0", "id": 75611167, "result": "127.0.0.1"}
+[01/21 18:13:10.716] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 75611167, "result": "127.0.0.1"} Queue amq.gen-p1iIg0LmxnpVUwQNFFbHLw #2316
+[01/21 18:13:22.024] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 41026 rp_min_to_free 41026
+[01/21 18:13:30.151] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[01/21 18:13:30.152] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[01/21 18:13:56.750] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[01/21 18:14:21.947] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 41025 rp_min_to_free 41025
+[01/21 18:14:33.012] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[01/21 18:14:33.013] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[01/21 18:15:22.026] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 41024 rp_min_to_free 41024
+[01/21 18:15:33.686] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[01/21 18:15:33.687] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[01/21 18:15:33.722] | INFO     | lib.seco   | watchdog   | SecoLib()::check_temp(): SECO cpu temperature is:  Kelvin 3241 Celsius 50
+[01/21 18:15:35.279] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[01/21 18:15:35.280] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[01/21 18:15:37.115] | INFO     | rss        | rss_thread | _get_rss_feeds
+[01/21 18:15:56.829] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3

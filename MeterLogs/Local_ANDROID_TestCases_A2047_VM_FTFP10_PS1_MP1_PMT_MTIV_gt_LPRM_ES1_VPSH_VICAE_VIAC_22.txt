@@ -1,0 +1,21 @@
+[04/15 03:25:08.152] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 77020612, "result": true} Queue amq.gen-EYsh2MQyXg2j9i55hpGn2Q #2427
+[04/15 03:25:10.604] | INFO     | ui.multi   | main_reactor | UISI::_suspend_tasks_timeout(): still in Idle - for 2057.253365 seconds; unsuspending background task
+[04/15 03:25:10.605] | INFO     | mps.ui     | main_reactor | suspend_background_tasks(): change to False
+[04/15 03:25:10.605] | INFO     | parking_serv | main_reactor | suspend_transfers(): False
+[04/15 03:25:17.631] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req Disabled gatelot blob logs Target: u'rpc_file_io'
+[04/15 03:25:17.640] | INFO     | file_io    | SentryJSONRPCServer | save: filename /media/realroot/ads/parking_schedule_weekly.png
+[04/15 03:25:17.649] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint file_io response {"jsonrpc": "2.0", "id": 77020613, "result": true}
+[04/15 03:25:17.702] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 77020613, "result": true} Queue amq.gen-uCUpTqjIdA3Kz-tNxQlECA #2428
+[04/15 03:25:28.786] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[04/15 03:25:28.787] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[04/15 03:26:02.511] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43293 rp_min_to_free 43293
+[04/15 03:26:29.880] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[04/15 03:26:29.881] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[04/15 03:26:54.256] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[04/15 03:27:02.594] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43292 rp_min_to_free 43292
+[04/15 03:27:30.845] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[04/15 03:27:30.846] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[04/15 03:28:00.836] | INFO     | micro.wdog | microcomm_reactor | qml_ping_sender(): Sending QML ping
+[04/15 03:28:02.541] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43291 rp_min_to_free 43291
+[04/15 03:28:31.891] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[04/15 03:28:31.892] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0

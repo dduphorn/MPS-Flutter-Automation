@@ -1,0 +1,140 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<!--<suite name="RunAllTestSuitesInParallel-SG" verbose="1" parallel ="tests" thread-count="10">-->
+<suite name="ParallelTest" verbose="1"  parallel ="tests"  thread-count="10">
+	<test name = "GlobalPayMeter1">
+		<parameter name="strMeterType" value="SecoToSeco"></parameter>
+	    <parameter name="strStopAndStartAppiumServer" value="True"></parameter>
+	    <parameter name="strAppiumPort" value="6001"></parameter>
+	    <parameter name="strAndroidUdid" value=""></parameter>
+	    <parameter name="strAVDName" value = ""></parameter>
+	    <parameter name="strPaymentString" value = ""></parameter>
+	    <parameter name="strDeviceId" value="5510-5511"></parameter>
+	   	<parameter name="strRemotePath" value="http://localhost:9001"></parameter>
+	    <classes>
+			<class name="AutomationCode.TestCases">
+		   		<methods>
+	    		    <include name="G100_GlobalPaySoakTest"></include>
+	    		</methods>
+	   		</class>
+	    </classes>
+	</test>
+	<test name = "GlobalPayMeter2">  
+		<parameter name="strMeterType" value="SecoToSeco"></parameter>
+	    <parameter name="strStopAndStartAppiumServer" value="True"></parameter>
+	    <parameter name="strAppiumPort" value="6002"></parameter>
+	    <parameter name="strAndroidUdid" value=""></parameter>
+	    <parameter name="strAVDName" value = ""></parameter>
+	    <parameter name="strPaymentString" value = ""></parameter>
+	    <parameter name="strDeviceId" value="5570-5571"></parameter>
+	   	<parameter name="strRemotePath" value="http://localhost:9002"></parameter>
+	    <classes>
+			<class name="AutomationCode.TestCases">
+		   		<methods>
+	    		    <include name="G100_GlobalPaySoakTest"></include>
+	    		</methods>
+	   		</class>
+	    </classes>
+	</test>
+	<test name = "GlobalPayMeter3">
+		<parameter name="strMeterType" value="SecoToSeco"></parameter>
+	    <parameter name="strStopAndStartAppiumServer" value="True"></parameter>
+	    <parameter name="strAppiumPort" value="6003"></parameter>
+	    <parameter name="strAndroidUdid" value=""></parameter>
+	    <parameter name="strAVDName" value = ""></parameter>
+	    <parameter name="strPaymentString" value = ""></parameter>
+	    <parameter name="strDeviceId" value="5521-5552"></parameter>
+	   	<parameter name="strRemotePath" value="http://localhost:9003"></parameter>
+	    <classes>
+			<class name="AutomationCode.TestCases">
+		   		<methods>
+	    		    <include name="G100_GlobalPaySoakTest"></include>
+	    		</methods>
+	   		</class>
+	    </classes>
+	</test>
+	<test name = "GlobalPayMeter4">
+		<parameter name="strMeterType" value="YoctoToYocto"></parameter>
+	    <parameter name="strStopAndStartAppiumServer" value="True"></parameter>
+	    <parameter name="strAppiumPort" value="6004"></parameter>
+	    <parameter name="strAndroidUdid" value=""></parameter>
+	    <parameter name="strAVDName" value = ""></parameter>
+	    <parameter name="strPaymentString" value = ""></parameter>
+	    <parameter name="strDeviceId" value="9201-9202"></parameter>
+	   	<parameter name="strRemotePath" value="http://localhost:9004"></parameter>
+	    <classes>
+			<class name="AutomationCode.TestCases">
+		   		<methods>
+	    		    <include name="G100_GlobalPaySoakTest"></include>
+	    		</methods>
+	   		</class>
+	    </classes>
+	</test>
+	<test name = "GlobalPayMeter5">
+		<parameter name="strMeterType" value="YoctoToYocto"></parameter>
+	    <parameter name="strStopAndStartAppiumServer" value="True"></parameter>
+	    <parameter name="strAppiumPort" value="6005"></parameter>
+	    <parameter name="strAndroidUdid" value=""></parameter>
+	    <parameter name="strAVDName" value = ""></parameter>
+	    <parameter name="strPaymentString" value = ""></parameter>
+	    <parameter name="strDeviceId" value="9205-9206"></parameter>
+	   	<parameter name="strRemotePath" value="http://localhost:9005"></parameter>
+	    <classes>
+			<class name="AutomationCode.TestCases">
+		   		<methods>
+	    		    <include name="G100_GlobalPaySoakTest"></include>
+	    		</methods>
+	   		</class>
+	    </classes>
+	</test>
+	<test name = "GlobalPayMeter6">
+		<parameter name="strMeterType" value="YoctoToYocto"></parameter>
+	    <parameter name="strStopAndStartAppiumServer" value="True"></parameter>
+	    <parameter name="strAppiumPort" value="6006"></parameter>
+	    <parameter name="strAndroidUdid" value=""></parameter>
+	    <parameter name="strAVDName" value = ""></parameter>
+	    <parameter name="strPaymentString" value = ""></parameter>
+	    <parameter name="strDeviceId" value="9209-9210"></parameter>
+	   	<parameter name="strRemotePath" value="http://localhost:9006"></parameter>
+	    <classes>
+			<class name="AutomationCode.TestCases">
+		   		<methods>
+	    		    <include name="G100_GlobalPaySoakTest"></include>
+	    		</methods>
+	   		</class>
+	    </classes>
+	</test>
+	<test name = "GlobalPayMeter7">
+		<parameter name="strMeterType" value="YoctoToYocto"></parameter>
+	    <parameter name="strStopAndStartAppiumServer" value="True"></parameter>
+	    <parameter name="strAppiumPort" value="6007"></parameter>
+	    <parameter name="strAndroidUdid" value=""></parameter>
+	    <parameter name="strAVDName" value = ""></parameter>
+	    <parameter name="strPaymentString" value = ""></parameter>
+	    <parameter name="strDeviceId" value="9213-9214"></parameter>
+	   	<parameter name="strRemotePath" value="http://localhost:9007"></parameter>
+	    <classes>
+			<class name="AutomationCode.TestCases">
+		   		<methods>
+	    		    <include name="G100_GlobalPaySoakTest"></include>
+	    		</methods>
+	   		</class>
+	    </classes>
+	</test>
+	<test name = "GlobalPayMeter8">
+		<parameter name="strMeterType" value="YoctoToYocto"></parameter>
+	    <parameter name="strStopAndStartAppiumServer" value="True"></parameter>
+	    <parameter name="strAppiumPort" value="6008"></parameter>
+	    <parameter name="strAndroidUdid" value=""></parameter>
+	    <parameter name="strAVDName" value = ""></parameter>
+	    <parameter name="strPaymentString" value = ""></parameter>
+	    <parameter name="strDeviceId" value="9217-9218"></parameter>
+	   	<parameter name="strRemotePath" value="http://localhost:9008"></parameter>
+	    <classes>
+			<class name="AutomationCode.TestCases">
+		   		<methods>
+	    		    <include name="G100_GlobalPaySoakTest"></include>
+	    		</methods>
+	   		</class>
+	    </classes>
+	</test>
+</suite>

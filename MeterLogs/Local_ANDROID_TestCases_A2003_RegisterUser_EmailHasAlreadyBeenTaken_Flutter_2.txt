@@ -1,0 +1,13 @@
+[06/08 01:11:33.681] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[06/08 01:11:33.682] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[06/08 01:11:33.714] | INFO     | lib.seco   | watchdog   | SecoLib()::check_temp(): SECO cpu temperature is:  Kelvin 3221 Celsius 48
+[06/08 01:12:00.719] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 41987 rp_min_to_free 41987
+[06/08 01:12:01.806] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/system_alive-0e07784a62d711f198c300c008947d30.json
+[06/08 01:12:02.581] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"ip_addr": "10.10.101.168", "rmq_responses_attempted": 1715, "msg_id": "0x8000002eL", "rmq_api_bytes_sent": 304, "message": "9010-9011", "rmq_image_bytes_sent": 0, "rmq_response_bytes_sent": 3286232, "coin_jar_full": 0.0, "rmq_images_attempted": 0, "desc_str": "Sentry is alive and normal", "rmq_image_errors": 0, "rmq_images_sent": 0, "rmq_json_errors": 0, "rmq_responses_sent": 1715, "rmq_apis_attempted": 2, "rmq_jsons_attempted": 1411, "sentry_thread_hung": false, "rmq_api_errors": 0, "rmq_response_errors": 0, "rmq_json_bytes_sent": 2485358, "rmq_jsons_sent": 1411, "rmq_apis_sent": 2}, "class": "event", "queued_dt": "2026-06-08T01:12:01Z", "type": "system_alive", "id": "f0134ab1-2a94-4fe9-823e-f06bef168451", "device_id": "m:00C008947D30"}
+[06/08 01:12:02.679] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at rabbitmq.staging.sentry-link.com:5671 (200): Normal shutdown
+[06/08 01:12:04.223] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[06/08 01:12:04.224] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[06/08 01:12:28.087] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[06/08 01:13:00.804] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 41986 rp_min_to_free 41986
+[06/08 01:13:06.507] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[06/08 01:13:06.508] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0

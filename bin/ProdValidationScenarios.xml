@@ -1,0 +1,41 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<!--<suite name="RunAllTestSuitesInParallel-SG" verbose="1" parallel ="tests" thread-count="10">-->
+<suite name="ProdValidationScenarios" verbose="1"  parallel ="tests"  thread-count="9">
+	<test name = "ProdValidation">
+	   	<parameter name="strStopAndStartAppiumServer" value="True"></parameter>
+	    <parameter name="strAppiumPort" value="6666"></parameter>
+<!-- 	   <parameter name="strAndroidUdid" value="4d58424e5a373498"></parameter> -->
+  		<parameter name="strAndroidUdid" value="1115fb7b5be42405"></parameter>
+	    <parameter name="strAVDName" value = ""></parameter>
+	    <parameter name="strDeviceId" value="9107-9108"></parameter>
+	   	<parameter name="strRemotePath" value="http://localhost:4723"></parameter>
+	   	<classes>
+	   		<class name="AutomationCode.TestCases">
+		   		<methods>
+<!-- 		   			<include name="M1015_FTFP10_PS1_CP1_VMT_BMT_VMT_ES1_VPSH_VICAE_VIAC()"></include> -->
+<!-- 					<include name="M1018_FTFP10_PS1_CP1_VMT_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="M1019_FTFP10_PS1_CP1_VMT_PRT_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 		   			<include name="M1031_FTFP0_FTR_PS1_CP1_VMT_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 		   			<include name="M1032_FTFP0_FTR_PS1_CP1_VMT_PRT_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="M1034_FTFP0_FTR_MTIV_gt_RFT_PS1_CCP1_VMT_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="M1035_FTFP0_FTR_RFT_gt_MTIV_PS1_CCP1_VMT_BMT_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="M1085_AMMOEE_CGPV1_RV_RES_VMVD_ES1_VPSH_VICAE_VIAC_PS1_CP1_VMT_ES1_VPSH"></include> -->
+<!-- 					<include name="M1087_AMMOEE_FTFP0_CGPV1_RV_RES_IP_VMVD_CP1_VMT_ES1_VPSH_VICAE_VIAC_PS1_CP1_VMT_ES1_VPSH"></include> -->
+<!-- 					<include name="M1090_FTFP0_PCNUV_CGPV_AV_CP1_VMU_VPSH_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="M1089_FTFP0_PCUV_CGPV_AV_CP1_VMU_VPSH_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="M1090_FTFP0_PCNUV_CGPV_AV_CP1_VMU_ES1_VPSH_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="M1116_TU_CGPV1_RV_VMVE_ES1_VPSH_VICAE_VIAC"></include> -->
+
+<!-- 		   			<include name="A2001_ValidateInvalidCredentialMessage"></include> -->
+<!-- 		   			<include name="A2021_FTFP0_PS1_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 		   			<include name="A2303_CS_PS1_GPV1_WFFACTNVT_ALPTPS_VMT_VPSH"></include> -->
+
+<!-- 					<include name="P4001_ValidateInvalidCredentialMessage"></include> -->
+<!-- 					<include name="P4002_PEO_CMV_IGPE_VVXD"></include> -->
+<!-- 					<include name="P4020_FTFP0_CGPV_AV_PCV_CP1_VMU_VPVR_VPSH_VICAE_VIAC"></include> -->
+	    		    <include name="P4027_AMMOEE_MUON_CGPV1_NTAAV_SV_LS1_USBDNE_VPSH_VICAE_VIAC"></include>
+				</methods>
+	   		</class>
+	    </classes>
+	</test>
+</suite>

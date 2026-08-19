@@ -1,0 +1,37 @@
+[04/15 02:23:28.343] | INFO     | rates      | SentryJSONRPCServer | _schedule_changed(): 
+[04/15 02:23:28.343] | INFO     | mps.ui     | SentryJSONRPCServer | _on_rate_schedule_update(): handling rate schedule update
+[04/15 02:23:28.352] | INFO     | gui        | SentryJSONRPCServer | rate_schedule_changed_callback(): updating self.rate_schedule
+[04/15 02:23:28.353] | INFO     | rates      | SentryJSONRPCServer | _schedule_changed(): 
+[04/15 02:23:28.353] | INFO     | mps.ui     | SentryJSONRPCServer | _on_rate_schedule_update(): handling rate schedule update
+[04/15 02:23:28.362] | INFO     | gui        | SentryJSONRPCServer | rate_schedule_changed_callback(): updating self.rate_schedule
+[04/15 02:23:28.376] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint parking response {"jsonrpc": "2.0", "id": 77020204, "result": true}
+[04/15 02:23:28.429] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 77020204, "result": true} Queue amq.gen-93qY2XqLoHSl6GpjcNdPZA #2366
+[04/15 02:23:31.262] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[04/15 02:24:02.573] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43355 rp_min_to_free 43355
+[04/15 02:24:22.344] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[04/15 02:24:22.346] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[04/15 02:24:51.259] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/system_alive-481e95ac387211f19d9d00c008947d30.json
+[04/15 02:24:52.029] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"ip_addr": "10.10.101.168", "rmq_responses_attempted": 2366, "msg_id": "0x8000002eL", "rmq_api_bytes_sent": 304, "message": "9010-9011", "rmq_image_bytes_sent": 0, "rmq_response_bytes_sent": 4782580, "coin_jar_full": 0.0, "rmq_images_attempted": 0, "desc_str": "Sentry is alive and normal", "rmq_image_errors": 0, "rmq_images_sent": 0, "rmq_json_errors": 0, "rmq_responses_sent": 2366, "rmq_apis_attempted": 2, "rmq_jsons_attempted": 1679, "sentry_thread_hung": false, "rmq_api_errors": 0, "rmq_response_errors": 0, "rmq_json_bytes_sent": 4203010, "rmq_jsons_sent": 1679, "rmq_apis_sent": 2}, "class": "event", "queued_dt": "2026-04-15T02:24:51Z", "type": "system_alive", "id": "01240ede-2729-4d9a-b532-82e433954b2c", "device_id": "m:00C008947D30"}
+[04/15 02:24:52.132] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at rabbitmq.staging.sentry-link.com:5671 (200): Normal shutdown
+[04/15 02:24:52.512] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[04/15 02:24:52.512] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[04/15 02:24:52.548] | INFO     | lib.seco   | watchdog   | SecoLib()::check_temp(): SECO cpu temperature is:  Kelvin 3251 Celsius 51
+[04/15 02:25:02.597] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43354 rp_min_to_free 43354
+[04/15 02:25:23.374] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[04/15 02:25:23.375] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[04/15 02:25:31.299] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[04/15 02:26:02.509] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43353 rp_min_to_free 43353
+[04/15 02:26:24.451] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[04/15 02:26:24.452] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[04/15 02:27:02.590] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43352 rp_min_to_free 43352
+[04/15 02:27:25.435] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[04/15 02:27:25.436] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[04/15 02:27:31.356] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[04/15 02:27:52.648] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[04/15 02:27:52.648] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[04/15 02:27:52.692] | INFO     | lib.seco   | watchdog   | SecoLib()::check_temp(): SECO cpu temperature is:  Kelvin 3241 Celsius 50
+[04/15 02:28:00.897] | INFO     | micro.wdog | microcomm_reactor | qml_ping_sender(): Sending QML ping
+[04/15 02:28:02.543] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43351 rp_min_to_free 43351
+[04/15 02:28:26.448] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[04/15 02:28:26.449] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[04/15 02:29:02.584] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43350 rp_min_to_free 43350

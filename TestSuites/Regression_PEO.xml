@@ -1,0 +1,54 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<!--<suite name="RunAllTestSuitesInParallel-SG" verbose="1" parallel ="tests" thread-count="10">-->
+<suite name="Regression_PEO" verbose="1"  parallel ="tests"  thread-count="10">
+	<test name = "PEO_TestCases">
+	   	<parameter name="strStopAndStartAppiumServer" value="True"></parameter>
+	    <parameter name="strAppiumPort" value="4828"></parameter>
+	    <parameter name="strAndroidUdid" value="42f798625942af19"></parameter>
+<!-- 	    <parameter name="strAndroidUdid" value=""></parameter> -->
+	    <parameter name="strAVDName" value = ""></parameter>
+	   	<parameter name="strDeviceId" value="9096-9097"></parameter>
+	   	<parameter name="strRemotePath" value="http://localhost:6666"></parameter>
+		<classes>
+		    	<class name="PackageTestCases.ClassTestCases">
+		    		<methods>
+		    		    <include name="P1_ValidateInvalidCredentialMessage"></include>
+		    		    <include name="P2_PEO_CMV_IGPE_VVXD"></include>
+		    		    <include name="P3_PEO_CMV2_IGPE_VVXD"></include>
+		    		    <include name="P4_PEO_CMV_EIO60D_VVXD"></include>
+		    		    <include name="P5_FTFP0_CGPV_AV_CV_PLI_IT_ES1_VPSH_VICAE_VIAC"></include>
+						<include name="P6_FTFP0_CGPV_PLI_AV_CV_IT_ES1_VPSH_VICAE_VIAC"></include>
+						<include name="P7_FTFP0_CGPV_PLI_AV_CV_CLI_IT_VLI_ES1_VPSH_VICAE_VIAC"></include>
+						<include name="P8_FTFP0_CGPV_AV_CV_TNI_VSM_ES1_VPSH_VICAE_VIAC"></include>
+						<include name="P9_FTFP0_CGPV_AV_SV_USV_CV_IT_ES1_VPSH_VICAE_VIAC"></include>
+						<include name="P10_FTFP0_CGPV_AV_CV_CNIT_RA_VIR_ES1_VPSH_VICAE_VIAC"></include>
+						<include name="P11_FTFP0_CGPV_AV_CV_CNIT_RCD_VIR_ES1_VPSH_VICAE_VIAC"></include>
+						<include name="P12_FTFP0_CGPV_AV_CV_CNIT_RDV_VIR_ES1_VPSH_VICAE_VIAC"></include>
+						<include name="P13_FTFP0_CGPV_AV_CV_CNIT_RDIV_VIR_ES1_VPSH_VICAE_VIAC"></include>
+						<include name="P14_FTFP0_CGPV_AV_CV_CNIT_RBCE_VIR_ES1_VPSH_VICAE_VIAC"></include>
+						<include name="P15_FTFP0_CGPV_AV_CV_CNIT_RBS_VIR_ES1_VPSH_VICAE_VIAC"></include>
+						<include name="P16_FTFP0_CGPV_AV_CV_CNIT_RTC_VIR_ES1_VPSH_VICAE_VIAC"></include>
+						<include name="P17_FTFP0_CGPV_AV_CV_CNIT_RVU_VIR_ES1_VPSH_VICAE_VIAC"></include>
+						<include name="P18_FTFP0_CGPV_AV_CV_CNIT_RO_VIR_ES1_VPSH_VIACE_VIAC"></include>
+						<include name="P19_FTFP0_CGPV_AV_PCV_CP1_VMU_VPVR_VPSH_VICAE_VIAC"></include>
+						<include name="P20_CGPV1_AV_PCV_PIT_CP1_VMU_VPVR_VPSH_VICAE_VIAC"></include>
+						<include name="P21_FTFP0_CGPV1_AV_PCV_PIT_PGT_CP1_VML_MPO2_VPSH_VICAE_VIAC"></include>
+						<include name="P22_PEO_CGPV1_NTAAV_PAIT_GT_RBT_VVR"></include>
+						<include name="P23_PEO_CGPV1_NTAAV_CAVV_CNIT_RV_RAV_GT_VPSH_VICAE_VIAC"></include>
+						<include name="P24_MUON_CGPV1_NTAAV_SV_CP1_USBDNE_VPSH_VICAE_VIAC"></include>
+						<include name="P25_AMMOEE_MUON_CGPV1_NTAAV_SV_LS1_USBDNE_VPSH_VICAE_VIAC"></include>
+						<include name="P26_DPEOU_CPEOU_MIL_UU_VPEOL"></include>
+						<include name="P27_FTFP0_CGPV_AV_ES1_VVR_VPSH_VICAE_VIAC"></include>
+						<include name="P28_FTFP0_CGPV_AV_CV_ES1_VVR_VPSH_VICAE_VIAC"></include>
+						<include name="P29_FTFP0_CGPV_AV_CV_IT_ES1_VVR_VPSH_VICAE_VIAC"></include>
+						<include name="P30_CSLV_AV_CV_IT_ES1_VVR_VPSH_VICAE_VIAC"></include>
+						<include name="P31_AMMOE_CGPV1_AV_VAE_ES1_VPSH_VICAE_VIAC"></include>
+						<include name="P32_SLPE_CGPV1_AV_VVV_ES1_VPSH"></include>
+						<include name="P33_SLPE_CMV_IGPE_ES1_VPSH"></include>
+						<include name="P34_FTFP0_MUON_CGPV1_UM_CP1_LMV_AP_CV_SV_LSTE_ES_VPSH"></include>
+						<include name="P35_FTFP10_MUON_CGPV1_UM_CP1_LMV_AP_CV_SV_LSTE_ES_VPSH"></include>
+					</methods>
+	   			</class>
+	    </classes>
+	</test>
+</suite>

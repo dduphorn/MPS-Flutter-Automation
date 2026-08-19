@@ -1,0 +1,330 @@
+<html>
+<head>
+<title>TestNG:  UserRole_court_clerk</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>UserRole_court_clerk</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>4/0/0</td>
+</tr><tr>
+<td>Started on:</td><td>Wed Sep 13 11:42:49 CDT 2023</td>
+</tr>
+<tr><td>Total time:</td><td>113 seconds (113390 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='AutomationCode.UserRole_TestCases.UserRoles1001_InitialUserScreen()'><b>UserRoles1001_InitialUserScreen</b><br>Test class: AutomationCode.UserRole_TestCases<br>Parameters: court_clerk<br/>
+<a href="#Output-1073741635" onClick='toggleBox("Output-1073741635", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1073741635" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1073741635">
+strHeadless: False<br/>
+************************************************************<br/>
+Test:  UserRole_court_clerk_UserRoles1001_InitialUserScreen             <br/>
+Environment:  SG                            <br/>
+Municipality: AutomationMunicipality                           <br/>
+Meter Name:   null                              <br/>
+Meter Type;	null                              <br/>
+Meter IP:     null                                   <br/>
+Local Meter Version:                <br/>
+Remote Device:null                         <br/>
+Remote Type:null                               <br/>
+Sentry Link Version:Version 8.12.2.6                <br/>
+SilverBullet Version:             <br/>
+RemotePath:   http://localhost:4723                             <br/>
+SOM Local Image Id:   False                <br/>
+SOM Local Distro Version:   False    <br/>
+SOM Distro Name:                   <br/>
+************************************************************<br/>
+<font color='green'>Meter Start Time 16:42:</font><br/>
+<font color='green'>Test Start Time 11:42:57 AM</font><br/>
+<font color='green'>The Meter Screen Shot (UserRoles1001_InitialUserScreen.png) did not exist</font><br/>
+strHeadless: False<br/>
+<font color='orange'>     SENTRYLINK_OpenLoginPage</font><br/>
+The (Login) page existed<br/>
+<font color='orange'>     SENTRYLINK_UserLoginIn</font><br/>
+The text name (Version) value (Version 8.12.2.6) was stored as variable name (strSentryLinkVersion)<br/>
+The (Login) field(s) were populated correctly - Values(Email,urautomationmunicipalitycourt_clerk@gmail.com|Password,urAutomationMunicipalitycourt_clerk1!)<br/>
+The Button (Sign in) with index (1) was clicked successfully<br/>
+The Image (Municipality Logo) existed<br/>
+The link (Violations) at index (1) existed<br/>
+The link (Parking Lot Sessions) at index (1) existed<br/>
+The Link (Reports) Dropdown correctly contained the links (Daily Ticket Total|Meter Cash Outs|Notifications|Payments|Weekly Ticket Total|On Hold|Violation Payment Report|Tickets With Officer)<br/>
+The Link (Health) Dropdown correctly contained the links (Sessions|Trends)<br/>
+The link (AutomationMunicipality) at index (1) existed<br/>
+The link (urAutomationMunicipality court_clerk) at index (1) existed<br/>
+The RadioButton (Violation #) with index (1) was (Selected)<br/>
+The RadioButton (Violation ID) at index (1) existed<br/>
+The RadioButton (Plate) at index (1) existed<br/>
+The RadioButton (Lookup ID) at index (1) existed<br/>
+The TextField (Search) at index (1) existed<br/>
+The TextField (FromDate) at index (1) existed<br/>
+The TextField (ToDate) at index (1) existed<br/>
+The item order for the Listbox (Violation Status) with index (1) were displayed in the expected order (ALL|AWAITING COLLECTION|CLAIMED|COLLECTIONS|DISMISSED|DISPUTED|EMAILED|END DISPUTE|GENERATING TICKET|HOLD|MISSED|NEW|NOTIFIED|OVERDUE|PAID|PARTIAL|REFUNDED|RESET TICKETING WITH NEW OWNER|SNOOZED|TICKET GENERATED|TICKET GENERATION FAILED|UNHOLD|UNISSUED|UNLOCKED|UNVOIDED|VOIDED)<br/>
+The item order for the Listbox (Violation Notifications) with index (1) were displayed in the expected order (ALL|EXEMPT|NORMAL|NOT PROCESSABLE|REDO|SENT FOR VERIFICATION|SYSTEM FAILURE|TO VERIFY|VERIFICATION FAILED|VERIFIED)<br/>
+The item order for the Listbox (Violation Sources) with index (1) were displayed in the expected order (ALL|BOLLARD|HEALTHKIOSK|KIOSK|METER|NOPARKINGSTICK|SOLARSTICK|VIRTUALDEVICE|VIRTUALKIOSK|VIRTUALMETER)<br/>
+The item order for the Listbox (Processing Status) with index (1) were displayed in the expected order (ALL|EXEMPT|NORMAL|NOT PROCESSABLE|REDO|SENT FOR VERIFICATION|SYSTEM FAILURE|TO VERIFY|VERIFICATION FAILED|VERIFIED)<br/>
+The item order for the Listbox (Meter Groups) with index (1) were displayed in the expected order (AMG2|AMG3|AMG4|AUTOMATIONMETERGROUP|AUTOMATIONOPENLOT|DAKOTA|MPS|NO METER|VIRTUALAUTOMATIONMETERGROUP|WOONERFMETERGROUP)<br/>
+The item order for the Listbox (Spots) with index (1) were displayed in the expected order (1|5510|5511|5560|5561|5570|5571|5580|5581|9000|9001|9010|9011|9092|9094|9095|9096|9097|9203|9204|9205|9206|9209|9210|9211|9212|9213|9214|9215|9216|9217|9218|9219|9220|9221|9222|9223|9224|9227|9228|AUTOOPENENTRY|AUTOOPENEXIT|AUTOOPENPAY1|AVMETER1|AVMETER2|AVMETER4|AVMETER5|AVMETER6|DAKOTA KIOSK|IVMETER1|VMETER4)<br/>
+The item order for the Listbox (Sort By) with index (1) were displayed in the expected order (ISSUED TIMESTAMP|VIOLATION NUMBER|TIME PARKED|DURATION)<br/>
+The button (Find Violations) at index (1) existed<br/>
+The link (Verified) at index (1) existed<br/>
+The link (Overdue 1) at index (1) existed<br/>
+The link (Overdue 2) at index (1) existed<br/>
+The link (Awaiting Collections) at index (1) existed<br/>
+The Text (Signed in successfully) with index (1) equaled (Signed in successfully.)<br/>
+The button (Show Total) at index (1) existed<br/>
+<a href=/Users/darinduphorn/git/TestAutomation/MeterLogs/UserRole_court_clerk_UserRoles1001_InitialUserScreen.txt/>Meter Logs</a><br/>
+<a href=/Users/darinduphorn/git/TestAutomation/MessageLogs/UserRole_court_clerk_UserRoles1001_InitialUserScreen.txt/>Message Logs</a><br/>
+</div>
+</td>
+<td></td>
+<td>25</td>
+<td>AutomationCode.UserRole_TestCases@42a48628</td></tr>
+<tr>
+<td title='AutomationCode.UserRole_TestCases.UserRoles1037_ParkingLotSessions()'><b>UserRoles1037_ParkingLotSessions</b><br>Test class: AutomationCode.UserRole_TestCases<br>Parameters: court_clerk<br/>
+<a href="#Output-1510543202" onClick='toggleBox("Output-1510543202", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1510543202" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1510543202">
+strHeadless: False<br/>
+************************************************************<br/>
+Test:  UserRole_court_clerk_UserRoles1037_ParkingLotSessions             <br/>
+Environment:  SG                            <br/>
+Municipality: AutomationMunicipality                           <br/>
+Meter Name:   null                              <br/>
+Meter Type;	null                              <br/>
+Meter IP:     null                                   <br/>
+Local Meter Version:                <br/>
+Remote Device:null                         <br/>
+Remote Type:null                               <br/>
+Sentry Link Version:Version 8.12.2.6                <br/>
+SilverBullet Version:             <br/>
+RemotePath:   http://localhost:4723                             <br/>
+SOM Local Image Id:   False                <br/>
+SOM Local Distro Version:   False    <br/>
+SOM Distro Name:                   <br/>
+************************************************************<br/>
+<font color='green'>Meter Start Time 16:43:</font><br/>
+<font color='green'>Test Start Time 11:43:21 AM</font><br/>
+<font color='green'>The Meter Screen Shot (UserRoles1037_ParkingLotSessions.png) did not exist</font><br/>
+strHeadless: False<br/>
+<font color='orange'>     SENTRYLINK_OpenLoginPage</font><br/>
+The (Login) page existed<br/>
+<font color='orange'>     SENTRYLINK_UserLoginIn</font><br/>
+The text name (Version) value (Version 8.12.2.6) was stored as variable name (strSentryLinkVersion)<br/>
+The (Login) field(s) were populated correctly - Values(Email,urautomationmunicipalitycourt_clerk@gmail.com|Password,urAutomationMunicipalitycourt_clerk1!)<br/>
+The Button (Sign in) with index (1) was clicked successfully<br/>
+The Link (Parking Lot Sessions) with index (1) was clicked successfully<br/>
+The Image (Municipality Logo) existed<br/>
+The link (Violations) at index (1) existed<br/>
+The link (Parking Lot Sessions) at index (1) existed<br/>
+The Link (Reports) Dropdown correctly contained the links (Daily Ticket Total|Meter Cash Outs|Notifications|Payments|Weekly Ticket Total|On Hold|Violation Payment Report|Tickets With Officer)<br/>
+The Link (Health) Dropdown correctly contained the links (Sessions|Trends)<br/>
+The link (AutomationMunicipality) at index (1) existed<br/>
+The link (urAutomationMunicipality court_clerk) at index (1) existed<br/>
+The TextField (Plate Number) at index (1) existed<br/>
+The TextField (Province/State) at index (1) existed<br/>
+The TextField (From Date Time Entered) at index (1) existed<br/>
+The TextField (To Date Time Entered) at index (1) existed<br/>
+The TextField (From Date Time Exited) at index (1) existed<br/>
+The TextField (To Date Time Exited) at index (1) existed<br/>
+The item order for the Listbox (Parking Lot) with index (1) were displayed in the expected order (ENTRY AND/OR EXIT PRESENT|ENTRY AND EXIT PRESENT|ENTRY ONLY PRESENT (ACTIVE)|EXIT ONLY PRESENT (ASSUMED ENTRY))<br/>
+The item order for the Listbox (Sort By) with index (1) were displayed in the expected order (DESCENDING|ASCENDING)<br/>
+The item order for the Listbox (Include) with index (1) were displayed in the expected order (|AUTOMATIONOPENLOT|DAKOTA)<br/>
+The button (Find Sessions) at index (1) existed<br/>
+The link (Bad Entrance Events) at index (1) existed<br/>
+The link (Vehicles In Lot) at index (1) existed<br/>
+The link (Daily Occupancy Rate) at index (1) existed<br/>
+The link (Permits Purchased) at index (1) existed<br/>
+The Text (Page Header) with index (1) equaled (Parking Lot Sessions)<br/>
+The button (Show Total) at index (1) existed<br/>
+The Table (Parking Lot Sessions) at index (1) existed<br/>
+<a href=/Users/darinduphorn/git/TestAutomation/MeterLogs/UserRole_court_clerk_UserRoles1037_ParkingLotSessions.txt/>Meter Logs</a><br/>
+<a href=/Users/darinduphorn/git/TestAutomation/MessageLogs/UserRole_court_clerk_UserRoles1037_ParkingLotSessions.txt/>Message Logs</a><br/>
+</div>
+</td>
+<td></td>
+<td>23</td>
+<td>AutomationCode.UserRole_TestCases@42a48628</td></tr>
+<tr>
+<td title='AutomationCode.UserRole_TestCases.UserRoles1038_PreviewDailyTicketTotals()'><b>UserRoles1038_PreviewDailyTicketTotals</b><br>Test class: AutomationCode.UserRole_TestCases<br>Parameters: court_clerk<br/>
+<a href="#Output-1783242896" onClick='toggleBox("Output-1783242896", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1783242896" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1783242896">
+strHeadless: False<br/>
+************************************************************<br/>
+Test:  UserRole_court_clerk_UserRoles1038_PreviewDailyTicketTotals             <br/>
+Environment:  SG                            <br/>
+Municipality: AutomationMunicipality                           <br/>
+Meter Name:   null                              <br/>
+Meter Type;	null                              <br/>
+Meter IP:     null                                   <br/>
+Local Meter Version:                <br/>
+Remote Device:null                         <br/>
+Remote Type:null                               <br/>
+Sentry Link Version:Version 8.12.2.6                <br/>
+SilverBullet Version:             <br/>
+RemotePath:   http://localhost:4723                             <br/>
+SOM Local Image Id:   False                <br/>
+SOM Local Distro Version:   False    <br/>
+SOM Distro Name:                   <br/>
+************************************************************<br/>
+<font color='green'>Meter Start Time 16:43:</font><br/>
+<font color='green'>Test Start Time 11:43:45 AM</font><br/>
+<font color='green'>The Meter Screen Shot (UserRoles1038_PreviewDailyTicketTotals.png) did not exist</font><br/>
+strHeadless: False<br/>
+<font color='orange'>     SENTRYLINK_OpenLoginPage</font><br/>
+The (Login) page existed<br/>
+<font color='orange'>     SENTRYLINK_UserLoginIn</font><br/>
+The text name (Version) value (Version 8.12.2.6) was stored as variable name (strSentryLinkVersion)<br/>
+The (Login) field(s) were populated correctly - Values(Email,urautomationmunicipalitycourt_clerk@gmail.com|Password,urAutomationMunicipalitycourt_clerk1!)<br/>
+The Button (Sign in) with index (1) was clicked successfully<br/>
+The Link (Reports) with index (1) was clicked successfully<br/>
+The Link (Daily Ticket Total) with index (1) was clicked successfully<br/>
+The Image (Municipality Logo) existed<br/>
+The link (Violations) at index (1) existed<br/>
+The link (Parking Lot Sessions) at index (1) existed<br/>
+The Link (Reports) Dropdown correctly contained the links (Daily Ticket Total|Meter Cash Outs|Notifications|Payments|Weekly Ticket Total|On Hold|Violation Payment Report|Tickets With Officer)<br/>
+The Link (Health) Dropdown correctly contained the links (Sessions|Trends)<br/>
+The link (AutomationMunicipality) at index (1) existed<br/>
+The link (urAutomationMunicipality court_clerk) at index (1) existed<br/>
+The TextField (From Date) at index (1) existed<br/>
+The TextField (To Date) at index (1) existed<br/>
+The item order for the Listbox (Device) with index (1) were displayed in the expected order (ALL|9096-9097|9094-9095|9010-9011|5510-5511|5560-5561|5570-5571|5580-5581|9000-9001|9092|AUTOOPENENTRY|AUTOOPENEXIT|AUTOOPENPAY1|DAKOTA KIOSK|9213-9214|9215-9216|9219-9220|9221-9222|9227-9228|92T (D)|92U (D)|92V (D)|92W (D)|92X (D)|92Y (D)|92Z|NO METER|AVMETER1|AVMETER2|AVMETER4|AVMETER5|AVMETER6|IVMETER1|VMETER4|9203-9204|9205-9206)<br/>
+The button (Generate Report) at index (1) existed<br/>
+The link ((csv)) at index (1) existed<br/>
+The Text (Page Header) with index (1) contained (Preview Daily Ticket Totals)<br/>
+The Link (Meter Groups) Dropdown correctly contained the links (AMG2|AMG3|AMG4|AutomationMeterGroup|AutomationOpenLot|Dakota|MPS|No Meter|VirtualAutomationMeterGroup|WoonerfMeterGroup)<br/>
+The item order for the Listbox (Jump to a Device) with index (1) were displayed in the expected order (|9096-9097)<br/>
+The link (Back to Top) at index (1) existed<br/>
+The Table (Ticket Totals Table) at index (1) existed<br/>
+<a href=/Users/darinduphorn/git/TestAutomation/MeterLogs/UserRole_court_clerk_UserRoles1038_PreviewDailyTicketTotals.txt/>Meter Logs</a><br/>
+<a href=/Users/darinduphorn/git/TestAutomation/MessageLogs/UserRole_court_clerk_UserRoles1038_PreviewDailyTicketTotals.txt/>Message Logs</a><br/>
+</div>
+</td>
+<td></td>
+<td>33</td>
+<td>AutomationCode.UserRole_TestCases@42a48628</td></tr>
+<tr>
+<td title='AutomationCode.UserRole_TestCases.UserRoles1039_MeterCashOuts()'><b>UserRoles1039_MeterCashOuts</b><br>Test class: AutomationCode.UserRole_TestCases<br>Parameters: court_clerk<br/>
+<a href="#Output-1175156694" onClick='toggleBox("Output-1175156694", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1175156694" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1175156694">
+strHeadless: False<br/>
+************************************************************<br/>
+Test:  UserRole_court_clerk_UserRoles1039_MeterCashOuts             <br/>
+Environment:  SG                            <br/>
+Municipality: AutomationMunicipality                           <br/>
+Meter Name:   null                              <br/>
+Meter Type;	null                              <br/>
+Meter IP:     null                                   <br/>
+Local Meter Version:                <br/>
+Remote Device:null                         <br/>
+Remote Type:null                               <br/>
+Sentry Link Version:Version 8.12.2.6                <br/>
+SilverBullet Version:             <br/>
+RemotePath:   http://localhost:4723                             <br/>
+SOM Local Image Id:   False                <br/>
+SOM Local Distro Version:   False    <br/>
+SOM Distro Name:                   <br/>
+************************************************************<br/>
+<font color='green'>Meter Start Time 16:44:</font><br/>
+<font color='green'>Test Start Time 11:44:22 AM</font><br/>
+<font color='green'>The Meter Screen Shot (UserRoles1039_MeterCashOuts.png) did not exist</font><br/>
+strHeadless: False<br/>
+<font color='orange'>     SENTRYLINK_OpenLoginPage</font><br/>
+The (Login) page existed<br/>
+<font color='orange'>     SENTRYLINK_UserLoginIn</font><br/>
+The text name (Version) value (Version 8.12.2.6) was stored as variable name (strSentryLinkVersion)<br/>
+The (Login) field(s) were populated correctly - Values(Email,urautomationmunicipalitycourt_clerk@gmail.com|Password,urAutomationMunicipalitycourt_clerk1!)<br/>
+The Button (Sign in) with index (1) was clicked successfully<br/>
+The Link (Reports) with index (1) was clicked successfully<br/>
+The Link (Meter Cash Outs) with index (1) was clicked successfully<br/>
+The Image (Municipality Logo) existed<br/>
+The link (Violations) at index (1) existed<br/>
+The link (Parking Lot Sessions) at index (1) existed<br/>
+The Link (Reports) Dropdown correctly contained the links (Daily Ticket Total|Meter Cash Outs|Notifications|Payments|Weekly Ticket Total|On Hold|Violation Payment Report|Tickets With Officer)<br/>
+The Link (Health) Dropdown correctly contained the links (Sessions|Trends)<br/>
+The link (AutomationMunicipality) at index (1) existed<br/>
+The link (urAutomationMunicipality court_clerk) at index (1) existed<br/>
+The TextField (From Date) at index (1) existed<br/>
+The TextField (To Date) at index (1) existed<br/>
+The item order for the Listbox (Meter) with index (1) were displayed in the expected order (All|9096-9097|9094-9095|9010-9011|5510-5511|5560-5561|5570-5571|5580-5581|9000-9001|9092|9213-9214|9215-9216|9219-9220|9221-9222|9227-9228|92t (D)|92u (D)|92v (D)|92w (D)|92x (D)|92y (D)|92z|9203-9204|9205-9206)<br/>
+The button (Find Cash Outs) at index (1) existed<br/>
+The Text (Page Header) with index (1) contained (Meter Cash Outs)<br/>
+The Table (Cash Out Results) at index (1) existed<br/>
+<a href=/Users/darinduphorn/git/TestAutomation/MeterLogs/UserRole_court_clerk_UserRoles1039_MeterCashOuts.txt/>Meter Logs</a><br/>
+<a href=/Users/darinduphorn/git/TestAutomation/MessageLogs/UserRole_court_clerk_UserRoles1039_MeterCashOuts.txt/>Message Logs</a><br/>
+</div>
+</td>
+<td></td>
+<td>26</td>
+<td>AutomationCode.UserRole_TestCases@42a48628</td></tr>
+</table><p>
+</body>
+</html>

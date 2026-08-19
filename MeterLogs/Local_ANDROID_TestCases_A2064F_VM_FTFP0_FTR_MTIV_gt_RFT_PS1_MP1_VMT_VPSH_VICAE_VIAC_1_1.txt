@@ -1,0 +1,50 @@
+[07/07 16:21:46.218] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at rabbitmq.staging.sentry-link.com:5671 (200): Normal shutdown
+[07/07 16:22:15.035] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[07/07 16:22:39.176] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[07/07 16:22:39.177] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[07/07 16:22:45.099] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type free next_srb_type fixed min_to_free 0 rp_min_to_free 0
+[07/07 16:22:45.100] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): Transitioning RATE->FREE min_to_free 0 early
+[07/07 16:23:40.719] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[07/07 16:23:40.720] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[07/07 16:23:45.037] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type free next_srb_type fixed min_to_free 0 rp_min_to_free 0
+[07/07 16:23:45.037] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): Transitioning RATE->FREE min_to_free 0 early
+[07/07 16:24:15.135] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[07/07 16:24:42.308] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[07/07 16:24:42.310] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[07/07 16:24:45.124] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type free next_srb_type fixed min_to_free 0 rp_min_to_free 0
+[07/07 16:24:45.125] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): Transitioning RATE->FREE min_to_free 0 early
+[07/07 16:25:05.662] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[07/07 16:25:05.662] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[07/07 16:25:05.692] | INFO     | lib.seco   | watchdog   | SecoLib()::check_temp(): SECO cpu temperature is:  Kelvin 3241 Celsius 50
+[07/07 16:25:39.356] | INFO     | rss        | rss_thread | _get_rss_feeds
+[07/07 16:25:43.113] | INFO     | micro.wdog | microcomm_reactor | qml_ping_sender(): Sending QML ping
+[07/07 16:25:43.982] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[07/07 16:25:44.042] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[07/07 16:25:45.097] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type free next_srb_type fixed min_to_free 0 rp_min_to_free 0
+[07/07 16:25:45.097] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): Transitioning RATE->FREE min_to_free 0 early
+[07/07 16:25:48.057] | INFO     | camera     | time_checker | _send(): -> name: sock_1_2 message_len: 97 total_sent: 97
+[07/07 16:25:48.235] | INFO     | camera     | time_checker | _recv(): <- request_len: 69 header_len: 8
+[07/07 16:25:48.542] | INFO     | sys_serv   | time_checker | _log_ntp_peer_info(): 1/8/16 (primary/good+primary/total) - primary:*24.249.17.253   96.147.147.69    2 u  125  128  377   56.306    0.313   4.407 good:+144.86.176.12   152.2.253.180    2 u  118  128  377   44.293    0.743   3.700, #66.118.229.14   141.32.131.246   2 u  123  128  377  188.531    3.441   2.142, +23.168.24.210   243.50.127.182   2 u  103  128  377   31.934    1.200   2.776, +40.160.28.79    192.155.88.241   3 u   33  128  377   39.232    0.702   3.820, +96.126.122.39   33.219.230.8     2 u   13  128  377   43.037   -1.328   2.736, +163.123.152.14  162.159.200.123  4 u  124  128  377   30.986   -0.641   2.747, +91.189.91.157   132.163.96.1     2 u    5  128  377   46.853    1.245   1.452 bad:-66.244.16.123   66.244.0.68      2 u  133  128  377   67.882    1.989   3.370, -207.58.172.126  136.182.11.81    3 u   54  128  377   42.709    3.206   1.484, -97.107.136.23   168.239.11.197   2 u  101  128  377   42.528    1.871   1.436 other: 0.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 1.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 2.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 3.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, ntp.ubuntu.com  .POOL.          16 p    -   64    0    0.000    0.000   0.000
+[07/07 16:25:48.748] | INFO     | sys_serv   | time_checker | get_primary_reference(): Found primary_ref: *24.249.17.253   96.147.147.69    2 u  125  128  377   56.306    0.313   4.407
+[07/07 16:25:48.749] | INFO     | idigi      | time_checker | clear_ntp_reloaded(): clearing ntp_reloaded controlling watchdog checks
+[07/07 16:26:15.190] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[07/07 16:26:33.528] | WARNING  | net_monitor | main_reactor | check_network_connectivity_async(): Skipping due to high CPU load (5.10 > 3.5)
+[07/07 16:26:44.374] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[07/07 16:26:44.382] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[07/07 16:26:45.119] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type free next_srb_type fixed min_to_free 0 rp_min_to_free 0
+[07/07 16:26:45.121] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): Transitioning RATE->FREE min_to_free 0 early
+[07/07 16:26:46.268] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/system_alive-a5b224467a2011f1be5400c008947d30.json
+[07/07 16:26:47.314] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"ip_addr": "10.10.101.168", "rmq_responses_attempted": 70, "msg_id": "0x8000002eL", "rmq_api_bytes_sent": 304, "message": "9010-9011", "rmq_image_bytes_sent": 0, "rmq_response_bytes_sent": 168048, "coin_jar_full": 0.0, "rmq_images_attempted": 0, "desc_str": "Sentry is alive and normal", "rmq_image_errors": 0, "rmq_images_sent": 0, "rmq_json_errors": 0, "rmq_responses_sent": 70, "rmq_apis_attempted": 2, "rmq_jsons_attempted": 34, "sentry_thread_hung": false, "rmq_api_errors": 0, "rmq_response_errors": 0, "rmq_json_bytes_sent": 26445, "rmq_jsons_sent": 34, "rmq_apis_sent": 2}, "class": "event", "queued_dt": "2026-07-07T16:26:46Z", "type": "system_alive", "id": "00c009b8-7d0e-4733-b93a-e49317bcdcd9", "device_id": "m:00C008947D30"}
+[07/07 16:26:47.439] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at rabbitmq.staging.sentry-link.com:5671 (200): Normal shutdown
+[07/07 16:27:45.037] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type free next_srb_type fixed min_to_free 0 rp_min_to_free 0
+[07/07 16:27:45.037] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): Transitioning RATE->FREE min_to_free 0 early
+[07/07 16:27:45.895] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[07/07 16:27:45.895] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[07/07 16:28:05.790] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[07/07 16:28:05.790] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[07/07 16:28:05.823] | INFO     | lib.seco   | watchdog   | SecoLib()::check_temp(): SECO cpu temperature is:  Kelvin 3221 Celsius 48
+[07/07 16:28:15.236] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[07/07 16:28:45.132] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type free next_srb_type fixed min_to_free 0 rp_min_to_free 0
+[07/07 16:28:45.133] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): Transitioning RATE->FREE min_to_free 0 early
+[07/07 16:28:47.501] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[07/07 16:28:47.502] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0

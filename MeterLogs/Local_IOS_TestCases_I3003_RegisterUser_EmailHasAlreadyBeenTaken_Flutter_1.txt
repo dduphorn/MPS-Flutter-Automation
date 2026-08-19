@@ -1,0 +1,31 @@
+[04/23 17:50:00.056] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: calling reswipeoff
+[04/23 17:50:00.058] | INFO     | gui        | MainThread | QT: Home: transition to reswipeoff
+[04/23 17:50:00.060] | INFO     | gui        | MainThread | QT: Home: calling reswipeoff
+[04/23 17:50:00.063] | INFO     | gui        | MainThread | QT: MultiHome: transition to reswipeoff
+[04/23 17:50:00.067] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to processingoff
+[04/23 17:50:00.069] | INFO     | gui        | MainThread | QT: Home: transition to processingoff
+[04/23 17:50:00.072] | INFO     | gui        | MainThread | QT: MultiHome: transition to processingoff
+[04/23 17:50:00.076] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to declineoff
+[04/23 17:50:00.079] | INFO     | gui        | MainThread | QT: MultiHome: transition to declineoff
+[04/23 17:50:00.857] | INFO     | gui        | MainThread | QT: Home: transition to PSV_STATE_AVAILABLE
+[04/23 17:50:54.880] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x00' (1 q_len tx_seqno #171 tx_failed 3) STATE_IDLE
+[04/23 17:50:54.896] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 171 (tx_seqno 171 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0fp'
+[04/23 17:50:54.899] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 3952 photocell state 1
+[04/23 17:50:54.902] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/23 17:50:54.904] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1776966654,2,0
+
+[04/23 17:50:55.050] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 3952 photocell state 1
+[04/23 17:50:55.056] | CRITICAL | detection  | main_reactor | Unicorn not connected to Banner daemon
+[04/23 17:50:55.057] | INFO     | detection  | main_reactor | _init_banner_socket: msg = 1776966655,2,0
+
+[04/23 17:50:58.088] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x00' (1 q_len tx_seqno #172 tx_failed 3) STATE_IDLE
+[04/23 17:50:58.115] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 172 (tx_seqno 172 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0fp'
+[04/23 17:50:58.119] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x00d\xff\xff' (1 q_len tx_seqno #172 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[04/23 17:50:58.121] | WARNING  | microcomm  | main_reactor | send_command(): queued MPS_CMD_GET_PHOTOCELL_STATUS (0x0070), '\x01' (2 q_len tx_seqno #172 rx_seqno #0 tx_failed #3) processing_rx_msg STATE_WAIT_REPLY
+[04/23 17:50:58.142] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 173 (tx_seqno 173 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[04/23 17:50:58.167] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 174 (tx_seqno 174 tx_failed 3) MPS_REPLY_GET_PHOTOCELL_STATUS (0xFF70), '\x0f|'
+[04/23 17:50:58.192] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_SET_ILLUMINATION_LEDS (0x0031), '\x01d\xff\xff' (1 q_len tx_seqno #175 tx_failed 3) STATE_IDLE
+[04/23 17:50:58.218] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 22269 rp_min_to_free 22269
+[04/23 17:50:58.220] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 175 (tx_seqno 175 tx_failed 3) MPS_REPLY_SET_ILLUMINATION_LEDS (0xFF31), ''
+[04/23 17:51:17.150] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[04/23 17:51:17.155] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []

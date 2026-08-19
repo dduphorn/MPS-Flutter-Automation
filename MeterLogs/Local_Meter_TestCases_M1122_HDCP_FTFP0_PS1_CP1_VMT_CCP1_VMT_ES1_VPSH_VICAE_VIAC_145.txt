@@ -1,0 +1,13 @@
+[03/17 23:57:31.952] | INFO     | credit_call | credit_call_reactor | _retry_offline_messages(): deferring cpu_load 4.02 > 3.5 - #0 messages waiting
+[03/17 23:57:33.696] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43502 rp_min_to_free 43502
+[03/17 23:57:36.505] | INFO     | sys_serv   | main_reactor | _check_system_resources(): started
+[03/17 23:57:36.506] | INFO     | sys_serv   | main_reactor | Memory info: {'swap_total': 0, 'total': 4029488000L, 'free': 1091080000, 'used': 2087384000, 'swap_free': 0}
+[03/17 23:57:36.506] | INFO     | sys_serv   | main_reactor | _check_system_resources(): completed
+[03/17 23:57:36.529] | INFO     | camera     | time_checker | _send(): -> name: sock_1_2 message_len: 97 total_sent: 97
+[03/17 23:57:36.711] | INFO     | camera     | time_checker | _recv(): <- request_len: 69 header_len: 8
+[03/17 23:57:36.887] | INFO     | sys_serv   | time_checker | _log_ntp_peer_info(): 1/4/11 (primary/good+primary/total) - primary:*198.60.22.240   .XMIS.           1 u  540 1024  377   53.539    2.880   1.972 good:+23.168.136.132  17.253.26.123    2 u  898 1024  377   32.877    2.432   2.142, +50.218.103.254  50.205.57.38     2 u  612 1024  377   47.015    1.216   2.329, +144.202.62.209  69.89.207.199    2 u   34 1024  377   24.469    1.869   2.136 bad:-129.250.35.251  129.250.35.222   2 u  595 1024  377   32.985    5.636   3.863, -91.189.91.157   132.163.96.1     2 u  810 1024  377   50.197    3.341   1.026 other: 0.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 1.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 2.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 3.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, ntp.ubuntu.com  .POOL.          16 p    -   64    0    0.000    0.000   0.000
+[03/17 23:57:37.063] | INFO     | sys_serv   | time_checker | get_primary_reference(): Found primary_ref: *198.60.22.240   .XMIS.           1 u  540 1024  377   53.539    2.880   1.972
+[03/17 23:57:37.063] | INFO     | idigi      | time_checker | clear_ntp_reloaded(): clearing ntp_reloaded controlling watchdog checks
+[03/17 23:57:39.366] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[03/17 23:57:39.366] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[03/17 23:57:39.396] | INFO     | lib.seco   | watchdog   | SecoLib()::check_temp(): SECO cpu temperature is:  Kelvin 3181 Celsius 44

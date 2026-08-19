@@ -1,0 +1,965 @@
+[07/07 02:53:06.676] | INFO     | idigi      | time_checker | clear_ntp_reloaded(): clearing ntp_reloaded controlling watchdog checks
+[07/07 02:53:28.438] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[07/07 02:53:28.440] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[07/07 02:54:02.964] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43325 rp_min_to_free 43325
+[07/07 02:54:29.454] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[07/07 02:54:29.456] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[07/07 02:54:31.867] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[07/07 02:54:37.785] | INFO     | ui.multi   | main_reactor | UISI::_suspend_tasks_timeout(): still in Idle - for 726.162347 seconds; unsuspending background task
+[07/07 02:54:37.786] | INFO     | mps.ui     | main_reactor | suspend_background_tasks(): change to False
+[07/07 02:54:37.786] | INFO     | parking_serv | main_reactor | suspend_transfers(): False
+[07/07 02:55:02.892] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43324 rp_min_to_free 43324
+[07/07 02:55:20.612] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/system_alive-4ac8fc1a79af11f1823a00c008947d30.json
+[07/07 02:55:21.415] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"ip_addr": "10.10.101.168", "rmq_responses_attempted": 2690, "msg_id": "0x8000002eL", "rmq_api_bytes_sent": 304, "message": "9010-9011", "rmq_image_bytes_sent": 0, "rmq_response_bytes_sent": 6452832, "coin_jar_full": 0.0, "rmq_images_attempted": 0, "desc_str": "Sentry is alive and normal", "rmq_image_errors": 0, "rmq_images_sent": 0, "rmq_json_errors": 0, "rmq_responses_sent": 2690, "rmq_apis_attempted": 2, "rmq_jsons_attempted": 2003, "sentry_thread_hung": false, "rmq_api_errors": 0, "rmq_response_errors": 0, "rmq_json_bytes_sent": 4401974, "rmq_jsons_sent": 2003, "rmq_apis_sent": 2}, "class": "event", "queued_dt": "2026-07-07T02:55:20Z", "type": "system_alive", "id": "9efe4ff6-f594-4aa0-8c13-dcd44e321067", "device_id": "m:00C008947D30"}
+[07/07 02:55:21.518] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at rabbitmq.staging.sentry-link.com:5671 (200): Normal shutdown
+[07/07 02:55:30.453] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[07/07 02:55:30.455] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[07/07 02:55:50.616] | INFO     | detection  | main_reactor | Vehicle Arrival Event for PUCK 1 event ts 1783392949 SUM energy 0 first movement 1783392949 0 Z energy 0
+[07/07 02:55:50.617] | WARNING  | parking.session.SPOT_1 | main_reactor | set_lpr_detected(): ignoring empty/None plate text = 
+[07/07 02:55:50.628] | INFO     | parking.spot.SPOT_1 | main_reactor | PSIGP::enter_state(): INITIAL GRACE
+[07/07 02:55:50.628] | INFO     | detection  | main_reactor | COS cos_puck_ids = {}
+[07/07 02:55:50.629] | INFO     | detection  | main_reactor | comment: comment,1,10.10.101.168 INITIAL GRACE,
+[07/07 02:55:50.632] | INFO     | parking.session.SPOT_1 | main_reactor | set_max_time(): unstarted session - setting max to 250 was 250
+[07/07 02:55:50.632] | WARNING  | parking.session.SPOT_1 | main_reactor | set_max_time(): resetting _maxtime_minutes_possible from 250 to 250
+[07/07 02:55:50.633] | INFO     | parking.controller | main_reactor | Puck time parked 1783392949 for SPOT_1 puck_id 1
+[07/07 02:55:50.633] | INFO     | parking.spot.SPOT_1 | main_reactor | _record_park(): time_parked 1783392949
+[07/07 02:55:50.636] | INFO     | parking.spot.SPOT_1 | main_reactor | _record_park(): time_parked_dt 2026-07-06 21:55:49-05:00 TZ tzfile(u'/usr/share/zoneinfo/America/Chicago')
+[07/07 02:55:50.637] | WARNING  | parking.spot.SPOT_1 | main_reactor | _record_park(): get_park_timestamp() is None set to NOW
+[07/07 02:55:50.639] | INFO     | parking.session.SPOT_1 | main_reactor | set_park_timestamp: return 2026-07-06 21:55:49-05:00
+[07/07 02:55:50.671] | INFO     | parking.spot.SPOT_1 | main_reactor | _record_park(): now 1783392950.63 time_parked 1783392949 time_lookback_value 1 session_id 68c99bdb79ae11f1823a00c008947d30
+[07/07 02:55:50.671] | INFO     | parking.controller | main_reactor | calculate_hours_offset(): hour = 5
+[07/07 02:55:50.672] | INFO     | parking.spot | main_reactor | _record_park(): hours 5 original_park_timestamp 2026-07-06 21:55:49-05:00 UTC park_timestamp 2026-07-07 02:55:49-05:00
+[07/07 02:55:50.673] | INFO     | parking.controller | main_reactor | Puck first movement 1783392949 for SPOT_1 puck_id 1
+[07/07 02:55:50.700] | INFO     | camera     | main_reactor | _send(): -> name: sock_1_2 message_len: 412 total_sent: 412
+[07/07 02:55:51.016] | INFO     | camera     | main_reactor | _recv(): <- request_len: 61 header_len: 8
+[07/07 02:55:51.017] | INFO     | parking.spot.SPOT_1 | main_reactor | PSIGP::enter_state(): valid_time_remaining 0
+[07/07 02:55:51.018] | INFO     | mps.ui     | main_reactor | _on_init_grace_period(): SPOT_1
+[07/07 02:55:51.019] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_SET_VIOLATION_LEDS (0x0020), '\x00\x00\x00' (1 q_len tx_seqno #196 tx_failed 4) STATE_IDLE
+[07/07 02:55:51.030] | INFO     | micro.vio_leds | main_reactor | Turning off LED for spot SPOT_1 args 0 0
+[07/07 02:55:51.031] | INFO     | micro.vio_leds | main_reactor | blink_yellow()
+[07/07 02:55:51.031] | INFO     | micro.vio_leds | main_reactor | add_command 1 command {'cmd_arg_1': 2, 'cmd_arg_2': 2, 'spot_id': 'SPOT_1'}
+[07/07 02:55:51.032] | INFO     | micro.vio_leds | main_reactor | QUEUEING cmd #1: Blinking yellow LED for spot SPOT_1 arg 1 2 arg 2 2
+[07/07 02:55:51.032] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 196 (tx_seqno 196 tx_failed 4) MPS_REPLY_SET_VIOLATION_LEDS (0xFF20), ''
+[07/07 02:55:51.033] | INFO     | psv_fsm.SPOT_1 | main_reactor | on_init_grace_period: Current state PSV_STATE_AVAILABLE
+[07/07 02:55:51.044] | INFO     | psv_fsm    | main_reactor | PSV_STATE_AVAILABLE -> PSV_STATE_INIT_GRACE_PERIOD (initial grace period)
+[07/07 02:55:51.044] | INFO     | parking.spot.SPOT_1 | main_reactor | PARKING_STATE_EMPTY -> PARKING_STATE_INIT_GRACE_PERIOD (PSE - Vehicle parked)
+[07/07 02:55:51.045] | INFO     | mps.ui     | main_reactor | suspend_background_tasks(): change to True
+[07/07 02:55:51.045] | INFO     | parking_serv | main_reactor | suspend_transfers(): True
+[07/07 02:55:51.045] | INFO     | ui.multi   | main_reactor | UISI: Vehicle parked in spot SPOT_1
+[07/07 02:55:51.055] | INFO     | parking.controller | main_reactor | calculate_hours_offset(): hour = 5
+[07/07 02:55:51.089] | INFO     | gui        | MainThread | QT: DualParkingSpotView: SPOT_1  transition to PSV_STATE_INIT_GRACE_PERIOD (file:///tmp/tmpCEIDt7/sentry.egg-tmp/mps/resources/qml/components/DualParkingSpotView.qml:4843)
+[07/07 02:55:51.097] | INFO     | gui        | MainThread | QT: Home: transition to PSV_STATE_INIT_GRACE_PERIOD (file:///tmp/tmpCEIDt7/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[07/07 02:55:51.123] | INFO     | gui        | MainThread | QT: ParkingSpotView: transition to PSV_STATE_INIT_GRACE_PERIOD (file:///tmp/tmpCEIDt7/sentry.egg-tmp/mps/resources/qml/components/ParkingSpotView.qml:4247)
+[07/07 02:55:51.153] | INFO     | gui        | MainThread | QT: ParkingSpotView: transition to PSV_STATE_INIT_GRACE_PERIOD (file:///tmp/tmpCEIDt7/sentry.egg-tmp/mps/resources/qml/components/ParkingSpotView.qml:4247)
+[07/07 02:55:51.208] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/parking_session_park-5d05ab1279af11f1823a00c008947d30.json
+[07/07 02:55:52.034] | INFO     | micro.vio_leds | microcomm_reactor | MPS_CMD_SET_VIOLATION_LEDS result: MPS_REPLY_SET_VIOLATION_LEDS (0xFF20), ''
+[07/07 02:55:52.035] | INFO     | micro.vio_leds | microcomm_reactor | sub_command 1
+[07/07 02:55:52.035] | INFO     | micro.vio_leds | microcomm_reactor | COMMAND {'cmd_arg_1': 2, 'cmd_arg_2': 2, 'spot_id': 'SPOT_1'}
+[07/07 02:55:52.035] | INFO     | micro.vio_leds | microcomm_reactor | Sending queued cmd 2 2 for spot SPOT_1
+[07/07 02:55:52.036] | WARNING  | microcomm  | microcomm_reactor | send_command(): queued MPS_CMD_SET_VIOLATION_LEDS (0x0020), '\x00\x02\x02' (1 q_len tx_seqno #196 rx_seqno #0 tx_failed #4) processing_rx_msg STATE_WAIT_REPLY
+[07/07 02:55:52.044] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"void_timestamp": null, "is_free_parking_now": false, "violation_plate_info": null, "additional_violations": [], "violation": null, "session_error_status": "0x0", "violation_pictures": null, "coin_error_status": [], "maintenance_unenforced": false, "merchant_validated": false, "max_time_allowed": 250, "spot_identifier": "SPOT_1", "merchant_id": 0, "handicap_pin": null, "lpr_plate": null, "close_timestamp": null, "exit_plate_info": null, "no_fine_fee": 0, "payment_history": [], "maintenance_no": false, "maintenance_free": false, "parker_type": "normal", "total_time_purchased": 0, "true_up": 0, "violation_reason": null, "con_id": 2224, "sms": null, "coin_error_details": [], "session_id": "68c99bdb79ae11f1823a00c008947d30", "exit_pictures": null, "handicap": false, "free_to_reservation": false, "card_error_status": [], "is_no_parking_now": false, "payments": [], "maintenance": false, "exit_timestamp": null, "merchant_offer_name": "", "handicap_spot": false, "card_error_details": [], "email": null, "park_timestamp": "2026-07-07T02:55:49Z"}, "class": "event", "queued_dt": "2026-07-07T02:55:51Z", "type": "parking_session_park", "id": "9b6217b7-d4a5-47a9-a45e-24a8c5f3cd43", "device_id": "m:00C008947D30"}
+[07/07 02:55:52.058] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 197 (tx_seqno 197 tx_failed 4) MPS_REPLY_SET_VIOLATION_LEDS (0xFF20), ''
+[07/07 02:55:52.150] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at rabbitmq.staging.sentry-link.com:5671 (200): Normal shutdown
+[07/07 02:55:53.059] | INFO     | micro.vio_leds | microcomm_reactor | MPS_CMD_SET_VIOLATION_LEDS result: MPS_REPLY_SET_VIOLATION_LEDS (0xFF20), ''
+[07/07 02:55:56.357] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req: u'rpc_parking' Payload: '{"method":"get_sessions_extended_data","params":["SPOT_1"],"jsonrpc":"2.0","id":77864086}'
+[07/07 02:55:56.360] | INFO     | parking.controller | SentryJSONRPCServer | calculate_hours_offset(): hour = 5
+[07/07 02:55:56.361] | INFO     | parking.session.SPOT_1 | SentryJSONRPCServer | get_initial_violation_timestamp: None
+[07/07 02:55:56.362] | ERROR    | parking_serv | SentryJSONRPCServer | _generate_parking_session_extended_json(): Payments 0
+[07/07 02:55:56.365] | INFO     | parking.controller | SentryJSONRPCServer | get_vio_grace_time_remaining(): spot_id SPOT_1 session_vio_grace_timestamp 2026-07-06 17:41:14.671540+00:00 now 2026-07-07 02:55:56.365100+00:00 time_since_grace_origin 9:14:41.693560 vio_grace_time 300 vio_grace_seconds_remaining 0
+[07/07 02:55:56.377] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint parking response {"jsonrpc": "2.0", "id": 77864086, "result": {"retry": false, "rpc_id": 0, "success": true, "error_message": null, "payload_type": "<type 'list'>", "error_code": null, "payload": [{"violation_info": {"violation": null, "violation_reason": null, "additional_violations": []}, "settings": {"SYS_OUT_OF_SERVICE": false, "PARKING_VIOLATION_GRACE_PERIOD": 300, "SYS_PERMIT_ENABLE": false, "SYS_SOFT_VIOLATION": false, "PARKING_UNLOCK_TIME": 1, "PARKING_UNLOCK_ENABLED": true, "PARKING_UNLOCK_MAX": 1, "PARKING_TRUEUP_ENABLED": false, "PARKING_HANDICAP_VIOLATION_GRACE_PERIOD": 86400, "PARKING_PERMIT_TEXT": true}, "rate_info": {"free_time_remaining": 0, "pay_rateblock_start_time": "2026-06-06T00:00:49Z", "rate_state": "RATE", "pay_rateblock_end_time": "2026-08-05T23:59:00Z", "minutes_increment_factor": 15, "card_increment_time": 15, "payment_allowed_now": true, "next_rateblock_type": "fixed", "free_time_first_purchase": 10, "pay_rate_blk_id": 638468, "congestion_percent_full": 0}, "session_info": {"void_timestamp": null, "vio_mins": 0, "is_no_parking_now": false, "reserved": null, "soft_violation": false, "sms": null, "adjusted_payment_dts": [], "merchant_validated": false, "in_maintenance": false, "concierge": false, "last_grace_time": null, "max_time_allowed": 250, "spot_identifier": "SPOT_1", "pre_vio_payment_count": 0, "maintenance_no": false, "close_timestamp": null, "lpr_plate": null, "parker_type": "normal", "total_time_purchased": 0, "init_grace_time_remaining": 294.652861, "time_in_vio": 0, "unlocked": true, "handicap_pin": null, "reserved_pin": null, "pre_vio_total_valid_time": 0, "free_to_reservation": false, "merchant_offer_name": "", "expired_time": 0, "maintenance": false, "exit_timestamp": null, "lock_end_dt": null, "session_base_valid_end_timestamp": null, "email": null, "is_free_parking_now": false, "pre_vio_valid_time": 0, "handicap": false, "parking_spot_state": "PARKING_STATE_INIT_GRACE_PERIOD", "reservation_payment_time": null, "ticket_issued": null, "ticket_issued_dt": null, "has_paid_for_max_time": false, "out_of_service": false, "maxtime_minutes_remaining": 250, "maintenance_unenforced": false, "is_reserved": false, "no_fine_fee": 0, "merchant_id": 0, "vio_grace_time_remaining": 0, "pin_code": null, "payment_history": [], "psv_state": "PSV_STATE_INIT_GRACE_PERIOD", "vio_payment_amount": 0, "locked": false, "session_valid_timestamp": null, "initial_violation_timestamp": null, "true_up": 0, "mobile": false, "true_up_cost": 0, "free_time_purchased": 0, "unlock_count": 0, "lpr_detected": false, "session_id": "68c99bdb79ae11f1823a00c008947d30", "vio_grace_mins": 0, "maintenance_free": false, "expired_time_dt": null, "plate_reservations": [], "payments": [], "handicap_spot": false, "session_valid_end_timestamp": null, "park_timestamp": "2026-07-07T02:55:49Z"}, "error_status": {"coin_error_status": [], "card_error_details": [], "card_error_status": [], "session_error_status": "0x0", "coin_error_details": []}, "time_stamp": "2026-07-07T02:55:56Z"}]}}
+[07/07 02:55:56.434] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 77864086, "result": {"retry": false, "rpc_id": 0, "success": true, "error_message": null, "payload_type": "<type 'list'>", "error_code": null, "payload": [{"violation_info": {"violation": null, "violation_reason": null, "additional_violations": []}, "settings": {"SYS_OUT_OF_SERVICE": false, "PARKING_VIOLATION_GRACE_PERIOD": 300, "SYS_PERMIT_ENABLE": false, "SYS_SOFT_VIOLATION": false, "PARKING_UNLOCK_TIME": 1, "PARKING_UNLOCK_ENABLED": true, "PARKING_UNLOCK_MAX": 1, "PARKING_TRUEUP_ENABLED": false, "PARKING_HANDICAP_VIOLATION_GRACE_PERIOD": 86400, "PARKING_PERMIT_TEXT": true}, "rate_info": {"free_time_remaining": 0, "pay_rateblock_start_time": "2026-06-06T00:00:49Z", "rate_state": "RATE", "pay_rateblock_end_time": "2026-08-05T23:59:00Z", "minutes_increment_factor": 15, "card_increment_time": 15, "payment_allowed_now": true, "next_rateblock_type": "fixed", "free_time_first_purchase": 10, "pay_rate_blk_id": 638468, "congestion_percent_full": 0}, "session_info": {"void_timestamp": null, "vio_mins": 0, "is_no_parking_now": false, "reserved": null, "soft_violation": false, "sms": null, "adjusted_payment_dts": [], "merchant_validated": false, "in_maintenance": false, "concierge": false, "last_grace_time": null, "max_time_allowed": 250, "spot_identifier": "SPOT_1", "pre_vio_payment_count": 0, "maintenance_no": false, "close_timestamp": null, "lpr_plate": null, "parker_type": "normal", "total_time_purchased": 0, "init_grace_time_remaining": 294.652861, "time_in_vio": 0, "unlocked": true, "handicap_pin": null, "reserved_pin": null, "pre_vio_total_valid_time": 0, "free_to_reservation": false, "merchant_offer_name": "", "expired_time": 0, "maintenance": false, "exit_timestamp": null, "lock_end_dt": null, "session_base_valid_end_timestamp": null, "email": null, "is_free_parking_now": false, "pre_vio_valid_time": 0, "handicap": false, "parking_spot_state": "PARKING_STATE_INIT_GRACE_PERIOD", "reservation_payment_time": null, "ticket_issued": null, "ticket_issued_dt": null, "has_paid_for_max_time": false, "out_of_service": false, "maxtime_minutes_remaining": 250, "maintenance_unenforced": false, "is_reserved": false, "no_fine_fee": 0, "merchant_id": 0, "vio_grace_time_remaining": 0, "pin_code": null, "payment_history": [], "psv_state": "PSV_STATE_INIT_GRACE_PERIOD", "vio_payment_amount": 0, "locked": false, "session_valid_timestamp": null, "initial_violation_timestamp": null, "true_up": 0, "mobile": false, "true_up_cost": 0, "free_time_purchased": 0, "unlock_count": 0, "lpr_detected": false, "session_id": "68c99bdb79ae11f1823a00c008947d30", "vio_grace_mins": 0, "maintenance_free": false, "expired_time_dt": null, "plate_reservations": [], "payments": [], "handicap_spot": false, "session_valid_end_timestamp": null, "park_timestamp": "2026-07-07T02:55:49Z"}, "error_status": {"coin_error_status": [], "card_error_details": [], "card_error_status": [], "session_error_status": "0x0", "coin_error_details": []}, "time_stamp": "2026-07-07T02:55:56Z"}]}} Queue amq.gen-zqjo7Pss8bvefTML5GAH0w #2691
+[07/07 02:55:59.026] | INFO     | detection  | main_reactor | Vehicle Exit Event for PUCK 1 event ts 1783392959 energy SUM 0 Z 0
+[07/07 02:55:59.028] | INFO     | parking.spot.SPOT_1 | main_reactor | PSIGP::on_vehicle_exit(): Vehicle left during initial grace period
+[07/07 02:55:59.039] | INFO     | detection  | main_reactor | COS cos_puck_ids = {}
+[07/07 02:55:59.039] | INFO     | detection  | main_reactor | comment: comment,1,10.10.101.168 VEHICLE LEFT,
+[07/07 02:55:59.040] | WARNING  | parking.spot.SPOT_1 | main_reactor | PSVL::enter_state(): vio is None - id 68c99bdb79ae11f1823a00c008947d30
+[07/07 02:55:59.040] | INFO     | parking.spot.SPOT_1 | main_reactor | CONCIERGE False False
+[07/07 02:55:59.041] | ERROR    | parking.spot | main_reactor | get_session_length get_session_valid_end_timestamp() is None, return 0
+[07/07 02:55:59.041] | INFO     | parking.controller | main_reactor | Puck time exited 1783392959 for SPOT_1
+[07/07 02:55:59.043] | ERROR    | parking.session.SPOT_1 | main_reactor | set_exit_timestamp(): session_id 68c99bdb79ae11f1823a00c008947d30 mismatched TZ found exit dt 2026-07-06 21:55:59 <= park dt 2026-07-06 21:55:49-05:00 e can't compare offset-naive and offset-aware datetimes
+[07/07 02:55:59.044] | INFO     | parking.session.SPOT_1 | main_reactor | set_exit_timestamp(): session_id 68c99bdb79ae11f1823a00c008947d30 _park_timestamp 2026-07-06 21:55:49-05:00 _exit_timestamp 2026-07-07 02:55:59 exit_dt 2026-07-06 21:55:59
+[07/07 02:55:59.072] | INFO     | parking.spot.SPOT_1 | main_reactor | PSVL::enter_state(): now 1783392959.07 time_exited 1783392959 time_lookback_value 0
+[07/07 02:55:59.073] | ERROR    | parking.spot | main_reactor | get_session_length get_session_valid_end_timestamp() is None, return 0
+[07/07 02:55:59.073] | INFO     | parking.spot.SPOT_1 | main_reactor | PSVL::enter_state(): session_id = 68c99bdb79ae11f1823a00c008947d30
+[07/07 02:55:59.074] | INFO     | detection  | main_reactor | spot_status: return False for spot SPOT_1
+[07/07 02:55:59.097] | INFO     | camera     | main_reactor | _send(): -> name: sock_1_2 message_len: 224 total_sent: 224
+[07/07 02:55:59.432] | INFO     | camera     | main_reactor | _recv(): <- request_len: 57 header_len: 8
+[07/07 02:55:59.433] | WARNING  | parking.spot.SPOT_1 | main_reactor | PSVL::enter_state(): removing entrance pictures
+[07/07 02:55:59.459] | INFO     | microcomm  | main_reactor | send_command(): MPS_CMD_SET_VIOLATION_LEDS (0x0020), '\x00\x00\x00' (1 q_len tx_seqno #198 tx_failed 4) STATE_IDLE
+[07/07 02:55:59.470] | INFO     | micro.vio_leds | main_reactor | Turning off LED for spot SPOT_1 args 0 0
+[07/07 02:55:59.471] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 198 (tx_seqno 198 tx_failed 4) MPS_REPLY_SET_VIOLATION_LEDS (0xFF20), ''
+[07/07 02:55:59.481] | INFO     | psv_fsm    | main_reactor | PSV_STATE_INIT_GRACE_PERIOD -> PSV_STATE_AVAILABLE (vehicle left)
+[07/07 02:55:59.489] | INFO     | ui.multi   | main_reactor | UISI: Vehicle left spot SPOT_1
+[07/07 02:55:59.491] | INFO     | parking.spot.SPOT_1 | main_reactor | roll_session(): Starting new session
+[07/07 02:55:59.491] | INFO     | parking.spot.SPOT_1 | main_reactor | roll_session(): destroyed PDO for session_id 68c99bdb79ae11f1823a00c008947d30
+[07/07 02:55:59.553] | INFO     | gui        | MainThread | QT: DualParkingSpotView: SPOT_1  transition to PSV_STATE_AVAILABLE (file:///tmp/tmpCEIDt7/sentry.egg-tmp/mps/resources/qml/components/DualParkingSpotView.qml:4843)
+[07/07 02:55:59.564] | INFO     | gui        | MainThread | QT: Home: transition to PSV_STATE_AVAILABLE (file:///tmp/tmpCEIDt7/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[07/07 02:55:59.598] | INFO     | gui        | MainThread | QT: ParkingSpotView: transition to PSV_STATE_AVAILABLE (file:///tmp/tmpCEIDt7/sentry.egg-tmp/mps/resources/qml/components/ParkingSpotView.qml:4247)
+[07/07 02:55:59.614] | INFO     | gui        | MainThread | QT: ParkingSpotView: PSV_STATE_AVAILABLE (file:///tmp/tmpCEIDt7/sentry.egg-tmp/mps/resources/qml/components/ParkingSpotView.qml:4100)
+[07/07 02:55:59.636] | INFO     | gui        | MainThread | QT: ParkingSpotView: transition to PSV_STATE_AVAILABLE (file:///tmp/tmpCEIDt7/sentry.egg-tmp/mps/resources/qml/components/ParkingSpotView.qml:4247)
+[07/07 02:55:59.652] | INFO     | gui        | MainThread | QT: ParkingSpotView: PSV_STATE_AVAILABLE (file:///tmp/tmpCEIDt7/sentry.egg-tmp/mps/resources/qml/components/ParkingSpotView.qml:4100)
+[07/07 02:55:59.687] | INFO     | parking.session | main_reactor | Spot SPOT_1 Session ID 6213648379af11f1823a00c008947d30 Concierge ID 8670
+[07/07 02:55:59.688] | INFO     | parking.session.SPOT_1 | main_reactor | __init__: Set base to None
+[07/07 02:55:59.688] | INFO     | parking.session | main_reactor | DEBUG MASKs: session False time False max False valid False true up False payment False
+[07/07 02:56:00.310] | INFO     | parking.session.SPOT_1 | main_reactor | set_max_time(): _session_maxtime_minutes 0 global_pay False reset _session_maxtime_minutes to 250
+[07/07 02:56:00.312] | INFO     | parking.session.SPOT_1 | main_reactor | set_max_time(): unstarted session - setting max to 250 was 250
+[07/07 02:56:00.312] | WARNING  | parking.session.SPOT_1 | main_reactor | set_max_time(): resetting _maxtime_minutes_possible from 250 to 250
+[07/07 02:56:00.313] | INFO     | parking.spot.SPOT_1 | main_reactor | roll_session(): Started session 6213648379af11f1823a00c008947d30 with max time of 250
+[07/07 02:56:00.313] | INFO     | parking.spot.SPOT_1 | main_reactor | roll_session(): ignoring SENTRY_COIN_JAR_FULL global_pay enabled
+[07/07 02:56:00.468] | INFO     | parking.spot.SPOT_1 | main_reactor | PSE::enter_state(): Turning off parker leds
+[07/07 02:56:00.469] | INFO     | micro.vio_leds | main_reactor | add_command 1 command {'cmd_arg_1': 0, 'cmd_arg_2': 0, 'spot_id': 'SPOT_1'}
+[07/07 02:56:00.470] | INFO     | micro.vio_leds | main_reactor | QUEUEING cmd #1: Turning off LED for spot SPOT_1 arg 1 0 arg 2 0
+[07/07 02:56:00.470] | INFO     | parking.spot.SPOT_1 | main_reactor | PARKING_STATE_VEHICLE_LEFT -> PARKING_STATE_EMPTY (PSVL - Empty spot)
+[07/07 02:56:00.471] | INFO     | parking.spot.SPOT_1 | main_reactor | PARKING_STATE_INIT_GRACE_PERIOD -> PARKING_STATE_VEHICLE_LEFT (PSIGP - Vehicle left)
+[07/07 02:56:00.474] | INFO     | micro.vio_leds | microcomm_reactor | MPS_CMD_SET_VIOLATION_LEDS result: MPS_REPLY_SET_VIOLATION_LEDS (0xFF20), ''
+[07/07 02:56:00.474] | INFO     | micro.vio_leds | microcomm_reactor | sub_command 1
+[07/07 02:56:00.475] | INFO     | micro.vio_leds | microcomm_reactor | COMMAND {'cmd_arg_1': 0, 'cmd_arg_2': 0, 'spot_id': 'SPOT_1'}
+[07/07 02:56:00.475] | INFO     | micro.vio_leds | microcomm_reactor | Sending queued cmd 0 0 for spot SPOT_1
+[07/07 02:56:00.476] | WARNING  | microcomm  | microcomm_reactor | send_command(): queued MPS_CMD_SET_VIOLATION_LEDS (0x0020), '\x00\x00\x00' (1 q_len tx_seqno #198 rx_seqno #0 tx_failed #4) processing_rx_msg STATE_WAIT_REPLY
+[07/07 02:56:00.501] | INFO     | microcomm  | microcomm_reactor | MicrocommStateWaitReply::event_reply_cmd(): Reply rcvd seqno 199 (tx_seqno 199 tx_failed 4) MPS_REPLY_SET_VIOLATION_LEDS (0xFF20), ''
+[07/07 02:56:00.508] | INFO     | parking.controller | main_reactor | calculate_hours_offset(): hour = 5
+[07/07 02:56:00.562] | INFO     | camera     | main_reactor | _send(): -> name: sock_1_2 message_len: 178 total_sent: 178
+[07/07 02:56:00.703] | INFO     | camera     | main_reactor | _recv(): <- request_len: 183 header_len: 8
+[07/07 02:56:00.704] | WARNING  | camera     | main_reactor | sb_send_msg(): Silver Bullet returned 0 ENTRANCE_PICTURE_IDS! camera_id: SPOT_1
+[07/07 02:56:00.705] | INFO     | parking.session.SPOT_1 | main_reactor | set_session_error_status(): Adding new error value 0x8 to 0x0, now 0x8
+[07/07 02:56:00.767] | INFO     | camera     | main_reactor | _send(): -> name: sock_1_2 message_len: 177 total_sent: 177
+[07/07 02:56:00.918] | INFO     | camera     | main_reactor | _recv(): <- request_len: 182 header_len: 8
+[07/07 02:56:00.953] | INFO     | camera     | main_reactor | _send(): -> name: sock_1_2 message_len: 174 total_sent: 174
+[07/07 02:56:01.064] | INFO     | camera     | main_reactor | _recv(): <- request_len: 238 header_len: 8
+[07/07 02:56:01.097] | INFO     | camera     | main_reactor | _send(): -> name: sock_1_2 message_len: 173 total_sent: 173
+[07/07 02:56:01.350] | INFO     | camera     | main_reactor | _recv(): <- request_len: 400 header_len: 8
+[07/07 02:56:01.470] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/parking_session_end-632378a879af11f1823a00c008947d30.json
+[07/07 02:56:01.491] | INFO     | camera     | main_reactor | _send(): -> name: sock_1_2 message_len: 189 total_sent: 189
+[07/07 02:56:01.502] | INFO     | micro.vio_leds | microcomm_reactor | MPS_CMD_SET_VIOLATION_LEDS result: MPS_REPLY_SET_VIOLATION_LEDS (0xFF20), ''
+[07/07 02:56:01.623] | INFO     | camera     | main_reactor | _recv(): <- request_len: 66 header_len: 8
+[07/07 02:56:02.348] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"void_timestamp": null, "violation": null, "merchant_validated": false, "merchant_id": 0, "exit_pictures": ["SPOT_1_1783392958870_62d4d25179af11f18b3b00c008947d30.jpg"], "lpr_plate": null, "entrance_plate_info": [], "maintenance_no": false, "handicap_pin": null, "free_to_reservation": false, "merchant_offer_name": "", "maintenance": false, "max_time_allowed": 250, "true_up": 0, "violation_reason": null, "session_error_status": "0x8", "payments": [], "violation_pictures": null, "card_error_details": [], "park_timestamp": "2026-07-07T02:55:49Z", "is_no_parking_now": false, "violation_plate_info": null, "maintenance_unenforced": false, "spot_identifier": "SPOT_1", "concierge_id": 2224, "close_timestamp": null, "total_time_purchased": 0, "sms": null, "warning_period": false, "exit_plate_info": [{"plate": "", "confidence": 0, "vehicle_present": false, "country": 104, "camera": "1", "location": [44.96332, -93.433912], "taken": "2026-07-07T02:55:58Z", "result_code": 9, "plate_rect": [[0, 0], [0, 0], [0, 0], [0, 0]]}], "exit_timestamp": "2026-07-07T02:55:59Z", "entrance_pictures": [], "email": null, "is_free_parking_now": false, "handicap": false, "coin_error_status": [], "parker_type": "normal", "no_fine_fee": 0, "additional_violations": [], "payment_history": [], "maintenance_free": false, "coin_error_details": [], "session_id": "68c99bdb79ae11f1823a00c008947d30", "card_error_status": [], "handicap_spot": false}, "class": "event", "queued_dt": "2026-07-07T02:56:01Z", "type": "parking_session_end", "id": "6cc0e8d0-06f9-4931-972e-e855d8067856", "device_id": "m:00C008947D30"}
+[07/07 02:56:02.465] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at rabbitmq.staging.sentry-link.com:5671 (200): Normal shutdown
+[07/07 02:56:02.935] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43323 rp_min_to_free 43323
+[07/07 02:56:06.595] | INFO     | rates      | SentryJSONRPCServer | grs(): resetting - cached-start=2026-06-06 21:46:49.567649 cached-duration=60 days, 0:00:00 cached-end=2026-08-05 21:46:49.567649 req-start=2026-06-05 21:46:49.567649 req-end=2026-08-05 21:46:49.567649
+[07/07 02:56:06.596] | INFO     | rates      | SentryJSONRPCServer | grs(): readjust new sch (cached-start=2026-06-06 21:56:06.596159 cached-duration=60 days, 0:00:00 cached-end=2026-08-05 21:46:49.567649 req-start=2026-06-05 21:46:49.567649 req-end=2026-08-05 21:46:49.567649) #days 60 days, 0:00:00
+[07/07 02:56:06.707] | INFO     | rates      | SentryJSONRPCServer | grs(): new scheduled_rate_blocks [<ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 06/06_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 06/07_00:00 - 06/07_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 06/08_00:00 - 06/08_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 06/09_00:00 - 06/09_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 06/10_00:00 - 06/10_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 06/11_00:00 - 06/11_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 06/12_00:00 - 06/12_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 06/13_00:00 - 06/13_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 06/14_00:00 - 06/14_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 06/15_00:00 - 06/15_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 06/16_00:00 - 06/16_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 06/17_00:00 - 06/17_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 06/18_00:00 - 06/18_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 06/19_00:00 - 06/19_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 06/20_00:00 - 06/20_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 06/21_00:00 - 06/21_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 06/22_00:00 - 06/22_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 06/23_00:00 - 06/23_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 06/24_00:00 - 06/24_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 06/25_00:00 - 06/25_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 06/26_00:00 - 06/26_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 06/27_00:00 - 06/27_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 06/28_00:00 - 06/28_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 06/29_00:00 - 06/29_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 06/30_00:00 - 06/30_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/01_00:00 - 07/01_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/02_00:00 - 07/02_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/03_00:00 - 07/03_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/04_00:00 - 07/04_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/05_00:00 - 07/05_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/06_00:00 - 07/06_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/07_00:00 - 07/07_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/08_00:00 - 07/08_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/09_00:00 - 07/09_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/10_00:00 - 07/10_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/11_00:00 - 07/11_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/12_00:00 - 07/12_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/13_00:00 - 07/13_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/14_00:00 - 07/14_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/15_00:00 - 07/15_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/16_00:00 - 07/16_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/17_00:00 - 07/17_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/18_00:00 - 07/18_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/19_00:00 - 07/19_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/20_00:00 - 07/20_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/21_00:00 - 07/21_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/22_00:00 - 07/22_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/23_00:00 - 07/23_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/24_00:00 - 07/24_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/25_00:00 - 07/25_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/26_00:00 - 07/26_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/27_00:00 - 07/27_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/28_00:00 - 07/28_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/29_00:00 - 07/29_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/30_00:00 - 07/30_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 07/31_00:00 - 07/31_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 08/01_00:00 - 08/01_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 08/02_00:00 - 08/02_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 08/03_00:00 - 08/03_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 08/04_00:00 - 08/04_23:59)>, <ScheduleRateBlock (-1)[P-2147483647]: 08/05_00:00 - 08/05_23:59)>]
+[07/07 02:56:06.712] | INFO     | rates      | SentryJSONRPCServer | grs(): compressed scheduled_rate_blocks [<ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)>]
+[07/07 02:56:06.713] | INFO     | rates      | SentryJSONRPCServer | grs(): final_scheduled_rate_blocks [<ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)>]
+[07/07 02:56:06.714] | INFO     | rates      | SentryJSONRPCServer | _schedule_changed(): 
+[07/07 02:56:06.714] | INFO     | mps.ui     | SentryJSONRPCServer | _on_rate_schedule_update(): handling rate schedule update
+[07/07 02:56:06.718] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.716101
+[07/07 02:56:06.721] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.718958
+[07/07 02:56:06.724] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.722310
+[07/07 02:56:06.727] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.725098
+[07/07 02:56:06.730] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:00
+[07/07 02:56:06.733] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.731271
+[07/07 02:56:06.736] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.734228
+[07/07 02:56:06.739] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.737291
+[07/07 02:56:06.742] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.740325
+[07/07 02:56:06.745] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:00
+[07/07 02:56:06.749] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.746879
+[07/07 02:56:06.752] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.750140
+[07/07 02:56:06.755] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.753270
+[07/07 02:56:06.758] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.756488
+[07/07 02:56:06.761] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.759550
+[07/07 02:56:06.765] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:00
+[07/07 02:56:06.766] | INFO     | gui        | SentryJSONRPCServer | rate_schedule_changed_callback(): updating self.rate_schedule
+[07/07 02:56:06.767] | INFO     | rates      | SentryJSONRPCServer | _schedule_changed(): 
+[07/07 02:56:06.767] | INFO     | mps.ui     | SentryJSONRPCServer | _on_rate_schedule_update(): handling rate schedule update
+[07/07 02:56:06.771] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.768922
+[07/07 02:56:06.774] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.771810
+[07/07 02:56:06.777] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.774750
+[07/07 02:56:06.783] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:00
+[07/07 02:56:06.786] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:00
+[07/07 02:56:06.789] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:00
+[07/07 02:56:06.793] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.779461
+[07/07 02:56:06.796] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:00
+[07/07 02:56:06.799] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.797279
+[07/07 02:56:06.804] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 01:27:00
+[07/07 02:56:06.807] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.805195
+[07/07 02:56:06.810] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:00
+[07/07 02:56:06.813] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.811562
+[07/07 02:56:06.802] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.800136
+[07/07 02:56:06.817] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.814973
+[07/07 02:56:06.820] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.817722
+[07/07 02:56:06.822] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:00
+[07/07 02:56:06.826] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.823966
+[07/07 02:56:06.829] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.827105
+[07/07 02:56:06.832] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.814326
+[07/07 02:56:06.835] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:00
+[07/07 02:56:06.838] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.835829
+[07/07 02:56:06.841] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.838752
+[07/07 02:56:06.844] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.829900
+[07/07 02:56:06.847] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.844820
+[07/07 02:56:06.850] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.847906
+[07/07 02:56:06.853] | ERROR    | rates      | SentryJSONRPCServer | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:00
+[07/07 02:56:06.857] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:00
+[07/07 02:56:06.859] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:00
+[07/07 02:56:06.863] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.860785
+[07/07 02:56:06.866] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.863904
+[07/07 02:56:06.869] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.866957
+[07/07 02:56:06.872] | INFO     | gui        | SentryJSONRPCServer | rate_schedule_changed_callback(): updating self.rate_schedule
+[07/07 02:56:06.872] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.869896
+[07/07 02:56:06.891] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.876995
+[07/07 02:56:06.893] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:00
+[07/07 02:56:06.896] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:00
+[07/07 02:56:06.901] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.899206
+[07/07 02:56:06.955] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:00
+[07/07 02:56:06.958] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:00
+[07/07 02:56:06.961] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:00
+[07/07 02:56:06.965] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 01:27:00
+[07/07 02:56:06.969] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.966591
+[07/07 02:56:06.972] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:00
+[07/07 02:56:06.975] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.972877
+[07/07 02:56:06.978] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.975920
+[07/07 02:56:06.981] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:00
+[07/07 02:56:06.984] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.981950
+[07/07 02:56:06.987] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.985170
+[07/07 02:56:06.992] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:00
+[07/07 02:56:06.995] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:00
+[07/07 02:56:06.998] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.995811
+[07/07 02:56:07.001] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:06.998731
+[07/07 02:56:07.004] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:07.001717
+[07/07 02:56:07.007] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:07.004841
+[07/07 02:56:07.011] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:07.008662
+[07/07 02:56:07.014] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:00
+[07/07 02:56:07.017] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:00
+[07/07 02:56:07.020] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:07.018245
+[07/07 02:56:11.171] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_INIT_GRACE_PERIOD value 300
+[07/07 02:56:11.192] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 137 total_sent: 137
+[07/07 02:56:11.802] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_NO_PARKING_GRACE_PERIOD value 60
+[07/07 02:56:11.825] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 142 total_sent: 142
+[07/07 02:56:12.350] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_VIOLATION_GRACE_PERIOD value 60
+[07/07 02:56:12.380] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 141 total_sent: 141
+[07/07 02:56:12.936] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_FREE_TIME_ON_FIRST_PAYMENT value 0
+[07/07 02:56:12.957] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 144 total_sent: 144
+[07/07 02:56:13.488] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_ACCEPT_COIN_NO_SPOT_SCREEN_TIMEOUT value 5
+[07/07 02:56:13.509] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 152 total_sent: 152
+[07/07 02:56:14.066] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_PAY_BY_PLATE value False
+[07/07 02:56:14.088] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 134 total_sent: 134
+[07/07 02:56:14.283] | INFO     | lib.seco   | MainThread | SecoLib()::get_version(): SECO lib version is:  0x1140000L
+[07/07 02:56:14.286] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:14.284497
+[07/07 02:56:14.289] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:14.287614
+[07/07 02:56:14.615] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_DISCONNECT_FREE value True
+[07/07 02:56:14.636] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 136 total_sent: 136
+[07/07 02:56:15.204] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_SHOW_UNLOCK_TIME value True
+[07/07 02:56:15.226] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 137 total_sent: 137
+[07/07 02:56:15.777] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_UNLOCK_ENABLED value True
+[07/07 02:56:15.798] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 135 total_sent: 135
+[07/07 02:56:16.319] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_TRUEUP_ENABLED value False
+[07/07 02:56:16.341] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 136 total_sent: 136
+[07/07 02:56:16.910] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_UNLOCK_TIME value 1
+[07/07 02:56:16.931] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 129 total_sent: 129
+[07/07 02:56:17.493] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_UNLOCK_MAX value 1
+[07/07 02:56:17.515] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 128 total_sent: 128
+[07/07 02:56:18.036] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_IMAGE_SEND_BEFORE_VIOLATION value 45
+[07/07 02:56:18.057] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 146 total_sent: 146
+[07/07 02:56:18.562] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_MAXIMUM_DURATION_MINUTES value 240
+[07/07 02:56:18.587] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 144 total_sent: 144
+[07/07 02:56:19.129] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_SHORT_SESSION value 15
+[07/07 02:56:19.151] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 132 total_sent: 132
+[07/07 02:56:19.682] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting PARKING_RATE_DEFAULT_MINIMUM_TIME value 60
+[07/07 02:56:20.252] | INFO     | setting_service | SentryJSONRPCServer | set_setting: setting SYS_OUT_OF_SERVICE value False
+[07/07 02:56:20.275] | INFO     | camera     | SentryJSONRPCServer | _send(): -> name: sock_1_2 message_len: 132 total_sent: 132
+[07/07 02:56:31.278] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[07/07 02:56:31.279] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[07/07 02:56:31.882] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[07/07 02:56:31.986] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:31.984023
+[07/07 02:56:31.989] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:31.987026
+[07/07 02:56:31.992] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:31.989769
+[07/07 02:56:31.995] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:31.992880
+[07/07 02:56:31.998] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:00
+[07/07 02:56:32.001] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:31.999509
+[07/07 02:56:32.005] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:32.002613
+[07/07 02:56:32.008] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:32.005966
+[07/07 02:56:32.011] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:32.009103
+[07/07 02:56:32.014] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:00
+[07/07 02:56:32.018] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:32.015848
+[07/07 02:56:32.022] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:32.020058
+[07/07 02:56:32.025] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:32.022954
+[07/07 02:56:32.030] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:32.028003
+[07/07 02:56:32.033] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:32.031189
+[07/07 02:56:32.036] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:00
+[07/07 02:56:32.042] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:00
+[07/07 02:56:32.045] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:00
+[07/07 02:56:32.048] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:00
+[07/07 02:56:32.052] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 01:27:00
+[07/07 02:56:32.055] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:32.053006
+[07/07 02:56:32.058] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:00
+[07/07 02:56:32.060] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:32.058879
+[07/07 02:56:32.063] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:32.061671
+[07/07 02:56:32.066] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:00
+[07/07 02:56:32.069] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:32.067119
+[07/07 02:56:32.072] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:32.069899
+[07/07 02:56:32.076] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:00
+[07/07 02:56:32.079] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:00
+[07/07 02:56:32.085] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:32.082738
+[07/07 02:56:32.087] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:32.085584
+[07/07 02:56:32.090] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:32.088429
+[07/07 02:56:32.093] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:32.091250
+[07/07 02:56:32.096] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:32.094749
+[07/07 02:56:32.099] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:00
+[07/07 02:56:32.102] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:00
+[07/07 02:56:32.105] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:56:32.103307
+[07/07 02:57:01.946] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:57:01.944201
+[07/07 02:57:01.949] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:57:01.947354
+[07/07 02:57:01.952] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:57:01.950202
+[07/07 02:57:01.960] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:57:01.953015
+[07/07 02:57:01.964] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:57:00
+[07/07 02:57:01.967] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:57:01.965237
+[07/07 02:57:01.971] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:57:01.968181
+[07/07 02:57:01.974] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:57:01.971780
+[07/07 02:57:01.977] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:57:01.974718
+[07/07 02:57:01.981] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:57:00
+[07/07 02:57:01.984] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:57:01.982545
+[07/07 02:57:01.988] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:57:01.985883
+[07/07 02:57:01.991] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:57:01.988865
+[07/07 02:57:01.997] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:57:01.991862
+[07/07 02:57:02.000] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:57:01.997905
+[07/07 02:57:02.004] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:57:00
+[07/07 02:57:02.023] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:57:00
+[07/07 02:57:02.026] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:57:00
+[07/07 02:57:02.034] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:57:00
+[07/07 02:57:02.038] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 01:28:00
+[07/07 02:57:02.041] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:57:02.039514
+[07/07 02:57:02.044] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:57:00
+[07/07 02:57:02.047] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:57:02.045488
+[07/07 02:57:02.050] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:57:02.048400
+[07/07 02:57:02.053] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:57:00
+[07/07 02:57:02.056] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:57:02.053962
+[07/07 02:57:02.059] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:57:02.057013
+[07/07 02:57:02.063] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:57:00
+[07/07 02:57:02.066] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:57:00
+[07/07 02:57:02.069] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:57:02.067153
+[07/07 02:57:02.072] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:57:02.069981
+[07/07 02:57:02.075] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:57:02.072954
+[07/07 02:57:02.078] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:57:02.075856
+[07/07 02:57:02.081] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:57:02.079447
+[07/07 02:57:02.084] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:57:00
+[07/07 02:57:02.087] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:57:00
+[07/07 02:57:02.090] | ERROR    | rates      | MainThread | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:57:02.087904
+[07/07 02:57:02.911] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:57:00
+[07/07 02:57:02.914] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:57:00
+[07/07 02:57:02.916] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 01:02:00
+[07/07 02:57:02.919] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 01:12:00
+[07/07 02:57:02.921] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 01:27:00
+[07/07 02:57:02.924] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 01:47:00
+[07/07 02:57:02.926] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 02:12:00
+[07/07 02:57:02.929] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 02:42:00
+[07/07 02:57:02.932] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 03:17:00
+[07/07 02:57:02.934] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 03:57:00
+[07/07 02:57:02.937] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 04:42:00
+[07/07 02:57:02.940] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 05:32:00
+[07/07 02:57:02.943] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 06:27:00
+[07/07 02:57:02.946] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 07:27:00
+[07/07 02:57:02.949] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 08:32:00
+[07/07 02:57:02.952] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 09:42:00
+[07/07 02:57:02.954] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 10:57:00
+[07/07 02:57:02.957] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 12:17:00
+[07/07 02:57:02.960] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 13:42:00
+[07/07 02:57:02.963] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 15:12:00
+[07/07 02:57:02.967] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 16:47:00
+[07/07 02:57:02.969] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 18:27:00
+[07/07 02:57:02.972] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 20:12:00
+[07/07 02:57:02.976] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 22:02:00
+[07/07 02:57:02.979] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 23:57:00
+[07/07 02:57:02.982] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-17 01:57:00
+[07/07 02:57:02.984] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-17 04:02:00
+[07/07 02:57:02.987] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-17 06:12:00
+[07/07 02:57:02.990] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-17 08:27:00
+[07/07 02:57:02.993] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-17 10:47:00
+[07/07 02:57:02.997] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-17 13:12:00
+[07/07 02:57:03.000] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-17 15:42:00
+[07/07 02:57:03.003] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-17 18:17:00
+[07/07 02:57:03.006] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-17 20:57:00
+[07/07 02:57:03.009] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-17 23:42:00
+[07/07 02:57:03.011] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-18 02:32:00
+[07/07 02:57:03.015] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-18 05:27:00
+[07/07 02:57:03.018] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-18 08:27:00
+[07/07 02:57:03.021] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-18 11:32:00
+[07/07 02:57:03.023] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-18 14:42:00
+[07/07 02:57:03.026] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-18 17:57:00
+[07/07 02:57:03.028] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-18 21:17:00
+[07/07 02:57:03.032] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-19 00:42:00
+[07/07 02:57:03.035] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-19 04:12:00
+[07/07 02:57:03.038] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-19 07:47:00
+[07/07 02:57:03.041] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-19 11:27:00
+[07/07 02:57:03.044] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-19 15:12:00
+[07/07 02:57:03.046] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-19 19:02:00
+[07/07 02:57:03.049] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-19 22:57:00
+[07/07 02:57:03.051] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-20 02:57:00
+[07/07 02:57:03.054] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-20 07:02:00
+[07/07 02:57:03.057] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-20 11:12:00
+[07/07 02:57:03.059] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-20 15:27:00
+[07/07 02:57:03.062] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-20 19:47:00
+[07/07 02:57:03.064] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-21 00:12:00
+[07/07 02:57:03.067] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-21 04:42:00
+[07/07 02:57:03.070] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-21 09:17:00
+[07/07 02:57:03.072] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-21 13:57:00
+[07/07 02:57:03.075] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-21 18:42:00
+[07/07 02:57:03.078] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-21 23:32:00
+[07/07 02:57:03.080] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-22 04:27:00
+[07/07 02:57:03.083] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-22 09:27:00
+[07/07 02:57:03.085] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-22 14:32:00
+[07/07 02:57:03.088] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-22 19:42:00
+[07/07 02:57:03.090] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-23 00:57:00
+[07/07 02:57:03.093] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-23 06:17:00
+[07/07 02:57:03.095] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-23 11:42:00
+[07/07 02:57:03.098] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-23 17:12:00
+[07/07 02:57:03.101] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-23 22:47:00
+[07/07 02:57:03.103] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-24 04:27:00
+[07/07 02:57:03.106] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-24 10:12:00
+[07/07 02:57:03.109] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-24 16:02:00
+[07/07 02:57:03.111] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-24 21:57:00
+[07/07 02:57:03.114] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:57:00
+[07/07 02:57:03.117] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:57:00
+[07/07 02:57:03.118] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43322 rp_min_to_free 43322
+[07/07 02:57:03.120] | ERROR    | rates      | main_reactor | _check_and_update_default_rb(): no overlaying rate block - using default (-1) srb <ScheduleRateBlock (-1)[P-2147483647]: 06/06_00:00 - 08/05_23:59)> curdt 2026-07-16 00:57:03.118562
+[07/07 02:57:30.439] | INFO     | rss        | rss_thread | _get_rss_feeds
+[07/07 02:57:32.309] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[07/07 02:57:32.313] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[07/07 02:57:37.549] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req Disabled gatelot blob logs Target: u'rpc_file_io'
+[07/07 02:57:37.570] | INFO     | file_io    | SentryJSONRPCServer | save: filename /media/realroot/ads/parking_schedule_weekly.png
+[07/07 02:57:37.710] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint file_io response {"jsonrpc": "2.0", "id": 77864087, "result": true}
+[07/07 02:57:37.776] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 77864087, "result": true} Queue amq.gen-2-rmcBVyIiYIhKo1MxqeRg #2692
+[07/07 02:57:37.897] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req Disabled gatelot blob logs Target: u'rpc_parking'
+[07/07 02:57:37.933] | INFO     | parking_serv | SentryJSONRPCServer | parking_service: add_rate_blocks()
+[07/07 02:57:37.944] | INFO     | FixedRate  | SentryJSONRPCServer | FR():__init__(): __repr__(): <FixedRate (PARKER_TYPE_NORMAL): 25¢:15:240, (PARKER_TYPE_HANDICAP): 25¢:30:240, (PARKER_TYPE_SENIOR): 25¢:15:240, (PARKER_TYPE_MUNI): 25¢:15:240, (PARKER_TYPE_VETERAN): 25¢:15:240, >
+[07/07 02:57:37.945] | INFO     | rate       | SentryJSONRPCServer | R()::__init__(): <RateBlock (fixed638470)[P7]: 04/30-07/06, 00:00-23:59-240-0-15-False-True-60-100-60-<mps.parking.rate_models.rate_types.RateBlockSchedule object at 0x9108834c>>
+[07/07 02:57:37.946] | INFO     | fixed_rb   | SentryJSONRPCServer | FRB()::__init__(): __repr__(): <RateBlock (fixed638470)[P7]: 04/30-07/06, 00:00-23:59-240-0-15-False-True-60-100-60-<mps.parking.rate_models.rate_types.RateBlockSchedule object at 0x9108834c>> __str__(): rate <FixedRate (PARKER_TYPE_NORMAL): 25¢:15:240, (PARKER_TYPE_HANDICAP): 25¢:30:240, (PARKER_TYPE_SENIOR): 25¢:15:240, (PARKER_TYPE_MUNI): 25¢:15:240, (PARKER_TYPE_VETERAN): 25¢:15:240, > max_time 240 first_payment_free_time 0 card_increment_time 15                 default_minimum_cost 100 default_minimum_time 60 disconnect_free True                 mins_accept_free_before_rate 60 unenforced False
+[07/07 02:57:37.946] | INFO     | parking_serv | SentryJSONRPCServer | add_rate_blocks(): Adding to rate_provider rate block: rate <FixedRate (PARKER_TYPE_NORMAL): 25¢:15:240, (PARKER_TYPE_HANDICAP): 25¢:30:240, (PARKER_TYPE_SENIOR): 25¢:15:240, (PARKER_TYPE_MUNI): 25¢:15:240, (PARKER_TYPE_VETERAN): 25¢:15:240, > max_time 240 first_payment_free_time 0 card_increment_time 15                 default_minimum_cost 100 default_minimum_time 60 disconnect_free True                 mins_accept_free_before_rate 60 unenforced False
+[07/07 02:57:37.947] | INFO     | rates      | SentryJSONRPCServer | RateBlocksPDO()::add_rate_block(): rate_blocks [<RateBlock (fixed638470)[P7]: 04/30-07/06, 00:00-23:59-240-0-15-False-True-60-100-60-<mps.parking.rate_models.rate_types.RateBlockSchedule object at 0x9108834c>>, <RateBlock (fixed-1)[P-2147483647]: null-null, 00:00-23:59-120-0-30-False-True-60-100-120-<mps.parking.rate_models.rate_types.RateBlockSchedule object at 0xb3aaccac>>]
+[07/07 02:57:37.983] | INFO     | rates      | SentryJSONRPCServer | grs(): resetting - cached-start=2026-06-06 21:56:06.596159 cached-duration=60 days, 0:00:00 cached-end=2026-08-05 21:56:06.596159 req-start=2026-06-05 21:56:06.596159 req-end=2026-08-05 21:56:06.596159
+[07/07 02:57:37.983] | INFO     | rates      | SentryJSONRPCServer | grs(): readjust new sch (cached-start=2026-06-06 21:57:37.983657 cached-duration=60 days, 0:00:00 cached-end=2026-08-05 21:56:06.596159 req-start=2026-06-05 21:56:06.596159 req-end=2026-08-05 21:56:06.596159) #days 60 days, 0:00:00
+[07/07 02:57:38.292] | INFO     | rates      | SentryJSONRPCServer | grs(): new scheduled_rate_blocks [<ScheduleRateBlock (638470)[P7]: 06/06_00:00 - 06/06_23:59)>, <ScheduleRateBlock (638470)[P7]: 06/07_00:00 - 06/07_23:59)>, <ScheduleRateBlock (638470)[P7]: 06/08_00:00 - 06/08_23:59)>, <ScheduleRateBlock (638470)[P7]: 06/09_00:00 - 06/09_23:59)>, <ScheduleRateBlock (638470)[P7]: 06/10_00:00 - 06/10_23:59)>, <ScheduleRateBlock (638470)[P7]: 06/11_00:00 - 06/11_23:59)>, <ScheduleRateBlock (638470)[P7]: 06/12_00:00 - 06/12_23:59)>, <ScheduleRateBlock (638470)[P7]: 06/13_00:00 - 06/13_23:59)>, <ScheduleRateBlock (638470)[P7]: 06/14_00:00 - 06/14_23:59)>, <ScheduleRateBlock (638470)[P7]: 06/15_00:00 - 06/15_23:59)>, <ScheduleRateBlock (638470)[P7]: 06/16_00:00 - 06/16_23:59)>, <ScheduleRateBlock (638470)[P7]: 06/17_00:00 - 06/17_23:59)>, <ScheduleRateBlock (638470)[P7]: 06/18_00:00 - 06/18_23:59)>, <ScheduleRateBlock (638470)[P7]: 06/19_00:00 - 06/19_23:59)>, <ScheduleRateBlock (638470)[P7]: 06/20_00:00 - 06/20_23:59)>, <ScheduleRateBlock (638470)[P7]: 06/21_00:00 - 06/21_23:59)>, <ScheduleRateBlock (638470)[P7]: 06/22_00:00 - 06/22_23:59)>, <ScheduleRateBlock (638470)[P7]: 06/23_00:00 - 06/23_23:59)>, <ScheduleRateBlock (638470)[P7]: 06/24_00:00 - 06/24_23:59)>, <ScheduleRateBlock (638470)[P7]: 06/25_00:00 - 06/25_23:59)>, <ScheduleRateBlock (638470)[P7]: 06/26_00:00 - 06/26_23:59)>, <ScheduleRateBlock (638470)[P7]: 06/27_00:00 - 06/27_23:59)>, <ScheduleRateBlock (638470)[P7]: 06/28_00:00 - 06/28_23:59)>, <ScheduleRateBlock (638470)[P7]: 06/29_00:00 - 06/29_23:59)>, <ScheduleRateBlock (638470)[P7]: 06/30_00:00 - 06/30_23:59)>, <ScheduleRateBlock (638470)[P7]: 07/01_00:00 - 07/01_23:59)>, <ScheduleRateBlock (638470)[P7]: 07/02_00:00 - 07/02_23:59)>, <ScheduleRateBlock (638470)[P7]: 07/03_00:00 - 07/03_23:59)>, <ScheduleRateBlock (638470)[P7]: 07/04_00:00 - 07/04_23:59)>, <ScheduleRateBlock (638470)[P7]: 07/05_00:00 - 07/05_23:59)>, <ScheduleRateBlock (638470)[P7]: 07/06_00:00 - 07/06_23:59)>, <ScheduleRateBlock (638470)[P7]: 07/07_00:00 - 07/07_23:59)>, <ScheduleRateBlock (638470)[P7]: 07/08_00:00 - 07/08_23:59)>, <ScheduleRateBlock (638470)[P7]: 07/09_00:00 - 07/09_23:59)>, <ScheduleRateBlock (638470)[P7]: 07/10_00:00 - 07/10_23:59)>, <ScheduleRateBlock (638470)[P7]: 07/11_00:00 - 07/11_23:59)>, <ScheduleRateBlock (638470)[P7]: 07/12_00:00 - 07/12_23:59)>, <ScheduleRateBlock (638470)[P7]: 07/13_00:00 - 07/13_23:59)>, <ScheduleRateBlock (638470)[P7]: 07/14_00:00 - 07/14_23:59)>, <ScheduleRateBlock (638470)[P7]: 07/15_00:00 - 07/15_23:59)>, <ScheduleRateBlock (638470)[P7]: 07/16_00:00 - 07/16_23:59)>, <ScheduleRateBlock (638470)[P7]: 07/17_00:00 - 07/17_23:59)>, <ScheduleRateBlock (638470)[P7]: 07/18_00:00 - 07/18_23:59)>, <ScheduleRateBlock (638470)[P7]: 07/19_00:00 - 07/19_23:59)>, <ScheduleRateBlock (638470)[P7]: 07/20_00:00 - 07/20_23:59)>, <ScheduleRateBlock (638470)[P7]: 07/21_00:00 - 07/21_23:59)>, <ScheduleRateBlock (638470)[P7]: 07/22_00:00 - 07/22_23:59)>, <ScheduleRateBlock (638470)[P7]: 07/23_00:00 - 07/23_23:59)>, <ScheduleRateBlock (638470)[P7]: 07/24_00:00 - 07/24_23:59)>, <ScheduleRateBlock (638470)[P7]: 07/25_00:00 - 07/25_23:59)>, <ScheduleRateBlock (638470)[P7]: 07/26_00:00 - 07/26_23:59)>, <ScheduleRateBlock (638470)[P7]: 07/27_00:00 - 07/27_23:59)>, <ScheduleRateBlock (638470)[P7]: 07/28_00:00 - 07/28_23:59)>, <ScheduleRateBlock (638470)[P7]: 07/29_00:00 - 07/29_23:59)>, <ScheduleRateBlock (638470)[P7]: 07/30_00:00 - 07/30_23:59)>, <ScheduleRateBlock (638470)[P7]: 07/31_00:00 - 07/31_23:59)>, <ScheduleRateBlock (638470)[P7]: 08/01_00:00 - 08/01_23:59)>, <ScheduleRateBlock (638470)[P7]: 08/02_00:00 - 08/02_23:59)>, <ScheduleRateBlock (638470)[P7]: 08/03_00:00 - 08/03_23:59)>, <ScheduleRateBlock (638470)[P7]: 08/04_00:00 - 08/04_23:59)>, <ScheduleRateBlock (638470)[P7]: 08/05_00:00 - 08/05_23:59)>]
+[07/07 02:57:38.299] | INFO     | rates      | SentryJSONRPCServer | grs(): compressed scheduled_rate_blocks [<ScheduleRateBlock (638470)[P7]: 06/06_00:00 - 08/05_23:59)>]
+[07/07 02:57:38.299] | INFO     | rates      | SentryJSONRPCServer | grs(): final_scheduled_rate_blocks [<ScheduleRateBlock (638470)[P7]: 06/06_00:00 - 08/05_23:59)>]
+[07/07 02:57:38.300] | INFO     | rates      | SentryJSONRPCServer | _schedule_changed(): 
+[07/07 02:57:38.300] | INFO     | mps.ui     | SentryJSONRPCServer | _on_rate_schedule_update(): handling rate schedule update
+[07/07 02:57:38.322] | INFO     | gui        | SentryJSONRPCServer | rate_schedule_changed_callback(): updating self.rate_schedule
+[07/07 02:57:38.323] | INFO     | rates      | SentryJSONRPCServer | _schedule_changed(): 
+[07/07 02:57:38.323] | INFO     | mps.ui     | SentryJSONRPCServer | _on_rate_schedule_update(): handling rate schedule update
+[07/07 02:57:38.355] | INFO     | gui        | SentryJSONRPCServer | rate_schedule_changed_callback(): updating self.rate_schedule
+[07/07 02:57:38.367] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint parking response {"jsonrpc": "2.0", "id": 77864088, "result": true}
+[07/07 02:57:38.435] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 77864088, "result": true} Queue amq.gen-o1gWnXDacHpQB0AY3KG_ig #2693
+[07/07 02:58:01.284] | INFO     | micro.wdog | microcomm_reactor | qml_ping_sender(): Sending QML ping
+[07/07 02:58:03.001] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43321 rp_min_to_free 43321
+[07/07 02:58:11.512] | INFO     | watchdog   | main_reactor | get_cpu_load(): SYS_LOAD_CHECK_THRESHOLD 6.0 exceeded after SYS_LOAD_CHECKIN_INTERVAL 180 seconds, resetting SYS_LOAD_CHECK_LAST_THRESHOLD_EXCEEDED from 2026-07-07 02:27:41.434280 to 2026-07-07 02:58:11.511731 current cpu_load 6.44
+[07/07 02:58:11.521] | CRITICAL | watchdog   | main_reactor | *** STACKTRACE (cpu_load) - START ***
+[07/07 02:58:11.522] | CRITICAL | watchdog   | main_reactor | ______________________________________________________________________________________________________________
+[07/07 02:58:11.523] | CRITICAL | watchdog   | main_reactor | Threading active_count(): 16  current_thread(): <ReactorComponentAdapter(main_reactor, started -1515193536)>
+[07/07 02:58:11.523] | CRITICAL | watchdog   | main_reactor | ______________________________________________________________________________________________________________
+[07/07 02:58:11.524] | CRITICAL | watchdog   | main_reactor | (cpu_load) Thread Info: <_Timer(rss_thread, started daemon -1615885504)>
+[07/07 02:58:11.524] | CRITICAL | watchdog   | main_reactor | (cpu_load) ThreadID: -1615885504  is_alive(): True
+[07/07 02:58:11.524] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 774, in __bootstrap
+[07/07 02:58:11.524] | CRITICAL | watchdog   | main_reactor |   self.__bootstrap_inner()
+[07/07 02:58:11.525] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+[07/07 02:58:11.525] | CRITICAL | watchdog   | main_reactor |   self.run()
+[07/07 02:58:11.525] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 1073, in run
+[07/07 02:58:11.526] | CRITICAL | watchdog   | main_reactor |   self.function(*self.args, **self.kwargs)
+[07/07 02:58:11.526] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/ui/gui/gui.py", line 1186, in _get_rss_feeds
+[07/07 02:58:11.531] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/ui/gui/gui.py", line 1115, in _parseRSS
+[07/07 02:58:11.531] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/dist-packages/feedparser.py", line 3897, in parse
+[07/07 02:58:11.531] | CRITICAL | watchdog   | main_reactor |   f = _open_resource(url_file_stream_or_string, etag, modified, agent, referrer, handlers, request_headers)
+[07/07 02:58:11.532] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/dist-packages/feedparser.py", line 3013, in _open_resource
+[07/07 02:58:11.532] | CRITICAL | watchdog   | main_reactor |   return opener.open(request)
+[07/07 02:58:11.533] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/urllib2.py", line 435, in open
+[07/07 02:58:11.533] | CRITICAL | watchdog   | main_reactor |   response = meth(req, response)
+[07/07 02:58:11.533] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/urllib2.py", line 548, in http_response
+[07/07 02:58:11.534] | CRITICAL | watchdog   | main_reactor |   'http', request, response, code, msg, hdrs)
+[07/07 02:58:11.534] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/urllib2.py", line 467, in error
+[07/07 02:58:11.534] | CRITICAL | watchdog   | main_reactor |   result = self._call_chain(*args)
+[07/07 02:58:11.535] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/urllib2.py", line 407, in _call_chain
+[07/07 02:58:11.535] | CRITICAL | watchdog   | main_reactor |   result = func(*args)
+[07/07 02:58:11.536] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/dist-packages/feedparser.py", line 2915, in http_error_301
+[07/07 02:58:11.536] | CRITICAL | watchdog   | main_reactor |   code, msg, hdrs)
+[07/07 02:58:11.536] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/urllib2.py", line 654, in http_error_302
+[07/07 02:58:11.537] | CRITICAL | watchdog   | main_reactor |   return self.parent.open(new, timeout=req.timeout)
+[07/07 02:58:11.537] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/urllib2.py", line 429, in open
+[07/07 02:58:11.537] | CRITICAL | watchdog   | main_reactor |   response = self._open(req, data)
+[07/07 02:58:11.538] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/urllib2.py", line 447, in _open
+[07/07 02:58:11.538] | CRITICAL | watchdog   | main_reactor |   '_open', req)
+[07/07 02:58:11.538] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/urllib2.py", line 407, in _call_chain
+[07/07 02:58:11.539] | CRITICAL | watchdog   | main_reactor |   result = func(*args)
+[07/07 02:58:11.539] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/urllib2.py", line 1241, in https_open
+[07/07 02:58:11.542] | CRITICAL | watchdog   | main_reactor |   context=self._context)
+[07/07 02:58:11.543] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/urllib2.py", line 1201, in do_open
+[07/07 02:58:11.543] | CRITICAL | watchdog   | main_reactor |   r = h.getresponse(buffering=True)
+[07/07 02:58:11.544] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/httplib.py", line 1136, in getresponse
+[07/07 02:58:11.544] | CRITICAL | watchdog   | main_reactor |   response.begin()
+[07/07 02:58:11.545] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/httplib.py", line 453, in begin
+[07/07 02:58:11.545] | CRITICAL | watchdog   | main_reactor |   version, status, reason = self._read_status()
+[07/07 02:58:11.545] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/httplib.py", line 409, in _read_status
+[07/07 02:58:11.546] | CRITICAL | watchdog   | main_reactor |   line = self.fp.readline(_MAXLINE + 1)
+[07/07 02:58:11.546] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/socket.py", line 480, in readline
+[07/07 02:58:11.547] | CRITICAL | watchdog   | main_reactor |   data = self._sock.recv(self._rbufsize)
+[07/07 02:58:11.547] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/ssl.py", line 756, in recv
+[07/07 02:58:11.547] | CRITICAL | watchdog   | main_reactor |   return self.read(buflen)
+[07/07 02:58:11.548] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/ssl.py", line 643, in read
+[07/07 02:58:11.548] | CRITICAL | watchdog   | main_reactor |   v = self._sslobj.read(len)
+[07/07 02:58:11.549] | CRITICAL | watchdog   | main_reactor | ______________________________________________________________________________________________________________
+[07/07 02:58:11.549] | CRITICAL | watchdog   | main_reactor | (cpu_load) Thread Info: <Thread(RabbitMQ RPC, started daemon -1895826624)>
+[07/07 02:58:11.554] | CRITICAL | watchdog   | main_reactor | (cpu_load) ThreadID: -1895826624  is_alive(): True
+[07/07 02:58:11.555] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 774, in __bootstrap
+[07/07 02:58:11.555] | CRITICAL | watchdog   | main_reactor |   self.__bootstrap_inner()
+[07/07 02:58:11.556] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+[07/07 02:58:11.556] | CRITICAL | watchdog   | main_reactor |   self.run()
+[07/07 02:58:11.557] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 754, in run
+[07/07 02:58:11.557] | CRITICAL | watchdog   | main_reactor |   self.__target(*self.__args, **self.__kwargs)
+[07/07 02:58:11.558] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/remote/idigi.py", line 2422, in run
+[07/07 02:58:11.558] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/dist-packages/pika/adapters/blocking_connection.py", line 1681, in start_consuming
+[07/07 02:58:11.559] | CRITICAL | watchdog   | main_reactor |   self.connection.process_data_events(time_limit=None)
+[07/07 02:58:11.559] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/dist-packages/pika/adapters/blocking_connection.py", line 647, in process_data_events
+[07/07 02:58:11.560] | CRITICAL | watchdog   | main_reactor |   self._flush_output(common_terminator)
+[07/07 02:58:11.560] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/dist-packages/pika/adapters/blocking_connection.py", line 410, in _flush_output
+[07/07 02:58:11.561] | CRITICAL | watchdog   | main_reactor |   self._impl.ioloop.poll()
+[07/07 02:58:11.561] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/dist-packages/pika/adapters/select_connection.py", line 590, in poll
+[07/07 02:58:11.562] | CRITICAL | watchdog   | main_reactor |   events = self._poll.poll(self.get_next_deadline())
+[07/07 02:58:11.562] | CRITICAL | watchdog   | main_reactor | ______________________________________________________________________________________________________________
+[07/07 02:58:11.563] | CRITICAL | watchdog   | main_reactor | (cpu_load) Thread Info: <ReactorComponentAdapter(main_reactor, started -1515193536)>
+[07/07 02:58:11.563] | CRITICAL | watchdog   | main_reactor | (cpu_load) ThreadID: -1515193536  is_alive(): True
+[07/07 02:58:11.564] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 774, in __bootstrap
+[07/07 02:58:11.564] | CRITICAL | watchdog   | main_reactor |   self.__bootstrap_inner()
+[07/07 02:58:11.565] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+[07/07 02:58:11.565] | CRITICAL | watchdog   | main_reactor |   self.run()
+[07/07 02:58:11.565] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/util/reactor.py", line 46, in run
+[07/07 02:58:11.566] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/.buildout/eggs/reactorlib-0.3-py2.7.egg/reactorlib/selectreactor.py", line 324, in select
+[07/07 02:58:11.566] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/.buildout/eggs/timers-0.1.1-py2.7.egg/timers/timercore.py", line 183, in service_timers
+[07/07 02:58:11.567] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/.buildout/eggs/timers-0.1.1-py2.7.egg/timers/timercore.py", line 251, in fire_state
+[07/07 02:58:11.567] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/.buildout/eggs/timers-0.1.1-py2.7.egg/timers/timercore.py", line 244, in fire_timers
+[07/07 02:58:11.568] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/.buildout/eggs/timers-0.1.1-py2.7.egg/timers/timercore.py", line 293, in fire
+[07/07 02:58:11.568] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/util/network_monitor.py", line 169, in check_network_connectivity_async
+[07/07 02:58:11.568] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/util/watchdog.py", line 479, in get_cpu_load
+[07/07 02:58:11.572] | CRITICAL | watchdog   | main_reactor | ______________________________________________________________________________________________________________
+[07/07 02:58:11.572] | CRITICAL | watchdog   | main_reactor | (cpu_load) Thread Info: <WorkerThread(Threadpool Worker #0, started -1546650816)>
+[07/07 02:58:11.573] | CRITICAL | watchdog   | main_reactor | (cpu_load) ThreadID: -1546650816  is_alive(): True
+[07/07 02:58:11.573] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 774, in __bootstrap
+[07/07 02:58:11.574] | CRITICAL | watchdog   | main_reactor |   self.__bootstrap_inner()
+[07/07 02:58:11.574] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+[07/07 02:58:11.574] | CRITICAL | watchdog   | main_reactor |   self.run()
+[07/07 02:58:11.575] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/.buildout/eggs/tplib-0.1.1-py2.7.egg/tplib/core.py", line 56, in run
+[07/07 02:58:11.575] | CRITICAL | watchdog   | main_reactor | ______________________________________________________________________________________________________________
+[07/07 02:58:11.575] | CRITICAL | watchdog   | main_reactor | (cpu_load) Thread Info: <HTTPListener(vidserv, started -1632670912)>
+[07/07 02:58:11.576] | CRITICAL | watchdog   | main_reactor | (cpu_load) ThreadID: -1632670912  is_alive(): True
+[07/07 02:58:11.576] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 774, in __bootstrap
+[07/07 02:58:11.577] | CRITICAL | watchdog   | main_reactor |   self.__bootstrap_inner()
+[07/07 02:58:11.577] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+[07/07 02:58:11.577] | CRITICAL | watchdog   | main_reactor |   self.run()
+[07/07 02:58:11.578] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/hal/camera.py", line 1824, in run
+[07/07 02:58:11.578] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/socket.py", line 206, in accept
+[07/07 02:58:11.578] | CRITICAL | watchdog   | main_reactor |   sock, addr = self._sock.accept()
+[07/07 02:58:11.579] | CRITICAL | watchdog   | main_reactor | ______________________________________________________________________________________________________________
+[07/07 02:58:11.579] | CRITICAL | watchdog   | main_reactor | (cpu_load) Thread Info: <IDigiConnectorThread(IDigi Connector, started -1565529280)>
+[07/07 02:58:11.579] | CRITICAL | watchdog   | main_reactor | (cpu_load) ThreadID: -1565529280  is_alive(): True
+[07/07 02:58:11.580] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 774, in __bootstrap
+[07/07 02:58:11.580] | CRITICAL | watchdog   | main_reactor |   self.__bootstrap_inner()
+[07/07 02:58:11.580] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+[07/07 02:58:11.581] | CRITICAL | watchdog   | main_reactor |   self.run()
+[07/07 02:58:11.581] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/remote/idigi.py", line 361, in run
+[07/07 02:58:11.581] | CRITICAL | watchdog   | main_reactor | ______________________________________________________________________________________________________________
+[07/07 02:58:11.582] | CRITICAL | watchdog   | main_reactor | (cpu_load) Thread Info: <ReactorComponentAdapter(credit_call_reactor, started -1504707776)>
+[07/07 02:58:11.582] | CRITICAL | watchdog   | main_reactor | (cpu_load) ThreadID: -1504707776  is_alive(): True
+[07/07 02:58:11.589] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 774, in __bootstrap
+[07/07 02:58:11.589] | CRITICAL | watchdog   | main_reactor |   self.__bootstrap_inner()
+[07/07 02:58:11.590] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+[07/07 02:58:11.590] | CRITICAL | watchdog   | main_reactor |   self.run()
+[07/07 02:58:11.590] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/util/reactor.py", line 46, in run
+[07/07 02:58:11.591] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/.buildout/eggs/reactorlib-0.3-py2.7.egg/reactorlib/selectreactor.py", line 290, in select
+[07/07 02:58:11.591] | CRITICAL | watchdog   | main_reactor | ______________________________________________________________________________________________________________
+[07/07 02:58:11.591] | CRITICAL | watchdog   | main_reactor | (cpu_load) Thread Info: <HttpServer(HttpServer, started -1536165056)>
+[07/07 02:58:11.591] | CRITICAL | watchdog   | main_reactor | (cpu_load) ThreadID: -1536165056  is_alive(): True
+[07/07 02:58:11.592] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 774, in __bootstrap
+[07/07 02:58:11.592] | CRITICAL | watchdog   | main_reactor |   self.__bootstrap_inner()
+[07/07 02:58:11.592] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+[07/07 02:58:11.593] | CRITICAL | watchdog   | main_reactor |   self.run()
+[07/07 02:58:11.593] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/remote/http/server.py", line 73, in run
+[07/07 02:58:11.593] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/.buildout/eggs/bottle-0.11.6-py2.7.egg/bottle.py", line 2703, in run
+[07/07 02:58:11.594] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/.buildout/eggs/bottle-0.11.6-py2.7.egg/bottle.py", line 2386, in run
+[07/07 02:58:11.594] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/SocketServer.py", line 231, in serve_forever
+[07/07 02:58:11.594] | CRITICAL | watchdog   | main_reactor |   poll_interval)
+[07/07 02:58:11.595] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/SocketServer.py", line 150, in _eintr_retry
+[07/07 02:58:11.595] | CRITICAL | watchdog   | main_reactor |   return func(*args)
+[07/07 02:58:11.595] | CRITICAL | watchdog   | main_reactor | ______________________________________________________________________________________________________________
+[07/07 02:58:11.596] | CRITICAL | watchdog   | main_reactor | (cpu_load) Thread Info: <Thread(Coin Vault, started -1590707392)>
+[07/07 02:58:11.596] | CRITICAL | watchdog   | main_reactor | (cpu_load) ThreadID: -1590707392  is_alive(): True
+[07/07 02:58:11.596] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 774, in __bootstrap
+[07/07 02:58:11.597] | CRITICAL | watchdog   | main_reactor |   self.__bootstrap_inner()
+[07/07 02:58:11.597] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+[07/07 02:58:11.597] | CRITICAL | watchdog   | main_reactor |   self.run()
+[07/07 02:58:11.597] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 754, in run
+[07/07 02:58:11.598] | CRITICAL | watchdog   | main_reactor |   self.__target(*self.__args, **self.__kwargs)
+[07/07 02:58:11.598] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/hal/coin.py", line 835, in _event_thread_target
+[07/07 02:58:11.599] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/hal/coin.py", line 746, in _send_frame_and_get_response
+[07/07 02:58:11.599] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/hal/comport.py", line 91, in read
+[07/07 02:58:11.600] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/.buildout/eggs/pyserial-2.8_MPS-py2.7.egg/serial/serialposix.py", line 464, in read
+[07/07 02:58:11.600] | CRITICAL | watchdog   | main_reactor | ______________________________________________________________________________________________________________
+[07/07 02:58:11.600] | CRITICAL | watchdog   | main_reactor | (cpu_load) Thread Info: <ReactorComponentAdapter(microcomm_reactor, started -1494398144)>
+[07/07 02:58:11.601] | CRITICAL | watchdog   | main_reactor | (cpu_load) ThreadID: -1494398144  is_alive(): True
+[07/07 02:58:11.601] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 774, in __bootstrap
+[07/07 02:58:11.601] | CRITICAL | watchdog   | main_reactor |   self.__bootstrap_inner()
+[07/07 02:58:11.602] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+[07/07 02:58:11.602] | CRITICAL | watchdog   | main_reactor |   self.run()
+[07/07 02:58:11.602] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/util/reactor.py", line 46, in run
+[07/07 02:58:11.602] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/.buildout/eggs/reactorlib-0.3-py2.7.egg/reactorlib/selectreactor.py", line 290, in select
+[07/07 02:58:11.603] | CRITICAL | watchdog   | main_reactor | ______________________________________________________________________________________________________________
+[07/07 02:58:11.603] | CRITICAL | watchdog   | main_reactor | (cpu_load) Thread Info: <SilverBulletSockClient(sock_1_2, started daemon -1582314688)>
+[07/07 02:58:11.603] | CRITICAL | watchdog   | main_reactor | (cpu_load) ThreadID: -1582314688  is_alive(): True
+[07/07 02:58:11.604] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 774, in __bootstrap
+[07/07 02:58:11.605] | CRITICAL | watchdog   | main_reactor |   self.__bootstrap_inner()
+[07/07 02:58:11.607] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+[07/07 02:58:11.607] | CRITICAL | watchdog   | main_reactor |   self.run()
+[07/07 02:58:11.607] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/util/sock_comm.py", line 122, in run
+[07/07 02:58:11.608] | CRITICAL | watchdog   | main_reactor | ______________________________________________________________________________________________________________
+[07/07 02:58:11.608] | CRITICAL | watchdog   | main_reactor | (cpu_load) Thread Info: <MultiplexedRPCServer(SentryJSONRPCServer, started daemon -1525679296)>
+[07/07 02:58:11.609] | CRITICAL | watchdog   | main_reactor | (cpu_load) ThreadID: -1525679296  is_alive(): True
+[07/07 02:58:11.609] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 774, in __bootstrap
+[07/07 02:58:11.610] | CRITICAL | watchdog   | main_reactor |   self.__bootstrap_inner()
+[07/07 02:58:11.610] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+[07/07 02:58:11.610] | CRITICAL | watchdog   | main_reactor |   self.run()
+[07/07 02:58:11.611] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/util/jsonrpc.py", line 383, in run
+[07/07 02:58:11.611] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/util/jsonrpc.py", line 377, in serve_forever
+[07/07 02:58:11.611] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/util/jsonrpc.py", line 352, in handle_one_message
+[07/07 02:58:11.611] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/util/jsonrpc.py", line 248, in receive_message
+[07/07 02:58:11.612] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/Queue.py", line 168, in get
+[07/07 02:58:11.612] | CRITICAL | watchdog   | main_reactor |   self.not_empty.wait()
+[07/07 02:58:11.612] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 340, in wait
+[07/07 02:58:11.613] | CRITICAL | watchdog   | main_reactor |   waiter.acquire()
+[07/07 02:58:11.613] | CRITICAL | watchdog   | main_reactor | ______________________________________________________________________________________________________________
+[07/07 02:58:11.613] | CRITICAL | watchdog   | main_reactor | (cpu_load) Thread Info: <ReactorComponentAdapter(rabbitmq_reactor, started -1557136576)>
+[07/07 02:58:11.614] | CRITICAL | watchdog   | main_reactor | (cpu_load) ThreadID: -1557136576  is_alive(): True
+[07/07 02:58:11.614] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 774, in __bootstrap
+[07/07 02:58:11.614] | CRITICAL | watchdog   | main_reactor |   self.__bootstrap_inner()
+[07/07 02:58:11.614] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+[07/07 02:58:11.615] | CRITICAL | watchdog   | main_reactor |   self.run()
+[07/07 02:58:11.615] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/util/reactor.py", line 46, in run
+[07/07 02:58:11.616] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/.buildout/eggs/reactorlib-0.3-py2.7.egg/reactorlib/selectreactor.py", line 290, in select
+[07/07 02:58:11.616] | CRITICAL | watchdog   | main_reactor | ______________________________________________________________________________________________________________
+[07/07 02:58:11.616] | CRITICAL | watchdog   | main_reactor | (cpu_load) Thread Info: <Watchdog(watchdog, started -1777243328)>
+[07/07 02:58:11.617] | CRITICAL | watchdog   | main_reactor | (cpu_load) ThreadID: -1777243328  is_alive(): True
+[07/07 02:58:11.617] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 774, in __bootstrap
+[07/07 02:58:11.617] | CRITICAL | watchdog   | main_reactor |   self.__bootstrap_inner()
+[07/07 02:58:11.618] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+[07/07 02:58:11.618] | CRITICAL | watchdog   | main_reactor |   self.run()
+[07/07 02:58:11.618] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 754, in run
+[07/07 02:58:11.619] | CRITICAL | watchdog   | main_reactor |   self.__target(*self.__args, **self.__kwargs)
+[07/07 02:58:11.619] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/util/watchdog.py", line 177, in _watchdog_loop
+[07/07 02:58:11.619] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/hal/platform.py", line 299, in time_sleep
+[07/07 02:58:11.619] | CRITICAL | watchdog   | main_reactor | ______________________________________________________________________________________________________________
+[07/07 02:58:11.620] | CRITICAL | watchdog   | main_reactor | (cpu_load) Thread Info: <_MainThread(MainThread, started -1210661120)>
+[07/07 02:58:11.620] | CRITICAL | watchdog   | main_reactor | (cpu_load) ThreadID: -1210661120  is_alive(): True
+[07/07 02:58:11.622] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/runpy.py", line 174, in _run_module_as_main
+[07/07 02:58:11.623] | CRITICAL | watchdog   | main_reactor |   "__main__", fname, loader, pkg_name)
+[07/07 02:58:11.623] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/runpy.py", line 72, in _run_code
+[07/07 02:58:11.623] | CRITICAL | watchdog   | main_reactor |   exec code in run_globals
+[07/07 02:58:11.624] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/__main__.py", line 21, in <module>
+[07/07 02:58:11.624] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/__main__.py", line 17, in _main
+[07/07 02:58:11.624] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/main.py", line 561, in main
+[07/07 02:58:11.625] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/main.py", line 198, in launch
+[07/07 02:58:11.625] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/main.py", line 95, in _run_configuration
+[07/07 02:58:11.625] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/lib/epoxy/core.py", line 294, in launch_configuration
+[07/07 02:58:11.626] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/ui/gui/gui.py", line 1013, in run
+[07/07 02:58:11.626] | CRITICAL | watchdog   | main_reactor | ______________________________________________________________________________________________________________
+[07/07 02:58:11.626] | CRITICAL | watchdog   | main_reactor | (cpu_load) Thread Info: <VehicleDetector(vdetection, started -1624278208)>
+[07/07 02:58:11.627] | CRITICAL | watchdog   | main_reactor | (cpu_load) ThreadID: -1624278208  is_alive(): True
+[07/07 02:58:11.627] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 774, in __bootstrap
+[07/07 02:58:11.627] | CRITICAL | watchdog   | main_reactor |   self.__bootstrap_inner()
+[07/07 02:58:11.628] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+[07/07 02:58:11.628] | CRITICAL | watchdog   | main_reactor |   self.run()
+[07/07 02:58:11.628] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/hal/vehicle_detection.py", line 467, in run
+[07/07 02:58:11.628] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/hal/vehicle_detection.py", line 635, in _read_socket
+[07/07 02:58:11.629] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/hal/vehicle_detection.py", line 1026, in _service_banner_socket
+[07/07 02:58:11.629] | CRITICAL | watchdog   | main_reactor | ______________________________________________________________________________________________________________
+[07/07 02:58:11.629] | CRITICAL | watchdog   | main_reactor | *** STACKTRACE (cpu_load) - END ***
+[07/07 02:58:11.630] | CRITICAL | watchdog   | main_reactor | *** REACTORS INFO - START ***
+[07/07 02:58:11.630] | INFO     | watchdog   | main_reactor | *** REACTORS INFO - START ***
+[07/07 02:58:11.630] | INFO     | watchdog   | main_reactor | Reactor Info: name main_reactor empty True full False
+[07/07 02:58:11.631] | INFO     | watchdog   | main_reactor | *** REACTORS INFO - START ***
+[07/07 02:58:11.631] | INFO     | watchdog   | main_reactor | Reactor Info: name rabbitmq_reactor empty True full False
+[07/07 02:58:11.631] | INFO     | watchdog   | main_reactor | *** REACTORS INFO - START ***
+[07/07 02:58:11.632] | INFO     | watchdog   | main_reactor | Reactor Info: name microcomm_reactor empty True full False
+[07/07 02:58:11.632] | INFO     | watchdog   | main_reactor | *** REACTORS INFO - START ***
+[07/07 02:58:11.632] | INFO     | watchdog   | main_reactor | Reactor Info: name credit_call_reactor empty True full False
+[07/07 02:58:11.633] | CRITICAL | watchdog   | main_reactor | *** REACTORS INFO - END ***
+[07/07 02:58:11.633] | CRITICAL | watchdog   | main_reactor | *** Top Output (cpu_load) - START ***
+[07/07 02:58:11.633] | CRITICAL | watchdog   | main_reactor | 
+top - 02:58:11 up 4 days, 10:56,  0 users,  load average: 6.44, 5.44, 5.35
+Tasks: 178 total,   1 running, 110 sleeping,   0 stopped,   0 zombie
+%Cpu(s): 56.3 us, 11.4 sy,  0.0 ni, 32.1 id,  0.1 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem :  4030064 total,  1849004 free,  1199352 used,   981708 buff/cache
+KiB Swap:        0 total,        0 free,        0 used.  2356580 avail Mem 
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 1321 root      20   0 1269040 910656  59600 S 172.2 22.6  15155:26 python
+ 2237 root      20   0  755740 282624  91080 S  33.3  7.0   1642:47 python
+31928 root      20   0    7956   3420   3016 R  16.7  0.1   0:00.04 top
+    1 root      20   0    7408   5904   3848 S   0.0  0.1   3:55.59 systemd
+    2 root      20   0       0      0      0 S   0.0  0.0   0:00.47 kthreadd
+    3 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 rcu_gp
+    4 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 rcu_par_gp
+    8 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 mm_percpu_+
+    9 root      20   0       0      0      0 S   0.0  0.0   0:08.49 ksoftirqd/0
+   10 root      20   0       0      0      0 I   0.0  0.0  18:02.24 rcu_sched
+   11 root      20   0       0      0      0 I   0.0  0.0   0:00.00 rcu_bh
+   12 root      rt   0       0      0      0 S   0.0  0.0   0:02.40 migration/0
+   13 root      rt   0       0      0      0 S   0.0  0.0   0:02.11 watchdog/0
+   14 root      20   0       0      0      0 S   0.0  0.0   0:00.00 cpuhp/0
+   15 root      20   0       0      0      0 S   0.0  0.0   0:00.00 cpuhp/1
+   16 root      rt   0       0      0      0 S   0.0  0.0   0:02.11 watchdog/1
+   17 root      rt   0       0      0      0 S   0.0  0.0   0:02.42 migration/1
+   18 root      20   0       0      0      0 S   0.0  0.0   0:02.84 ksoftirqd/1
+   21 root      20   0       0      0      0 S   0.0  0.0   0:00.00 cpuhp/2
+   22 root      rt   0       0      0      0 S   0.0  0.0   0:02.06 watchdog/2
+   23 root      rt   0       0      0      0 S   0.0  0.0   0:02.71 migration/2
+   24 root      20   0       0      0      0 S   0.0  0.0   0:11.06 ksoftirqd/2
+   27 root      20   0       0      0      0 S   0.0  0.0   0:00.00 cpuhp/3
+   28 root      rt   0       0      0      0 S   0.0  0.0   0:02.06 watchdog/3
+   29 root      rt   0       0      0      0 S   0.0  0.0   0:02.78 migration/3
+   30 root      20   0       0      0      0 S   0.0  0.0   0:07.98 ksoftirqd/3
+   33 root      20   0       0      0      0 S   0.0  0.0   0:00.00 kdevtmpfs
+   34 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 netns
+   35 root      20   0       0      0      0 S   0.0  0.0   0:00.00 rcu_tasks_+
+   36 root      20   0       0      0      0 S   0.0  0.0   0:00.00 kauditd
+   40 root      20   0       0      0      0 S   0.0  0.0   0:00.34 khungtaskd
+   41 root      20   0       0      0      0 S   0.0  0.0   0:00.00 oom_reaper
+   42 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 writeback
+   43 root      20   0       0      0      0 S   0.0  0.0   0:00.00 kcompactd0
+   44 root      25   5       0      0      0 S   0.0  0.0   0:00.00 ksmd
+   45 root      39  19       0      0      0 S   0.0  0.0   0:00.00 khugepaged
+   46 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 crypto
+   47 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 kintegrityd
+   48 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 kblockd
+   49 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 ata_sff
+   50 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 md
+   51 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 edac-poller
+   52 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 devfreq_wq
+   53 root      rt   0       0      0      0 S   0.0  0.0   0:00.00 watchdogd
+   58 root      20   0       0      0      0 S   0.0  0.0   0:00.00 kswapd0
+   59 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 kworker/u9+
+   60 root      20   0       0      0      0 S   0.0  0.0   0:00.00 ecryptfs-k+
+  105 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 kthrotld
+  106 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 acpi_therm+
+  107 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 nvme-wq
+  108 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 nvme-reset+
+  109 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 nvme-delet+
+  110 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 ipv6_addrc+
+  120 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 kstrp
+  137 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 charger_ma+
+  193 root     -51   0       0      0      0 S   0.0  0.0   0:00.00 irq/18-mmc0
+  203 root     -51   0       0      0      0 S   0.0  0.0   0:00.00 irq/23-mmc1
+  214 root      -2   0       0      0      0 S   0.0  0.0   6:25.58 i915/signa+
+  215 root      -2   0       0      0      0 S   0.0  0.0   0:00.00 i915/signa+
+  216 root      -2   0       0      0      0 S   0.0  0.0   0:00.00 i915/signa+
+  294 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 raid5wq
+  346 root      20   0       0      0      0 S   0.0  0.0   0:09.12 jbd2/mmcbl+
+  347 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 ext4-rsv-c+
+  401 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 iscsi_eh
+  403 root      20   0   21336  10212   9612 S   0.0  0.3   6:35.31 systemd-jo+
+  414 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 ib-comp-wq
+  415 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 ib_mcast
+  416 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 ib_nl_sa_wq
+  426 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 rdma_cm
+  450 root      20   0   13284   1364   1212 S   0.0  0.0   0:00.00 lvmetad
+  455 root      20   0   14524   3864   2856 S   0.0  0.1   0:02.28 systemd-ud+
+  507 root     -51   0       0      0      0 S   0.0  0.0   0:00.00 irq/94-mei+
+  755 root      20   0       0      0      0 S   0.0  0.0   0:00.00 jbd2/mmcbl+
+  756 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 ext4-rsv-c+
+  778 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 ext4-rsv-c+
+  780 root      20   0       0      0      0 S   0.0  0.0   0:00.00 jbd2/mmcbl+
+  781 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 ext4-rsv-c+
+  794 root      20   0       0      0      0 S   0.0  0.0   0:00.07 jbd2/mmcbl+
+  795 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 ext4-rsv-c+
+ 1072 root       0 -20       0      0      0 I   0.0  0.0   0:01.82 kworker/3:+
+ 1195 root      20   0    2988    116     44 S   0.0  0.0   0:10.71 iscsid
+ 1197 root      10 -10    3448   2820   1964 S   0.0  0.1   0:54.93 iscsid
+ 1264 root      20   0    2248   1048    984 S   0.0  0.0   0:00.00 acpid
+ 1272 root      20   0   38700   5916   5420 S   0.0  0.1   0:44.84 accounts-d+
+ 1284 avahi     20   0    6696   3904   3044 S   0.0  0.1   7:09.92 avahi-daem+
+ 1287 root      20   0    2336    664    608 S   0.0  0.0   2:49.56 banner_apcc
+ 1289 root      20   0    5584   2796   2572 S   0.0  0.1   0:00.68 cron
+ 1291 message+  20   0    9356   6476   3424 S   0.0  0.2   3:15.34 dbus-daemon
+ 1295 avahi     20   0    5920    280      0 S   0.0  0.0   0:00.00 avahi-daem+
+ 1304 root      20   0    2372   1444   1352 S   0.0  0.0   1:06.83 zxy_device+
+ 1308 syslog    20   0   31656   3000   2612 S   0.0  0.1   0:00.04 rsyslogd
+ 1314 daemon    20   0    3484   1980   1816 S   0.0  0.0   0:00.01 atd
+ 1328 root      20   0    4704   3640   2760 S   0.0  0.1   1:24.08 systemd-lo+
+ 1348 root      15  -5  884096  15176   9792 S   0.0  0.4   0:37.69 snapd
+ 1358 root      20   0   77820   2240   1232 S   0.0  0.1   0:09.93 lxcfs
+ 1361 root      20   0   10004   5608   5088 S   0.0  0.1   0:14.54 sshd
+ 1415 ntp       20   0   15632   4408   3948 S   0.0  0.1   0:31.88 ntpd
+ 1416 root      20   0    4440    204      0 S   0.0  0.0   0:33.23 irqbalance
+ 1419 root      20   0    3136    128     16 S   0.0  0.0   0:00.04 mdadm
+ 1430 root      20   0   36840   5704   5208 S   0.0  0.1   0:57.08 polkitd
+ 1438 root      20   0    4752   1844   1744 S   0.0  0.0   0:00.01 agetty
+ 2148 root      20   0    4296   2728   2508 S   0.0  0.1   0:00.00 nodm
+ 2152 root      20   0   67900  21472  15776 S   0.0  0.5 232:03.35 Xorg
+ 2167 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 kworker/u9+
+ 2171 root      20   0    5872   3116   2712 S   0.0  0.1   0:00.00 nodm
+ 2173 root      20   0    6096   3916   3272 S   0.0  0.1   0:00.09 systemd
+ 2183 root      20   0    7712   1516      0 S   0.0  0.0   0:00.00 (sd-pam)
+ 2198 root      20   0    2372    620    576 S   0.0  0.0   0:00.00 sh
+ 2207 root      20   0   20392  14652   7216 S   0.0  0.4   3:08.39 python
+ 2227 root      20   0    4608    196      0 S   0.0  0.0   0:01.77 ssh-agent
+ 2318 uuidd     20   0    6732   1236   1088 S   0.0  0.0   0:00.27 uuidd
+ 2553 root      20   0  218644  66472  19748 S   0.0  1.6  14:21.05 python
+ 2752 seco      20   0    6372   4112   3552 S   0.0  0.1   0:00.08 systemd
+ 2760 seco      20   0    7712   1516      0 S   0.0  0.0   0:00.00 (sd-pam)
+ 5456 root       0 -20       0      0      0 I   0.0  0.0   0:00.70 kworker/2:+
+ 9850 root      20   0       0      0      0 I   0.0  0.0   0:00.73 kworker/1:+
+10281 root      20   0       0      0      0 D   0.0  0.0   0:05.44 kworker/u8+
+10946 root       0 -20       0      0      0 I   0.0  0.0   0:00.42 kworker/1:+
+14094 root      20   0       0      0      0 I   0.0  0.0   0:00.17 kworker/0:+
+14162 root      20   0       0      0      0 I   0.0  0.0   0:00.00 kworker/2:+
+16340 root      20   0   13176   6296   5592 S   0.0  0.2   0:00.17 sshd
+16353 seco      20   0   13176   2988   2284 S   0.0  0.1   0:00.00 sshd
+16362 root      20   0   13176   6240   5532 S   0.0  0.2   0:00.17 sshd
+16376 seco      20   0   13176   3180   2472 S   0.0  0.1   0:00.00 sshd
+16381 root      20   0   13176   6176   5476 S   0.0  0.2   0:00.17 sshd
+16391 seco      20   0   13176   3304   2604 S   0.0  0.1   0:00.00 sshd
+16402 root      20   0   13176   6220   5512 S   0.0  0.2   0:00.17 sshd
+16411 seco      20   0   13176   3048   2340 S   0.0  0.1   0:00.00 sshd
+16878 root      20   0       0      0      0 I   0.0  0.0   0:01.06 kworker/1:+
+17032 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 kworker/2:+
+17404 root      20   0       0      0      0 I   0.0  0.0   0:03.28 kworker/u8+
+17480 root      20   0       0      0      0 I   0.0  0.0   0:00.00 kworker/3:+
+19201 root      20   0       0      0      0 I   0.0  0.0   0:01.95 kworker/u8+
+20721 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 kworker/3:+
+20750 root      20   0       0      0      0 I   0.0  0.0   0:00.00 kworker/2:+
+21017 root      20   0       0      0      0 I   0.0  0.0   0:00.33 kworker/0:+
+21070 root      20   0   13176   6140   5436 S   0.0  0.2   0:00.17 sshd
+21082 seco      20   0   13176   3212   2508 S   0.0  0.1   0:00.00 sshd
+22130 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 kworker/0:+
+22181 root      20   0   13176   6208   5504 S   0.0  0.2   0:00.17 sshd
+22191 seco      20   0   13176   3068   2364 S   0.0  0.1   0:00.00 sshd
+22202 root      20   0   13176   6168   5464 S   0.0  0.2   0:00.17 sshd
+22211 seco      20   0   13176   3004   2300 S   0.0  0.1   0:00.00 sshd
+22218 root      20   0   13176   6232   5524 S   0.0  0.2   0:00.17 sshd
+22227 seco      20   0   13176   3312   2604 S   0.0  0.1   0:00.00 sshd
+22236 root      20   0   13176   6216   5512 S   0.0  0.2   0:00.18 sshd
+22249 seco      20   0   13176   3124   2420 S   0.0  0.1   0:00.00 sshd
+23140 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 kworker/1:+
+23955 root      20   0       0      0      0 I   0.0  0.0   0:00.00 kworker/3:+
+26243 root      20   0       0      0      0 I   0.0  0.0   0:00.10 kworker/u8+
+27208 root      20   0   13176   6160   5452 S   0.0  0.2   0:00.17 sshd
+27218 seco      20   0   13176   3008   2300 S   0.0  0.1   0:00.00 sshd
+27634 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 kworker/2:+
+28152 root      20   0       0      0      0 I   0.0  0.0   0:00.00 kworker/1:+
+28203 root      20   0   13176   6224   5520 S   0.0  0.2   0:00.17 sshd
+28211 seco      20   0   13176   3128   2424 S   0.0  0.1   0:00.00 sshd
+28222 root      20   0   13176   6188   5480 S   0.0  0.2   0:00.17 sshd
+28233 seco      20   0   13176   3280   2572 S   0.0  0.1   0:00.00 sshd
+28236 seco      20   0    5456   2824   2676 S   0.0  0.1   0:00.00 bash
+28237 seco      20   0  137764   9008   8760 S   0.0  0.2   0:00.03 journalctl
+28238 root      20   0   13176   6340   5636 S   0.0  0.2   0:00.17 sshd
+28249 seco      20   0   13176   3212   2508 S   0.0  0.1   0:00.00 sshd
+28258 root      20   0   13176   6256   5552 S   0.0  0.2   0:00.17 sshd
+28267 seco      20   0   13176   3212   2508 S   0.0  0.1   0:00.00 sshd
+28274 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 kworker/0:+
+28328 root      20   0       0      0      0 I   0.0  0.0   0:00.49 kworker/0:+
+28376 root      20   0       0      0      0 I   0.0  0.0   0:00.11 kworker/0:+
+28399 root      20   0       0      0      0 I   0.0  0.0   0:00.19 kworker/1:+
+28748 root      20   0       0      0      0 I   0.0  0.0   0:00.00 kworker/2:+
+28878 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 kworker/1:+
+29507 root      20   0       0      0      0 I   0.0  0.0   0:00.16 kworker/3:+
+29729 root      20   0       0      0      0 I   0.0  0.0   0:00.00 kworker/3:+
+30436 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 kworker/3:+
+31651 root      20   0       0      0      0 I   0.0  0.0   0:00.50 kworker/2:+
+31910 root      20   0    4280    568    528 S   0.0  0.0   0:00.00 sleep
+31925 root      20   0    2372    656    612 S   0.0  0.0   0:00.01 sh
+32155 root       0 -20       0      0      0 I   0.0  0.0   0:00.92 kworker/0:+
+32422 root      20   0       0      0      0 I   0.0  0.0   0:02.18 kworker/3:+
+
+[07/07 02:58:11.634] | CRITICAL | watchdog   | main_reactor | *** Top Output (cpu_load) - END ***
+[07/07 02:58:11.634] | WARNING  | net_monitor | main_reactor | check_network_connectivity_async(): Skipping due to high CPU load (6.44 > 3.5)
+[07/07 02:58:18.919] | INFO     | phone      | SentryJSONRPCServer | should_run(): SECO detected - returning
+[07/07 02:58:18.930] | INFO     | ui.multi   | SentryJSONRPCServer | set_state(): UI_STATE_IDLE performing pre_exit_state() actions UISI: screen touched
+[07/07 02:58:18.931] | INFO     | interaction | SentryJSONRPCServer | pre_exit_state(): completing actions before next_state UI_STATE_HOME
+[07/07 02:58:18.931] | INFO     | interaction | SentryJSONRPCServer | pre_exit_state(): completed actions complete True
+[07/07 02:58:18.932] | INFO     | ui.multi   | SentryJSONRPCServer | set_state(): UI_STATE_IDLE completed pre_exit_state() actions proceed True
+[07/07 02:58:18.932] | INFO     | ui.multi   | SentryJSONRPCServer | Secs in Idle 381012.890861
+[07/07 02:58:18.933] | INFO     | interaction | SentryJSONRPCServer | cash_out_or_void_payment: No payment
+[07/07 02:58:18.934] | INFO     | ui.multi   | SentryJSONRPCServer | CONFIRM FALSE
+[07/07 02:58:18.934] | INFO     | ui.multi   | SentryJSONRPCServer | UISH: enter_state active_spot is None
+[07/07 02:58:18.939] | INFO     | interaction | SentryJSONRPCServer | return_coins(): ignoring credit cards and returning coins
+[07/07 02:58:19.238] | INFO     | ui.multi   | SentryJSONRPCServer | CHECK POP  False
+[07/07 02:58:19.239] | INFO     | ui.multi   | SentryJSONRPCServer | UISH::enter_state(): No expired for None
+[07/07 02:58:19.247] | INFO     | gui        | SentryJSONRPCServer | Screen changed to SCREEN_MULTI_SELECT_SPACE en
+[07/07 02:58:19.248] | INFO     | playback   | SentryJSONRPCServer | play: en_space_number.mp3
+[07/07 02:58:19.266] | WARNING  | interaction | SentryJSONRPCServer | _stop_idle_timeout: NO TIMER
+[07/07 02:58:19.267] | INFO     | ui.multi   | SentryJSONRPCServer | UI_STATE_IDLE -> UI_STATE_HOME (UISI: screen touched)
+[07/07 02:58:19.268] | INFO     | gui        | MainThread | QT: MultiSelectSpace: transition to spacemapoff (file:///tmp/tmpCEIDt7/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiSelectSpace.qml:984)
+[07/07 02:58:19.283] | INFO     | gui        | MainThread | _signal_goto_screen: multi_select_space
+[07/07 02:58:19.284] | INFO     | gui        | MainThread | QT: Current:  multi_idle Next:  multi_select_space (file:///tmp/tmpCEIDt7/sentry.egg-tmp/mps/resources/qml/main.qml:1445)
+[07/07 02:58:23.932] | INFO     | phone      | SentryJSONRPCServer | should_run(): SECO detected - returning
+[07/07 02:58:26.512] | INFO     | interaction | SentryJSONRPCServer | on_test_automation_space_entered: SPACE 9010
+[07/07 02:58:26.527] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): user selected space 9010
+[07/07 02:58:26.528] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): check space 9010 for local
+[07/07 02:58:26.529] | WARNING  | interaction | main_reactor | _stop_idle_timeout: NO TIMER
+[07/07 02:58:26.529] | INFO     | parking.controller | main_reactor | map_space_to_spot: indx 0 spot SPOT_1
+[07/07 02:58:26.530] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): 9010 is a LOCAL space number, setting active spot SPOT_1
+[07/07 02:58:26.530] | INFO     | parking.session.SPOT_1 | main_reactor | is_init_grace(): None
+[07/07 02:58:26.531] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): has NOT paid for max time
+[07/07 02:58:26.543] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/parking_event_user_entered_space-b99a853c79af11f1823a00c008947d30.json
+[07/07 02:58:26.559] | INFO     | gui        | MainThread | QT: MultiSelectSpace: transition to loadon (file:///tmp/tmpCEIDt7/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiSelectSpace.qml:984)
+[07/07 02:58:26.749] | INFO     | interaction | main_reactor | set_active_spot: ACTIVE SPOT SPOT_1 /home/mpsadmin/projects/Sentry_test/src/mps/ui/multi_user_interaction.py:2750
+[07/07 02:58:26.750] | INFO     | interaction | main_reactor | set_active_spot(): to SPOT_1
+[07/07 02:58:26.751] | INFO     | parking.controller | main_reactor | set_active_spot(): to SPOT_1
+[07/07 02:58:27.108] | INFO     | ui.multi   | main_reactor | config_payment_acceptance: Caller /home/mpsadmin/projects/Sentry_test/src/mps/ui/multi_user_interaction.py:2756
+[07/07 02:58:27.109] | INFO     | ui.multi   | main_reactor | config_payment_acceptance(UISH(): LOCAL valid space number): is_rate_schedule_payment_allowed_now() = True
+[07/07 02:58:27.110] | INFO     | epay       | main_reactor | enable_credit_cards: enable True
+[07/07 02:58:27.111] | INFO     | interaction | main_reactor | accept_coins(): acceptor currently blocking - cfg to accept
+[07/07 02:58:27.111] | INFO     | coin       | main_reactor | accept_all_coins(): configuring acceptance
+[07/07 02:58:27.112] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): PSV PSV_STATE_AVAILABLE parking_state PARKING_STATE_EMPTY
+[07/07 02:58:27.131] | INFO     | gui        | main_reactor | prompt_on
+[07/07 02:58:27.136] | INFO     | playback   | main_reactor | play: en_coin_card.mp3
+[07/07 02:58:27.170] | INFO     | gui        | main_reactor | Screen changed to SCREEN_MULTI_HOME en
+[07/07 02:58:27.171] | INFO     | ui.multi   | main_reactor | update_last_session_data(): space 9010 spot_id SPOT_1 parking_session_id 6213648379af11f1823a00c008947d30 NO payment
+[07/07 02:58:27.187] | INFO     | gui        | MainThread | QT: MultiSelectSpace: transition to loadoff (file:///tmp/tmpCEIDt7/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiSelectSpace.qml:984)
+[07/07 02:58:27.188] | INFO     | gui        | MainThread | _signal_prompt_on
+[07/07 02:58:27.189] | INFO     | gui        | MainThread | QT: MultiHome: transition to prompton (file:///tmp/tmpCEIDt7/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[07/07 02:58:27.213] | INFO     | gui        | MainThread | _signal_goto_screen: multi_home
+[07/07 02:58:27.214] | INFO     | gui        | MainThread | QT: Current:  multi_select_space Next:  multi_home (file:///tmp/tmpCEIDt7/sentry.egg-tmp/mps/resources/qml/main.qml:1445)
+[07/07 02:58:27.619] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"user_space_entered": "9010", "event_time": "2026-07-07T02:58:26Z", "mac_address": "00:C0:08:94:7D:30"}, "class": "event", "queued_dt": "2026-07-07T02:58:26Z", "type": "parking_event_user_entered_space", "id": "6b4cd452-2968-44db-9e3f-fc1b6e36f8da", "device_id": "m:00C008947D30"}
+[07/07 02:58:27.730] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at rabbitmq.staging.sentry-link.com:5671 (200): Normal shutdown
+[07/07 02:58:27.981] | INFO     | coin_event | Coin Vault | Coin acceptor configured to accept coins (command sent)
+[07/07 02:58:28.323] | INFO     | coin_event | Coin Vault | Info: REQUEST_MASTER_INHIBIT_STATUS indicates acceptor released
+[07/07 02:58:33.299] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[07/07 02:58:33.300] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[07/07 02:58:37.209] | INFO     | mps.ui     | main_reactor | RESWIPE OFF
+[07/07 02:58:37.331] | INFO     | ui.multi   | main_reactor | set_state(): UI_STATE_HOME performing pre_exit_state() actions _on_timeout(): 
+[07/07 02:58:37.332] | INFO     | interaction | main_reactor | pre_exit_state(): completing actions before next_state UI_STATE_IDLE
+[07/07 02:58:37.332] | INFO     | interaction | main_reactor | return_coins(): ignoring credit cards and returning coins
+[07/07 02:58:37.333] | INFO     | epay       | main_reactor | enable_credit_cards: enable False
+[07/07 02:58:37.333] | INFO     | interaction | main_reactor | return_coins(): acceptor currently accepting - cfg to reject
+[07/07 02:58:37.333] | INFO     | coin       | main_reactor | return_all_coins(): configuring rejection
+[07/07 02:58:37.538] | INFO     | interaction | main_reactor | is_acceptor_blocked(): waiting for coin acceptor disabled confirmation
+[07/07 02:58:37.544] | INFO     | interaction | main_reactor | pre_exit_state(): coin acceptor is blocking with no new deposits
+[07/07 02:58:37.545] | INFO     | interaction | main_reactor | pre_exit_state(): completed actions complete True
+[07/07 02:58:37.546] | INFO     | ui.multi   | main_reactor | set_state(): UI_STATE_HOME completed pre_exit_state() actions proceed True
+[07/07 02:58:37.550] | INFO     | ui.multi   | main_reactor | clear_last_session_data(): cleared data
+[07/07 02:58:37.550] | INFO     | mps.ui     | main_reactor | concierge_reset
+[07/07 02:58:37.551] | INFO     | interaction | main_reactor | return_coins(): ignoring credit cards and returning coins
+[07/07 02:58:37.552] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to reswipeoff (file:///tmp/tmpCEIDt7/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[07/07 02:58:37.554] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: calling reswipeoff (file:///tmp/tmpCEIDt7/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:913)
+[07/07 02:58:37.555] | INFO     | gui        | MainThread | QT: Home: transition to reswipeoff (file:///tmp/tmpCEIDt7/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[07/07 02:58:37.556] | INFO     | gui        | MainThread | QT: Home: calling reswipeoff (file:///tmp/tmpCEIDt7/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:400)
+[07/07 02:58:37.557] | INFO     | gui        | MainThread | QT: MultiHome: transition to reswipeoff (file:///tmp/tmpCEIDt7/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[07/07 02:58:37.558] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to processingoff (file:///tmp/tmpCEIDt7/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[07/07 02:58:37.582] | INFO     | gui        | MainThread | QT: Home: transition to processingoff (file:///tmp/tmpCEIDt7/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[07/07 02:58:37.583] | INFO     | gui        | MainThread | QT: MultiHome: transition to processingoff (file:///tmp/tmpCEIDt7/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[07/07 02:58:37.584] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to declineoff (file:///tmp/tmpCEIDt7/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[07/07 02:58:37.585] | INFO     | gui        | MainThread | QT: MultiHome: transition to declineoff (file:///tmp/tmpCEIDt7/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[07/07 02:58:37.791] | WARNING  | interaction | main_reactor | _stop_idle_timeout: NO TIMER
+[07/07 02:58:37.792] | INFO     | gui        | main_reactor | Screen changed to SCREEN_MULTI_IDLE en
+[07/07 02:58:37.794] | INFO     | gui        | MainThread | QT: concierge_reset SPOT_1 (file:///tmp/tmpCEIDt7/sentry.egg-tmp/mps/resources/qml/main.qml:997)
+[07/07 02:58:37.795] | INFO     | gui        | MainThread | QT: ParkingSpotView: transition to conciergeReset (file:///tmp/tmpCEIDt7/sentry.egg-tmp/mps/resources/qml/components/ParkingSpotView.qml:4247)
+[07/07 02:58:37.796] | INFO     | gui        | MainThread | QT: ParkingSpotView: conciergeReset (file:///tmp/tmpCEIDt7/sentry.egg-tmp/mps/resources/qml/components/ParkingSpotView.qml:4217)
+[07/07 02:58:37.797] | INFO     | gui        | MainThread | QT: ParkingSpotView: transition to PSV_STATE_AVAILABLE (file:///tmp/tmpCEIDt7/sentry.egg-tmp/mps/resources/qml/components/ParkingSpotView.qml:4247)
+[07/07 02:58:37.798] | INFO     | gui        | MainThread | QT: ParkingSpotView: PSV_STATE_AVAILABLE (file:///tmp/tmpCEIDt7/sentry.egg-tmp/mps/resources/qml/components/ParkingSpotView.qml:4100)
+[07/07 02:58:37.798] | INFO     | gui        | MainThread | _signal_goto_screen: multi_idle
+[07/07 02:58:37.799] | INFO     | gui        | MainThread | QT: Current:  multi_home Next:  multi_idle (file:///tmp/tmpCEIDt7/sentry.egg-tmp/mps/resources/qml/main.qml:1445)
+[07/07 02:58:37.843] | INFO     | interaction | main_reactor | cash_out_or_void_payment: No payment
+[07/07 02:58:37.999] | INFO     | coin_event | Coin Vault | Coin acceptor configured to return coins
+[07/07 02:58:38.296] | INFO     | interaction | main_reactor | set_active_spot: ACTIVE SPOT None /home/mpsadmin/projects/Sentry_test/src/mps/ui/multi_user_interaction.py:1897
+[07/07 02:58:38.297] | INFO     | interaction | main_reactor | set_active_spot(): to None
+[07/07 02:58:38.298] | INFO     | parking.controller | main_reactor | set_active_spot(): to None
+[07/07 02:58:38.305] | INFO     | mps.ui     | main_reactor | suspend_background_tasks(): change to False
+[07/07 02:58:38.306] | INFO     | parking_serv | main_reactor | suspend_transfers(): False
+[07/07 02:58:38.306] | INFO     | epay       | main_reactor | auto_authorize(): Setting auto_authorize amount for 200
+[07/07 02:58:38.349] | INFO     | coin_event | Coin Vault | Info: REQUEST_MASTER_INHIBIT_STATUS indicates acceptor blocked
+[07/07 02:58:38.352] | INFO     | ui.multi   | main_reactor | UI_STATE_HOME -> UI_STATE_IDLE (_on_timeout(): )
+[07/07 02:58:38.483] | INFO     | gui        | MainThread | QT: Home: transition to PSV_STATE_AVAILABLE (file:///tmp/tmpCEIDt7/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
