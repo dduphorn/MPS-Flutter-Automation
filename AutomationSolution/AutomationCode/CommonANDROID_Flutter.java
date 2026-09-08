@@ -194,7 +194,7 @@ public class CommonANDROID_Flutter
 				strPivotalPath = "https://mpspark.atlassian.net/browse/FLUTTERCA-260";
 				strErrorMsg = "Flutter app shows generic “No Internet Connection” message when Airplane Mode is enabled";
 				break;
-    		case "Unexpected message appeared on user Registration: Failed to save user record or to assign Parker role":
+    		//case "Unexpected message appeared on user Registration: Failed to save user record or to assign Parker role":
 			case "The Text (No violations to show) at index (1) did not exist":
 	   			strPivotalId = "FLUTTERCA-124";Reporter.log(strErrorMsg);
 				strPivotalPath = "https://mpspark.atlassian.net/browse/FLUTTERPEO-124";
@@ -205,7 +205,7 @@ public class CommonANDROID_Flutter
 				strPivotalPath = "https://mpspark.atlassian.net/browse/FLUTTERPEO-123";
 				strErrorMsg = "The message \"This violation is now invalid. Returning to the violation List\" no longer appears after a violation is claimed and the vehicle leaves the space.";
 				break;
-			case "Unexpected message appeared on user Registration: Failed to save user record or to assign Parker role":
+			//case "Unexpected message appeared on user Registration: Failed to save user record or to assign Parker role":
     		case "The link (Ok) at index (1) existed":
    				strPivotalId = "FLUTTERCA-154";Reporter.log(strErrorMsg);
 				strPivotalPath = "https://mpspark.atlassian.net/browse/FLUTTERCA-154";
@@ -781,10 +781,6 @@ public class CommonANDROID_Flutter
 
 	    return androidDriver;
 	}
-<<<<<<< HEAD
-=======
-
->>>>>>> branch 'main' of https://github.com/dduphorn/MPS-Flutter-Automation.git
 	// ==================== HELPER METHODS ====================
 
 	private void killProcessOnPort(int port) {
