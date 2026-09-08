@@ -92,7 +92,7 @@ public class GlobalClass
 			case "jenkins":
 			case "mpsadmin"://Mac Book Pro
 				strAppiumPort = "6666";
-				if(strHeadless == null) {props.setProperty("Headless", "True");}
+				if(strHeadless == null) {props.setProperty("Headless", "False");}
 				objDictionary.put("strEnableAllImages", "False");
 				objDictionary.put("strValidateImageFlag", "False");
 				GetMeterProperties(objDictionary, strDeviceId);

@@ -195,6 +195,17 @@ public class CommonANDROID_Flutter
 				strErrorMsg = "Flutter app shows generic “No Internet Connection” message when Airplane Mode is enabled";
 				break;
     		case "Unexpected message appeared on user Registration: Failed to save user record or to assign Parker role":
+			case "The Text (No violations to show) at index (1) did not exist":
+	   			strPivotalId = "FLUTTERCA-124";Reporter.log(strErrorMsg);
+				strPivotalPath = "https://mpspark.atlassian.net/browse/FLUTTERPEO-124";
+				strErrorMsg = "When a vehicle exits while the PEO user is on the Violation Details screen, the screen should refresh and display 'No violation to show'";
+				break;
+			case "The Text (This violation is now invalid. Returning to Violation List.) at index (1) did not exist":
+   				strPivotalId = "FLUTTERPEO-123";Reporter.log(strErrorMsg);
+				strPivotalPath = "https://mpspark.atlassian.net/browse/FLUTTERPEO-123";
+				strErrorMsg = "The message \"This violation is now invalid. Returning to the violation List\" no longer appears after a violation is claimed and the vehicle leaves the space.";
+				break;
+			case "Unexpected message appeared on user Registration: Failed to save user record or to assign Parker role":
     		case "The link (Ok) at index (1) existed":
    				strPivotalId = "FLUTTERCA-154";Reporter.log(strErrorMsg);
 				strPivotalPath = "https://mpspark.atlassian.net/browse/FLUTTERCA-154";
@@ -770,6 +781,10 @@ public class CommonANDROID_Flutter
 
 	    return androidDriver;
 	}
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'main' of https://github.com/dduphorn/MPS-Flutter-Automation.git
 	// ==================== HELPER METHODS ====================
 
 	private void killProcessOnPort(int port) {
@@ -1374,8 +1389,6 @@ public class CommonANDROID_Flutter
 		   			case "Set New Password":
 		   				wait = new WebDriverWait(androiddriver, Duration.ofSeconds(15));
 		   				snackbar = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.View[@dismissable='true' and @live-region='1']")));
-//		   				wait = new WebDriverWait(androiddriver, Duration.ofSeconds(10));
-//		   				snackbar = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.view.View[@dismissable='true' and @live-region='1']")));
 		   				break;
 		   			case "User Agreement":
 		   				wait = new WebDriverWait(androiddriver, Duration.ofSeconds(5));
@@ -1385,8 +1398,12 @@ public class CommonANDROID_Flutter
 				if(snackbar != null)
 				{
 					
+					//Different machines setting use different camel case
+					String message = snackbar.getAttribute("contentDescription");
 					// Method 1: Try content-desc on snackbar
-					String message = snackbar.getAttribute("content-desc");
+				    if (message == null || message.isBlank()) {
+				        message = snackbar.getAttribute("content-desc");
+				    }
 
 					// Method 2: Try getText()
 					if (message == null || message.trim().isEmpty()) {
@@ -1413,9 +1430,6 @@ public class CommonANDROID_Flutter
 					String finalMessage = (message != null ? message.trim() : "");
 					System.out.println("Snackbar message: '" + finalMessage + "'");
 					objDictionary.put("strSnackbarText", finalMessage);
-					
-//					String strSnackbarText = snackbar.getAttribute("content-desc");
-//					objDictionary.put("strSnackbarText", strSnackbarText);
 				}
 			}
 			catch (Exception e) 
@@ -1885,428 +1899,6 @@ public class CommonANDROID_Flutter
 				break;
 			default:
 				clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The Page ("+strPageName+") does not have any existing ScrolableListboxName identified in-"+strMethondName);
-				
-				
-			//END FLUTTER
-//			case "Account Details":
-//				switch (strScrollableListboxName)
-//				{
-//					case "Select State/Province":
-//						ClickLink(objDictionary, androidDriver, strPageName, "Select State/Province", 1);
-//						try {androidDriver.findElement(By.xpath("//*[@text='"+strListboxValue+"']")).click();}
-//						catch(Exception e) 
-//						{
-//							WebElement element = androidDriver.findElement(By.xpath("//android.widget.FrameLayout[1]/android.widget.ListView[1]"));
-//							NavigateToLinkInScrollableList(objDictionary, androidDriver, strPageName, strListboxValue, strScrollableListboxName, element);
-//							try {androidDriver.findElement(By.xpath("//*[@text='"+strListboxValue+"']")).click();}
-//							catch(Exception a) {clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The ListboxValue (" + strListboxValue + ")  did not exist-"+strMethondName);}
-//							Reporter.log("The ListboxValue (" + strListboxValue + ") was clicked successfully"+"");
-//						}
-//						break;
-//				}
-//				break;
-//			case "Buy a permit":
-//				switch (strScrollableListboxName)
-//				{
-//					case "Select Plate":
-//						try {androidDriver.findElement(By.xpath("//*[@text='Select Plate']")).click();}catch(Exception e) {}
-//						try {Thread.sleep(1000);}catch (Exception e) {}
-//						try 
-//						{
-//							WebElement element = androidDriver.findElement(By.xpath("//android.widget.FrameLayout[1]/android.widget.ListView[1]"));
-//							NavigateToLinkInScrollableList(objDictionary, androidDriver, strPageName, strListboxValue, strScrollableListboxName, element);
-//							androidDriver.findElement(By.xpath("//*[@text='"+strListboxValue+"']")).click();
-//						}
-//						catch(Exception a) 
-//						{clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The ListboxValue (" + strListboxValue + ")  did not exist-"+strMethondName);}
-//						Reporter.log("The ListboxValue (" + strListboxValue + ") was clicked successfully"+"");
-//						break;
-//					case "Select Permit":
-//						List<WebElement> spinnerElements = androidDriver.findElements(By.id("com.mpspark.tuftspark.MPS:id/spinnerText"));
-//				        if (spinnerElements.size() >= 2) {spinnerElements.get(1).click();}
-//				        try {Thread.sleep(2000);}catch (Exception e) {}
-//				        try {androidDriver.findElement(By.xpath("//*[@text='"+strListboxValue+"']")).click();}
-//						catch(Exception e) 
-//						{
-//							WebElement element = androidDriver.findElement(By.xpath("//android.widget.FrameLayout[1]/android.widget.ListView[1]"));
-//							NavigateToLinkInScrollableList(objDictionary, androidDriver, strPageName, strListboxValue, strScrollableListboxName, element);
-//							try {androidDriver.findElement(By.xpath("//*[@text='"+strListboxValue+"']")).click();}
-//							catch(Exception a) {clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The ListboxValue (" + strListboxValue + ")  did not exist-"+strMethondName);}
-//							Reporter.log("The ListboxValue (" + strListboxValue + ") was clicked successfully"+"");
-//						}
-//						break;
-//					default:
-//						clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The ScrollableListbox (" + strScrollableListboxName + ") had not been added for the page (" + strPageName + ")-"+strMethondName);
-//				}
-//				break;
-////			case "Issue ticket":
-////			case "Issue Ticket":
-////				switch (strScrollableListboxName)
-////				{
-////					case "License plate state":
-////					case "Registration exp year":
-////					case "Registration exp month":
-////					case "Registration Type":
-////					case "Registration type":
-////					case "Vehicle body type":
-////					case "Vehicle Body Type":
-////					case "Vehicle make":
-////					case "Vehicle Make":
-////					case "Vehicle year":
-////					case "Violation reason":
-////						switch (strScrollableListboxName)
-////						{
-////							case "Registration Details Year":
-////								strStoreValueAsVariableName = "strRegistrationExpYear";
-////								break;
-////							case "Registration Details Month":
-////								strStoreValueAsVariableName = "strRegistrationExpMonth";
-////								break;
-////							case "Registration Details DaY":
-////								strStoreValueAsVariableName = "strRegistrationExpMonth";
-////								break;
-////							case "Registration type":
-////							case "Registration Type":
-////								strStoreValueAsVariableName = "strRegistrationType";
-////								break;	
-////							case "Vehicle body type":
-////							case "Vehicle Body Type":
-////								strStoreValueAsVariableName = "strBodyType";
-////								break;
-////							case "Vehicle make":
-////							case "Vehicle Make":
-////								strStoreValueAsVariableName = "strVehicleMake";
-////								break;
-////						}
-////						clsCommonMobile.GlobalWait(objDictionary, androiddriver, strPageName, "{TextFieldExists} "+strPageName+"~"+strScrollableListboxName, 15);
-////						ClickTextfield(objDictionary, androiddriver, strPageName, strScrollableListboxName, 1);
-////						if(strScrollableListboxName.equals("Vehicle year"))
-////						{try {Thread.sleep(1000);}catch (Exception e) {}}
-////						try{androiddriver.findElement(By.xpath("//*[@text='"+strListboxValue+"']")).click();}
-////						catch(Exception e) 
-////						{
-////							try
-////							{
-////								//MobileElement element = androiddriver.findElement(By.xpath("//android.widget.ListView[1]"));
-////								WebElement element = androiddriver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout"));
-////								NavigateToLinkInScrollableList(objDictionary, androiddriver, strPageName, strListboxValue, strScrollableListboxName, element);
-////							}
-////							catch(Exception a)
-////							{clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androiddriver,"The TextField was clicked but the scrollable listbox didn't appear."+strMethondName);}
-////							try {androiddriver.findElement(By.xpath("//*[@text='"+strListboxValue+"']")).click();}
-////							catch(Exception a) {clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androiddriver,"The ListboxValue (" + strListboxValue + ")  did not exist-"+strMethondName);}
-////							Reporter.log("The ListboxValue (" + strListboxValue + ") was clicked successfully"+"");
-////						}
-////						break;
-////					default:
-////						clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androiddriver,"The ScrollableListbox (" + strScrollableListboxName + ") had not been added for the page (" + strPageName + ")-"+strMethondName);
-////				}
-////				break;
-//			case "Lot Payment":
-//				ClickLink(objDictionary, androidDriver, strPageName, strScrollableListboxName, 1);
-//				//I Close
-//				NotitificationHandler(objDictionary, androidDriver);
-//				//Populate Search - last character						
-//				PopulateAction(objDictionary, androidDriver, "Meter Payment", "Populate Search", "{T} Search",strListboxValue.substring(0, strListboxValue.length() - 1));
-//				try {Thread.sleep(3000);}catch (Exception e) {}		
-//				try {androidDriver.findElement(By.xpath("//*[@text='"+strListboxValue+"']")).click();}
-//				catch(Exception a) 
-//				{
-//					strListboxValue = strListboxValue +" ("+strMunicipality+")";
-//					try {androidDriver.findElement(By.xpath("//*[@text='"+strListboxValue+"']")).click();}
-//					catch(Exception b) 
-//					{
-//						try
-//						{
-//							WebElement element = androidDriver.findElement(By.xpath("//android.widget.ListView[1]"));
-//							NavigateToLinkInScrollableList(objDictionary, androidDriver, strPageName, strListboxValue, strScrollableListboxName, element);
-//							try {androidDriver.findElement(By.xpath("//*[@text='"+strListboxValue+"']")).click();}
-//							catch(Exception c) {clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The ListboxValue (" + strListboxValue + ")  did not exist-"+strMethondName);}
-//							Reporter.log("The ListboxValue (" + strListboxValue + ") was clicked successfully");
-//						}
-//						catch(Exception d) 
-//						{clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The Spot ("+strListboxValue+") did not exist-"+strMethondName);}
-//					}
-//				}
-//				break;
-//			case "Lot Permit Payment":
-//				switch (strScrollableListboxName)
-//				{
-//					case "Municipality":
-//						try {androidDriver.findElement(By.id("com.mpspark.consumer.mpsconsumer:id/txtViewMunicipalityName")).click();}catch (Exception e) {}
-//						try {Thread.sleep(4000);}catch (Exception e) {}	
-//						try {androidDriver.findElement(By.xpath("//*[@text='"+strListboxValue+"']")).click();}
-//						catch(Exception a) 
-//						{
-//							try
-//							{
-//								//Set Scrollable Listbox element
-//								try {Thread.sleep(1500);}catch (Exception e) {}	
-//								WebElement element = androidDriver.findElement(By.xpath("//android.widget.FrameLayout[1]/android.widget.ListView[1]"));
-//								NavigateToLinkInScrollableList(objDictionary, androidDriver, strPageName, strListboxValue, strScrollableListboxName, element);
-//								try {androidDriver.findElement(By.xpath("//*[@text='"+strListboxValue+"']")).click();}
-//								catch(Exception b) {clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The ListboxValue (" + strListboxValue + ")  did not exist-"+strMethondName);}
-//								Reporter.log("The ListboxValue (" + strListboxValue + ") was clicked successfully"+"");
-//							}catch (Exception c)
-//							{clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The Scrollable Listbox did not appear-"+strMethondName);}
-//						}
-//						break;
-//					case "Select Lot":
-//						ClickLink(objDictionary, androidDriver, strPageName, "Select Lot", 1);
-//						//Populate Search - last character						
-//						PopulateAction(objDictionary, androidDriver, "Meter Payment", "Populate Search", "{T} Search",strListboxValue.substring(0, strListboxValue.length() - 1));
-//						try {Thread.sleep(3000);}catch (Exception e) {}		
-//						//Click Load More..
-//						try {androidDriver.findElement(By.xpath("//*[@text='Load more..']")).click();try {Thread.sleep(500);}catch (Exception e) {} }catch(Exception a) {};
-//						try {Thread.sleep(1000);}catch (Exception e) {}	
-//						try {androidDriver.findElement(By.xpath("//*[@text='"+strListboxValue+"']")).click();}
-//						catch(Exception a) 
-//						{
-//							strListboxValue = strListboxValue +" ("+strMunicipality+")";
-//							try {androidDriver.findElement(By.xpath("//*[@text='"+strListboxValue+"']")).click();}
-//							catch(Exception b) 
-//							{
-//								try
-//								{
-//									WebElement element = androidDriver.findElement(By.xpath("//android.widget.ListView[1]"));
-//									NavigateToLinkInScrollableList(objDictionary, androidDriver, strPageName, strListboxValue, strScrollableListboxName, element);
-//									try {androidDriver.findElement(By.xpath("//*[@text='"+strListboxValue+"']")).click();}
-//									catch(Exception c) {clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The ListboxValue (" + strListboxValue + ")  did not exist-"+strMethondName);}
-//									Reporter.log("The ListboxValue (" + strListboxValue + ") was clicked successfully");
-//								}
-//								catch(Exception d) 
-//								{clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The Spot ("+strListboxValue+") did not exist-"+strMethondName);}
-//							}
-//						}
-//						break;
-//					case "Select Permit":
-//						ClickLink(objDictionary, androidDriver, strPageName, "Select Permit", 1);
-//						try {androidDriver.findElement(By.xpath("//*[@text='"+strListboxValue+"']")).click();}
-//						catch(Exception e) 
-//						{
-//							WebElement element = androidDriver.findElement(By.xpath("//android.widget.FrameLayout[1]/android.widget.ListView[1]"));
-//							NavigateToLinkInScrollableList(objDictionary, androidDriver, strPageName, strListboxValue, strScrollableListboxName, element);
-//							try {androidDriver.findElement(By.xpath("//*[@text='"+strListboxValue+"']")).click();}
-//							catch(Exception a) {clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The ListboxValue (" + strListboxValue + ")  did not exist-"+strMethondName);}
-//							Reporter.log("The ListboxValue (" + strListboxValue + ") was clicked successfully"+"");
-//						}
-//						break;
-//					default:
-//						clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The ScrollableListbox (" + strScrollableListboxName + ") had not been added for the page (" + strPageName + ")-"+strMethondName);
-//				}
-//				break;
-//			case "Forgot Password":
-//			case "Login":
-//			case "Register":
-//				switch (strScrollableListboxName)
-//				{
-//					case "Select Municipality":
-//						ClickLink(objDictionary, androidDriver, strPageName, "Select Municipality", 1);
-//						try {androidDriver.findElement(By.xpath("//*[@text='"+strListboxValue+"']")).click();}
-//						catch(Exception e) 
-//						{
-//							if(strListboxValue.equals("Minnetonka, USA"))
-//							{
-//								strListboxValue = "MPS Test, USA";
-//							}
-//							WebElement element = androidDriver.findElement(By.xpath("//android.widget.FrameLayout[1]/android.widget.ListView[1]"));
-//							NavigateToLinkInScrollableList(objDictionary, androidDriver, strPageName, strListboxValue, strScrollableListboxName, element);
-//							try {androidDriver.findElement(By.xpath("//*[@text='"+strListboxValue+"']")).click();}
-//							catch(Exception a) {clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The ListboxValue (" + strListboxValue + ")  did not exist-"+strMethondName);}
-//							Reporter.log("The ListboxValue (" + strListboxValue + ") was clicked successfully"+"");
-//						}
-//						break;
-//					default:
-//						clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The ScrollableListbox (" + strScrollableListboxName + ") had not been added for the page (" + strPageName + ")-"+strMethondName);
-//				}
-//				break;
-//			case "Meter Payment":
-//				switch (strScrollableListboxName)
-//				{
-//					case "Municipality":
-//						try {androidDriver.findElement(By.id("com.mpspark.consumer.mpsconsumer:id/txtViewMunicipalityName")).click();}catch (Exception e) {}
-//						try {Thread.sleep(4000);}catch (Exception e) {}	
-//						try {androidDriver.findElement(By.xpath("//*[@text='"+strListboxValue+"']")).click();}
-//						catch(Exception a) 
-//						{
-//							try
-//							{
-//								//Set Scrollable Listbox element
-//								try {Thread.sleep(1500);}catch (Exception e) {}	
-//								WebElement element = androidDriver.findElement(By.xpath("//android.widget.FrameLayout[1]/android.widget.ListView[1]"));
-//								NavigateToLinkInScrollableList(objDictionary, androidDriver, strPageName, strListboxValue, strScrollableListboxName, element);
-//								try {androidDriver.findElement(By.xpath("//*[@text='"+strListboxValue+"']")).click();}
-//								catch(Exception b) {clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The ListboxValue (" + strListboxValue + ")  did not exist-"+strMethondName);}
-//								Reporter.log("The ListboxValue (" + strListboxValue + ") was clicked successfully"+"");
-//							}catch (Exception c)
-//							{clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The Scrollable Listbox did not appear-"+strMethondName);}
-//						}
-//						break;
-//					case "Select Spot":
-//						ClickLink(objDictionary, androidDriver, strPageName, "Select Spot", 1);
-//						//Populate Search - last character	
-//						PopulateAction(objDictionary, androidDriver, "Meter Payment", "Populate Search", "{T} Search",strListboxValue.substring(0, strListboxValue.length() - 1));
-//						try {Thread.sleep(3000);}catch (Exception e) {}		
-//						//Click Load More..
-//						try {androidDriver.findElement(By.xpath("//*[@text='Load more..']")).click();try {Thread.sleep(500);}catch (Exception e) {} }catch(Exception a) {};
-//						try {Thread.sleep(1000);}catch (Exception e) {}	
-//						try {androidDriver.findElement(By.xpath("//*[@text='"+strListboxValue+"']")).click();}
-//						catch(Exception a) 
-//						{
-//							strListboxValue = strListboxValue +" ("+strMunicipality+")";
-//							try {androidDriver.findElement(By.xpath("//*[@text='"+strListboxValue+"']")).click();}
-//							catch(Exception b) 
-//							{
-//								try
-//								{
-//									WebElement element = androidDriver.findElement(By.xpath("//android.widget.ListView[1]"));
-//									NavigateToLinkInScrollableList(objDictionary, androidDriver, strPageName, strListboxValue, strScrollableListboxName, element);
-//									try {androidDriver.findElement(By.xpath("//*[@text='"+strListboxValue+"']")).click();}
-//									catch(Exception c) {clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The ListboxValue (" + strListboxValue + ")  did not exist-"+strMethondName);}
-//									Reporter.log("The ListboxValue (" + strListboxValue + ") was clicked successfully");
-//								}
-//								catch(Exception d) 
-//								{clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The Spot ("+strListboxValue+") did not exist-"+strMethondName);}
-//							}
-//						}
-//						break;
-//					case "Select State/Province":
-//						ClickLink(objDictionary, androidDriver, strPageName, "Select State/Province", 1);
-//						try {androidDriver.findElement(By.xpath("//*[@text='"+strListboxValue+"']")).click();}
-//						catch(Exception e) 
-//						{
-//							WebElement element = androidDriver.findElement(By.xpath("//android.widget.FrameLayout[1]/android.widget.ListView[1]"));
-//							NavigateToLinkInScrollableList(objDictionary, androidDriver, strPageName, strListboxValue, strScrollableListboxName, element);
-//							try {androidDriver.findElement(By.xpath("//*[@text='"+strListboxValue+"']")).click();}
-//							catch(Exception a) {clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The ListboxValue (" + strListboxValue + ")  did not exist-"+strMethondName);}
-//							Reporter.log("The ListboxValue (" + strListboxValue + ") was clicked successfully"+"");
-//						}
-//						break;
-//					case "License Plate":
-//						try {androidDriver.findElement(By.xpath("//*[@text='"+strListboxValue+"']")).click();}
-//						catch(Exception e) 
-//						{
-//							try 
-//							{
-//								WebElement element = androidDriver.findElement(By.xpath("//android.widget.FrameLayout[1]/android.widget.ListView[1]"));
-//								NavigateToLinkInScrollableList(objDictionary, androidDriver, strPageName, strListboxValue, strScrollableListboxName, element);
-//								androidDriver.findElement(By.xpath("//*[@text='"+strListboxValue+"']")).click();
-//							}
-//							catch(Exception a) {clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The ListboxValue (" + strListboxValue + ")  did not exist-"+strMethondName);}
-//							Reporter.log("The ListboxValue (" + strListboxValue + ") was clicked successfully"+"");
-//						}
-//						break;
-//					default:
-//						clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The ScrollableListbox (" + strScrollableListboxName + ") had not been added for the page (" + strPageName + ")-"+strMethondName);
-//				}
-//				break;
-//					case "Snooze time":
-//						androidDriver.findElement(By.xpath("//android.widget.NumberPicker[1]")).sendKeys("1");
-//						try{androidDriver.findElement(By.xpath("//*[@text='"+strListboxValue+"']")).click();}
-//						catch(Exception e) 
-//						{
-//							try
-//							{
-//								WebElement element = androidDriver.findElement(By.xpath("//android.widget.ListView[1]"));
-//								NavigateToLinkInScrollableList(objDictionary, androidDriver, strPageName, strListboxValue, strScrollableListboxName, element);
-//							}
-//							catch(Exception a) 
-//							{clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The Scrollable Listbox  (" + strScrollableListboxName + ")  did not exist-"+strMethondName);}
-//							try {androidDriver.findElement(By.xpath("//*[@text='"+strListboxValue+"']")).click();}
-//							catch(Exception a) 
-//							{clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The ListboxValue (" + strListboxValue + ")  did not exist-"+strMethondName);}
-//							Reporter.log("The ListboxValue (" + strListboxValue + ") was clicked successfully");
-//						}
-//						break;
-//					case "Vehicle year":
-//						strStoreValueAsVariableName = "strVehicleYear";
-//						ClickTextfield(objDictionary, androidDriver, strPageName, strScrollableListboxName, 1);
-//						try
-//						{
-//							WebElement element = androidDriver.findElement(By.xpath("//android.widget.ListView[1]"));
-//							NavigateToLinkInScrollableList(objDictionary, androidDriver, strPageName, strListboxValue, strScrollableListboxName, element);
-//						}
-//						catch(Exception a) 
-//						{clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The Scrollable Listbox  (" + strScrollableListboxName + ")  did not exist-"+strMethondName);}
-//						try {androidDriver.findElement(By.xpath("//*[@text='"+strListboxValue+"']")).click();}
-//						catch(Exception a) 
-//						{clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The ListboxValue (" + strListboxValue + ")  did not exist-"+strMethondName);}
-//						Reporter.log("The ListboxValue (" + strListboxValue + ") was clicked successfully"+"");
-//						
-//					default:
-//						clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The ScrollableListbox (" + strScrollableListboxName + ") had not been added for the page (" + strPageName + ")-"+strMethondName);
-//				}
-//				break;
-//			case "Ticket":
-//				switch (strScrollableListboxName)
-//				{	
-//					case "Reason":
-//						ClickTextfield(objDictionary, androidDriver, strPageName, strScrollableListboxName, 1);
-//						try {androidDriver.findElement(By.xpath("//*[@text='"+strListboxValue+"']")).click();}
-//						catch(Exception e) 
-//						{
-//							WebElement element = androidDriver.findElement(By.xpath("//android.widget.ListView[1]"));
-//							NavigateToLinkInScrollableList(objDictionary, androidDriver, strPageName, strListboxValue, strScrollableListboxName, element);
-//							try {androidDriver.findElement(By.xpath("//*[@text='"+strListboxValue+"']")).click();}
-//							catch(Exception a) {clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The ListboxValue (" + strListboxValue + ")  did not exist-"+strMethondName);}
-//							Reporter.log("The ListboxValue (" + strListboxValue + ") was clicked successfully"+"");
-//						}
-//						break;
-//					default:
-//						clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The ScrollableListbox (" + strScrollableListboxName + ") had not been added for the page (" + strPageName + ")-"+strMethondName);
-//				}
-//				break;
-//			case "Violations":
-//				switch (strScrollableListboxName)
-//				{	
-//					case "License plate state":
-//					case "Registration Type":
-//					case "Vehicle Body Type":
-//					case "Reason":
-//					case "Registration exp year":
-//					case "Registration exp month":
-//						switch (strScrollableListboxName)
-//						{
-//							case "Registration exp year":
-//								strStoreValueAsVariableName = "strRegistrationExpYear";
-//								break;
-//							case "Registration exp month":
-//								strStoreValueAsVariableName = "strRegistrationExpMonth";
-//								break;
-//							case "Registration Type":
-//								strStoreValueAsVariableName = "strRegistrationType";
-//								break;	
-//							case "Vehicle Body Type":
-//								strStoreValueAsVariableName = "strBodyType";
-//								break;
-//						}
-//						
-////						if (strScrollableListboxName.equals("Registration type"))
-////						{
-////							androiddriver.findElement(By.id("com.mpspark.mobileOfficer:id/spinnerRegType")).click();
-////							try {Thread.sleep(500);}catch (Exception e) {}
-////						}
-////						else
-////						{
-//							ClickTextfield(objDictionary, androidDriver, strPageName, strScrollableListboxName, 1);
-////						}
-//						
-//						try {androidDriver.findElement(By.xpath("//*[@text='"+strListboxValue+"']")).click();}
-//						catch(Exception e) 
-//						{
-//							WebElement element = androidDriver.findElement(By.xpath("//android.widget.ListView[1]"));
-//							NavigateToLinkInScrollableList(objDictionary, androidDriver, strPageName, strListboxValue, strScrollableListboxName, element);
-//							try {androidDriver.findElement(By.xpath("//*[@text='"+strListboxValue+"']")).click();}
-//							catch(Exception a) {clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The ListboxValue (" + strListboxValue + ")  did not exist-"+strMethondName);}
-//							Reporter.log("The ListboxValue (" + strListboxValue + ") was clicked successfully"+"");
-//						}
-//						break;
-//					default:
-//						clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The ScrollableListbox (" + strScrollableListboxName + ") had not been added for the page (" + strPageName + ")-"+strMethondName);
-//				}
-//				break;
-//			default:
-//				clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The Page ("+strPageName+") does not have any existing ScrolableListboxName identified in-"+strMethondName);
 		}
 		if (strStoreValueAsVariableName != "")
         {
@@ -2450,7 +2042,6 @@ public class CommonANDROID_Flutter
 				{
 					lsItemsBeforeScroll = androidDriver.findElements(By.xpath("//android.view.View"));
 				}
-				//System.out.println(lsItemsBeforeScroll.get(lsItemsBeforeScroll.size() - 2).getText());
 				System.out.println(lsItemsBeforeScroll.get(lsItemsBeforeScroll.size() - 1).getText());
 				strLastItemBeforeScroll = lsItemsBeforeScroll.get(lsItemsBeforeScroll.size() - 1).getText();
 				if(strScrollableListboxName.equals("License plate state"))
@@ -2825,7 +2416,6 @@ public class CommonANDROID_Flutter
  		//Click the Sign In
  		clsCommonMobile.ClickButton(objDictionary, androiddriver, "Login", "Sign In",1);
  		//Log In to CA
- 		//clsCommonMobile.PopulateAction(objDictionary, androiddriver, "Login", "Populate Login", "{T} Email Id|{T} Password|{CB} Remember me",strUserName+"|"+strPassword+"|"+strRemainMeStatus);
  		clsCommonMobile.PopulateAction(objDictionary, androiddriver, "Login", "Populate Login", "{T} Email Id|{T} Password|{CB} Remember me",strUserName.toLowerCase()+"|"+strPassword+"|"+strRemainMeStatus);
  		clsCommonMobile.ClickButton(objDictionary, androiddriver, "Login", "Log in",1);
 		//Concierge Enabled
@@ -2843,15 +2433,7 @@ public class CommonANDROID_Flutter
 				strCurrentParkingAccountBalance = clsHttpConnections.CURL_ReturnCurrentParkingAccountBalance(objDictionary, strRole);
 			}
 			Double.parseDouble(strCurrentParkingAccountBalance);
-			//No nearby parking spots available. Please retry
-			//clsCommonMobile.SENTRYMOBILE_HandleNoNearbyParkingSpotAvailableDialog(objDictionary, androiddriver);
-			//The Wizard showed up when strConciergeState = Pending and strEnrolledState = False (A35)
 			try {Thread.sleep(1000);}catch (Exception e) {}
-//			String strConditionalValue = clsCommonMobile.ConditionalStepButton(objDictionary, androiddriver, "Nearby Parking",strWizardStatus, 1, "Exists", "");
-//			if(strConditionalValue.equals("True"))
-//			{
-//				clsCommonMobile.ClickButton(objDictionary, androiddriver, "Nearby Parking", strWizardStatus, 1);
-//			}
    		}
    	}
 	
@@ -2875,21 +2457,11 @@ public class CommonANDROID_Flutter
 		String strMunicipality = objDictionary.get("strMunicipality");
 		String strUserName = strUniqueId+strMunicipality.replace(" ","").replace(",", "")+strRole+"@gmail.com";
 		String strPassword = clsCommonWeb.SENTRYLINK_GetPassword(objDictionary, strUserName.toLowerCase(), strRole);
-//		String strConciergeState = clsHttpConnections.API_ReturnConciergeState(objDictionary,strRole,strLicensePlateNumber);
-//		String strEnrolledState = clsHttpConnections.GET_ConciergeEnrolledState(objDictionary, strRole) ; 
 		try {Thread.sleep(1000);}catch (Exception e) {}
 		//Click Sign in
 		try {Thread.sleep(1000);}catch (Exception e) {}
 		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Login", "Populate Login", "{T} Email Id|{T} Password|{CB} Remember me",strUserName.toLowerCase()+"|"+strPassword.replace(" ", "")+"|Checked");
 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Login", "Log in",1);
-//		String strConciergeAdminSetting = clsHttpConnections.GET_GetConciergeAdminSetting(objDictionary, "enabled");
-//		if(strConciergeAdminSetting.equals("true"))
-//		{
-//			//Valid Error Message
-//	 		clsCommonMobile.VerificationPointText(objDictionary, androidDriver, "Map", "Would you like to enroll in Concierge Autopay program?", 1, "Exists", "");
-//	 		//Click Sign up
-//	 		clsCommonMobile.ClickLink(objDictionary, androidDriver, "Map", "Don't show this message again",1);
-//		}
  		String strGPSEnabled = objDictionary.get("strGPSEnabled");if(strGPSEnabled == null) {strGPSEnabled = "True";}
 		if(strGPSEnabled.equals("False"))
 		{
@@ -2897,7 +2469,6 @@ public class CommonANDROID_Flutter
 			clsCommonMobile.ClickButton(objDictionary, androidDriver, "Map", "No thanks",1);
 			clsCommonMobile.SENTRYMOBILE_RemoveLocationServiceMessage(objDictionary,androidDriver);
 	 	}
-//		//Current Balance > 10
 		String strCurrentParkingAccountBalance = objDictionary.get("strCurrentParkingAccountBalance");
 		if(strCurrentParkingAccountBalance == null)
 		{
@@ -3165,7 +2736,7 @@ public class CommonANDROID_Flutter
     	    		{Reporter.log("The Text (Spot Details) with index (1) contained (" + strExpectedSpotDetailsFreeTimePlus1 + ")");}
     	    		else
     	    		{
-    	    			//UpdateErrorMessageWithPivotalData(objDictionary, androidDriver, "The Text (Spot Details) with index (1) did not contain (" + strExpectedSpotDetails + ") - actual value (" + strSpotDetails + ")");
+    	    			UpdateErrorMessageWithPivotalData(objDictionary, androidDriver, "The Text (Spot Details) with index (1) did not contain (" + strExpectedSpotDetails + ") - actual value (" + strSpotDetails + ")");
     	    			System.out.println("MIH");
     	    		}
             	}
@@ -3239,11 +2810,6 @@ public class CommonANDROID_Flutter
      	{
      		intMaximumDuration = intMaximumDuration - (Integer.parseInt(strViolationBonusPaymentAmount)/25 * Integer.parseInt(strMeterIncrementTime))-Integer.parseInt(strFreeTimeFirstPayment);
      	}
-//     	else if(strGracePeriodViolationTime != null && strTrueUpEnabled.equals("True"))
-//     	{
-//     		int intTimeUsed = clsMeter.METER_CalculateUsedTime(objDictionary,null,strGracePeriodViolationTime);
-//     		intMaximumDuration = Integer.parseInt(strMaximumDuration) - intTimeUsed;
-//     	}
      	String strTestCase = objDictionary.get("strTestCase");if(strTestCase == null){strTestCase = "";}
   		//Added this on June 01 - Doesn't work on VM
      	if(!strTestCase.contains("_VM_"))
@@ -3263,14 +2829,6 @@ public class CommonANDROID_Flutter
     	}
      	//Validate Max Time
      	clsCommonMobile.VALIDATIONS_MeterPayment_MaxTime(objDictionary, androidDriver, 0, intMaximumDuration,0);
-     	
-     	//Just a Test (Need to add test around this)
-//     	String strInitialGracePeriod = objDictionary.get("strInitialGracePeriod");
-//     	int intInitialGracePeriod = Integer.parseInt(strInitialGracePeriod) * 60;
-//     	intInitialGracePeriod = intInitialGracePeriod-60;
-//		//Wait for Meter to Violate
-//		clsMeter.METER_MeterWaitWithMessage(objDictionary,intInitialGracePeriod, "Waiting for grace period violation-Spot");
-     	
      	clsCommonMobile.ClickButton(objDictionary, androidDriver, "Choose Parking Duration", "Proceed", 1);
      	//Validate First Payment Dialog
      	String strMeterNextRateCost = clsMeter.GetMeterNextRateCost(objDictionary);
@@ -4102,62 +3660,19 @@ public class CommonANDROID_Flutter
 		int intMeterRemainingTimeMinutesMinusOne = intMeterRemainingTimeMinutes -1;
 		int intMeterRemainingTimeMinutesMinusTwo = intMeterRemainingTimeMinutes -2;
 		String strActualParkingExpiresIn = clsCommonMobile.StoreText(objDictionary, androidDriver, "Parking Sessions", "Parking Expires in", 1, "strActualParkingExpiresIn");
-		  System.out.println(strActualParkingExpiresIn);
-//	        if (strActualParkingExpiresIn.matches("(?i).*\\b(Hrs?|hrs?)\\b.*")) {
-//	            // Extract the number of hours
-//	            int hours = extractHours(strActualParkingExpiresIn);
-//	            // Convert hours to minutes
-//	            int minutes = hours * 60;
-//	            // Replace "Hr" or "Hrs" or "hr" or "hrs" with minutes
-//	            strActualParkingExpiresIn = strActualParkingExpiresIn.replaceAll("(?i)(\\d+)\\s*\\b(Hrs?|hrs?)\\b", minutes + " Mins");
-//	        }
-//		  System.out.println(strActualParkingExpiresIn);
+		System.out.println(strActualParkingExpiresIn);
 		String strMeterRemainingTimeMinutesPlusThree = clsCommonMobile.SENTRYMOBILE_ConvertMinutesToHrAndMins(Integer.toString(intMeterRemainingTimeMinutesPlusThree));
 		String strMeterRemainingTimeMinutesPlusTwo = clsCommonMobile.SENTRYMOBILE_ConvertMinutesToHrAndMins(Integer.toString(intMeterRemainingTimeMinutesPlusTwo));
 		String strMeterRemainingTimeMinutesPlusOne = clsCommonMobile.SENTRYMOBILE_ConvertMinutesToHrAndMins(Integer.toString(intMeterRemainingTimeMinutesPlusOne));
 		String strMeterRemainingTimeMinutes = clsCommonMobile.SENTRYMOBILE_ConvertMinutesToHrAndMins(Integer.toString(intMeterRemainingTimeMinutes));
 		String strMeterRemainingTimeMinutesMinusOne = clsCommonMobile.SENTRYMOBILE_ConvertMinutesToHrAndMins(Integer.toString(intMeterRemainingTimeMinutesMinusOne));
 		String strMeterRemainingTimeMinutesMinusTwo = clsCommonMobile.SENTRYMOBILE_ConvertMinutesToHrAndMins(Integer.toString(intMeterRemainingTimeMinutesMinusTwo));
-
-		//I Removed the s in Hrs 9/11/18 - Test Case - A73_FTFP10_FTR_RFT_gt_MTIV_PS1_MP1_BMT_VPSH_VICAE_VIAC
-//		if (intMeterRemainingTimeMinutesPlusThree > 60)
-//		{
-//			int hours = intMeterRemainingTimeMinutesPlusThree / 60;int minutes = intMeterRemainingTimeMinutesPlusThree % 60;
-//			if(hours == 1){strMeterRemainingTimeMinutesPlusThree = Integer.toString(hours)+" Hr "+Integer.toString(minutes);}
-//			else{strMeterRemainingTimeMinutesPlusThree = Integer.toString(hours)+" Hr "+Integer.toString(minutes);}
-//		}
-//		if (intMeterRemainingTimeMinutesPlusTwo > 60)
-//		{
-//			int hours = intMeterRemainingTimeMinutesPlusTwo / 60;int minutes = intMeterRemainingTimeMinutesPlusTwo % 60;
-//			if(hours == 1){strMeterRemainingTimeMinutesPlusTwo = Integer.toString(hours)+" Hrs "+Integer.toString(minutes);}
-//			else{strMeterRemainingTimeMinutesPlusTwo = Integer.toString(hours)+" Hrs "+Integer.toString(minutes);}
-//		}
-//		if (intMeterRemainingTimeMinutesPlusOne > 60)
-//		{
-//			int hours = intMeterRemainingTimeMinutesPlusOne / 60;int minutes = intMeterRemainingTimeMinutesPlusOne % 60;
-//			if(hours == 1){strMeterRemainingTimeMinutesPlusOne = Integer.toString(hours)+" Hrs "+Integer.toString(minutes);}
-//			else{strMeterRemainingTimeMinutesPlusOne = Integer.toString(hours)+" Hrs "+Integer.toString(minutes);}
-//		}
-//		if (intMeterRemainingTimeMinutes > 60)
-//		{
-//			int hours = intMeterRemainingTimeMinutes / 60;int minutes = intMeterRemainingTimeMinutes % 60;
-//			if(hours == 1){strMeterRemainingTimeMinutes = Integer.toString(hours)+" Hrs "+Integer.toString(minutes);}
-//			else{strMeterRemainingTimeMinutes = Integer.toString(hours)+" Hrs "+Integer.toString(minutes);}
-//		}
-//		if(intMeterRemainingTimeMinutesMinusOne > 60)
-//		{
-//			int hours = intMeterRemainingTimeMinutesMinusOne / 60;int minutes = intMeterRemainingTimeMinutesMinusOne % 60;
-//			if(hours == 1){strMeterRemainingTimeMinutesMinusOne = Integer.toString(hours)+" Hrs "+Integer.toString(minutes);}
-//			else{strMeterRemainingTimeMinutesMinusOne = Integer.toString(hours)+" Hrs "+Integer.toString(minutes);}
-//		}
-		
 		String strExpectedParkingExpiredInPlusThree = "Parking expires in "+strMeterRemainingTimeMinutesPlusThree + " Mins";
 		String strExpectedParkingExpiredInPlusTwo = "Parking expires in "+strMeterRemainingTimeMinutesPlusTwo + " Mins";
 		String strExpectedParkingExpiredInPlusOne = "Parking expires in "+strMeterRemainingTimeMinutesPlusOne + " Mins";
 		String strExpectedParkingExpiredIn = "Parking expires in "+strMeterRemainingTimeMinutes + " Mins";
 		String strExpectedParkingExpiredInMinusOne = "Parking expires in "+strMeterRemainingTimeMinutesMinusOne + " Mins";
 		String strExpectedParkingExpiredInMinusTwo = "Parking expires in "+strMeterRemainingTimeMinutesMinusTwo + " Mins";
-
 		if(strActualParkingExpiresIn.equals(strExpectedParkingExpiredInPlusThree.replace(" 0 Mins", "")))
 		{Reporter.log("The Text (Parking expires in) with index (1) equaled ("+strExpectedParkingExpiredInPlusThree+")-Plus 3");}
 		else if(strActualParkingExpiresIn.equals(strExpectedParkingExpiredInPlusTwo.replace(" 0 Mins", "")))
@@ -4404,50 +3919,6 @@ public class CommonANDROID_Flutter
 		{
 			clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"An unexpected error occurred while logging in: " + snackbar);
 		}
-//		String strCondition2 = clsCommonMobile.ConditionalStepButton(objDictionary, androidDriver, "Violations", "Save", 1, "Exists", "");
-//		if(strCondition2.equals("True"))
-//		{
-//			WebElement element = GetTextFieldObj(objDictionary, androidDriver, "Violations", "Please sign inside the box");
-//			ElementSwipe  clsElementSwipe  = new ElementSwipe();
-//			clsElementSwipe.Swipe(androidDriver,element,"SWIPE_RIGHT");
-//			try {Thread.sleep(1000);}catch (Exception e) {}
-//			clsCommonMobile.ClickButton(objDictionary, androidDriver, "Violations", "Save",1);
-//			try {Thread.sleep(2000);}catch (Exception e) {}
-//		}
-		//Allow MPS PEO to take pictures and record video?
-//		VerificationPointText(objDictionary, androidDriver, "New Violations", "Permission Message", 1, "Contains", "Allow MPS PEO to take pictures and record video?");
-//		String strAllowAppToTakePictureAndVideo = objDictionary.get("strAllowAppToTakePictureAndVideo");if(strAllowAppToTakePictureAndVideo == null) {strAllowAppToTakePictureAndVideo = "True";}
-//		if(strAllowAppToTakePictureAndVideo.equals("False"))
-//		{ClickButton(objDictionary, androidDriver, "New Violations", "Don't allow",1);}
-//		else
-//		{ClickButton(objDictionary, androidDriver, "New Violations", "While using the app",1);}
-//		//ClickButton(objDictionary, androiddriver, "New Violations", "Allow only while using the app",1);
-//		try {Thread.sleep(1000);}catch (Exception e) {}
-//		//Allow MPS PEO to access this device's location?
-//		VerificationPointText(objDictionary, androidDriver, "New Violations", "Permission Message", 1, "Contains", "Allow MPS PEO to access this device’s location?");
-//		ClickButton(objDictionary, androidDriver, "New Violations", "While using the app",1);
-//		try {Thread.sleep(1000);}catch (Exception e) {}
-//		//Allow MPS PEO to find, connect to, and determine the relative position of nearby devices?
-//		VerificationPointText(objDictionary, androidDriver, "New Violations", "Permission Message", 1, "Contains", "Allow MPS PEO to find, connect to, and determine the relative position of nearby devices?");
-//		ClickButton(objDictionary, androidDriver, "New Violations", "Allow",1);
-//		try {Thread.sleep(1000);}catch (Exception e) {}
-//		//Allow MPS PEO to send you notifications?
-//		VerificationPointText(objDictionary, androidDriver, "New Violations", "Permission Message", 1, "Contains", "Allow MPS PEO to send you notifications?");
-//		ClickButton(objDictionary, androidDriver, "New Violations", "Allow",1);
-//		try {Thread.sleep(1000);}catch (Exception e) {}
-//		VerificationPointText(objDictionary, androidDriver, "New Violations", "Permission Message", 1, "Contains", "Allow MPS PEO to access photos and videos on this device?");
-//		String strAllowAccessPhotosAndVideos = objDictionary.get("strAllowAccessPhotosAndVideos");if(strAllowAccessPhotosAndVideos == null) {strAllowAccessPhotosAndVideos = "True";}
-//		if(strAllowAccessPhotosAndVideos.equals("False"))
-//		{ClickButton(objDictionary, androidDriver, "New Violations", "Don't allow",1);}
-//		else
-//		{ClickButton(objDictionary, androidDriver, "New Violations", "Allow all",1);}
-//		try {Thread.sleep(1000);}catch (Exception e) {}
-//		String strCondition3 = clsCommonMobile.ConditionalStepButton(objDictionary, androidDriver, "Violations", "Done", 1, "Exists", "");
-//		if(strCondition3.equals("True"))
-//		{
-//			PopulateCheckboxWithinScrollableList(objDictionary, androidDriver, "Violations", strMeterGroup, "Meter Groups");
-//			clsCommonMobile.ClickButton(objDictionary, androidDriver, "Violations", "Done",1);
-//		}
 	}
 	
 	public void PEO_PopulateVehicleDetails(Map<String, String> objDictionary, AppiumDriver androidDriver, String strLicensePlate, String strLicensePlateState, String strRegistrationExpYear, String strRegistrationExpMonth, String strVehicleMake)
@@ -4562,44 +4033,6 @@ public class CommonANDROID_Flutter
 	    else
 	    {clsCommonMobile.VerificationPointText(objDictionary, androidDriver, "Violation Details", "No violations to show", 1, "Exists", "");}
 	}
-	
-//	public void PEO_PopulateViolationDetails(Map<String, String> objDictionary, AppiumDriver androidDriver, String strViolationReason, String strSpotId, String strRemarks)
-//	{
-//		HttpConnections clsHttpConnections = new HttpConnections();
-//		String strMethondName = new Object(){}.getClass().getEnclosingMethod().getName();
-//		Reporter.log("<font color='orange'>     "+strMethondName+"</font>");
-//		WebElement objTicketFrame = androidDriver.findElement(By.xpath(".//android.widget.ScrollView[1]"));
-//		ElementSwipe  clsElementSwipe  = new ElementSwipe();
-//		clsElementSwipe.Swipe_Flutter(androidDriver,objTicketFrame,"SWIPE_UP");
-//		try {Thread.sleep(2000);}catch (Exception e) {}
-//		//Get ExternalViolationReason
-//		String strExternalViolationReason = "";
-//		try {strExternalViolationReason = clsHttpConnections.Json_ExternalViolationId(objDictionary, strViolationReason);}
-//		catch (Exception e) {}
-//		PopulateScrollableListbox(objDictionary, androidDriver, "Create Violation", "Violation reason", strExternalViolationReason);
-//		try {Thread.sleep(2000);}catch (Exception e) {}
-//		if(strViolationReason.equals("Expired Inspection Over 60 Days"))//This should be InternalViolationReason
-//		{
-//			ClickTextfield(objDictionary, androidDriver, "Create Violation", "Inspection date", 1);
-//			try {Thread.sleep(2000);}catch (Exception e) {}
-//			Calendar cal = Calendar.getInstance();
-//			String strCurrentMth = new SimpleDateFormat("MMM").format(cal.getTime());
-//			androidDriver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.DatePicker/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.NumberPicker[1]/android.widget.EditText")).sendKeys(strCurrentMth);
-//			try {Thread.sleep(1000);}catch (Exception e) {}
-//			Calendar cal2 = Calendar.getInstance();cal.add(Calendar.YEAR, 0);
-//	    	String strCurrentYr = new SimpleDateFormat("yyyy").format(cal2.getTime());
-//	    	//androiddriver.findElement(By.xpath("//android.widget.NumberPicker[2]")).sendKeys(strCurrentYr);
-//	    	androidDriver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.DatePicker/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.NumberPicker[2]/android.widget.EditText")).sendKeys(strCurrentYr);
-//			try {Thread.sleep(1000);}catch (Exception e) {}
-//			ClickButton(objDictionary, androidDriver, "New Violation", "Set", 1);
-//			try {Thread.sleep(1000);}catch (Exception e) {}
-//			PopulateAction(objDictionary, androidDriver, "New Violation", "Populate Inspection number", "{T} Inspection number", "407");
-////			clsElementSwipe.Swipe(androidDriver,objTicketFrame,"SWIPE_UP");
-//		}
-//		try {Thread.sleep(1000);}catch (Exception e) {}
-//		PopulateScrollableListbox(objDictionary, androidDriver, "Create Violation", "Spot ID", strSpotId);
-//		PopulateAction(objDictionary, androidDriver, "Create Violation", "Populate License Plate", "{T} Remarks", strRemarks);
-//	}
 	
 	public void PEO_PopulateViolationDetails(Map<String, String> objDictionary, AppiumDriver androidDriver,String strViolationReason, String strSpotId, String strRemarks) 
 	{
@@ -4769,19 +4202,6 @@ public class CommonANDROID_Flutter
 		if(strConciergeState.equals("active"))
 		{
 			clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary,null,"This Test Case Is Incomplete");
-
-//			String strArrErolledLicensePlates = clsHttpConnections.GET_ReturnUserLicensePlates(objDictionary, strRole); 
-//			if(!strArrErolledLicensePlates.equals(strLicensePlateNumber))
-//			{
-//				//More than 1 License Plate - De-enroll Using API
-//				clsHttpConnections.POST_ConciergeDenroll(objDictionary, strRole);
-//				//Delete License Plates that are not current license plate. Eliminates Reseting All User License Plates.
-//				String[] arrLicensePlates = strArrErolledLicensePlates.split("\\|", -1);
-//				for (String strUserLicensePlate : arrLicensePlates)
-//				{
-//					if(!strUserLicensePlate.equals(strLicensePlateNumber)){clsHttpConnections.CURL_DeleteLicensePlate(objDictionary, strRole, strUserLicensePlate);}
-//				}
-//			}
 		}
 		String strEnrolledState = clsHttpConnections.GET_ConciergeEnrolledState(objDictionary, strRole);
 		if(strEnrolledState.equals("true"))
@@ -5400,10 +4820,10 @@ public class CommonANDROID_Flutter
 	        case "Forgot Password":
 	            switch (strButtonName)
 	            {
-	                case "Submit":
+	                case "Send Reset Instructions":
 	                    try {
 	                        WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(5));
-	                        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.View[@content-desc='Submit']")));
+	                        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.View[@content-desc='Send Reset Instructions']")));
 	                        return element;
 	                    } catch (Exception e) {return null;}
 	                default:
@@ -5726,8 +5146,20 @@ public class CommonANDROID_Flutter
 	                	try {return androidDriver.findElement(By.xpath("//android.widget.Button[@text='No thanks']"));}
 	                	catch(Exception e) {return null;}
 	                case "Sign up":
-	                    try { return androidDriver.findElement(By.xpath("(//android.view.View[@content-desc=\"Sign up\"])[2]"));}
-	                    catch(Exception e) {return null;}
+	                	try {
+	                	    // First scroll to bring "Sign up" into view
+	                	    androidDriver.findElement(AppiumBy.androidUIAutomator(
+	                	        "new UiScrollable(new UiSelector().scrollable(true).instance(0))" +
+	                	        ".scrollIntoView(new UiSelector().description(\"Sign up\"))"
+	                	    ));
+
+	                	    // Then find the 2nd occurrence with your original XPath
+	                	    return androidDriver.findElement(By.xpath("(//android.view.View[@content-desc=\"Sign up\"])[2]"));
+	                	} catch (Exception e) {
+	                	    return null;
+	                	}
+//	                    try { return androidDriver.findElement(By.xpath("(//android.view.View[@content-desc=\"Sign up\"])[2]"));}
+//	                    catch(Exception e) {return null;}
 	                default:
 	                    clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The Button (" + strButtonName + ") had not been added to GetButtonObj for the page (" + strPageName + ")");
 	            }
@@ -6810,10 +6242,10 @@ public class CommonANDROID_Flutter
 			case "Set New Password":
 				switch (strTextFieldName)
 				{
-					case "Confirm Password":
+					case "Confirm New Password":
 						try {
 						    WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(10)); 
-						    WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.View[@content-desc='Confirm Password']//following-sibling::*[1]")));
+						    WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.View[@content-desc='Confirm New Password']//following-sibling::*[1]")));
 							return element;
 						} catch (Exception e) {return null;}
 					case "Email":
@@ -6822,10 +6254,10 @@ public class CommonANDROID_Flutter
 						    WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.View[@content-desc='Email']//following-sibling::*[1]")));
 							return element;
 						} catch (Exception e) {return null;}
-					case "Password":
+					case "New Password":
 						try {
 						    WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(10)); 
-						    WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.View[@content-desc='Password']//following-sibling::*[1]")));
+						    WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.View[@content-desc='New Password']//following-sibling::*[1]")));
 							return element;
 						} catch (Exception e) {return null;}
 					case "Password doesn't match":
@@ -6834,10 +6266,10 @@ public class CommonANDROID_Flutter
 						    WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.View[@content-desc='Password doesn't match']")));
 							return element;
 						} catch (Exception e) {return null;}
-					case "Password Reset Token":
+					case "Reset Token":
 						try {
 						    WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(10)); 
-						    WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.View[@content-desc='Password Reset Token']//following-sibling::*[1]")));
+						    WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.View[@content-desc='Reset Token']//following-sibling::*[1]")));
 							return element;
 						} catch (Exception e) {return null;}
 					default:
@@ -10949,6 +10381,7 @@ public class CommonANDROID_Flutter
 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept",1);
 		clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, androidDriver, "parker","Remind me later");
 		clsCommonMobile.SENTRYMOBILE_PurchaseMeterTimeParkThenPay(objDictionary, androidDriver,strFreeTimeFirstPayment,strMeterIncrementTime,"True","False");
+		androidDriver.quit();
 		String strRemainingFreeTimeMinutes = objDictionary.get("strRemainingFreeTimeMinutes");
 		androidDriver.quit();
 		//PRT: Purchase Remaining Time
@@ -11151,7 +10584,7 @@ public class CommonANDROID_Flutter
   		//Free Holiday
 		clsCommonWeb.SENTRYLINK_SetRateBlocksHolidayFree(objDictionary,strFreeTimeMinutes,strMinutesOfFreeTimeBeforeCurrentTime,strFreeTimeFirstPayment);
 		//Wait for Holiday Free Rate block gets to the meter
-		try {Thread.sleep(15000);}catch (Exception e) {}
+		try {Thread.sleep(20000);}catch (Exception e) {}
 		//PS1: Park Spot 1
     	clsMeter.METER_ParkSpot(objDictionary,"1","Local");
     	//Open Consumer App
@@ -11576,6 +11009,7 @@ public class CommonANDROID_Flutter
 		clsCommonMobile.SENTRYMOBILE_PurchaseMeterTimeParkThenPay(objDictionary, androidDriver,strFreeTimeFirstPayment,strMeterIncrementTime,"True","False");
 		androidDriver.quit();
 		String strRemainingFreeTimeMinutes = objDictionary.get("strRemainingFreeTimeMinutes");
+		androidDriver.quit();
 		//PRT: Purchase Remaining Time
       	clsCommonMobile.SENTRYMOBILE_PurchaseRemainingTime(objDictionary, strMaximumDuration, strMeterIncrementTime, strFreeTimeFirstPayment, strMeterIncrementTime,"");
       	androidDriver.quit();
@@ -16377,23 +15811,6 @@ public class CommonANDROID_Flutter
 		clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary,androidDriver, "Park");
 		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Enter your Parking Zone Number", "Populate Zone Number", "{T} Zone Number",strMeterSpotName);
 		clsCommonMobile.ClickButton(objDictionary, androidDriver,  "Enter your Parking Zone Number", "Meter Spot Number", 1);
-		
- 		
-// 		try {Thread.sleep(1500);}catch (Exception e) {}
-//		clsCommonMobile.SENTRYMOBILE_NavigateToPageUsingMenuButtons(objDictionary,androidDriver,"Park");
-//		//Add License Plate
-//		clsCommonMobile.SENTRYMOBILE_AddLicensePlate(objDictionary, androiddriver, strLicensePlateNumber, strState);
-//		clsCommonMobile.SENTRYMOBILE_NavigateToPageUsingMenuButtons(objDictionary, androiddriver, "Account Details");
-//		//Validate License Plate Appears on Account Details
-//		try {Thread.sleep(1500);}catch (Exception e) {}
-//		clsCommonMobile.VerificationPointText(objDictionary, androiddriver, "Account Details", strLicensePlateNumber, 1, "Exists","");
-//		//Park With License Plate
-//		clsMeter.METER_ParkSpotWithLicensePlate(objDictionary, strLicensePlateNumber);
-//		//EnableConciergeProgram
-//		clsCommonMobile.SENTRYMOBILE_AccountDetails_EnableConciergeProgram(objDictionary, androiddriver,clsSMS, strRole,strLicensePlateNumber);
-//		//Active Concierge
-//		clsMeter.SENTRYMETER_ActiveConcierge(objDictionary, strTestCaseName,strRole, strLicensePlateNumber, strState);
-//		String strNotificationAppSubscription = clsHttpConnections.GET_GetSubscriptionPreference(objDictionary, "Session", "app" ,strRole);
 		androidDriver.quit();
 		//ShortSessionWaitExitSpot
       	clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null, "1","Local");
