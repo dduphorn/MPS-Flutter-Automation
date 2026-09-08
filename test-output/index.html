@@ -59,7 +59,7 @@
                 </li>
                 <li>
                   <a href="#" panel-name="group-Regression_PEO" class="navigator-link ">
-                    <span>0 groups</span>
+                    <span>1 group</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -102,7 +102,7 @@
                     <div class="method-list-content failed suite-Regression_PEO">
                       <span>
                         <img src="failed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Regression_PEO" title="AutomationCode.PEO_TestCases_Flutter" class="method navigator-link" hash-for-method="P4002F_PEO_CMV_IGPE_VVXD_WIFI_And_WIFIScanning_Disabled">P4002F_PEO_CMV_IGPE_VVXD_WIFI_And_WIFIScanning_Disabled</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Regression_PEO" title="AutomationCode.PEO_TestCases_Flutter" class="method navigator-link" hash-for-method="A4000F_OpenApp_AirplaneModeEnabled">A4000F_OpenApp_AirplaneModeEnabled</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-Regression_PEO -->
@@ -125,13 +125,12 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="P4002F_PEO_CMV_IGPE_VVXD_WIFI_And_WIFIScanning_Disabled">
-                  </a> <!-- P4002F_PEO_CMV_IGPE_VVXD_WIFI_And_WIFIScanning_Disabled -->
-                  <span class="method-name">P4002F_PEO_CMV_IGPE_VVXD_WIFI_And_WIFIScanning_Disabled</span>
-                  <div class="stack-trace">java.lang.AssertionError: FLUTTERPEO-140-When WiFi &amp; WIFI Scanning are disabled, the Location Accuracy prompt requires two taps on “No thanks”
-	at AutomationCode.CommonANDROID_Flutter.UpdateErrorMessageWithPivotalData(CommonANDROID_Flutter.java:365)
-	at AutomationCode.CommonANDROID_Flutter.VerificationPointButton(CommonANDROID_Flutter.java:6970)
-	at AutomationCode.PEO_TestCases_Flutter.P4002F_PEO_CMV_IGPE_VVXD_WIFI_And_WIFIScanning_Disabled(PEO_TestCases_Flutter.java:418)
+                  <a name="A4000F_OpenApp_AirplaneModeEnabled">
+                  </a> <!-- A4000F_OpenApp_AirplaneModeEnabled -->
+                  <span class="method-name">A4000F_OpenApp_AirplaneModeEnabled</span>
+                  <div class="stack-trace">java.lang.AssertionError: FLUTTERPEO-132-Flutter app shows generic “No Internet Connection” message when Airplane Mode is enabled
+	at AutomationCode.CommonANDROID_Flutter.UpdateErrorMessageWithPivotalData(CommonANDROID_Flutter.java:376)
+	at AutomationCode.PEO_TestCases_Flutter.A4000F_OpenApp_AirplaneModeEnabled(PEO_TestCases_Flutter.java:218)
 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
@@ -164,7 +163,7 @@
     &lt;classes&gt;
       &lt;class name=&quot;AutomationCode.PEO_TestCases_Flutter&quot;&gt;
         &lt;methods&gt;
-          &lt;include name=&quot;P4002F_PEO_CMV_IGPE_VVXD_WIFI_And_WIFIScanning_Disabled&quot;/&gt;
+          &lt;include name=&quot;A4000F_OpenApp_AirplaneModeEnabled&quot;/&gt;
         &lt;/methods&gt;
       &lt;/class&gt; &lt;!-- AutomationCode.PEO_TestCases_Flutter --&gt;
     &lt;/classes&gt;
@@ -190,6 +189,14 @@
             <span class="header-content">Groups for Regression_PEO</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
+            <div class="test-group">
+              <span class="test-group-name">Smoke</span>
+              <br/>
+              <div class="method-in-group">
+                <span class="method-in-group-name">A4000F_OpenApp_AirplaneModeEnabled</span>
+                <br/>
+              </div> <!-- method-in-group -->
+            </div> <!-- test-group -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
         <div panel-name="times-Regression_PEO" class="panel">
@@ -208,14 +215,14 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'P4002F_PEO_CMV_IGPE_VVXD_WIFI_And_WIFIScanning_Disabled')
+data.setCell(0, 1, 'A4000F_OpenApp_AirplaneModeEnabled')
 data.setCell(0, 2, 'AutomationCode.PEO_TestCases_Flutter')
-data.setCell(0, 3, 131766);
+data.setCell(0, 3, 81103);
 window.suiteTableData['Regression_PEO']= { tableData: data, tableDiv: 'times-div-Regression_PEO'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 2 minutes</span>
+              <span class="suite-total-time">Total running time: 1 minutes</span>
               <div id="times-div-Regression_PEO">
               </div> <!-- times-div-Regression_PEO -->
             </div> <!-- times-div -->
@@ -227,93 +234,59 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="reporter-method-div">
-              <span class="reporter-method-name">P4002F_PEO_CMV_IGPE_VVXD_WIFI_And_WIFIScanning_Disabled</span>
+              <span class="reporter-method-name">A4000F_OpenApp_AirplaneModeEnabled</span>
               <div class="reporter-method-output-div">
                 <span class="reporter-method-output">************************************************************</span>
-                <span class="reporter-method-output">Environment:  SG                            </span>
-                <span class="reporter-method-output">PEO Version:  MPSN5PEO-Staging-3.4(187).apk                                 </span>
-                <span class="reporter-method-output">Municipality: TicketServiceTesting                           </span>
-                <span class="reporter-method-output">Meter Name:   9000                              </span>
-                <span class="reporter-method-output">Meter IP:     10.10.102.242                                   </span>
+                <span class="reporter-method-output">Environment:  SG                           </span>
+                <span class="reporter-method-output">Version:      MPSPEO-Flutter-Staging-2.0.14.apk                             </span>
+                <span class="reporter-method-output">Municipality: TicketServiceTesting                          </span>
+                <span class="reporter-method-output">Meter Name:   9000                             </span>
+                <span class="reporter-method-output">Meter IP:     10.10.102.242                                  </span>
                 <span class="reporter-method-output">Meter Version:"meter-8.18-1a~master20241003.1"
-                           </span>
+                          </span>
                 <span class="reporter-method-output">Meter MD5SUM Version:5d3be9808b95168a251eb28adef2db83 
-                   </span>
-                <span class="reporter-method-output">Sentry Link Version:null                </span>
-                <span class="reporter-method-output">SilverBullet Version:5.1.1-1             </span>
-                <span class="reporter-method-output">RemotePath:   http://localhost:4723                             </span>
+                  </span>
+                <span class="reporter-method-output">Sentry Link Version:Version 9.8               </span>
+                <span class="reporter-method-output">SilverBullet Version:5.1.1-1            </span>
+                <span class="reporter-method-output">RemotePath:   http://localhost:4723                            </span>
+                <span class="reporter-method-output">AndroidUdid:  R5CT71MQ2MM                           </span>
                 <span class="reporter-method-output">************************************************************</span>
-                <span class="reporter-method-output"><font color='green'>Meter Start Time 22:26:</font></span>
-                <span class="reporter-method-output">***************TestCase Description*************************</span>
-                <span class="reporter-method-output">CMV: Create Manual Violation                                </span>
-                <span class="reporter-method-output">IGPE: Initial Grace Period Exceeded                         </span>
-                <span class="reporter-method-output">VVXD: Validate Volation XML Data                            </span>
-                <span class="reporter-method-output">************************************************************</span>
-                <span class="reporter-method-output">strRemotePath:http://localhost:4723</span>
-                <span class="reporter-method-output">strAppiumPort:null</span>
-                <span class="reporter-method-output"><font color='orange'>     SENTRYLINK_UpdateNotificationReportName</font></span>
-                <span class="reporter-method-output">strHeadless: True</span>
-                <span class="reporter-method-output"><font color='orange'>     SENTRYLINK_OpenLoginPage</font></span>
-                <span class="reporter-method-output"><font color='orange'>     SENTRYLINK_AdminLoginIn</font></span>
-                <span class="reporter-method-output">The (Login) page existed</span>
-                <span class="reporter-method-output"><font color='orange'>     SENTRYLINK_UserLoginIn</font></span>
-                <span class="reporter-method-output">The text name (Version) value (Version 9.8) was stored as variable name (strSentryLinkVersion)</span>
-                <span class="reporter-method-output">The (Login) field(s) were populated correctly - Values(Email,ffticketservicetestingadmin@gmail.com|Password,ffTicketServiceTestingadmin14!)</span>
-                <span class="reporter-method-output">The Button (Sign in) with index (1) was clicked successfully</span>
-                <span class="reporter-method-output"><font color='orange'>     SENTRYLINK_NavigateToPage2-Editing Municipality</font></span>
-                <span class="reporter-method-output">The Link (TicketServiceTesting) with index (1) was clicked successfully.</span>
-                <span class="reporter-method-output">The Link (TicketServiceTesting) with index (1) was clicked successfully.</span>
-                <span class="reporter-method-output">The text name (UserName) value (ffTicketServiceTesting admin) was stored as variable name (strVarUserName)</span>
-                <span class="reporter-method-output">The Link (ffTicketServiceTesting admin) with index (1) was clicked successfully.</span>
-                <span class="reporter-method-output">The Link (ffTicketServiceTesting admin) with index (1) was clicked successfully.</span>
-                <span class="reporter-method-output">The Link (SentryLink Admin) with index (1) was clicked successfully.</span>
-                <span class="reporter-method-output">The Link (SentryLink Admin) with index (1) was clicked successfully.</span>
-                <span class="reporter-method-output">The link (Edit) in row (43) of the (Municipalities) table was clicked successfully</span>
-                <span class="reporter-method-output">The (Notification Report Name) field(s) were populated correctly - Values(Notification Report Name,CHNYTICKET2)</span>
-                <span class="reporter-method-output">The Button (submit) with index (1) was clicked successfully</span>
-                <span class="reporter-method-output">The Text (MunicipalityWasSuccessfullyUpdated) with index (1) contained (Municipality was successfully updated.)</span>
-                <span class="reporter-method-output">strHeadless: True</span>
-                <span class="reporter-method-output"><font color='orange'>     SENTRYLINK_OpenLoginPage</font></span>
-                <span class="reporter-method-output">The (Login) page existed</span>
-                <span class="reporter-method-output"><font color='orange'>     SENTRYLINK_UserLoginIn</font></span>
-                <span class="reporter-method-output">The text name (Version) value (Version 9.8) was stored as variable name (strSentryLinkVersion)</span>
-                <span class="reporter-method-output">The (Login) field(s) were populated correctly - Values(Email,ffticketservicetestingpeo@gmail.com|Password,ffTicketServiceTestingpeo14!)</span>
-                <span class="reporter-method-output">The Button (Sign in) with index (1) was clicked successfully</span>
+                <span class="reporter-method-output"><font color='green'>Meter Start Time 19:00:</font></span>
+                <span class="reporter-method-output">****************METER MEMORY******************</span>
+                <span class="reporter-method-output">total		used		free</span>
+                <span class="reporter-method-output">1016548		718612		297936</span>
                 <span class="reporter-method-output">Airplane Mode is already disabled</span>
-                <span class="reporter-method-output">Wi-Fi is already disabled (status=0). No action needed.</span>
+                <span class="reporter-method-output">Wi-Fi is already enabled (status=1). No action needed.</span>
                 <span class="reporter-method-output">Wi-Fi scanning is already disabled (wifi_scan_always_enabled=0). No action needed.</span>
-                <span class="reporter-method-output">Airplane Mode is already disabled</span>
+                <span class="reporter-method-output">Airplane Mode set via modern 'cmd connectivity' command</span>
+                <span class="reporter-method-output">Airplane Mode successfully enabled and verified (UI-like toggle)</span>
                 <span class="reporter-method-output">Location mode BEFORE enable: 3</span>
                 <span class="reporter-method-output">Executing ADB command: /Users/darinduphorn/Library/Android/sdk/platform-tools/adb -s R5CT71MQ2MM shell settings put secure location_mode 3</span>
                 <span class="reporter-method-output">Location services enabled successfully (mode 3 - exit code 0)</span>
                 <span class="reporter-method-output">Location mode AFTER enable: 3</span>
                 <span class="reporter-method-output">Sentry Mobile was loaded correctly on Android Device</span>
-                <span class="reporter-method-output"><font color='orange'>     PEO_Login</font></span>
-                <span class="reporter-method-output">The (Login-PEO) page existed</span>
                 <span class="reporter-method-output"><font color='orange'>     PopulateAction</font></span>
-                <span class="reporter-method-output">The (Login) field(s) were populated correctly - Values(Email,ffticketservicetestingpeo@gmail.com|Password,ffTicketServiceTestingpeo14!)</span>
+                <span class="reporter-method-output">The (Login) field(s) were populated correctly - Values(Email,invaliduser@gmail.com|Password,Invalid01)</span>
                 <span class="reporter-method-output">The Button (Sign In) with index (1) was clicked successfully</span>
-                <span class="reporter-method-output">There Was No Snack Bar Message</span>
-                <span class="reporter-method-output">The Button (No thanks) with index (1) was clicked successfully</span>
-                <span class="reporter-method-output"><font color='green'>The Python Script (testautof_touch_screen.py) was executed successfully on host (10.10.102.242)-System Time: 05:27:52 UTC Time:22:27:52.699</font></span>
-                <span class="reporter-method-output">The meter UI State equaled (SCREEN_MULTI_SELECT_SPACE) on spot (1)-UTC: 22:27:56.728</span>
-                <span class="reporter-method-output"><font color='green'>The Python Script (testautof_touch_screen.py) was executed successfully on host (10.10.102.242)-System Time: 05:27:56 UTC Time:22:27:56.946</font></span>
-                <span class="reporter-method-output"><font color='green'>The Python Script (testautof_enter_space.py 9000) was executed successfully on host (10.10.102.242)-System Time: 05:27:59 UTC Time:22:27:59.154</font></span>
-                <span class="reporter-method-output">strScanStartTime: 22:27:59.163</span>
-                <span class="reporter-method-output">The meter UI State equaled (SCREEN_MULTI_SELECT_SPACE) on spot (1)-UTC: 22:28:00.556</span>
-                <span class="reporter-method-output">The meter UI State equaled (SCREEN_MULTI_HOME) on spot (1)-UTC: 22:28:01.641</span>
-                <span class="reporter-method-output">It took (2478) Millieconds for the (SCREEN_MULTI_HOME) screen to appear</span>
-                <span class="reporter-method-output"><a href=https://i.imgur.com/oiX9gmC.png/>Meter Screen Shot</a></span>
-                <span class="reporter-method-output"><img src="https://i.imgur.com/oiX9gmC.png" alt=""/><br /></span>
-                <span class="reporter-method-output"><font color='Green'>Meter End Time 22:28:</font></span>
-                <span class="reporter-method-output"><a href=https://i.imgur.com/QX4glJy.png/>Android Screen Shot</a></span>
-                <span class="reporter-method-output"><img src="https://i.imgur.com/QX4glJy.png" alt=""/><br /></span>
+                <span class="reporter-method-output"><font color='green'>The Python Script (testautof_touch_screen.py) was executed successfully on host (10.10.102.242)-System Time: 02:01:18 UTC Time:19:01:18.652</font></span>
+                <span class="reporter-method-output">The meter UI State equaled (SCREEN_MULTI_SELECT_SPACE) on spot (1)-UTC: 19:01:22.471</span>
+                <span class="reporter-method-output"><font color='green'>The Python Script (testautof_touch_screen.py) was executed successfully on host (10.10.102.242)-System Time: 02:01:22 UTC Time:19:01:22.730</font></span>
+                <span class="reporter-method-output"><font color='green'>The Python Script (testautof_enter_space.py 9000) was executed successfully on host (10.10.102.242)-System Time: 02:01:24 UTC Time:19:01:24.964</font></span>
+                <span class="reporter-method-output">strScanStartTime: 19:01:24.974</span>
+                <span class="reporter-method-output">The meter UI State equaled (SCREEN_MULTI_SELECT_SPACE) on spot (1)-UTC: 19:01:26.292</span>
+                <span class="reporter-method-output">The meter UI State equaled (SCREEN_MULTI_HOME) on spot (1)-UTC: 19:01:27.472</span>
+                <span class="reporter-method-output">It took (2498) Millieconds for the (SCREEN_MULTI_HOME) screen to appear</span>
+                <span class="reporter-method-output"><a href=https://i.imgur.com/vd4rj8O.png/>Meter Screen Shot</a></span>
+                <span class="reporter-method-output"><img src="https://i.imgur.com/vd4rj8O.png" alt=""/><br /></span>
+                <span class="reporter-method-output"><font color='Green'>Meter End Time 19:01:</font></span>
+                <span class="reporter-method-output"><a href=https://i.imgur.com/aEvttmq.png/>Android Screen Shot</a></span>
+                <span class="reporter-method-output"><img src="https://i.imgur.com/aEvttmq.png" alt=""/><br /></span>
                 <span class="reporter-method-output">Local meter log did not contain Callstack</span>
                 <span class="reporter-method-output">Local meter log did not contain STACKTRACE</span>
                 <span class="reporter-method-output">Local meter log did not contain Traceback</span>
                 <span class="reporter-method-output">Local meter log did not contain Space Failed To Load error</span>
-                <span class="reporter-method-output">Expected the button (No thanks) at index (1) to be gone, but it was still present on the screen.</span>
-                <span class="reporter-method-output"><a style='color:Gold' href="https://www.pivotaltracker.com/n/projects/980790/stories/FLUTTERPEO-140" target="_blank">FLUTTERPEO-140-When WiFi & WIFI Scanning are disabled, the Location Accuracy prompt requires two taps on “No thanks”</a></span>
+                <span class="reporter-method-output">The Text (Error Message) with index (1) did not contain (Please disable Airplane Mode to continue using the app.) - actual value (No internet connection.)</span>
+                <span class="reporter-method-output"><a style='color:Gold' href="https://www.pivotaltracker.com/n/projects/980790/stories/FLUTTERPEO-132" target="_blank">FLUTTERPEO-132-Flutter app shows generic “No Internet Connection” message when Airplane Mode is enabled</a></span>
                 <span class="reporter-method-output">Error Remain Parked (15) seconds-Spot 1</span>
               </div> <!-- reporter-method-output-div -->
             </div> <!-- reporter-method-div -->
@@ -391,8 +364,6 @@ return data;
                 <br/>
                 <span class="ignored-method-name">P4013F_FTFP0_CGPV_AV_CV_CNIT_RDV_VIR_ES1_VPSH_VICAE_VIAC</span>
                 <br/>
-                <span class="ignored-method-name">A4000F_OpenApp_AirplaneModeEnabled</span>
-                <br/>
                 <span class="ignored-method-name">P4040F_FTFP0_CGPV1_DNAATTPAV_AV_CAV_PCV_VIPV_CVP_AATTPAV_PGT_VGTV_PIT_VITV_ES1</span>
                 <br/>
                 <span class="ignored-method-name">P4002AF_PEO_CMV_IGPE_VVXD</span>
@@ -412,6 +383,8 @@ return data;
                 <span class="ignored-method-name">P4010F_FTFP0_CGPV_AV_CV_VIPV_CAV_RCV_TNI_VSM_ES1_VPSH_VICAE_VIAC</span>
                 <br/>
                 <span class="ignored-method-name">P4041F_PEO_CMS</span>
+                <br/>
+                <span class="ignored-method-name">P4002F_PEO_CMV_IGPE_VVXD_WIFI_And_WIFIScanning_Disabled</span>
                 <br/>
                 <span class="ignored-method-name">P4016F_FTFP0_CGPV_AV_CV_CNIT_RBS_VIR_ES1_VPSH_VICAE_VIAC</span>
                 <br/>
@@ -461,22 +434,22 @@ return data;
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-test before -->
               <div class="configuration-method before">
-                <span class="method-name">BeforeMethod(org.testng.TestRunner@55cb6996, public void AutomationCode.PEO_TestCases_Flutter.P4002F_PEO_CMV_IGPE...)</span>
-                <span class="method-start">37 ms</span>
+                <span class="method-name">BeforeMethod(org.testng.TestRunner@1807e3f6, public void AutomationCode.PEO_TestCases_Flutter.A4000F_OpenApp_Airp...)</span>
+                <span class="method-start">20 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
-                <span class="method-name">P4002F_PEO_CMV_IGPE_VVXD_WIFI_And_WIFIScanning_Disabled</span>
-                <span class="method-start">3474 ms</span>
+                <span class="method-name">A4000F_OpenApp_AirplaneModeEnabled</span>
+                <span class="method-start">3527 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
-                <span class="method-name">AfterMethod(org.testng.TestRunner@55cb6996, public void AutomationCode.PEO_TestCases_Flutter.P4002F_PEO_CMV_IGPE...)</span>
-                <span class="method-start">135247 ms</span>
+                <span class="method-name">AfterMethod(org.testng.TestRunner@1807e3f6, public void AutomationCode.PEO_TestCases_Flutter.A4000F_OpenApp_Airp...)</span>
+                <span class="method-start">84639 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-test after">
                 <span class="method-name">StopIOSServer</span>
-                <span class="method-start">136566 ms</span>
+                <span class="method-start">86003 ms</span>
               </div> <!-- configuration-test after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
