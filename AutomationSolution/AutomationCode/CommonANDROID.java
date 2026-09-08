@@ -10323,8 +10323,6 @@ public class CommonANDROID
 			clsCommonMobile.ClickButton(objDictionary, androiddriver, "New Violations", "Save-Sign In Dialog",1);
 			try {Thread.sleep(2000);}catch (Exception e) {}
 		}
-		
-		
 		//Allow MPS PEO to take pictures and record video?
 		VerificationPointText(objDictionary, androiddriver, "New Violations", "Permission Message", 1, "Contains", "Allow MPS PEO to take pictures and record video?");
 		String strAllowAppToTakePictureAndVideo = objDictionary.get("strAllowAppToTakePictureAndVideo");if(strAllowAppToTakePictureAndVideo == null) {strAllowAppToTakePictureAndVideo = "True";}

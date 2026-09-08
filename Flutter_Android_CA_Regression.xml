@@ -7,7 +7,7 @@
 
 <!--      	<parameter name="strMobileAPK" value="SentryMobile-Staging-10.13.451.apk"></parameter> -->
      	
-     	<parameter name="strMobileAPK" value="SentryMobile-Staging-10.0.499.apk"></parameter>
+     	<parameter name="strMobileAPK" value="SentryMobile-Staging-10.0.500.apk"></parameter>
        	<parameter name="strAndroidUdid" value="R5CT71MQ2MM"></parameter>
 <!--        	<parameter name="strAndroidUdid" value="LMG900TMSSW47DMF9P"></parameter> -->
        	<parameter name="strDeviceId" value="9010-9011"></parameter>
@@ -16,6 +16,7 @@
 	   	<classes>
 	   	<class name="AutomationCode.Android_TestCases_Flutter">
 		   		<methods>
+<!-- 		   			<include name="A2000F_OpenApp_AirplaneModeEnabled"></include>  -->
 <!--   		   			<include name="A2001F_ValidateInvalidCredentialMessage_Flutter"></include> 		   			  -->
 <!--   			   		<include name="A2002F_RegisterUser_PasswordShouldHaveAtleastOneDigitOrSpecialCharacter_Flutter"></include>  -->
 <!--  					<include name="A2003F_RegisterUser_EmailHasAlreadyBeenTaken_Flutter"></include> -->
@@ -29,10 +30,11 @@
 <!-- 					<include name="A2012F_RegisterExisting_LockedUser_Login_Flutter"></include> -->
 <!--  					<include name="A2016F_CreateAndDeleteUser_AttemptMobileRegisterWithDeletedUser_Flutter"></include> -->
 <!--  					<include name="A2017F_CreateAndDeleteUser_AttemptLoginWithDeletedUser_Flutter"></include> -->
-						
-						<include name="A2018F_RegisterUser_Login_Using_Phone_Flutter"></include>
-
+<!-- 					<include name="A2018F_RegisterUser_WIFI_Enabled"></include> -->
+<!-- 					<include name="A2019F_RegisterUser_WIFI_Disabled"></include> -->
 <!--  					<include name="A2021F_FTFP0_PS1_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!--  					<include name="A2021F_FTFP0_PS1_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!--  					<include name="A2021F_FTFP0_PS1_MP1_ES1_VPSH_VICAE_VIAC_WIFI_Disabled"></include> -->
 <!--  					<include name="A2022F_VM_FTFP0_PS1_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
 <!--  					<include name="A2023F_FTFP0_PS1_MP1_VPSVD_ES1_VPSH_VICAE_VIAC"></include> -->
 <!--  					<include name="A2024F_VM_FTFP0_PS1_MP1_VPSVD_ES1_VPSH_VICAE_VIAC"></include> -->
@@ -190,10 +192,9 @@
 <!--   					<include name="A2308F_CS_FADCT_PSWL_WGE_EAV_mobilePaymentBlocked"></include> -->
 <!--  					<include name="A4002F_PaymentTest_GooglePay"></include> -->
 <!--   					<include name="A4003F_PaymentTest_GooglePay_MaxTime"></include> -->
-
 <!--  					<include name="A4004F_PaymentTest_CreditOrDebitCard"></include> -->
+<!--  					<include name="A4005F_PaymentTest_CreditOrDebitCard_MaxTime"></include> -->
 
-<!--  					<include name="A4005_PaymentTest_CreditOrDebitCard_MaxTime"></include> -->
 <!--  					<include name="A4008_PaymentTest_CreditOrDebitCard_Refund"></include> -->
 <!--  				    <include name="A5001_ValidateUserAgreement"></include> -->
 				</methods>

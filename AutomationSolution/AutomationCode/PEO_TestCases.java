@@ -1617,6 +1617,8 @@ public class PEO_TestCases
   		clsCommonMobile.ClickButton(objDictionary, androiddriver, "Violations", "Could Not Issue Ticket",1);
   		clsCommonMobile.PopulateScrollableListbox(objDictionary,androiddriver, "Violations", "Reason", strCouldNotIssueReason);
   		clsCommonMobile.ClickButton(objDictionary, androiddriver, "Violations", "Submit", 1);
+  		clsCommonMobile.VerificationPointText(objDictionary, androiddriver, "New Violations", "This violation is now invalid. Returning to Violation List.", 1, "Exists", "");
+  		clsCommonMobile.ClickLink(objDictionary, androiddriver, "New Violations", "OK", 1);
   		driver.navigate().refresh();
   		try {Thread.sleep(3000);}catch (Exception e) {}
   		if(strCouldNotIssueReason.equals("Vehicle Departed"))
@@ -1626,8 +1628,6 @@ public class PEO_TestCases
   		clsCommonWeb.ClickLink(objDictionary, driver, "Violations", "~strViolationId~", 1);
   		driver.quit();
   		//Violation Removed
-  		clsCommonMobile.VerificationPointText(objDictionary, androiddriver, "New Violations", "This violation is now invalid. Returning to Violation List.", 1, "Exists", "");
-  		clsCommonMobile.ClickLink(objDictionary, androiddriver, "New Violations", "OK", 1);
   		clsCommonMobile.ClickButton(objDictionary, androiddriver, "Violations", "More Options icon", 1);
   		clsCommonMobile.ClickLink(objDictionary, androiddriver, "Violations", "Log Out", 1);
   		androiddriver.quit();

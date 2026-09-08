@@ -175,6 +175,34 @@ public class Android_TestCases_Flutter
 	//********************************************************************************************************************
 	//ANDROID-TEST CASES
 	//********************************************************************************************************************
+	@Test(priority=1000,groups={"Smoke"})
+	public void A2000F_OpenApp_AirplaneModeEnabled()
+	{
+  		objDictionary.put("strAssociatedBug", "FLUTTERCA-260");
+		objDictionary.put("strMobileDeviceType", "ANDROID");
+		CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
+		Meter clsMeter = new Meter();
+		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
+		String strAndroidUdid = objDictionary.get("strAndroidUdid");if(strAndroidUdid == null) {strAndroidUdid = "";}
+		//AirplaneMode test
+		objDictionary.put("strWIFI","Enabled");
+		objDictionary.put("strAirplaneMode","Enabled");
+		//Open Android Device
+		AppiumDriver androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
+		String strUserName = "adeleteuser01@gmail.com";objDictionary.put("strUserName", strUserName);
+		String strPassword = "ADeleteMe01!";
+		//Click Accept
+		clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept",1);
+		//Click Sign in
+		clsCommonMobile.ClickLink(objDictionary, androidDriver, "Login", "Log in",1);
+		//Log In to CA
+		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Login", "Populate Login", "{T} Email Id|{T} Password",strUserName+"|"+strPassword);
+ 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Login", "Log in",1);
+		clsCommonMobile.VerificationPointText(objDictionary, androidDriver, "Login", "Please disable Airplane Mode to continue using the app", 1, "Value", "Please disable Airplane Mode to continue using the app");
+ 		clsMeter.METER_SetMeterEndTime(objDictionary);
+		String strAssociatedBug = objDictionary.get("strAssociatedBug");if(strAssociatedBug == null){strAssociatedBug = "";}
+		if(!strAssociatedBug.equals("")){Reporter.log("<font color='Blue'>"+strAssociatedBug+"-This Test passed remove the AssociatedBug</font>");}
+	}
 	@Test(priority=1001,groups={"Smoke"})
 	public void A2001F_ValidateInvalidCredentialMessage_Flutter()
 	{
@@ -413,6 +441,7 @@ public class Android_TestCases_Flutter
 	@Test(priority=1010) 
 	public void A2010F_RegisterUser_Login_Flutter()
 	{
+		objDictionary.put("strAssociatedBug", "FLUTTERCA-249");
   		objDictionary.put("strMobileDeviceType", "ANDROID");
   		CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
 		CommonWeb clsCommonWeb = new CommonWeb();
@@ -668,10 +697,12 @@ public class Android_TestCases_Flutter
 	}
 	
 	@Test(priority=1018) 
-	public void A2018F_RegisterUser_Login_Using_Phone_Flutter()
+	public void A2018F_RegisterUser_WIFI_Enabled()
 	{
-  		objDictionary.put("strMobileDeviceType", "ANDROID");
-  		CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
+		objDictionary.put("strAssociatedBug", "FLUTTERCA-249");
+		objDictionary.put("strMobileDeviceType", "ANDROID");
+		objDictionary.put("strWIFI", "Enabled");
+		CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
 		CommonWeb clsCommonWeb = new CommonWeb();
 		Meter clsMeter = new Meter();
 		String strEnvironment = objDictionary.get("strEnvironment");
@@ -733,12 +764,107 @@ public class Android_TestCases_Flutter
 		if(!strAssociatedBug.equals("")){Reporter.log("<font color='Blue'>"+strAssociatedBug+"-This Test passed remove the AssociatedBug</font>");}
 	}
 	
+	@Test(priority=1019) 
+	public void A2019F_RegisterUser_WIFI_Disabled()
+	{
+		objDictionary.put("strAssociatedBug", "FLUTTERCA-259");
+		objDictionary.put("strMobileDeviceType", "ANDROID");
+		objDictionary.put("strWIFI", "Disabled");
+		CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
+		CommonWeb clsCommonWeb = new CommonWeb();
+		Meter clsMeter = new Meter();
+		String strEnvironment = objDictionary.get("strEnvironment");
+		if(strEnvironment.equals("PROD"))
+		{
+			objDictionary.put("strAssociatedBug", "NoPROD");
+			clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary,null,"It has been determined that this test should NOT be run against prod");
+		}
+		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
+		//Destroy User
+		String strUserName = "adeleteuser01@gmail.com";objDictionary.put("strUserName", strUserName);
+		String strPassword = "ADeleteMe01!";
+		String strBrowser = objDictionary.get("strBrowser");
+		String strRemotePath = objDictionary.get("strRemotePath");
+		//UnDelete Account
+		threadDriver = clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath, objDictionary);
+		WebDriver driver = getDriver(); // driver.quit();
+		clsCommonWeb.SENTRYLINK_OpenLoginPage(objDictionary, driver);
+		clsCommonWeb.SENTRYLINK_UnDeleteAccount(objDictionary,driver,strUserName);
+		//Unlock Account
+		threadDriver = clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath, objDictionary);
+		driver = getDriver();
+		clsCommonWeb.SENTRYLINK_OpenLoginPage(objDictionary, driver);
+		clsCommonWeb.SENTRYLINK_UnlockAccount(objDictionary,driver,strUserName);
+		clsCommonWeb.SENTRYLINK_DestroyUser2(objDictionary, strUserName, strPassword);
+		AppiumDriver androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
+		//Click Accept
+		clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept",1);
+		//Click Sign up
+		clsCommonMobile.ClickLink(objDictionary, androidDriver, "Login", "Sign up",1);
+		//Populate Phone Number
+		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Sign Up", "Populate Phone Number", "{T} Phone Number","2812816804");
+		//Click Accept
+		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Sign Up", "Next",1);
+		//For a better experience your device will need to use Location Accuracy
+		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Sign Up", "No thanks",1);
+		//Populate Sign Up
+		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Sign Up", "Populate Register", "{T} First Name|{T} Last Name|{T} Email Id|{T} Password|{T} Confirm Password","Delete|User|"+strUserName+"|"+strPassword+"|"+strPassword+"");
+		//Click Sign Up
+		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Sign Up", "Sign up",1);
+		String strSnackbarText = objDictionary.get("strSnackbarText");
+		if(strSnackbarText.equals("Registered Successfully"))
+		{
+			Reporter.log("The Text (Error Message) with index (1) contained (" + strSnackbarText + ")");
+			try {Thread.sleep(2000);}catch (Exception e) {}//Wait Until Message Goes away
+		}
+		else{clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary,androidDriver,"The Text (Error Message) with index (1) did not contain (Registered Successfully) - actual value ("+strSnackbarText+")");}
+		//Navigate to Account
+		clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary,androidDriver, "Account");
+		clsCommonMobile.ClickLink(objDictionary, androidDriver, "Account", "Sign out", 1);
+		clsCommonMobile.ClickLink(objDictionary, androidDriver, "Account", "Yes", 1);
+		//Sign In Using Phone Number
+		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Login", "Populate Login", "{T} Email Id|{T} Password","2812816804|"+strPassword);
+ 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Login", "Log in",1);
+ 		//For a better experience your device will need to use Location Accuracy
+ 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Map", "No thanks",1);
+ 		clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary,androidDriver, "Account");
+ 		clsCommonMobile.ClickLink(objDictionary, androidDriver, "Account", "Sign out", 1);
+		clsCommonMobile.ClickLink(objDictionary, androidDriver, "Account", "Yes", 1);
+		androidDriver.quit();
+		clsMeter.METER_SetMeterEndTime(objDictionary);
+		String strAssociatedBug = objDictionary.get("strAssociatedBug");if(strAssociatedBug == null){strAssociatedBug = "";}
+		if(!strAssociatedBug.equals("")){Reporter.log("<font color='Blue'>"+strAssociatedBug+"-This Test passed remove the AssociatedBug</font>");}
+	}
+	
 	//FirstTimeFirstPayment0//Park//MobilePayment
 	@Test(priority=1021,groups={"Smoke"})
 	public void A2021F_FTFP0_PS1_MP1_ES1_VPSH_VICAE_VIAC()
 	{
 		String strTestCaseName = new Object(){}.getClass().getEnclosingMethod().getName();
 		objDictionary.put("strTestCaseName", strTestCaseName);
+		String strSpaceName = objDictionary.get("strMeterSpotName");
+		String strLicensePlateNumber = "0"+strSpaceName+"AA";
+		String strLicensePlateState = "Alabama";
+		objDictionary.put("strLicensePlateNumber", strLicensePlateNumber);
+		objDictionary.put("strLicensePlateState", strLicensePlateState);
+		//Remove all License Plate
+		HttpConnections clsHttpConnections = new HttpConnections();
+		clsHttpConnections.HTTPCONNECTIONS_DeleteAllParkerLicensePlates(objDictionary);
+		//Add License Plate
+		clsHttpConnections.POST_LicensePlate(objDictionary,"Parker", strLicensePlateNumber,strLicensePlateState);
+		CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
+		objDictionary.put("strLicensePlateNumber", strLicensePlateNumber);
+		clsCommonMobile.SENTRYMOBILE_2021_FTFP0_PS1_MP1_ES1_VPSH_VICAE_VIAC(objDictionary);
+		String strAssociatedBug = objDictionary.get("strAssociatedBug");if(strAssociatedBug == null){strAssociatedBug = "";}
+		if(!strAssociatedBug.equals("")){Reporter.log("<font color='Blue'>"+strAssociatedBug+"-This Test passed remove the AssociatedBug</font>");}
+	}
+	@Test(priority=1021,groups={"Smoke"})
+	public void A2021F_FTFP0_PS1_MP1_ES1_VPSH_VICAE_VIAC_WIFI_Disabled()
+	{
+		objDictionary.put("strAssociatedBug", "FLUTTERCA-259");
+		String strTestCaseName = new Object(){}.getClass().getEnclosingMethod().getName();
+		objDictionary.put("strTestCaseName", strTestCaseName);
+		objDictionary.put("strWIFI", "Disabled");
 		String strSpaceName = objDictionary.get("strMeterSpotName");
 		String strLicensePlateNumber = "0"+strSpaceName+"AA";
 		String strLicensePlateState = "Alabama";
@@ -893,7 +1019,6 @@ public class Android_TestCases_Flutter
 	public void A2027F_A_FTFP0_PS1_MP1_PMT_LPRM_e_MTIV_ES1_VPSH_VICAE_VIAC()throws Exception
 	{
 		objDictionary.put("strAssociatedBug", "FLUTTERCA-137");
-		String strSpaceName = objDictionary.get("strMeterSpotName");
 		String strLicensePlateNumber = "FCA2027";
 		String strLicensePlateState = "Alabama";
 		objDictionary.put("strLicensePlateNumber", strLicensePlateNumber);
@@ -6243,20 +6368,22 @@ public class Android_TestCases_Flutter
 		if(!strAssociatedBug.equals("")){Reporter.log("<font color='Blue'>"+strAssociatedBug+"-This Test passed remove the AssociatedBug</font>");}
 	}
   	@Test(priority=4005) 
-	public void A4005_PaymentTest_CreditOrDebitCard_MaxTime()throws Exception
+	public void A4005F_PaymentTest_CreditOrDebitCard_MaxTime()throws Exception
 	{
 		String strTestCaseName = new Object(){}.getClass().getEnclosingMethod().getName();
 		objDictionary.put("strTestCaseName", strTestCaseName);
 		String strSpaceName = objDictionary.get("strMeterSpotName");
 		String strLicensePlateNumber = "0"+strSpaceName+"AA";
+		objDictionary.put("strLicensePlateNumber",strLicensePlateNumber);
+		objDictionary.put("strLicensePlateState","Alabama");
 		//Remove all License Plate
   		HttpConnections clsHttpConnections = new HttpConnections();
 		clsHttpConnections.HTTPCONNECTIONS_DeleteAllParkerLicensePlates(objDictionary);
 		//Add License Plate
 		clsHttpConnections.POST_LicensePlate(objDictionary,"Parker", strLicensePlateNumber,"Alabama");
-		CommonANDROID clsCommonMobile = new CommonANDROID();
+		CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
 		objDictionary.put("strAltPayment", "Credit or Debit Card");
-		clsCommonMobile.SENTRYMOBILE_2027_FTFP0_PS1_PMT_ES1_VPSH_VICAE_VIAC(objDictionary,strLicensePlateNumber);
+		clsCommonMobile.SENTRYMOBILE_4005_PaymentTest_CreditOrDebitCard_MaxTime(objDictionary);
 		String strAssociatedBug = objDictionary.get("strAssociatedBug");if(strAssociatedBug == null){strAssociatedBug = "";}
 		if(!strAssociatedBug.equals("")){Reporter.log("<font color='Blue'>"+strAssociatedBug+"-This Test passed remove the AssociatedBug</font>");}
 	}

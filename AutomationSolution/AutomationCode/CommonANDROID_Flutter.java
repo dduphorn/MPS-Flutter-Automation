@@ -164,26 +164,55 @@ public class CommonANDROID_Flutter
 		}
   		switch (strErrorMsg)
    		{	
+   			case "Expected the 	button (No thanks) at index (1) to be gone, but it was still present on the screen.":
+   				strPivotalId = "FLUTTERPEO-140";Reporter.log(strErrorMsg);
+				strPivotalPath = "https://mpspark.atlassian.net/browse/FLUTTERPEO-140";
+    			strErrorMsg = "When WiFi & WIFI Scanning are disabled, the Location Accuracy prompt requires two taps on “No thanks”";
+    			break;
   			case "The Button (Google Pay) did not exist":
    				strPivotalId = "FLUTTERCA-255";Reporter.log(strErrorMsg);
 				strPivotalPath = "https://mpspark.atlassian.net/browse/FLUTTERCA-255";
     			strErrorMsg = "App crashes when tapping “More Payment Options” with a saved credit card";
     			break;
-   			case "The Text (Error Message) with index (1) did not contain (Unable to create User. Please contact support.) - actual value ()":
+    		case "The Text (Error Message) with index (1) did not contain (Please disable Airplane Mode to continue using the app.) - actual value (No internet connection.)":
+  				strPivotalId = "FLUTTERPEO-132";Reporter.log(strErrorMsg);
+				strPivotalPath = "https://mpspark.atlassian.net/browse/FLUTTERPEO-132";
+    			strErrorMsg = "Flutter app shows generic “No Internet Connection” message when Airplane Mode is enabled";
+    			break;
+    		case "The Text (Error Message) with index (1) did not contain (Registered Successfully) - actual value ()":
+  				strPivotalId = "FLUTTERCA-249";Reporter.log(strErrorMsg);
+				strPivotalPath = "https://mpspark.atlassian.net/browse/FLUTTERCA-249";
+				strErrorMsg = "FlutterCA - 10.0.497 - Staging - Parker receives message to upgrade to 10.0.497 but is already running that version";
+				break;
+    		case "The Text (Error Message) with index (1) did not contain (Unable to create User. Please contact support.) - actual value ()":
 	   			strPivotalId = "FLUTTERCA-187";Reporter.log(strErrorMsg);
 				strPivotalPath = "https://mpspark.atlassian.net/browse/FLUTTERCA-187";
 				strErrorMsg = "Able to register a user using an existing locked account's email; registration should be prevented.";
 				break;
-   			case "Unexpected message appeared on user Registration: Failed to save user record or to assign Parker role":
+    		case "The Text (Please disable Airplane Mode to continue using the app) with index (1) did not equal (Please disable Airplane Mode to continue using the app) - actual value (No Internet Connection)":
+	    		strPivotalId = "FLUTTERCA-260";Reporter.log(strErrorMsg);
+				strPivotalPath = "https://mpspark.atlassian.net/browse/FLUTTERCA-260";
+				strErrorMsg = "Flutter app shows generic “No Internet Connection” message when Airplane Mode is enabled";
+				break;
+    		case "Unexpected message appeared on user Registration: Failed to save user record or to assign Parker role":
     		case "The link (Ok) at index (1) existed":
    				strPivotalId = "FLUTTERCA-154";Reporter.log(strErrorMsg);
 				strPivotalPath = "https://mpspark.atlassian.net/browse/FLUTTERCA-154";
     			strErrorMsg = "An Unexpected Message appears when login into Flutter app after registering a new user with GPS disabled.";
     			break;
    			case "The Link (Sign out) did not exist":
-   				strPivotalId = "FLUTTERCA-188";Reporter.log(strErrorMsg);
-				strPivotalPath = "https://mpspark.atlassian.net/browse/FLUTTERCA-188";
-    			strErrorMsg = "The Flutter app crashes when I attempt to add money to my account and click the proceed button.";
+   				if (strTestCase.contains("A2019F_RegisterUser_WIFI_Disabled"))
+				{
+   					strPivotalId = "FLUTTERCA-259";Reporter.log(strErrorMsg);
+					strPivotalPath = "https://mpspark.atlassian.net/browse/FLUTTERCA-259";
+	    			strErrorMsg = "Unexpected 'Location Service' message appears when logging in with Wi-Fi disabled";
+				}
+   				else
+   				{
+	   				strPivotalId = "FLUTTERCA-188";Reporter.log(strErrorMsg);
+					strPivotalPath = "https://mpspark.atlassian.net/browse/FLUTTERCA-188";
+	    			strErrorMsg = "The Flutter app crashes when I attempt to add money to my account and click the proceed button.";
+   				}
     			break;
    			case "The Password Reset Token did not exist":
    				strPivotalId = "FLUTTERCA-185";Reporter.log(strErrorMsg);
@@ -210,7 +239,11 @@ public class CommonANDROID_Flutter
 				strPivotalPath = "";
     			strErrorMsg = "";
     			break;
-    			
+   			case "Unexpected Error when clicking Meter Spot Number:The location service on the device is disabled.":
+   				strPivotalId = "FLUTTERCA-259";Reporter.log(strErrorMsg);
+				strPivotalPath = "https://mpspark.atlassian.net/browse/FLUTTERCA-259";
+    			strErrorMsg = "Unexpected 'Location Service' message appears when logging in with Wi-Fi disabled";
+    			break;
    			default:
    				if (strErrorMsg.matches("The Text \\(Parking Fee\\) with index \\(1\\) did not contain (.*) - actual value (.*)"))
    				{
@@ -615,26 +648,48 @@ public class CommonANDROID_Flutter
 			}
 		}	
     }
-	public AppiumDriver SetMobileDriver(Map<String, String> objDictionary, String strApplication, String strGPSEnabled, String strRole) {
-	    String strStopAndStartAppiumServer = objDictionary.getOrDefault("strStopAndStartAppiumServer", "false");
+	public AppiumDriver SetMobileDriver(Map<String, String> objDictionary, String strApplication, String strGPSEnabled, String strRole) 
+	{
+		ADB_Commands clsADBcommands = new ADB_Commands();
+		String strStopAndStartAppiumServer = objDictionary.getOrDefault("strStopAndStartAppiumServer", "false");
 	    String strAndroidUdid = objDictionary.getOrDefault("strAndroidUdid", "R5CT71MQ2MM");
 	    String strDeviceAppiumPort = objDictionary.getOrDefault("strDeviceAppiumPort", "4723");
 	    String strMobileAPK = objDictionary.get("strMobileAPK");
 	    int port = Integer.parseInt(strDeviceAppiumPort);
-
 	    ensureAdbServerRunning();
-
+	    //Disable Airplane Mode Before Setting other ADB Commands
+	    String strOriginalAirplaneMode = objDictionary.get("strAirplaneMode");if(strOriginalAirplaneMode == null) {strOriginalAirplaneMode = "Disabled";}
+	    objDictionary.put("strAirplaneMode","Disabled");
+	    clsADBcommands.SENTRYMOBILE_SET_AIRPLANE_MODE(objDictionary);
+	    objDictionary.put("strAirplaneMode",strOriginalAirplaneMode);
+	    //Set ADB Commands
+	    clsADBcommands.SENTRYMOBILE_SET_WIFI(objDictionary);
+	    clsADBcommands.SENTRYMOBILE_SET_WIFIScanning(objDictionary);
+	    
+	    clsADBcommands.SENTRYMOBILE_SET_AIRPLANE_MODE(objDictionary);
+	    
 	    // === Start Appium Server Automatically (Only if flag is true) ===
 	    boolean shouldStartServer = Boolean.parseBoolean(strStopAndStartAppiumServer);
 	    if (shouldStartServer) {
-	        // Stop any existing service
+
+	        // 1. Kill anything currently using the port
+	        killProcessOnPort(port);
+
+	        // 2. Stop any previous service we started
 	        if (appiumService != null && appiumService.isRunning()) {
 	            appiumService.stop();
 	        }
 
+	        // 3. Dynamically find Node and Appium
+	        String nodePath = findExecutable("node");
+	        String appiumJSPath = findAppiumMainJs();
+
+	        System.out.println("Using Node: " + nodePath);
+	        System.out.println("Using Appium JS: " + appiumJSPath);
+
 	        AppiumServiceBuilder builder = new AppiumServiceBuilder()
-	                .usingDriverExecutable(new File("/Users/darinduphorn/.nvm/versions/node/v24.12.0/bin/node"))  // Force correct Node v24
-	                .withAppiumJS(new File("/Users/darinduphorn/.nvm/versions/node/v24.12.0/lib/node_modules/appium/build/lib/main.js"))  // Force correct Appium
+	                .usingDriverExecutable(new File(nodePath))
+	                .withAppiumJS(new File(appiumJSPath))
 	                .withIPAddress("127.0.0.1")
 	                .usingPort(port)
 	                .withArgument(GeneralServerFlag.LOG_LEVEL, "info");
@@ -648,7 +703,7 @@ public class CommonANDROID_Flutter
 	        }
 
 	        System.out.println("Appium server started at: " + appiumService.getUrl());
-	        
+
 	        // Give server a moment to fully initialize
 	        try {
 	            Thread.sleep(5000);
@@ -659,41 +714,42 @@ public class CommonANDROID_Flutter
 
 	    setupDeviceEnvironment(strAndroidUdid);
 
+	    // Dynamically find APK path
+	    String apkBasePath = findApkBasePath();
+	    String fullApkPath = apkBasePath + strMobileAPK;
+	    System.out.println("Using APK: " + fullApkPath);
+
 	    // Configure UiAutomator2Options
 	    UiAutomator2Options options = new UiAutomator2Options()
 	            .setPlatformName("Android")
 	            .setPlatformVersion("15")
 	            .setDeviceName(strRole)
 	            .setUdid(strAndroidUdid)
-	            .setApp("/Users/darinduphorn/git/TestAutomation/APK/"+strMobileAPK);
+	            .setApp(fullApkPath);
 
 	    options.setCapability("autoGrantPermissions", true);
 	    options.setCapability("noReset", false);
 	    options.setCapability("fullReset", true);
 	    options.setCapability("appWaitActivity", "*");
-	    if(strApplication.equals("PEO"))
-	    {
-	    	options.setCapability("appWaitPackage", "com.mpspark.mobileOfficer");
-	    }
-	    else
-	    {
-	    	options.setCapability("appWaitPackage", "com.mpspark.consumer.mpsconsumer");
+	    if (strApplication.equals("PEO")) {
+	        options.setCapability("appWaitPackage", "com.mpspark.mobileOfficer");
+	    } else {
+	        options.setCapability("appWaitPackage", "com.mpspark.consumer.mpsconsumer");
 	    }
 	    options.setCapability("disableWindowAnimation", true);
 	    options.setCapability("skipUnlock", true);
 	    options.setCapability("appium:unicodeKeyboard", true);
-	    options.setCapability("newCommandTimeout", 3600); 
-	    
+	    options.setCapability("newCommandTimeout", 3600);
+
 	    options.setCapability("appium:enableNotificationListener", true);
-	    
-	    //Testing for Google Map issue
- 	    options.setCapability("clearSystemFiles", true); 
-	    
+
+	    // Testing for Google Map issue
+	    options.setCapability("clearSystemFiles", true);
+
 	    AppiumDriver androidDriver = null;
 	    try {
-	        // Use the service URL if started, otherwise default
 	        URL serverUrl = shouldStartServer ? appiumService.getUrl() : URI.create("http://127.0.0.1:" + port).toURL();
-	        
+
 	        System.out.println("Connecting to Appium at: " + serverUrl);
 	        androidDriver = new AppiumDriver(serverUrl, options);
 	        System.out.println("Session created successfully!");
@@ -702,16 +758,103 @@ public class CommonANDROID_Flutter
 	        e.printStackTrace();
 	        return null;
 	    }
+
 	    if (!"PEO".equals(strApplication)) {
-            try {
-                SENTRYMOBILE_CheckUserAccountBalanceAddFundsIfNeeded(objDictionary, strRole);
-            } catch (Exception e) {
-            }
-        }
+	        try {
+	            SENTRYMOBILE_CheckUserAccountBalanceAddFundsIfNeeded(objDictionary, strRole);
+	        } catch (Exception e) {
+	        }
+	    }
 	    SENTRYMOBILE_SETGPSSettings(objDictionary, androidDriver, strGPSEnabled);
-        Reporter.log("Sentry Mobile was loaded correctly on Android Device");
+	    Reporter.log("Sentry Mobile was loaded correctly on Android Device");
 
 	    return androidDriver;
+	}
+	// ==================== HELPER METHODS ====================
+
+	private void killProcessOnPort(int port) {
+	    try {
+	        Process process = new ProcessBuilder("lsof", "-t", "-i", ":" + port).start();
+	        try (java.io.BufferedReader reader = new java.io.BufferedReader(
+	                new java.io.InputStreamReader(process.getInputStream()))) {
+	            String pid;
+	            while ((pid = reader.readLine()) != null) {
+	                System.out.println("Killing process on port " + port + " (PID: " + pid + ")");
+	                new ProcessBuilder("kill", "-9", pid.trim()).start().waitFor();
+	            }
+	        }
+	        Thread.sleep(1000); // give the OS time to release the port
+	    } catch (Exception e) {
+	        System.out.println("No process found on port " + port + " (or failed to kill): " + e.getMessage());
+	    }
+	}
+
+	private String findExecutable(String command) {
+	    try {
+	        Process process = new ProcessBuilder("which", command).start();
+	        try (java.io.BufferedReader reader = new java.io.BufferedReader(
+	                new java.io.InputStreamReader(process.getInputStream()))) {
+	            String path = reader.readLine();
+	            if (path != null && !path.isEmpty()) {
+	                return path.trim();
+	            }
+	        }
+	    } catch (Exception e) {
+	        System.err.println("Could not find " + command + " in PATH");
+	    }
+	    throw new RuntimeException("Could not find executable: " + command);
+	}
+
+	private String findAppiumMainJs() {
+	    String home = System.getProperty("user.home");
+	    String[] possiblePaths = {
+	        home + "/.nvm/versions/node/v24.12.0/lib/node_modules/appium/build/lib/main.js",
+	        home + "/.nvm/versions/node/v20.11.0/lib/node_modules/appium/build/lib/main.js",
+	        home + "/.nvm/versions/node/v22.14.0/lib/node_modules/appium/build/lib/main.js",
+	        home + "/.nvm/versions/node/v20.18.0/lib/node_modules/appium/build/lib/main.js",
+	        "/usr/local/lib/node_modules/appium/build/lib/main.js",
+	        "/opt/homebrew/lib/node_modules/appium/build/lib/main.js"
+	    };
+
+	    for (String path : possiblePaths) {
+	        if (new File(path).exists()) {
+	            return path;
+	        }
+	    }
+
+	    // Fallback via npm
+	    try {
+	        Process process = new ProcessBuilder("npm", "root", "-g").start();
+	        try (java.io.BufferedReader reader = new java.io.BufferedReader(
+	                new java.io.InputStreamReader(process.getInputStream()))) {
+	            String npmRoot = reader.readLine();
+	            if (npmRoot != null) {
+	                String candidate = npmRoot.trim() + "/appium/build/lib/main.js";
+	                if (new File(candidate).exists()) {
+	                    return candidate;
+	                }
+	            }
+	        }
+	    } catch (Exception ignored) {}
+
+	    throw new RuntimeException("Could not find Appium main.js on this machine");
+	}
+
+	private String findApkBasePath() {
+	    String home = System.getProperty("user.home");
+	    String[] possibleBases = {
+	        home + "/git/MPS-Flutter-Automation/APK/",
+	        home + "/git/TestAutomation/APK/",
+	        home + "/git/Legacy-TestAutomation/APK/",
+	        System.getProperty("user.dir") + "/APK/"
+	    };
+
+	    for (String path : possibleBases) {
+	        if (new File(path).exists()) {
+	            return path;
+	        }
+	    }
+	    return System.getProperty("user.dir") + "/APK/";
 	}
 	public void SENTRYMOBILE_SETGPSSettings(Map<String, String> objDictionary, AppiumDriver androidDriver, String strGPSEnabled) {
 	    String strLocation = objDictionary.get("strLocation");
@@ -1218,10 +1361,10 @@ public class CommonANDROID_Flutter
 		   				break;
 		   			case "PEO Login":
 		   				wait = new WebDriverWait(androiddriver, Duration.ofSeconds(5));
-		   				snackbar = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@live-region='1']")));
+		   				snackbar = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.view.View[@dismissable='true' and @live-region='1']")));
 		   				break;
 		   			case "Review and Pay":
-		   				wait = new WebDriverWait(androiddriver, Duration.ofSeconds(3));
+		   				wait = new WebDriverWait(androiddriver, Duration.ofSeconds(5));
 		   				snackbar = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.view.View[@dismissable='true' and @live-region='1']")));
 		   				break;
 		   			case "Sign Up":
@@ -2635,6 +2778,37 @@ public class CommonANDROID_Flutter
 		return strTotalFee;
 	}
 	
+	public void SENTRYMOBILE_DeleteSavedCreditCards(Map<String, String> objDictionary, AppiumDriver androidDriver)
+	{
+		CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
+		//Delete Saved Credit Card - Function
+		clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary,androidDriver, "Account");
+		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Account", "Saved Credit Cards", 1);
+		By card = AppiumBy.xpath("//android.widget.Button[contains(@content-desc, '****')]");
+	    By emptyState = AppiumBy.accessibilityId("You have no saved credit cards");
+	    By confirmDelete = AppiumBy.accessibilityId("Yes, Delete");
+	    WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(10));
+	    //Remove all Credit Cards
+	    while (true) {
+	        wait.until(ExpectedConditions.or(
+	                ExpectedConditions.presenceOfElementLocated(card),
+	                ExpectedConditions.presenceOfElementLocated(emptyState)
+	        ));
+
+	        if (!androidDriver.findElements(emptyState).isEmpty()) {
+	            System.out.println("No saved cards left.");
+	            break;
+	        }
+
+	        WebElement row = androidDriver.findElement(card);
+	        row.findElement(AppiumBy.className("android.widget.ImageView")).click();
+	        wait.until(ExpectedConditions.elementToBeClickable(confirmDelete)).click();
+	        wait.until(ExpectedConditions.invisibilityOfElementLocated(confirmDelete));
+	    }
+	    clsCommonMobile.VerificationPointText(objDictionary, androidDriver, "Saved Cards", "You have no saved credit cards", 1, "Exists", "");
+	    clsCommonMobile.ClickButton(objDictionary, androidDriver, "Saved Cards", "Back", 1);
+	}
+	
 	public void SENTRYMOBILE_Login(Map<String, String> objDictionary, AndroidDriver androiddriver, String strRole,String strLicensePlateNumber, String strWizardStatus, String strRemainMeStatus)
 	{
 		CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
@@ -2773,7 +2947,6 @@ public class CommonANDROID_Flutter
 		clsCommonMobile.SENTRYMOBILE_BuyMaxTime(objDictionary, androidDriver, Integer.parseInt(strMeterMaxTime),"1");
 	}
 	
-	
 	public void SENTRYMOBILE_MobilePaymentRejectedSpotIsInFreeParkingGoingIntoReservedParking(Map<String, String> objDictionary, String strLicensePlateNumber, String strState)
 	{
 		String strMethondName = new Object(){}.getClass().getEnclosingMethod().getName();
@@ -2806,6 +2979,7 @@ public class CommonANDROID_Flutter
 	 	clsCommonMobile.VerificationPointText(objDictionary, androidDriver, "Review and Pay", "Spot is in Free parking going into Reserved Parking", 1, "Exists", "");
 	 	androidDriver.quit();
 	}
+	
 	public void SENTRYMOBILE_MobilePaymentRejectedSpotIsReserved(Map<String, String> objDictionary, String strLicensePlateNumber, String strState)
 	{
 		String strMethondName = new Object(){}.getClass().getEnclosingMethod().getName();
@@ -4026,8 +4200,11 @@ public class CommonANDROID_Flutter
 	    String strNextYear = new SimpleDateFormat("yyyy").format(nextYear);
 	    String strLicensePlateNumber = objDictionary.get("strLicensePlateNumber");
 		String strLicensePlateState = objDictionary.get("strLicensePlateState");
-	    PEO_CreateManualViolation(objDictionary, androidDriver, strLicensePlateNumber, strLicensePlateState, strNextYear, "04", "AMC", strViolationDescription, strMeterSpotName, "Remark");
+		PEO_CreateManualViolation(objDictionary, androidDriver, strLicensePlateNumber, strLicensePlateState, strNextYear, "04", "AMC", strViolationDescription, strMeterSpotName, "Remark");
 		try {Thread.sleep(1000);}catch (Exception e) {}
+		String strWIFI = objDictionary.get("strWIFI");if(strWIFI == null) {strWIFI = "Enabled";}
+		String strWIFIScanning = objDictionary.get("strWIFIScanning");if(strWIFIScanning == null) {strWIFIScanning = "Enabled";}
+//  		if(strWIFI.equals("Disabled")||strWIFI.equals("Disabled")){clsCommonMobile.ClickButton(objDictionary, androidDriver, "New Violations", "No thanks", 1);}
 		ClickButton(objDictionary, androidDriver, "Ticket", "Issued", 1);
 	}
 	public void PEO_CreateManualViolationExemptPlate(Map<String, String> objDictionary, AppiumDriver androidDriver, String strViolationDescription, String strTicketAmountDue, String strSpotNumber)
@@ -4179,6 +4356,13 @@ public class CommonANDROID_Flutter
 				{clsCommonMobile.ClickButton(objDictionary, androidDriver, "Create Violation", "Add Photo",1);}
 				try {Thread.sleep(1000);}catch (Exception e) {}
 				clsCommonMobile.ClickButton(objDictionary, androidDriver, "Create Violation", "Violation Photo",1);
+				//Not Now Button
+//				String strWIFI = objDictionary.get("strWIFI");if(strWIFI == null) {strWIFI = "Enabled";}
+//				String strWIFIScanning = objDictionary.get("strWIFIScanning");if(strWIFIScanning == null) {strWIFIScanning = "Enabled";}
+//		  		if(strWIFI.equals("Disabled")||strWIFI.equals("Disabled") && intViolationCount < 3)
+//		  		{
+//		  			clsCommonMobile.ClickButton(objDictionary, androidDriver, "Create Violation", "Not now",1);
+//				}
 				clsCommonMobile.ClickButton(objDictionary, androidDriver, "Create Violation", "Picture Button",1);
 				clsCommonMobile.ClickLink(objDictionary, androidDriver, "Create Violation", "OK", 1);
 				objTicketFrame = androidDriver.findElement(By.xpath(".//android.widget.ScrollView[1]"));
@@ -4660,8 +4844,15 @@ public class CommonANDROID_Flutter
 			else
 			{clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary,androidDriver,"The Text (Error Message) with index (1) did not contain (You have successfully enrolled in Concierge Auto pay.) - actual value ("+strSnackbarText+")");}
 			SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
-	 		clsCommonMobile.VerificationPointText(objDictionary, androidDriver, "Account", "Enrolled on", 1, "Value", "Enrolled on: "+sdf.format(new Date()));
-			return androiddriver;
+	 		Calendar cal = Calendar.getInstance();
+	 		if (cal.get(Calendar.HOUR_OF_DAY) > 19
+	 		        || (cal.get(Calendar.HOUR_OF_DAY) == 19 && cal.get(Calendar.MINUTE) > 0)
+	 		        || (cal.get(Calendar.HOUR_OF_DAY) == 19 && cal.get(Calendar.MINUTE) == 0 && cal.get(Calendar.SECOND) > 0)) {
+	 		    cal.add(Calendar.DATE, 1);
+	 		}
+	 		// After 7:00:00 PM → next day. Exactly 7:00:00 PM stays today.
+	 		clsCommonMobile.VerificationPointText(objDictionary,androidDriver,"Account","Enrolled on",1,"Value","Enrolled on: " + sdf.format(cal.getTime()));
+	 		return androiddriver;
 		}
 		else
 		{Reporter.log("The License Plate ("+strLicensePlateNumber+") in state () was already enrolled in Concierge");}
@@ -5161,6 +5352,13 @@ public class CommonANDROID_Flutter
 	                	    return element;
 	                	} 
 	                	catch (Exception e) {return null;}
+	                case "Not now":
+	                	try {
+	                	    WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(5));
+	                	    WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.Button[@resource-id=\"android:id/button2\" and @text=\"Not now\"]")));
+	                	    return element;
+	                	}
+	                	catch (Exception e) {return null;}
 	                case "Picture Button":
 	                    try {
 	                        WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(5));
@@ -5330,6 +5528,13 @@ public class CommonANDROID_Flutter
 	                        return element;
 	                    } 
 	                    catch (Exception e) {return null;}
+	                case "No thanks":
+	                    try {
+	                        WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(10));
+	                        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.id("android:id/button2")));
+	                        return element;
+	                    }
+	                    catch (Exception e) {return null;}
 	                case "Refresh":
 	                    try {
 	                        WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(10));
@@ -5456,6 +5661,19 @@ public class CommonANDROID_Flutter
 	                    clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The Button (" + strButtonName + ") had not been added to GetButtonObj for the page (" + strPageName + ")");
 	            }
 	            break;
+	        case "Saved Cards":
+	        	switch (strButtonName)
+	            {
+	                case "Back":
+	                    try {
+	                        WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(5));
+	                        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.Button[@content-desc='Back']")));
+	                        return element;
+	                    } catch (Exception e) {return null;}
+	                default:
+	                    clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The Button (" + strButtonName + ") had not been added to GetButtonObj for the page (" + strPageName + ")");
+	            }
+	            break;
 	        case "Select Your Vehicle":
 	            switch (strButtonName)
 	            {
@@ -5504,6 +5722,9 @@ public class CommonANDROID_Flutter
 	                case "Next":
 	                    try {return androidDriver.findElement(By.xpath("//android.view.View[@content-desc='Next']"));}
 	                    catch(Exception e) {return null;}
+	                case "No thanks":
+	                	try {return androidDriver.findElement(By.xpath("//android.widget.Button[@text='No thanks']"));}
+	                	catch(Exception e) {return null;}
 	                case "Sign up":
 	                    try { return androidDriver.findElement(By.xpath("(//android.view.View[@content-desc=\"Sign up\"])[2]"));}
 	                    catch(Exception e) {return null;}
@@ -5943,14 +6164,20 @@ public class CommonANDROID_Flutter
 			case "Account":
 				switch (strTextName)
 				{
-					case "Enrolled on":
-						try {
-						    String today = LocalDate.now().format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
-						    WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(15));
-						    WebElement enrolledElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.view.View[@content-desc='Enrolled on: " + today + "']")));
-						    return enrolledElement;
-						} 
-						catch (Exception e) {return null;}
+				case "Enrolled on":
+				    try {
+				        LocalDate enrollmentDate = LocalDate.now();
+				        if (LocalTime.now().isAfter(LocalTime.of(19, 0))) {enrollmentDate = enrollmentDate.plusDays(1);}
+				        String expectedDate = enrollmentDate.format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+				        String xpath = "//android.view.View[contains(@content-desc, 'Enrolled on:')]";
+				        WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(15));
+				        androidDriver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector().scrollable(true))" +".scrollIntoView(new UiSelector().descriptionContains(\"Enrolled on:\"))"));
+				        WebElement enrolledElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+				        String desc = enrolledElement.getAttribute("content-desc");
+				        if (desc != null && desc.contains(expectedDate)) {return enrolledElement;}
+				        return null;
+				    } 
+				    catch (Exception e) {return null;}
 					default:
 						try {return androidDriver.findElement(By.xpath("//*[@text='"+strTextName+"']"));}catch(Exception e) {return null;}
 				}
@@ -6139,6 +6366,13 @@ public class CommonANDROID_Flutter
 						        By.xpath("//android.view.View[@content-desc=\"Invalid credentials, please contact customer support.\"]")
 						    ));
 						} catch (Exception e) {return null;}
+					case "Please disable Airplane Mode to continue using the app":
+						try {
+						    WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(10));
+						    return wait.until(ExpectedConditions.visibilityOfElementLocated(
+						        By.xpath("//android.widget.Button[@content-desc=\"Ok\"]/preceding-sibling::android.view.View/android.view.View")
+						    ));
+						} catch (Exception e) {return null;}
 					default:
 						try {return androidDriver.findElement(By.xpath("//*[@text='"+strTextName+"']"));}catch(Exception e) {return null;}
 				}
@@ -6247,6 +6481,19 @@ public class CommonANDROID_Flutter
 						    WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(10));
 						    return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.view.View[@content-desc='Total Fee']/following-sibling::android.view.View")));
 						} catch (Exception e) {return null;}
+					default:
+						try {return androidDriver.findElement(By.xpath("//*[contains(@content-desc, \""+strTextName+"\")]"));}	
+						catch(Exception e) {return null;}
+				}
+			case "Saved Cards": 
+				switch (strTextName)
+				{
+					case "You have no saved credit cards":
+					    try {
+					        WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(10));
+					        return wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.accessibilityId("You have no saved credit cards")));
+					    } 
+					    catch (Exception e) {return null;}
 					default:
 						try {return androidDriver.findElement(By.xpath("//*[contains(@content-desc, \""+strTextName+"\")]"));}	
 						catch(Exception e) {return null;}
@@ -6720,20 +6967,20 @@ public class CommonANDROID_Flutter
 	                }
 	                return;
 	            case "Does Not Exist":
-		            	UpdateErrorMessageWithPivotalData(objDictionary,androidDriver,"The button  (" + strButtonName + ") at index (" + intButtonIndex + ") existed");
-		            	return;
-		            case "Enabled":
-		            	if (objButton.isEnabled()){Reporter.log("The button (" + strButtonName + ") at index (" + intButtonIndex + ") was enabled");}
-		            	else
-		            	{
-		            		UpdateErrorMessageWithPivotalData(objDictionary,androidDriver,"The button (" + strButtonName + ") at index (" + intButtonIndex + ") was not enabled");
-		            	}
+	                UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"Expected the button (" + strButtonName + ") at index (" + intButtonIndex + ") to be gone, but it was still present on the screen.");
+	                return;
+	            case "Enabled":
+	            	if (objButton.isEnabled()){Reporter.log("The button (" + strButtonName + ") at index (" + intButtonIndex + ") was enabled");}
+	            	else
+	            	{
+	            		UpdateErrorMessageWithPivotalData(objDictionary,androidDriver,"The button (" + strButtonName + ") at index (" + intButtonIndex + ") was not enabled");
+	            	}
 	                return;
 	            case "Exists":
-	            		Reporter.log("The button (" + strButtonName + ") at index (" + intButtonIndex + ") existed");
+	            	Reporter.log("The button (" + strButtonName + ") at index (" + intButtonIndex + ") existed");
 	                return;
 	            default:
-	            		UpdateErrorMessageWithPivotalData(objDictionary,androidDriver,"The button validation type (" + strValidationType + ") hasn't been coded yet - VerificationPointButton");
+	            	UpdateErrorMessageWithPivotalData(objDictionary,androidDriver,"The button validation type (" + strValidationType + ") hasn't been coded yet - VerificationPointButton");
 	            	return;
 	        }
 		}
@@ -7509,10 +7756,14 @@ public class CommonANDROID_Flutter
 		clsCommonWeb.SENTRYLINK_ExitSpotSetMeterRateBlocksOpenMeterInBrowse(objDictionary,  strMaximumDuration, strCoinTimePuchaseLimit, strFreeTimeFirstPayment, strMeterIncrementTime, strInitialGracePeriod, strViolationGracePeriod, strHandicapInitialGracePeriod, strHandicapViolationGrace, strNoParkingGrace,strSetImageSendBeforeViolation,strParkingShortSessionSec, strUnlockValue, strUnlockTime, strUnlockMax,"Local");
 		//De-enrolled Concierge
   		clsCommonWeb.SENTRYLINK_ConciergeDeenroll(objDictionary);
-		AppiumDriver androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
+  		AppiumDriver androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
 		//Click Accept
 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept",1);
 		clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, androidDriver, "parker","Remind me later");
+		String strWIFI = objDictionary.get("strWIFI");if(strWIFI == null) {strWIFI = "Enabled";}
+		String strAirplaneMode =objDictionary.get("strAirplaneMode");
+		if(strWIFI.equals("Disabled") && !strAirplaneMode.equals("Enabled"))
+		{clsCommonMobile.ClickButton(objDictionary, androidDriver, "Map", "No thanks",1);}
 		//ParkTP: Park Then Pay
 		clsCommonMobile.SENTRYMOBILE_PurchaseMeterTimeParkThenPay(objDictionary, androidDriver,strFreeTimeFirstPayment,strMeterIncrementTime,"True","False");
 		androidDriver.quit();
@@ -9652,7 +9903,10 @@ public class CommonANDROID_Flutter
          	if (intAddCounter == 0){startTime = System.currentTimeMillis();}
          	//Set Start and End Times 
          	SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, hh:mm a");
-         	if (intAddCounter == 0) {strStartTime = sdf.format(Date.from(Instant.now().truncatedTo(ChronoUnit.MINUTES)));}
+         	if (intAddCounter == 0) 
+         	{
+         		strStartTime = sdf.format(Date.from(Instant.now().truncatedTo(ChronoUnit.MINUTES)));
+         	}
          	else{strStartTime = objDictionary.get("strParkingSessionStart");}
          	//Add Free Time First Payment
          	if(intAddCounter == 0)
@@ -10696,6 +10950,7 @@ public class CommonANDROID_Flutter
 		clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, androidDriver, "parker","Remind me later");
 		clsCommonMobile.SENTRYMOBILE_PurchaseMeterTimeParkThenPay(objDictionary, androidDriver,strFreeTimeFirstPayment,strMeterIncrementTime,"True","False");
 		String strRemainingFreeTimeMinutes = objDictionary.get("strRemainingFreeTimeMinutes");
+		androidDriver.quit();
 		//PRT: Purchase Remaining Time
       	clsCommonMobile.SENTRYMOBILE_PurchaseRemainingTime(objDictionary, strMaximumDuration, strMeterIncrementTime, strFreeTimeFirstPayment, "15","");
       	androidDriver.quit();
@@ -11319,6 +11574,7 @@ public class CommonANDROID_Flutter
 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept",1);
 		clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, androidDriver, "parker","Remind me later");
 		clsCommonMobile.SENTRYMOBILE_PurchaseMeterTimeParkThenPay(objDictionary, androidDriver,strFreeTimeFirstPayment,strMeterIncrementTime,"True","False");
+		androidDriver.quit();
 		String strRemainingFreeTimeMinutes = objDictionary.get("strRemainingFreeTimeMinutes");
 		//PRT: Purchase Remaining Time
       	clsCommonMobile.SENTRYMOBILE_PurchaseRemainingTime(objDictionary, strMaximumDuration, strMeterIncrementTime, strFreeTimeFirstPayment, strMeterIncrementTime,"");
@@ -15849,11 +16105,8 @@ public class CommonANDROID_Flutter
 		//Click Accept
 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept",1);
 		clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, androidDriver, "parker","Remind me later");
-		//Delete Saved Credit Card
-		clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary,androidDriver, "Account");
-		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Account", "Saved Credit Cards", 1);
-		
-		
+		//Delete Saved Credit Cards
+		clsCommonMobile.SENTRYMOBILE_DeleteSavedCreditCards(objDictionary, androidDriver);
 		//ParkTP: Park Then Pay
 		clsCommonMobile.SENTRYMOBILE_PurchaseMeterTimeParkThenPay(objDictionary, androidDriver,strFreeTimeFirstPayment,strMeterIncrementTime,"True","False");
 		androidDriver.quit();
@@ -15861,8 +16114,104 @@ public class CommonANDROID_Flutter
 	  	clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null,"1","Local");
 	  	//ValidateParkingSessionHistoryAndImages
 	  	Android_ParkingSessions clsAndriodParkingSessions = new Android_ParkingSessions();
-	  	clsAndriodParkingSessions.SENTRYLINK_ValidateParkingSessionHistoryAndImages_4002_PaymentTest_GooglePay(objDictionary,strMeterIncrementTime);
+	  	clsAndriodParkingSessions.SENTRYLINK_ValidateParkingSessionHistoryAndImages_A4004_PaymentTest_CreditOrDebitCard(objDictionary,strMeterIncrementTime);
 	  	clsMeter.METER_SetMeterEndTime(objDictionary);
+	}
+	
+	public void SENTRYMOBILE_4005_PaymentTest_CreditOrDebitCard_MaxTime(Map<String, String> objDictionary)throws Exception
+	{
+    	objDictionary.put("strMobileDeviceType", "ANDROID");
+    	CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
+		CommonWeb clsCommonWeb = new CommonWeb();
+		Meter clsMeter = new Meter();
+		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
+		Reporter.log("***************TestCase Description***************************************");
+		Reporter.log("FTFP0: Free Time First Payment 0                                          ");
+  		Reporter.log("PS1: Park Spot 1                                                          ");
+  		Reporter.log("PMT: Purchase Max Time                                                    ");
+  		Reporter.log("ES1: Exit Spot1                                                           ");
+		Reporter.log("NTPS: Navigate To Parking Session                                         ");
+		Reporter.log("VPSH: Validate Parking Session History                                    ");
+		Reporter.log("VICAE: Validate Image Count After Exit                                    ");
+		Reporter.log("VIAC: Validate Images Appear Correctly                                    ");
+		Reporter.log("**************************************************************************");
+		//Test Case Variables
+  		String strMaximumDuration = "240";
+  		String strCoinTimePuchaseLimit = "240";
+  		String strFreeTimeFirstPayment = "0";objDictionary.put("strFreeTimeFirstPayment", strFreeTimeFirstPayment);
+  		String strMeterIncrementTime = "60";objDictionary.put("strMeterIncrementTime", strMeterIncrementTime);
+		String strInitialGracePeriod = "5";
+  		String strViolationGracePeriod = "1";
+  		String strHandicapInitialGracePeriod = "5";
+  		String strHandicapViolationGrace = "1";
+  		String strNoParkingGrace = "1";
+  		String strParkingShortSessionSec = "15";
+  		String strSetImageSendBeforeViolation = "45";
+  		String strUnlockValue = "On";
+  		String strUnlockTime = "5";
+  		String strUnlockMax = "1";
+  		//ExitSpotAndSetMeterRateBlocks
+		clsCommonWeb.SENTRYLINK_ExitSpotSetMeterRateBlocksOpenMeterInBrowse(objDictionary,  strMaximumDuration, strCoinTimePuchaseLimit, strFreeTimeFirstPayment, strMeterIncrementTime, strInitialGracePeriod, strViolationGracePeriod, strHandicapInitialGracePeriod, strHandicapViolationGrace, strNoParkingGrace,strSetImageSendBeforeViolation,strParkingShortSessionSec, strUnlockValue, strUnlockTime, strUnlockMax,"Local");
+		//PS1 Park Spot 1
+		clsMeter.METER_ParkSpot(objDictionary,"1","Local");
+		String strParkedTime = objDictionary.get("strParkedTime");
+		//PMT: Purchase Max Time
+		AppiumDriver androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
+		//Click Accept
+		clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept",1);
+		//Validate Max Time Parking Session
+		clsCommonMobile.SENTRYMOBILE_MobilePaymentInitialPaymentMaxTime(objDictionary, androidDriver);
+		String strTotalPayment = objDictionary.get("strTotalFee");//SENTRYMOBILE_BuyMaxTime
+		//Select Payment Option and Pay
+     	String strAltPayment = objDictionary.get("strAltPayment");
+     	String strEndTime = "";
+     	if(strAltPayment == null)
+     	{
+     		clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "SentryMobile Account");
+     		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Review and Pay", "Proceed", 1);
+     		//Set Start and End Times
+     		SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, hh:mm a");
+      		String strPayTime = sdf.format(Date.from(Instant.now().truncatedTo(ChronoUnit.MINUTES)));
+      		strEndTime = clsCommonMobile.AddTimeToExistingTime(strPayTime, strMaximumDuration,"MMM dd, hh:mm a");
+       	}
+     	else
+     	{
+     		//Set Start and End Times
+         	clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "Other Payment Options");
+    		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Review and Pay", "Proceed", 1);
+    		SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, hh:mm a");
+      		String strPayTime = sdf.format(Date.from(Instant.now().truncatedTo(ChronoUnit.MINUTES)));
+      		strEndTime = clsCommonMobile.AddTimeToExistingTime(strPayTime, strMaximumDuration,"MMM dd, hh:mm a");
+      		String strConditionalValue = clsCommonMobile.ConditionalStepButton(objDictionary, androidDriver, "Review and Pay", "More Payment Options", 1, "Exists", "");
+			if(strConditionalValue.equals("True"))
+			{
+				clsCommonMobile.ClickButton(objDictionary, androidDriver, "Review and Pay", "More Payment Options", 1);
+	    	}
+    		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Review and Pay", strAltPayment, 1);
+    		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Card Details", "Populate Card Number", "{T} Card Number","4242424242424242");
+			clsCommonMobile.ClickButton(objDictionary, androidDriver, "Card Details", "Next", 1);
+			String strStartDate =  clsCommonWeb.AddDaysToCurrentDate("MM/yy","+30");
+		    clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Card Details", "Populate Credit Card", "{T} Expiration Date|{T} CVC",strStartDate+"|3746");
+		    clsCommonMobile.ClickButton(objDictionary, androidDriver, "Card Details", "Add Card", 1);
+		    clsCommonMobile.ClickLink(objDictionary, androidDriver, "Review and Pay", "Yes", 1);
+    		//clsCommonMobile.ClickButton(objDictionary, androidDriver, "Review and Pay", "Pay", 1);
+     	}
+		//Wait For Parking Session Details
+    	clsCommonMobile.GlobalWait(objDictionary, androidDriver, "Parking Sessions", "{TextExists} Parking Sessions~Parking Session Details", 80);
+     	//Validate Expected Meter Time
+		clsMeter.METER_ValidateExpectedMeterTime(objDictionary, null, Integer.parseInt(strMaximumDuration), "1");
+		//Validate Parking Session
+		clsCommonMobile.SENTRYMOBILE_ValidateParkingSession(objDictionary,androidDriver,strParkedTime,strEndTime, strTotalPayment);
+		androidDriver.quit();
+		//Store Parking Id
+        HttpConnections clsHttpConnections = new HttpConnections();
+  		clsHttpConnections.HTTPCONNECTIONS_StoreParkingId(objDictionary, "Local", "1");
+	    //ShortSessionWaitExitSpot
+      	clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null,"1","Local");
+      	//ValidateParkingSessionHistoryAndImages
+      	Android_ParkingSessions clsConsumerAppTestCaseParkingSessions = new Android_ParkingSessions();
+      	clsConsumerAppTestCaseParkingSessions.SENTRYLINK_ValidateParkingSessionHistoryAndImages_4003_PaymentTest_CreditOrDebitCard_MaxTime(objDictionary);
+      	clsMeter.METER_SetMeterEndTime(objDictionary);
 	}
 	
 	public void SENTRYMOBILE_PS1_EC1_NSAC_NSTU(Map<String, String> objDictionary, String strLicensePlateNumber)

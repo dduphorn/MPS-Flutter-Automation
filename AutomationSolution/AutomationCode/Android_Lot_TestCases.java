@@ -1887,8 +1887,6 @@ public class Android_Lot_TestCases
 		String strLotExitId = objDictionary.get("strLotExitId");
 		//Exit Lot
 		clsHttpConnections.CURL_ExitLot(objDictionary,strLicensePlateNumber, "MN",strLotExitId,"False");
-		//Update Kiosk Rate Blocks
-		//SENTRYLINK_UpdateKioskRateBlocks(objDictionary);
 		//Delete Active Permits
 		clsHttpConnections.JsonDeleteAllActivePermits(objDictionary,"");
 		//Remove all License Plate
@@ -7648,8 +7646,7 @@ public class Android_Lot_TestCases
 	  	//1 Minute Initial Grace
 	  	//try {Thread.sleep(9000);}catch (Exception e) {}
 	  	clsHttpConnections.CURL_Lot_Boot_Notice(objDictionary,strLicensePlateNumber, takenAt); 
-	  	try {Thread.sleep(75000);}catch (Exception e) {}
-		  
+	  	try {Thread.sleep(85000);}catch (Exception e) {}
 	  	//Store Lot Parking Id
 	  	String strParkingId = clsHttpConnections.GetJsonParkingSessionId(objDictionary);objDictionary.put("strParkingId", strParkingId);
 	  	//Get Lot Violation Id

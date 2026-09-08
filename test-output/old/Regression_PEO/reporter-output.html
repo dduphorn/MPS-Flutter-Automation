@@ -19,214 +19,46 @@
 <tr><td>SilverBullet Version:5.1.1-1             </td></tr>
 <tr><td>RemotePath:   http://localhost:4723                             </td></tr>
 <tr><td>************************************************************</td></tr>
-<tr><td><font color='green'>Meter Start Time 21:14:</font></td></tr>
+<tr><td><font color='green'>Meter Start Time 22:26:</font></td></tr>
 <tr><td>***************TestCase Description*************************</td></tr>
-<tr><td>FTFP0: Set Free Time First Payment 0                        </td></tr>
-<tr><td>CGPV1: Create Grace Period Violation Spot 1                 </td></tr>
-<tr><td>PLI: Populate License Information                           </td></tr>
-<tr><td>AV: Approve Violation                                       </td></tr>
-<tr><td>CV: Claim Violation                                         </td></tr>
-<tr><td>IT: Issue Ticket                                            </td></tr>
-<tr><td>DV: Dispute Violation                                       </td></tr>
-<tr><td>DWDV: Disagree With Dispute Violation                       </td></tr>
-<tr><td>PDV: Pay Disputed Violation                                 </td></tr>
-<tr><td>ES1: Exit Spot 1                                            </td></tr>
-<tr><td>NTVH: Navigate To Violation History                         </td></tr>
-<tr><td>VPSH: Validate Parking Session History                      </td></tr>
-<tr><td>VICAE: Validate Image Count After Exit                      </td></tr>
-<tr><td>VIAC: Validate Images Appear Correctly                      </td></tr>
+<tr><td>CMV: Create Manual Violation                                </td></tr>
+<tr><td>IGPE: Initial Grace Period Exceeded                         </td></tr>
+<tr><td>VVXD: Validate Volation XML Data                            </td></tr>
 <tr><td>************************************************************</td></tr>
-<tr><td><font color='orange'>     StoreJsonAdminToken</font></td></tr>
-<tr><td>The value (16164) was stored as variable name (strJsonUserId)</td></tr>
-<tr><td>The value (kMNkx18jHKzZcyRZSf74) was stored as variable name (strJsonToken)</td></tr>
-<tr><td><font color='orange'>     METER_ExitBothSpots</font></td></tr>
-<tr><td>The value (yuwSdp6rtEZWeVdWKFpX) was stored as variable name (strJsonToken)</td></tr>
-<tr><td>The value (16165) was stored as variable name (strJsonUserId)</td></tr>
-<tr><td>strConciergeEnrolled: false</td></tr>
-<tr><td>The Begin value was set already False for spot 1-host-10.10.102.242</td></tr>
-<tr><td>The Begin value was set already False for spot 2-host-10.10.102.242</td></tr>
-<tr><td><font color='orange'>     SENTRYLINK_DeleteFreeAndNoParkingRateSetFromRateBlock</font></td></tr>
-<tr><td>strHeadless: True</td></tr>
-<tr><td><font color='orange'>     SENTRYLINK_OpenLoginPage</font></td></tr>
-<tr><td>The (Login) page existed</td></tr>
-<tr><td><font color='orange'>     SENTRYLINK_UserLoginIn</font></td></tr>
-<tr><td>The text name (Version) value (Version 9.8) was stored as variable name (strSentryLinkVersion)</td></tr>
-<tr><td>The (Login) field(s) were populated correctly - Values(Email,ffticketservicetestingadmin@gmail.com|Password,ffTicketServiceTestingadmin13!)</td></tr>
-<tr><td>The Button (Sign in) with index (1) was clicked successfully</td></tr>
-<tr><td><font color='orange'>     SENTRYLINK_NavigateToPage2-Rate Block Group</font></td></tr>
-<tr><td>Rate Block Group path: https://ticketservicetesting.staging.sentry-link.com/devices/meters/2519</td></tr>
-<tr><td>The Link (AutomationRateBlockGroup1) with index (1) was clicked successfully.</td></tr>
-<tr><td>The Link (AutomationRateBlockGroup1) with index (1) was clicked successfully.</td></tr>
-<tr><td>The Button (Delete Rate Block) with index (1) was clicked successfully</td></tr>
-<tr><td>The Button (Send to all) with index (1) was clicked successfully</td></tr>
-<tr><td>The PARKING_FREE_TIME_ON_FIRST_PAYMENT for Meter (9000) is (0) seconds</td></tr>
-<tr><td><font color='green'>The Python Script (parking_delete_rate_blk.py 642978) was executed successfully on host (10.10.102.242)-System Time: 04:15:13 UTC Time:21:15:13.590</font></td></tr>
-<tr><td><font color='green'>The Python Script (parking_delete_global_pay_rate_blk.py 642978) was executed successfully on host (10.10.102.242)-System Time: 04:15:17 UTC Time:21:15:17.771</font></td></tr>
-<tr><td><font color='orange'>     SENTRYMETER_UpdateMetertSetting</font></td></tr>
-<tr><td><font color='green'>The Python Script (set_initgrace.py 60) was executed successfully on host (10.10.102.242)-System Time: 04:15:20 UTC Time:21:15:20.015</font></td></tr>
-<tr><td><font color='green'>The Python Script (set_no_parking_grace.py 60) was executed successfully on host (10.10.102.242)-System Time: 04:15:20 UTC Time:21:15:20.460</font></td></tr>
-<tr><td><font color='green'>The Python Script (set_violation_grace.py 60) was executed successfully on host (10.10.102.242)-System Time: 04:15:21 UTC Time:21:15:21.008</font></td></tr>
-<tr><td><font color='green'>The Python Script (set_free_time_first_payment.py 0) was executed successfully on host (10.10.102.242)-System Time: 04:15:21 UTC Time:21:15:21.543</font></td></tr>
-<tr><td><font color='green'>The Python Script (set_apply_payment_screen_timeout.py 5) was executed successfully on host (10.10.102.242)-System Time: 04:15:22 UTC Time:21:15:22.216</font></td></tr>
-<tr><td><font color='green'>The Python Script (settings_set_setting_false.py PARKING_PAY_BY_PLATE) was executed successfully on host (10.10.102.242)-System Time: 04:15:22 UTC Time:21:15:22.816</font></td></tr>
-<tr><td><font color='green'>The Python Script (set_free_disconnect_on.py) was executed successfully on host (10.10.102.242)-System Time: 04:15:23 UTC Time:21:15:23.476</font></td></tr>
-<tr><td><font color='green'>The Python Script (settings_set_setting_true.py PARKING_SHOW_UNLOCK_TIME) was executed successfully on host (10.10.102.242)-System Time: 04:15:24 UTC Time:21:15:24.126</font></td></tr>
-<tr><td><font color='green'>The Python Script (set_unlock_on.py) was executed successfully on host (10.10.102.242)-System Time: 04:15:24 UTC Time:21:15:24.968</font></td></tr>
-<tr><td><font color='green'>The Python Script (settings_set_setting_false.py PARKING_TRUEUP_ENABLED) was executed successfully on host (10.10.102.242)-System Time: 04:15:25 UTC Time:21:15:25.683</font></td></tr>
-<tr><td><font color='green'>The Python Script (set_unlock_time.py 5) was executed successfully on host (10.10.102.242)-System Time: 04:15:26 UTC Time:21:15:26.228</font></td></tr>
-<tr><td><font color='green'>The Python Script (set_unlock_max.py 1) was executed successfully on host (10.10.102.242)-System Time: 04:15:26 UTC Time:21:15:26.732</font></td></tr>
-<tr><td><font color='green'>The Python Script (set_image_send_before_violation.py 45) was executed successfully on host (10.10.102.242)-System Time: 04:15:27 UTC Time:21:15:27.321</font></td></tr>
-<tr><td><font color='green'>The Python Script (set_maximum_duration.py 240) was executed successfully on host (10.10.102.242)-System Time: 04:15:27 UTC Time:21:15:27.929</font></td></tr>
-<tr><td><font color='green'>The Python Script (set_parking_short_session.py 15) was executed successfully on host (10.10.102.242)-System Time: 04:15:28 UTC Time:21:15:28.478</font></td></tr>
-<tr><td><font color='green'>The Python Script (settings_set_setting_false.py SYS_OUT_OF_SERVICE) was executed successfully on host (10.10.102.242)-System Time: 04:15:29 UTC Time:21:15:29.143</font></td></tr>
-<tr><td><font color='orange'>   SENTRYLINK_UpdateRateSetValues</font></td></tr>
-<tr><td>***********Current Meter Rate Blocks*************10.10.102.242</td></tr>
-<tr><td>{"disconnect_free": true, "block_type": "fixed", "block_id": -1, "default_minimum_cost": 75, "schedule": {"start_time": "00:00", "valid_days": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"], "start_date": null, "end_date": null, "end_time": "23:59"}, "unenforced": false, "default_minimum_time": 0, "rate": {"senior_minutes": 30, "muni_price": 25, "senior_max_time": 120, "price": 25, "veteran_max_time": 120, "senior_price": 25, "muni_max_time": 120, "handicap_minutes": 30, "handicap_price": 25, "veteran_minutes": 30, "veteran_price": 25, "muni_minutes": 30, "max_time": 120, "handicap_max_time": 120, "minutes": 30}, "card_increment_time": 30, "first_payment_free_time": 0, "maximum_duration_minutes": 120, "priority": -2147483647, "free_time_first_payment": 0, "max_time": 120, "mins_accept_free_before_rate": 60}q</td></tr>
-<tr><td>*************************************************</td></tr>
-<tr><td>Previous Rate Block Id--1</td></tr>
-<tr><td>The value (yuwSdp6rtEZWeVdWKFpX) was stored as variable name (strJsonToken)</td></tr>
+<tr><td>strRemotePath:http://localhost:4723</td></tr>
+<tr><td>strAppiumPort:null</td></tr>
+<tr><td><font color='orange'>     SENTRYLINK_UpdateNotificationReportName</font></td></tr>
 <tr><td>strHeadless: True</td></tr>
 <tr><td><font color='orange'>     SENTRYLINK_OpenLoginPage</font></td></tr>
 <tr><td><font color='orange'>     SENTRYLINK_AdminLoginIn</font></td></tr>
 <tr><td>The (Login) page existed</td></tr>
 <tr><td><font color='orange'>     SENTRYLINK_UserLoginIn</font></td></tr>
 <tr><td>The text name (Version) value (Version 9.8) was stored as variable name (strSentryLinkVersion)</td></tr>
-<tr><td>The (Login) field(s) were populated correctly - Values(Email,ffticketservicetestingadmin@gmail.com|Password,ffTicketServiceTestingadmin13!)</td></tr>
+<tr><td>The (Login) field(s) were populated correctly - Values(Email,ffticketservicetestingadmin@gmail.com|Password,ffTicketServiceTestingadmin14!)</td></tr>
 <tr><td>The Button (Sign in) with index (1) was clicked successfully</td></tr>
-<tr><td><font color='orange'>     SENTRYLINK_NavigateToPage2-Showing Meter</font></td></tr>
-<tr><td>The Link (Rate Sets) with index (1) was clicked successfully.</td></tr>
-<tr><td>The Link (Rate Sets) with index (1) was clicked successfully.</td></tr>
-<tr><td><font color='orange'>     SENTRYLINK_UpdateRateSet</font></td></tr>
-<tr><td>The Link (AutomationRateSet1Fixed) with index (1) was clicked successfully.</td></tr>
-<tr><td>The Link (AutomationRateSet1Fixed) with index (1) was clicked successfully.</td></tr>
-<tr><td>The Button (Edit) with index (1) was clicked successfully</td></tr>
-<tr><td><font color='orange'>     SENTRYLINK_PopulateFixedRateBlock</font></td></tr>
-<tr><td>The (Free Time with Free Payment) field(s) were populated correctly - Values(Maximum Duration,240|Coin Time Puchase Limit,240|Free Time with First Payment,0|Credit Card Increment Time,3|Initial Grace,1|Violation Grace,1|Handicap Initial Grace,5|Handicap Violation Grace,1|No Parking Grace,1|Default Minimum Cost,100|Default Minimum Time,12)</td></tr>
-<tr><td>The (Rate Set) field(s) were populated correctly - Values(Family,Normal)</td></tr>
-<tr><td>The (Buys Minutes) field(s) were populated correctly - Values(Price,25|Buys Minutes,3|Max Time,240)</td></tr>
-<tr><td>The Button (Save) with index (1) was clicked successfully</td></tr>
-<tr><td>The Button (Save Rate Set) with index (1) was clicked successfully</td></tr>
-<tr><td>The Link (Rate Block Groups) with index (1) was clicked successfully.</td></tr>
-<tr><td>The Link (Rate Block Groups) with index (1) was clicked successfully.</td></tr>
-<tr><td>The Link (AutomationRateBlockGroup1) with index (1) was clicked successfully.</td></tr>
-<tr><td>The Link (AutomationRateBlockGroup1) with index (1) was clicked successfully.</td></tr>
-<tr><td>The (Add Set to This Group) field(s) were populated correctly - Values(Add Set to This Group,AutomationRateSet1Fixed)</td></tr>
-<tr><td>The Button (Add Set to This Group) with index (1) was clicked successfully</td></tr>
-<tr><td>The TextField (Rate Block Name) existed on page (Rate Block Setting)-GlobalObjectWait</td></tr>
-<tr><td>The (Specific Times of Day) field(s) were populated correctly - Values(Rate Block Name,FixedRateBlock|Start Date,06/05/2026|Time Options,All Day)</td></tr>
-<tr><td>The Button (Save Rate Block) with index (1) was clicked successfully</td></tr>
-<tr><td>The Button (Send to all) with index (1) was clicked successfully</td></tr>
-<tr><td>GlobalWait: Rate Block values existed that were not -1</td></tr>
-<tr><td>Current Rate Block Id-642979</td></tr>
-<tr><td>***********Current Meter Rate Blocks*************10.10.102.242</td></tr>
-<tr><td>{"disconnect_free": true, "block_type": "fixed", "block_id": 642979, "default_minimum_cost": 100, "schedule": {"start_time": "00:00", "valid_days": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"], "start_date": "2026-06-05", "end_date": "2030-08-11", "end_time": "23:59"}, "unenforced": false, "default_minimum_time": 12, "rate": {"senior_minutes": 3, "muni_price": 25, "senior_max_time": 240, "price": 25, "veteran_max_time": 240, "senior_price": 25, "muni_max_time": 240, "handicap_minutes": 3, "handicap_price": 25, "veteran_minutes": 3, "veteran_price": 25, "muni_minutes": 3, "max_time": 240, "handicap_max_time": 240, "minutes": 3}, "card_increment_time": 3, "first_payment_free_time": 0, "maximum_duration_minutes": 240, "priority": 7, "free_time_first_payment": 0, "max_time": 240, "mins_accept_free_before_rate": 60}q</td></tr>
-<tr><td>{"disconnect_free": true, "block_type": "fixed", "block_id": -1, "default_minimum_cost": 75, "schedule": {"start_time": "00:00", "valid_days": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"], "start_date": null, "end_date": null, "end_time": "23:59"}, "unenforced": false, "default_minimum_time": 0, "rate": {"senior_minutes": 30, "muni_price": 25, "senior_max_time": 120, "price": 25, "veteran_max_time": 120, "senior_price": 25, "muni_max_time": 120, "handicap_minutes": 30, "handicap_price": 25, "veteran_minutes": 30, "veteran_price": 25, "muni_minutes": 30, "max_time": 120, "handicap_max_time": 120, "minutes": 30}, "card_increment_time": 30, "first_payment_free_time": 0, "maximum_duration_minutes": 120, "priority": -2147483647, "free_time_first_payment": 0, "max_time": 120, "mins_accept_free_before_rate": 60}q</td></tr>
-<tr><td>*************************************************</td></tr>
-<tr><td><font color='orange'>     SENTRYLINK_UpdateMaintenanceMode</font></td></tr>
-<tr><td>strHeadless: True</td></tr>
-<tr><td>Maintenance Mode Spot (1) equals: False</td></tr>
-<tr><td>Maintenance Mode Spot (2) equals: False</td></tr>
-<tr><td>Parking Session Url: https://ticketservicetesting.staging.sentry-link.com/api/v1/meter_groups.json</td></tr>
-<tr><td><font color='purple'> strMeterGroupInitialGrace: 60</font></td></tr>
-<tr><td><font color='orange'>     METER_CreateGracePeriodViolation</font></td></tr>
-<tr><td><font color='orange'>METER_ParkSpot</font></td></tr>
-<tr><td><font color='green'>The Python Script (vehicle_reset_spot_1.py) was executed successfully on host (10.10.102.242)-System Time: 04:16:48 UTC Time:21:16:48.072</font></td></tr>
-<tr><td>strParkedAtTime_HHmmss: 16:16:50</td></tr>
-<tr><td>strParkingSessionsParkedAtTimeMinusTwo: Today at 4:14 PM</td></tr>
-<tr><td>strParkingSessionsParkedAtTimeMinusOne: Today at 4:15 PM</td></tr>
-<tr><td>strParkingSessionsParkedAtTime: Today at 4:16 PM</td></tr>
-<tr><td>strParkingSessionsParkedAtTimePlusOne: Today at 4:17 PM</td></tr>
-<tr><td><font color='green'>The Python Script (vehicle_park_spot_1.py) was executed successfully on host (10.10.102.242)-System Time: 04:16:50 UTC Time:21:16:50.319</font></td></tr>
-<tr><td>GlobalWait: The meter variable begun equalled True</td></tr>
-<tr><td>Waited for grace period violation-Spot1</td></tr>
-<tr><td>Waited (60) seconds for grace period violation</td></tr>
-<tr><td>GlobalWait: The meter violation equalled true</td></tr>
-<tr><td><font color='Green'>Grace Peroid Violation Time 16:18:03</font></td></tr>
-<tr><td>strMeterViolationValue: True</td></tr>
-<tr><td>The Meter (9000) spot (1) has violated do grace period violation</td></tr>
-<tr><td><font color='orange'>     StoreJsonAdminToken</font></td></tr>
-<tr><td>The value (kMNkx18jHKzZcyRZSf74) was stored as variable name (strJsonToken)</td></tr>
-<tr><td>GlobalWait: Wait Until Sentry Link Violation Id Exists</td></tr>
-<tr><td><font color='orange'>     StoreJsonAdminToken</font></td></tr>
-<tr><td>The value (kMNkx18jHKzZcyRZSf74) was stored as variable name (strJsonToken)</td></tr>
-<tr><td>strHeadless: True</td></tr>
-<tr><td><font color='orange'>     SENTRYLINK_OpenLoginPage</font></td></tr>
-<tr><td><font color='orange'>     SENTRYLINK_AdminLoginIn</font></td></tr>
-<tr><td>The (Login) page existed</td></tr>
-<tr><td><font color='orange'>     SENTRYLINK_UserLoginIn</font></td></tr>
-<tr><td>The text name (Version) value (Version 9.8) was stored as variable name (strSentryLinkVersion)</td></tr>
-<tr><td>The (Login) field(s) were populated correctly - Values(Email,ffticketservicetestingadmin@gmail.com|Password,ffTicketServiceTestingadmin13!)</td></tr>
-<tr><td>The Button (Sign in) with index (1) was clicked successfully</td></tr>
+<tr><td><font color='orange'>     SENTRYLINK_NavigateToPage2-Editing Municipality</font></td></tr>
 <tr><td>The Link (TicketServiceTesting) with index (1) was clicked successfully.</td></tr>
 <tr><td>The Link (TicketServiceTesting) with index (1) was clicked successfully.</td></tr>
-<tr><td>The (Violations) page existed</td></tr>
-<tr><td>The (Meter Groups) field(s) were populated correctly - Values(Meter Groups,TICKETSERVICEMETERGROUP)</td></tr>
-<tr><td>The Button (Find Violations) with index (1) was clicked successfully</td></tr>
-<tr><td>The row number (2) that contained (9000-9001 and Initial Grace Period Exceeded and New) from the table (Violations) was stored as variable name (strViolationRowNumber)</td></tr>
-<tr><td>The table value (10666) from row (2) column (2) in the table (Violations) was stored as variable name (strViolationId)</td></tr>
+<tr><td>The text name (UserName) value (ffTicketServiceTesting admin) was stored as variable name (strVarUserName)</td></tr>
+<tr><td>The Link (ffTicketServiceTesting admin) with index (1) was clicked successfully.</td></tr>
+<tr><td>The Link (ffTicketServiceTesting admin) with index (1) was clicked successfully.</td></tr>
+<tr><td>The Link (SentryLink Admin) with index (1) was clicked successfully.</td></tr>
+<tr><td>The Link (SentryLink Admin) with index (1) was clicked successfully.</td></tr>
+<tr><td>The link (Edit) in row (43) of the (Municipalities) table was clicked successfully</td></tr>
+<tr><td>The (Notification Report Name) field(s) were populated correctly - Values(Notification Report Name,CHNYTICKET2)</td></tr>
+<tr><td>The Button (submit) with index (1) was clicked successfully</td></tr>
+<tr><td>The Text (MunicipalityWasSuccessfullyUpdated) with index (1) contained (Municipality was successfully updated.)</td></tr>
 <tr><td>strHeadless: True</td></tr>
 <tr><td><font color='orange'>     SENTRYLINK_OpenLoginPage</font></td></tr>
 <tr><td>The (Login) page existed</td></tr>
 <tr><td><font color='orange'>     SENTRYLINK_UserLoginIn</font></td></tr>
 <tr><td>The text name (Version) value (Version 9.8) was stored as variable name (strSentryLinkVersion)</td></tr>
-<tr><td>The (Login) field(s) were populated correctly - Values(Email,ffticketservicetestingpeo@gmail.com|Password,ffTicketServiceTestingpeo13!)</td></tr>
+<tr><td>The (Login) field(s) were populated correctly - Values(Email,ffticketservicetestingpeo@gmail.com|Password,ffTicketServiceTestingpeo14!)</td></tr>
 <tr><td>The Button (Sign in) with index (1) was clicked successfully</td></tr>
-<tr><td><font color='orange'>     METER_CreateGracePeriodViolation</font></td></tr>
-<tr><td><font color='orange'>METER_ParkSpot</font></td></tr>
-<tr><td><font color='green'>The Python Script (vehicle_reset_spot_1.py) was executed successfully on host (10.10.102.242)-System Time: 04:18:31 UTC Time:21:18:31.669</font></td></tr>
-<tr><td>strParkedAtTime_HHmmss: 16:18:34</td></tr>
-<tr><td>strParkingSessionsParkedAtTimeMinusTwo: Today at 4:16 PM</td></tr>
-<tr><td>strParkingSessionsParkedAtTimeMinusOne: Today at 4:17 PM</td></tr>
-<tr><td>strParkingSessionsParkedAtTime: Today at 4:18 PM</td></tr>
-<tr><td>strParkingSessionsParkedAtTimePlusOne: Today at 4:19 PM</td></tr>
-<tr><td><font color='green'>The Python Script (vehicle_park_spot_1.py) was executed successfully on host (10.10.102.242)-System Time: 04:18:34 UTC Time:21:18:34.002</font></td></tr>
-<tr><td>GlobalWait: The meter variable begun equalled True</td></tr>
-<tr><td>Waited for grace period violation-Spot1</td></tr>
-<tr><td>Waited (60) seconds for grace period violation</td></tr>
-<tr><td>GlobalWait: The meter violation equalled true</td></tr>
-<tr><td><font color='Green'>Grace Peroid Violation Time 16:19:46</font></td></tr>
-<tr><td>strMeterViolationValue: True</td></tr>
-<tr><td>The Meter (9000) spot (1) has violated do grace period violation</td></tr>
-<tr><td><font color='orange'>     StoreJsonAdminToken</font></td></tr>
-<tr><td>The value (kMNkx18jHKzZcyRZSf74) was stored as variable name (strJsonToken)</td></tr>
-<tr><td>GlobalWait: Wait Until Sentry Link Violation Id Exists</td></tr>
-<tr><td><font color='orange'>     StoreJsonAdminToken</font></td></tr>
-<tr><td>The value (kMNkx18jHKzZcyRZSf74) was stored as variable name (strJsonToken)</td></tr>
-<tr><td>Parking Session Url: https://ticketservicetesting.staging.sentry-link.com/api/v1/devices/2519/parking_sessions.json?include_extended_data=true;spot_identifier=SPOT_1</td></tr>
-<tr><td><font color='purple'> strParkingId: 4077007</font></td></tr>
-<tr><td><font color='purple'> strParkTimestamp: 2026-08-11T21:16:51Z</font></td></tr>
-<tr><td>The value (yuwSdp6rtEZWeVdWKFpX) was stored as variable name (strJsonToken)</td></tr>
-<tr><td>strHeadless: True</td></tr>
-<tr><td><font color='orange'>     SENTRYLINK_OpenLoginPage</font></td></tr>
-<tr><td><font color='orange'>     SENTRYLINK_AdminLoginIn</font></td></tr>
-<tr><td>The (Login) page existed</td></tr>
-<tr><td><font color='orange'>     SENTRYLINK_UserLoginIn</font></td></tr>
-<tr><td>The text name (Version) value (Version 9.8) was stored as variable name (strSentryLinkVersion)</td></tr>
-<tr><td>The (Login) field(s) were populated correctly - Values(Email,ffticketservicetestingadmin@gmail.com|Password,ffTicketServiceTestingadmin13!)</td></tr>
-<tr><td>The Button (Sign in) with index (1) was clicked successfully</td></tr>
-<tr><td>The Link (TicketServiceTesting) with index (1) was clicked successfully.</td></tr>
-<tr><td>The Link (TicketServiceTesting) with index (1) was clicked successfully.</td></tr>
-<tr><td>The (Violations) page existed</td></tr>
-<tr><td>The (Meter Groups) field(s) were populated correctly - Values(Meter Groups,TICKETSERVICEMETERGROUP)</td></tr>
-<tr><td>The Button (Find Violations) with index (1) was clicked successfully</td></tr>
-<tr><td>The row number (2) that contained (9000-9001 and Initial Grace Period Exceeded and New) from the table (Violations) was stored as variable name (strViolationRowNumber)</td></tr>
-<tr><td>The table value (10666) from row (2) column (2) in the table (Violations) was stored as variable name (strViolationId)</td></tr>
-<tr><td>The Link (10666) with index (1) was clicked successfully.</td></tr>
-<tr><td>The Link (10666) with index (1) was clicked successfully.</td></tr>
-<tr><td>The Button (Create) with index (1) was clicked successfully</td></tr>
-<tr><td>The (License Plate Information) field(s) were populated correctly (strLicensePlate: 0P4006FBB|strLicenseState: Minnesota|) - Values(License Plate,0P4006FBB|Province/State,Minnesota)</td></tr>
-<tr><td>The Button (Create) with index (1) was clicked successfully</td></tr>
-<tr><td>The Image (Best Violation Picture) with index (1) was clicked successfully</td></tr>
-<tr><td>The Image (Star 5) with index (1) was clicked successfully</td></tr>
-<tr><td>The Button (Create-Picture Dialog) with index (1) was clicked successfully</td></tr>
-<tr><td>The Image (Best Violation Picture) with index (1) was clicked successfully</td></tr>
-<tr><td>The Button (Advance Pictures) with index (1) was clicked successfully</td></tr>
-<tr><td>The Image (Star 5) with index (1) was clicked successfully</td></tr>
-<tr><td>The Button (Create-Picture Dialog) with index (1) was clicked successfully</td></tr>
-<tr><td>The Button (Approve/Reject Violation) with index (1) was clicked successfully</td></tr>
-<tr><td>The (Approve/Reject Violation) field(s) were populated correctly (strNotes: Grace Period Exceeded|) - Values(Violation Type,Approve Violation|Notes,Grace Period Exceeded)</td></tr>
-<tr><td>The Button (Approve/Reject Violation-Dialog) with index (1) was clicked successfully</td></tr>
-<tr><td>The Text (SuccessAlertMessage) with index (1) contained (The violation has successfully been approved.)</td></tr>
+<tr><td>Airplane Mode is already disabled</td></tr>
+<tr><td>Wi-Fi is already disabled (status=0). No action needed.</td></tr>
+<tr><td>Wi-Fi scanning is already disabled (wifi_scan_always_enabled=0). No action needed.</td></tr>
+<tr><td>Airplane Mode is already disabled</td></tr>
 <tr><td>Location mode BEFORE enable: 3</td></tr>
 <tr><td>Executing ADB command: /Users/darinduphorn/Library/Android/sdk/platform-tools/adb -s R5CT71MQ2MM shell settings put secure location_mode 3</td></tr>
 <tr><td>Location services enabled successfully (mode 3 - exit code 0)</td></tr>
@@ -235,179 +67,29 @@
 <tr><td><font color='orange'>     PEO_Login</font></td></tr>
 <tr><td>The (Login-PEO) page existed</td></tr>
 <tr><td><font color='orange'>     PopulateAction</font></td></tr>
-<tr><td>The (Login) field(s) were populated correctly - Values(Email,ffticketservicetestingpeo@gmail.com|Password,ffTicketServiceTestingpeo13!)</td></tr>
+<tr><td>The (Login) field(s) were populated correctly - Values(Email,ffticketservicetestingpeo@gmail.com|Password,ffTicketServiceTestingpeo14!)</td></tr>
 <tr><td>The Button (Sign In) with index (1) was clicked successfully</td></tr>
 <tr><td>There Was No Snack Bar Message</td></tr>
-<tr><td><font color='orange'>     PEO_ClaimViolation</font></td></tr>
-<tr><td>The Button (Refresh) with index (1) was clicked successfully</td></tr>
-<tr><td>The Button (Claim) with index (1) was clicked successfully</td></tr>
-<tr><td><font color='orange'>     PEO_ValidateViolationInformation</font></td></tr>
-<tr><td>The Text (Municipality) with index (1) contained (TicketServiceTesting)</td></tr>
-<tr><td>The Text (Violation Number) with index (1) contained (10666)</td></tr>
-<tr><td>The Text (Spot ID) with index (1) contained (9000)</td></tr>
-<tr><td>The Text (Location) with index (1) contained (TicketServiceMeterGroup)</td></tr>
-<tr><td><font color='orange'>     SENTRYLINK_ValidateViolationStatus</font></td></tr>
-<tr><td>The Link (Violations) with index (1) was clicked successfully.</td></tr>
-<tr><td>The Link (Violations) with index (1) was clicked successfully.</td></tr>
-<tr><td>The (Meter Groups) field(s) were populated correctly - Values(Meter Groups,TICKETSERVICEMETERGROUP)</td></tr>
-<tr><td>The Button (Find Violations) with index (1) was clicked successfully</td></tr>
-<tr><td>The row number (2) that contained (9000-9001 and Initial Grace Period Exceeded) from the table (Violations) was stored as variable name (strClaimRowNumber)</td></tr>
-<tr><td>The cell value in row (2) column (12) of the table (Violations) was (Claimed)</td></tr>
-<tr><td>The Button (Issue Ticket) with index (1) was clicked successfully</td></tr>
-<tr><td>The textfield (License Plate) with index (1) contains (0P4006FBB)</td></tr>
-<tr><td>The textfield (License plate state) with index (1) equaled (Minnesota)</td></tr>
-<tr><td>The Link (Vehicle body type) with index (1) was clicked successfully</td></tr>
-<tr><td>The Link (Registration type) with index (1) was clicked successfully</td></tr>
-<tr><td>The Button (Generate Ticket) with index (1) was clicked successfully</td></tr>
-<tr><td><font color='orange'>     SENTRYLINK_ValidateViolationStatus</font></td></tr>
-<tr><td>The Link (Violations) with index (1) was clicked successfully.</td></tr>
-<tr><td>The Link (Violations) with index (1) was clicked successfully.</td></tr>
-<tr><td>The (Meter Groups) field(s) were populated correctly (strBodyType: TRUCK|strRegistrationType: Motorcycle|) - Values(Meter Groups,TICKETSERVICEMETERGROUP)</td></tr>
-<tr><td>The Button (Find Violations) with index (1) was clicked successfully</td></tr>
-<tr><td>The row number (2) that contained (9000-9001 and Initial Grace Period Exceeded) from the table (Violations) was stored as variable name (strClaimRowNumber)</td></tr>
-<tr><td>The cell value in row (2) column (12) of the table (Violations) was (Generating Ticket)</td></tr>
-<tr><td>The Button (Issued) with index (1) was clicked successfully</td></tr>
-<tr><td>The Link (Leave) with index (1) was clicked successfully</td></tr>
-<tr><td>The Button (More Options icon) with index (1) was clicked successfully</td></tr>
-<tr><td>The Link (Log out) with index (1) was clicked successfully</td></tr>
-<tr><td>strHeadless: True</td></tr>
-<tr><td><font color='orange'>     SENTRYLINK_OpenLoginPage</font></td></tr>
-<tr><td><font color='orange'>     SENTRYLINK_AdminLoginIn</font></td></tr>
-<tr><td>The (Login) page existed</td></tr>
-<tr><td><font color='orange'>     SENTRYLINK_UserLoginIn</font></td></tr>
-<tr><td>The text name (Version) value (Version 9.8) was stored as variable name (strSentryLinkVersion)</td></tr>
-<tr><td>The (Login) field(s) were populated correctly - Values(Email,ffticketservicetestingadmin@gmail.com|Password,ffTicketServiceTestingadmin13!)</td></tr>
-<tr><td>The Button (Sign in) with index (1) was clicked successfully</td></tr>
-<tr><td>The Link (TicketServiceTesting) with index (1) was clicked successfully.</td></tr>
-<tr><td>The Link (TicketServiceTesting) with index (1) was clicked successfully.</td></tr>
-<tr><td>The (Violations) page existed</td></tr>
-<tr><td><font color='orange'>     SENTRYLINK_ValidateViolationStatus</font></td></tr>
-<tr><td>The Link (Violations) with index (1) was clicked successfully.</td></tr>
-<tr><td>The Link (Violations) with index (1) was clicked successfully.</td></tr>
-<tr><td>The (Meter Groups) field(s) were populated correctly - Values(Meter Groups,TICKETSERVICEMETERGROUP)</td></tr>
-<tr><td>The Button (Find Violations) with index (1) was clicked successfully</td></tr>
-<tr><td>The row number (2) that contained (9000-9001 and Initial Grace Period Exceeded) from the table (Violations) was stored as variable name (strClaimRowNumber)</td></tr>
-<tr><td>The cell value in row (2) column (12) of the table (Violations) was (Notified)</td></tr>
-<tr><td><font color='purple'> strLocal Violation Time Stamp1: 2026-08-11T21:17:52Z</font></td></tr>
-<tr><td>strHeadless: True</td></tr>
-<tr><td><font color='orange'>     SENTRYLINK_OpenLoginPage</font></td></tr>
-<tr><td><font color='orange'>     SENTRYLINK_AdminLoginIn</font></td></tr>
-<tr><td>The (Login) page existed</td></tr>
-<tr><td><font color='orange'>     SENTRYLINK_UserLoginIn</font></td></tr>
-<tr><td>The text name (Version) value (Version 9.8) was stored as variable name (strSentryLinkVersion)</td></tr>
-<tr><td>The (Login) field(s) were populated correctly - Values(Email,ffticketservicetestingadmin@gmail.com|Password,ffTicketServiceTestingadmin13!)</td></tr>
-<tr><td>The Button (Sign in) with index (1) was clicked successfully</td></tr>
-<tr><td><font color='orange'>     SENTRYLINK_NavigateToPage2-Payment Site</font></td></tr>
-<tr><td>The (Violation LookUp) field(s) were populated correctly - Values(Violation Number,10666|License Plate,0P4006FBB)</td></tr>
-<tr><td>The Button (Click To Find Your Violation) with index (1) was clicked successfully</td></tr>
-<tr><td>The Text (Violation #) with index (1) contained (10666)</td></tr>
-<tr><td>The Text (Date Issued) with index (1) contained (08/11/2026 4:17:52 pm CDT)</td></tr>
-<tr><td>The Text (License Plate Number) with index (1) contained (0P4006FBB)</td></tr>
-<tr><td>The Text (Violation Reason) with index (1) contained (Initial Grace Period Exceeded)</td></tr>
-<tr><td>The Button (Dispute This Violation) with index (1) was clicked successfully</td></tr>
-<tr><td>The (Dispute Violation) field(s) were populated correctly - Values(Email,ffticketservicetestingparker@gmail.com|Dispute Reason,The devil made me do it)</td></tr>
-<tr><td>The Button (Submit My Dispute) with index (1) was clicked successfully</td></tr>
-<tr><td>Parking Session Url: https://ticketservicetesting.staging.sentry-link.com/api/v1/devices/2519/parking_sessions.json?include_extended_data=true;spot_identifier=SPOT_1</td></tr>
-<tr><td><font color='purple'> strLocalInitial Violation TimeStamp1: 2026-08-11T21:17:52Z</font></td></tr>
-<tr><td>The Violation Payment Receipt Email was correct: (Your dispute request for violation #10666 has been received.
-
-The violation is currently being reviewed.
-
-You may review the current status or provide additional information by looking up your violation at SentryPay.)</td></tr>
-<tr><td>strHeadless: True</td></tr>
-<tr><td><font color='orange'>     SENTRYLINK_OpenLoginPage</font></td></tr>
-<tr><td><font color='orange'>     SENTRYLINK_AdminLoginIn</font></td></tr>
-<tr><td>The (Login) page existed</td></tr>
-<tr><td><font color='orange'>     SENTRYLINK_UserLoginIn</font></td></tr>
-<tr><td>The text name (Version) value (Version 9.8) was stored as variable name (strSentryLinkVersion)</td></tr>
-<tr><td>The (Login) field(s) were populated correctly - Values(Email,ffticketservicetestingadmin@gmail.com|Password,ffTicketServiceTestingadmin13!)</td></tr>
-<tr><td>The Button (Sign in) with index (1) was clicked successfully</td></tr>
-<tr><td>The Link (TicketServiceTesting) with index (1) was clicked successfully.</td></tr>
-<tr><td>The Link (TicketServiceTesting) with index (1) was clicked successfully.</td></tr>
-<tr><td>The (Violations) page existed</td></tr>
-<tr><td><font color='orange'>     SENTRYLINK_ValidateViolationStatus</font></td></tr>
-<tr><td>The Link (Violations) with index (1) was clicked successfully.</td></tr>
-<tr><td>The Link (Violations) with index (1) was clicked successfully.</td></tr>
-<tr><td>The (Meter Groups) field(s) were populated correctly - Values(Meter Groups,TICKETSERVICEMETERGROUP)</td></tr>
-<tr><td>The Button (Find Violations) with index (1) was clicked successfully</td></tr>
-<tr><td>The row number (2) that contained (9000-9001 and Initial Grace Period Exceeded) from the table (Violations) was stored as variable name (strClaimRowNumber)</td></tr>
-<tr><td>The cell value in row (2) column (12) of the table (Violations) was (Disputed)</td></tr>
-<tr><td>The Link (~strViolationId~) with index (1) was clicked successfully.</td></tr>
-<tr><td>The Link (10666) with index (1) was clicked successfully.</td></tr>
-<tr><td>The cell value in row (1) column (2) of the table (Violation Details) was (Disputed)</td></tr>
-<tr><td>The Button (End Dispute) with index (1) was clicked successfully</td></tr>
-<tr><td>The (End or Dismiss Dispute) field(s) were populated correctly - Values(Customer Only Comments,Stop listening to the Devil|Internal Only Comments,Ruled in Favor of MPS)</td></tr>
-<tr><td>The Button (Dialog End Dispute) with index (1) was clicked successfully</td></tr>
-<tr><td>The cell value in row (1) column (2) of the table (Violation Details) was (Notified)</td></tr>
-<tr><td><font color='purple'> strLocal Violation Time Stamp1: 2026-08-11T21:17:52Z</font></td></tr>
-<tr><td>strHeadless: True</td></tr>
-<tr><td><font color='orange'>     SENTRYLINK_OpenLoginPage</font></td></tr>
-<tr><td><font color='orange'>     SENTRYLINK_UserLoginIn</font></td></tr>
-<tr><td>The text name (Version) value (Version 9.8) was stored as variable name (strSentryLinkVersion)</td></tr>
-<tr><td>The (Login) field(s) were populated correctly - Values(Email,ffticketservicetestingparker@gmail.com|Password,ffTicketServiceTestingParker10!)</td></tr>
-<tr><td>The Button (Sign in) with index (1) was clicked successfully</td></tr>
-<tr><td><font color='orange'>     SENTRYLINK_NavigateToPage2-Payment Site</font></td></tr>
-<tr><td>The (Violation LookUp) field(s) were populated correctly - Values(Violation Number,10666|License Plate,0P4006FBB)</td></tr>
-<tr><td>The Button (Click To Find Your Violation) with index (1) was clicked successfully</td></tr>
-<tr><td>The Text (Violation #) with index (1) contained (10666)</td></tr>
-<tr><td>The Text (Date Issued) with index (1) contained (08/11/2026 4:17:52 pm CDT)</td></tr>
-<tr><td>The Text (Date Issued) with index (1) contained (08/11/2026 4:17:52 pm CDT)</td></tr>
-<tr><td>The Text (License Plate Number) with index (1) contained (0P4006FBB)</td></tr>
-<tr><td>The Text (Violation Reason) with index (1) contained (Initial Grace Period Exceeded)</td></tr>
-<tr><td>The (Select Violation) field(s) were populated correctly - Values(10666,Checked)</td></tr>
-<tr><td>The Button (Card) with index (1) was clicked successfully</td></tr>
-<tr><td>The (Violation LookUp) field(s) were populated correctly - Values(Email,ffTicketServiceTestingpeo@gmail.com|Card Number,4242 4242 4242 4242|Expiration Date,11/30|CVV,123)</td></tr>
-<tr><td>The Button (Click To Confirm Payment With Card) with index (1) was clicked successfully</td></tr>
-<tr><td>The Text (Paid Message) with index (1) contained (PAID: This violation has been paid.)</td></tr>
-<tr><td>Parking Session Url: https://ticketservicetesting.staging.sentry-link.com/api/v1/devices/2519/parking_sessions.json?include_extended_data=true;spot_identifier=SPOT_1</td></tr>
-<tr><td><font color='purple'> strLocalInitial Violation TimeStamp1: 2026-08-11T21:17:52Z</font></td></tr>
-<tr><td>The Violation Payment Receipt Email was correct: (ffTicketServiceTestingpeo@gmail.com,Your violation has been paid successfully.Violation details:Violation Number: 10666Time issued: 08/11/2026 4:17:52 pm CDTLocation: 9000-9001Violation payment history:Time: 08/11/2026 4:24:59 pm CDTMethod: Credit CardSource: OnlineReference Number: fgm598ge Violation Fee: USD 30.00 Violation Processing Fee: 08/11/2026: USD 7.00Sales Tax: USD 0.00Amount: 37.00)</td></tr>
-<tr><td>Remain Parked (15) seconds-Spot1</td></tr>
-<tr><td>StoreParkingSpotState -2</td></tr>
-<tr><td>StoreParkingSpotState -1</td></tr>
-<tr><td>strMeterId 2519</td></tr>
-<tr><td><font color='purple'> strLocalParking Spot State1: PARKING_STATE_VIOLATION</font></td></tr>
-<tr><td><font color='green'>The Python Script (vehicle_leave_spot_1.py) was executed successfully on host (10.10.102.242)-System Time: 04:26:07 UTC Time:21:26:07.145</font></td></tr>
-<tr><td>The vehicle park time equaled (2026-08-11 21:26:08)  on spot (1)-UDT Time</td></tr>
-<tr><td><font color='green'>The Python Script (vehicle_leave_spot_1.py) was executed successfully on host (10.10.102.242)-System Time: 04:26:08 UTC Time:21:26:08.678</font></td></tr>
-<tr><td>GlobalWait: The meter variable begun equalled False</td></tr>
-<tr><td>strHeadless: True</td></tr>
-<tr><td><font color='orange'>     SENTRYLINK_OpenLoginPage</font></td></tr>
-<tr><td><font color='orange'>     SENTRYLINK_AdminLoginIn</font></td></tr>
-<tr><td>The (Login) page existed</td></tr>
-<tr><td><font color='orange'>     SENTRYLINK_UserLoginIn</font></td></tr>
-<tr><td>The text name (Version) value (Version 9.8) was stored as variable name (strSentryLinkVersion)</td></tr>
-<tr><td>The (Login) field(s) were populated correctly - Values(Email,ffticketservicetestingadmin@gmail.com|Password,ffTicketServiceTestingadmin13!)</td></tr>
-<tr><td>The Button (Sign in) with index (1) was clicked successfully</td></tr>
-<tr><td>https://ticketservicetesting.staging.sentry-link.com/parking_sessions/4077007</td></tr>
-<tr><td>The cell value in row (1) column (3) of the table (Parking Session History) was (Parked)</td></tr>
-<tr><td>The cell value in row (2) column (3) of the table (Parking Session History) was (Violation10666)</td></tr>
-<tr><td>The cell value in row (3) column (3) of the table (Parking Session History) was (License Plate Changed)</td></tr>
-<tr><td>The cell value in row (4) column (3) of the table (Parking Session History) was (CSR Approved 10666)</td></tr>
-<tr><td>The cell value in row (5) column (3) of the table (Parking Session History) was (To Verify)</td></tr>
-<tr><td>The cell value in row (6) column (3) of the table (Parking Session History) was (Claimed 10666)</td></tr>
-<tr><td>The cell value in row (7) column (3) of the table (Parking Session History) was (Verified)</td></tr>
-<tr><td>The cell value in row (8) column (3) of the table (Parking Session History) was (Generating Ticket 10666)</td></tr>
-<tr><td>The cell value in row (9) column (3) of the table (Parking Session History) was (Ticket Generated 10666)</td></tr>
-<tr><td><font color='Green'>Meter End Time 21:26:</font></td></tr>
-<tr><td><a href="https://i.imgur.com/O6c0vtg.png">Web Screen Shot</a></td></tr>
-<tr><td><img src="https://i.imgur.com/O6c0vtg.png" alt=""/><br /></td></tr>
-<tr><td><font color='green'>The Python Script (testautof_touch_screen.py) was executed successfully on host (10.10.102.242)-System Time: 04:26:31 UTC Time:21:26:31.269</font></td></tr>
-<tr><td>The meter UI State equaled (SCREEN_MULTI_SELECT_SPACE) on spot (1)-UTC: 21:26:34.928</td></tr>
-<tr><td><font color='green'>The Python Script (testautof_touch_screen.py) was executed successfully on host (10.10.102.242)-System Time: 04:26:35 UTC Time:21:26:35.143</font></td></tr>
-<tr><td><font color='green'>The Python Script (testautof_enter_space.py 9000) was executed successfully on host (10.10.102.242)-System Time: 04:26:37 UTC Time:21:26:37.354</font></td></tr>
-<tr><td>strScanStartTime: 21:26:37.362</td></tr>
-<tr><td>The meter UI State equaled (SCREEN_MULTI_SELECT_SPACE) on spot (1)-UTC: 21:26:39.026</td></tr>
-<tr><td>The meter UI State equaled (SCREEN_MULTI_HOME) on spot (1)-UTC: 21:26:39.989</td></tr>
-<tr><td>It took (2627) Millieconds for the (SCREEN_MULTI_HOME) screen to appear</td></tr>
-<tr><td><a href=https://i.imgur.com/cbZcr16.png/>Meter Screen Shot</a></td></tr>
-<tr><td><img src="https://i.imgur.com/cbZcr16.png" alt=""/><br /></td></tr>
+<tr><td>The Button (No thanks) with index (1) was clicked successfully</td></tr>
+<tr><td><font color='green'>The Python Script (testautof_touch_screen.py) was executed successfully on host (10.10.102.242)-System Time: 05:27:52 UTC Time:22:27:52.699</font></td></tr>
+<tr><td>The meter UI State equaled (SCREEN_MULTI_SELECT_SPACE) on spot (1)-UTC: 22:27:56.728</td></tr>
+<tr><td><font color='green'>The Python Script (testautof_touch_screen.py) was executed successfully on host (10.10.102.242)-System Time: 05:27:56 UTC Time:22:27:56.946</font></td></tr>
+<tr><td><font color='green'>The Python Script (testautof_enter_space.py 9000) was executed successfully on host (10.10.102.242)-System Time: 05:27:59 UTC Time:22:27:59.154</font></td></tr>
+<tr><td>strScanStartTime: 22:27:59.163</td></tr>
+<tr><td>The meter UI State equaled (SCREEN_MULTI_SELECT_SPACE) on spot (1)-UTC: 22:28:00.556</td></tr>
+<tr><td>The meter UI State equaled (SCREEN_MULTI_HOME) on spot (1)-UTC: 22:28:01.641</td></tr>
+<tr><td>It took (2478) Millieconds for the (SCREEN_MULTI_HOME) screen to appear</td></tr>
+<tr><td><a href=https://i.imgur.com/oiX9gmC.png/>Meter Screen Shot</a></td></tr>
+<tr><td><img src="https://i.imgur.com/oiX9gmC.png" alt=""/><br /></td></tr>
+<tr><td><font color='Green'>Meter End Time 22:28:</font></td></tr>
+<tr><td><a href=https://i.imgur.com/QX4glJy.png/>Android Screen Shot</a></td></tr>
+<tr><td><img src="https://i.imgur.com/QX4glJy.png" alt=""/><br /></td></tr>
 <tr><td>Local meter log did not contain Callstack</td></tr>
 <tr><td>Local meter log did not contain STACKTRACE</td></tr>
 <tr><td>Local meter log did not contain Traceback</td></tr>
 <tr><td>Local meter log did not contain Space Failed To Load error</td></tr>
-<tr><td>The cell value in row (10) column (3) of the table (Parking Session History) did not equal (Notified 10666) - actual value (Ticket Generated 10666)</td></tr>
-<tr><td><a style='color:Gold' href="https://www.pivotaltracker.com/n/projects/980790/stories/FLUTTERPEO-122" target="_blank">FLUTTERPEO-122-Duplicate 'Ticket Generating' event are unexpectedly generated</a></td></tr>
+<tr><td>Expected the button (No thanks) at index (1) to be gone, but it was still present on the screen.</td></tr>
+<tr><td><a style='color:Gold' href="https://www.pivotaltracker.com/n/projects/980790/stories/FLUTTERPEO-140" target="_blank">FLUTTERPEO-140-When WiFi & WIFI Scanning are disabled, the Location Accuracy prompt requires two taps on “No thanks”</a></td></tr>
 <tr><td>Error Remain Parked (15) seconds-Spot 1</td></tr>
-<tr><td><font color='Green'>Meter End Time 21:27:</font></td></tr>
+<tr><td><font color='Green'>Meter End Time 22:28:</font></td></tr>
 </table>

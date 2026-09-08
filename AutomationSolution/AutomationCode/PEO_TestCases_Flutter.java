@@ -195,7 +195,34 @@ public class PEO_TestCases_Flutter
 	//********************************************************************************************************************
    	//PEO-TEST CASES
    	//********************************************************************************************************************
-  	@Test(priority=101)
+	@Test(priority=100,groups={"Smoke"})
+	public void A4000F_OpenApp_AirplaneModeEnabled()
+	{
+  		objDictionary.put("strAssociatedBug", "FLUTTERPEO-132");
+		objDictionary.put("strMobileDeviceType", "ANDROID");
+		CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
+		Meter clsMeter = new Meter();
+		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
+		String strAndroidUdid = objDictionary.get("strAndroidUdid");if(strAndroidUdid == null) {strAndroidUdid = "";}
+		//AirplaneMode test
+		objDictionary.put("strWIFI","Enabled");
+		objDictionary.put("strAirplaneMode","Enabled");
+		String strUserName = "InvalidUser@gmail.com";
+		String strPassword = "Invalid01";
+		//Open Android Device
+		AppiumDriver androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "PEO", "True", "Parker");
+		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "PEO Login", "Populate Login", "{T} Email|{T} Password",strUserName.toLowerCase()+"|"+strPassword);
+		clsCommonMobile.ClickButton(objDictionary, androidDriver, "PEO Login", "Sign In",1);
+		String strSnackbarText = objDictionary.get("strSnackbarText");
+		if(strSnackbarText.equals("Please disable Airplane Mode to continue using the app.")){Reporter.log("The Text (Error Message) with index (1) contained (" + strSnackbarText + ")");}
+		else{clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary,androidDriver,"The Text (Error Message) with index (1) did not contain (Please disable Airplane Mode to continue using the app.) - actual value ("+strSnackbarText+")");}
+ 		androidDriver.quit();
+ 		clsMeter.METER_SetMeterEndTime(objDictionary);
+ 		String strAssociatedBug = objDictionary.get("strAssociatedBug");if(strAssociatedBug == null){strAssociatedBug = "";}
+		if(!strAssociatedBug.equals("")){Reporter.log("<font color='Blue'>"+strAssociatedBug+"-This Test passed remove the AssociatedBug</font>");}
+	}
+	
+	@Test(priority=101)
 	public void P4001F_ValidateInvalidCredentialMessage()
 	{
   		objDictionary.put("strAssociatedBug", "");
@@ -267,6 +294,128 @@ public class PEO_TestCases_Flutter
 		objDictionary.put("strInstallApp", "True");
 		AppiumDriver androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "PEO", "True", "Parker");
 		clsCommonMobile.PEO_Login(objDictionary, androidDriver);
+		String strNumberOfViolationImages = "8";
+		objDictionary.put("strNumberOfViolationImages",strNumberOfViolationImages);
+		clsCommonMobile.PEO_CreateManualViolationForDescriptionAndStatuteCodeValidation(objDictionary, androidDriver, strViolationDescription, strTicketAmountDue,"1");
+		clsCommonMobile.ClickLink(objDictionary, androidDriver, "Ticket", "Leave", 1);
+		androidDriver.quit();
+		//Validate Manual Violation In SL
+		threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath, objDictionary);
+		WebDriver driver = getDriver();
+  		clsCommonWeb.SENTRYLINK_OpenLoginPage(objDictionary, driver);
+  		clsCommonWeb.SENTRYLINK_AdminLoginIn(objDictionary, driver);
+  		String strPageName = clsCommonWeb.GetCurrentPageName(objDictionary, driver);
+  		clsCommonWeb.SENTRYLINK_NavigateToViolationsPage(objDictionary, driver, strPageName);
+  		driver.navigate().refresh();
+  		String strDeviceId = objDictionary.get("strDeviceId");
+  		clsCommonWeb.StoreTableRowNumberBaseOnThreeColumnValue(objDictionary, driver, "Violations", "Violations", 1, 9, strDeviceId,10, "Initial Grace Period Exceeded", 12, "Notified", "strViolationRowNumber");
+  		clsCommonWeb.StoreTableValue(objDictionary, driver, "Violations", "Violations", 1, "strViolationId", "~strViolationRowNumber~", "2");
+  		clsCommonWeb.SENTRYLINK_ValidateViolationStatus(objDictionary, driver, strViolationDescription, "Notified");
+  		String strViolationId = objDictionary.get("strViolationId");
+  		clsCommonWeb.ClickLink(objDictionary, driver, "Violations", strViolationId, 1);
+  		try{Thread.sleep(1000);}catch (Exception e) {}
+  		clsCommonWeb.ClickLink(objDictionary, driver, "Violations", "Vehicle Details", 1);
+  		try{Thread.sleep(1000);}catch (Exception e) {}
+  		//Click Image Link (Not Done)
+		clsCommonWeb.ClickImage(objDictionary, driver, "Violations", "Best Violation Picture", 1);
+		try {Thread.sleep(1000);} catch (Exception e) {}
+		List<WebElement> uls = driver.findElements(By.xpath("//div[contains(@class,'jcarousel jcarousel-navigation')]//ul//li"));
+    	int intActualNumberOfImages = uls.size();
+    	if(intActualNumberOfImages == Integer.parseInt(strNumberOfViolationImages))
+    	{Reporter.log(intActualNumberOfImages+" Violation Images Correctly Appeared in the Parking Session");}
+    	else
+    	{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The Number of Violation Images were incorrect expected 3 Actual "+intActualNumberOfImages,"Local");}
+    	// VIAC: Validate Images Appear Correctly
+		clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
+		Actions actions = new Actions(driver);
+	    actions.sendKeys(Keys.ESCAPE).build().perform();
+	    try{Thread.sleep(1000);}catch (Exception e) {}
+  		clsCommonWeb.VerificationPointText(objDictionary, driver, "Violations", "Plate",1, "Contains",strLicensePlateNumber);
+  		clsCommonWeb.VerificationPointText(objDictionary, driver, "Violations", "Make",1, "Contains","AMC");
+  		clsCommonWeb.VerificationPointText(objDictionary, driver, "Violations", "Model",1, "Contains","NA");
+  		clsCommonWeb.VerificationPointText(objDictionary, driver, "Violations", "Color",1, "Contains","NA");
+  		String strRandomVehicleBodyType = objDictionary.get("strRandomVehicleBodyType");
+  		clsCommonWeb.VerificationPointText(objDictionary, driver, "Violations", "Body Type",1, "Contains",strRandomVehicleBodyType);
+  		Calendar cal = Calendar.getInstance();
+		cal.add(Calendar.YEAR, -5);// Subtract 5 years
+		Date previousYear = cal.getTime();
+		String strVechileYear = new SimpleDateFormat("yyyy").format(previousYear);
+  		clsCommonWeb.VerificationPointText(objDictionary, driver, "Violations", "Vehicle Year",1, "Contains",strVechileYear);
+  		String strRandomUserRegistrationType = objDictionary.get("strRandomUserRegistrationType");
+  		clsCommonWeb.VerificationPointText(objDictionary, driver, "Violations", "Registration Type",1, "Contains",strRandomUserRegistrationType);
+		String strViolationXML = "";
+		//VVXD: Validate Violation XML Data
+		try{strViolationXML = clsSOAP.GetViolationXML(objDictionary);}
+		catch (Exception e)
+		{clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary,androidDriver,"Error Get Violation XML");}
+	    clsSOAP.ValidateVolationXMLData(objDictionary,strViolationXML,"1");
+	    driver.quit();
+	    threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath, objDictionary);
+		driver = getDriver();
+  		clsCommonWeb.SENTRYLINK_OpenLoginPage(objDictionary, driver);
+  		clsCommonWeb.SENTRYLINK_AdminLoginIn(objDictionary, driver);
+  		strPageName = clsCommonWeb.GetCurrentPageName(objDictionary, driver);
+  		clsCommonWeb.SENTRYLINK_NavigateToViolationsPage(objDictionary, driver, strPageName);
+  		clsCommonWeb.ClickLink(objDictionary, driver, "Violations", "Reports", 1);
+  		clsCommonWeb.ClickLink(objDictionary, driver, "Violations", "Tickets With Officer", 1);
+  		// Create a SimpleDateFormat object with the desired format
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date currentDate = new Date();
+        String strCurrentDate = dateFormat.format(currentDate);
+        String strEndDate =  clsCommonWeb.AddDaysToCurrentDate("yyyy-MM-dd","+1");
+        clsCommonWeb.PopulateAction(objDictionary, driver, "Tickets By Officer Report", "Populate Date Range", "{T} Start Date|{T} End Date",strCurrentDate+"|"+strEndDate);
+        try{Thread.sleep(500);}catch (Exception e) {}
+  		clsCommonWeb.ClickButton(objDictionary, driver, "Tickets By Officer Report", "Generate Report", 1,"Local");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Tickets By Officer Report", "Officer Report", 1, "1", "1", "ColumnContainsValue", strViolationId);
+		driver.quit();
+	    clsMeter.METER_SetMeterEndTime(objDictionary);
+		String strAssociatedBug = objDictionary.get("strAssociatedBug");if(strAssociatedBug == null){strAssociatedBug = "";}
+		if(!strAssociatedBug.equals("")){Reporter.log("<font color='Blue'>"+strAssociatedBug+"-This Test passed remove the AssociatedBug</font>");}
+	}
+  	@Test(priority=303)
+ 	public void P4002F_PEO_CMV_IGPE_VVXD_WIFI_And_WIFIScanning_Disabled() throws Exception
+	{
+  		objDictionary.put("strAssociatedBug", "FLUTTERPEO-140");
+  		objDictionary.put("strMobileDeviceType", "ANDROID");
+		//Classes
+  		CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
+		SOAP clsSOAP = new SOAP();
+		Meter clsMeter = new Meter();
+		CommonWeb clsCommonWeb = new CommonWeb();
+		clsCommonMobile.PEO_AddReportVariables(objDictionary);
+		Reporter.log("***************TestCase Description*************************");
+  		Reporter.log("CMV: Create Manual Violation                                ");
+  		Reporter.log("IGPE: Initial Grace Period Exceeded                         ");
+  		Reporter.log("VVXD: Validate Volation XML Data                            ");
+  		Reporter.log("************************************************************");
+  		//Function Variables
+  		String strViolationDescription = "Initial Grace Period Exceeded";
+  		String strTicketAmountDue = "$30.00";
+  		String strLicensePlateNumber = "KLFS01";
+  		objDictionary.put("strLicensePlateNumber",strLicensePlateNumber);
+  		objDictionary.put("strLicensePlateState","Minnesota");
+  		//Test
+  		objDictionary.put("strWIFI", "Disabled");
+  		objDictionary.put("strWIFIScanning", "Disabled");
+  		//Dictionary Variables
+  		String strBrowser = objDictionary.get("strBrowser");
+		String strRemotePath = objDictionary.get("strRemotePath");
+		Reporter.log("strRemotePath:"+strRemotePath);
+		String strAppiumPort = System.getProperty("strAppiumPort");
+		Reporter.log("strAppiumPort:"+strAppiumPort);
+  		//Add Function Variable To Dictionary
+  		objDictionary.remove("strViolationDescription");objDictionary.put("strViolationDescription", strViolationDescription);
+		//Update Notification Report Name
+		clsCommonWeb.SENTRYLINK_UpdateNotificationReportName(objDictionary,"CHNYTICKET2");
+		//Create Parking Enforcement Officer
+		clsCommonWeb.SENTRYLINK_CreateUserParkingEnforcementOfficer(objDictionary);
+		//Creates Manual Violation
+		objDictionary.put("strInstallApp", "True");
+		AppiumDriver androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "PEO", "True", "Parker");
+		clsCommonMobile.PEO_Login(objDictionary, androidDriver);
+		//Handle "For a better experience your device will need to user Location Accuracy"
+		clsCommonMobile.ClickButton(objDictionary, androidDriver, "New Violations", "No thanks", 1);
+		clsCommonMobile.VerificationPointButton(objDictionary, androidDriver, "New Violations", "No thanks", 1, "Does Not Exist");
 		String strNumberOfViolationImages = "8";
 		objDictionary.put("strNumberOfViolationImages",strNumberOfViolationImages);
 		clsCommonMobile.PEO_CreateManualViolationForDescriptionAndStatuteCodeValidation(objDictionary, androidDriver, strViolationDescription, strTicketAmountDue,"1");
@@ -1649,6 +1798,8 @@ public class PEO_TestCases_Flutter
   		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Violation Details", "Could not issue ticket",1);
   		clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Violation Details", "Reason", strCouldNotIssueReason);
   		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Violation Details", "Submit", 1);
+  		clsCommonMobile.VerificationPointText(objDictionary, androidDriver, "New Violations", "This violation is now invalid. Returning to Violation List.", 1, "Exists", "");
+  		clsCommonMobile.ClickLink(objDictionary, androidDriver, "New Violations", "OK", 1);
   		driver.navigate().refresh();
   		try {Thread.sleep(3000);}catch (Exception e) {}
   		if(strCouldNotIssueReason.equals("Vehicle Departed"))
@@ -1657,9 +1808,6 @@ public class PEO_TestCases_Flutter
   		{clsCommonWeb.SENTRYLINK_ValidateViolationStatus(objDictionary, driver, "Initial Grace Period Exceeded", "Unissued "+strCouldNotIssueReason);}
   		clsCommonWeb.ClickLink(objDictionary, driver, "Violations", "~strViolationId~", 1);
   		driver.quit();
-  		//Violation Removed
-  		clsCommonMobile.VerificationPointText(objDictionary, androidDriver, "New Violations", "This violation is now invalid. Returning to Violation List.", 1, "Exists", "");
-  		clsCommonMobile.ClickLink(objDictionary, androidDriver, "New Violations", "OK", 1);
   		clsCommonMobile.ClickButton(objDictionary, androidDriver, "New Violations", "More Options icon", 1);
   		clsCommonMobile.ClickLink(objDictionary, androidDriver, "New Violations", "Log out", 1);
   		androidDriver.quit();

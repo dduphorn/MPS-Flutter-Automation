@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite thread-count="9" parallel="tests" name="Failed suite [Regression_ANDROID]" guice-stage="DEVELOPMENT">
   <test thread-count="9" parallel="tests" name="ANDROID_TestCases(failed)">
-    <parameter name="strMobileAPK" value="SentryMobile-Staging-10.0.499.apk"/>
+    <parameter name="strMobileAPK" value="SentryMobile-Staging-10.0.500.apk"/>
     <parameter name="strAppiumPort" value="5555"/>
     <parameter name="strStopAndStartAppiumServer" value="True"/>
     <parameter name="strDeviceId" value="9010-9011"/>
@@ -12,8 +12,8 @@
     <classes>
       <class name="AutomationCode.Android_TestCases_Flutter">
         <methods>
+          <include name="A2068F_A_HR"/>
           <include name="AfterMethod"/>
-          <include name="A2012F_RegisterExisting_LockedUser_Login_Flutter"/>
           <include name="BeforeMethod"/>
         </methods>
       </class> <!-- AutomationCode.Android_TestCases_Flutter -->

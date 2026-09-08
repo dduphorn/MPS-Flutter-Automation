@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="181" total="182" passed="1" failed="0" skipped="0">
+<testng-results ignored="59" total="60" passed="0" failed="1" skipped="0">
   <reporter-output>
     <line>
       <![CDATA[Automation User: darinduphorn]]>
@@ -26,53 +26,66 @@
       <![CDATA[************************************************************]]>
     </line>
     <line>
-      <![CDATA[Environment:  SG                           ]]>
+      <![CDATA[Environment:  SG                            ]]>
     </line>
     <line>
-      <![CDATA[Version:      SentryMobile-Staging-10.0.499.apk                             ]]>
+      <![CDATA[PEO Version:  MPSN5PEO-Staging-3.4(187).apk                                 ]]>
     </line>
     <line>
-      <![CDATA[Municipality: AutomationMunicipality                          ]]>
+      <![CDATA[Municipality: TicketServiceTesting                           ]]>
     </line>
     <line>
-      <![CDATA[Meter Name:   9010                             ]]>
+      <![CDATA[Meter Name:   9000                              ]]>
     </line>
     <line>
-      <![CDATA[Meter IP:     10.10.101.168                                  ]]>
+      <![CDATA[Meter IP:     10.10.102.242                                   ]]>
     </line>
     <line>
       <![CDATA[Meter Version:"meter-8.18-1a~master20241003.1"
-                          ]]>
+                           ]]>
     </line>
     <line>
-      <![CDATA[Meter MD5SUM Version:                  ]]>
+      <![CDATA[Meter MD5SUM Version:5d3be9808b95168a251eb28adef2db83 
+                   ]]>
     </line>
     <line>
-      <![CDATA[Sentry Link Version:Version 9.8               ]]>
+      <![CDATA[Sentry Link Version:null                ]]>
     </line>
     <line>
-      <![CDATA[SilverBullet Version:5.1.1-1            ]]>
+      <![CDATA[SilverBullet Version:5.1.1-1             ]]>
     </line>
     <line>
-      <![CDATA[RemotePath:   http://localhost:4723                            ]]>
-    </line>
-    <line>
-      <![CDATA[AndroidUdid:  R5CT71MQ2MM                           ]]>
+      <![CDATA[RemotePath:   http://localhost:4723                             ]]>
     </line>
     <line>
       <![CDATA[************************************************************]]>
     </line>
     <line>
-      <![CDATA[<font color='green'>Meter Start Time 17:30:</font>]]>
+      <![CDATA[<font color='green'>Meter Start Time 22:26:</font>]]>
     </line>
     <line>
-      <![CDATA[****************METER MEMORY******************]]>
+      <![CDATA[***************TestCase Description*************************]]>
     </line>
     <line>
-      <![CDATA[totalusedfree]]>
+      <![CDATA[CMV: Create Manual Violation                                ]]>
     </line>
     <line>
-      <![CDATA[403000010422922085492]]>
+      <![CDATA[IGPE: Initial Grace Period Exceeded                         ]]>
+    </line>
+    <line>
+      <![CDATA[VVXD: Validate Volation XML Data                            ]]>
+    </line>
+    <line>
+      <![CDATA[************************************************************]]>
+    </line>
+    <line>
+      <![CDATA[strRemotePath:http://localhost:4723]]>
+    </line>
+    <line>
+      <![CDATA[strAppiumPort:null]]>
+    </line>
+    <line>
+      <![CDATA[<font color='orange'>     SENTRYLINK_UpdateNotificationReportName</font>]]>
     </line>
     <line>
       <![CDATA[strHeadless: True]]>
@@ -93,16 +106,46 @@
       <![CDATA[The text name (Version) value (Version 9.8) was stored as variable name (strSentryLinkVersion)]]>
     </line>
     <line>
-      <![CDATA[The (Login) field(s) were populated correctly - Values(Email,sbautomationmunicipalityadmin@gmail.com|Password,sbAutomationMunicipalityadmin13!)]]>
+      <![CDATA[The (Login) field(s) were populated correctly - Values(Email,ffticketservicetestingadmin@gmail.com|Password,ffTicketServiceTestingadmin14!)]]>
     </line>
     <line>
       <![CDATA[The Button (Sign in) with index (1) was clicked successfully]]>
     </line>
     <line>
-      <![CDATA[The (User Search) field(s) were populated correctly - Values(Email,adeleteuser01@gmail.com)]]>
+      <![CDATA[<font color='orange'>     SENTRYLINK_NavigateToPage2-Editing Municipality</font>]]>
     </line>
     <line>
-      <![CDATA[The Button (Search) with index (1) was clicked successfully]]>
+      <![CDATA[The Link (TicketServiceTesting) with index (1) was clicked successfully.]]>
+    </line>
+    <line>
+      <![CDATA[The Link (TicketServiceTesting) with index (1) was clicked successfully.]]>
+    </line>
+    <line>
+      <![CDATA[The text name (UserName) value (ffTicketServiceTesting admin) was stored as variable name (strVarUserName)]]>
+    </line>
+    <line>
+      <![CDATA[The Link (ffTicketServiceTesting admin) with index (1) was clicked successfully.]]>
+    </line>
+    <line>
+      <![CDATA[The Link (ffTicketServiceTesting admin) with index (1) was clicked successfully.]]>
+    </line>
+    <line>
+      <![CDATA[The Link (SentryLink Admin) with index (1) was clicked successfully.]]>
+    </line>
+    <line>
+      <![CDATA[The Link (SentryLink Admin) with index (1) was clicked successfully.]]>
+    </line>
+    <line>
+      <![CDATA[The link (Edit) in row (43) of the (Municipalities) table was clicked successfully]]>
+    </line>
+    <line>
+      <![CDATA[The (Notification Report Name) field(s) were populated correctly - Values(Notification Report Name,CHNYTICKET2)]]>
+    </line>
+    <line>
+      <![CDATA[The Button (submit) with index (1) was clicked successfully]]>
+    </line>
+    <line>
+      <![CDATA[The Text (MunicipalityWasSuccessfullyUpdated) with index (1) contained (Municipality was successfully updated.)]]>
     </line>
     <line>
       <![CDATA[strHeadless: True]]>
@@ -111,43 +154,31 @@
       <![CDATA[<font color='orange'>     SENTRYLINK_OpenLoginPage</font>]]>
     </line>
     <line>
+      <![CDATA[The (Login) page existed]]>
+    </line>
+    <line>
       <![CDATA[<font color='orange'>     SENTRYLINK_UserLoginIn</font>]]>
     </line>
     <line>
       <![CDATA[The text name (Version) value (Version 9.8) was stored as variable name (strSentryLinkVersion)]]>
     </line>
     <line>
-      <![CDATA[The (Login) field(s) were populated correctly - Values(Email,sbautomationmunicipalityadmin@gmail.com|Password,sbAutomationMunicipalityadmin13!)]]>
+      <![CDATA[The (Login) field(s) were populated correctly - Values(Email,ffticketservicetestingpeo@gmail.com|Password,ffTicketServiceTestingpeo14!)]]>
     </line>
     <line>
       <![CDATA[The Button (Sign in) with index (1) was clicked successfully]]>
     </line>
     <line>
-      <![CDATA[The (User Search) field(s) were populated correctly - Values(Email,adeleteuser01@gmail.com)]]>
+      <![CDATA[Airplane Mode is already disabled]]>
     </line>
     <line>
-      <![CDATA[The Button (Search) with index (1) was clicked successfully]]>
+      <![CDATA[Wi-Fi is already disabled (status=0). No action needed.]]>
     </line>
     <line>
-      <![CDATA[The value (47190) was stored as variable name (strJsonUserId)]]>
+      <![CDATA[Wi-Fi scanning is already disabled (wifi_scan_always_enabled=0). No action needed.]]>
     </line>
     <line>
-      <![CDATA[<font color='orange'>     StoreJsonAdminToken</font>]]>
-    </line>
-    <line>
-      <![CDATA[The value (12816) was stored as variable name (strJsonUserId)]]>
-    </line>
-    <line>
-      <![CDATA[The value (Sq4zMsr-ZwQRboR7B8qK) was stored as variable name (strJsonToken)]]>
-    </line>
-    <line>
-      <![CDATA[The value (NgixDge162DNMyaG_CEw) was stored as variable name (strJsonToken)]]>
-    </line>
-    <line>
-      <![CDATA[The value (12817) was stored as variable name (strJsonUserId)]]>
-    </line>
-    <line>
-      <![CDATA[The user account balance was (25.95)]]>
+      <![CDATA[Airplane Mode is already disabled]]>
     </line>
     <line>
       <![CDATA[Location mode BEFORE enable: 3]]>
@@ -165,99 +196,173 @@
       <![CDATA[Sentry Mobile was loaded correctly on Android Device]]>
     </line>
     <line>
-      <![CDATA[The Button (Accept) with index (1) was clicked successfully]]>
+      <![CDATA[<font color='orange'>     PEO_Login</font>]]>
+    </line>
+    <line>
+      <![CDATA[The (Login-PEO) page existed]]>
+    </line>
+    <line>
+      <![CDATA[<font color='orange'>     PopulateAction</font>]]>
+    </line>
+    <line>
+      <![CDATA[The (Login) field(s) were populated correctly - Values(Email,ffticketservicetestingpeo@gmail.com|Password,ffTicketServiceTestingpeo14!)]]>
+    </line>
+    <line>
+      <![CDATA[The Button (Sign In) with index (1) was clicked successfully]]>
     </line>
     <line>
       <![CDATA[There Was No Snack Bar Message]]>
     </line>
     <line>
-      <![CDATA[The Link (Sign up) with index (1) was clicked successfully]]>
+      <![CDATA[The Button (No thanks) with index (1) was clicked successfully]]>
     </line>
     <line>
-      <![CDATA[<font color='orange'>     PopulateAction</font>]]>
+      <![CDATA[<font color='green'>The Python Script (testautof_touch_screen.py) was executed successfully on host (10.10.102.242)-System Time: 05:27:52 UTC Time:22:27:52.699</font>]]>
     </line>
     <line>
-      <![CDATA[The (Phone Number) field(s) were populated correctly - Values(Phone Number,2812816804)]]>
+      <![CDATA[The meter UI State equaled (SCREEN_MULTI_SELECT_SPACE) on spot (1)-UTC: 22:27:56.728]]>
     </line>
     <line>
-      <![CDATA[The Button (Next) with index (1) was clicked successfully]]>
+      <![CDATA[<font color='green'>The Python Script (testautof_touch_screen.py) was executed successfully on host (10.10.102.242)-System Time: 05:27:56 UTC Time:22:27:56.946</font>]]>
     </line>
     <line>
-      <![CDATA[There Was No Snack Bar Message]]>
+      <![CDATA[<font color='green'>The Python Script (testautof_enter_space.py 9000) was executed successfully on host (10.10.102.242)-System Time: 05:27:59 UTC Time:22:27:59.154</font>]]>
     </line>
     <line>
-      <![CDATA[<font color='orange'>     PopulateAction</font>]]>
+      <![CDATA[strScanStartTime: 22:27:59.163]]>
     </line>
     <line>
-      <![CDATA[The (Register) field(s) were populated correctly - Values(First Name,Delete|Last Name,User|Email Id,adeleteuser01@gmail.com|Password,ADeleteMe01!|Confirm Password,ADeleteMe01!)]]>
+      <![CDATA[The meter UI State equaled (SCREEN_MULTI_SELECT_SPACE) on spot (1)-UTC: 22:28:00.556]]>
     </line>
     <line>
-      <![CDATA[The Button (Sign up) with index (1) was clicked successfully]]>
+      <![CDATA[The meter UI State equaled (SCREEN_MULTI_HOME) on spot (1)-UTC: 22:28:01.641]]>
     </line>
     <line>
-      <![CDATA[The Text (Error Message) with index (1) contained (Registered Successfully)]]>
+      <![CDATA[It took (2478) Millieconds for the (SCREEN_MULTI_HOME) screen to appear]]>
     </line>
     <line>
-      <![CDATA[<font color='orange'>     NavigateToPageUsingMenuButtons</font>]]>
+      <![CDATA[<a href=https://i.imgur.com/oiX9gmC.png/>Meter Screen Shot</a>]]>
     </line>
     <line>
-      <![CDATA[Navigated to the (Account) page correctly]]>
+      <![CDATA[<img src="https://i.imgur.com/oiX9gmC.png" alt=""/><br />]]>
     </line>
     <line>
-      <![CDATA[The Link (Sign out) with index (1) was clicked successfully]]>
+      <![CDATA[<font color='Green'>Meter End Time 22:28:</font>]]>
     </line>
     <line>
-      <![CDATA[The Link (Yes) with index (1) was clicked successfully]]>
+      <![CDATA[<a href=https://i.imgur.com/QX4glJy.png/>Android Screen Shot</a>]]>
     </line>
     <line>
-      <![CDATA[<font color='orange'>     PopulateAction</font>]]>
+      <![CDATA[<img src="https://i.imgur.com/QX4glJy.png" alt=""/><br />]]>
     </line>
     <line>
-      <![CDATA[The (Login) field(s) were populated correctly - Values(Email Id,2812816804|Password,ADeleteMe01!)]]>
+      <![CDATA[Local meter log did not contain Callstack]]>
     </line>
     <line>
-      <![CDATA[The Button (Log in) with index (1) was clicked successfully]]>
+      <![CDATA[Local meter log did not contain STACKTRACE]]>
     </line>
     <line>
-      <![CDATA[<font color='orange'>     NavigateToPageUsingMenuButtons</font>]]>
+      <![CDATA[Local meter log did not contain Traceback]]>
     </line>
     <line>
-      <![CDATA[Navigated to the (Account) page correctly]]>
+      <![CDATA[Local meter log did not contain Space Failed To Load error]]>
     </line>
     <line>
-      <![CDATA[The Link (Sign out) with index (1) was clicked successfully]]>
+      <![CDATA[Expected the button (No thanks) at index (1) to be gone, but it was still present on the screen.]]>
     </line>
     <line>
-      <![CDATA[The Link (Yes) with index (1) was clicked successfully]]>
+      <![CDATA[<a style='color:Gold' href="https://www.pivotaltracker.com/n/projects/980790/stories/FLUTTERPEO-140" target="_blank">FLUTTERPEO-140-When WiFi & WIFI Scanning are disabled, the Location Accuracy prompt requires two taps on “No thanks”</a>]]>
     </line>
     <line>
-      <![CDATA[<font color='Green'>Meter End Time 17:32:</font>]]>
+      <![CDATA[Error Remain Parked (15) seconds-Spot 1]]>
     </line>
     <line>
-      <![CDATA[<a href=/Users/darinduphorn/git/TestAutomation/MeterLogs/ANDROID_TestCases_A2018F_RegisterUser_Login_Using_Phone_Flutter_1.txt/>Meter Logs</a>]]>
-    </line>
-    <line>
-      <![CDATA[<a href=/Users/darinduphorn/git/TestAutomation/MessageLogs/ANDROID_TestCases_A2018F_RegisterUser_Login_Using_Phone_Flutter_1.txt/>Message Logs</a>]]>
-    </line>
-    <line>
-      <![CDATA[<font color='Green'>Meter End Time 17:32:</font>]]>
+      <![CDATA[<font color='Green'>Meter End Time 22:28:</font>]]>
     </line>
   </reporter-output>
-  <suite started-at="2026-08-19T17:29:59Z" name="Regression_ANDROID" finished-at="2026-08-19T17:32:29Z" duration-ms="150193">
+  <suite started-at="2026-09-02T22:26:41Z" name="Regression_PEO" finished-at="2026-09-02T22:28:58Z" duration-ms="136569">
     <groups>
     </groups>
-    <test started-at="2026-08-19T17:29:59Z" name="ANDROID_TestCases" finished-at="2026-08-19T17:32:29Z" duration-ms="150193">
-      <class name="AutomationCode.Android_TestCases_Flutter">
-        <test-method is-config="true" signature="BeforeMethod(org.testng.ITestContext, java.lang.reflect.Method, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:AutomationCode.Android_TestCases_Flutter@3e27aa33]" started-at="2026-08-19T17:29:59Z" name="BeforeMethod" finished-at="2026-08-19T17:30:03Z" duration-ms="4401" status="PASS">
+    <test started-at="2026-09-02T22:26:41Z" name="PEO_TestCases" finished-at="2026-09-02T22:28:58Z" duration-ms="136569">
+      <class name="AutomationCode.PEO_TestCases_Flutter">
+        <test-method is-config="true" signature="StartIOSServer(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:AutomationCode.PEO_TestCases_Flutter@342c38f8]" started-at="2026-09-02T22:26:41Z" name="StartIOSServer" finished-at="2026-09-02T22:26:41Z" duration-ms="34" status="PASS">
+          <params>
+            <param index="0">
+              <value is-null="true"/>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[True]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[http://localhost:4723]]>
+              </value>
+            </param>
+            <param index="3">
+              <value is-null="true"/>
+            </param>
+            <param index="4">
+              <value is-null="true"/>
+            </param>
+            <param index="5">
+              <value is-null="true"/>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[9000-9001]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[MPSPEO-Flutter-Staging-2.0.14.apk]]>
+              </value>
+            </param>
+            <param index="9">
+              <value is-null="true"/>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[R5CT71MQ2MM]]>
+              </value>
+            </param>
+            <param index="11">
+              <value is-null="true"/>
+            </param>
+            <param index="12">
+              <value>
+                <![CDATA[5555]]>
+              </value>
+            </param>
+            <param index="13">
+              <value is-null="true"/>
+            </param>
+            <param index="14">
+              <value is-null="true"/>
+            </param>
+            <param index="15">
+              <value is-null="true"/>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- StartIOSServer -->
+        <test-method is-config="true" signature="BeforeMethod(org.testng.ITestContext, java.lang.reflect.Method, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:AutomationCode.PEO_TestCases_Flutter@342c38f8]" started-at="2026-09-02T22:26:41Z" name="BeforeMethod" finished-at="2026-09-02T22:26:45Z" duration-ms="3435" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@37313c65]]>
+                <![CDATA[org.testng.TestRunner@55cb6996]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[public void AutomationCode.Android_TestCases_Flutter.A2018F_RegisterUser_Login_Using_Phone_Flutter()]]>
+                <![CDATA[public void AutomationCode.PEO_TestCases_Flutter.P4002F_PEO_CMV_IGPE_VVXD_WIFI_And_WIFIScanning_Disabled() throws java.lang.Exception]]>
               </value>
             </param>
             <param index="2">
@@ -284,15 +389,17 @@
             </param>
             <param index="8">
               <value>
-                <![CDATA[9010-9011]]>
+                <![CDATA[9000-9001]]>
               </value>
             </param>
             <param index="9">
-              <value is-null="true"/>
+              <value>
+                <![CDATA[]]>
+              </value>
             </param>
             <param index="10">
               <value>
-                <![CDATA[SentryMobile-Staging-10.0.499.apk]]>
+                <![CDATA[MPSPEO-Flutter-Staging-2.0.14.apk]]>
               </value>
             </param>
             <param index="11">
@@ -350,59 +457,103 @@
             </line>
           </reporter-output>
         </test-method> <!-- BeforeMethod -->
-        <test-method signature="A2018F_RegisterUser_Login_Using_Phone_Flutter()[pri:1018, instance:AutomationCode.Android_TestCases_Flutter@3e27aa33]" started-at="2026-08-19T17:30:03Z" name="A2018F_RegisterUser_Login_Using_Phone_Flutter" finished-at="2026-08-19T17:32:29Z" duration-ms="145428" status="PASS">
+        <test-method signature="P4002F_PEO_CMV_IGPE_VVXD_WIFI_And_WIFIScanning_Disabled()[pri:303, instance:AutomationCode.PEO_TestCases_Flutter@342c38f8]" started-at="2026-09-02T22:26:45Z" name="P4002F_PEO_CMV_IGPE_VVXD_WIFI_And_WIFIScanning_Disabled" finished-at="2026-09-02T22:28:57Z" duration-ms="131766" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[FLUTTERPEO-140-When WiFi & WIFI Scanning are disabled, the Location Accuracy prompt requires two taps on “No thanks”]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: FLUTTERPEO-140-When WiFi & WIFI Scanning are disabled, the Location Accuracy prompt requires two taps on “No thanks”
+at org.testng.Assert.fail(Assert.java:96)
+at AutomationCode.CommonANDROID_Flutter.UpdateErrorMessageWithPivotalData(CommonANDROID_Flutter.java:365)
+at AutomationCode.CommonANDROID_Flutter.VerificationPointButton(CommonANDROID_Flutter.java:6970)
+at AutomationCode.PEO_TestCases_Flutter.P4002F_PEO_CMV_IGPE_VVXD_WIFI_And_WIFIScanning_Disabled(PEO_TestCases_Flutter.java:418)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.access$000(SuiteRunner.java:40)
+at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:489)
+at org.testng.internal.thread.ThreadUtil$1.call(ThreadUtil.java:52)
+at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+at java.base/java.lang.Thread.run(Thread.java:1583)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
             <line>
               <![CDATA[************************************************************]]>
             </line>
             <line>
-              <![CDATA[Environment:  SG                           ]]>
+              <![CDATA[Environment:  SG                            ]]>
             </line>
             <line>
-              <![CDATA[Version:      SentryMobile-Staging-10.0.499.apk                             ]]>
+              <![CDATA[PEO Version:  MPSN5PEO-Staging-3.4(187).apk                                 ]]>
             </line>
             <line>
-              <![CDATA[Municipality: AutomationMunicipality                          ]]>
+              <![CDATA[Municipality: TicketServiceTesting                           ]]>
             </line>
             <line>
-              <![CDATA[Meter Name:   9010                             ]]>
+              <![CDATA[Meter Name:   9000                              ]]>
             </line>
             <line>
-              <![CDATA[Meter IP:     10.10.101.168                                  ]]>
+              <![CDATA[Meter IP:     10.10.102.242                                   ]]>
             </line>
             <line>
               <![CDATA[Meter Version:"meter-8.18-1a~master20241003.1"
-                          ]]>
+                           ]]>
             </line>
             <line>
-              <![CDATA[Meter MD5SUM Version:                  ]]>
+              <![CDATA[Meter MD5SUM Version:5d3be9808b95168a251eb28adef2db83 
+                   ]]>
             </line>
             <line>
-              <![CDATA[Sentry Link Version:Version 9.8               ]]>
+              <![CDATA[Sentry Link Version:null                ]]>
             </line>
             <line>
-              <![CDATA[SilverBullet Version:5.1.1-1            ]]>
+              <![CDATA[SilverBullet Version:5.1.1-1             ]]>
             </line>
             <line>
-              <![CDATA[RemotePath:   http://localhost:4723                            ]]>
-            </line>
-            <line>
-              <![CDATA[AndroidUdid:  R5CT71MQ2MM                           ]]>
+              <![CDATA[RemotePath:   http://localhost:4723                             ]]>
             </line>
             <line>
               <![CDATA[************************************************************]]>
             </line>
             <line>
-              <![CDATA[<font color='green'>Meter Start Time 17:30:</font>]]>
+              <![CDATA[<font color='green'>Meter Start Time 22:26:</font>]]>
             </line>
             <line>
-              <![CDATA[****************METER MEMORY******************]]>
+              <![CDATA[***************TestCase Description*************************]]>
             </line>
             <line>
-              <![CDATA[totalusedfree]]>
+              <![CDATA[CMV: Create Manual Violation                                ]]>
             </line>
             <line>
-              <![CDATA[403000010422922085492]]>
+              <![CDATA[IGPE: Initial Grace Period Exceeded                         ]]>
+            </line>
+            <line>
+              <![CDATA[VVXD: Validate Volation XML Data                            ]]>
+            </line>
+            <line>
+              <![CDATA[************************************************************]]>
+            </line>
+            <line>
+              <![CDATA[strRemotePath:http://localhost:4723]]>
+            </line>
+            <line>
+              <![CDATA[strAppiumPort:null]]>
+            </line>
+            <line>
+              <![CDATA[<font color='orange'>     SENTRYLINK_UpdateNotificationReportName</font>]]>
             </line>
             <line>
               <![CDATA[strHeadless: True]]>
@@ -423,16 +574,46 @@
               <![CDATA[The text name (Version) value (Version 9.8) was stored as variable name (strSentryLinkVersion)]]>
             </line>
             <line>
-              <![CDATA[The (Login) field(s) were populated correctly - Values(Email,sbautomationmunicipalityadmin@gmail.com|Password,sbAutomationMunicipalityadmin13!)]]>
+              <![CDATA[The (Login) field(s) were populated correctly - Values(Email,ffticketservicetestingadmin@gmail.com|Password,ffTicketServiceTestingadmin14!)]]>
             </line>
             <line>
               <![CDATA[The Button (Sign in) with index (1) was clicked successfully]]>
             </line>
             <line>
-              <![CDATA[The (User Search) field(s) were populated correctly - Values(Email,adeleteuser01@gmail.com)]]>
+              <![CDATA[<font color='orange'>     SENTRYLINK_NavigateToPage2-Editing Municipality</font>]]>
             </line>
             <line>
-              <![CDATA[The Button (Search) with index (1) was clicked successfully]]>
+              <![CDATA[The Link (TicketServiceTesting) with index (1) was clicked successfully.]]>
+            </line>
+            <line>
+              <![CDATA[The Link (TicketServiceTesting) with index (1) was clicked successfully.]]>
+            </line>
+            <line>
+              <![CDATA[The text name (UserName) value (ffTicketServiceTesting admin) was stored as variable name (strVarUserName)]]>
+            </line>
+            <line>
+              <![CDATA[The Link (ffTicketServiceTesting admin) with index (1) was clicked successfully.]]>
+            </line>
+            <line>
+              <![CDATA[The Link (ffTicketServiceTesting admin) with index (1) was clicked successfully.]]>
+            </line>
+            <line>
+              <![CDATA[The Link (SentryLink Admin) with index (1) was clicked successfully.]]>
+            </line>
+            <line>
+              <![CDATA[The Link (SentryLink Admin) with index (1) was clicked successfully.]]>
+            </line>
+            <line>
+              <![CDATA[The link (Edit) in row (43) of the (Municipalities) table was clicked successfully]]>
+            </line>
+            <line>
+              <![CDATA[The (Notification Report Name) field(s) were populated correctly - Values(Notification Report Name,CHNYTICKET2)]]>
+            </line>
+            <line>
+              <![CDATA[The Button (submit) with index (1) was clicked successfully]]>
+            </line>
+            <line>
+              <![CDATA[The Text (MunicipalityWasSuccessfullyUpdated) with index (1) contained (Municipality was successfully updated.)]]>
             </line>
             <line>
               <![CDATA[strHeadless: True]]>
@@ -441,43 +622,31 @@
               <![CDATA[<font color='orange'>     SENTRYLINK_OpenLoginPage</font>]]>
             </line>
             <line>
+              <![CDATA[The (Login) page existed]]>
+            </line>
+            <line>
               <![CDATA[<font color='orange'>     SENTRYLINK_UserLoginIn</font>]]>
             </line>
             <line>
               <![CDATA[The text name (Version) value (Version 9.8) was stored as variable name (strSentryLinkVersion)]]>
             </line>
             <line>
-              <![CDATA[The (Login) field(s) were populated correctly - Values(Email,sbautomationmunicipalityadmin@gmail.com|Password,sbAutomationMunicipalityadmin13!)]]>
+              <![CDATA[The (Login) field(s) were populated correctly - Values(Email,ffticketservicetestingpeo@gmail.com|Password,ffTicketServiceTestingpeo14!)]]>
             </line>
             <line>
               <![CDATA[The Button (Sign in) with index (1) was clicked successfully]]>
             </line>
             <line>
-              <![CDATA[The (User Search) field(s) were populated correctly - Values(Email,adeleteuser01@gmail.com)]]>
+              <![CDATA[Airplane Mode is already disabled]]>
             </line>
             <line>
-              <![CDATA[The Button (Search) with index (1) was clicked successfully]]>
+              <![CDATA[Wi-Fi is already disabled (status=0). No action needed.]]>
             </line>
             <line>
-              <![CDATA[The value (47190) was stored as variable name (strJsonUserId)]]>
+              <![CDATA[Wi-Fi scanning is already disabled (wifi_scan_always_enabled=0). No action needed.]]>
             </line>
             <line>
-              <![CDATA[<font color='orange'>     StoreJsonAdminToken</font>]]>
-            </line>
-            <line>
-              <![CDATA[The value (12816) was stored as variable name (strJsonUserId)]]>
-            </line>
-            <line>
-              <![CDATA[The value (Sq4zMsr-ZwQRboR7B8qK) was stored as variable name (strJsonToken)]]>
-            </line>
-            <line>
-              <![CDATA[The value (NgixDge162DNMyaG_CEw) was stored as variable name (strJsonToken)]]>
-            </line>
-            <line>
-              <![CDATA[The value (12817) was stored as variable name (strJsonUserId)]]>
-            </line>
-            <line>
-              <![CDATA[The user account balance was (25.95)]]>
+              <![CDATA[Airplane Mode is already disabled]]>
             </line>
             <line>
               <![CDATA[Location mode BEFORE enable: 3]]>
@@ -495,107 +664,117 @@
               <![CDATA[Sentry Mobile was loaded correctly on Android Device]]>
             </line>
             <line>
-              <![CDATA[The Button (Accept) with index (1) was clicked successfully]]>
+              <![CDATA[<font color='orange'>     PEO_Login</font>]]>
+            </line>
+            <line>
+              <![CDATA[The (Login-PEO) page existed]]>
+            </line>
+            <line>
+              <![CDATA[<font color='orange'>     PopulateAction</font>]]>
+            </line>
+            <line>
+              <![CDATA[The (Login) field(s) were populated correctly - Values(Email,ffticketservicetestingpeo@gmail.com|Password,ffTicketServiceTestingpeo14!)]]>
+            </line>
+            <line>
+              <![CDATA[The Button (Sign In) with index (1) was clicked successfully]]>
             </line>
             <line>
               <![CDATA[There Was No Snack Bar Message]]>
             </line>
             <line>
-              <![CDATA[The Link (Sign up) with index (1) was clicked successfully]]>
+              <![CDATA[The Button (No thanks) with index (1) was clicked successfully]]>
             </line>
             <line>
-              <![CDATA[<font color='orange'>     PopulateAction</font>]]>
+              <![CDATA[<font color='green'>The Python Script (testautof_touch_screen.py) was executed successfully on host (10.10.102.242)-System Time: 05:27:52 UTC Time:22:27:52.699</font>]]>
             </line>
             <line>
-              <![CDATA[The (Phone Number) field(s) were populated correctly - Values(Phone Number,2812816804)]]>
+              <![CDATA[The meter UI State equaled (SCREEN_MULTI_SELECT_SPACE) on spot (1)-UTC: 22:27:56.728]]>
             </line>
             <line>
-              <![CDATA[The Button (Next) with index (1) was clicked successfully]]>
+              <![CDATA[<font color='green'>The Python Script (testautof_touch_screen.py) was executed successfully on host (10.10.102.242)-System Time: 05:27:56 UTC Time:22:27:56.946</font>]]>
             </line>
             <line>
-              <![CDATA[There Was No Snack Bar Message]]>
+              <![CDATA[<font color='green'>The Python Script (testautof_enter_space.py 9000) was executed successfully on host (10.10.102.242)-System Time: 05:27:59 UTC Time:22:27:59.154</font>]]>
             </line>
             <line>
-              <![CDATA[<font color='orange'>     PopulateAction</font>]]>
+              <![CDATA[strScanStartTime: 22:27:59.163]]>
             </line>
             <line>
-              <![CDATA[The (Register) field(s) were populated correctly - Values(First Name,Delete|Last Name,User|Email Id,adeleteuser01@gmail.com|Password,ADeleteMe01!|Confirm Password,ADeleteMe01!)]]>
+              <![CDATA[The meter UI State equaled (SCREEN_MULTI_SELECT_SPACE) on spot (1)-UTC: 22:28:00.556]]>
             </line>
             <line>
-              <![CDATA[The Button (Sign up) with index (1) was clicked successfully]]>
+              <![CDATA[The meter UI State equaled (SCREEN_MULTI_HOME) on spot (1)-UTC: 22:28:01.641]]>
             </line>
             <line>
-              <![CDATA[The Text (Error Message) with index (1) contained (Registered Successfully)]]>
+              <![CDATA[It took (2478) Millieconds for the (SCREEN_MULTI_HOME) screen to appear]]>
             </line>
             <line>
-              <![CDATA[<font color='orange'>     NavigateToPageUsingMenuButtons</font>]]>
+              <![CDATA[<a href=https://i.imgur.com/oiX9gmC.png/>Meter Screen Shot</a>]]>
             </line>
             <line>
-              <![CDATA[Navigated to the (Account) page correctly]]>
+              <![CDATA[<img src="https://i.imgur.com/oiX9gmC.png" alt=""/><br />]]>
             </line>
             <line>
-              <![CDATA[The Link (Sign out) with index (1) was clicked successfully]]>
+              <![CDATA[<font color='Green'>Meter End Time 22:28:</font>]]>
             </line>
             <line>
-              <![CDATA[The Link (Yes) with index (1) was clicked successfully]]>
+              <![CDATA[<a href=https://i.imgur.com/QX4glJy.png/>Android Screen Shot</a>]]>
             </line>
             <line>
-              <![CDATA[<font color='orange'>     PopulateAction</font>]]>
+              <![CDATA[<img src="https://i.imgur.com/QX4glJy.png" alt=""/><br />]]>
             </line>
             <line>
-              <![CDATA[The (Login) field(s) were populated correctly - Values(Email Id,2812816804|Password,ADeleteMe01!)]]>
+              <![CDATA[Local meter log did not contain Callstack]]>
             </line>
             <line>
-              <![CDATA[The Button (Log in) with index (1) was clicked successfully]]>
+              <![CDATA[Local meter log did not contain STACKTRACE]]>
             </line>
             <line>
-              <![CDATA[<font color='orange'>     NavigateToPageUsingMenuButtons</font>]]>
+              <![CDATA[Local meter log did not contain Traceback]]>
             </line>
             <line>
-              <![CDATA[Navigated to the (Account) page correctly]]>
+              <![CDATA[Local meter log did not contain Space Failed To Load error]]>
             </line>
             <line>
-              <![CDATA[The Link (Sign out) with index (1) was clicked successfully]]>
+              <![CDATA[Expected the button (No thanks) at index (1) to be gone, but it was still present on the screen.]]>
             </line>
             <line>
-              <![CDATA[The Link (Yes) with index (1) was clicked successfully]]>
+              <![CDATA[<a style='color:Gold' href="https://www.pivotaltracker.com/n/projects/980790/stories/FLUTTERPEO-140" target="_blank">FLUTTERPEO-140-When WiFi & WIFI Scanning are disabled, the Location Accuracy prompt requires two taps on “No thanks”</a>]]>
             </line>
             <line>
-              <![CDATA[<font color='Green'>Meter End Time 17:32:</font>]]>
-            </line>
-            <line>
-              <![CDATA[<a href=/Users/darinduphorn/git/TestAutomation/MeterLogs/ANDROID_TestCases_A2018F_RegisterUser_Login_Using_Phone_Flutter_1.txt/>Meter Logs</a>]]>
-            </line>
-            <line>
-              <![CDATA[<a href=/Users/darinduphorn/git/TestAutomation/MessageLogs/ANDROID_TestCases_A2018F_RegisterUser_Login_Using_Phone_Flutter_1.txt/>Message Logs</a>]]>
+              <![CDATA[Error Remain Parked (15) seconds-Spot 1]]>
             </line>
           </reporter-output>
-        </test-method> <!-- A2018F_RegisterUser_Login_Using_Phone_Flutter -->
-        <test-method is-config="true" signature="AfterMethod(org.testng.ITestContext, java.lang.reflect.Method, org.testng.ITestResult)[pri:0, instance:AutomationCode.Android_TestCases_Flutter@3e27aa33]" started-at="2026-08-19T17:32:29Z" name="AfterMethod" finished-at="2026-08-19T17:32:29Z" duration-ms="355" status="PASS">
+        </test-method> <!-- P4002F_PEO_CMV_IGPE_VVXD_WIFI_And_WIFIScanning_Disabled -->
+        <test-method is-config="true" signature="AfterMethod(org.testng.ITestContext, java.lang.reflect.Method, org.testng.ITestResult)[pri:0, instance:AutomationCode.PEO_TestCases_Flutter@342c38f8]" started-at="2026-09-02T22:28:57Z" name="AfterMethod" finished-at="2026-09-02T22:28:58Z" duration-ms="1316" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@37313c65]]>
+                <![CDATA[org.testng.TestRunner@55cb6996]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[public void AutomationCode.Android_TestCases_Flutter.A2018F_RegisterUser_Login_Using_Phone_Flutter()]]>
+                <![CDATA[public void AutomationCode.PEO_TestCases_Flutter.P4002F_PEO_CMV_IGPE_VVXD_WIFI_And_WIFIScanning_Disabled() throws java.lang.Exception]]>
               </value>
             </param>
             <param index="2">
               <value>
-                <![CDATA[[TestResult name=A2018F_RegisterUser_Login_Using_Phone_Flutter status=SUCCESS method=Android_TestCases_Flutter.A2018F_RegisterUser_Login_Using_Phone_Flutter()[pri:1018, instance:AutomationCode.Android_TestCases_Flutter@3e27aa33] output=************************************************************]]]>
+                <![CDATA[[TestResult name=P4002F_PEO_CMV_IGPE_VVXD_WIFI_And_WIFIScanning_Disabled status=FAILURE method=PEO_TestCases_Flutter.P4002F_PEO_CMV_IGPE_VVXD_WIFI_And_WIFIScanning_Disabled()[pri:303, instance:AutomationCode.PEO_TestCases_Flutter@342c38f8] output=************************************************************]]]>
               </value>
             </param>
           </params>
           <reporter-output>
             <line>
-              <![CDATA[<font color='Green'>Meter End Time 17:32:</font>]]>
+              <![CDATA[<font color='Green'>Meter End Time 22:28:</font>]]>
             </line>
           </reporter-output>
         </test-method> <!-- AfterMethod -->
-      </class> <!-- AutomationCode.Android_TestCases_Flutter -->
-    </test> <!-- ANDROID_TestCases -->
-  </suite> <!-- Regression_ANDROID -->
+        <test-method is-config="true" signature="StopIOSServer()[pri:0, instance:AutomationCode.PEO_TestCases_Flutter@342c38f8]" started-at="2026-09-02T22:28:58Z" name="StopIOSServer" finished-at="2026-09-02T22:28:58Z" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- StopIOSServer -->
+      </class> <!-- AutomationCode.PEO_TestCases_Flutter -->
+    </test> <!-- PEO_TestCases -->
+  </suite> <!-- Regression_PEO -->
 </testng-results>

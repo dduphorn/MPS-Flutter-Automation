@@ -1,0 +1,18 @@
+[08/26 15:04:49.037] | INFO     | camera     | time_checker | _send(): -> name: sock_1_2 message_len: 97 total_sent: 97
+[08/26 15:04:49.148] | INFO     | camera     | time_checker | _recv(): <- request_len: 69 header_len: 8
+[08/26 15:04:49.345] | INFO     | sys_serv   | time_checker | _log_ntp_peer_info(): 1/5/12 (primary/good+primary/total) - primary:*216.230.233.39  216.239.35.0     2 u  800 1024  377   55.501   -0.098   4.698 good:+40.160.28.79    192.155.88.241   3 u  774 1024  377   39.913    0.242   2.841, +97.107.136.23   69.180.17.124    2 u  957 1024  377   45.138    2.785   5.853, +91.189.91.157   132.163.96.1     2 u  710 1024  377   46.747   -0.441   1.914, +69.10.208.170   206.108.0.132    2 u  731 1024  377   62.786   -0.806   2.806 bad:-67.215.249.229  204.9.54.119     2 u  289 1024  377   38.814   -0.445   4.594, -45.79.189.79    144.202.0.197    3 u  414 1024  375   38.232   -0.785   2.824 other: 0.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 1.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 2.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 3.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, ntp.ubuntu.com  .POOL.          16 p    -   64    0    0.000    0.000   0.000
+[08/26 15:04:49.523] | INFO     | sys_serv   | time_checker | get_primary_reference(): Found primary_ref: *216.230.233.39  216.239.35.0     2 u  800 1024  377   55.501   -0.098   4.698
+[08/26 15:04:49.523] | INFO     | idigi      | time_checker | clear_ntp_reloaded(): clearing ntp_reloaded controlling watchdog checks
+[08/26 15:04:52.956] | INFO     | gui        | MainThread | QT: Home: transition to PSV_STATE_AVAILABLE (file:///tmp/tmpYVecuu/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[08/26 15:05:42.987] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/26 15:05:42.990] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/26 15:05:46.208] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 44034 rp_min_to_free 44034
+[08/26 15:06:21.919] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[08/26 15:06:44.515] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/26 15:06:44.517] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/26 15:06:46.226] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 44033 rp_min_to_free 44033
+[08/26 15:07:29.151] | INFO     | ui.multi   | main_reactor | UISI::_suspend_tasks_timeout(): still in Idle - for 187.252875 seconds; unsuspending background task
+[08/26 15:07:46.077] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/26 15:07:46.078] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/26 15:07:46.185] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 44032 rp_min_to_free 44032
+[08/26 15:08:22.020] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3

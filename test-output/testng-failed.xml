@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="9" parallel="tests" name="Failed suite [Regression_ANDROID]" guice-stage="DEVELOPMENT">
-  <test thread-count="9" parallel="tests" name="ANDROID_TestCases(failed)">
-    <parameter name="strMobileAPK" value="SentryMobile-Staging-10.0.499.apk"/>
+<suite thread-count="9" parallel="tests" name="Failed suite [Regression_PEO]" guice-stage="DEVELOPMENT">
+  <test thread-count="9" parallel="tests" name="PEO_TestCases(failed)">
+    <parameter name="strMobileAPK" value="MPSPEO-Flutter-Staging-2.0.14.apk"/>
     <parameter name="strAppiumPort" value="5555"/>
     <parameter name="strStopAndStartAppiumServer" value="True"/>
-    <parameter name="strDeviceId" value="9010-9011"/>
+    <parameter name="strAVDName" value=""/>
+    <parameter name="strDeviceId" value="9000-9001"/>
     <parameter name="strDeviceAppiumPort" value="4723"/>
     <parameter name="strAndroidUdid" value="R5CT71MQ2MM"/>
     <parameter name="strRemotePath" value="http://localhost:4723"/>
     <classes>
-      <class name="AutomationCode.Android_TestCases_Flutter">
+      <class name="AutomationCode.PEO_TestCases_Flutter">
         <methods>
-          <include name="AfterMethod"/>
-          <include name="A2012F_RegisterExisting_LockedUser_Login_Flutter"/>
           <include name="BeforeMethod"/>
+          <include name="AfterMethod"/>
+          <include name="P4002F_PEO_CMV_IGPE_VVXD_WIFI_And_WIFIScanning_Disabled"/>
+          <include name="StartIOSServer"/>
+          <include name="StopIOSServer"/>
         </methods>
-      </class> <!-- AutomationCode.Android_TestCases_Flutter -->
+      </class> <!-- AutomationCode.PEO_TestCases_Flutter -->
     </classes>
-  </test> <!-- ANDROID_TestCases(failed) -->
-</suite> <!-- Failed suite [Regression_ANDROID] -->
+  </test> <!-- PEO_TestCases(failed) -->
+</suite> <!-- Failed suite [Regression_PEO] -->
