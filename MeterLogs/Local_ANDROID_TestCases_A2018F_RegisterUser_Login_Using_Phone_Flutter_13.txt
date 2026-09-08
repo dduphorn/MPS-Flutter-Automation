@@ -1,0 +1,21 @@
+[08/31 21:38:23.028] | INFO     | gui        | MainThread | QT: MultiHome: transition to declineoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[08/31 21:38:24.840] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43641 rp_min_to_free 43641
+[08/31 21:38:35.875] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/31 21:38:35.876] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/31 21:39:00.947] | INFO     | gui        | MainThread | QT: Home: transition to PSV_STATE_AVAILABLE (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[08/31 21:39:24.814] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43640 rp_min_to_free 43640
+[08/31 21:39:38.031] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/31 21:39:38.033] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/31 21:40:03.102] | WARNING  | net_monitor | main_reactor | check_network_connectivity_async(): Skipping due to high CPU load (4.87 > 3.5)
+[08/31 21:40:12.948] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[08/31 21:40:24.886] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43639 rp_min_to_free 43639
+[08/31 21:40:38.221] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/system_alive-9b22c0bea58411f189d900c008947d30.json
+[08/31 21:40:39.044] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"ip_addr": "10.10.101.168", "rmq_responses_attempted": 393, "msg_id": "0x8000002eL", "rmq_api_bytes_sent": 304, "message": "9010-9011", "rmq_image_bytes_sent": 0, "rmq_response_bytes_sent": 857304, "coin_jar_full": 0.0, "rmq_images_attempted": 0, "desc_str": "Sentry is alive and normal", "rmq_image_errors": 0, "rmq_images_sent": 0, "rmq_json_errors": 0, "rmq_responses_sent": 393, "rmq_apis_attempted": 2, "rmq_jsons_attempted": 218, "sentry_thread_hung": false, "rmq_api_errors": 0, "rmq_response_errors": 0, "rmq_json_bytes_sent": 629833, "rmq_jsons_sent": 218, "rmq_apis_sent": 2}, "class": "event", "queued_dt": "2026-08-31T21:40:38Z", "type": "system_alive", "id": "86c64517-4d8c-41a3-9727-8967eba1aebf", "device_id": "m:00C008947D30"}
+[08/31 21:40:39.144] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at rabbitmq.staging.sentry-link.com:5671 (200): Normal shutdown
+[08/31 21:40:40.635] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/31 21:40:40.637] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/31 21:41:24.789] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43638 rp_min_to_free 43638
+[08/31 21:41:42.425] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/31 21:41:42.426] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/31 21:42:12.953] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[08/31 21:42:24.794] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43637 rp_min_to_free 43637

@@ -1,0 +1,45 @@
+[08/28 22:49:59.204] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at rabbitmq.staging.sentry-link.com:5671 (200): Normal shutdown
+[08/28 22:50:01.692] | INFO     | parking.session.SPOT_1 | main_reactor | get_maxtime_minutes_remaining(): #1 mt_mins 250 mins_purchased_so_far 0
+[08/28 22:50:01.700] | INFO     | parking.session.SPOT_2 | main_reactor | get_maxtime_minutes_remaining(): #1 mt_mins 250 mins_purchased_so_far 0
+[08/28 22:50:05.394] | WARNING  | net_monitor | main_reactor | check_network_connectivity_async(): Skipping due to high CPU load (1.24 > 0.7)
+[08/28 22:50:09.587] | INFO     | detection  | main_reactor | is_daytime(): URL https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0
+[08/28 22:50:09.726] | ERROR    | detection  | main_reactor | is_daytime: Error processing url https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0 read - exception <urlopen error [Errno 1] _ssl.c:504: error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure>
+[08/28 22:50:09.730] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/28 22:50:09.734] | INFO     | detection  | main_reactor | is_daytime(): URL https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0
+[08/28 22:50:09.864] | ERROR    | detection  | main_reactor | is_daytime: Error processing url https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0 read - exception <urlopen error [Errno 1] _ssl.c:504: error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure>
+[08/28 22:50:09.868] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/28 22:50:13.924] | INFO     | camera     | time_checker | _send(): -> name: sock_1_2 message_len: 97 total_sent: 97
+[08/28 22:50:14.057] | INFO     | camera     | time_checker | _recv(): <- request_len: 69 header_len: 8
+[08/28 22:50:14.450] | INFO     | sys_serv   | time_checker | _log_ntp_peer_info(): 1/4/5 (primary/good+primary/total) - primary:*198.199.14.101  216.239.35.8     2 u  612 1024  377   48.124    2.658   2.182 good:+66.244.16.123   66.244.0.68      2 u  361 1024  377   70.561    2.869   1.346, +172.232.15.202  80.192.165.246   2 u  215 1024  377   24.828   -3.986   4.380, +185.125.190.56  29.88.99.4       2 u  493 1024  377  112.674    2.803   2.099 bad:-108.61.215.221  50.251.160.20    2 u  932 1024  377   40.621   -4.179   5.037 other:
+[08/28 22:50:14.636] | INFO     | sys_serv   | time_checker | get_primary_reference(): Found primary_ref: *198.199.14.101  216.239.35.8     2 u  612 1024  377   48.124    2.658   2.182
+[08/28 22:50:14.638] | INFO     | idigi      | time_checker | clear_ntp_reloaded(): clearing ntp_reloaded controlling watchdog checks
+[08/28 22:50:14.735] | INFO     | lib.cgos   | time_checker | Set RTC to 2026-08-28 22:50:14.639999+00:00
+[08/28 22:50:33.662] | INFO     | parking.session.SPOT_1 | main_reactor | get_maxtime_minutes_remaining(): #1 mt_mins 250 mins_purchased_so_far 0
+[08/28 22:50:33.671] | INFO     | parking.session.SPOT_2 | main_reactor | get_maxtime_minutes_remaining(): #1 mt_mins 250 mins_purchased_so_far 0
+[08/28 22:50:40.325] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[08/28 22:50:49.119] | INFO     | parking.session.SPOT_2 | SentryJSONRPCServer | get_maxtime_minutes_remaining(): #1 mt_mins 250 mins_purchased_so_far 0
+[08/28 22:50:49.130] | INFO     | parking.session.SPOT_1 | SentryJSONRPCServer | get_maxtime_minutes_remaining(): #1 mt_mins 250 mins_purchased_so_far 0
+[08/28 22:50:57.343] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43569 rp_min_to_free 43569
+[08/28 22:50:57.501] | INFO     | rss        | rss_thread | _get_rss_feeds
+[08/28 22:51:01.766] | INFO     | parking.session.SPOT_1 | main_reactor | get_maxtime_minutes_remaining(): #1 mt_mins 250 mins_purchased_so_far 0
+[08/28 22:51:01.777] | INFO     | parking.session.SPOT_2 | main_reactor | get_maxtime_minutes_remaining(): #1 mt_mins 250 mins_purchased_so_far 0
+[08/28 22:51:11.530] | INFO     | detection  | main_reactor | is_daytime(): URL https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0
+[08/28 22:51:11.643] | ERROR    | detection  | main_reactor | is_daytime: Error processing url https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0 read - exception <urlopen error [Errno 1] _ssl.c:504: error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure>
+[08/28 22:51:11.645] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/28 22:51:11.648] | INFO     | detection  | main_reactor | is_daytime(): URL https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0
+[08/28 22:51:11.756] | ERROR    | detection  | main_reactor | is_daytime: Error processing url https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0 read - exception <urlopen error [Errno 1] _ssl.c:504: error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure>
+[08/28 22:51:11.758] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/28 22:51:57.336] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43568 rp_min_to_free 43568
+[08/28 22:52:01.689] | INFO     | parking.session.SPOT_1 | main_reactor | get_maxtime_minutes_remaining(): #1 mt_mins 250 mins_purchased_so_far 0
+[08/28 22:52:01.699] | INFO     | parking.session.SPOT_2 | main_reactor | get_maxtime_minutes_remaining(): #1 mt_mins 250 mins_purchased_so_far 0
+[08/28 22:52:07.635] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[08/28 22:52:07.638] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[08/28 22:52:12.639] | INFO     | detection  | main_reactor | is_daytime(): URL https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0
+[08/28 22:52:12.761] | ERROR    | detection  | main_reactor | is_daytime: Error processing url https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0 read - exception <urlopen error [Errno 1] _ssl.c:504: error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure>
+[08/28 22:52:12.766] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/28 22:52:12.771] | INFO     | detection  | main_reactor | is_daytime(): URL https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0
+[08/28 22:52:12.896] | ERROR    | detection  | main_reactor | is_daytime: Error processing url https://api.sunrise-sunset.org/json?lat=44.9732&lng=-93.4388&date=today&formatted=0 read - exception <urlopen error [Errno 1] _ssl.c:504: error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure>
+[08/28 22:52:12.901] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/28 22:52:33.684] | INFO     | parking.session.SPOT_1 | main_reactor | get_maxtime_minutes_remaining(): #1 mt_mins 250 mins_purchased_so_far 0
+[08/28 22:52:33.695] | INFO     | parking.session.SPOT_2 | main_reactor | get_maxtime_minutes_remaining(): #1 mt_mins 250 mins_purchased_so_far 0
+[08/28 22:52:40.352] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3

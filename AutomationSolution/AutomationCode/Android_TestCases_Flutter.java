@@ -708,6 +708,8 @@ public class Android_TestCases_Flutter
 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Sign Up", "Next",1);
 		//Populate Sign Up
 		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Sign Up", "Populate Register", "{T} First Name|{T} Last Name|{T} Email Id|{T} Password|{T} Confirm Password","Delete|User|"+strUserName+"|"+strPassword+"|"+strPassword+"");
+		
+		
 		//Click Sign Up
 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Sign Up", "Sign up",1);
 		String strSnackbarText = objDictionary.get("strSnackbarText");
@@ -3321,7 +3323,7 @@ public class Android_TestCases_Flutter
  		//Click Forgot password?
   		clsCommonMobile.ClickLink(objDictionary, androidDriver, "Login", "Forgot password", 1);
   		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Forgot Password", "Populate Email Id", "{T} Email", "EmailIdIsNotValid");
-  		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Forgot Password", "Submit", 1);
+  		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Forgot Password", "Send Reset Instructions", 1);
   		clsCommonMobile.VerificationPointText(objDictionary, androidDriver, "Forgot Password", "Enter valid email address",1, "Exists", "");
    		androidDriver.quit();
    		clsMeter.METER_SetMeterEndTime(objDictionary);
@@ -3340,7 +3342,7 @@ public class Android_TestCases_Flutter
  		//Click Accept
  		clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept",1);
  		clsCommonMobile.ClickLink(objDictionary, androidDriver, "Login", "Forgot password", 1);
- 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Forgot Password", "Submit", 1);
+ 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Forgot Password", "Send Reset Instructions", 1);
  		clsCommonMobile.VerificationPointText(objDictionary, androidDriver, "Forgot Password", "Please enter email address",1, "Exists", "");
   		androidDriver.quit();
    		clsMeter.METER_SetMeterEndTime(objDictionary);
@@ -3361,7 +3363,7 @@ public class Android_TestCases_Flutter
  		clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept",1);
  		clsCommonMobile.ClickLink(objDictionary, androidDriver, "Login", "Forgot password", 1);
  		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Forgot Password", "Populate Email Id", "{T} Email", strGmailUserName);
-  		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Forgot Password", "Submit", 1);
+  		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Forgot Password", "Send Reset Instructions", 1);
      	clsCommonMobile.VerificationPointText(objDictionary, androidDriver, "Forgot Password", "Unable to reset",1, "Value", "Unable to reset");
    		clsCommonMobile.ClickLink(objDictionary, androidDriver, "Forgot Password", "Ok", 1);
   		androidDriver.quit();
@@ -3391,13 +3393,13 @@ public class Android_TestCases_Flutter
  		clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept",1);
  		clsCommonMobile.ClickLink(objDictionary, androidDriver, "Login", "Forgot password", 1);
  		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Forgot Password", "Populate Email Id", "{T} Email", strGmailUserName);
- 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Forgot Password", "Submit", 1);
+ 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Forgot Password", "Send Reset Instructions", 1);
      	String strToken = "InvalidToken";
 		String strSentryLinkCurrentPassword = clsCommonWeb.SENTRYLINK_GetPassword(objDictionary, strGmailUserName, "").replace("!", "");
 		int intCurrentVersion =  Integer.parseInt(strSentryLinkCurrentPassword.substring(strSentryLinkCurrentPassword.indexOf("Fires@le")+8,strSentryLinkCurrentPassword.length()));
 		int intNewVersion = intCurrentVersion +1;
 		String strNewPassword = strSentryLinkCurrentPassword.replace(Integer.toString(intCurrentVersion), Integer.toString(intNewVersion))+"!";
-		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Set New Password", "Populate Reset Password", "{T} Password Reset Token|{T} Password|{T} Confirm Password", strToken+"|"+strNewPassword+"|"+strNewPassword);
+		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Set New Password", "Populate Reset Password", "{T} Reset Token|{T} New Password|{T} Confirm New Password", strToken+"|"+strNewPassword+"|"+strNewPassword);
 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Set New Password", "Reset", 1);
 		clsCommonMobile.VerificationPointText(objDictionary, androidDriver, "Forgot Password", "Unable to reset",1, "Value", "Unable to reset");
    		clsCommonMobile.ClickLink(objDictionary, androidDriver, "Forgot Password", "Ok", 1);
@@ -3430,7 +3432,7 @@ public class Android_TestCases_Flutter
  		clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept",1);
  		clsCommonMobile.ClickLink(objDictionary, androidDriver, "Login", "Forgot password", 1);
  		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Forgot Password", "Populate Email Id", "{T} Email", strGmailUserName);
- 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Forgot Password", "Submit", 1);
+ 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Forgot Password", "Send Reset Instructions", 1);
  		String strSnackbarText = objDictionary.get("strSnackbarText");
  		if(strSnackbarText.equals("Email has been sent")){Reporter.log("The Text (Message) with index (1) contained (" + strSnackbarText + ")");}
 		else{clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary,androidDriver,"The Text (Message) with index (1) did not contain (Email has been sent) - actual value ("+strSnackbarText+")");}
@@ -3442,7 +3444,7 @@ public class Android_TestCases_Flutter
 		int intCurrentVersion =  Integer.parseInt(strSentryLinkCurrentPassword.substring(strSentryLinkCurrentPassword.indexOf("Fires@le")+8,strSentryLinkCurrentPassword.length()-1));
 		int intNewVersion = intCurrentVersion +1;
 		String strNewPassword = strSentryLinkCurrentPassword.replace(Integer.toString(intCurrentVersion), Integer.toString(intNewVersion));
-		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Set New Password", "Populate Reset Password", "{T} Password Reset Token|{T} Password|{T} Confirm Password", strToken+"|"+strNewPassword+"|InvalidPassword");
+		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Set New Password", "Populate Reset Password", "{T} Reset Token|{T} New Password|{T} Confirm New Password", strToken+"|"+strNewPassword+"|InvalidPassword");
 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Set New Password", "Reset", 1);
 		clsCommonMobile.VerificationPointText(objDictionary, androidDriver, "Set New Password", "Passwords do not match",1, "Exists", "");
 		androidDriver.quit();
@@ -3475,7 +3477,7 @@ public class Android_TestCases_Flutter
  		clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept",1);
  		clsCommonMobile.ClickLink(objDictionary, androidDriver, "Login", "Forgot password", 1);
  		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Forgot Password", "Populate Email Id", "{T} Email", strGmailUserName);
- 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Forgot Password", "Submit", 1);
+ 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Forgot Password", "Send Reset Instructions", 1);
  		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Set New Password", "Back", 1);
  		clsCommonMobile.ClickLink(objDictionary, androidDriver, "Forgot Password", "Log in", 1);
  		String strSentryLinkCurrentPassword = clsCommonWeb.SENTRYLINK_GetPassword(objDictionary, strGmailUserName, "");
@@ -3514,7 +3516,7 @@ public class Android_TestCases_Flutter
  		clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept",1);
  		clsCommonMobile.ClickLink(objDictionary, androidDriver, "Login", "Forgot password", 1);
  		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Forgot Password", "Populate Email Id", "{T} Email", strGmailUserName);
- 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Forgot Password", "Submit", 1);
+ 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Forgot Password", "Send Reset Instructions", 1);
  		String strSnackbarText = objDictionary.get("strSnackbarText");
  		if(strSnackbarText.equals("Email has been sent")){Reporter.log("The Text (Message) with index (1) contained (" + strSnackbarText + ")");}
 		else{clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary,androidDriver,"The Text (Message) with index (1) did not contain (Email has been sent) - actual value ("+strSnackbarText+")");}
@@ -3522,7 +3524,7 @@ public class Android_TestCases_Flutter
  		//Open GMAIL
    		String strFirstToken = clsGmail.Gmail_GetResetToken(strGmailUserName,strGmailPassword);
    		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Set New Password", "Back", 1);
-   		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Forgot Password", "Submit", 1);
+   		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Forgot Password", "Send Reset Instructions", 1);
  		strSnackbarText = objDictionary.get("strSnackbarText");
  		if(strSnackbarText.equals("Email has been sent")){Reporter.log("The Text (Message) with index (1) contained (" + strSnackbarText + ")");}
 		else{clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary,androidDriver,"The Text (Message) with index (1) did not contain (Email has been sent) - actual value ("+strSnackbarText+")");}
@@ -3532,7 +3534,7 @@ public class Android_TestCases_Flutter
 		int intCurrentVersion =  Integer.parseInt(strSentryLinkCurrentPassword.substring(strSentryLinkCurrentPassword.indexOf("Fires@le")+8,strSentryLinkCurrentPassword.length()-1));
 		int intNewVersion = intCurrentVersion +1;
 		String strNewPassword = strSentryLinkCurrentPassword.replace(Integer.toString(intCurrentVersion), Integer.toString(intNewVersion));
-		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Set New Password", "Populate Reset Password", "{T} Password Reset Token|{T} Password|{T} Confirm Password", strFirstToken+"|"+strNewPassword+"|"+strNewPassword);
+		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Set New Password", "Populate Reset Password", "{T} Reset Token|{T} New Password|{T} Confirm New Password", strFirstToken+"|"+strNewPassword+"|"+strNewPassword);
 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Set New Password", "Reset", 1);
 		clsCommonMobile.VerificationPointText(objDictionary, androidDriver, "Forgot Password", "Unable to reset",1, "Value", "Unable to reset");
    		clsCommonMobile.ClickLink(objDictionary, androidDriver, "Forgot Password", "Ok", 1);
@@ -3570,7 +3572,7 @@ public class Android_TestCases_Flutter
  		clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept",1);
  		clsCommonMobile.ClickLink(objDictionary, androidDriver, "Login", "Forgot password", 1);
  		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Forgot Password", "Populate Email Id", "{T} Email", strGmailUserName);
- 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Forgot Password", "Submit", 1);
+ 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Forgot Password", "Send Reset Instructions", 1);
  		String strSnackbarText = objDictionary.get("strSnackbarText");
  		if(strSnackbarText.equals("Email has been sent")){Reporter.log("The Text (Message) with index (1) contained (" + strSnackbarText + ")");}
 		else{clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary,androidDriver,"The Text (Message) with index (1) did not contain (Email has been sent) - actual value ("+strSnackbarText+")");}
@@ -3579,7 +3581,7 @@ public class Android_TestCases_Flutter
    		String strFirstToken = clsGmail.Gmail_GetResetToken(strGmailUserName,strGmailPassword);
    		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Set New Password", "Back", 1);
    		clsGmail.Gmail_DeleteAllEmails(strGmailUserName,strGmailPassword);
-   		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Forgot Password", "Submit", 1);
+   		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Forgot Password", "Send Reset Instructions", 1);
  		strSnackbarText = objDictionary.get("strSnackbarText");
  		if(strSnackbarText.equals("Email has been sent")){Reporter.log("The Text (Message) with index (1) contained (" + strSnackbarText + ")");}
 		else{clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary,androidDriver,"The Text (Message) with index (1) did not contain (Email has been sent) - actual value ("+strSnackbarText+")");}
@@ -3589,7 +3591,7 @@ public class Android_TestCases_Flutter
 		int intCurrentVersion =  Integer.parseInt(strSentryLinkCurrentPassword.substring(strSentryLinkCurrentPassword.indexOf("Fires@le")+8,strSentryLinkCurrentPassword.length()-1));
 		int intNewVersion = intCurrentVersion +1;
 		String strNewPassword = strSentryLinkCurrentPassword.replace(Integer.toString(intCurrentVersion), Integer.toString(intNewVersion));
-		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Set New Password", "Populate Reset Password", "{T} Password Reset Token|{T} Password|{T} Confirm Password", strSecondToken+"|"+strNewPassword+"|"+strNewPassword);
+		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Set New Password", "Populate Reset Password", "{T} Reset Token|{T} New Password|{T} Confirm New Password", strSecondToken+"|"+strNewPassword+"|"+strNewPassword);
 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Set New Password", "Reset", 1);
 //		Unable to capture this message anymore
 //		strSnackbarText = objDictionary.get("strSnackbarText");
@@ -3637,7 +3639,7 @@ public class Android_TestCases_Flutter
  		clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept",1);
  		clsCommonMobile.ClickLink(objDictionary, androidDriver, "Login", "Forgot password", 1);
  		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Forgot Password", "Populate Email Id", "{T} Email", strGmailUserName);
- 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Forgot Password", "Submit", 1);
+ 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Forgot Password", "Send Reset Instructions", 1);
  		String strSnackbarText = objDictionary.get("strSnackbarText");
  		if(strSnackbarText.equals("Email has been sent")){Reporter.log("The Text (Message) with index (1) contained (" + strSnackbarText + ")");}
 		else{clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary,androidDriver,"The Text (Message) with index (1) did not contain (Email has been sent) - actual value ("+strSnackbarText+")");}
@@ -3649,7 +3651,7 @@ public class Android_TestCases_Flutter
 		int intCurrentVersion =  Integer.parseInt(strSentryLinkCurrentPassword.substring(strSentryLinkCurrentPassword.indexOf("Fires@le")+8,strSentryLinkCurrentPassword.length()-1));
 		int intNewVersion = intCurrentVersion +1;
 		String strNewPassword = strSentryLinkCurrentPassword.replace(Integer.toString(intCurrentVersion), Integer.toString(intNewVersion));
-		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Set New Password", "Populate Reset Password", "{T} Password Reset Token|{T} Password|{T} Confirm Password", strToken+"|"+strNewPassword+"|"+strNewPassword);
+		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Set New Password", "Populate Reset Password", "{T} Reset Token|{T} New Password|{T} Confirm New Password", strToken+"|"+strNewPassword+"|"+strNewPassword);
 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Set New Password", "Reset", 1);
 		strSnackbarText = objDictionary.get("strSnackbarText");
  		if(strSnackbarText.equals("Password reset successfully")){Reporter.log("The Text (Message) with index (1) contained (" + strSnackbarText + ")");}
@@ -3696,7 +3698,7 @@ public class Android_TestCases_Flutter
  		clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept",1);
  		clsCommonMobile.ClickLink(objDictionary, androidDriver, "Login", "Forgot password", 1);
  		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Forgot Password", "Populate Email Id", "{T} Email", strGmailUserName);
- 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Forgot Password", "Submit", 1);
+ 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Forgot Password", "Send Reset Instructions", 1);
  		String strSnackbarText = objDictionary.get("strSnackbarText");
  		if(strSnackbarText.equals("Email has been sent")){Reporter.log("The Text (Message) with index (1) contained (" + strSnackbarText + ")");}
 		else{clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary,androidDriver,"The Text (Message) with index (1) did not contain (Email has been sent) - actual value ("+strSnackbarText+")");}
@@ -3708,7 +3710,7 @@ public class Android_TestCases_Flutter
 		int intCurrentVersion =  Integer.parseInt(strSentryLinkCurrentPassword.substring(strSentryLinkCurrentPassword.indexOf("Fires@le")+8,strSentryLinkCurrentPassword.length()-1));
 		int intNewVersion = intCurrentVersion +1;
 		String strNewPassword = strSentryLinkCurrentPassword.replace(Integer.toString(intCurrentVersion), Integer.toString(intNewVersion));
-		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Set New Password", "Populate Reset Password", "{T} Password Reset Token|{T} Password|{T} Confirm Password", strToken+"|"+strNewPassword+"|"+strNewPassword);
+		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Set New Password", "Populate Reset Password", "{T} Reset Token|{T} New Password|{T} Confirm New Password", strToken+"|"+strNewPassword+"|"+strNewPassword);
 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Set New Password", "Reset", 1);
 		strSnackbarText = objDictionary.get("strSnackbarText");
  		if(strSnackbarText.equals("Password reset successfully")){Reporter.log("The Text (Message) with index (1) contained (" + strSnackbarText + ")");}
@@ -4770,7 +4772,7 @@ public class Android_TestCases_Flutter
   		{
   			LocalTime startTime = LocalTime.parse(strReservationStartTime, DateTimeFormatter.ofPattern("HH:mm:ss"));
   		    LocalDate date = LocalDate.now();
-  		    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM d, hh:mm a");
+  		    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM dd, hh:mm a");
   		    strStartTime = date.atTime(startTime).format(formatter);
   		    LocalDateTime endDateTime = date.atTime(startTime).plus(60, ChronoUnit.MINUTES);
   		    strEndTime = endDateTime.format(formatter);
@@ -5385,6 +5387,7 @@ public class Android_TestCases_Flutter
 	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
 	  	clsCommonWeb.PopulateAction(objDictionary, driver, "Parking Session", "Populate License Plate Information", "{T} License Plate|{T} Province/State", strLicensePlateNumber + "|Minnesota");
 	  	clsCommonWeb.ClickButton(objDictionary, driver, "Parking Session", "Create", 1, "Local");
+	  	try {Thread.sleep(2000);}catch (Exception e) {}
 	  	driver.quit();
 	  	//Wait For SL Parking Session Concierge Value to equal True
   		clsMeter.GlobalWait(objDictionary, null, "{WaitParkingSessionConciergeValueEqualsTrue} NA", 50,"1","Local");
@@ -5495,7 +5498,8 @@ public class Android_TestCases_Flutter
 	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession2(objDictionary, driver, "Sentry Meter","1");
     	clsCommonWeb.PopulateAction(objDictionary, driver, "Parking Session", "Populate License Plate Information", "{T} License Plate|{T} Province/State", strLicensePlateNumber + "|Minnesota");
 		clsCommonWeb.ClickButton(objDictionary, driver, "Parking Session", "Create", 1, "Local");
-	  	driver.quit();
+		try {Thread.sleep(2000);}catch (Exception e) {}
+		driver.quit();
 	  	//Wait For SL Parking Session Concierge Value to equal True
   		clsMeter.GlobalWait(objDictionary, null, "{WaitParkingSessionConciergeValueEqualsTrue} NA", 120,"1","Local");
       	//Store Parking Id

@@ -1,0 +1,791 @@
+[09/03 02:00:43.543] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to reswipeoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[09/03 02:00:43.559] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: calling reswipeoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:913)
+[09/03 02:00:43.573] | INFO     | gui        | MainThread | QT: Home: transition to reswipeoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[09/03 02:00:43.573] | INFO     | gui        | MainThread | QT: Home: calling reswipeoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:400)
+[09/03 02:00:43.574] | INFO     | gui        | MainThread | QT: MultiHome: transition to reswipeoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[09/03 02:00:43.575] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to processingoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[09/03 02:00:43.576] | INFO     | gui        | MainThread | QT: Home: transition to processingoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[09/03 02:00:43.581] | INFO     | gui        | MainThread | QT: MultiHome: transition to processingoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[09/03 02:00:43.596] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to declineoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[09/03 02:00:43.600] | INFO     | gui        | MainThread | QT: MultiHome: transition to declineoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[09/03 02:01:01.261] | INFO     | parking.rsrv | SentryJSONRPCServer | dump_all_reservations(): 
+[09/03 02:01:01.261] | INFO     | parking.rsrv | SentryJSONRPCServer | dump_all_reservations(): reservation {'reservation_uuid': u'430096-3525', 'valid_days': [u'mon', u'tue', u'wed', u'thu', u'fri', u'sat', u'sun'], 'spot_id': u'SPOT_1', 'plates': [u'09010AA'], 'start_dt': datetime.datetime(2026, 9, 1, 20, 58), 'end_dt': datetime.datetime(2027, 9, 2, 21, 58, 59)}
+[09/03 02:01:01.369] | INFO     | gui        | MainThread | QT: Home: transition to PSV_STATE_VALID_MAX (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[09/03 02:01:02.085] | INFO     | parking.rsrv | SentryJSONRPCServer | dump_all_reservations(): 
+[09/03 02:01:02.085] | INFO     | parking.rsrv | SentryJSONRPCServer | dump_all_reservations(): reservation {'reservation_uuid': u'430096-3525', 'valid_days': [u'mon', u'tue', u'wed', u'thu', u'fri', u'sat', u'sun'], 'spot_id': u'SPOT_1', 'plates': [u'09010AA'], 'start_dt': datetime.datetime(2026, 9, 1, 20, 58), 'end_dt': datetime.datetime(2027, 9, 2, 21, 58, 59)}
+[09/03 02:01:06.470] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req Disabled gatelot blob logs Target: u'rpc_parking'
+[09/03 02:01:06.480] | INFO     | parking_serv | SentryJSONRPCServer | delete_reservation(): spot_id SPOT_1 plates [u'09010AA'] start_dt 2026-09-02 01:54:00 end_dt 2027-09-03 01:54:00 uuid 430096-3525
+[09/03 02:01:06.480] | INFO     | parking.rsrv | SentryJSONRPCServer | delete_reservation(): reservation_uuid 430096-3525
+[09/03 02:01:06.481] | WARNING  | parking.rsrv | SentryJSONRPCServer | delete_reservation(): removing reservation_uuid 430096-3525
+[09/03 02:01:06.518] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint parking response {"jsonrpc": "2.0", "id": 78313908, "result": {"retry": false, "rpc_id": 0, "success": true, "error_message": null, "payload_type": "<type 'unicode'>", "error_code": null, "payload": "430096-3525"}}
+[09/03 02:01:06.581] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 78313908, "result": {"retry": false, "rpc_id": 0, "success": true, "error_message": null, "payload_type": "<type 'unicode'>", "error_code": null, "payload": "430096-3525"}} Queue amq.gen-A3tFbF2vvS1aPbC7O6hrwg #6005
+[09/03 02:01:07.052] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req Disabled gatelot blob logs Target: u'rpc_parking'
+[09/03 02:01:07.060] | INFO     | parking_serv | SentryJSONRPCServer | delete_reservation(): spot_id SPOT_1 plates [] start_dt 2026-09-02 01:54:00 end_dt 2027-09-03 01:54:00 uuid 430096-3525
+[09/03 02:01:07.060] | INFO     | parking.rsrv | SentryJSONRPCServer | delete_reservation(): reservation_uuid 430096-3525
+[09/03 02:01:07.062] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint parking response {"jsonrpc": "2.0", "id": 78313909, "result": {"retry": false, "rpc_id": 0, "success": false, "error_message": null, "payload_type": "<type 'unicode'>", "error_code": null, "payload": "430096-3525"}}
+[09/03 02:01:07.098] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 78313909, "result": {"retry": false, "rpc_id": 0, "success": false, "error_message": null, "payload_type": "<type 'unicode'>", "error_code": null, "payload": "430096-3525"}} Queue amq.gen-2GUUfXdDG9KosLQzAuxdag #6006
+[09/03 02:01:17.976] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req: u'rpc_parking' Payload: '{"method":"get_sessions_extended_data","params":["SPOT_1"],"jsonrpc":"2.0","id":78313910}'
+[09/03 02:01:17.978] | INFO     | parking.controller | SentryJSONRPCServer | calculate_hours_offset(): hour = 5
+[09/03 02:01:17.979] | INFO     | parking.session.SPOT_1 | SentryJSONRPCServer | get_initial_violation_timestamp: None
+[09/03 02:01:18.072] | ERROR    | parking_serv | SentryJSONRPCServer | _generate_parking_session_extended_json(): Payments 1
+[09/03 02:01:18.074] | INFO     | parking.controller | SentryJSONRPCServer | get_vio_grace_time_remaining(): spot_id SPOT_1 session_vio_grace_timestamp 2026-09-02 19:31:34.082646+00:00 now 2026-09-03 02:01:18.074053+00:00 time_since_grace_origin 6:29:43.991407 vio_grace_time 300 vio_grace_seconds_remaining 0
+[09/03 02:01:18.117] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint parking response {"jsonrpc": "2.0", "id": 78313910, "result": {"retry": false, "rpc_id": 0, "success": true, "error_message": null, "payload_type": "<type 'list'>", "error_code": null, "payload": [{"violation_info": {"violation": null, "violation_reason": null, "additional_violations": []}, "settings": {"SYS_OUT_OF_SERVICE": false, "PARKING_VIOLATION_GRACE_PERIOD": 300, "SYS_PERMIT_ENABLE": false, "SYS_SOFT_VIOLATION": false, "PARKING_UNLOCK_TIME": 1, "PARKING_UNLOCK_ENABLED": true, "PARKING_UNLOCK_MAX": 1, "PARKING_TRUEUP_ENABLED": false, "PARKING_HANDICAP_VIOLATION_GRACE_PERIOD": 86400, "PARKING_PERMIT_TEXT": true}, "rate_info": {"free_time_remaining": 0, "pay_rateblock_start_time": "2026-09-02T20:58:00Z", "rate_state": "RATE", "pay_rateblock_end_time": "2026-09-03T00:00:47Z", "minutes_increment_factor": 15, "card_increment_time": 15, "payment_allowed_now": true, "next_rateblock_type": "fixed", "free_time_first_purchase": 0, "pay_rate_blk_id": 646254, "congestion_percent_full": 0}, "session_info": {"void_timestamp": null, "vio_mins": 0, "is_no_parking_now": false, "reserved": null, "soft_violation": false, "sms": null, "adjusted_payment_dts": [{"payment_timestamp": "2026-09-03T01:58:25Z", "sl_payment_dt": null}], "merchant_validated": false, "in_maintenance": false, "concierge": false, "last_grace_time": null, "max_time_allowed": 58.46816026666667, "spot_identifier": "SPOT_1", "pre_vio_payment_count": 0, "maintenance_no": false, "close_timestamp": null, "lpr_plate": "09010AA", "parker_type": "normal", "total_time_purchased": 58.46816026666667, "init_grace_time_remaining": 0, "time_in_vio": 0, "unlocked": true, "handicap_pin": null, "reserved_pin": null, "pre_vio_total_valid_time": 0, "free_to_reservation": false, "merchant_offer_name": "", "expired_time": 0, "maintenance": false, "exit_timestamp": null, "lock_end_dt": null, "session_base_valid_end_timestamp": null, "email": null, "is_free_parking_now": false, "pre_vio_valid_time": 60.56633073333333, "handicap": false, "parking_spot_state": "PARKING_STATE_VALID", "reservation_payment_time": "2026-09-03T01:58:25Z", "ticket_issued": null, "ticket_issued_dt": null, "has_paid_for_max_time": true, "out_of_service": false, "maxtime_minutes_remaining": 0, "maintenance_unenforced": false, "is_reserved": false, "no_fine_fee": 0, "merchant_id": 0, "vio_grace_time_remaining": 0, "pin_code": null, "payment_history": [{"error": "", "amount": 100, "payment_type": "virt", "active_spot": null, "parking_state": "PARKING_STATE_VALID", "event_dt": "2026-09-03T01:58:25Z"}], "psv_state": "PSV_STATE_VALID_MAX", "vio_payment_amount": 0, "locked": false, "session_valid_timestamp": "2026-09-03T01:58:25Z", "initial_violation_timestamp": null, "true_up": 0, "mobile": false, "true_up_cost": 0, "free_time_purchased": 0, "unlock_count": 0, "lpr_detected": true, "session_id": "daf3bb11a73911f189d900c008947d30", "vio_grace_mins": 0, "maintenance_free": false, "expired_time_dt": null, "plate_reservations": [], "payments": [{"rate_blocks": ["2026-09-02T21:01:18Z", 646254, "2026-09-02T21:16:18Z", 646254, "2026-09-02T21:31:18Z", 646254, "2026-09-02T21:46:18Z", 646254, "2026-09-02T22:01:18Z", 646254], "payment_method": "virt", "time_purchased": 60.56633073333333, "reference_id": null, "mobile_payment": false, "valid_time_remaining": 3307.016462, "tax_amount": 0, "payment_received_timestamp": "2026-09-03T01:58:25Z", "payment_timestamp": "2026-09-03T01:58:25Z", "free_time_purchased": 0, "payment_amount": 100, "payment_type": "normal_payment", "subtotal_amount": 100}], "handicap_spot": false, "session_valid_end_timestamp": "2026-09-03T02:58:25Z", "park_timestamp": "2026-09-03T01:55:06Z"}, "error_status": {"coin_error_status": [], "card_error_details": [], "card_error_status": [], "session_error_status": "0x0", "coin_error_details": []}, "time_stamp": "2026-09-03T02:01:18Z"}]}}
+[09/03 02:01:18.184] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 78313910, "result": {"retry": false, "rpc_id": 0, "success": true, "error_message": null, "payload_type": "<type 'list'>", "error_code": null, "payload": [{"violation_info": {"violation": null, "violation_reason": null, "additional_violations": []}, "settings": {"SYS_OUT_OF_SERVICE": false, "PARKING_VIOLATION_GRACE_PERIOD": 300, "SYS_PERMIT_ENABLE": false, "SYS_SOFT_VIOLATION": false, "PARKING_UNLOCK_TIME": 1, "PARKING_UNLOCK_ENABLED": true, "PARKING_UNLOCK_MAX": 1, "PARKING_TRUEUP_ENABLED": false, "PARKING_HANDICAP_VIOLATION_GRACE_PERIOD": 86400, "PARKING_PERMIT_TEXT": true}, "rate_info": {"free_time_remaining": 0, "pay_rateblock_start_time": "2026-09-02T20:58:00Z", "rate_state": "RATE", "pay_rateblock_end_time": "2026-09-03T00:00:47Z", "minutes_increment_factor": 15, "card_increment_time": 15, "payment_allowed_now": true, "next_rateblock_type": "fixed", "free_time_first_purchase": 0, "pay_rate_blk_id": 646254, "congestion_percent_full": 0}, "session_info": {"void_timestamp": null, "vio_mins": 0, "is_no_parking_now": false, "reserved": null, "soft_violation": false, "sms": null, "adjusted_payment_dts": [{"payment_timestamp": "2026-09-03T01:58:25Z", "sl_payment_dt": null}], "merchant_validated": false, "in_maintenance": false, "concierge": false, "last_grace_time": null, "max_time_allowed": 58.46816026666667, "spot_identifier": "SPOT_1", "pre_vio_payment_count": 0, "maintenance_no": false, "close_timestamp": null, "lpr_plate": "09010AA", "parker_type": "normal", "total_time_purchased": 58.46816026666667, "init_grace_time_remaining": 0, "time_in_vio": 0, "unlocked": true, "handicap_pin": null, "reserved_pin": null, "pre_vio_total_valid_time": 0, "free_to_reservation": false, "merchant_offer_name": "", "expired_time": 0, "maintenance": false, "exit_timestamp": null, "lock_end_dt": null, "session_base_valid_end_timestamp": null, "email": null, "is_free_parking_now": false, "pre_vio_valid_time": 60.56633073333333, "handicap": false, "parking_spot_state": "PARKING_STATE_VALID", "reservation_payment_time": "2026-09-03T01:58:25Z", "ticket_issued": null, "ticket_issued_dt": null, "has_paid_for_max_time": true, "out_of_service": false, "maxtime_minutes_remaining": 0, "maintenance_unenforced": false, "is_reserved": false, "no_fine_fee": 0, "merchant_id": 0, "vio_grace_time_remaining": 0, "pin_code": null, "payment_history": [{"error": "", "amount": 100, "payment_type": "virt", "active_spot": null, "parking_state": "PARKING_STATE_VALID", "event_dt": "2026-09-03T01:58:25Z"}], "psv_state": "PSV_STATE_VALID_MAX", "vio_payment_amount": 0, "locked": false, "session_valid_timestamp": "2026-09-03T01:58:25Z", "initial_violation_timestamp": null, "true_up": 0, "mobile": false, "true_up_cost": 0, "free_time_purchased": 0, "unlock_count": 0, "lpr_detected": true, "session_id": "daf3bb11a73911f189d900c008947d30", "vio_grace_mins": 0, "maintenance_free": false, "expired_time_dt": null, "plate_reservations": [], "payments": [{"rate_blocks": ["2026-09-02T21:01:18Z", 646254, "2026-09-02T21:16:18Z", 646254, "2026-09-02T21:31:18Z", 646254, "2026-09-02T21:46:18Z", 646254, "2026-09-02T22:01:18Z", 646254], "payment_method": "virt", "time_purchased": 60.56633073333333, "reference_id": null, "mobile_payment": false, "valid_time_remaining": 3307.016462, "tax_amount": 0, "payment_received_timestamp": "2026-09-03T01:58:25Z", "payment_timestamp": "2026-09-03T01:58:25Z", "free_time_purchased": 0, "payment_amount": 100, "payment_type": "normal_payment", "subtotal_amount": 100}], "handicap_spot": false, "session_valid_end_timestamp": "2026-09-03T02:58:25Z", "park_timestamp": "2026-09-03T01:55:06Z"}, "error_status": {"coin_error_status": [], "card_error_details": [], "card_error_status": [], "session_error_status": "0x0", "coin_error_details": []}, "time_stamp": "2026-09-03T02:01:18Z"}]}} Queue amq.gen-OsdUWmXffR01jamOsLIChQ #6007
+[09/03 02:01:24.887] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 1433 rp_min_to_free 1433
+[09/03 02:01:33.200] | INFO     | watchdog   | main_reactor | get_cpu_load(): SYS_LOAD_CHECK_THRESHOLD 6.0 exceeded after SYS_LOAD_CHECKIN_INTERVAL 180 seconds, resetting SYS_LOAD_CHECK_LAST_THRESHOLD_EXCEEDED from 2026-09-02 21:06:43.271140 to 2026-09-03 02:01:33.199502 current cpu_load 6.41
+[09/03 02:01:33.217] | CRITICAL | watchdog   | main_reactor | *** STACKTRACE (cpu_load) - START ***
+[09/03 02:01:33.217] | CRITICAL | watchdog   | main_reactor | ______________________________________________________________________________________________________________
+[09/03 02:01:33.218] | CRITICAL | watchdog   | main_reactor | Threading active_count(): 16  current_thread(): <ReactorComponentAdapter(main_reactor, started -1516242112)>
+[09/03 02:01:33.218] | CRITICAL | watchdog   | main_reactor | ______________________________________________________________________________________________________________
+[09/03 02:01:33.218] | CRITICAL | watchdog   | main_reactor | (cpu_load) Thread Info: <_Timer(rss_thread, started daemon -1725957312)>
+[09/03 02:01:33.219] | CRITICAL | watchdog   | main_reactor | (cpu_load) ThreadID: -1725957312  is_alive(): True
+[09/03 02:01:33.219] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 774, in __bootstrap
+[09/03 02:01:33.219] | CRITICAL | watchdog   | main_reactor |   self.__bootstrap_inner()
+[09/03 02:01:33.220] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+[09/03 02:01:33.220] | CRITICAL | watchdog   | main_reactor |   self.run()
+[09/03 02:01:33.220] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 1071, in run
+[09/03 02:01:33.221] | CRITICAL | watchdog   | main_reactor |   self.finished.wait(self.interval)
+[09/03 02:01:33.221] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 614, in wait
+[09/03 02:01:33.222] | CRITICAL | watchdog   | main_reactor |   self.__cond.wait(timeout)
+[09/03 02:01:33.222] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 359, in wait
+[09/03 02:01:33.223] | CRITICAL | watchdog   | main_reactor |   _sleep(delay)
+[09/03 02:01:33.223] | CRITICAL | watchdog   | main_reactor | ______________________________________________________________________________________________________________
+[09/03 02:01:33.223] | CRITICAL | watchdog   | main_reactor | (cpu_load) Thread Info: <Thread(RabbitMQ RPC, started daemon -1574970560)>
+[09/03 02:01:33.224] | CRITICAL | watchdog   | main_reactor | (cpu_load) ThreadID: -1574970560  is_alive(): True
+[09/03 02:01:33.224] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 774, in __bootstrap
+[09/03 02:01:33.225] | CRITICAL | watchdog   | main_reactor |   self.__bootstrap_inner()
+[09/03 02:01:33.225] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+[09/03 02:01:33.226] | CRITICAL | watchdog   | main_reactor |   self.run()
+[09/03 02:01:33.226] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 754, in run
+[09/03 02:01:33.226] | CRITICAL | watchdog   | main_reactor |   self.__target(*self.__args, **self.__kwargs)
+[09/03 02:01:33.227] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/remote/idigi.py", line 2422, in run
+[09/03 02:01:33.227] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/dist-packages/pika/adapters/blocking_connection.py", line 1681, in start_consuming
+[09/03 02:01:33.228] | CRITICAL | watchdog   | main_reactor |   self.connection.process_data_events(time_limit=None)
+[09/03 02:01:33.228] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/dist-packages/pika/adapters/blocking_connection.py", line 647, in process_data_events
+[09/03 02:01:33.229] | CRITICAL | watchdog   | main_reactor |   self._flush_output(common_terminator)
+[09/03 02:01:33.229] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/dist-packages/pika/adapters/blocking_connection.py", line 410, in _flush_output
+[09/03 02:01:33.229] | CRITICAL | watchdog   | main_reactor |   self._impl.ioloop.poll()
+[09/03 02:01:33.230] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/dist-packages/pika/adapters/select_connection.py", line 590, in poll
+[09/03 02:01:33.230] | CRITICAL | watchdog   | main_reactor |   events = self._poll.poll(self.get_next_deadline())
+[09/03 02:01:33.230] | CRITICAL | watchdog   | main_reactor | ______________________________________________________________________________________________________________
+[09/03 02:01:33.231] | CRITICAL | watchdog   | main_reactor | (cpu_load) Thread Info: <ReactorComponentAdapter(microcomm_reactor, started -1495360704)>
+[09/03 02:01:33.231] | CRITICAL | watchdog   | main_reactor | (cpu_load) ThreadID: -1495360704  is_alive(): True
+[09/03 02:01:33.231] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 774, in __bootstrap
+[09/03 02:01:33.232] | CRITICAL | watchdog   | main_reactor |   self.__bootstrap_inner()
+[09/03 02:01:33.237] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+[09/03 02:01:33.237] | CRITICAL | watchdog   | main_reactor |   self.run()
+[09/03 02:01:33.237] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/util/reactor.py", line 46, in run
+[09/03 02:01:33.238] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/.buildout/eggs/reactorlib-0.3-py2.7.egg/reactorlib/selectreactor.py", line 290, in select
+[09/03 02:01:33.238] | CRITICAL | watchdog   | main_reactor | ______________________________________________________________________________________________________________
+[09/03 02:01:33.239] | CRITICAL | watchdog   | main_reactor | (cpu_load) Thread Info: <WorkerThread(Threadpool Worker #0, started -1547699392)>
+[09/03 02:01:33.239] | CRITICAL | watchdog   | main_reactor | (cpu_load) ThreadID: -1547699392  is_alive(): True
+[09/03 02:01:33.240] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 774, in __bootstrap
+[09/03 02:01:33.240] | CRITICAL | watchdog   | main_reactor |   self.__bootstrap_inner()
+[09/03 02:01:33.241] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+[09/03 02:01:33.241] | CRITICAL | watchdog   | main_reactor |   self.run()
+[09/03 02:01:33.242] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/.buildout/eggs/tplib-0.1.1-py2.7.egg/tplib/core.py", line 56, in run
+[09/03 02:01:33.242] | CRITICAL | watchdog   | main_reactor | ______________________________________________________________________________________________________________
+[09/03 02:01:33.243] | CRITICAL | watchdog   | main_reactor | (cpu_load) Thread Info: <Watchdog(watchdog, started -1778214080)>
+[09/03 02:01:33.243] | CRITICAL | watchdog   | main_reactor | (cpu_load) ThreadID: -1778214080  is_alive(): True
+[09/03 02:01:33.244] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 774, in __bootstrap
+[09/03 02:01:33.244] | CRITICAL | watchdog   | main_reactor |   self.__bootstrap_inner()
+[09/03 02:01:33.245] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+[09/03 02:01:33.245] | CRITICAL | watchdog   | main_reactor |   self.run()
+[09/03 02:01:33.245] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 754, in run
+[09/03 02:01:33.245] | CRITICAL | watchdog   | main_reactor |   self.__target(*self.__args, **self.__kwargs)
+[09/03 02:01:33.246] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/util/watchdog.py", line 154, in _watchdog_loop
+[09/03 02:01:33.246] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/hal/platform.py", line 299, in time_sleep
+[09/03 02:01:33.246] | CRITICAL | watchdog   | main_reactor | ______________________________________________________________________________________________________________
+[09/03 02:01:33.247] | CRITICAL | watchdog   | main_reactor | (cpu_load) Thread Info: <ReactorComponentAdapter(credit_call_reactor, started -1505756352)>
+[09/03 02:01:33.247] | CRITICAL | watchdog   | main_reactor | (cpu_load) ThreadID: -1505756352  is_alive(): True
+[09/03 02:01:33.247] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 774, in __bootstrap
+[09/03 02:01:33.248] | CRITICAL | watchdog   | main_reactor |   self.__bootstrap_inner()
+[09/03 02:01:33.248] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+[09/03 02:01:33.248] | CRITICAL | watchdog   | main_reactor |   self.run()
+[09/03 02:01:33.249] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/util/reactor.py", line 46, in run
+[09/03 02:01:33.249] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/.buildout/eggs/reactorlib-0.3-py2.7.egg/reactorlib/selectreactor.py", line 290, in select
+[09/03 02:01:33.249] | CRITICAL | watchdog   | main_reactor | ______________________________________________________________________________________________________________
+[09/03 02:01:33.250] | CRITICAL | watchdog   | main_reactor | (cpu_load) Thread Info: <IDigiConnectorThread(IDigi Connector, started -1566577856)>
+[09/03 02:01:33.250] | CRITICAL | watchdog   | main_reactor | (cpu_load) ThreadID: -1566577856  is_alive(): True
+[09/03 02:01:33.250] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 774, in __bootstrap
+[09/03 02:01:33.251] | CRITICAL | watchdog   | main_reactor |   self.__bootstrap_inner()
+[09/03 02:01:33.255] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+[09/03 02:01:33.256] | CRITICAL | watchdog   | main_reactor |   self.run()
+[09/03 02:01:33.256] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/remote/idigi.py", line 361, in run
+[09/03 02:01:33.256] | CRITICAL | watchdog   | main_reactor | ______________________________________________________________________________________________________________
+[09/03 02:01:33.257] | CRITICAL | watchdog   | main_reactor | (cpu_load) Thread Info: <VehicleDetector(vdetection, started -1591755968)>
+[09/03 02:01:33.257] | CRITICAL | watchdog   | main_reactor | (cpu_load) ThreadID: -1591755968  is_alive(): True
+[09/03 02:01:33.257] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 774, in __bootstrap
+[09/03 02:01:33.258] | CRITICAL | watchdog   | main_reactor |   self.__bootstrap_inner()
+[09/03 02:01:33.258] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+[09/03 02:01:33.258] | CRITICAL | watchdog   | main_reactor |   self.run()
+[09/03 02:01:33.259] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/hal/vehicle_detection.py", line 467, in run
+[09/03 02:01:33.259] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/hal/vehicle_detection.py", line 635, in _read_socket
+[09/03 02:01:33.259] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/hal/vehicle_detection.py", line 1026, in _service_banner_socket
+[09/03 02:01:33.259] | CRITICAL | watchdog   | main_reactor | ______________________________________________________________________________________________________________
+[09/03 02:01:33.260] | CRITICAL | watchdog   | main_reactor | (cpu_load) Thread Info: <SilverBulletSockClient(sock_1_2, started daemon -1583363264)>
+[09/03 02:01:33.261] | CRITICAL | watchdog   | main_reactor | (cpu_load) ThreadID: -1583363264  is_alive(): True
+[09/03 02:01:33.262] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 774, in __bootstrap
+[09/03 02:01:33.262] | CRITICAL | watchdog   | main_reactor |   self.__bootstrap_inner()
+[09/03 02:01:33.263] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+[09/03 02:01:33.263] | CRITICAL | watchdog   | main_reactor |   self.run()
+[09/03 02:01:33.264] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/util/sock_comm.py", line 122, in run
+[09/03 02:01:33.264] | CRITICAL | watchdog   | main_reactor | ______________________________________________________________________________________________________________
+[09/03 02:01:33.264] | CRITICAL | watchdog   | main_reactor | (cpu_load) Thread Info: <HttpServer(HttpServer, started -1537213632)>
+[09/03 02:01:33.265] | CRITICAL | watchdog   | main_reactor | (cpu_load) ThreadID: -1537213632  is_alive(): True
+[09/03 02:01:33.265] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 774, in __bootstrap
+[09/03 02:01:33.265] | CRITICAL | watchdog   | main_reactor |   self.__bootstrap_inner()
+[09/03 02:01:33.266] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+[09/03 02:01:33.266] | CRITICAL | watchdog   | main_reactor |   self.run()
+[09/03 02:01:33.268] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/remote/http/server.py", line 73, in run
+[09/03 02:01:33.268] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/.buildout/eggs/bottle-0.11.6-py2.7.egg/bottle.py", line 2703, in run
+[09/03 02:01:33.269] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/.buildout/eggs/bottle-0.11.6-py2.7.egg/bottle.py", line 2386, in run
+[09/03 02:01:33.269] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/SocketServer.py", line 231, in serve_forever
+[09/03 02:01:33.269] | CRITICAL | watchdog   | main_reactor |   poll_interval)
+[09/03 02:01:33.270] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/SocketServer.py", line 150, in _eintr_retry
+[09/03 02:01:33.270] | CRITICAL | watchdog   | main_reactor |   return func(*args)
+[09/03 02:01:33.270] | CRITICAL | watchdog   | main_reactor | ______________________________________________________________________________________________________________
+[09/03 02:01:33.271] | CRITICAL | watchdog   | main_reactor | (cpu_load) Thread Info: <MultiplexedRPCServer(SentryJSONRPCServer, started daemon -1526727872)>
+[09/03 02:01:33.271] | CRITICAL | watchdog   | main_reactor | (cpu_load) ThreadID: -1526727872  is_alive(): True
+[09/03 02:01:33.271] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 774, in __bootstrap
+[09/03 02:01:33.272] | CRITICAL | watchdog   | main_reactor |   self.__bootstrap_inner()
+[09/03 02:01:33.272] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+[09/03 02:01:33.274] | CRITICAL | watchdog   | main_reactor |   self.run()
+[09/03 02:01:33.274] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/util/jsonrpc.py", line 383, in run
+[09/03 02:01:33.275] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/util/jsonrpc.py", line 377, in serve_forever
+[09/03 02:01:33.275] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/util/jsonrpc.py", line 352, in handle_one_message
+[09/03 02:01:33.276] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/util/jsonrpc.py", line 248, in receive_message
+[09/03 02:01:33.276] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/Queue.py", line 168, in get
+[09/03 02:01:33.277] | CRITICAL | watchdog   | main_reactor |   self.not_empty.wait()
+[09/03 02:01:33.277] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 340, in wait
+[09/03 02:01:33.277] | CRITICAL | watchdog   | main_reactor |   waiter.acquire()
+[09/03 02:01:33.278] | CRITICAL | watchdog   | main_reactor | ______________________________________________________________________________________________________________
+[09/03 02:01:33.278] | CRITICAL | watchdog   | main_reactor | (cpu_load) Thread Info: <ReactorComponentAdapter(main_reactor, started -1516242112)>
+[09/03 02:01:33.278] | CRITICAL | watchdog   | main_reactor | (cpu_load) ThreadID: -1516242112  is_alive(): True
+[09/03 02:01:33.279] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 774, in __bootstrap
+[09/03 02:01:33.279] | CRITICAL | watchdog   | main_reactor |   self.__bootstrap_inner()
+[09/03 02:01:33.279] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+[09/03 02:01:33.279] | CRITICAL | watchdog   | main_reactor |   self.run()
+[09/03 02:01:33.280] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/util/reactor.py", line 46, in run
+[09/03 02:01:33.280] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/.buildout/eggs/reactorlib-0.3-py2.7.egg/reactorlib/selectreactor.py", line 324, in select
+[09/03 02:01:33.281] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/.buildout/eggs/timers-0.1.1-py2.7.egg/timers/timercore.py", line 183, in service_timers
+[09/03 02:01:33.281] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/.buildout/eggs/timers-0.1.1-py2.7.egg/timers/timercore.py", line 251, in fire_state
+[09/03 02:01:33.281] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/.buildout/eggs/timers-0.1.1-py2.7.egg/timers/timercore.py", line 244, in fire_timers
+[09/03 02:01:33.282] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/.buildout/eggs/timers-0.1.1-py2.7.egg/timers/timercore.py", line 293, in fire
+[09/03 02:01:33.282] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/util/network_monitor.py", line 169, in check_network_connectivity_async
+[09/03 02:01:33.282] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/util/watchdog.py", line 479, in get_cpu_load
+[09/03 02:01:33.283] | CRITICAL | watchdog   | main_reactor | ______________________________________________________________________________________________________________
+[09/03 02:01:33.283] | CRITICAL | watchdog   | main_reactor | (cpu_load) Thread Info: <ReactorComponentAdapter(rabbitmq_reactor, started -1558185152)>
+[09/03 02:01:33.283] | CRITICAL | watchdog   | main_reactor | (cpu_load) ThreadID: -1558185152  is_alive(): True
+[09/03 02:01:33.284] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 774, in __bootstrap
+[09/03 02:01:33.285] | CRITICAL | watchdog   | main_reactor |   self.__bootstrap_inner()
+[09/03 02:01:33.285] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+[09/03 02:01:33.286] | CRITICAL | watchdog   | main_reactor |   self.run()
+[09/03 02:01:33.286] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/util/reactor.py", line 46, in run
+[09/03 02:01:33.287] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/.buildout/eggs/reactorlib-0.3-py2.7.egg/reactorlib/selectreactor.py", line 290, in select
+[09/03 02:01:33.287] | CRITICAL | watchdog   | main_reactor | ______________________________________________________________________________________________________________
+[09/03 02:01:33.288] | CRITICAL | watchdog   | main_reactor | (cpu_load) Thread Info: <Thread(Coin Vault, started -1633719488)>
+[09/03 02:01:33.288] | CRITICAL | watchdog   | main_reactor | (cpu_load) ThreadID: -1633719488  is_alive(): True
+[09/03 02:01:33.289] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 774, in __bootstrap
+[09/03 02:01:33.289] | CRITICAL | watchdog   | main_reactor |   self.__bootstrap_inner()
+[09/03 02:01:33.289] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+[09/03 02:01:33.290] | CRITICAL | watchdog   | main_reactor |   self.run()
+[09/03 02:01:33.291] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 754, in run
+[09/03 02:01:33.291] | CRITICAL | watchdog   | main_reactor |   self.__target(*self.__args, **self.__kwargs)
+[09/03 02:01:33.291] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/hal/coin.py", line 847, in _event_thread_target
+[09/03 02:01:33.292] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/hal/comport.py", line 91, in read
+[09/03 02:01:33.292] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/.buildout/eggs/pyserial-2.8_MPS-py2.7.egg/serial/serialposix.py", line 464, in read
+[09/03 02:01:33.293] | CRITICAL | watchdog   | main_reactor | ______________________________________________________________________________________________________________
+[09/03 02:01:33.294] | CRITICAL | watchdog   | main_reactor | (cpu_load) Thread Info: <_MainThread(MainThread, started -1211631872)>
+[09/03 02:01:33.294] | CRITICAL | watchdog   | main_reactor | (cpu_load) ThreadID: -1211631872  is_alive(): True
+[09/03 02:01:33.295] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/runpy.py", line 174, in _run_module_as_main
+[09/03 02:01:33.296] | CRITICAL | watchdog   | main_reactor |   "__main__", fname, loader, pkg_name)
+[09/03 02:01:33.296] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/runpy.py", line 72, in _run_code
+[09/03 02:01:33.297] | CRITICAL | watchdog   | main_reactor |   exec code in run_globals
+[09/03 02:01:33.297] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/__main__.py", line 21, in <module>
+[09/03 02:01:33.297] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/__main__.py", line 17, in _main
+[09/03 02:01:33.298] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/main.py", line 561, in main
+[09/03 02:01:33.298] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/main.py", line 198, in launch
+[09/03 02:01:33.298] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/main.py", line 95, in _run_configuration
+[09/03 02:01:33.299] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/lib/epoxy/core.py", line 294, in launch_configuration
+[09/03 02:01:33.299] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/ui/gui/gui.py", line 1013, in run
+[09/03 02:01:33.299] | CRITICAL | watchdog   | main_reactor | ______________________________________________________________________________________________________________
+[09/03 02:01:33.300] | CRITICAL | watchdog   | main_reactor | (cpu_load) Thread Info: <HTTPListener(vidserv, started -1625326784)>
+[09/03 02:01:33.300] | CRITICAL | watchdog   | main_reactor | (cpu_load) ThreadID: -1625326784  is_alive(): True
+[09/03 02:01:33.301] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 774, in __bootstrap
+[09/03 02:01:33.301] | CRITICAL | watchdog   | main_reactor |   self.__bootstrap_inner()
+[09/03 02:01:33.302] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+[09/03 02:01:33.302] | CRITICAL | watchdog   | main_reactor |   self.run()
+[09/03 02:01:33.302] | CRITICAL | watchdog   | main_reactor | File: "/home/mpsadmin/projects/Sentry_test/src/mps/hal/camera.py", line 1824, in run
+[09/03 02:01:33.303] | CRITICAL | watchdog   | main_reactor | File: "/usr/lib/python2.7/socket.py", line 206, in accept
+[09/03 02:01:33.303] | CRITICAL | watchdog   | main_reactor |   sock, addr = self._sock.accept()
+[09/03 02:01:33.304] | CRITICAL | watchdog   | main_reactor | ______________________________________________________________________________________________________________
+[09/03 02:01:33.304] | CRITICAL | watchdog   | main_reactor | *** STACKTRACE (cpu_load) - END ***
+[09/03 02:01:33.304] | CRITICAL | watchdog   | main_reactor | *** REACTORS INFO - START ***
+[09/03 02:01:33.305] | INFO     | watchdog   | main_reactor | *** REACTORS INFO - START ***
+[09/03 02:01:33.306] | INFO     | watchdog   | main_reactor | Reactor Info: name main_reactor empty True full False
+[09/03 02:01:33.306] | INFO     | watchdog   | main_reactor | *** REACTORS INFO - START ***
+[09/03 02:01:33.307] | INFO     | watchdog   | main_reactor | Reactor Info: name rabbitmq_reactor empty True full False
+[09/03 02:01:33.307] | INFO     | watchdog   | main_reactor | *** REACTORS INFO - START ***
+[09/03 02:01:33.308] | INFO     | watchdog   | main_reactor | Reactor Info: name microcomm_reactor empty True full False
+[09/03 02:01:33.308] | INFO     | watchdog   | main_reactor | *** REACTORS INFO - START ***
+[09/03 02:01:33.308] | INFO     | watchdog   | main_reactor | Reactor Info: name credit_call_reactor empty True full False
+[09/03 02:01:33.309] | CRITICAL | watchdog   | main_reactor | *** REACTORS INFO - END ***
+[09/03 02:01:33.309] | CRITICAL | watchdog   | main_reactor | *** Top Output (cpu_load) - START ***
+[09/03 02:01:33.309] | CRITICAL | watchdog   | main_reactor | 
+top - 02:01:33 up 2 days, 11:09,  1 user,  load average: 6.41, 6.02, 5.65
+Tasks: 496 total,   2 running, 429 sleeping,   0 stopped,   0 zombie
+%Cpu(s): 57.6 us, 11.5 sy,  0.0 ni, 30.9 id,  0.1 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem :  4029584 total,  1689492 free,  1358128 used,   981964 buff/cache
+KiB Swap:        0 total,        0 free,        0 used.  2186080 avail Mem 
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 1359 root      20   0 1271224 917232  60008 S 240.0 22.8   8578:06 python
+ 5140 seco      20   0   18624  13692   6768 R  85.0  0.3   0:00.31 testauto_d+
+ 5145 root      20   0    8220   3624   2936 R  25.0  0.1   0:00.07 top
+ 1992 root      20   0  767520 290864  90328 S  15.0  7.2 811:18.50 python
+    1 root      20   0    7048   5348   3676 S   0.0  0.1   4:55.88 systemd
+    2 root      20   0       0      0      0 S   0.0  0.0   0:00.29 kthreadd
+    3 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 rcu_gp
+    4 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 rcu_par_gp
+    8 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 mm_percpu_+
+    9 root      20   0       0      0      0 S   0.0  0.0   0:06.08 ksoftirqd/0
+   10 root      20   0       0      0      0 I   0.0  0.0   9:51.79 rcu_sched
+   11 root      20   0       0      0      0 I   0.0  0.0   0:00.00 rcu_bh
+   12 root      rt   0       0      0      0 S   0.0  0.0   0:02.25 migration/0
+   13 root      rt   0       0      0      0 S   0.0  0.0   0:01.17 watchdog/0
+   14 root      20   0       0      0      0 S   0.0  0.0   0:00.00 cpuhp/0
+   15 root      20   0       0      0      0 S   0.0  0.0   0:00.00 cpuhp/1
+   16 root      rt   0       0      0      0 S   0.0  0.0   0:01.20 watchdog/1
+   17 root      rt   0       0      0      0 S   0.0  0.0   0:02.38 migration/1
+   18 root      20   0       0      0      0 S   0.0  0.0   0:04.99 ksoftirqd/1
+   21 root      20   0       0      0      0 S   0.0  0.0   0:00.00 cpuhp/2
+   22 root      rt   0       0      0      0 S   0.0  0.0   0:01.16 watchdog/2
+   23 root      rt   0       0      0      0 S   0.0  0.0   0:01.58 migration/2
+   24 root      20   0       0      0      0 S   0.0  0.0   0:05.45 ksoftirqd/2
+   27 root      20   0       0      0      0 S   0.0  0.0   0:00.00 cpuhp/3
+   28 root      rt   0       0      0      0 S   0.0  0.0   0:01.13 watchdog/3
+   29 root      rt   0       0      0      0 S   0.0  0.0   0:01.57 migration/3
+   30 root      20   0       0      0      0 S   0.0  0.0   0:03.77 ksoftirqd/3
+   33 root      20   0       0      0      0 S   0.0  0.0   0:00.00 kdevtmpfs
+   34 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 netns
+   35 root      20   0       0      0      0 S   0.0  0.0   0:00.00 rcu_tasks_+
+   36 root      20   0       0      0      0 S   0.0  0.0   0:00.00 kauditd
+   40 root      20   0       0      0      0 S   0.0  0.0   0:00.18 khungtaskd
+   41 root      20   0       0      0      0 S   0.0  0.0   0:00.00 oom_reaper
+   42 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 writeback
+   43 root      20   0       0      0      0 S   0.0  0.0   0:00.00 kcompactd0
+   44 root      25   5       0      0      0 S   0.0  0.0   0:00.00 ksmd
+   45 root      39  19       0      0      0 S   0.0  0.0   0:00.00 khugepaged
+   46 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 crypto
+   47 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 kintegrityd
+   48 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 kblockd
+   49 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 ata_sff
+   50 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 md
+   51 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 edac-poller
+   52 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 devfreq_wq
+   53 root      rt   0       0      0      0 S   0.0  0.0   0:00.00 watchdogd
+   58 root      20   0       0      0      0 S   0.0  0.0   0:00.00 kswapd0
+   59 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 kworker/u9+
+   60 root      20   0       0      0      0 S   0.0  0.0   0:00.00 ecryptfs-k+
+  105 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 kthrotld
+  106 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 acpi_therm+
+  107 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 nvme-wq
+  108 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 nvme-reset+
+  109 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 nvme-delet+
+  110 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 ipv6_addrc+
+  119 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 kstrp
+  137 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 charger_ma+
+  190 root     -51   0       0      0      0 S   0.0  0.0   0:00.00 irq/18-mmc0
+  192 root     -51   0       0      0      0 S   0.0  0.0   0:00.00 irq/23-mmc1
+  213 root      -2   0       0      0      0 S   0.0  0.0   3:09.75 i915/signa+
+  214 root      -2   0       0      0      0 S   0.0  0.0   0:00.00 i915/signa+
+  215 root      -2   0       0      0      0 S   0.0  0.0   0:00.00 i915/signa+
+  296 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 raid5wq
+  350 root      20   0       0      0      0 S   0.0  0.0   0:06.73 jbd2/mmcbl+
+  351 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 ext4-rsv-c+
+  362 root      20   0       0      0      0 I   0.0  0.0   0:00.47 kworker/u8+
+  403 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 iscsi_eh
+  414 root      20   0   21748  10328   9604 S   0.0  0.3   8:23.12 systemd-jo+
+  419 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 ib-comp-wq
+  420 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 ib_mcast
+  421 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 ib_nl_sa_wq
+  433 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 rdma_cm
+  455 root      20   0   13284   1532   1380 S   0.0  0.0   0:00.00 lvmetad
+  459 root      20   0   14656   3972   2884 S   0.0  0.1   0:02.16 systemd-ud+
+  498 root     -51   0       0      0      0 S   0.0  0.0   0:00.00 irq/94-mei+
+  633 root      20   0   13176   6212   5504 S   0.0  0.2   0:00.18 sshd
+  641 seco      20   0   13176   3204   2496 S   0.0  0.1   0:00.00 sshd
+  643 root      20   0   13176   6192   5484 S   0.0  0.2   0:00.17 sshd
+  655 seco      20   0   13176   3140   2432 S   0.0  0.1   0:00.00 sshd
+  657 root      20   0   13176   6232   5524 S   0.0  0.2   0:00.17 sshd
+  666 seco      20   0   13176   3196   2488 S   0.0  0.1   0:00.00 sshd
+  668 root      20   0   13176   6220   5512 S   0.0  0.2   0:00.17 sshd
+  680 seco      20   0   13176   3048   2340 S   0.0  0.1   0:00.00 sshd
+  753 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 ext4-rsv-c+
+  777 root      20   0       0      0      0 S   0.0  0.0   0:00.00 jbd2/mmcbl+
+  778 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 ext4-rsv-c+
+  780 root      20   0       0      0      0 S   0.0  0.0   0:00.00 jbd2/mmcbl+
+  781 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 ext4-rsv-c+
+  806 root      20   0       0      0      0 S   0.0  0.0   0:00.05 jbd2/mmcbl+
+  807 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 ext4-rsv-c+
+  912 root      20   0   13176   6108   5408 S   0.0  0.2   0:00.18 sshd
+  920 seco      20   0   13176   3124   2424 S   0.0  0.1   0:00.00 sshd
+  922 root      20   0   13176   6272   5568 S   0.0  0.2   0:00.17 sshd
+  936 seco      20   0   13176   3164   2460 S   0.0  0.1   0:00.00 sshd
+  938 root      20   0   13176   6200   5496 S   0.0  0.2   0:00.18 sshd
+  947 seco      20   0   13176   3176   2472 S   0.0  0.1   0:00.00 sshd
+  949 root      20   0   13176   6232   5528 S   0.0  0.2   0:00.17 sshd
+  963 seco      20   0   13176   3060   2356 S   0.0  0.1   0:00.00 sshd
+ 1134 root      20   0       0      0      0 I   0.0  0.0   0:00.00 kworker/2:+
+ 1203 root      20   0    2988    116     44 S   0.0  0.0   0:06.07 iscsid
+ 1206 root      10 -10    3448   2808   1948 S   0.0  0.1   0:30.94 iscsid
+ 1282 root      20   0    5584   2716   2496 S   0.0  0.1   0:00.38 cron
+ 1288 root      20   0    2248   1088   1028 S   0.0  0.0   0:00.00 acpid
+ 1291 daemon    20   0    3484   2028   1864 S   0.0  0.1   0:00.00 atd
+ 1308 avahi     20   0    6656   4184   3116 S   0.0  0.1   7:17.01 avahi-daem+
+ 1315 root      15  -5  884096  15772   9824 S   0.0  0.4   0:18.95 snapd
+ 1321 syslog    20   0   31656   3012   2640 S   0.0  0.1   0:00.03 rsyslogd
+ 1327 avahi     20   0    5920    276      0 S   0.0  0.0   0:00.00 avahi-daem+
+ 1329 root      20   0   38704   5880   5356 S   0.0  0.1   0:49.95 accounts-d+
+ 1330 message+  20   0    8200   5784   3408 S   0.0  0.1   4:04.83 dbus-daemon
+ 1331 root      20   0    2372   1524   1436 S   0.0  0.0   0:36.31 zxy_device+
+ 1356 root      20   0   77416   1808   1276 S   0.0  0.0   0:04.31 lxcfs
+ 1357 root      20   0    2336    636    584 S   0.0  0.0   1:39.67 banner_apcc
+ 1358 root      20   0    4428   3368   2744 S   0.0  0.1   1:31.09 systemd-lo+
+ 1360 root      20   0   10004   5604   5080 S   0.0  0.1   0:18.28 sshd
+ 1388 root      20   0    4440    208      0 S   0.0  0.0   0:19.25 irqbalance
+ 1401 root      20   0    3136    120     16 S   0.0  0.0   0:00.02 mdadm
+ 1416 root      20   0   36840   5744   5252 S   0.0  0.1   1:11.59 polkitd
+ 1427 ntp       20   0   15632   4356   3892 S   0.0  0.1   0:17.51 ntpd
+ 1447 root      20   0    4752   1624   1524 S   0.0  0.0   0:00.01 agetty
+ 1900 root      20   0    4296   2684   2460 S   0.0  0.1   0:00.00 nodm
+ 1904 root      20   0   67900  21928  16232 S   0.0  0.5 104:13.34 Xorg
+ 1920 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 kworker/u9+
+ 1924 root      20   0    5872   3184   2776 S   0.0  0.1   0:00.00 nodm
+ 1926 root      20   0    6096   4024   3392 S   0.0  0.1   0:00.08 systemd
+ 1936 root      20   0    7876   1636      0 S   0.0  0.0   0:00.00 (sd-pam)
+ 1952 root      20   0    2372    616    568 S   0.0  0.0   0:00.00 sh
+ 1962 root      20   0   20392  14472   7036 S   0.0  0.4   1:43.65 python
+ 1982 root      20   0    4608    196      0 S   0.0  0.0   0:00.98 ssh-agent
+ 2075 uuidd     20   0    6732   1260   1112 S   0.0  0.0   0:00.24 uuidd
+ 2219 root      20   0  173536  40112  21776 S   0.0  1.0  12:31.14 python
+ 2227 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 kworker/2:+
+ 2692 root      20   0   13176   6224   5520 S   0.0  0.2   0:00.18 sshd
+ 2700 seco      20   0   13176   2988   2284 S   0.0  0.1   0:00.00 sshd
+ 2923 root      20   0   13176   6132   5432 S   0.0  0.2   0:00.18 sshd
+ 2929 seco      20   0   13176   2932   2232 S   0.0  0.1   0:00.00 sshd
+ 3404 root      20   0   13176   6204   5500 S   0.0  0.2   0:00.18 sshd
+ 3410 seco      20   0   13176   3136   2432 S   0.0  0.1   0:00.00 sshd
+ 3412 root      20   0   13176   6196   5492 S   0.0  0.2   0:00.17 sshd
+ 3427 seco      20   0   13176   3200   2496 S   0.0  0.1   0:00.00 sshd
+ 3428 root      20   0   13176   6292   5584 S   0.0  0.2   0:00.17 sshd
+ 3438 seco      20   0   13176   3136   2428 S   0.0  0.1   0:00.00 sshd
+ 3440 root      20   0   13176   6160   5460 S   0.0  0.2   0:00.17 sshd
+ 3454 seco      20   0   13176   3000   2300 S   0.0  0.1   0:00.00 sshd
+ 3736 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 kworker/3:+
+ 3754 root      20   0       0      0      0 I   0.0  0.0   0:00.01 kworker/0:+
+ 3887 root      20   0   13176   6272   5564 S   0.0  0.2   0:00.17 sshd
+ 3897 seco      20   0   13176   3168   2460 S   0.0  0.1   0:00.00 sshd
+ 4014 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 kworker/1:+
+ 4045 root      20   0   13176   6216   5512 S   0.0  0.2   0:00.18 sshd
+ 4055 seco      20   0   13176   3112   2408 S   0.0  0.1   0:00.00 sshd
+ 4321 root      20   0   13176   6176   5472 S   0.0  0.2   0:00.17 sshd
+ 4330 seco      20   0   13176   3076   2372 S   0.0  0.1   0:00.00 sshd
+ 4332 root      20   0   13176   6192   5488 S   0.0  0.2   0:00.18 sshd
+ 4346 seco      20   0   13176   3100   2396 S   0.0  0.1   0:00.00 sshd
+ 4347 root      20   0   13176   6132   5428 S   0.0  0.2   0:00.17 sshd
+ 4348 seco      20   0    5456   2732   2588 S   0.0  0.1   0:00.00 bash
+ 4349 seco      20   0  121380   7336   7080 S   0.0  0.2   0:00.01 journalctl
+ 4355 root       0 -20       0      0      0 I   0.0  0.0   0:01.43 kworker/1:+
+ 4358 seco      20   0   13176   3000   2296 S   0.0  0.1   0:00.00 sshd
+ 4359 root      20   0   13176   6188   5480 S   0.0  0.2   0:00.17 sshd
+ 4372 seco      20   0   13176   3168   2460 S   0.0  0.1   0:00.00 sshd
+ 4456 root      20   0       0      0      0 I   0.0  0.0   0:00.00 kworker/3:+
+ 4502 root      20   0       0      0      0 I   0.0  0.0   0:00.00 kworker/1:+
+ 4565 seco      20   0    6372   4172   3620 S   0.0  0.1   0:00.08 systemd
+ 4572 root      20   0   13176   6140   5432 S   0.0  0.2   0:00.17 sshd
+ 4577 seco      20   0    7876   1636      0 S   0.0  0.0   0:00.00 (sd-pam)
+ 4579 seco      20   0   13176   3284   2576 S   0.0  0.1   0:00.00 sshd
+ 4581 root      20   0   13176   6208   5504 S   0.0  0.2   0:00.16 sshd
+ 4594 seco      20   0   13176   3112   2408 S   0.0  0.1   0:00.00 sshd
+ 4596 root      20   0   13176   6088   5380 S   0.0  0.2   0:00.18 sshd
+ 4603 seco      20   0   13176   3280   2572 S   0.0  0.1   0:00.00 sshd
+ 4605 root      20   0   13176   6240   5532 S   0.0  0.2   0:00.17 sshd
+ 4617 seco      20   0   13176   3180   2472 S   0.0  0.1   0:00.00 sshd
+ 4911 root      20   0   13176   6248   5544 S   0.0  0.2   0:00.17 sshd
+ 4921 seco      20   0   13176   3112   2408 S   0.0  0.1   0:00.00 sshd
+ 4923 root      20   0   13176   6264   5556 S   0.0  0.2   0:00.18 sshd
+ 4937 seco      20   0   13176   3048   2340 S   0.0  0.1   0:00.00 sshd
+ 4939 root      20   0   13176   6288   5580 S   0.0  0.2   0:00.17 sshd
+ 4951 seco      20   0   13176   3220   2512 S   0.0  0.1   0:00.00 sshd
+ 4952 root      20   0   13176   6184   5480 S   0.0  0.2   0:00.17 sshd
+ 4955 root      20   0   13176   6248   5544 S   0.0  0.2   0:00.17 sshd
+ 4963 seco      20   0   13176   3104   2400 S   0.0  0.1   0:00.00 sshd
+ 4965 root      20   0   13176   6284   5580 S   0.0  0.2   0:00.17 sshd
+ 4967 seco      20   0   13176   3080   2376 S   0.0  0.1   0:00.00 sshd
+ 4980 seco      20   0   13176   3132   2428 S   0.0  0.1   0:00.00 sshd
+ 4982 root      20   0   13176   6216   5512 S   0.0  0.2   0:00.18 sshd
+ 4993 seco      20   0   13176   3124   2420 S   0.0  0.1   0:00.00 sshd
+ 4995 root      20   0   13176   6276   5572 S   0.0  0.2   0:00.17 sshd
+ 5010 seco      20   0   13176   3060   2356 S   0.0  0.1   0:00.00 sshd
+ 5130 root      20   0   13176   6176   5468 S   0.0  0.2   0:00.17 sshd
+ 5139 seco      20   0   13176   3276   2568 S   0.0  0.1   0:00.00 sshd
+ 5142 root      20   0    2372    664    620 S   0.0  0.0   0:00.02 sh
+ 5149 root      20   0    4280    540    496 S   0.0  0.0   0:00.00 sleep
+ 5749 root      20   0   13176   6212   5504 S   0.0  0.2   0:00.17 sshd
+ 5757 seco      20   0   13176   3204   2496 S   0.0  0.1   0:00.00 sshd
+ 6575 root      20   0   13176   6264   5564 S   0.0  0.2   0:00.17 sshd
+ 6581 seco      20   0   13176   3204   2504 S   0.0  0.1   0:00.00 sshd
+ 6582 root      20   0   13176   6120   5412 S   0.0  0.2   0:00.17 sshd
+ 6595 seco      20   0   13176   3280   2572 S   0.0  0.1   0:00.00 sshd
+ 6597 root      20   0   13176   6272   5568 S   0.0  0.2   0:00.17 sshd
+ 6604 seco      20   0   13176   3312   2608 S   0.0  0.1   0:00.00 sshd
+ 6606 root      20   0   13176   6248   5540 S   0.0  0.2   0:00.17 sshd
+ 6618 seco      20   0   13176   3216   2508 S   0.0  0.1   0:00.00 sshd
+ 8070 root      20   0   13176   6244   5536 S   0.0  0.2   0:00.17 sshd
+ 8080 seco      20   0   13176   3280   2572 S   0.0  0.1   0:00.00 sshd
+ 8081 root      20   0   13176   6332   5624 S   0.0  0.2   0:00.17 sshd
+ 8096 seco      20   0   13176   3216   2508 S   0.0  0.1   0:00.00 sshd
+ 8098 root      20   0   13176   6156   5456 S   0.0  0.2   0:00.17 sshd
+ 8109 seco      20   0   13176   3000   2300 S   0.0  0.1   0:00.00 sshd
+ 8111 root      20   0   13176   6212   5504 S   0.0  0.2   0:00.18 sshd
+ 8126 seco      20   0   13176   3052   2344 S   0.0  0.1   0:00.00 sshd
+ 8352 root      20   0   13176   6268   5564 S   0.0  0.2   0:00.18 sshd
+ 8360 seco      20   0   13176   3164   2460 S   0.0  0.1   0:00.00 sshd
+ 8912 root      20   0       0      0      0 I   0.0  0.0   0:01.59 kworker/3:+
+ 9097 root      20   0   13176   6268   5568 S   0.0  0.2   0:00.17 sshd
+ 9106 seco      20   0   13176   3060   2360 S   0.0  0.1   0:00.00 sshd
+ 9108 root      20   0   13176   6276   5576 S   0.0  0.2   0:00.17 sshd
+ 9122 seco      20   0   13176   3060   2360 S   0.0  0.1   0:00.00 sshd
+ 9124 root      20   0   13176   6204   5500 S   0.0  0.2   0:00.17 sshd
+ 9133 seco      20   0   13176   3196   2492 S   0.0  0.1   0:00.00 sshd
+ 9135 root      20   0   13176   6248   5540 S   0.0  0.2   0:00.17 sshd
+ 9149 seco      20   0   13176   3140   2432 S   0.0  0.1   0:00.00 sshd
+ 9778 root      20   0   13176   6260   5552 S   0.0  0.2   0:00.18 sshd
+ 9788 seco      20   0   13176   3216   2508 S   0.0  0.1   0:00.00 sshd
+10598 root      20   0   13176   6360   5652 S   0.0  0.2   0:00.17 sshd
+10606 seco      20   0   13176   3240   2532 S   0.0  0.1   0:00.00 sshd
+10835 root      20   0   13176   6196   5492 S   0.0  0.2   0:00.17 sshd
+10843 seco      20   0   13176   3212   2508 S   0.0  0.1   0:00.00 sshd
+10845 root      20   0   13176   6328   5624 S   0.0  0.2   0:00.17 sshd
+10859 seco      20   0   13176   3068   2364 S   0.0  0.1   0:00.00 sshd
+10861 root      20   0   13176   6160   5460 S   0.0  0.2   0:00.17 sshd
+10873 seco      20   0   13176   3012   2312 S   0.0  0.1   0:00.00 sshd
+10874 root      20   0   13176   6192   5484 S   0.0  0.2   0:00.18 sshd
+10889 seco      20   0   13176   3144   2436 S   0.0  0.1   0:00.00 sshd
+10954 root      20   0   13176   6224   5520 S   0.0  0.2   0:00.18 sshd
+10962 seco      20   0   13176   3164   2460 S   0.0  0.1   0:00.00 sshd
+10963 root      20   0   13176   6164   5460 S   0.0  0.2   0:00.17 sshd
+10979 seco      20   0   13176   3308   2604 S   0.0  0.1   0:00.00 sshd
+10980 root      20   0   13176   6180   5476 S   0.0  0.2   0:00.17 sshd
+10988 seco      20   0   13176   3164   2460 S   0.0  0.1   0:00.00 sshd
+10990 root      20   0   13176   6256   5556 S   0.0  0.2   0:00.17 sshd
+11004 seco      20   0   13176   3256   2556 S   0.0  0.1   0:00.00 sshd
+11821 root      20   0   13176   6228   5524 S   0.0  0.2   0:00.17 sshd
+11829 seco      20   0   13176   2992   2288 S   0.0  0.1   0:00.00 sshd
+12372 root      20   0   13176   6212   5508 S   0.0  0.2   0:00.17 sshd
+12380 seco      20   0   13176   3192   2488 S   0.0  0.1   0:00.00 sshd
+12382 root      20   0   13176   6176   5468 S   0.0  0.2   0:00.17 sshd
+12394 seco      20   0   13176   3028   2320 S   0.0  0.1   0:00.00 sshd
+12396 root      20   0   13176   6160   5456 S   0.0  0.2   0:00.17 sshd
+12403 seco      20   0   13176   3076   2372 S   0.0  0.1   0:00.00 sshd
+12405 root      20   0   13176   6188   5480 S   0.0  0.2   0:00.17 sshd
+12418 seco      20   0   13176   3016   2308 S   0.0  0.1   0:00.00 sshd
+12516 root      20   0   13176   6208   5508 S   0.0  0.2   0:00.17 sshd
+12527 seco      20   0   13176   3116   2416 S   0.0  0.1   0:00.00 sshd
+12529 root      20   0   13176   6196   5492 S   0.0  0.2   0:00.18 sshd
+12543 seco      20   0   13176   3252   2548 S   0.0  0.1   0:00.00 sshd
+12545 root      20   0   13176   6188   5480 S   0.0  0.2   0:00.17 sshd
+12554 seco      20   0   13176   3084   2376 S   0.0  0.1   0:00.00 sshd
+12556 root      20   0   13176   6232   5528 S   0.0  0.2   0:00.17 sshd
+12570 seco      20   0   13176   3060   2356 S   0.0  0.1   0:00.00 sshd
+12597 root      20   0   13176   6236   5528 S   0.0  0.2   0:00.17 sshd
+12607 seco      20   0   13176   3140   2432 S   0.0  0.1   0:00.00 sshd
+12609 root      20   0   13176   6184   5476 S   0.0  0.2   0:00.17 sshd
+12621 seco      20   0   13176   3016   2308 S   0.0  0.1   0:00.00 sshd
+12623 root      20   0   13176   6124   5420 S   0.0  0.2   0:00.17 sshd
+12630 seco      20   0   13176   3208   2504 S   0.0  0.1   0:00.00 sshd
+12632 root      20   0   13176   6256   5548 S   0.0  0.2   0:00.17 sshd
+12644 seco      20   0   13176   3216   2508 S   0.0  0.1   0:00.00 sshd
+12948 root      20   0   13176   6312   5612 S   0.0  0.2   0:00.17 sshd
+12956 seco      20   0   13176   3156   2456 S   0.0  0.1   0:00.00 sshd
+12958 root      20   0   13176   6136   5428 S   0.0  0.2   0:00.18 sshd
+12973 seco      20   0   13176   3212   2504 S   0.0  0.1   0:00.00 sshd
+12975 root      20   0   13176   6204   5496 S   0.0  0.2   0:00.17 sshd
+12986 seco      20   0   13176   3100   2392 S   0.0  0.1   0:00.00 sshd
+12988 root      20   0   13176   6192   5484 S   0.0  0.2   0:00.17 sshd
+13002 seco      20   0   13176   3016   2308 S   0.0  0.1   0:00.00 sshd
+13781 root      20   0   13176   6224   5516 S   0.0  0.2   0:00.18 sshd
+13791 seco      20   0   13176   3216   2508 S   0.0  0.1   0:00.00 sshd
+13792 root      20   0   13176   6200   5496 S   0.0  0.2   0:00.17 sshd
+13805 seco      20   0   13176   3096   2392 S   0.0  0.1   0:00.00 sshd
+13809 root      20   0   13176   6272   5568 S   0.0  0.2   0:00.17 sshd
+13817 seco      20   0   13176   3064   2360 S   0.0  0.1   0:00.00 sshd
+13821 root      20   0   13176   6220   5516 S   0.0  0.2   0:00.18 sshd
+13835 seco      20   0   13176   3184   2480 S   0.0  0.1   0:00.00 sshd
+13929 root      20   0       0      0      0 I   0.0  0.0   0:00.40 kworker/0:+
+14135 root      20   0       0      0      0 I   0.0  0.0   0:00.37 kworker/1:+
+14355 root      20   0       0      0      0 I   0.0  0.0   0:00.14 kworker/2:+
+14511 root      20   0   13176   6312   5604 S   0.0  0.2   0:00.17 sshd
+14518 seco      20   0   13176   3064   2356 S   0.0  0.1   0:00.00 sshd
+14579 root       0 -20       0      0      0 I   0.0  0.0   0:00.49 kworker/0:+
+14626 root      20   0   13176   6220   5516 S   0.0  0.2   0:00.17 sshd
+14632 seco      20   0   13176   2984   2280 S   0.0  0.1   0:00.00 sshd
+14634 root      20   0   13176   6216   5512 S   0.0  0.2   0:00.17 sshd
+14646 seco      20   0   13176   3196   2492 S   0.0  0.1   0:00.00 sshd
+14648 root      20   0   13176   6196   5492 S   0.0  0.2   0:00.17 sshd
+14655 seco      20   0   13176   3032   2328 S   0.0  0.1   0:00.00 sshd
+14657 root      20   0   13176   6272   5568 S   0.0  0.2   0:00.17 sshd
+14669 seco      20   0   13176   3212   2508 S   0.0  0.1   0:00.00 sshd
+15223 root      20   0   13176   6204   5496 S   0.0  0.2   0:00.18 sshd
+15233 seco      20   0   13176   3200   2492 S   0.0  0.1   0:00.00 sshd
+15235 root      20   0   13176   6256   5552 S   0.0  0.2   0:00.18 sshd
+15253 seco      20   0   13176   3068   2364 S   0.0  0.1   0:00.00 sshd
+15255 root      20   0   13176   6236   5532 S   0.0  0.2   0:00.17 sshd
+15264 seco      20   0   13176   3304   2600 S   0.0  0.1   0:00.00 sshd
+15265 root      20   0   13176   6220   5516 S   0.0  0.2   0:00.17 sshd
+15281 seco      20   0   13176   3188   2484 S   0.0  0.1   0:00.00 sshd
+15454 root       0 -20       0      0      0 I   0.0  0.0   0:00.84 kworker/2:+
+15705 root      20   0   13176   6200   5496 S   0.0  0.2   0:00.17 sshd
+15711 seco      20   0   13176   3104   2400 S   0.0  0.1   0:00.00 sshd
+15745 root      20   0   13176   6252   5544 S   0.0  0.2   0:00.18 sshd
+15753 seco      20   0   13176   3372   2664 S   0.0  0.1   0:00.00 sshd
+15755 root      20   0   13176   6164   5464 S   0.0  0.2   0:00.17 sshd
+15769 seco      20   0   13176   3072   2372 S   0.0  0.1   0:00.00 sshd
+15771 root      20   0   13176   6408   5704 S   0.0  0.2   0:00.17 sshd
+15780 seco      20   0   13176   3140   2436 S   0.0  0.1   0:00.00 sshd
+15782 root      20   0   13176   6320   5612 S   0.0  0.2   0:00.17 sshd
+15796 seco      20   0   13176   3136   2428 S   0.0  0.1   0:00.00 sshd
+16929 root      20   0   13176   6224   5516 S   0.0  0.2   0:00.17 sshd
+16937 seco      20   0   13176   2992   2284 S   0.0  0.1   0:00.00 sshd
+16939 root      20   0   13176   6220   5516 S   0.0  0.2   0:00.17 sshd
+16949 seco      20   0   13176   3188   2484 S   0.0  0.1   0:00.00 sshd
+16951 root      20   0   13176   6232   5528 S   0.0  0.2   0:00.17 sshd
+16960 seco      20   0   13176   3120   2416 S   0.0  0.1   0:00.00 sshd
+16961 root      20   0   13176   6168   5460 S   0.0  0.2   0:00.17 sshd
+16974 seco      20   0   13176   3312   2604 S   0.0  0.1   0:00.00 sshd
+17025 root      20   0   13176   6316   5612 S   0.0  0.2   0:00.18 sshd
+17036 seco      20   0   13176   3132   2428 S   0.0  0.1   0:00.00 sshd
+17199 root      20   0   13176   6352   5648 S   0.0  0.2   0:00.18 sshd
+17210 seco      20   0   13176   3232   2528 S   0.0  0.1   0:00.00 sshd
+17212 root      20   0   13176   6356   5652 S   0.0  0.2   0:00.17 sshd
+17226 seco      20   0   13176   3236   2532 S   0.0  0.1   0:00.00 sshd
+17227 root      20   0   13176   6224   5516 S   0.0  0.2   0:00.17 sshd
+17237 seco      20   0   13176   3076   2368 S   0.0  0.1   0:00.00 sshd
+17239 root      20   0   13176   6212   5508 S   0.0  0.2   0:00.17 sshd
+17251 seco      20   0   13176   3064   2360 S   0.0  0.1   0:00.00 sshd
+17436 root      20   0   13176   6308   5604 S   0.0  0.2   0:00.17 sshd
+17444 seco      20   0   13176   3060   2356 S   0.0  0.1   0:00.00 sshd
+17967 root      20   0   13176   6280   5572 S   0.0  0.2   0:00.17 sshd
+17973 seco      20   0   13176   3220   2512 S   0.0  0.1   0:00.00 sshd
+17975 root      20   0   13176   6304   5600 S   0.0  0.2   0:00.17 sshd
+17989 seco      20   0   13176   3140   2436 S   0.0  0.1   0:00.00 sshd
+17991 root      20   0   13176   6152   5444 S   0.0  0.2   0:00.17 sshd
+17999 seco      20   0   13176   3284   2576 S   0.0  0.1   0:00.00 sshd
+18001 root      20   0   13176   6316   5608 S   0.0  0.2   0:00.17 sshd
+18013 seco      20   0   13176   3136   2428 S   0.0  0.1   0:00.00 sshd
+18918 root      20   0   13176   6208   5500 S   0.0  0.2   0:00.17 sshd
+18926 seco      20   0   13176   3112   2404 S   0.0  0.1   0:00.00 sshd
+18928 root      20   0   13176   6292   5588 S   0.0  0.2   0:00.17 sshd
+18940 seco      20   0   13176   2984   2280 S   0.0  0.1   0:00.00 sshd
+18942 root      20   0   13176   6200   5496 S   0.0  0.2   0:00.17 sshd
+18949 seco      20   0   13176   3280   2576 S   0.0  0.1   0:00.00 sshd
+18951 root      20   0   13176   6252   5544 S   0.0  0.2   0:00.17 sshd
+18963 seco      20   0   13176   2988   2280 S   0.0  0.1   0:00.00 sshd
+19464 root      20   0   13176   6252   5548 S   0.0  0.2   0:00.18 sshd
+19470 seco      20   0   13176   3220   2516 S   0.0  0.1   0:00.00 sshd
+20255 root      20   0       0      0      0 I   0.0  0.0   0:01.78 kworker/u8+
+20648 root      20   0       0      0      0 I   0.0  0.0   0:00.11 kworker/2:+
+21090 root      20   0   13176   6248   5540 S   0.0  0.2   0:00.17 sshd
+21096 seco      20   0   13176   3372   2664 S   0.0  0.1   0:00.00 sshd
+21098 root      20   0   13176   6216   5512 S   0.0  0.2   0:00.17 sshd
+21110 seco      20   0   13176   3120   2416 S   0.0  0.1   0:00.00 sshd
+21112 root      20   0   13176   6160   5452 S   0.0  0.2   0:00.17 sshd
+21120 seco      20   0   13176   3008   2300 S   0.0  0.1   0:00.00 sshd
+21122 root      20   0   13176   6260   5552 S   0.0  0.2   0:00.17 sshd
+21135 seco      20   0   13176   3228   2520 S   0.0  0.1   0:00.00 sshd
+22371 root      20   0       0      0      0 I   0.0  0.0   0:00.01 kworker/3:+
+22411 root      20   0       0      0      0 I   0.0  0.0   0:00.16 kworker/0:+
+22647 root      20   0       0      0      0 I   0.0  0.0   0:00.85 kworker/1:+
+22740 root      20   0       0      0      0 D   0.0  0.0   0:05.30 kworker/u8+
+22804 root      20   0   13176   6224   5520 S   0.0  0.2   0:00.17 sshd
+22810 seco      20   0   13176   3128   2424 S   0.0  0.1   0:00.00 sshd
+22861 root      20   0   13176   6172   5468 S   0.0  0.2   0:00.17 sshd
+22867 seco      20   0   13176   3076   2372 S   0.0  0.1   0:00.00 sshd
+22869 root      20   0   13176   6256   5552 S   0.0  0.2   0:00.18 sshd
+22881 seco      20   0   13176   3068   2364 S   0.0  0.1   0:00.00 sshd
+22883 root      20   0   13176   6212   5508 S   0.0  0.2   0:00.17 sshd
+22890 seco      20   0   13176   3192   2488 S   0.0  0.1   0:00.00 sshd
+22892 root      20   0   13176   6220   5512 S   0.0  0.2   0:00.17 sshd
+22904 seco      20   0   13176   3076   2368 S   0.0  0.1   0:00.00 sshd
+22920 root      20   0   13376   6312   5504 S   0.0  0.2   0:00.36 sshd
+23086 seco      20   0   13376   3140   2332 S   0.0  0.1   0:01.08 sshd
+23087 seco      20   0    7072   4540   2996 S   0.0  0.1   0:00.23 bash
+23095 root      20   0   13176   6224   5520 S   0.0  0.2   0:00.18 sshd
+23103 seco      20   0   13176   3204   2500 S   0.0  0.1   0:00.00 sshd
+23105 root      20   0   13176   6216   5508 S   0.0  0.2   0:00.16 sshd
+23119 seco      20   0   13176   3056   2348 S   0.0  0.1   0:00.00 sshd
+23121 root      20   0   13176   6164   5460 S   0.0  0.2   0:00.17 sshd
+23130 seco      20   0   13176   3144   2440 S   0.0  0.1   0:00.00 sshd
+23132 root      20   0   13176   6256   5552 S   0.0  0.2   0:00.17 sshd
+23146 seco      20   0   13176   3036   2332 S   0.0  0.1   0:00.00 sshd
+23317 root      20   0   13176   6196   5488 S   0.0  0.2   0:00.17 sshd
+23323 seco      20   0   13176   3104   2396 S   0.0  0.1   0:00.00 sshd
+23716 root      20   0   13176   6136   5436 S   0.0  0.2   0:00.17 sshd
+23724 seco      20   0   13176   3276   2576 S   0.0  0.1   0:00.00 sshd
+23726 root      20   0   13176   6180   5476 S   0.0  0.2   0:00.17 sshd
+23740 seco      20   0   13176   3308   2604 S   0.0  0.1   0:00.00 sshd
+23741 root      20   0   13176   6304   5596 S   0.0  0.2   0:00.17 sshd
+23751 seco      20   0   13176   3132   2424 S   0.0  0.1   0:00.00 sshd
+23753 root      20   0   13176   6204   5500 S   0.0  0.2   0:00.17 sshd
+23767 seco      20   0   13176   3044   2340 S   0.0  0.1   0:00.00 sshd
+23794 root      20   0   13176   6172   5468 S   0.0  0.2   0:00.18 sshd
+23802 seco      20   0   13176   3144   2440 S   0.0  0.1   0:00.00 sshd
+23804 root      20   0   13176   6256   5548 S   0.0  0.2   0:00.17 sshd
+23816 seco      20   0   13176   3280   2572 S   0.0  0.1   0:00.00 sshd
+23818 root      20   0   13176   6296   5592 S   0.0  0.2   0:00.17 sshd
+23828 seco      20   0   13176   3160   2456 S   0.0  0.1   0:00.00 sshd
+23830 root      20   0   13176   6192   5484 S   0.0  0.2   0:00.17 sshd
+23842 seco      20   0   13176   3204   2496 S   0.0  0.1   0:00.00 sshd
+23880 root      20   0   13176   6192   5488 S   0.0  0.2   0:00.17 sshd
+23888 seco      20   0   13176   3104   2400 S   0.0  0.1   0:00.00 sshd
+24985 root      20   0   13176   6184   5480 S   0.0  0.2   0:00.17 sshd
+24993 seco      20   0   13176   3048   2344 S   0.0  0.1   0:00.00 sshd
+24995 root      20   0   13176   6108   5404 S   0.0  0.2   0:00.17 sshd
+25009 seco      20   0   13176   2988   2284 S   0.0  0.1   0:00.00 sshd
+25011 root      20   0   13176   6164   5460 S   0.0  0.2   0:00.18 sshd
+25023 seco      20   0   13176   3308   2604 S   0.0  0.1   0:00.00 sshd
+25024 root      20   0   13176   6164   5460 S   0.0  0.2   0:00.17 sshd
+25039 seco      20   0   13176   3008   2304 S   0.0  0.1   0:00.00 sshd
+25491 root      20   0   13176   6252   5544 S   0.0  0.2   0:00.17 sshd
+25497 seco      20   0   13176   3116   2408 S   0.0  0.1   0:00.00 sshd
+25499 root      20   0   13176   6272   5568 S   0.0  0.2   0:00.18 sshd
+25511 seco      20   0   13176   3164   2460 S   0.0  0.1   0:00.00 sshd
+25513 root      20   0   13176   6244   5540 S   0.0  0.2   0:00.17 sshd
+25522 seco      20   0   13176   3112   2408 S   0.0  0.1   0:00.00 sshd
+25524 root      20   0   13176   6272   5568 S   0.0  0.2   0:00.17 sshd
+25536 seco      20   0   13176   3212   2508 S   0.0  0.1   0:00.00 sshd
+26055 root      20   0       0      0      0 I   0.0  0.0   0:00.22 kworker/u8+
+26261 root      20   0   13176   6236   5536 S   0.0  0.2   0:00.18 sshd
+26270 seco      20   0   13176   3128   2428 S   0.0  0.1   0:00.00 sshd
+26500 root      20   0       0      0      0 I   0.0  0.0   0:00.27 kworker/2:+
+27093 root      20   0   13176   6160   5460 S   0.0  0.2   0:00.17 sshd
+27103 seco      20   0   13176   3212   2512 S   0.0  0.1   0:00.00 sshd
+27105 root      20   0   13176   6252   5548 S   0.0  0.2   0:00.17 sshd
+27119 seco      20   0   13176   2988   2284 S   0.0  0.1   0:00.00 sshd
+27121 root      20   0   13176   6236   5532 S   0.0  0.2   0:00.17 sshd
+27131 seco      20   0   13176   3204   2500 S   0.0  0.1   0:00.00 sshd
+27132 root      20   0   13176   6292   5588 S   0.0  0.2   0:00.17 sshd
+27145 seco      20   0   13176   2984   2280 S   0.0  0.1   0:00.00 sshd
+27332 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 kworker/2:+
+28045 root      20   0   13176   6196   5488 S   0.0  0.2   0:00.17 sshd
+28053 seco      20   0   13176   3284   2576 S   0.0  0.1   0:00.00 sshd
+28055 root      20   0   13176   6296   5592 S   0.0  0.2   0:00.17 sshd
+28069 seco      20   0   13176   2988   2284 S   0.0  0.1   0:00.00 sshd
+28071 root      20   0   13176   6136   5432 S   0.0  0.2   0:00.17 sshd
+28080 seco      20   0   13176   3136   2432 S   0.0  0.1   0:00.00 sshd
+28082 root      20   0   13176   6316   5616 S   0.0  0.2   0:00.17 sshd
+28098 seco      20   0   13176   3200   2500 S   0.0  0.1   0:00.00 sshd
+28213 root       0 -20       0      0      0 I   0.0  0.0   0:00.05 kworker/3:+
+28322 root      20   0   13176   6144   5444 S   0.0  0.2   0:00.17 sshd
+28331 seco      20   0   13176   3276   2576 S   0.0  0.1   0:00.00 sshd
+28515 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 kworker/1:+
+29187 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 kworker/0:+
+29250 root      20   0   13176   6112   5404 S   0.0  0.2   0:00.18 sshd
+29259 seco      20   0   13176   3208   2500 S   0.0  0.1   0:00.00 sshd
+29261 root      20   0   13176   6200   5496 S   0.0  0.2   0:00.17 sshd
+29275 seco      20   0   13176   3096   2392 S   0.0  0.1   0:00.00 sshd
+29277 root      20   0   13176   6148   5440 S   0.0  0.2   0:00.17 sshd
+29288 seco      20   0   13176   3216   2508 S   0.0  0.1   0:00.00 sshd
+29290 root      20   0   13176   6220   5512 S   0.0  0.2   0:00.18 sshd
+29304 seco      20   0   13176   3124   2416 S   0.0  0.1   0:00.00 sshd
+29347 root      20   0       0      0      0 I   0.0  0.0   0:00.10 kworker/1:+
+29364 root      20   0       0      0      0 I   0.0  0.0   0:00.16 kworker/0:+
+29481 root      20   0       0      0      0 I   0.0  0.0   0:00.14 kworker/3:+
+29730 root      20   0   13176   6156   5456 S   0.0  0.2   0:00.18 sshd
+29738 seco      20   0   13176   3312   2612 S   0.0  0.1   0:00.00 sshd
+29930 root      20   0   13176   6156   5452 S   0.0  0.2   0:00.18 sshd
+29936 seco      20   0   13176   3004   2300 S   0.0  0.1   0:00.00 sshd
+29938 root      20   0   13176   6236   5532 S   0.0  0.2   0:00.17 sshd
+29950 seco      20   0   13176   3048   2344 S   0.0  0.1   0:00.00 sshd
+29952 root      20   0   13176   6136   5428 S   0.0  0.2   0:00.17 sshd
+29959 seco      20   0   13176   3280   2572 S   0.0  0.1   0:00.00 sshd
+29961 root      20   0   13176   6264   5556 S   0.0  0.2   0:00.17 sshd
+29973 seco      20   0   13176   3232   2524 S   0.0  0.1   0:00.00 sshd
+30261 root      20   0   13176   6204   5500 S   0.0  0.2   0:00.17 sshd
+30269 seco      20   0   13176   3036   2332 S   0.0  0.1   0:00.00 sshd
+30464 root      20   0   13176   6196   5488 S   0.0  0.2   0:00.18 sshd
+30472 seco      20   0   13176   3104   2396 S   0.0  0.1   0:00.00 sshd
+30474 root      20   0   13176   6144   5440 S   0.0  0.2   0:00.17 sshd
+30490 seco      20   0   13176   3140   2436 S   0.0  0.1   0:00.00 sshd
+30491 root      20   0   13176   6236   5532 S   0.0  0.2   0:00.17 sshd
+30504 seco      20   0   13176   3316   2612 S   0.0  0.1   0:00.00 sshd
+30506 root      20   0   13176   6144   5436 S   0.0  0.2   0:00.17 sshd
+30520 seco      20   0   13176   3144   2436 S   0.0  0.1   0:00.00 sshd
+30988 root      20   0   13176   6220   5516 S   0.0  0.2   0:00.18 sshd
+30996 seco      20   0   13176   3192   2488 S   0.0  0.1   0:00.00 sshd
+30998 root      20   0   13176   6144   5440 S   0.0  0.2   0:00.17 sshd
+31014 seco      20   0   13176   3244   2540 S   0.0  0.1   0:00.00 sshd
+31016 root      20   0   13176   6236   5532 S   0.0  0.2   0:00.17 sshd
+31026 seco      20   0   13176   3208   2504 S   0.0  0.1   0:00.00 sshd
+31028 root      20   0   13176   6148   5444 S   0.0  0.2   0:00.18 sshd
+31042 seco      20   0   13176   3212   2508 S   0.0  0.1   0:00.00 sshd
+31309 root       0 -20       0      0      0 I   0.0  0.0   0:00.36 kworker/3:+
+32320 root      20   0   13176   6168   5464 S   0.0  0.2   0:00.18 sshd
+32328 seco      20   0   13176   3312   2608 S   0.0  0.1   0:00.00 sshd
+32426 root      20   0   13176   6264   5564 S   0.0  0.2   0:00.17 sshd
+32437 seco      20   0   13176   3096   2396 S   0.0  0.1   0:00.00 sshd
+
+[09/03 02:01:33.310] | CRITICAL | watchdog   | main_reactor | *** Top Output (cpu_load) - END ***
+[09/03 02:01:33.310] | WARNING  | net_monitor | main_reactor | check_network_connectivity_async(): Skipping due to high CPU load (6.41 > 3.5)
+[09/03 02:01:33.722] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[09/03 02:01:33.723] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[09/03 02:01:54.691] | INFO     | phone      | SentryJSONRPCServer | should_run(): SECO detected - returning
+[09/03 02:01:54.692] | INFO     | mps.ui     | SentryJSONRPCServer | suspend_background_tasks(): change to True
+[09/03 02:01:54.692] | INFO     | parking_serv | SentryJSONRPCServer | suspend_transfers(): True
+[09/03 02:01:54.703] | INFO     | ui.multi   | SentryJSONRPCServer | set_state(): UI_STATE_IDLE performing pre_exit_state() actions UISI: screen touched
+[09/03 02:01:54.704] | INFO     | interaction | SentryJSONRPCServer | pre_exit_state(): completing actions before next_state UI_STATE_HOME
+[09/03 02:01:54.704] | INFO     | interaction | SentryJSONRPCServer | pre_exit_state(): completed actions complete True
+[09/03 02:01:54.705] | INFO     | ui.multi   | SentryJSONRPCServer | set_state(): UI_STATE_IDLE completed pre_exit_state() actions proceed True
+[09/03 02:01:54.706] | INFO     | ui.multi   | SentryJSONRPCServer | Secs in Idle 209871.930743
+[09/03 02:01:54.707] | INFO     | interaction | SentryJSONRPCServer | cash_out_or_void_payment: No payment
+[09/03 02:01:54.707] | INFO     | ui.multi   | SentryJSONRPCServer | CONFIRM FALSE
+[09/03 02:01:54.708] | INFO     | ui.multi   | SentryJSONRPCServer | UISH: enter_state active_spot is None
+[09/03 02:01:54.708] | INFO     | interaction | SentryJSONRPCServer | return_coins(): ignoring credit cards and returning coins
+[09/03 02:01:54.909] | INFO     | ui.multi   | SentryJSONRPCServer | CHECK POP  False
+[09/03 02:01:54.910] | INFO     | ui.multi   | SentryJSONRPCServer | UISH::enter_state(): No expired for None
+[09/03 02:01:54.919] | INFO     | gui        | MainThread | QT: MultiSelectSpace: transition to spacemapoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiSelectSpace.qml:984)
+[09/03 02:01:54.932] | INFO     | gui        | SentryJSONRPCServer | Screen changed to SCREEN_MULTI_SELECT_SPACE en
+[09/03 02:01:54.933] | INFO     | playback   | SentryJSONRPCServer | play: en_space_number.mp3
+[09/03 02:01:54.946] | WARNING  | interaction | SentryJSONRPCServer | _stop_idle_timeout: NO TIMER
+[09/03 02:01:54.948] | INFO     | ui.multi   | SentryJSONRPCServer | UI_STATE_IDLE -> UI_STATE_HOME (UISI: screen touched)
+[09/03 02:01:54.993] | INFO     | gui        | MainThread | _signal_goto_screen: multi_select_space
+[09/03 02:01:54.994] | INFO     | gui        | MainThread | QT: Current:  multi_idle Next:  multi_select_space (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/main.qml:1445)
+[09/03 02:01:58.467] | INFO     | phone      | SentryJSONRPCServer | should_run(): SECO detected - returning
+[09/03 02:01:59.524] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/system_alive-72bf3298a73b11f189d900c008947d30.json
+[09/03 02:02:00.357] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"ip_addr": "10.10.101.168", "rmq_responses_attempted": 6007, "msg_id": "0x8000002eL", "rmq_api_bytes_sent": 304, "message": "9010-9011", "rmq_image_bytes_sent": 0, "rmq_response_bytes_sent": 25743572, "coin_jar_full": 0.0, "rmq_images_attempted": 0, "desc_str": "Sentry is alive and normal", "rmq_image_errors": 0, "rmq_images_sent": 0, "rmq_json_errors": 0, "rmq_responses_sent": 6007, "rmq_apis_attempted": 2, "rmq_jsons_attempted": 1558, "sentry_thread_hung": false, "rmq_api_errors": 0, "rmq_response_errors": 0, "rmq_json_bytes_sent": 4287878, "rmq_jsons_sent": 1558, "rmq_apis_sent": 2}, "class": "event", "queued_dt": "2026-09-03T02:01:59Z", "type": "system_alive", "id": "ce5c4873-921f-4e5d-b129-90c57a89cd41", "device_id": "m:00C008947D30"}
+[09/03 02:02:00.457] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at rabbitmq.staging.sentry-link.com:5671 (200): Normal shutdown
+[09/03 02:02:00.866] | INFO     | interaction | SentryJSONRPCServer | on_test_automation_space_entered: SPACE 9010
+[09/03 02:02:00.869] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): user selected space 9010
+[09/03 02:02:00.871] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): check space 9010 for local
+[09/03 02:02:00.872] | WARNING  | interaction | main_reactor | _stop_idle_timeout: NO TIMER
+[09/03 02:02:00.872] | INFO     | parking.controller | main_reactor | map_space_to_spot: indx 0 spot SPOT_1
+[09/03 02:02:00.872] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): 9010 is a LOCAL space number, setting active spot SPOT_1
+[09/03 02:02:00.873] | INFO     | gui        | MainThread | QT: MultiSelectSpace: transition to loadon (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiSelectSpace.qml:984)
+[09/03 02:02:00.876] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/parking_event_user_entered_space-72bf3299a73b11f189d900c008947d30.json
+[09/03 02:02:00.883] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): has paid for max time
+[09/03 02:02:01.143] | INFO     | interaction | main_reactor | set_active_spot: ACTIVE SPOT SPOT_1 /home/mpsadmin/projects/Sentry_test/src/mps/ui/multi_user_interaction.py:2750
+[09/03 02:02:01.144] | INFO     | interaction | main_reactor | set_active_spot(): to SPOT_1
+[09/03 02:02:01.144] | INFO     | parking.controller | main_reactor | set_active_spot(): to SPOT_1
+[09/03 02:02:01.386] | INFO     | ui.multi   | main_reactor | config_payment_acceptance: Caller /home/mpsadmin/projects/Sentry_test/src/mps/ui/multi_user_interaction.py:2756
+[09/03 02:02:01.387] | INFO     | ui.multi   | main_reactor | config_payment_acceptance(UISH(): LOCAL valid space number): is_rate_schedule_payment_allowed_now() = True
+[09/03 02:02:01.389] | INFO     | interaction | main_reactor | return_coins(): ignoring credit cards and returning coins
+[09/03 02:02:01.589] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): PSV PSV_STATE_VALID_MAX parking_state PARKING_STATE_VALID
+[09/03 02:02:01.600] | INFO     | gui        | MainThread | QT: MultiSelectSpace: transition to loadoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiSelectSpace.qml:984)
+[09/03 02:02:01.616] | INFO     | gui        | main_reactor | Screen changed to SCREEN_MULTI_HOME en
+[09/03 02:02:01.617] | INFO     | ui.multi   | main_reactor | update_last_session_data(): space 9010 spot_id SPOT_1 parking_session_id daf3bb11a73911f189d900c008947d30 NO payment
+[09/03 02:02:01.676] | INFO     | gui        | MainThread | _signal_goto_screen: multi_home
+[09/03 02:02:01.676] | INFO     | gui        | MainThread | QT: Current:  multi_select_space Next:  multi_home (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/main.qml:1445)
+[09/03 02:02:01.834] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"user_space_entered": "9010", "event_time": "2026-09-03T02:02:00Z", "mac_address": "00:C0:08:94:7D:30"}, "class": "event", "queued_dt": "2026-09-03T02:02:00Z", "type": "parking_event_user_entered_space", "id": "b6dda1d4-9894-4db2-8d17-dd451691b45b", "device_id": "m:00C008947D30"}
+[09/03 02:02:01.945] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at rabbitmq.staging.sentry-link.com:5671 (200): Normal shutdown

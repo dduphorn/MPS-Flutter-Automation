@@ -1,26 +1,16 @@
-[08/18 21:11:47.733] | INFO     | gui        | MainThread | QT: Home: transition to reswipeoff (file:///tmp/tmpYVecuu/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
-[08/18 21:11:47.734] | INFO     | gui        | MainThread | QT: Home: calling reswipeoff (file:///tmp/tmpYVecuu/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:400)
-[08/18 21:11:47.735] | INFO     | gui        | MainThread | QT: MultiHome: transition to reswipeoff (file:///tmp/tmpYVecuu/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
-[08/18 21:11:47.736] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to processingoff (file:///tmp/tmpYVecuu/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
-[08/18 21:11:47.736] | INFO     | gui        | MainThread | QT: Home: transition to processingoff (file:///tmp/tmpYVecuu/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
-[08/18 21:11:47.737] | INFO     | gui        | MainThread | QT: MultiHome: transition to processingoff (file:///tmp/tmpYVecuu/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
-[08/18 21:11:47.738] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to declineoff (file:///tmp/tmpYVecuu/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
-[08/18 21:11:47.739] | INFO     | gui        | MainThread | QT: MultiHome: transition to declineoff (file:///tmp/tmpYVecuu/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
-[08/18 21:11:50.345] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
-[08/18 21:11:50.346] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
-[08/18 21:12:00.744] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/system_alive-7411d2849b4911f1a6fc00c008947d30.json
-[08/18 21:12:01.019] | INFO     | gui        | MainThread | QT: Home: transition to PSV_STATE_AVAILABLE (file:///tmp/tmpYVecuu/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
-[08/18 21:12:01.465] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"ip_addr": "10.10.101.168", "rmq_responses_attempted": 459, "msg_id": "0x8000002eL", "rmq_api_bytes_sent": 304, "message": "9010-9011", "rmq_image_bytes_sent": 0, "rmq_response_bytes_sent": 953840, "coin_jar_full": 0.0, "rmq_images_attempted": 0, "desc_str": "Sentry is alive and normal", "rmq_image_errors": 0, "rmq_images_sent": 0, "rmq_json_errors": 0, "rmq_responses_sent": 459, "rmq_apis_attempted": 2, "rmq_jsons_attempted": 211, "sentry_thread_hung": false, "rmq_api_errors": 0, "rmq_response_errors": 0, "rmq_json_bytes_sent": 638012, "rmq_jsons_sent": 211, "rmq_apis_sent": 2}, "class": "event", "queued_dt": "2026-08-18T21:12:00Z", "type": "system_alive", "id": "c1a4bcca-7d30-4cb2-a1ba-8455da61537e", "device_id": "m:00C008947D30"}
-[08/18 21:12:01.546] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at rabbitmq.staging.sentry-link.com:5671 (200): Normal shutdown
-[08/18 21:12:21.937] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
-[08/18 21:12:21.938] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
-[08/18 21:12:21.972] | INFO     | lib.seco   | watchdog   | SecoLib()::check_temp(): SECO cpu temperature is:  Kelvin 3201 Celsius 46
-[08/18 21:12:46.192] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43667 rp_min_to_free 43667
-[08/18 21:12:51.972] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
-[08/18 21:12:51.973] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
-[08/18 21:13:28.002] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req: u'rpc_settings' Payload: '{"method":"get_setting","params":["SYS_IP_ADDRESS"],"jsonrpc":"2.0","id":95172}'
-[08/18 21:13:28.004] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint settings response {"jsonrpc": "2.0", "id": 95172, "result": "10.10.101.168"}
-[08/18 21:13:28.050] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 95172, "result": "10.10.101.168"} Queue amq.gen-7O5_UfnjVOio9qk1tfoP3Q #460
-[08/18 21:13:28.579] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req: u'rpc_settings' Payload: '{"method":"get_setting","params":["PARKING_IMAGE_SILVER_BULLET_IP_ADDR"],"jsonrpc":"2.0","id":30080}'
-[08/18 21:13:28.580] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint settings response {"jsonrpc": "2.0", "id": 30080, "result": "127.0.0.1"}
-[08/18 21:13:28.630] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 30080, "result": "127.0.0.1"} Queue amq.gen-iel1GZ26HsTO3gnYv1THOA #461
+[08/31 21:38:23.023] | INFO     | gui        | MainThread | QT: Home: calling reswipeoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:400)
+[08/31 21:38:23.024] | INFO     | gui        | MainThread | QT: MultiHome: transition to reswipeoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[08/31 21:38:23.025] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to processingoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[08/31 21:38:23.025] | INFO     | gui        | MainThread | QT: Home: transition to processingoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[08/31 21:38:23.026] | INFO     | gui        | MainThread | QT: MultiHome: transition to processingoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[08/31 21:38:23.027] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to declineoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[08/31 21:38:23.028] | INFO     | gui        | MainThread | QT: MultiHome: transition to declineoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[08/31 21:38:24.840] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43641 rp_min_to_free 43641
+[08/31 21:38:35.875] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/31 21:38:35.876] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/31 21:39:00.947] | INFO     | gui        | MainThread | QT: Home: transition to PSV_STATE_AVAILABLE (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[08/31 21:39:24.814] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43640 rp_min_to_free 43640
+[08/31 21:39:38.031] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/31 21:39:38.033] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/31 21:40:03.102] | WARNING  | net_monitor | main_reactor | check_network_connectivity_async(): Skipping due to high CPU load (4.87 > 3.5)
+[08/31 21:40:12.948] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3

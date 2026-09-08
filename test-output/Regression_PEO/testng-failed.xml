@@ -2,24 +2,24 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite thread-count="9" parallel="tests" name="Failed suite [Regression_PEO]" guice-stage="DEVELOPMENT">
   <test thread-count="9" parallel="tests" name="PEO_TestCases(failed)">
-    <parameter name="strMobileAPK" value="MPSPEO-Flutter-Staging-2.0.14.apk"/>
+    <parameter name="strPEOAPK" value="MPSN5PEO-Staging-4.8(251).apk"/>
     <parameter name="strAppiumPort" value="5555"/>
     <parameter name="strStopAndStartAppiumServer" value="True"/>
     <parameter name="strAVDName" value=""/>
     <parameter name="strDeviceId" value="9000-9001"/>
-    <parameter name="strDeviceAppiumPort" value="4723"/>
-    <parameter name="strAndroidUdid" value="R5CT71MQ2MM"/>
+    <parameter name="strDeviceAppiumPort" value="5556"/>
+    <parameter name="strAndroidUdid" value="R5CT71MQ5YT"/>
     <parameter name="strRemotePath" value="http://localhost:4723"/>
     <classes>
-      <class name="AutomationCode.PEO_TestCases_Flutter">
+      <class name="AutomationCode.PEO_TestCases">
         <methods>
+          <include name="StopIOSServer"/>
+          <include name="P4001_ValidateInvalidCredentialMessage"/>
+          <include name="StartIOSServer"/>
           <include name="BeforeMethod"/>
           <include name="AfterMethod"/>
-          <include name="P4006F_FTFP0_CGPV_PLI_AV_CV_IT_DV_DWDV_PDV_ES1_VPSH_VICAE_VIAC"/>
-          <include name="StartIOSServer"/>
-          <include name="StopIOSServer"/>
         </methods>
-      </class> <!-- AutomationCode.PEO_TestCases_Flutter -->
+      </class> <!-- AutomationCode.PEO_TestCases -->
     </classes>
   </test> <!-- PEO_TestCases(failed) -->
 </suite> <!-- Failed suite [Regression_PEO] -->

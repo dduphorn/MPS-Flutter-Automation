@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="181" total="182" passed="1" failed="0" skipped="0">
+<testng-results ignored="181" total="182" passed="0" failed="1" skipped="0">
   <reporter-output>
     <line>
-      <![CDATA[Automation User: darinduphorn]]>
+      <![CDATA[Automation User: mpsadmin]]>
     </line>
     <line>
       <![CDATA[Global-Appium Port: 6666]]>
@@ -23,59 +23,269 @@
       <![CDATA[strAppiumPort:null]]>
     </line>
     <line>
-      <![CDATA[************************************************************]]>
-    </line>
-    <line>
-      <![CDATA[Environment:  SG                           ]]>
-    </line>
-    <line>
-      <![CDATA[Version:      SentryMobile-Staging-10.0.499.apk                             ]]>
-    </line>
-    <line>
-      <![CDATA[Municipality: AutomationMunicipality                          ]]>
-    </line>
-    <line>
-      <![CDATA[Meter Name:   9010                             ]]>
-    </line>
-    <line>
-      <![CDATA[Meter IP:     10.10.101.168                                  ]]>
-    </line>
-    <line>
-      <![CDATA[Meter Version:"meter-8.18-1a~master20241003.1"
-                          ]]>
-    </line>
-    <line>
-      <![CDATA[Meter MD5SUM Version:                  ]]>
-    </line>
-    <line>
-      <![CDATA[Sentry Link Version:Version 9.8               ]]>
-    </line>
-    <line>
-      <![CDATA[SilverBullet Version:5.1.1-1            ]]>
-    </line>
-    <line>
-      <![CDATA[RemotePath:   http://localhost:4723                            ]]>
-    </line>
-    <line>
-      <![CDATA[AndroidUdid:  R5CT71MQ2MM                           ]]>
+      <![CDATA[strHeadless: False]]>
     </line>
     <line>
       <![CDATA[************************************************************]]>
     </line>
     <line>
-      <![CDATA[<font color='green'>Meter Start Time 17:30:</font>]]>
+      <![CDATA[Test:  ANDROID_TestCases_A2303F_CS_PS1_GPV1_WFFACTNVT_ALPTPS_VMT_VPSH_1             ]]>
     </line>
     <line>
-      <![CDATA[****************METER MEMORY******************]]>
+      <![CDATA[Environment:  SG                            ]]>
     </line>
     <line>
-      <![CDATA[totalusedfree]]>
+      <![CDATA[Municipality: AutomationMunicipality                           ]]>
     </line>
     <line>
-      <![CDATA[403000010422922085492]]>
+      <![CDATA[Meter Name:   9010                              ]]>
     </line>
     <line>
-      <![CDATA[strHeadless: True]]>
+      <![CDATA[Meter Type;seco                              ]]>
+    </line>
+    <line>
+      <![CDATA[Meter IP:     10.10.101.168                                   ]]>
+    </line>
+    <line>
+      <![CDATA[Local Meter Version:"meter-8.18-1a~master20241003.1"
+                ]]>
+    </line>
+    <line>
+      <![CDATA[Remote Device:null                         ]]>
+    </line>
+    <line>
+      <![CDATA[Remote Type:null                               ]]>
+    </line>
+    <line>
+      <![CDATA[Sentry Link Version:Version 9.8                ]]>
+    </line>
+    <line>
+      <![CDATA[SilverBullet Version:5.1.1-1             ]]>
+    </line>
+    <line>
+      <![CDATA[RemotePath:   http://localhost:4723                             ]]>
+    </line>
+    <line>
+      <![CDATA[SOM Local Image Id:   False                ]]>
+    </line>
+    <line>
+      <![CDATA[SOM Local Distro Version:   False    ]]>
+    </line>
+    <line>
+      <![CDATA[SOM Distro Name:                   ]]>
+    </line>
+    <line>
+      <![CDATA[************************************************************]]>
+    </line>
+    <line>
+      <![CDATA[<font color='green'>Meter Start Time 22:25:</font>]]>
+    </line>
+    <line>
+      <![CDATA[<font color='green'>Test Start Time 5:26:06 PM</font>]]>
+    </line>
+    <line>
+      <![CDATA[<font color='green'>The Meter Screen Shot (A2303F_CS_PS1_GPV1_WFFACTNVT_ALPTPS_VMT_VPSH_1.png) did not exist</font>]]>
+    </line>
+    <line>
+      <![CDATA[***************TestCase Description***************************************]]>
+    </line>
+    <line>
+      <![CDATA[CS: Concierge Service                                                     ]]>
+    </line>
+    <line>
+      <![CDATA[PS1: Park Spot 1                                                          ]]>
+    </line>
+    <line>
+      <![CDATA[WFRACTNVT: Wait For Recognized as Concierge time to be near Violation time]]>
+    </line>
+    <line>
+      <![CDATA[GPV1: Create Grace Period Violation Spot 1                                ]]>
+    </line>
+    <line>
+      <![CDATA[ALPTPS: Add License Plate To Parking Session                              ]]>
+    </line>
+    <line>
+      <![CDATA[VMT: Validate Meter Time                                                  ]]>
+    </line>
+    <line>
+      <![CDATA[VPSH: Validate Parking Session History                                    ]]>
+    </line>
+    <line>
+      <![CDATA[**************************************************************************]]>
+    </line>
+    <line>
+      <![CDATA[Reservation Exists (1) equals: False]]>
+    </line>
+    <line>
+      <![CDATA[<font color='orange'>     StoreJsonAdminToken</font>]]>
+    </line>
+    <line>
+      <![CDATA[The value (12816) was stored as variable name (strJsonUserId)]]>
+    </line>
+    <line>
+      <![CDATA[The value (3gGy2bhPwsNEsTvLE_ry) was stored as variable name (strJsonToken)]]>
+    </line>
+    <line>
+      <![CDATA[<font color='orange'>     METER_ExitBothSpots</font>]]>
+    </line>
+    <line>
+      <![CDATA[The value (5dw6_481u8SWo5ZciVx9) was stored as variable name (strJsonToken)]]>
+    </line>
+    <line>
+      <![CDATA[The value (12817) was stored as variable name (strJsonUserId)]]>
+    </line>
+    <line>
+      <![CDATA[strConciergeEnrolled: true]]>
+    </line>
+    <line>
+      <![CDATA[StoreParkingSpotState -2]]>
+    </line>
+    <line>
+      <![CDATA[StoreParkingSpotState -1]]>
+    </line>
+    <line>
+      <![CDATA[strMeterId 2540]]>
+    </line>
+    <line>
+      <![CDATA[<font color='purple'> strLocalParking Spot State1: PARKING_STATE_VIOLATION</font>]]>
+    </line>
+    <line>
+      <![CDATA[<font color='green'>The Python Script (vehicle_reset_spot_1.py) was executed successfully on host (10.10.101.168)-System Time: 05:26:20 UTC Time:22:26:20.372</font>]]>
+    </line>
+    <line>
+      <![CDATA[<font color='green'>The Python Script (vehicle_leave_spot_1.py) was executed successfully on host (10.10.101.168)-System Time: 05:26:23 UTC Time:22:26:23.647</font>]]>
+    </line>
+    <line>
+      <![CDATA[The vehicle park time equaled (2026-09-03 22:26:24)  on spot (1)-UDT Time]]>
+    </line>
+    <line>
+      <![CDATA[<font color='green'>The Python Script (vehicle_leave_spot_1.py) was executed successfully on host (10.10.101.168)-System Time: 05:26:24 UTC Time:22:26:24.389</font>]]>
+    </line>
+    <line>
+      <![CDATA[GlobalWait: The meter variable begun equalled False]]>
+    </line>
+    <line>
+      <![CDATA[The Begin value was set already False for spot 2-host-10.10.101.168]]>
+    </line>
+    <line>
+      <![CDATA[<font color='orange'>     SENTRYLINK_DeleteFreeAndNoParkingRateSetFromRateBlock</font>]]>
+    </line>
+    <line>
+      <![CDATA[strHeadless: False]]>
+    </line>
+    <line>
+      <![CDATA[<font color='orange'>     SENTRYLINK_OpenLoginPage</font>]]>
+    </line>
+    <line>
+      <![CDATA[The (Login) page existed]]>
+    </line>
+    <line>
+      <![CDATA[<font color='orange'>     SENTRYLINK_UserLoginIn</font>]]>
+    </line>
+    <line>
+      <![CDATA[The text name (Version) value (Version 9.8) was stored as variable name (strSentryLinkVersion)]]>
+    </line>
+    <line>
+      <![CDATA[The (Login) field(s) were populated correctly - Values(Email,sbautomationmunicipalityadmin@gmail.com|Password,sbAutomationMunicipalityadmin13!)]]>
+    </line>
+    <line>
+      <![CDATA[The Button (Sign in) with index (1) was clicked successfully]]>
+    </line>
+    <line>
+      <![CDATA[<font color='orange'>     SENTRYLINK_NavigateToPage2-Rate Block Group</font>]]>
+    </line>
+    <line>
+      <![CDATA[Rate Block Group path: https://testautomation.staging.sentry-link.com/devices/meters/2540]]>
+    </line>
+    <line>
+      <![CDATA[The Link (AutomationRateBlockGroup31) with index (1) was clicked successfully.]]>
+    </line>
+    <line>
+      <![CDATA[The Link (AutomationRateBlockGroup31) with index (1) was clicked successfully.]]>
+    </line>
+    <line>
+      <![CDATA[The Button (Delete Rate Block) with index (1) was clicked successfully]]>
+    </line>
+    <line>
+      <![CDATA[The Button (Send to all) with index (1) was clicked successfully]]>
+    </line>
+    <line>
+      <![CDATA[The PARKING_FREE_TIME_ON_FIRST_PAYMENT for Meter (9010) is (0) seconds]]>
+    </line>
+    <line>
+      <![CDATA[<font color='green'>The Python Script (parking_delete_rate_blk.py 646329) was executed successfully on host (10.10.101.168)-System Time: 05:26:41 UTC Time:22:26:41.352</font>]]>
+    </line>
+    <line>
+      <![CDATA[<font color='orange'>     SENTRYMETER_UpdateMetertSetting</font>]]>
+    </line>
+    <line>
+      <![CDATA[<font color='green'>The Python Script (set_initgrace.py 120) was executed successfully on host (10.10.101.168)-System Time: 05:26:45 UTC Time:22:26:45.186</font>]]>
+    </line>
+    <line>
+      <![CDATA[<font color='green'>The Python Script (set_no_parking_grace.py 120) was executed successfully on host (10.10.101.168)-System Time: 05:26:45 UTC Time:22:26:45.521</font>]]>
+    </line>
+    <line>
+      <![CDATA[<font color='green'>The Python Script (set_violation_grace.py 300) was executed successfully on host (10.10.101.168)-System Time: 05:26:45 UTC Time:22:26:45.834</font>]]>
+    </line>
+    <line>
+      <![CDATA[<font color='green'>The Python Script (set_free_time_first_payment.py 0) was executed successfully on host (10.10.101.168)-System Time: 05:26:46 UTC Time:22:26:46.185</font>]]>
+    </line>
+    <line>
+      <![CDATA[<font color='green'>The Python Script (set_apply_payment_screen_timeout.py 5) was executed successfully on host (10.10.101.168)-System Time: 05:26:46 UTC Time:22:26:46.518</font>]]>
+    </line>
+    <line>
+      <![CDATA[<font color='green'>The Python Script (settings_set_setting_false.py PARKING_PAY_BY_PLATE) was executed successfully on host (10.10.101.168)-System Time: 05:26:46 UTC Time:22:26:46.820</font>]]>
+    </line>
+    <line>
+      <![CDATA[<font color='green'>The Python Script (set_free_disconnect_on.py) was executed successfully on host (10.10.101.168)-System Time: 05:26:47 UTC Time:22:26:47.185</font>]]>
+    </line>
+    <line>
+      <![CDATA[<font color='green'>The Python Script (set_unlock_off.py) was executed successfully on host (10.10.101.168)-System Time: 05:26:47 UTC Time:22:26:47.548</font>]]>
+    </line>
+    <line>
+      <![CDATA[<font color='green'>The Python Script (settings_set_setting_false.py PARKING_TRUEUP_ENABLED) was executed successfully on host (10.10.101.168)-System Time: 05:26:47 UTC Time:22:26:47.897</font>]]>
+    </line>
+    <line>
+      <![CDATA[<font color='green'>The Python Script (set_unlock_time.py 1) was executed successfully on host (10.10.101.168)-System Time: 05:26:48 UTC Time:22:26:48.241</font>]]>
+    </line>
+    <line>
+      <![CDATA[<font color='green'>The Python Script (set_unlock_max.py 1) was executed successfully on host (10.10.101.168)-System Time: 05:26:48 UTC Time:22:26:48.563</font>]]>
+    </line>
+    <line>
+      <![CDATA[<font color='green'>The Python Script (set_image_send_before_violation.py 45) was executed successfully on host (10.10.101.168)-System Time: 05:26:48 UTC Time:22:26:48.886</font>]]>
+    </line>
+    <line>
+      <![CDATA[<font color='green'>The Python Script (set_maximum_duration.py 120) was executed successfully on host (10.10.101.168)-System Time: 05:26:49 UTC Time:22:26:49.237</font>]]>
+    </line>
+    <line>
+      <![CDATA[<font color='green'>The Python Script (set_parking_short_session.py 15) was executed successfully on host (10.10.101.168)-System Time: 05:26:49 UTC Time:22:26:49.558</font>]]>
+    </line>
+    <line>
+      <![CDATA[<font color='green'>The Python Script (settings_set_setting.py PARKING_RATE_DEFAULT_MINIMUM_TIME 60) was executed successfully on host (10.10.101.168)-System Time: 05:26:49 UTC Time:22:26:49.886</font>]]>
+    </line>
+    <line>
+      <![CDATA[<font color='green'>The Python Script (settings_set_setting_false.py SYS_OUT_OF_SERVICE) was executed successfully on host (10.10.101.168)-System Time: 05:26:50 UTC Time:22:26:50.227</font>]]>
+    </line>
+    <line>
+      <![CDATA[<font color='orange'>   SENTRYLINK_UpdateRateSetValues</font>]]>
+    </line>
+    <line>
+      <![CDATA[***********Current Meter Rate Blocks*************10.10.101.168]]>
+    </line>
+    <line>
+      <![CDATA[{"disconnect_free": true, "block_type": "fixed", "block_id": -1, "default_minimum_cost": 75, "schedule": {"start_time": "00:00", "valid_days": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"], "start_date": null, "end_date": null, "end_time": "23:59"}, "unenforced": false, "default_minimum_time": 0, "rate": {"senior_minutes": 30, "muni_price": 25, "senior_max_time": 120, "price": 25, "veteran_max_time": 120, "senior_price": 25, "muni_max_time": 120, "handicap_minutes": 30, "handicap_price": 25, "veteran_minutes": 30, "veteran_price": 25, "muni_minutes": 30, "max_time": 120, "handicap_max_time": 120, "minutes": 30}, "card_increment_time": 30, "first_payment_free_time": 0, "maximum_duration_minutes": 120, "priority": -2147483647, "free_time_first_payment": 0, "max_time": 120, "mins_accept_free_before_rate": 60}q]]>
+    </line>
+    <line>
+      <![CDATA[*************************************************]]>
+    </line>
+    <line>
+      <![CDATA[Previous Rate Block Id--1]]>
+    </line>
+    <line>
+      <![CDATA[The value (5dw6_481u8SWo5ZciVx9) was stored as variable name (strJsonToken)]]>
+    </line>
+    <line>
+      <![CDATA[strHeadless: False]]>
     </line>
     <line>
       <![CDATA[<font color='orange'>     SENTRYLINK_OpenLoginPage</font>]]>
@@ -99,16 +309,202 @@
       <![CDATA[The Button (Sign in) with index (1) was clicked successfully]]>
     </line>
     <line>
-      <![CDATA[The (User Search) field(s) were populated correctly - Values(Email,adeleteuser01@gmail.com)]]>
+      <![CDATA[<font color='orange'>     SENTRYLINK_NavigateToPage2-Showing Meter</font>]]>
     </line>
     <line>
-      <![CDATA[The Button (Search) with index (1) was clicked successfully]]>
+      <![CDATA[The Link (Rate Sets) with index (1) was clicked successfully.]]>
     </line>
     <line>
-      <![CDATA[strHeadless: True]]>
+      <![CDATA[The Link (Rate Sets) with index (1) was clicked successfully.]]>
+    </line>
+    <line>
+      <![CDATA[<font color='orange'>     SENTRYLINK_UpdateRateSet</font>]]>
+    </line>
+    <line>
+      <![CDATA[The Link (AutomationRateSet31Fixed) with index (1) was clicked successfully.]]>
+    </line>
+    <line>
+      <![CDATA[The Link (AutomationRateSet31Fixed) with index (1) was clicked successfully.]]>
+    </line>
+    <line>
+      <![CDATA[The Button (Edit) with index (1) was clicked successfully]]>
+    </line>
+    <line>
+      <![CDATA[<font color='orange'>     SENTRYLINK_PopulateFixedRateBlock</font>]]>
+    </line>
+    <line>
+      <![CDATA[The (Free Time with Free Payment) field(s) were populated correctly - Values(Maximum Duration,120|Coin Time Puchase Limit,120|Free Time with First Payment,0|Credit Card Increment Time,15|Initial Grace,2|Violation Grace,5|Handicap Initial Grace,5|Handicap Violation Grace,1|No Parking Grace,2|Default Minimum Cost,100|Default Minimum Time,60)]]>
+    </line>
+    <line>
+      <![CDATA[The (Rate Set) field(s) were populated correctly - Values(Family,Normal)]]>
+    </line>
+    <line>
+      <![CDATA[The (Buys Minutes) field(s) were populated correctly - Values(Price,25|Buys Minutes,15|Max Time,120)]]>
+    </line>
+    <line>
+      <![CDATA[The Button (Save) with index (1) was clicked successfully]]>
+    </line>
+    <line>
+      <![CDATA[The Button (Save Rate Set) with index (1) was clicked successfully]]>
+    </line>
+    <line>
+      <![CDATA[The Link (Rate Block Groups) with index (1) was clicked successfully.]]>
+    </line>
+    <line>
+      <![CDATA[The Link (Rate Block Groups) with index (1) was clicked successfully.]]>
+    </line>
+    <line>
+      <![CDATA[The Link (AutomationRateBlockGroup31) with index (1) was clicked successfully.]]>
+    </line>
+    <line>
+      <![CDATA[The Link (AutomationRateBlockGroup31) with index (1) was clicked successfully.]]>
+    </line>
+    <line>
+      <![CDATA[The (Add Set to This Group) field(s) were populated correctly - Values(Add Set to This Group,AutomationRateSet31Fixed)]]>
+    </line>
+    <line>
+      <![CDATA[The Button (Add Set to This Group) with index (1) was clicked successfully]]>
+    </line>
+    <line>
+      <![CDATA[The TextField (Rate Block Name) existed on page (Rate Block Setting)-GlobalObjectWait]]>
+    </line>
+    <line>
+      <![CDATA[The (Specific Times of Day) field(s) were populated correctly - Values(Rate Block Name,FixedRateBlock|Start Date,06/28/2026|Time Options,All Day)]]>
+    </line>
+    <line>
+      <![CDATA[The Button (Save Rate Block) with index (1) was clicked successfully]]>
+    </line>
+    <line>
+      <![CDATA[The Button (Send to all) with index (1) was clicked successfully]]>
+    </line>
+    <line>
+      <![CDATA[GlobalWait: Rate Block values existed that were not -1]]>
+    </line>
+    <line>
+      <![CDATA[Current Rate Block Id-646330]]>
+    </line>
+    <line>
+      <![CDATA[***********Current Meter Rate Blocks*************10.10.101.168]]>
+    </line>
+    <line>
+      <![CDATA[{"disconnect_free": true, "block_type": "fixed", "block_id": 646330, "default_minimum_cost": 100, "schedule": {"start_time": "00:00", "valid_days": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"], "start_date": "2026-06-28", "end_date": "2030-09-03", "end_time": "23:59"}, "unenforced": false, "default_minimum_time": 60, "rate": {"senior_minutes": 15, "muni_price": 25, "senior_max_time": 120, "price": 25, "veteran_max_time": 120, "senior_price": 25, "muni_max_time": 120, "handicap_minutes": 30, "handicap_price": 25, "veteran_minutes": 15, "veteran_price": 25, "muni_minutes": 15, "max_time": 120, "handicap_max_time": 240, "minutes": 15}, "card_increment_time": 15, "first_payment_free_time": 0, "maximum_duration_minutes": 120, "priority": 7, "free_time_first_payment": 0, "max_time": 120, "mins_accept_free_before_rate": 60}q]]>
+    </line>
+    <line>
+      <![CDATA[{"disconnect_free": true, "block_type": "fixed", "block_id": -1, "default_minimum_cost": 75, "schedule": {"start_time": "00:00", "valid_days": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"], "start_date": null, "end_date": null, "end_time": "23:59"}, "unenforced": false, "default_minimum_time": 0, "rate": {"senior_minutes": 30, "muni_price": 25, "senior_max_time": 120, "price": 25, "veteran_max_time": 120, "senior_price": 25, "muni_max_time": 120, "handicap_minutes": 30, "handicap_price": 25, "veteran_minutes": 30, "veteran_price": 25, "muni_minutes": 30, "max_time": 120, "handicap_max_time": 120, "minutes": 30}, "card_increment_time": 30, "first_payment_free_time": 0, "maximum_duration_minutes": 120, "priority": -2147483647, "free_time_first_payment": 0, "max_time": 120, "mins_accept_free_before_rate": 60}q]]>
+    </line>
+    <line>
+      <![CDATA[*************************************************]]>
+    </line>
+    <line>
+      <![CDATA[<font color='orange'>     SENTRYLINK_UpdateMaintenanceMode</font>]]>
+    </line>
+    <line>
+      <![CDATA[strHeadless: False]]>
+    </line>
+    <line>
+      <![CDATA[Maintenance Mode Spot (1) equals: False]]>
+    </line>
+    <line>
+      <![CDATA[Maintenance Mode Spot (2) equals: False]]>
+    </line>
+    <line>
+      <![CDATA[Parking Session Url: https://testautomation.staging.sentry-link.com/api/v1/meter_groups.json]]>
+    </line>
+    <line>
+      <![CDATA[<font color='purple'> strMeterGroupInitialGrace: 120</font>]]>
+    </line>
+    <line>
+      <![CDATA[strConciergeEnrolled: true]]>
+    </line>
+    <line>
+      <![CDATA[The user (sbautomationmunicipalityparker@gmail.com) was de-enrolled from concierge program]]>
+    </line>
+    <line>
+      <![CDATA[strConciergeEnrolled: false]]>
+    </line>
+    <line>
+      <![CDATA[The user was deenrolled from Concierge]]>
+    </line>
+    <line>
+      <![CDATA[The value (5dw6_481u8SWo5ZciVx9) was stored as variable name (strJsonToken)]]>
+    </line>
+    <line>
+      <![CDATA[<font color='orange'>     StoreJsonAdminToken</font>]]>
+    </line>
+    <line>
+      <![CDATA[The value (3gGy2bhPwsNEsTvLE_ry) was stored as variable name (strJsonToken)]]>
+    </line>
+    <line>
+      <![CDATA[The License Plate (09010AA) for state (Minnesota) was added for user (sbautomationmunicipalityparker@gmail.com)]]>
+    </line>
+    <line>
+      <![CDATA[The value (5dw6_481u8SWo5ZciVx9) was stored as variable name (strJsonToken)]]>
+    </line>
+    <line>
+      <![CDATA[The value (12817) was stored as variable name (strJsonUserId)]]>
+    </line>
+    <line>
+      <![CDATA[The user account balance was (42.1)]]>
+    </line>
+    <line>
+      <![CDATA[strConciergeEnrolled: false]]>
+    </line>
+    <line>
+      <![CDATA[The user (sbautomationmunicipalityparker@gmail.com) was Enrolled from concierge program]]>
+    </line>
+    <line>
+      <![CDATA[strConciergeEnrolled: true]]>
+    </line>
+    <line>
+      <![CDATA[The user was enrolled in Concierge]]>
+    </line>
+    <line>
+      <![CDATA[<font color='green'>The Python Script (settings_set_setting_true.py PARKING_RCV_ON_SB_LPR_PLATE_MATCH) was executed successfully on host (10.10.101.168)-System Time: 05:28:16 UTC Time:22:28:16.838</font>]]>
+    </line>
+    <line>
+      <![CDATA[<font color='orange'>METER_ParkSpot</font>]]>
+    </line>
+    <line>
+      <![CDATA[<font color='green'>The Python Script (vehicle_reset_spot_1.py) was executed successfully on host (10.10.101.168)-System Time: 05:28:17 UTC Time:22:28:17.166</font>]]>
+    </line>
+    <line>
+      <![CDATA[strParkedAtTime_HHmmss: 17:28:19]]>
+    </line>
+    <line>
+      <![CDATA[strParkingSessionsParkedAtTimeMinusTwo: Today at 5:26 PM]]>
+    </line>
+    <line>
+      <![CDATA[strParkingSessionsParkedAtTimeMinusOne: Today at 5:27 PM]]>
+    </line>
+    <line>
+      <![CDATA[strParkingSessionsParkedAtTime: Today at 5:28 PM]]>
+    </line>
+    <line>
+      <![CDATA[strParkingSessionsParkedAtTimePlusOne: Today at 5:29 PM]]>
+    </line>
+    <line>
+      <![CDATA[<font color='green'>The Python Script (vehicle_park_spot_1.py) was executed successfully on host (10.10.101.168)-System Time: 05:28:19 UTC Time:22:28:19.478</font>]]>
+    </line>
+    <line>
+      <![CDATA[GlobalWait: The meter variable begun equalled True]]>
+    </line>
+    <line>
+      <![CDATA[Wait For Recognized as Concierge time to be near Violation time]]>
+    </line>
+    <line>
+      <![CDATA[Waited (105) For Recognized as Concierge time to be near Violation time]]>
+    </line>
+    <line>
+      <![CDATA[strHeadless: False]]>
     </line>
     <line>
       <![CDATA[<font color='orange'>     SENTRYLINK_OpenLoginPage</font>]]>
+    </line>
+    <line>
+      <![CDATA[<font color='orange'>     SENTRYLINK_AdminLoginIn</font>]]>
+    </line>
+    <line>
+      <![CDATA[The (Login) page existed]]>
     </line>
     <line>
       <![CDATA[<font color='orange'>     SENTRYLINK_UserLoginIn</font>]]>
@@ -123,141 +519,168 @@
       <![CDATA[The Button (Sign in) with index (1) was clicked successfully]]>
     </line>
     <line>
-      <![CDATA[The (User Search) field(s) were populated correctly - Values(Email,adeleteuser01@gmail.com)]]>
+      <![CDATA[<font color='orange'>     SENTRYLINK_NavigateToPage2-Parking Sessions</font>]]>
     </line>
     <line>
-      <![CDATA[The Button (Search) with index (1) was clicked successfully]]>
+      <![CDATA[The row number (1) that contained (Sentry Meter and 9010) from the table (Sessions) was stored as variable name (strSessionsRowNumber)]]>
     </line>
     <line>
-      <![CDATA[The value (47190) was stored as variable name (strJsonUserId)]]>
+      <![CDATA[The table value (4087014) from row (1) column (1) in the table (Sessions) was stored as variable name (strSessionId)]]>
     </line>
     <line>
-      <![CDATA[<font color='orange'>     StoreJsonAdminToken</font>]]>
+      <![CDATA[Parking Session:  https://testautomation.staging.sentry-link.com/parking_sessions/4087014]]>
     </line>
     <line>
-      <![CDATA[The value (12816) was stored as variable name (strJsonUserId)]]>
+      <![CDATA[The Link (4087014) with index (1) was clicked successfully.]]>
     </line>
     <line>
-      <![CDATA[The value (Sq4zMsr-ZwQRboR7B8qK) was stored as variable name (strJsonToken)]]>
+      <![CDATA[The Link (4087014) with index (1) was clicked successfully.]]>
     </line>
     <line>
-      <![CDATA[The value (NgixDge162DNMyaG_CEw) was stored as variable name (strJsonToken)]]>
+      <![CDATA[The (License Plate Information) field(s) were populated correctly (strLicensePlate: 09010AA|strLicenseState: Minnesota|) - Values(License Plate,09010AA|Province/State,Minnesota)]]>
     </line>
     <line>
-      <![CDATA[The value (12817) was stored as variable name (strJsonUserId)]]>
+      <![CDATA[The Button (Create) with index (1) was clicked successfully]]>
     </line>
     <line>
-      <![CDATA[The user account balance was (25.95)]]>
+      <![CDATA[<font color='purple'> strLocalParking Session Concierge Value 1: false</font>]]>
     </line>
     <line>
-      <![CDATA[Location mode BEFORE enable: 3]]>
+      <![CDATA[<font color='purple'> strLocalParking Session Concierge Value 1: false</font>]]>
     </line>
     <line>
-      <![CDATA[Executing ADB command: /Users/darinduphorn/Library/Android/sdk/platform-tools/adb -s R5CT71MQ2MM shell settings put secure location_mode 3]]>
+      <![CDATA[<font color='purple'> strLocalParking Session Concierge Value 1: false</font>]]>
     </line>
     <line>
-      <![CDATA[Location services enabled successfully (mode 3 - exit code 0)]]>
+      <![CDATA[<font color='purple'> strLocalParking Session Concierge Value 1: false</font>]]>
     </line>
     <line>
-      <![CDATA[Location mode AFTER enable: 3]]>
+      <![CDATA[<font color='purple'> strLocalParking Session Concierge Value 1: false</font>]]>
     </line>
     <line>
-      <![CDATA[Sentry Mobile was loaded correctly on Android Device]]>
+      <![CDATA[<font color='purple'> strLocalParking Session Concierge Value 1: false</font>]]>
     </line>
     <line>
-      <![CDATA[The Button (Accept) with index (1) was clicked successfully]]>
+      <![CDATA[<font color='purple'> strLocalParking Session Concierge Value 1: false</font>]]>
     </line>
     <line>
-      <![CDATA[There Was No Snack Bar Message]]>
+      <![CDATA[<font color='purple'> strLocalParking Session Concierge Value 1: false</font>]]>
     </line>
     <line>
-      <![CDATA[The Link (Sign up) with index (1) was clicked successfully]]>
+      <![CDATA[<font color='purple'> strLocalParking Session Concierge Value 1: false</font>]]>
     </line>
     <line>
-      <![CDATA[<font color='orange'>     PopulateAction</font>]]>
+      <![CDATA[<font color='purple'> strLocalParking Session Concierge Value 1: false</font>]]>
     </line>
     <line>
-      <![CDATA[The (Phone Number) field(s) were populated correctly - Values(Phone Number,2812816804)]]>
+      <![CDATA[<font color='purple'> strLocalParking Session Concierge Value 1: false</font>]]>
     </line>
     <line>
-      <![CDATA[The Button (Next) with index (1) was clicked successfully]]>
+      <![CDATA[<font color='purple'> strLocalParking Session Concierge Value 1: false</font>]]>
     </line>
     <line>
-      <![CDATA[There Was No Snack Bar Message]]>
+      <![CDATA[<font color='purple'> strLocalParking Session Concierge Value 1: false</font>]]>
     </line>
     <line>
-      <![CDATA[<font color='orange'>     PopulateAction</font>]]>
+      <![CDATA[<font color='purple'> strLocalParking Session Concierge Value 1: false</font>]]>
     </line>
     <line>
-      <![CDATA[The (Register) field(s) were populated correctly - Values(First Name,Delete|Last Name,User|Email Id,adeleteuser01@gmail.com|Password,ADeleteMe01!|Confirm Password,ADeleteMe01!)]]>
+      <![CDATA[<font color='purple'> strLocalParking Session Concierge Value 1: false</font>]]>
     </line>
     <line>
-      <![CDATA[The Button (Sign up) with index (1) was clicked successfully]]>
+      <![CDATA[<font color='purple'> strLocalParking Session Concierge Value 1: true</font>]]>
     </line>
     <line>
-      <![CDATA[The Text (Error Message) with index (1) contained (Registered Successfully)]]>
+      <![CDATA[GlobalWait: WaitParkingSessionConciergeValueEqualsTrue]]>
     </line>
     <line>
-      <![CDATA[<font color='orange'>     NavigateToPageUsingMenuButtons</font>]]>
+      <![CDATA[Parking Session Url: https://testautomation.staging.sentry-link.com/api/v1/devices/2540/parking_sessions.json?include_extended_data=true;spot_identifier=SPOT_1]]>
     </line>
     <line>
-      <![CDATA[Navigated to the (Account) page correctly]]>
+      <![CDATA[<font color='purple'> strParkingId: 4087014</font>]]>
     </line>
     <line>
-      <![CDATA[The Link (Sign out) with index (1) was clicked successfully]]>
+      <![CDATA[<font color='purple'> strParkTimestamp: 2026-09-03T22:28:19Z</font>]]>
     </line>
     <line>
-      <![CDATA[The Link (Yes) with index (1) was clicked successfully]]>
+      <![CDATA[<font color='green'>The Python Script (testautof_touch_screen.py) was executed successfully on host (10.10.101.168)-System Time: 05:30:43 UTC Time:22:30:43.204</font>]]>
     </line>
     <line>
-      <![CDATA[<font color='orange'>     PopulateAction</font>]]>
+      <![CDATA[Wait 5 seconds for payment to get to Meter]]>
     </line>
     <line>
-      <![CDATA[The (Login) field(s) were populated correctly - Values(Email Id,2812816804|Password,ADeleteMe01!)]]>
+      <![CDATA[The Actual Meter Time (0) was not equal to expected meter time (15)]]>
     </line>
     <line>
-      <![CDATA[The Button (Log in) with index (1) was clicked successfully]]>
+      <![CDATA[<font color='green'>The Python Script (testautof_touch_screen.py) was executed successfully on host (10.10.101.168)-System Time: 05:32:04 UTC Time:22:32:04.965</font>]]>
     </line>
     <line>
-      <![CDATA[<font color='orange'>     NavigateToPageUsingMenuButtons</font>]]>
+      <![CDATA[The meter UI State equaled (SCREEN_MULTI_SELECT_SPACE) on spot (1)-UTC: 22:32:08.406]]>
     </line>
     <line>
-      <![CDATA[Navigated to the (Account) page correctly]]>
+      <![CDATA[<font color='green'>The Python Script (testautof_touch_screen.py) was executed successfully on host (10.10.101.168)-System Time: 05:32:08 UTC Time:22:32:08.690</font>]]>
     </line>
     <line>
-      <![CDATA[The Link (Sign out) with index (1) was clicked successfully]]>
+      <![CDATA[<font color='green'>The Python Script (testautof_enter_space.py 9010) was executed successfully on host (10.10.101.168)-System Time: 05:32:10 UTC Time:22:32:10.961</font>]]>
     </line>
     <line>
-      <![CDATA[The Link (Yes) with index (1) was clicked successfully]]>
+      <![CDATA[strScanStartTime: 22:32:10.993]]>
     </line>
     <line>
-      <![CDATA[<font color='Green'>Meter End Time 17:32:</font>]]>
+      <![CDATA[The meter UI State equaled (SCREEN_MULTI_SELECT_SPACE) on spot (1)-UTC: 22:32:11.782]]>
     </line>
     <line>
-      <![CDATA[<a href=/Users/darinduphorn/git/TestAutomation/MeterLogs/ANDROID_TestCases_A2018F_RegisterUser_Login_Using_Phone_Flutter_1.txt/>Meter Logs</a>]]>
+      <![CDATA[The meter UI State equaled (SCREEN_MULTI_HOME) on spot (1)-UTC: 22:32:12.495]]>
     </line>
     <line>
-      <![CDATA[<a href=/Users/darinduphorn/git/TestAutomation/MessageLogs/ANDROID_TestCases_A2018F_RegisterUser_Login_Using_Phone_Flutter_1.txt/>Message Logs</a>]]>
+      <![CDATA[It took (1502) Millieconds for the (SCREEN_MULTI_HOME) screen to appear]]>
     </line>
     <line>
-      <![CDATA[<font color='Green'>Meter End Time 17:32:</font>]]>
+      <![CDATA[<a href=https://i.imgur.com/rYwlbyq.png/>Meter Screen Shot</a>]]>
+    </line>
+    <line>
+      <![CDATA[<img src="https://i.imgur.com/rYwlbyq.png" alt=""/><br />]]>
+    </line>
+    <line>
+      <![CDATA[Local meter log did not contain Callstack]]>
+    </line>
+    <line>
+      <![CDATA[Local meter log did not contain STACKTRACE]]>
+    </line>
+    <line>
+      <![CDATA[Local meter log did not contain Traceback]]>
+    </line>
+    <line>
+      <![CDATA[Local meter log did not contain Space Failed To Load error]]>
+    </line>
+    <line>
+      <![CDATA[The Actual Meter Time (0) was not equal to expected meter time (15)]]>
+    </line>
+    <line>
+      <![CDATA[<a style='color:Gold' href="https://www.pivotaltracker.com/n/projects/980790/stories/SL-7995" target="_blank">SL-7995-When a Concierge user parks and the license plate is recognized seconds before the initial grace period violation, the meter screen unexpectedly displays “Max Time Already Purchased</a>]]>
+    </line>
+    <line>
+      <![CDATA[Error Remain Parked (15) seconds-Spot 1]]>
+    </line>
+    <line>
+      <![CDATA[<font color='Green'>Meter End Time 22:32:</font>]]>
     </line>
   </reporter-output>
-  <suite started-at="2026-08-19T17:29:59Z" name="Regression_ANDROID" finished-at="2026-08-19T17:32:29Z" duration-ms="150193">
+  <suite started-at="2026-09-03T22:25:56Z" name="Regression_ANDROID" finished-at="2026-09-03T22:32:41Z" duration-ms="405872">
     <groups>
     </groups>
-    <test started-at="2026-08-19T17:29:59Z" name="ANDROID_TestCases" finished-at="2026-08-19T17:32:29Z" duration-ms="150193">
+    <test started-at="2026-09-03T22:25:56Z" name="ANDROID_TestCases" finished-at="2026-09-03T22:32:41Z" duration-ms="405872">
       <class name="AutomationCode.Android_TestCases_Flutter">
-        <test-method is-config="true" signature="BeforeMethod(org.testng.ITestContext, java.lang.reflect.Method, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:AutomationCode.Android_TestCases_Flutter@3e27aa33]" started-at="2026-08-19T17:29:59Z" name="BeforeMethod" finished-at="2026-08-19T17:30:03Z" duration-ms="4401" status="PASS">
+        <test-method is-config="true" signature="BeforeMethod(org.testng.ITestContext, java.lang.reflect.Method, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:AutomationCode.Android_TestCases_Flutter@7ef82753]" started-at="2026-09-03T22:25:56Z" name="BeforeMethod" finished-at="2026-09-03T22:26:00Z" duration-ms="4106" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@37313c65]]>
+                <![CDATA[org.testng.TestRunner@415b0b49]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[public void AutomationCode.Android_TestCases_Flutter.A2018F_RegisterUser_Login_Using_Phone_Flutter()]]>
+                <![CDATA[public void AutomationCode.Android_TestCases_Flutter.A2303F_CS_PS1_GPV1_WFFACTNVT_ALPTPS_VMT_VPSH()]]>
               </value>
             </param>
             <param index="2">
@@ -292,7 +715,7 @@
             </param>
             <param index="10">
               <value>
-                <![CDATA[SentryMobile-Staging-10.0.499.apk]]>
+                <![CDATA[SentryMobile-Staging-10.0.500.apk]]>
               </value>
             </param>
             <param index="11">
@@ -300,7 +723,7 @@
             </param>
             <param index="12">
               <value>
-                <![CDATA[R5CT71MQ2MM]]>
+                <![CDATA[R5CT71MQ5YT]]>
               </value>
             </param>
             <param index="13">
@@ -328,7 +751,7 @@
           </params>
           <reporter-output>
             <line>
-              <![CDATA[Automation User: darinduphorn]]>
+              <![CDATA[Automation User: mpsadmin]]>
             </line>
             <line>
               <![CDATA[Global-Appium Port: 6666]]>
@@ -350,62 +773,303 @@
             </line>
           </reporter-output>
         </test-method> <!-- BeforeMethod -->
-        <test-method signature="A2018F_RegisterUser_Login_Using_Phone_Flutter()[pri:1018, instance:AutomationCode.Android_TestCases_Flutter@3e27aa33]" started-at="2026-08-19T17:30:03Z" name="A2018F_RegisterUser_Login_Using_Phone_Flutter" finished-at="2026-08-19T17:32:29Z" duration-ms="145428" status="PASS">
+        <test-method signature="A2303F_CS_PS1_GPV1_WFFACTNVT_ALPTPS_VMT_VPSH()[pri:2303, instance:AutomationCode.Android_TestCases_Flutter@7ef82753]" started-at="2026-09-03T22:26:00Z" name="A2303F_CS_PS1_GPV1_WFFACTNVT_ALPTPS_VMT_VPSH" finished-at="2026-09-03T22:32:41Z" duration-ms="401378" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[SL-7995-When a Concierge user parks and the license plate is recognized seconds before the initial grace period violation, the meter screen unexpectedly displays “Max Time Already Purchased]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: SL-7995-When a Concierge user parks and the license plate is recognized seconds before the initial grace period violation, the meter screen unexpectedly displays “Max Time Already Purchased
+at org.testng.Assert.fail(Assert.java:96)
+at AutomationCode.Meter.UpdateErrorMessageWithPivotalData(Meter.java:2594)
+at AutomationCode.Meter.METER_ValidateExpectedMeterTime(Meter.java:14081)
+at AutomationCode.Android_TestCases_Flutter.A2303F_CS_PS1_GPV1_WFFACTNVT_ALPTPS_VMT_VPSH(Android_TestCases_Flutter.java:5513)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.access$000(SuiteRunner.java:40)
+at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:489)
+at org.testng.internal.thread.ThreadUtil$1.call(ThreadUtil.java:52)
+at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+at java.base/java.lang.Thread.run(Thread.java:1583)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
             <line>
-              <![CDATA[************************************************************]]>
-            </line>
-            <line>
-              <![CDATA[Environment:  SG                           ]]>
-            </line>
-            <line>
-              <![CDATA[Version:      SentryMobile-Staging-10.0.499.apk                             ]]>
-            </line>
-            <line>
-              <![CDATA[Municipality: AutomationMunicipality                          ]]>
-            </line>
-            <line>
-              <![CDATA[Meter Name:   9010                             ]]>
-            </line>
-            <line>
-              <![CDATA[Meter IP:     10.10.101.168                                  ]]>
-            </line>
-            <line>
-              <![CDATA[Meter Version:"meter-8.18-1a~master20241003.1"
-                          ]]>
-            </line>
-            <line>
-              <![CDATA[Meter MD5SUM Version:                  ]]>
-            </line>
-            <line>
-              <![CDATA[Sentry Link Version:Version 9.8               ]]>
-            </line>
-            <line>
-              <![CDATA[SilverBullet Version:5.1.1-1            ]]>
-            </line>
-            <line>
-              <![CDATA[RemotePath:   http://localhost:4723                            ]]>
-            </line>
-            <line>
-              <![CDATA[AndroidUdid:  R5CT71MQ2MM                           ]]>
+              <![CDATA[strHeadless: False]]>
             </line>
             <line>
               <![CDATA[************************************************************]]>
             </line>
             <line>
-              <![CDATA[<font color='green'>Meter Start Time 17:30:</font>]]>
+              <![CDATA[Test:  ANDROID_TestCases_A2303F_CS_PS1_GPV1_WFFACTNVT_ALPTPS_VMT_VPSH_1             ]]>
             </line>
             <line>
-              <![CDATA[****************METER MEMORY******************]]>
+              <![CDATA[Environment:  SG                            ]]>
             </line>
             <line>
-              <![CDATA[totalusedfree]]>
+              <![CDATA[Municipality: AutomationMunicipality                           ]]>
             </line>
             <line>
-              <![CDATA[403000010422922085492]]>
+              <![CDATA[Meter Name:   9010                              ]]>
             </line>
             <line>
-              <![CDATA[strHeadless: True]]>
+              <![CDATA[Meter Type;seco                              ]]>
+            </line>
+            <line>
+              <![CDATA[Meter IP:     10.10.101.168                                   ]]>
+            </line>
+            <line>
+              <![CDATA[Local Meter Version:"meter-8.18-1a~master20241003.1"
+                ]]>
+            </line>
+            <line>
+              <![CDATA[Remote Device:null                         ]]>
+            </line>
+            <line>
+              <![CDATA[Remote Type:null                               ]]>
+            </line>
+            <line>
+              <![CDATA[Sentry Link Version:Version 9.8                ]]>
+            </line>
+            <line>
+              <![CDATA[SilverBullet Version:5.1.1-1             ]]>
+            </line>
+            <line>
+              <![CDATA[RemotePath:   http://localhost:4723                             ]]>
+            </line>
+            <line>
+              <![CDATA[SOM Local Image Id:   False                ]]>
+            </line>
+            <line>
+              <![CDATA[SOM Local Distro Version:   False    ]]>
+            </line>
+            <line>
+              <![CDATA[SOM Distro Name:                   ]]>
+            </line>
+            <line>
+              <![CDATA[************************************************************]]>
+            </line>
+            <line>
+              <![CDATA[<font color='green'>Meter Start Time 22:25:</font>]]>
+            </line>
+            <line>
+              <![CDATA[<font color='green'>Test Start Time 5:26:06 PM</font>]]>
+            </line>
+            <line>
+              <![CDATA[<font color='green'>The Meter Screen Shot (A2303F_CS_PS1_GPV1_WFFACTNVT_ALPTPS_VMT_VPSH_1.png) did not exist</font>]]>
+            </line>
+            <line>
+              <![CDATA[***************TestCase Description***************************************]]>
+            </line>
+            <line>
+              <![CDATA[CS: Concierge Service                                                     ]]>
+            </line>
+            <line>
+              <![CDATA[PS1: Park Spot 1                                                          ]]>
+            </line>
+            <line>
+              <![CDATA[WFRACTNVT: Wait For Recognized as Concierge time to be near Violation time]]>
+            </line>
+            <line>
+              <![CDATA[GPV1: Create Grace Period Violation Spot 1                                ]]>
+            </line>
+            <line>
+              <![CDATA[ALPTPS: Add License Plate To Parking Session                              ]]>
+            </line>
+            <line>
+              <![CDATA[VMT: Validate Meter Time                                                  ]]>
+            </line>
+            <line>
+              <![CDATA[VPSH: Validate Parking Session History                                    ]]>
+            </line>
+            <line>
+              <![CDATA[**************************************************************************]]>
+            </line>
+            <line>
+              <![CDATA[Reservation Exists (1) equals: False]]>
+            </line>
+            <line>
+              <![CDATA[<font color='orange'>     StoreJsonAdminToken</font>]]>
+            </line>
+            <line>
+              <![CDATA[The value (12816) was stored as variable name (strJsonUserId)]]>
+            </line>
+            <line>
+              <![CDATA[The value (3gGy2bhPwsNEsTvLE_ry) was stored as variable name (strJsonToken)]]>
+            </line>
+            <line>
+              <![CDATA[<font color='orange'>     METER_ExitBothSpots</font>]]>
+            </line>
+            <line>
+              <![CDATA[The value (5dw6_481u8SWo5ZciVx9) was stored as variable name (strJsonToken)]]>
+            </line>
+            <line>
+              <![CDATA[The value (12817) was stored as variable name (strJsonUserId)]]>
+            </line>
+            <line>
+              <![CDATA[strConciergeEnrolled: true]]>
+            </line>
+            <line>
+              <![CDATA[StoreParkingSpotState -2]]>
+            </line>
+            <line>
+              <![CDATA[StoreParkingSpotState -1]]>
+            </line>
+            <line>
+              <![CDATA[strMeterId 2540]]>
+            </line>
+            <line>
+              <![CDATA[<font color='purple'> strLocalParking Spot State1: PARKING_STATE_VIOLATION</font>]]>
+            </line>
+            <line>
+              <![CDATA[<font color='green'>The Python Script (vehicle_reset_spot_1.py) was executed successfully on host (10.10.101.168)-System Time: 05:26:20 UTC Time:22:26:20.372</font>]]>
+            </line>
+            <line>
+              <![CDATA[<font color='green'>The Python Script (vehicle_leave_spot_1.py) was executed successfully on host (10.10.101.168)-System Time: 05:26:23 UTC Time:22:26:23.647</font>]]>
+            </line>
+            <line>
+              <![CDATA[The vehicle park time equaled (2026-09-03 22:26:24)  on spot (1)-UDT Time]]>
+            </line>
+            <line>
+              <![CDATA[<font color='green'>The Python Script (vehicle_leave_spot_1.py) was executed successfully on host (10.10.101.168)-System Time: 05:26:24 UTC Time:22:26:24.389</font>]]>
+            </line>
+            <line>
+              <![CDATA[GlobalWait: The meter variable begun equalled False]]>
+            </line>
+            <line>
+              <![CDATA[The Begin value was set already False for spot 2-host-10.10.101.168]]>
+            </line>
+            <line>
+              <![CDATA[<font color='orange'>     SENTRYLINK_DeleteFreeAndNoParkingRateSetFromRateBlock</font>]]>
+            </line>
+            <line>
+              <![CDATA[strHeadless: False]]>
+            </line>
+            <line>
+              <![CDATA[<font color='orange'>     SENTRYLINK_OpenLoginPage</font>]]>
+            </line>
+            <line>
+              <![CDATA[The (Login) page existed]]>
+            </line>
+            <line>
+              <![CDATA[<font color='orange'>     SENTRYLINK_UserLoginIn</font>]]>
+            </line>
+            <line>
+              <![CDATA[The text name (Version) value (Version 9.8) was stored as variable name (strSentryLinkVersion)]]>
+            </line>
+            <line>
+              <![CDATA[The (Login) field(s) were populated correctly - Values(Email,sbautomationmunicipalityadmin@gmail.com|Password,sbAutomationMunicipalityadmin13!)]]>
+            </line>
+            <line>
+              <![CDATA[The Button (Sign in) with index (1) was clicked successfully]]>
+            </line>
+            <line>
+              <![CDATA[<font color='orange'>     SENTRYLINK_NavigateToPage2-Rate Block Group</font>]]>
+            </line>
+            <line>
+              <![CDATA[Rate Block Group path: https://testautomation.staging.sentry-link.com/devices/meters/2540]]>
+            </line>
+            <line>
+              <![CDATA[The Link (AutomationRateBlockGroup31) with index (1) was clicked successfully.]]>
+            </line>
+            <line>
+              <![CDATA[The Link (AutomationRateBlockGroup31) with index (1) was clicked successfully.]]>
+            </line>
+            <line>
+              <![CDATA[The Button (Delete Rate Block) with index (1) was clicked successfully]]>
+            </line>
+            <line>
+              <![CDATA[The Button (Send to all) with index (1) was clicked successfully]]>
+            </line>
+            <line>
+              <![CDATA[The PARKING_FREE_TIME_ON_FIRST_PAYMENT for Meter (9010) is (0) seconds]]>
+            </line>
+            <line>
+              <![CDATA[<font color='green'>The Python Script (parking_delete_rate_blk.py 646329) was executed successfully on host (10.10.101.168)-System Time: 05:26:41 UTC Time:22:26:41.352</font>]]>
+            </line>
+            <line>
+              <![CDATA[<font color='orange'>     SENTRYMETER_UpdateMetertSetting</font>]]>
+            </line>
+            <line>
+              <![CDATA[<font color='green'>The Python Script (set_initgrace.py 120) was executed successfully on host (10.10.101.168)-System Time: 05:26:45 UTC Time:22:26:45.186</font>]]>
+            </line>
+            <line>
+              <![CDATA[<font color='green'>The Python Script (set_no_parking_grace.py 120) was executed successfully on host (10.10.101.168)-System Time: 05:26:45 UTC Time:22:26:45.521</font>]]>
+            </line>
+            <line>
+              <![CDATA[<font color='green'>The Python Script (set_violation_grace.py 300) was executed successfully on host (10.10.101.168)-System Time: 05:26:45 UTC Time:22:26:45.834</font>]]>
+            </line>
+            <line>
+              <![CDATA[<font color='green'>The Python Script (set_free_time_first_payment.py 0) was executed successfully on host (10.10.101.168)-System Time: 05:26:46 UTC Time:22:26:46.185</font>]]>
+            </line>
+            <line>
+              <![CDATA[<font color='green'>The Python Script (set_apply_payment_screen_timeout.py 5) was executed successfully on host (10.10.101.168)-System Time: 05:26:46 UTC Time:22:26:46.518</font>]]>
+            </line>
+            <line>
+              <![CDATA[<font color='green'>The Python Script (settings_set_setting_false.py PARKING_PAY_BY_PLATE) was executed successfully on host (10.10.101.168)-System Time: 05:26:46 UTC Time:22:26:46.820</font>]]>
+            </line>
+            <line>
+              <![CDATA[<font color='green'>The Python Script (set_free_disconnect_on.py) was executed successfully on host (10.10.101.168)-System Time: 05:26:47 UTC Time:22:26:47.185</font>]]>
+            </line>
+            <line>
+              <![CDATA[<font color='green'>The Python Script (set_unlock_off.py) was executed successfully on host (10.10.101.168)-System Time: 05:26:47 UTC Time:22:26:47.548</font>]]>
+            </line>
+            <line>
+              <![CDATA[<font color='green'>The Python Script (settings_set_setting_false.py PARKING_TRUEUP_ENABLED) was executed successfully on host (10.10.101.168)-System Time: 05:26:47 UTC Time:22:26:47.897</font>]]>
+            </line>
+            <line>
+              <![CDATA[<font color='green'>The Python Script (set_unlock_time.py 1) was executed successfully on host (10.10.101.168)-System Time: 05:26:48 UTC Time:22:26:48.241</font>]]>
+            </line>
+            <line>
+              <![CDATA[<font color='green'>The Python Script (set_unlock_max.py 1) was executed successfully on host (10.10.101.168)-System Time: 05:26:48 UTC Time:22:26:48.563</font>]]>
+            </line>
+            <line>
+              <![CDATA[<font color='green'>The Python Script (set_image_send_before_violation.py 45) was executed successfully on host (10.10.101.168)-System Time: 05:26:48 UTC Time:22:26:48.886</font>]]>
+            </line>
+            <line>
+              <![CDATA[<font color='green'>The Python Script (set_maximum_duration.py 120) was executed successfully on host (10.10.101.168)-System Time: 05:26:49 UTC Time:22:26:49.237</font>]]>
+            </line>
+            <line>
+              <![CDATA[<font color='green'>The Python Script (set_parking_short_session.py 15) was executed successfully on host (10.10.101.168)-System Time: 05:26:49 UTC Time:22:26:49.558</font>]]>
+            </line>
+            <line>
+              <![CDATA[<font color='green'>The Python Script (settings_set_setting.py PARKING_RATE_DEFAULT_MINIMUM_TIME 60) was executed successfully on host (10.10.101.168)-System Time: 05:26:49 UTC Time:22:26:49.886</font>]]>
+            </line>
+            <line>
+              <![CDATA[<font color='green'>The Python Script (settings_set_setting_false.py SYS_OUT_OF_SERVICE) was executed successfully on host (10.10.101.168)-System Time: 05:26:50 UTC Time:22:26:50.227</font>]]>
+            </line>
+            <line>
+              <![CDATA[<font color='orange'>   SENTRYLINK_UpdateRateSetValues</font>]]>
+            </line>
+            <line>
+              <![CDATA[***********Current Meter Rate Blocks*************10.10.101.168]]>
+            </line>
+            <line>
+              <![CDATA[{"disconnect_free": true, "block_type": "fixed", "block_id": -1, "default_minimum_cost": 75, "schedule": {"start_time": "00:00", "valid_days": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"], "start_date": null, "end_date": null, "end_time": "23:59"}, "unenforced": false, "default_minimum_time": 0, "rate": {"senior_minutes": 30, "muni_price": 25, "senior_max_time": 120, "price": 25, "veteran_max_time": 120, "senior_price": 25, "muni_max_time": 120, "handicap_minutes": 30, "handicap_price": 25, "veteran_minutes": 30, "veteran_price": 25, "muni_minutes": 30, "max_time": 120, "handicap_max_time": 120, "minutes": 30}, "card_increment_time": 30, "first_payment_free_time": 0, "maximum_duration_minutes": 120, "priority": -2147483647, "free_time_first_payment": 0, "max_time": 120, "mins_accept_free_before_rate": 60}q]]>
+            </line>
+            <line>
+              <![CDATA[*************************************************]]>
+            </line>
+            <line>
+              <![CDATA[Previous Rate Block Id--1]]>
+            </line>
+            <line>
+              <![CDATA[The value (5dw6_481u8SWo5ZciVx9) was stored as variable name (strJsonToken)]]>
+            </line>
+            <line>
+              <![CDATA[strHeadless: False]]>
             </line>
             <line>
               <![CDATA[<font color='orange'>     SENTRYLINK_OpenLoginPage</font>]]>
@@ -429,16 +1093,202 @@
               <![CDATA[The Button (Sign in) with index (1) was clicked successfully]]>
             </line>
             <line>
-              <![CDATA[The (User Search) field(s) were populated correctly - Values(Email,adeleteuser01@gmail.com)]]>
+              <![CDATA[<font color='orange'>     SENTRYLINK_NavigateToPage2-Showing Meter</font>]]>
             </line>
             <line>
-              <![CDATA[The Button (Search) with index (1) was clicked successfully]]>
+              <![CDATA[The Link (Rate Sets) with index (1) was clicked successfully.]]>
             </line>
             <line>
-              <![CDATA[strHeadless: True]]>
+              <![CDATA[The Link (Rate Sets) with index (1) was clicked successfully.]]>
+            </line>
+            <line>
+              <![CDATA[<font color='orange'>     SENTRYLINK_UpdateRateSet</font>]]>
+            </line>
+            <line>
+              <![CDATA[The Link (AutomationRateSet31Fixed) with index (1) was clicked successfully.]]>
+            </line>
+            <line>
+              <![CDATA[The Link (AutomationRateSet31Fixed) with index (1) was clicked successfully.]]>
+            </line>
+            <line>
+              <![CDATA[The Button (Edit) with index (1) was clicked successfully]]>
+            </line>
+            <line>
+              <![CDATA[<font color='orange'>     SENTRYLINK_PopulateFixedRateBlock</font>]]>
+            </line>
+            <line>
+              <![CDATA[The (Free Time with Free Payment) field(s) were populated correctly - Values(Maximum Duration,120|Coin Time Puchase Limit,120|Free Time with First Payment,0|Credit Card Increment Time,15|Initial Grace,2|Violation Grace,5|Handicap Initial Grace,5|Handicap Violation Grace,1|No Parking Grace,2|Default Minimum Cost,100|Default Minimum Time,60)]]>
+            </line>
+            <line>
+              <![CDATA[The (Rate Set) field(s) were populated correctly - Values(Family,Normal)]]>
+            </line>
+            <line>
+              <![CDATA[The (Buys Minutes) field(s) were populated correctly - Values(Price,25|Buys Minutes,15|Max Time,120)]]>
+            </line>
+            <line>
+              <![CDATA[The Button (Save) with index (1) was clicked successfully]]>
+            </line>
+            <line>
+              <![CDATA[The Button (Save Rate Set) with index (1) was clicked successfully]]>
+            </line>
+            <line>
+              <![CDATA[The Link (Rate Block Groups) with index (1) was clicked successfully.]]>
+            </line>
+            <line>
+              <![CDATA[The Link (Rate Block Groups) with index (1) was clicked successfully.]]>
+            </line>
+            <line>
+              <![CDATA[The Link (AutomationRateBlockGroup31) with index (1) was clicked successfully.]]>
+            </line>
+            <line>
+              <![CDATA[The Link (AutomationRateBlockGroup31) with index (1) was clicked successfully.]]>
+            </line>
+            <line>
+              <![CDATA[The (Add Set to This Group) field(s) were populated correctly - Values(Add Set to This Group,AutomationRateSet31Fixed)]]>
+            </line>
+            <line>
+              <![CDATA[The Button (Add Set to This Group) with index (1) was clicked successfully]]>
+            </line>
+            <line>
+              <![CDATA[The TextField (Rate Block Name) existed on page (Rate Block Setting)-GlobalObjectWait]]>
+            </line>
+            <line>
+              <![CDATA[The (Specific Times of Day) field(s) were populated correctly - Values(Rate Block Name,FixedRateBlock|Start Date,06/28/2026|Time Options,All Day)]]>
+            </line>
+            <line>
+              <![CDATA[The Button (Save Rate Block) with index (1) was clicked successfully]]>
+            </line>
+            <line>
+              <![CDATA[The Button (Send to all) with index (1) was clicked successfully]]>
+            </line>
+            <line>
+              <![CDATA[GlobalWait: Rate Block values existed that were not -1]]>
+            </line>
+            <line>
+              <![CDATA[Current Rate Block Id-646330]]>
+            </line>
+            <line>
+              <![CDATA[***********Current Meter Rate Blocks*************10.10.101.168]]>
+            </line>
+            <line>
+              <![CDATA[{"disconnect_free": true, "block_type": "fixed", "block_id": 646330, "default_minimum_cost": 100, "schedule": {"start_time": "00:00", "valid_days": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"], "start_date": "2026-06-28", "end_date": "2030-09-03", "end_time": "23:59"}, "unenforced": false, "default_minimum_time": 60, "rate": {"senior_minutes": 15, "muni_price": 25, "senior_max_time": 120, "price": 25, "veteran_max_time": 120, "senior_price": 25, "muni_max_time": 120, "handicap_minutes": 30, "handicap_price": 25, "veteran_minutes": 15, "veteran_price": 25, "muni_minutes": 15, "max_time": 120, "handicap_max_time": 240, "minutes": 15}, "card_increment_time": 15, "first_payment_free_time": 0, "maximum_duration_minutes": 120, "priority": 7, "free_time_first_payment": 0, "max_time": 120, "mins_accept_free_before_rate": 60}q]]>
+            </line>
+            <line>
+              <![CDATA[{"disconnect_free": true, "block_type": "fixed", "block_id": -1, "default_minimum_cost": 75, "schedule": {"start_time": "00:00", "valid_days": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"], "start_date": null, "end_date": null, "end_time": "23:59"}, "unenforced": false, "default_minimum_time": 0, "rate": {"senior_minutes": 30, "muni_price": 25, "senior_max_time": 120, "price": 25, "veteran_max_time": 120, "senior_price": 25, "muni_max_time": 120, "handicap_minutes": 30, "handicap_price": 25, "veteran_minutes": 30, "veteran_price": 25, "muni_minutes": 30, "max_time": 120, "handicap_max_time": 120, "minutes": 30}, "card_increment_time": 30, "first_payment_free_time": 0, "maximum_duration_minutes": 120, "priority": -2147483647, "free_time_first_payment": 0, "max_time": 120, "mins_accept_free_before_rate": 60}q]]>
+            </line>
+            <line>
+              <![CDATA[*************************************************]]>
+            </line>
+            <line>
+              <![CDATA[<font color='orange'>     SENTRYLINK_UpdateMaintenanceMode</font>]]>
+            </line>
+            <line>
+              <![CDATA[strHeadless: False]]>
+            </line>
+            <line>
+              <![CDATA[Maintenance Mode Spot (1) equals: False]]>
+            </line>
+            <line>
+              <![CDATA[Maintenance Mode Spot (2) equals: False]]>
+            </line>
+            <line>
+              <![CDATA[Parking Session Url: https://testautomation.staging.sentry-link.com/api/v1/meter_groups.json]]>
+            </line>
+            <line>
+              <![CDATA[<font color='purple'> strMeterGroupInitialGrace: 120</font>]]>
+            </line>
+            <line>
+              <![CDATA[strConciergeEnrolled: true]]>
+            </line>
+            <line>
+              <![CDATA[The user (sbautomationmunicipalityparker@gmail.com) was de-enrolled from concierge program]]>
+            </line>
+            <line>
+              <![CDATA[strConciergeEnrolled: false]]>
+            </line>
+            <line>
+              <![CDATA[The user was deenrolled from Concierge]]>
+            </line>
+            <line>
+              <![CDATA[The value (5dw6_481u8SWo5ZciVx9) was stored as variable name (strJsonToken)]]>
+            </line>
+            <line>
+              <![CDATA[<font color='orange'>     StoreJsonAdminToken</font>]]>
+            </line>
+            <line>
+              <![CDATA[The value (3gGy2bhPwsNEsTvLE_ry) was stored as variable name (strJsonToken)]]>
+            </line>
+            <line>
+              <![CDATA[The License Plate (09010AA) for state (Minnesota) was added for user (sbautomationmunicipalityparker@gmail.com)]]>
+            </line>
+            <line>
+              <![CDATA[The value (5dw6_481u8SWo5ZciVx9) was stored as variable name (strJsonToken)]]>
+            </line>
+            <line>
+              <![CDATA[The value (12817) was stored as variable name (strJsonUserId)]]>
+            </line>
+            <line>
+              <![CDATA[The user account balance was (42.1)]]>
+            </line>
+            <line>
+              <![CDATA[strConciergeEnrolled: false]]>
+            </line>
+            <line>
+              <![CDATA[The user (sbautomationmunicipalityparker@gmail.com) was Enrolled from concierge program]]>
+            </line>
+            <line>
+              <![CDATA[strConciergeEnrolled: true]]>
+            </line>
+            <line>
+              <![CDATA[The user was enrolled in Concierge]]>
+            </line>
+            <line>
+              <![CDATA[<font color='green'>The Python Script (settings_set_setting_true.py PARKING_RCV_ON_SB_LPR_PLATE_MATCH) was executed successfully on host (10.10.101.168)-System Time: 05:28:16 UTC Time:22:28:16.838</font>]]>
+            </line>
+            <line>
+              <![CDATA[<font color='orange'>METER_ParkSpot</font>]]>
+            </line>
+            <line>
+              <![CDATA[<font color='green'>The Python Script (vehicle_reset_spot_1.py) was executed successfully on host (10.10.101.168)-System Time: 05:28:17 UTC Time:22:28:17.166</font>]]>
+            </line>
+            <line>
+              <![CDATA[strParkedAtTime_HHmmss: 17:28:19]]>
+            </line>
+            <line>
+              <![CDATA[strParkingSessionsParkedAtTimeMinusTwo: Today at 5:26 PM]]>
+            </line>
+            <line>
+              <![CDATA[strParkingSessionsParkedAtTimeMinusOne: Today at 5:27 PM]]>
+            </line>
+            <line>
+              <![CDATA[strParkingSessionsParkedAtTime: Today at 5:28 PM]]>
+            </line>
+            <line>
+              <![CDATA[strParkingSessionsParkedAtTimePlusOne: Today at 5:29 PM]]>
+            </line>
+            <line>
+              <![CDATA[<font color='green'>The Python Script (vehicle_park_spot_1.py) was executed successfully on host (10.10.101.168)-System Time: 05:28:19 UTC Time:22:28:19.478</font>]]>
+            </line>
+            <line>
+              <![CDATA[GlobalWait: The meter variable begun equalled True]]>
+            </line>
+            <line>
+              <![CDATA[Wait For Recognized as Concierge time to be near Violation time]]>
+            </line>
+            <line>
+              <![CDATA[Waited (105) For Recognized as Concierge time to be near Violation time]]>
+            </line>
+            <line>
+              <![CDATA[strHeadless: False]]>
             </line>
             <line>
               <![CDATA[<font color='orange'>     SENTRYLINK_OpenLoginPage</font>]]>
+            </line>
+            <line>
+              <![CDATA[<font color='orange'>     SENTRYLINK_AdminLoginIn</font>]]>
+            </line>
+            <line>
+              <![CDATA[The (Login) page existed]]>
             </line>
             <line>
               <![CDATA[<font color='orange'>     SENTRYLINK_UserLoginIn</font>]]>
@@ -453,145 +1303,172 @@
               <![CDATA[The Button (Sign in) with index (1) was clicked successfully]]>
             </line>
             <line>
-              <![CDATA[The (User Search) field(s) were populated correctly - Values(Email,adeleteuser01@gmail.com)]]>
+              <![CDATA[<font color='orange'>     SENTRYLINK_NavigateToPage2-Parking Sessions</font>]]>
             </line>
             <line>
-              <![CDATA[The Button (Search) with index (1) was clicked successfully]]>
+              <![CDATA[The row number (1) that contained (Sentry Meter and 9010) from the table (Sessions) was stored as variable name (strSessionsRowNumber)]]>
             </line>
             <line>
-              <![CDATA[The value (47190) was stored as variable name (strJsonUserId)]]>
+              <![CDATA[The table value (4087014) from row (1) column (1) in the table (Sessions) was stored as variable name (strSessionId)]]>
             </line>
             <line>
-              <![CDATA[<font color='orange'>     StoreJsonAdminToken</font>]]>
+              <![CDATA[Parking Session:  https://testautomation.staging.sentry-link.com/parking_sessions/4087014]]>
             </line>
             <line>
-              <![CDATA[The value (12816) was stored as variable name (strJsonUserId)]]>
+              <![CDATA[The Link (4087014) with index (1) was clicked successfully.]]>
             </line>
             <line>
-              <![CDATA[The value (Sq4zMsr-ZwQRboR7B8qK) was stored as variable name (strJsonToken)]]>
+              <![CDATA[The Link (4087014) with index (1) was clicked successfully.]]>
             </line>
             <line>
-              <![CDATA[The value (NgixDge162DNMyaG_CEw) was stored as variable name (strJsonToken)]]>
+              <![CDATA[The (License Plate Information) field(s) were populated correctly (strLicensePlate: 09010AA|strLicenseState: Minnesota|) - Values(License Plate,09010AA|Province/State,Minnesota)]]>
             </line>
             <line>
-              <![CDATA[The value (12817) was stored as variable name (strJsonUserId)]]>
+              <![CDATA[The Button (Create) with index (1) was clicked successfully]]>
             </line>
             <line>
-              <![CDATA[The user account balance was (25.95)]]>
+              <![CDATA[<font color='purple'> strLocalParking Session Concierge Value 1: false</font>]]>
             </line>
             <line>
-              <![CDATA[Location mode BEFORE enable: 3]]>
+              <![CDATA[<font color='purple'> strLocalParking Session Concierge Value 1: false</font>]]>
             </line>
             <line>
-              <![CDATA[Executing ADB command: /Users/darinduphorn/Library/Android/sdk/platform-tools/adb -s R5CT71MQ2MM shell settings put secure location_mode 3]]>
+              <![CDATA[<font color='purple'> strLocalParking Session Concierge Value 1: false</font>]]>
             </line>
             <line>
-              <![CDATA[Location services enabled successfully (mode 3 - exit code 0)]]>
+              <![CDATA[<font color='purple'> strLocalParking Session Concierge Value 1: false</font>]]>
             </line>
             <line>
-              <![CDATA[Location mode AFTER enable: 3]]>
+              <![CDATA[<font color='purple'> strLocalParking Session Concierge Value 1: false</font>]]>
             </line>
             <line>
-              <![CDATA[Sentry Mobile was loaded correctly on Android Device]]>
+              <![CDATA[<font color='purple'> strLocalParking Session Concierge Value 1: false</font>]]>
             </line>
             <line>
-              <![CDATA[The Button (Accept) with index (1) was clicked successfully]]>
+              <![CDATA[<font color='purple'> strLocalParking Session Concierge Value 1: false</font>]]>
             </line>
             <line>
-              <![CDATA[There Was No Snack Bar Message]]>
+              <![CDATA[<font color='purple'> strLocalParking Session Concierge Value 1: false</font>]]>
             </line>
             <line>
-              <![CDATA[The Link (Sign up) with index (1) was clicked successfully]]>
+              <![CDATA[<font color='purple'> strLocalParking Session Concierge Value 1: false</font>]]>
             </line>
             <line>
-              <![CDATA[<font color='orange'>     PopulateAction</font>]]>
+              <![CDATA[<font color='purple'> strLocalParking Session Concierge Value 1: false</font>]]>
             </line>
             <line>
-              <![CDATA[The (Phone Number) field(s) were populated correctly - Values(Phone Number,2812816804)]]>
+              <![CDATA[<font color='purple'> strLocalParking Session Concierge Value 1: false</font>]]>
             </line>
             <line>
-              <![CDATA[The Button (Next) with index (1) was clicked successfully]]>
+              <![CDATA[<font color='purple'> strLocalParking Session Concierge Value 1: false</font>]]>
             </line>
             <line>
-              <![CDATA[There Was No Snack Bar Message]]>
+              <![CDATA[<font color='purple'> strLocalParking Session Concierge Value 1: false</font>]]>
             </line>
             <line>
-              <![CDATA[<font color='orange'>     PopulateAction</font>]]>
+              <![CDATA[<font color='purple'> strLocalParking Session Concierge Value 1: false</font>]]>
             </line>
             <line>
-              <![CDATA[The (Register) field(s) were populated correctly - Values(First Name,Delete|Last Name,User|Email Id,adeleteuser01@gmail.com|Password,ADeleteMe01!|Confirm Password,ADeleteMe01!)]]>
+              <![CDATA[<font color='purple'> strLocalParking Session Concierge Value 1: false</font>]]>
             </line>
             <line>
-              <![CDATA[The Button (Sign up) with index (1) was clicked successfully]]>
+              <![CDATA[<font color='purple'> strLocalParking Session Concierge Value 1: true</font>]]>
             </line>
             <line>
-              <![CDATA[The Text (Error Message) with index (1) contained (Registered Successfully)]]>
+              <![CDATA[GlobalWait: WaitParkingSessionConciergeValueEqualsTrue]]>
             </line>
             <line>
-              <![CDATA[<font color='orange'>     NavigateToPageUsingMenuButtons</font>]]>
+              <![CDATA[Parking Session Url: https://testautomation.staging.sentry-link.com/api/v1/devices/2540/parking_sessions.json?include_extended_data=true;spot_identifier=SPOT_1]]>
             </line>
             <line>
-              <![CDATA[Navigated to the (Account) page correctly]]>
+              <![CDATA[<font color='purple'> strParkingId: 4087014</font>]]>
             </line>
             <line>
-              <![CDATA[The Link (Sign out) with index (1) was clicked successfully]]>
+              <![CDATA[<font color='purple'> strParkTimestamp: 2026-09-03T22:28:19Z</font>]]>
             </line>
             <line>
-              <![CDATA[The Link (Yes) with index (1) was clicked successfully]]>
+              <![CDATA[<font color='green'>The Python Script (testautof_touch_screen.py) was executed successfully on host (10.10.101.168)-System Time: 05:30:43 UTC Time:22:30:43.204</font>]]>
             </line>
             <line>
-              <![CDATA[<font color='orange'>     PopulateAction</font>]]>
+              <![CDATA[Wait 5 seconds for payment to get to Meter]]>
             </line>
             <line>
-              <![CDATA[The (Login) field(s) were populated correctly - Values(Email Id,2812816804|Password,ADeleteMe01!)]]>
+              <![CDATA[The Actual Meter Time (0) was not equal to expected meter time (15)]]>
             </line>
             <line>
-              <![CDATA[The Button (Log in) with index (1) was clicked successfully]]>
+              <![CDATA[<font color='green'>The Python Script (testautof_touch_screen.py) was executed successfully on host (10.10.101.168)-System Time: 05:32:04 UTC Time:22:32:04.965</font>]]>
             </line>
             <line>
-              <![CDATA[<font color='orange'>     NavigateToPageUsingMenuButtons</font>]]>
+              <![CDATA[The meter UI State equaled (SCREEN_MULTI_SELECT_SPACE) on spot (1)-UTC: 22:32:08.406]]>
             </line>
             <line>
-              <![CDATA[Navigated to the (Account) page correctly]]>
+              <![CDATA[<font color='green'>The Python Script (testautof_touch_screen.py) was executed successfully on host (10.10.101.168)-System Time: 05:32:08 UTC Time:22:32:08.690</font>]]>
             </line>
             <line>
-              <![CDATA[The Link (Sign out) with index (1) was clicked successfully]]>
+              <![CDATA[<font color='green'>The Python Script (testautof_enter_space.py 9010) was executed successfully on host (10.10.101.168)-System Time: 05:32:10 UTC Time:22:32:10.961</font>]]>
             </line>
             <line>
-              <![CDATA[The Link (Yes) with index (1) was clicked successfully]]>
+              <![CDATA[strScanStartTime: 22:32:10.993]]>
             </line>
             <line>
-              <![CDATA[<font color='Green'>Meter End Time 17:32:</font>]]>
+              <![CDATA[The meter UI State equaled (SCREEN_MULTI_SELECT_SPACE) on spot (1)-UTC: 22:32:11.782]]>
             </line>
             <line>
-              <![CDATA[<a href=/Users/darinduphorn/git/TestAutomation/MeterLogs/ANDROID_TestCases_A2018F_RegisterUser_Login_Using_Phone_Flutter_1.txt/>Meter Logs</a>]]>
+              <![CDATA[The meter UI State equaled (SCREEN_MULTI_HOME) on spot (1)-UTC: 22:32:12.495]]>
             </line>
             <line>
-              <![CDATA[<a href=/Users/darinduphorn/git/TestAutomation/MessageLogs/ANDROID_TestCases_A2018F_RegisterUser_Login_Using_Phone_Flutter_1.txt/>Message Logs</a>]]>
+              <![CDATA[It took (1502) Millieconds for the (SCREEN_MULTI_HOME) screen to appear]]>
+            </line>
+            <line>
+              <![CDATA[<a href=https://i.imgur.com/rYwlbyq.png/>Meter Screen Shot</a>]]>
+            </line>
+            <line>
+              <![CDATA[<img src="https://i.imgur.com/rYwlbyq.png" alt=""/><br />]]>
+            </line>
+            <line>
+              <![CDATA[Local meter log did not contain Callstack]]>
+            </line>
+            <line>
+              <![CDATA[Local meter log did not contain STACKTRACE]]>
+            </line>
+            <line>
+              <![CDATA[Local meter log did not contain Traceback]]>
+            </line>
+            <line>
+              <![CDATA[Local meter log did not contain Space Failed To Load error]]>
+            </line>
+            <line>
+              <![CDATA[The Actual Meter Time (0) was not equal to expected meter time (15)]]>
+            </line>
+            <line>
+              <![CDATA[<a style='color:Gold' href="https://www.pivotaltracker.com/n/projects/980790/stories/SL-7995" target="_blank">SL-7995-When a Concierge user parks and the license plate is recognized seconds before the initial grace period violation, the meter screen unexpectedly displays “Max Time Already Purchased</a>]]>
+            </line>
+            <line>
+              <![CDATA[Error Remain Parked (15) seconds-Spot 1]]>
             </line>
           </reporter-output>
-        </test-method> <!-- A2018F_RegisterUser_Login_Using_Phone_Flutter -->
-        <test-method is-config="true" signature="AfterMethod(org.testng.ITestContext, java.lang.reflect.Method, org.testng.ITestResult)[pri:0, instance:AutomationCode.Android_TestCases_Flutter@3e27aa33]" started-at="2026-08-19T17:32:29Z" name="AfterMethod" finished-at="2026-08-19T17:32:29Z" duration-ms="355" status="PASS">
+        </test-method> <!-- A2303F_CS_PS1_GPV1_WFFACTNVT_ALPTPS_VMT_VPSH -->
+        <test-method is-config="true" signature="AfterMethod(org.testng.ITestContext, java.lang.reflect.Method, org.testng.ITestResult)[pri:0, instance:AutomationCode.Android_TestCases_Flutter@7ef82753]" started-at="2026-09-03T22:32:41Z" name="AfterMethod" finished-at="2026-09-03T22:32:41Z" duration-ms="377" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@37313c65]]>
+                <![CDATA[org.testng.TestRunner@415b0b49]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[public void AutomationCode.Android_TestCases_Flutter.A2018F_RegisterUser_Login_Using_Phone_Flutter()]]>
+                <![CDATA[public void AutomationCode.Android_TestCases_Flutter.A2303F_CS_PS1_GPV1_WFFACTNVT_ALPTPS_VMT_VPSH()]]>
               </value>
             </param>
             <param index="2">
               <value>
-                <![CDATA[[TestResult name=A2018F_RegisterUser_Login_Using_Phone_Flutter status=SUCCESS method=Android_TestCases_Flutter.A2018F_RegisterUser_Login_Using_Phone_Flutter()[pri:1018, instance:AutomationCode.Android_TestCases_Flutter@3e27aa33] output=************************************************************]]]>
+                <![CDATA[[TestResult name=A2303F_CS_PS1_GPV1_WFFACTNVT_ALPTPS_VMT_VPSH status=FAILURE method=Android_TestCases_Flutter.A2303F_CS_PS1_GPV1_WFFACTNVT_ALPTPS_VMT_VPSH()[pri:2303, instance:AutomationCode.Android_TestCases_Flutter@7ef82753] output=strHeadless: False]]]>
               </value>
             </param>
           </params>
           <reporter-output>
             <line>
-              <![CDATA[<font color='Green'>Meter End Time 17:32:</font>]]>
+              <![CDATA[<font color='Green'>Meter End Time 22:32:</font>]]>
             </line>
           </reporter-output>
         </test-method> <!-- AfterMethod -->

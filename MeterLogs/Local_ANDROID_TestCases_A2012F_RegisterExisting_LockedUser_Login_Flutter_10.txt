@@ -1,0 +1,129 @@
+[08/31 21:36:10.311] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to reswipeoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[08/31 21:36:10.311] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: calling reswipeoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:913)
+[08/31 21:36:10.312] | INFO     | gui        | MainThread | QT: Home: transition to reswipeoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[08/31 21:36:10.312] | INFO     | gui        | MainThread | QT: Home: calling reswipeoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:400)
+[08/31 21:36:10.313] | INFO     | gui        | MainThread | QT: MultiHome: transition to reswipeoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[08/31 21:36:10.314] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to processingoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[08/31 21:36:10.315] | INFO     | gui        | MainThread | QT: Home: transition to processingoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[08/31 21:36:10.315] | INFO     | gui        | MainThread | QT: MultiHome: transition to processingoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[08/31 21:36:10.316] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to declineoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[08/31 21:36:10.317] | INFO     | gui        | MainThread | QT: MultiHome: transition to declineoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[08/31 21:36:24.869] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43643 rp_min_to_free 43643
+[08/31 21:36:32.522] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/31 21:36:32.523] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/31 21:37:00.945] | INFO     | gui        | MainThread | QT: Home: transition to PSV_STATE_AVAILABLE (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[08/31 21:37:24.796] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43642 rp_min_to_free 43642
+[08/31 21:37:34.103] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/31 21:37:34.104] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/31 21:37:55.899] | INFO     | phone      | SentryJSONRPCServer | should_run(): SECO detected - returning
+[08/31 21:37:55.900] | INFO     | mps.ui     | SentryJSONRPCServer | suspend_background_tasks(): change to True
+[08/31 21:37:55.901] | INFO     | parking_serv | SentryJSONRPCServer | suspend_transfers(): True
+[08/31 21:37:55.911] | INFO     | ui.multi   | SentryJSONRPCServer | set_state(): UI_STATE_IDLE performing pre_exit_state() actions UISI: screen touched
+[08/31 21:37:55.913] | INFO     | interaction | SentryJSONRPCServer | pre_exit_state(): completing actions before next_state UI_STATE_HOME
+[08/31 21:37:55.914] | INFO     | interaction | SentryJSONRPCServer | pre_exit_state(): completed actions complete True
+[08/31 21:37:55.916] | INFO     | ui.multi   | SentryJSONRPCServer | set_state(): UI_STATE_IDLE completed pre_exit_state() actions proceed True
+[08/31 21:37:55.916] | INFO     | ui.multi   | SentryJSONRPCServer | Secs in Idle 23644.841612
+[08/31 21:37:55.917] | INFO     | interaction | SentryJSONRPCServer | cash_out_or_void_payment: No payment
+[08/31 21:37:55.918] | INFO     | ui.multi   | SentryJSONRPCServer | CONFIRM FALSE
+[08/31 21:37:55.918] | INFO     | ui.multi   | SentryJSONRPCServer | UISH: enter_state active_spot is None
+[08/31 21:37:55.919] | INFO     | interaction | SentryJSONRPCServer | return_coins(): ignoring credit cards and returning coins
+[08/31 21:37:56.120] | INFO     | ui.multi   | SentryJSONRPCServer | CHECK POP  False
+[08/31 21:37:56.120] | INFO     | ui.multi   | SentryJSONRPCServer | UISH::enter_state(): No expired for None
+[08/31 21:37:56.128] | INFO     | gui        | SentryJSONRPCServer | Screen changed to SCREEN_MULTI_SELECT_SPACE en
+[08/31 21:37:56.129] | INFO     | gui        | MainThread | QT: MultiSelectSpace: transition to spacemapoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiSelectSpace.qml:984)
+[08/31 21:37:56.130] | INFO     | playback   | SentryJSONRPCServer | play: en_space_number.mp3
+[08/31 21:37:56.143] | WARNING  | interaction | SentryJSONRPCServer | _stop_idle_timeout: NO TIMER
+[08/31 21:37:56.143] | INFO     | ui.multi   | SentryJSONRPCServer | UI_STATE_IDLE -> UI_STATE_HOME (UISI: screen touched)
+[08/31 21:37:56.145] | INFO     | gui        | MainThread | _signal_goto_screen: multi_select_space
+[08/31 21:37:56.146] | INFO     | gui        | MainThread | QT: Current:  multi_idle Next:  multi_select_space (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/main.qml:1445)
+[08/31 21:37:59.577] | INFO     | phone      | SentryJSONRPCServer | should_run(): SECO detected - returning
+[08/31 21:38:01.980] | INFO     | interaction | SentryJSONRPCServer | on_test_automation_space_entered: SPACE 9010
+[08/31 21:38:01.986] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): user selected space 9010
+[08/31 21:38:01.988] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): check space 9010 for local
+[08/31 21:38:01.988] | WARNING  | interaction | main_reactor | _stop_idle_timeout: NO TIMER
+[08/31 21:38:01.996] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event: /event/parking_event_user_entered_space-3e04bff4a58411f189d900c008947d30.json
+[08/31 21:38:02.003] | INFO     | gui        | MainThread | QT: MultiSelectSpace: transition to loadon (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiSelectSpace.qml:984)
+[08/31 21:38:01.994] | INFO     | parking.controller | main_reactor | map_space_to_spot: indx 0 spot SPOT_1
+[08/31 21:38:02.008] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): 9010 is a LOCAL space number, setting active spot SPOT_1
+[08/31 21:38:02.009] | INFO     | parking.session.SPOT_1 | main_reactor | is_init_grace(): None
+[08/31 21:38:02.009] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): has NOT paid for max time
+[08/31 21:38:02.263] | INFO     | interaction | main_reactor | set_active_spot: ACTIVE SPOT SPOT_1 /home/mpsadmin/projects/Sentry_test/src/mps/ui/multi_user_interaction.py:2750
+[08/31 21:38:02.265] | INFO     | interaction | main_reactor | set_active_spot(): to SPOT_1
+[08/31 21:38:02.266] | INFO     | parking.controller | main_reactor | set_active_spot(): to SPOT_1
+[08/31 21:38:02.431] | INFO     | ui.multi   | main_reactor | config_payment_acceptance: Caller /home/mpsadmin/projects/Sentry_test/src/mps/ui/multi_user_interaction.py:2756
+[08/31 21:38:02.432] | INFO     | ui.multi   | main_reactor | config_payment_acceptance(UISH(): LOCAL valid space number): is_rate_schedule_payment_allowed_now() = True
+[08/31 21:38:02.434] | INFO     | epay       | main_reactor | enable_credit_cards: enable True
+[08/31 21:38:02.434] | INFO     | interaction | main_reactor | accept_coins(): acceptor currently blocking - cfg to accept
+[08/31 21:38:02.434] | INFO     | coin       | main_reactor | accept_all_coins(): configuring acceptance
+[08/31 21:38:02.435] | INFO     | ui.multi   | main_reactor | UISH::on_space_entered(): PSV PSV_STATE_AVAILABLE parking_state PARKING_STATE_EMPTY
+[08/31 21:38:02.437] | INFO     | gui        | main_reactor | prompt_on
+[08/31 21:38:02.437] | INFO     | playback   | main_reactor | play: en_coin_card.mp3
+[08/31 21:38:02.444] | INFO     | gui        | main_reactor | Screen changed to SCREEN_MULTI_HOME en
+[08/31 21:38:02.445] | INFO     | ui.multi   | main_reactor | update_last_session_data(): space 9010 spot_id SPOT_1 parking_session_id 093273afa58211f189d900c008947d30 NO payment
+[08/31 21:38:02.456] | INFO     | gui        | MainThread | QT: MultiSelectSpace: transition to loadoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiSelectSpace.qml:984)
+[08/31 21:38:02.457] | INFO     | gui        | MainThread | _signal_prompt_on
+[08/31 21:38:02.458] | INFO     | gui        | MainThread | QT: MultiHome: transition to prompton (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[08/31 21:38:02.475] | INFO     | gui        | MainThread | _signal_goto_screen: multi_home
+[08/31 21:38:02.476] | INFO     | gui        | MainThread | QT: Current:  multi_select_space Next:  multi_home (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/main.qml:1445)
+[08/31 21:38:02.855] | INFO     | rabbitmq   | rabbitmq_reactor | _do_rabbitmq_send_event(): success():  RMQ TX success {"value": {"user_space_entered": "9010", "event_time": "2026-08-31T21:38:01Z", "mac_address": "00:C0:08:94:7D:30"}, "class": "event", "queued_dt": "2026-08-31T21:38:01Z", "type": "parking_event_user_entered_space", "id": "749d6a16-5224-4e66-a805-402337b0f0f4", "device_id": "m:00C008947D30"}
+[08/31 21:38:02.964] | WARNING  | pika.connection | rabbitmq_reactor | Disconnected from RabbitMQ at rabbitmq.staging.sentry-link.com:5671 (200): Normal shutdown
+[08/31 21:38:03.029] | INFO     | coin_event | Coin Vault | Coin acceptor configured to accept coins (command sent)
+[08/31 21:38:03.301] | INFO     | coin_event | Coin Vault | Info: REQUEST_MASTER_INHIBIT_STATUS indicates acceptor released
+[08/31 21:38:12.516] | INFO     | mps.ui     | main_reactor | RESWIPE OFF
+[08/31 21:38:12.520] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to reswipeoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[08/31 21:38:12.520] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: calling reswipeoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:913)
+[08/31 21:38:12.521] | INFO     | gui        | MainThread | QT: Home: transition to reswipeoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[08/31 21:38:12.521] | INFO     | gui        | MainThread | QT: Home: calling reswipeoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:400)
+[08/31 21:38:12.522] | INFO     | gui        | MainThread | QT: MultiHome: transition to reswipeoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[08/31 21:38:12.523] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to processingoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[08/31 21:38:12.523] | INFO     | gui        | MainThread | QT: Home: transition to processingoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[08/31 21:38:12.524] | INFO     | gui        | MainThread | QT: MultiHome: transition to processingoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[08/31 21:38:12.525] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to declineoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[08/31 21:38:12.525] | INFO     | gui        | MainThread | QT: MultiHome: transition to declineoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[08/31 21:38:12.527] | INFO     | ui.multi   | main_reactor | set_state(): UI_STATE_HOME performing pre_exit_state() actions _on_timeout(): 
+[08/31 21:38:12.527] | INFO     | interaction | main_reactor | pre_exit_state(): completing actions before next_state UI_STATE_IDLE
+[08/31 21:38:12.528] | INFO     | interaction | main_reactor | return_coins(): ignoring credit cards and returning coins
+[08/31 21:38:12.528] | INFO     | epay       | main_reactor | enable_credit_cards: enable False
+[08/31 21:38:12.528] | INFO     | interaction | main_reactor | return_coins(): acceptor currently accepting - cfg to reject
+[08/31 21:38:12.529] | INFO     | coin       | main_reactor | return_all_coins(): configuring rejection
+[08/31 21:38:12.729] | INFO     | interaction | main_reactor | is_acceptor_blocked(): waiting for coin acceptor disabled confirmation
+[08/31 21:38:12.730] | INFO     | interaction | main_reactor | pre_exit_state(): coin acceptor is blocking with no new deposits
+[08/31 21:38:12.730] | INFO     | interaction | main_reactor | pre_exit_state(): completed actions complete True
+[08/31 21:38:12.731] | INFO     | ui.multi   | main_reactor | set_state(): UI_STATE_HOME completed pre_exit_state() actions proceed True
+[08/31 21:38:12.731] | INFO     | ui.multi   | main_reactor | clear_last_session_data(): cleared data
+[08/31 21:38:12.732] | INFO     | mps.ui     | main_reactor | concierge_reset
+[08/31 21:38:12.732] | INFO     | interaction | main_reactor | return_coins(): ignoring credit cards and returning coins
+[08/31 21:38:12.736] | INFO     | gui        | MainThread | QT: concierge_reset SPOT_1 (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/main.qml:997)
+[08/31 21:38:12.737] | INFO     | gui        | MainThread | QT: ParkingSpotView: transition to conciergeReset (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/components/ParkingSpotView.qml:4247)
+[08/31 21:38:12.738] | INFO     | gui        | MainThread | QT: ParkingSpotView: conciergeReset (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/components/ParkingSpotView.qml:4217)
+[08/31 21:38:12.739] | INFO     | gui        | MainThread | QT: ParkingSpotView: transition to PSV_STATE_AVAILABLE (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/components/ParkingSpotView.qml:4247)
+[08/31 21:38:12.739] | INFO     | gui        | MainThread | QT: ParkingSpotView: PSV_STATE_AVAILABLE (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/components/ParkingSpotView.qml:4100)
+[08/31 21:38:12.933] | WARNING  | interaction | main_reactor | _stop_idle_timeout: NO TIMER
+[08/31 21:38:12.934] | INFO     | gui        | main_reactor | Screen changed to SCREEN_MULTI_IDLE en
+[08/31 21:38:12.936] | INFO     | gui        | MainThread | _signal_goto_screen: multi_idle
+[08/31 21:38:12.937] | INFO     | gui        | MainThread | QT: Current:  multi_home Next:  multi_idle (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/main.qml:1445)
+[08/31 21:38:12.945] | INFO     | interaction | main_reactor | cash_out_or_void_payment: No payment
+[08/31 21:38:13.081] | INFO     | interaction | main_reactor | set_active_spot: ACTIVE SPOT None /home/mpsadmin/projects/Sentry_test/src/mps/ui/multi_user_interaction.py:1897
+[08/31 21:38:13.081] | INFO     | interaction | main_reactor | set_active_spot(): to None
+[08/31 21:38:13.082] | INFO     | parking.controller | main_reactor | set_active_spot(): to None
+[08/31 21:38:13.089] | INFO     | mps.ui     | main_reactor | suspend_background_tasks(): change to False
+[08/31 21:38:13.090] | INFO     | parking_serv | main_reactor | suspend_transfers(): False
+[08/31 21:38:13.090] | INFO     | epay       | main_reactor | auto_authorize(): Setting auto_authorize amount for 200
+[08/31 21:38:13.098] | INFO     | ui.multi   | main_reactor | UI_STATE_HOME -> UI_STATE_IDLE (_on_timeout(): )
+[08/31 21:38:13.123] | INFO     | gui        | MainThread | QT: Home: transition to PSV_STATE_AVAILABLE (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[08/31 21:38:13.416] | INFO     | coin_event | Coin Vault | Coin acceptor configured to return coins
+[08/31 21:38:13.688] | INFO     | coin_event | Coin Vault | Info: REQUEST_MASTER_INHIBIT_STATUS indicates acceptor blocked
+[08/31 21:38:22.901] | INFO     | micro.wdog | microcomm_reactor | qml_ping_sender(): Sending QML ping
+[08/31 21:38:22.929] | INFO     | credit_call | credit_call_reactor | _retry_offline_messages(): deferring cpu_load 4.75 > 3.5 - #0 messages waiting
+[08/31 21:38:23.020] | INFO     | mps.ui     | main_reactor | RESWIPE OFF
+[08/31 21:38:23.021] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to reswipeoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[08/31 21:38:23.022] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: calling reswipeoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:913)
+[08/31 21:38:23.022] | INFO     | gui        | MainThread | QT: Home: transition to reswipeoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[08/31 21:38:23.023] | INFO     | gui        | MainThread | QT: Home: calling reswipeoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:400)
+[08/31 21:38:23.024] | INFO     | gui        | MainThread | QT: MultiHome: transition to reswipeoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[08/31 21:38:23.025] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to processingoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[08/31 21:38:23.025] | INFO     | gui        | MainThread | QT: Home: transition to processingoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[08/31 21:38:23.026] | INFO     | gui        | MainThread | QT: MultiHome: transition to processingoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[08/31 21:38:23.027] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to declineoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[08/31 21:38:23.028] | INFO     | gui        | MainThread | QT: MultiHome: transition to declineoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[08/31 21:38:24.840] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 43641 rp_min_to_free 43641

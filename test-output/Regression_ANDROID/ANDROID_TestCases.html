@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>ANDROID_TestCases</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>1/0/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Wed Aug 19 12:29:59 CDT 2026</td>
+<td>Started on:</td><td>Thu Sep 03 17:25:56 CDT 2026</td>
 </tr>
-<tr><td>Total time:</td><td>150 seconds (150193 ms)</td>
+<tr><td>Total time:</td><td>405 seconds (405872 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,38 +67,108 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
-<table width='100%' border='1' class='invocation-passed'>
-<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
 <td width="30%"><b>Exception</b></td>
 <td width="10%"><b>Time (seconds)</b></td>
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='AutomationCode.Android_TestCases_Flutter.A2018F_RegisterUser_Login_Using_Phone_Flutter()'><b>A2018F_RegisterUser_Login_Using_Phone_Flutter</b><br>Test class: AutomationCode.Android_TestCases_Flutter<br/>
-<a href="#Output-1983067107" onClick='toggleBox("Output-1983067107", this, "Show output", "Hide output");'>Show output</a>
+<td title='AutomationCode.Android_TestCases_Flutter.A2303F_CS_PS1_GPV1_WFFACTNVT_ALPTPS_VMT_VPSH()'><b>A2303F_CS_PS1_GPV1_WFFACTNVT_ALPTPS_VMT_VPSH</b><br>Test class: AutomationCode.Android_TestCases_Flutter<br/>
+<a href="#Output-887197122" onClick='toggleBox("Output-887197122", this, "Show output", "Hide output");'>Show output</a>
 
-<a href="#Output-1983067107" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-1983067107">
+<a href="#Output-887197122" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-887197122">
+strHeadless: False<br/>
 ************************************************************<br/>
-Environment:  SG                           <br/>
-Version:      SentryMobile-Staging-10.0.499.apk                             <br/>
-Municipality: AutomationMunicipality                          <br/>
-Meter Name:   9010                             <br/>
-Meter IP:     10.10.101.168                                  <br/>
-Meter Version:"meter-8.18-1a~master20241003.1"
-                          <br/>
-Meter MD5SUM Version:                  <br/>
-Sentry Link Version:Version 9.8               <br/>
-SilverBullet Version:5.1.1-1            <br/>
-RemotePath:   http://localhost:4723                            <br/>
-AndroidUdid:  R5CT71MQ2MM                           <br/>
+Test:  ANDROID_TestCases_A2303F_CS_PS1_GPV1_WFFACTNVT_ALPTPS_VMT_VPSH_1             <br/>
+Environment:  SG                            <br/>
+Municipality: AutomationMunicipality                           <br/>
+Meter Name:   9010                              <br/>
+Meter Type;	seco                              <br/>
+Meter IP:     10.10.101.168                                   <br/>
+Local Meter Version:"meter-8.18-1a~master20241003.1"
+                <br/>
+Remote Device:null                         <br/>
+Remote Type:null                               <br/>
+Sentry Link Version:Version 9.8                <br/>
+SilverBullet Version:5.1.1-1             <br/>
+RemotePath:   http://localhost:4723                             <br/>
+SOM Local Image Id:   False                <br/>
+SOM Local Distro Version:   False    <br/>
+SOM Distro Name:                   <br/>
 ************************************************************<br/>
-<font color='green'>Meter Start Time 17:30:</font><br/>
-****************METER MEMORY******************<br/>
-total		used		free<br/>
-4030000		1042292		2085492<br/>
-strHeadless: True<br/>
+<font color='green'>Meter Start Time 22:25:</font><br/>
+<font color='green'>Test Start Time 5:26:06 PM</font><br/>
+<font color='green'>The Meter Screen Shot (A2303F_CS_PS1_GPV1_WFFACTNVT_ALPTPS_VMT_VPSH_1.png) did not exist</font><br/>
+***************TestCase Description***************************************<br/>
+CS: Concierge Service                                                     <br/>
+PS1: Park Spot 1                                                          <br/>
+WFRACTNVT: Wait For Recognized as Concierge time to be near Violation time<br/>
+GPV1: Create Grace Period Violation Spot 1                                <br/>
+ALPTPS: Add License Plate To Parking Session                              <br/>
+VMT: Validate Meter Time                                                  <br/>
+VPSH: Validate Parking Session History                                    <br/>
+**************************************************************************<br/>
+Reservation Exists (1) equals: False<br/>
+<font color='orange'>     StoreJsonAdminToken</font><br/>
+The value (12816) was stored as variable name (strJsonUserId)<br/>
+The value (3gGy2bhPwsNEsTvLE_ry) was stored as variable name (strJsonToken)<br/>
+<font color='orange'>     METER_ExitBothSpots</font><br/>
+The value (5dw6_481u8SWo5ZciVx9) was stored as variable name (strJsonToken)<br/>
+The value (12817) was stored as variable name (strJsonUserId)<br/>
+strConciergeEnrolled: true<br/>
+StoreParkingSpotState -2<br/>
+StoreParkingSpotState -1<br/>
+strMeterId 2540<br/>
+<font color='purple'> strLocalParking Spot State1: PARKING_STATE_VIOLATION</font><br/>
+<font color='green'>The Python Script (vehicle_reset_spot_1.py) was executed successfully on host (10.10.101.168)-System Time: 05:26:20 UTC Time:22:26:20.372</font><br/>
+<font color='green'>The Python Script (vehicle_leave_spot_1.py) was executed successfully on host (10.10.101.168)-System Time: 05:26:23 UTC Time:22:26:23.647</font><br/>
+The vehicle park time equaled (2026-09-03 22:26:24)  on spot (1)-UDT Time<br/>
+<font color='green'>The Python Script (vehicle_leave_spot_1.py) was executed successfully on host (10.10.101.168)-System Time: 05:26:24 UTC Time:22:26:24.389</font><br/>
+GlobalWait: The meter variable begun equalled False<br/>
+The Begin value was set already False for spot 2-host-10.10.101.168<br/>
+<font color='orange'>     SENTRYLINK_DeleteFreeAndNoParkingRateSetFromRateBlock</font><br/>
+strHeadless: False<br/>
+<font color='orange'>     SENTRYLINK_OpenLoginPage</font><br/>
+The (Login) page existed<br/>
+<font color='orange'>     SENTRYLINK_UserLoginIn</font><br/>
+The text name (Version) value (Version 9.8) was stored as variable name (strSentryLinkVersion)<br/>
+The (Login) field(s) were populated correctly - Values(Email,sbautomationmunicipalityadmin@gmail.com|Password,sbAutomationMunicipalityadmin13!)<br/>
+The Button (Sign in) with index (1) was clicked successfully<br/>
+<font color='orange'>     SENTRYLINK_NavigateToPage2-Rate Block Group</font><br/>
+Rate Block Group path: https://testautomation.staging.sentry-link.com/devices/meters/2540<br/>
+The Link (AutomationRateBlockGroup31) with index (1) was clicked successfully.<br/>
+The Link (AutomationRateBlockGroup31) with index (1) was clicked successfully.<br/>
+The Button (Delete Rate Block) with index (1) was clicked successfully<br/>
+The Button (Send to all) with index (1) was clicked successfully<br/>
+The PARKING_FREE_TIME_ON_FIRST_PAYMENT for Meter (9010) is (0) seconds<br/>
+<font color='green'>The Python Script (parking_delete_rate_blk.py 646329) was executed successfully on host (10.10.101.168)-System Time: 05:26:41 UTC Time:22:26:41.352</font><br/>
+<font color='orange'>     SENTRYMETER_UpdateMetertSetting</font><br/>
+<font color='green'>The Python Script (set_initgrace.py 120) was executed successfully on host (10.10.101.168)-System Time: 05:26:45 UTC Time:22:26:45.186</font><br/>
+<font color='green'>The Python Script (set_no_parking_grace.py 120) was executed successfully on host (10.10.101.168)-System Time: 05:26:45 UTC Time:22:26:45.521</font><br/>
+<font color='green'>The Python Script (set_violation_grace.py 300) was executed successfully on host (10.10.101.168)-System Time: 05:26:45 UTC Time:22:26:45.834</font><br/>
+<font color='green'>The Python Script (set_free_time_first_payment.py 0) was executed successfully on host (10.10.101.168)-System Time: 05:26:46 UTC Time:22:26:46.185</font><br/>
+<font color='green'>The Python Script (set_apply_payment_screen_timeout.py 5) was executed successfully on host (10.10.101.168)-System Time: 05:26:46 UTC Time:22:26:46.518</font><br/>
+<font color='green'>The Python Script (settings_set_setting_false.py PARKING_PAY_BY_PLATE) was executed successfully on host (10.10.101.168)-System Time: 05:26:46 UTC Time:22:26:46.820</font><br/>
+<font color='green'>The Python Script (set_free_disconnect_on.py) was executed successfully on host (10.10.101.168)-System Time: 05:26:47 UTC Time:22:26:47.185</font><br/>
+<font color='green'>The Python Script (set_unlock_off.py) was executed successfully on host (10.10.101.168)-System Time: 05:26:47 UTC Time:22:26:47.548</font><br/>
+<font color='green'>The Python Script (settings_set_setting_false.py PARKING_TRUEUP_ENABLED) was executed successfully on host (10.10.101.168)-System Time: 05:26:47 UTC Time:22:26:47.897</font><br/>
+<font color='green'>The Python Script (set_unlock_time.py 1) was executed successfully on host (10.10.101.168)-System Time: 05:26:48 UTC Time:22:26:48.241</font><br/>
+<font color='green'>The Python Script (set_unlock_max.py 1) was executed successfully on host (10.10.101.168)-System Time: 05:26:48 UTC Time:22:26:48.563</font><br/>
+<font color='green'>The Python Script (set_image_send_before_violation.py 45) was executed successfully on host (10.10.101.168)-System Time: 05:26:48 UTC Time:22:26:48.886</font><br/>
+<font color='green'>The Python Script (set_maximum_duration.py 120) was executed successfully on host (10.10.101.168)-System Time: 05:26:49 UTC Time:22:26:49.237</font><br/>
+<font color='green'>The Python Script (set_parking_short_session.py 15) was executed successfully on host (10.10.101.168)-System Time: 05:26:49 UTC Time:22:26:49.558</font><br/>
+<font color='green'>The Python Script (settings_set_setting.py PARKING_RATE_DEFAULT_MINIMUM_TIME 60) was executed successfully on host (10.10.101.168)-System Time: 05:26:49 UTC Time:22:26:49.886</font><br/>
+<font color='green'>The Python Script (settings_set_setting_false.py SYS_OUT_OF_SERVICE) was executed successfully on host (10.10.101.168)-System Time: 05:26:50 UTC Time:22:26:50.227</font><br/>
+<font color='orange'>   SENTRYLINK_UpdateRateSetValues</font><br/>
+***********Current Meter Rate Blocks*************10.10.101.168<br/>
+{"disconnect_free": true, "block_type": "fixed", "block_id": -1, "default_minimum_cost": 75, "schedule": {"start_time": "00:00", "valid_days": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"], "start_date": null, "end_date": null, "end_time": "23:59"}, "unenforced": false, "default_minimum_time": 0, "rate": {"senior_minutes": 30, "muni_price": 25, "senior_max_time": 120, "price": 25, "veteran_max_time": 120, "senior_price": 25, "muni_max_time": 120, "handicap_minutes": 30, "handicap_price": 25, "veteran_minutes": 30, "veteran_price": 25, "muni_minutes": 30, "max_time": 120, "handicap_max_time": 120, "minutes": 30}, "card_increment_time": 30, "first_payment_free_time": 0, "maximum_duration_minutes": 120, "priority": -2147483647, "free_time_first_payment": 0, "max_time": 120, "mins_accept_free_before_rate": 60}q<br/>
+*************************************************<br/>
+Previous Rate Block Id--1<br/>
+The value (5dw6_481u8SWo5ZciVx9) was stored as variable name (strJsonToken)<br/>
+strHeadless: False<br/>
 <font color='orange'>     SENTRYLINK_OpenLoginPage</font><br/>
 <font color='orange'>     SENTRYLINK_AdminLoginIn</font><br/>
 The (Login) page existed<br/>
@@ -106,58 +176,161 @@ The (Login) page existed<br/>
 The text name (Version) value (Version 9.8) was stored as variable name (strSentryLinkVersion)<br/>
 The (Login) field(s) were populated correctly - Values(Email,sbautomationmunicipalityadmin@gmail.com|Password,sbAutomationMunicipalityadmin13!)<br/>
 The Button (Sign in) with index (1) was clicked successfully<br/>
-The (User Search) field(s) were populated correctly - Values(Email,adeleteuser01@gmail.com)<br/>
-The Button (Search) with index (1) was clicked successfully<br/>
-strHeadless: True<br/>
+<font color='orange'>     SENTRYLINK_NavigateToPage2-Showing Meter</font><br/>
+The Link (Rate Sets) with index (1) was clicked successfully.<br/>
+The Link (Rate Sets) with index (1) was clicked successfully.<br/>
+<font color='orange'>     SENTRYLINK_UpdateRateSet</font><br/>
+The Link (AutomationRateSet31Fixed) with index (1) was clicked successfully.<br/>
+The Link (AutomationRateSet31Fixed) with index (1) was clicked successfully.<br/>
+The Button (Edit) with index (1) was clicked successfully<br/>
+<font color='orange'>     SENTRYLINK_PopulateFixedRateBlock</font><br/>
+The (Free Time with Free Payment) field(s) were populated correctly - Values(Maximum Duration,120|Coin Time Puchase Limit,120|Free Time with First Payment,0|Credit Card Increment Time,15|Initial Grace,2|Violation Grace,5|Handicap Initial Grace,5|Handicap Violation Grace,1|No Parking Grace,2|Default Minimum Cost,100|Default Minimum Time,60)<br/>
+The (Rate Set) field(s) were populated correctly - Values(Family,Normal)<br/>
+The (Buys Minutes) field(s) were populated correctly - Values(Price,25|Buys Minutes,15|Max Time,120)<br/>
+The Button (Save) with index (1) was clicked successfully<br/>
+The Button (Save Rate Set) with index (1) was clicked successfully<br/>
+The Link (Rate Block Groups) with index (1) was clicked successfully.<br/>
+The Link (Rate Block Groups) with index (1) was clicked successfully.<br/>
+The Link (AutomationRateBlockGroup31) with index (1) was clicked successfully.<br/>
+The Link (AutomationRateBlockGroup31) with index (1) was clicked successfully.<br/>
+The (Add Set to This Group) field(s) were populated correctly - Values(Add Set to This Group,AutomationRateSet31Fixed)<br/>
+The Button (Add Set to This Group) with index (1) was clicked successfully<br/>
+The TextField (Rate Block Name) existed on page (Rate Block Setting)-GlobalObjectWait<br/>
+The (Specific Times of Day) field(s) were populated correctly - Values(Rate Block Name,FixedRateBlock|Start Date,06/28/2026|Time Options,All Day)<br/>
+The Button (Save Rate Block) with index (1) was clicked successfully<br/>
+The Button (Send to all) with index (1) was clicked successfully<br/>
+GlobalWait: Rate Block values existed that were not -1<br/>
+Current Rate Block Id-646330<br/>
+***********Current Meter Rate Blocks*************10.10.101.168<br/>
+{"disconnect_free": true, "block_type": "fixed", "block_id": 646330, "default_minimum_cost": 100, "schedule": {"start_time": "00:00", "valid_days": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"], "start_date": "2026-06-28", "end_date": "2030-09-03", "end_time": "23:59"}, "unenforced": false, "default_minimum_time": 60, "rate": {"senior_minutes": 15, "muni_price": 25, "senior_max_time": 120, "price": 25, "veteran_max_time": 120, "senior_price": 25, "muni_max_time": 120, "handicap_minutes": 30, "handicap_price": 25, "veteran_minutes": 15, "veteran_price": 25, "muni_minutes": 15, "max_time": 120, "handicap_max_time": 240, "minutes": 15}, "card_increment_time": 15, "first_payment_free_time": 0, "maximum_duration_minutes": 120, "priority": 7, "free_time_first_payment": 0, "max_time": 120, "mins_accept_free_before_rate": 60}q<br/>
+{"disconnect_free": true, "block_type": "fixed", "block_id": -1, "default_minimum_cost": 75, "schedule": {"start_time": "00:00", "valid_days": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"], "start_date": null, "end_date": null, "end_time": "23:59"}, "unenforced": false, "default_minimum_time": 0, "rate": {"senior_minutes": 30, "muni_price": 25, "senior_max_time": 120, "price": 25, "veteran_max_time": 120, "senior_price": 25, "muni_max_time": 120, "handicap_minutes": 30, "handicap_price": 25, "veteran_minutes": 30, "veteran_price": 25, "muni_minutes": 30, "max_time": 120, "handicap_max_time": 120, "minutes": 30}, "card_increment_time": 30, "first_payment_free_time": 0, "maximum_duration_minutes": 120, "priority": -2147483647, "free_time_first_payment": 0, "max_time": 120, "mins_accept_free_before_rate": 60}q<br/>
+*************************************************<br/>
+<font color='orange'>     SENTRYLINK_UpdateMaintenanceMode</font><br/>
+strHeadless: False<br/>
+Maintenance Mode Spot (1) equals: False<br/>
+Maintenance Mode Spot (2) equals: False<br/>
+Parking Session Url: https://testautomation.staging.sentry-link.com/api/v1/meter_groups.json<br/>
+<font color='purple'> strMeterGroupInitialGrace: 120</font><br/>
+strConciergeEnrolled: true<br/>
+The user (sbautomationmunicipalityparker@gmail.com) was de-enrolled from concierge program<br/>
+strConciergeEnrolled: false<br/>
+The user was deenrolled from Concierge<br/>
+The value (5dw6_481u8SWo5ZciVx9) was stored as variable name (strJsonToken)<br/>
+<font color='orange'>     StoreJsonAdminToken</font><br/>
+The value (3gGy2bhPwsNEsTvLE_ry) was stored as variable name (strJsonToken)<br/>
+The License Plate (09010AA) for state (Minnesota) was added for user (sbautomationmunicipalityparker@gmail.com)<br/>
+The value (5dw6_481u8SWo5ZciVx9) was stored as variable name (strJsonToken)<br/>
+The value (12817) was stored as variable name (strJsonUserId)<br/>
+The user account balance was (42.1)<br/>
+strConciergeEnrolled: false<br/>
+The user (sbautomationmunicipalityparker@gmail.com) was Enrolled from concierge program<br/>
+strConciergeEnrolled: true<br/>
+The user was enrolled in Concierge<br/>
+<font color='green'>The Python Script (settings_set_setting_true.py PARKING_RCV_ON_SB_LPR_PLATE_MATCH) was executed successfully on host (10.10.101.168)-System Time: 05:28:16 UTC Time:22:28:16.838</font><br/>
+<font color='orange'>METER_ParkSpot</font><br/>
+<font color='green'>The Python Script (vehicle_reset_spot_1.py) was executed successfully on host (10.10.101.168)-System Time: 05:28:17 UTC Time:22:28:17.166</font><br/>
+strParkedAtTime_HHmmss: 17:28:19<br/>
+strParkingSessionsParkedAtTimeMinusTwo: Today at 5:26 PM<br/>
+strParkingSessionsParkedAtTimeMinusOne: Today at 5:27 PM<br/>
+strParkingSessionsParkedAtTime: Today at 5:28 PM<br/>
+strParkingSessionsParkedAtTimePlusOne: Today at 5:29 PM<br/>
+<font color='green'>The Python Script (vehicle_park_spot_1.py) was executed successfully on host (10.10.101.168)-System Time: 05:28:19 UTC Time:22:28:19.478</font><br/>
+GlobalWait: The meter variable begun equalled True<br/>
+Wait For Recognized as Concierge time to be near Violation time<br/>
+Waited (105) For Recognized as Concierge time to be near Violation time<br/>
+strHeadless: False<br/>
 <font color='orange'>     SENTRYLINK_OpenLoginPage</font><br/>
+<font color='orange'>     SENTRYLINK_AdminLoginIn</font><br/>
+The (Login) page existed<br/>
 <font color='orange'>     SENTRYLINK_UserLoginIn</font><br/>
 The text name (Version) value (Version 9.8) was stored as variable name (strSentryLinkVersion)<br/>
 The (Login) field(s) were populated correctly - Values(Email,sbautomationmunicipalityadmin@gmail.com|Password,sbAutomationMunicipalityadmin13!)<br/>
 The Button (Sign in) with index (1) was clicked successfully<br/>
-The (User Search) field(s) were populated correctly - Values(Email,adeleteuser01@gmail.com)<br/>
-The Button (Search) with index (1) was clicked successfully<br/>
-The value (47190) was stored as variable name (strJsonUserId)<br/>
-<font color='orange'>     StoreJsonAdminToken</font><br/>
-The value (12816) was stored as variable name (strJsonUserId)<br/>
-The value (Sq4zMsr-ZwQRboR7B8qK) was stored as variable name (strJsonToken)<br/>
-The value (NgixDge162DNMyaG_CEw) was stored as variable name (strJsonToken)<br/>
-The value (12817) was stored as variable name (strJsonUserId)<br/>
-The user account balance was (25.95)<br/>
-Location mode BEFORE enable: 3<br/>
-Executing ADB command: /Users/darinduphorn/Library/Android/sdk/platform-tools/adb -s R5CT71MQ2MM shell settings put secure location_mode 3<br/>
-Location services enabled successfully (mode 3 - exit code 0)<br/>
-Location mode AFTER enable: 3<br/>
-Sentry Mobile was loaded correctly on Android Device<br/>
-The Button (Accept) with index (1) was clicked successfully<br/>
-There Was No Snack Bar Message<br/>
-The Link (Sign up) with index (1) was clicked successfully<br/>
-<font color='orange'>     PopulateAction</font><br/>
-The (Phone Number) field(s) were populated correctly - Values(Phone Number,2812816804)<br/>
-The Button (Next) with index (1) was clicked successfully<br/>
-There Was No Snack Bar Message<br/>
-<font color='orange'>     PopulateAction</font><br/>
-The (Register) field(s) were populated correctly - Values(First Name,Delete|Last Name,User|Email Id,adeleteuser01@gmail.com|Password,ADeleteMe01!|Confirm Password,ADeleteMe01!)<br/>
-The Button (Sign up) with index (1) was clicked successfully<br/>
-The Text (Error Message) with index (1) contained (Registered Successfully)<br/>
-<font color='orange'>     NavigateToPageUsingMenuButtons</font><br/>
-Navigated to the (Account) page correctly<br/>
-The Link (Sign out) with index (1) was clicked successfully<br/>
-The Link (Yes) with index (1) was clicked successfully<br/>
-<font color='orange'>     PopulateAction</font><br/>
-The (Login) field(s) were populated correctly - Values(Email Id,2812816804|Password,ADeleteMe01!)<br/>
-The Button (Log in) with index (1) was clicked successfully<br/>
-<font color='orange'>     NavigateToPageUsingMenuButtons</font><br/>
-Navigated to the (Account) page correctly<br/>
-The Link (Sign out) with index (1) was clicked successfully<br/>
-The Link (Yes) with index (1) was clicked successfully<br/>
-<font color='Green'>Meter End Time 17:32:</font><br/>
-<a href=/Users/darinduphorn/git/TestAutomation/MeterLogs/ANDROID_TestCases_A2018F_RegisterUser_Login_Using_Phone_Flutter_1.txt/>Meter Logs</a><br/>
-<a href=/Users/darinduphorn/git/TestAutomation/MessageLogs/ANDROID_TestCases_A2018F_RegisterUser_Login_Using_Phone_Flutter_1.txt/>Message Logs</a><br/>
+<font color='orange'>     SENTRYLINK_NavigateToPage2-Parking Sessions</font><br/>
+The row number (1) that contained (Sentry Meter and 9010) from the table (Sessions) was stored as variable name (strSessionsRowNumber)<br/>
+The table value (4087014) from row (1) column (1) in the table (Sessions) was stored as variable name (strSessionId)<br/>
+Parking Session:  https://testautomation.staging.sentry-link.com/parking_sessions/4087014<br/>
+The Link (4087014) with index (1) was clicked successfully.<br/>
+The Link (4087014) with index (1) was clicked successfully.<br/>
+The (License Plate Information) field(s) were populated correctly (strLicensePlate: 09010AA|strLicenseState: Minnesota|) - Values(License Plate,09010AA|Province/State,Minnesota)<br/>
+The Button (Create) with index (1) was clicked successfully<br/>
+<font color='purple'> strLocalParking Session Concierge Value 1: false</font><br/>
+<font color='purple'> strLocalParking Session Concierge Value 1: false</font><br/>
+<font color='purple'> strLocalParking Session Concierge Value 1: false</font><br/>
+<font color='purple'> strLocalParking Session Concierge Value 1: false</font><br/>
+<font color='purple'> strLocalParking Session Concierge Value 1: false</font><br/>
+<font color='purple'> strLocalParking Session Concierge Value 1: false</font><br/>
+<font color='purple'> strLocalParking Session Concierge Value 1: false</font><br/>
+<font color='purple'> strLocalParking Session Concierge Value 1: false</font><br/>
+<font color='purple'> strLocalParking Session Concierge Value 1: false</font><br/>
+<font color='purple'> strLocalParking Session Concierge Value 1: false</font><br/>
+<font color='purple'> strLocalParking Session Concierge Value 1: false</font><br/>
+<font color='purple'> strLocalParking Session Concierge Value 1: false</font><br/>
+<font color='purple'> strLocalParking Session Concierge Value 1: false</font><br/>
+<font color='purple'> strLocalParking Session Concierge Value 1: false</font><br/>
+<font color='purple'> strLocalParking Session Concierge Value 1: false</font><br/>
+<font color='purple'> strLocalParking Session Concierge Value 1: true</font><br/>
+GlobalWait: WaitParkingSessionConciergeValueEqualsTrue<br/>
+Parking Session Url: https://testautomation.staging.sentry-link.com/api/v1/devices/2540/parking_sessions.json?include_extended_data=true;spot_identifier=SPOT_1<br/>
+<font color='purple'> strParkingId: 4087014</font><br/>
+<font color='purple'> strParkTimestamp: 2026-09-03T22:28:19Z</font><br/>
+<font color='green'>The Python Script (testautof_touch_screen.py) was executed successfully on host (10.10.101.168)-System Time: 05:30:43 UTC Time:22:30:43.204</font><br/>
+Wait 5 seconds for payment to get to Meter<br/>
+The Actual Meter Time (0) was not equal to expected meter time (15)<br/>
+<font color='green'>The Python Script (testautof_touch_screen.py) was executed successfully on host (10.10.101.168)-System Time: 05:32:04 UTC Time:22:32:04.965</font><br/>
+The meter UI State equaled (SCREEN_MULTI_SELECT_SPACE) on spot (1)-UTC: 22:32:08.406<br/>
+<font color='green'>The Python Script (testautof_touch_screen.py) was executed successfully on host (10.10.101.168)-System Time: 05:32:08 UTC Time:22:32:08.690</font><br/>
+<font color='green'>The Python Script (testautof_enter_space.py 9010) was executed successfully on host (10.10.101.168)-System Time: 05:32:10 UTC Time:22:32:10.961</font><br/>
+strScanStartTime: 22:32:10.993<br/>
+The meter UI State equaled (SCREEN_MULTI_SELECT_SPACE) on spot (1)-UTC: 22:32:11.782<br/>
+The meter UI State equaled (SCREEN_MULTI_HOME) on spot (1)-UTC: 22:32:12.495<br/>
+It took (1502) Millieconds for the (SCREEN_MULTI_HOME) screen to appear<br/>
+<a href=https://i.imgur.com/rYwlbyq.png/>Meter Screen Shot</a><br/>
+<img src="https://i.imgur.com/rYwlbyq.png" alt=""/><br /><br/>
+Local meter log did not contain Callstack<br/>
+Local meter log did not contain STACKTRACE<br/>
+Local meter log did not contain Traceback<br/>
+Local meter log did not contain Space Failed To Load error<br/>
+The Actual Meter Time (0) was not equal to expected meter time (15)<br/>
+<a style='color:Gold' href="https://www.pivotaltracker.com/n/projects/980790/stories/SL-7995" target="_blank">SL-7995-When a Concierge user parks and the license plate is recognized seconds before the initial grace period violation, the meter screen unexpectedly displays “Max Time Already Purchased</a><br/>
+Error Remain Parked (15) seconds-Spot 1<br/>
 </div>
 </td>
-<td></td>
-<td>145</td>
-<td>AutomationCode.Android_TestCases_Flutter@3e27aa33</td></tr>
+<td><div><pre>java.lang.AssertionError: SL-7995-When a Concierge user parks and the license plate is recognized seconds before the initial grace period violation, the meter screen unexpectedly displays “Max Time Already Purchased
+	at AutomationCode.Meter.UpdateErrorMessageWithPivotalData(Meter.java:2594)
+	at AutomationCode.Meter.METER_ValidateExpectedMeterTime(Meter.java:14081)
+	at AutomationCode.Android_TestCases_Flutter.A2303F_CS_PS1_GPV1_WFFACTNVT_ALPTPS_VMT_VPSH(Android_TestCases_Flutter.java:5513)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+... Removed 15 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace887197122", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace887197122'><pre>java.lang.AssertionError: SL-7995-When a Concierge user parks and the license plate is recognized seconds before the initial grace period violation, the meter screen unexpectedly displays “Max Time Already Purchased
+	at org.testng.Assert.fail(Assert.java:96)
+	at AutomationCode.Meter.UpdateErrorMessageWithPivotalData(Meter.java:2594)
+	at AutomationCode.Meter.METER_ValidateExpectedMeterTime(Meter.java:14081)
+	at AutomationCode.Android_TestCases_Flutter.A2303F_CS_PS1_GPV1_WFFACTNVT_ALPTPS_VMT_VPSH(Android_TestCases_Flutter.java:5513)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:40)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:489)
+	at org.testng.internal.thread.ThreadUtil$1.call(ThreadUtil.java:52)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+</pre></div></td>
+<td>401</td>
+<td>AutomationCode.Android_TestCases_Flutter@7ef82753</td></tr>
 </table><p>
 </body>
 </html>

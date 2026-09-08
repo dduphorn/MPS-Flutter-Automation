@@ -3546,7 +3546,7 @@ public class PEO_TestCases_Flutter
   	@Test(priority=330)
   	public void P4030F_FTFP0_CGPV_AV_CV_ES1_VVR_VPSH_VICAE_VIAC()
   	{
-  		objDictionary.put("strAssociatedBug", "FLUTTERPEO-81");
+  		objDictionary.put("strAssociatedBug", "FLUTTERPEO-123");
 		objDictionary.put("strMobileDeviceType", "ANDROID");
   		//Classes
 		CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
@@ -3642,7 +3642,7 @@ public class PEO_TestCases_Flutter
   	@Test(priority=331)
   	public void P4031F_FTFP0_CGPV_AV_CV_IT_ES1_VVR_VPSH_VICAE_VIAC()
   	{
-  		objDictionary.put("strAssociatedBug", "FLUTTERPEO-90");
+  		objDictionary.put("strAssociatedBug", "FLUTTERCA-124");
 		objDictionary.put("strMobileDeviceType", "ANDROID");
   		//Classes
 		CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();

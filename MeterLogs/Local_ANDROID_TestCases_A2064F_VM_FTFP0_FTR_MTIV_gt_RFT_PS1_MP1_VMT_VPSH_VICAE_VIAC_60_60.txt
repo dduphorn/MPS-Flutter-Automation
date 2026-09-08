@@ -1,0 +1,47 @@
+[09/01 01:11:35.322] | INFO     | gui        | MainThread | QT: Home: transition to reswipeoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[09/01 01:11:35.322] | INFO     | gui        | MainThread | QT: Home: calling reswipeoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:400)
+[09/01 01:11:35.323] | INFO     | gui        | MainThread | QT: MultiHome: transition to reswipeoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[09/01 01:11:35.324] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to processingoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[09/01 01:11:35.324] | INFO     | gui        | MainThread | QT: Home: transition to processingoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[09/01 01:11:35.325] | INFO     | gui        | MainThread | QT: MultiHome: transition to processingoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[09/01 01:11:35.326] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to declineoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[09/01 01:11:35.326] | INFO     | gui        | MainThread | QT: MultiHome: transition to declineoff (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[09/01 01:11:42.395] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[09/01 01:11:42.396] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[09/01 01:11:59.021] | INFO     | gui        | MainThread | QT: Home: transition to PSV_STATE_VALID (file:///tmp/tmpzSpKNo/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[09/01 01:12:24.837] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type free next_srb_type fixed min_to_free 0 rp_min_to_free 0
+[09/01 01:12:24.837] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): Transitioning RATE->FREE min_to_free 0 early
+[09/01 01:12:43.349] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[09/01 01:12:43.350] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[09/01 01:13:14.395] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req: u'rpc_settings' Payload: '{"method":"get_setting","params":["SYS_IP_ADDRESS"],"jsonrpc":"2.0","id":68413}'
+[09/01 01:13:14.397] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint settings response {"jsonrpc": "2.0", "id": 68413, "result": "10.10.101.168"}
+[09/01 01:13:14.446] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 68413, "result": "10.10.101.168"} Queue amq.gen-G7bOnOFmV_RAwp4Py2sugA #937
+[09/01 01:13:14.979] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Rcv req: u'rpc_settings' Payload: '{"method":"get_setting","params":["PARKING_IMAGE_SILVER_BULLET_IP_ADDR"],"jsonrpc":"2.0","id":11107}'
+[09/01 01:13:14.980] | INFO     | rabbitmq   | RabbitMQ RPC | _handle_device_request(): Endpoint settings response {"jsonrpc": "2.0", "id": 11107, "result": "127.0.0.1"}
+[09/01 01:13:15.022] | INFO     | rabbitmq   | RabbitMQ RPC | send_response: TX success {"jsonrpc": "2.0", "id": 11107, "result": "127.0.0.1"} Queue amq.gen-MYHSXXMMw5UzS0pewSn20A #938
+[09/01 01:13:22.875] | INFO     | micro.wdog | microcomm_reactor | qml_ping_sender(): Sending QML ping
+[09/01 01:13:24.852] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type free next_srb_type fixed min_to_free 0 rp_min_to_free 0
+[09/01 01:13:24.853] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): Transitioning RATE->FREE min_to_free 0 early
+[09/01 01:13:25.255] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[09/01 01:13:27.784] | INFO     | camera     | time_checker | _send(): -> name: sock_1_2 message_len: 97 total_sent: 97
+[09/01 01:13:27.895] | INFO     | camera     | time_checker | _recv(): <- request_len: 69 header_len: 8
+[09/01 01:13:28.177] | INFO     | sys_serv   | time_checker | _log_ntp_peer_info(): 1/6/15 (primary/good+primary/total) - primary:*199.102.46.74   .GPS.            1 u  657 1024  377   27.094   -2.823   2.609 good:+199.85.8.46     129.134.27.123   2 u  217 1024  377   18.124   -6.204   7.379, +193.163.204.113 17.253.2.35      2 u  633 1024  377   39.513   -2.186   2.813, +23.160.16.36    209.195.0.250    2 u  116 1024  377   44.202   -1.951   3.166, +208.70.148.101  132.163.97.6     2 u  511 1024  377   62.473   -2.336   3.960, +45.63.54.13     17.253.83.253    2 u  591 1024  377   62.875   -3.348   3.793 bad:-172.104.209.204 168.61.215.74    5 u  463 1024  377   50.210    0.173   1.141, -23.186.168.125  132.163.96.4     2 u  255 1024  377   65.136   -3.850   5.132, -185.125.190.58  29.88.99.4       2 u  450 1024  377  115.875    0.910   1.999, -38.28.93.135    .PPS.            1 u   25 1024  377   55.613    3.257   2.287 other: 0.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 1.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 2.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, 3.ubuntu.pool.n .POOL.          16 p    -   64    0    0.000    0.000   0.000, ntp.ubuntu.com  .POOL.          16 p    -   64    0    0.000    0.000   0.000
+[09/01 01:13:28.357] | INFO     | sys_serv   | time_checker | get_primary_reference(): Found primary_ref: *199.102.46.74   .GPS.            1 u  657 1024  377   27.094   -2.823   2.609
+[09/01 01:13:28.358] | INFO     | idigi      | time_checker | clear_ntp_reloaded(): clearing ntp_reloaded controlling watchdog checks
+[09/01 01:13:33.179] | WARNING  | net_monitor | main_reactor | check_network_connectivity_async(): Skipping due to high CPU load (4.61 > 3.5)
+[09/01 01:13:44.306] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[09/01 01:13:44.307] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[09/01 01:14:24.870] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type free next_srb_type fixed min_to_free 0 rp_min_to_free 0
+[09/01 01:14:24.870] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): Transitioning RATE->FREE min_to_free 0 early
+[09/01 01:14:45.247] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[09/01 01:14:45.248] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[09/01 01:15:05.604] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[09/01 01:15:05.605] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[09/01 01:15:05.643] | INFO     | lib.seco   | watchdog   | SecoLib()::check_temp(): SECO cpu temperature is:  Kelvin 3241 Celsius 50
+[09/01 01:15:07.899] | INFO     | rss        | rss_thread | _get_rss_feeds
+[09/01 01:15:24.874] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type free next_srb_type fixed min_to_free 0 rp_min_to_free 0
+[09/01 01:15:24.875] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): Transitioning RATE->FREE min_to_free 0 early
+[09/01 01:15:25.303] | INFO     | playback   | main_reactor | play: en_touch_screen.mp3
+[09/01 01:15:25.435] | INFO     | ui.multi   | main_reactor | UISI::_suspend_tasks_timeout(): still in Idle - for 240.217357 seconds; unsuspending background task
+[09/01 01:15:46.360] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 6000 photocell state 0
+[09/01 01:15:46.416] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 6000 photocell state 0

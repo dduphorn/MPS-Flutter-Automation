@@ -164,6 +164,8 @@ public class CommonANDROID_Flutter
 		}
   		switch (strErrorMsg)
    		{	
+  			//The Text (This violation is now invalid. Returning to Violation List.) at index (1) did not exist
+  		
   			case "The Button (Google Pay) did not exist":
    				strPivotalId = "FLUTTERCA-255";Reporter.log(strErrorMsg);
 				strPivotalPath = "https://mpspark.atlassian.net/browse/FLUTTERCA-255";
@@ -174,7 +176,17 @@ public class CommonANDROID_Flutter
 				strPivotalPath = "https://mpspark.atlassian.net/browse/FLUTTERCA-187";
 				strErrorMsg = "Able to register a user using an existing locked account's email; registration should be prevented.";
 				break;
-   			case "Unexpected message appeared on user Registration: Failed to save user record or to assign Parker role":
+			case "The Text (No violations to show) at index (1) did not exist":
+	   			strPivotalId = "FLUTTERCA-124";Reporter.log(strErrorMsg);
+				strPivotalPath = "https://mpspark.atlassian.net/browse/FLUTTERPEO-124";
+				strErrorMsg = "When a vehicle exits while the PEO user is on the Violation Details screen, the screen should refresh and display 'No violation to show'";
+				break;
+			case "The Text (This violation is now invalid. Returning to Violation List.) at index (1) did not exist":
+   				strPivotalId = "FLUTTERPEO-123";Reporter.log(strErrorMsg);
+				strPivotalPath = "https://mpspark.atlassian.net/browse/FLUTTERPEO-123";
+				strErrorMsg = "The message \"This violation is now invalid. Returning to the violation List\" no longer appears after a violation is claimed and the vehicle leaves the space.";
+				break;
+			case "Unexpected message appeared on user Registration: Failed to save user record or to assign Parker role":
     		case "The link (Ok) at index (1) existed":
    				strPivotalId = "FLUTTERCA-154";Reporter.log(strErrorMsg);
 				strPivotalPath = "https://mpspark.atlassian.net/browse/FLUTTERCA-154";
@@ -627,14 +639,25 @@ public class CommonANDROID_Flutter
 	    // === Start Appium Server Automatically (Only if flag is true) ===
 	    boolean shouldStartServer = Boolean.parseBoolean(strStopAndStartAppiumServer);
 	    if (shouldStartServer) {
-	        // Stop any existing service
+
+	        // 1. Kill anything currently using the port
+	        killProcessOnPort(port);
+
+	        // 2. Stop any previous service we started
 	        if (appiumService != null && appiumService.isRunning()) {
 	            appiumService.stop();
 	        }
 
+	        // 3. Dynamically find Node and Appium
+	        String nodePath = findExecutable("node");
+	        String appiumJSPath = findAppiumMainJs();
+
+	        System.out.println("Using Node: " + nodePath);
+	        System.out.println("Using Appium JS: " + appiumJSPath);
+
 	        AppiumServiceBuilder builder = new AppiumServiceBuilder()
-	                .usingDriverExecutable(new File("/Users/darinduphorn/.nvm/versions/node/v24.12.0/bin/node"))  // Force correct Node v24
-	                .withAppiumJS(new File("/Users/darinduphorn/.nvm/versions/node/v24.12.0/lib/node_modules/appium/build/lib/main.js"))  // Force correct Appium
+	                .usingDriverExecutable(new File(nodePath))
+	                .withAppiumJS(new File(appiumJSPath))
 	                .withIPAddress("127.0.0.1")
 	                .usingPort(port)
 	                .withArgument(GeneralServerFlag.LOG_LEVEL, "info");
@@ -648,7 +671,7 @@ public class CommonANDROID_Flutter
 	        }
 
 	        System.out.println("Appium server started at: " + appiumService.getUrl());
-	        
+
 	        // Give server a moment to fully initialize
 	        try {
 	            Thread.sleep(5000);
@@ -659,41 +682,42 @@ public class CommonANDROID_Flutter
 
 	    setupDeviceEnvironment(strAndroidUdid);
 
+	    // Dynamically find APK path
+	    String apkBasePath = findApkBasePath();
+	    String fullApkPath = apkBasePath + strMobileAPK;
+	    System.out.println("Using APK: " + fullApkPath);
+
 	    // Configure UiAutomator2Options
 	    UiAutomator2Options options = new UiAutomator2Options()
 	            .setPlatformName("Android")
 	            .setPlatformVersion("15")
 	            .setDeviceName(strRole)
 	            .setUdid(strAndroidUdid)
-	            .setApp("/Users/darinduphorn/git/TestAutomation/APK/"+strMobileAPK);
+	            .setApp(fullApkPath);
 
 	    options.setCapability("autoGrantPermissions", true);
 	    options.setCapability("noReset", false);
 	    options.setCapability("fullReset", true);
 	    options.setCapability("appWaitActivity", "*");
-	    if(strApplication.equals("PEO"))
-	    {
-	    	options.setCapability("appWaitPackage", "com.mpspark.mobileOfficer");
-	    }
-	    else
-	    {
-	    	options.setCapability("appWaitPackage", "com.mpspark.consumer.mpsconsumer");
+	    if (strApplication.equals("PEO")) {
+	        options.setCapability("appWaitPackage", "com.mpspark.mobileOfficer");
+	    } else {
+	        options.setCapability("appWaitPackage", "com.mpspark.consumer.mpsconsumer");
 	    }
 	    options.setCapability("disableWindowAnimation", true);
 	    options.setCapability("skipUnlock", true);
 	    options.setCapability("appium:unicodeKeyboard", true);
-	    options.setCapability("newCommandTimeout", 3600); 
-	    
+	    options.setCapability("newCommandTimeout", 3600);
+
 	    options.setCapability("appium:enableNotificationListener", true);
-	    
-	    //Testing for Google Map issue
- 	    options.setCapability("clearSystemFiles", true); 
-	    
+
+	    // Testing for Google Map issue
+	    options.setCapability("clearSystemFiles", true);
+
 	    AppiumDriver androidDriver = null;
 	    try {
-	        // Use the service URL if started, otherwise default
 	        URL serverUrl = shouldStartServer ? appiumService.getUrl() : URI.create("http://127.0.0.1:" + port).toURL();
-	        
+
 	        System.out.println("Connecting to Appium at: " + serverUrl);
 	        androidDriver = new AppiumDriver(serverUrl, options);
 	        System.out.println("Session created successfully!");
@@ -702,16 +726,104 @@ public class CommonANDROID_Flutter
 	        e.printStackTrace();
 	        return null;
 	    }
+
 	    if (!"PEO".equals(strApplication)) {
-            try {
-                SENTRYMOBILE_CheckUserAccountBalanceAddFundsIfNeeded(objDictionary, strRole);
-            } catch (Exception e) {
-            }
-        }
+	        try {
+	            SENTRYMOBILE_CheckUserAccountBalanceAddFundsIfNeeded(objDictionary, strRole);
+	        } catch (Exception e) {
+	        }
+	    }
 	    SENTRYMOBILE_SETGPSSettings(objDictionary, androidDriver, strGPSEnabled);
-        Reporter.log("Sentry Mobile was loaded correctly on Android Device");
+	    Reporter.log("Sentry Mobile was loaded correctly on Android Device");
 
 	    return androidDriver;
+	}
+
+	// ==================== HELPER METHODS ====================
+
+	private void killProcessOnPort(int port) {
+	    try {
+	        Process process = new ProcessBuilder("lsof", "-t", "-i", ":" + port).start();
+	        try (java.io.BufferedReader reader = new java.io.BufferedReader(
+	                new java.io.InputStreamReader(process.getInputStream()))) {
+	            String pid;
+	            while ((pid = reader.readLine()) != null) {
+	                System.out.println("Killing process on port " + port + " (PID: " + pid + ")");
+	                new ProcessBuilder("kill", "-9", pid.trim()).start().waitFor();
+	            }
+	        }
+	        Thread.sleep(1000); // give the OS time to release the port
+	    } catch (Exception e) {
+	        System.out.println("No process found on port " + port + " (or failed to kill): " + e.getMessage());
+	    }
+	}
+
+	private String findExecutable(String command) {
+	    try {
+	        Process process = new ProcessBuilder("which", command).start();
+	        try (java.io.BufferedReader reader = new java.io.BufferedReader(
+	                new java.io.InputStreamReader(process.getInputStream()))) {
+	            String path = reader.readLine();
+	            if (path != null && !path.isEmpty()) {
+	                return path.trim();
+	            }
+	        }
+	    } catch (Exception e) {
+	        System.err.println("Could not find " + command + " in PATH");
+	    }
+	    throw new RuntimeException("Could not find executable: " + command);
+	}
+
+	private String findAppiumMainJs() {
+	    String home = System.getProperty("user.home");
+	    String[] possiblePaths = {
+	        home + "/.nvm/versions/node/v24.12.0/lib/node_modules/appium/build/lib/main.js",
+	        home + "/.nvm/versions/node/v20.11.0/lib/node_modules/appium/build/lib/main.js",
+	        home + "/.nvm/versions/node/v22.14.0/lib/node_modules/appium/build/lib/main.js",
+	        home + "/.nvm/versions/node/v20.18.0/lib/node_modules/appium/build/lib/main.js",
+	        "/usr/local/lib/node_modules/appium/build/lib/main.js",
+	        "/opt/homebrew/lib/node_modules/appium/build/lib/main.js"
+	    };
+
+	    for (String path : possiblePaths) {
+	        if (new File(path).exists()) {
+	            return path;
+	        }
+	    }
+
+	    // Fallback via npm
+	    try {
+	        Process process = new ProcessBuilder("npm", "root", "-g").start();
+	        try (java.io.BufferedReader reader = new java.io.BufferedReader(
+	                new java.io.InputStreamReader(process.getInputStream()))) {
+	            String npmRoot = reader.readLine();
+	            if (npmRoot != null) {
+	                String candidate = npmRoot.trim() + "/appium/build/lib/main.js";
+	                if (new File(candidate).exists()) {
+	                    return candidate;
+	                }
+	            }
+	        }
+	    } catch (Exception ignored) {}
+
+	    throw new RuntimeException("Could not find Appium main.js on this machine");
+	}
+
+	private String findApkBasePath() {
+	    String home = System.getProperty("user.home");
+	    String[] possibleBases = {
+	        home + "/git/MPS-Flutter-Automation/APK/",
+	        home + "/git/TestAutomation/APK/",
+	        home + "/git/Legacy-TestAutomation/APK/",
+	        System.getProperty("user.dir") + "/APK/"
+	    };
+
+	    for (String path : possibleBases) {
+	        if (new File(path).exists()) {
+	            return path;
+	        }
+	    }
+	    return System.getProperty("user.dir") + "/APK/";
 	}
 	public void SENTRYMOBILE_SETGPSSettings(Map<String, String> objDictionary, AppiumDriver androidDriver, String strGPSEnabled) {
 	    String strLocation = objDictionary.get("strLocation");
@@ -1218,7 +1330,7 @@ public class CommonANDROID_Flutter
 		   				break;
 		   			case "PEO Login":
 		   				wait = new WebDriverWait(androiddriver, Duration.ofSeconds(5));
-		   				snackbar = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@live-region='1']")));
+		   				snackbar = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.view.View[@dismissable='true' and @live-region='1']")));
 		   				break;
 		   			case "Review and Pay":
 		   				wait = new WebDriverWait(androiddriver, Duration.ofSeconds(3));
@@ -1242,8 +1354,12 @@ public class CommonANDROID_Flutter
 				if(snackbar != null)
 				{
 					
+					//Different machines setting use different camel case
+					String message = snackbar.getAttribute("contentDescription");
 					// Method 1: Try content-desc on snackbar
-					String message = snackbar.getAttribute("content-desc");
+				    if (message == null || message.isBlank()) {
+				        message = snackbar.getAttribute("content-desc");
+				    }
 
 					// Method 2: Try getText()
 					if (message == null || message.trim().isEmpty()) {
@@ -5202,10 +5318,10 @@ public class CommonANDROID_Flutter
 	        case "Forgot Password":
 	            switch (strButtonName)
 	            {
-	                case "Submit":
+	                case "Send Reset Instructions":
 	                    try {
 	                        WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(5));
-	                        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.View[@content-desc='Submit']")));
+	                        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.View[@content-desc='Send Reset Instructions']")));
 	                        return element;
 	                    } catch (Exception e) {return null;}
 	                default:
@@ -5505,8 +5621,20 @@ public class CommonANDROID_Flutter
 	                    try {return androidDriver.findElement(By.xpath("//android.view.View[@content-desc='Next']"));}
 	                    catch(Exception e) {return null;}
 	                case "Sign up":
-	                    try { return androidDriver.findElement(By.xpath("(//android.view.View[@content-desc=\"Sign up\"])[2]"));}
-	                    catch(Exception e) {return null;}
+	                	try {
+	                	    // First scroll to bring "Sign up" into view
+	                	    androidDriver.findElement(AppiumBy.androidUIAutomator(
+	                	        "new UiScrollable(new UiSelector().scrollable(true).instance(0))" +
+	                	        ".scrollIntoView(new UiSelector().description(\"Sign up\"))"
+	                	    ));
+
+	                	    // Then find the 2nd occurrence with your original XPath
+	                	    return androidDriver.findElement(By.xpath("(//android.view.View[@content-desc=\"Sign up\"])[2]"));
+	                	} catch (Exception e) {
+	                	    return null;
+	                	}
+//	                    try { return androidDriver.findElement(By.xpath("(//android.view.View[@content-desc=\"Sign up\"])[2]"));}
+//	                    catch(Exception e) {return null;}
 	                default:
 	                    clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The Button (" + strButtonName + ") had not been added to GetButtonObj for the page (" + strPageName + ")");
 	            }
@@ -6563,10 +6691,10 @@ public class CommonANDROID_Flutter
 			case "Set New Password":
 				switch (strTextFieldName)
 				{
-					case "Confirm Password":
+					case "Confirm New Password":
 						try {
 						    WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(10)); 
-						    WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.View[@content-desc='Confirm Password']//following-sibling::*[1]")));
+						    WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.View[@content-desc='Confirm New Password']//following-sibling::*[1]")));
 							return element;
 						} catch (Exception e) {return null;}
 					case "Email":
@@ -6575,10 +6703,10 @@ public class CommonANDROID_Flutter
 						    WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.View[@content-desc='Email']//following-sibling::*[1]")));
 							return element;
 						} catch (Exception e) {return null;}
-					case "Password":
+					case "New Password":
 						try {
 						    WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(10)); 
-						    WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.View[@content-desc='Password']//following-sibling::*[1]")));
+						    WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.View[@content-desc='New Password']//following-sibling::*[1]")));
 							return element;
 						} catch (Exception e) {return null;}
 					case "Password doesn't match":
@@ -6587,10 +6715,10 @@ public class CommonANDROID_Flutter
 						    WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.View[@content-desc='Password doesn't match']")));
 							return element;
 						} catch (Exception e) {return null;}
-					case "Password Reset Token":
+					case "Reset Token":
 						try {
 						    WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(10)); 
-						    WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.View[@content-desc='Password Reset Token']//following-sibling::*[1]")));
+						    WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.View[@content-desc='Reset Token']//following-sibling::*[1]")));
 							return element;
 						} catch (Exception e) {return null;}
 					default:
@@ -10695,6 +10823,7 @@ public class CommonANDROID_Flutter
 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept",1);
 		clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, androidDriver, "parker","Remind me later");
 		clsCommonMobile.SENTRYMOBILE_PurchaseMeterTimeParkThenPay(objDictionary, androidDriver,strFreeTimeFirstPayment,strMeterIncrementTime,"True","False");
+		androidDriver.quit();
 		String strRemainingFreeTimeMinutes = objDictionary.get("strRemainingFreeTimeMinutes");
 		//PRT: Purchase Remaining Time
       	clsCommonMobile.SENTRYMOBILE_PurchaseRemainingTime(objDictionary, strMaximumDuration, strMeterIncrementTime, strFreeTimeFirstPayment, "15","");
@@ -10896,7 +11025,7 @@ public class CommonANDROID_Flutter
   		//Free Holiday
 		clsCommonWeb.SENTRYLINK_SetRateBlocksHolidayFree(objDictionary,strFreeTimeMinutes,strMinutesOfFreeTimeBeforeCurrentTime,strFreeTimeFirstPayment);
 		//Wait for Holiday Free Rate block gets to the meter
-		try {Thread.sleep(15000);}catch (Exception e) {}
+		try {Thread.sleep(20000);}catch (Exception e) {}
 		//PS1: Park Spot 1
     	clsMeter.METER_ParkSpot(objDictionary,"1","Local");
     	//Open Consumer App
@@ -11320,6 +11449,7 @@ public class CommonANDROID_Flutter
 		clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, androidDriver, "parker","Remind me later");
 		clsCommonMobile.SENTRYMOBILE_PurchaseMeterTimeParkThenPay(objDictionary, androidDriver,strFreeTimeFirstPayment,strMeterIncrementTime,"True","False");
 		String strRemainingFreeTimeMinutes = objDictionary.get("strRemainingFreeTimeMinutes");
+		androidDriver.quit();
 		//PRT: Purchase Remaining Time
       	clsCommonMobile.SENTRYMOBILE_PurchaseRemainingTime(objDictionary, strMaximumDuration, strMeterIncrementTime, strFreeTimeFirstPayment, strMeterIncrementTime,"");
       	androidDriver.quit();

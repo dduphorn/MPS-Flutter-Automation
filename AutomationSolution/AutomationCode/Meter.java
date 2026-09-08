@@ -5584,6 +5584,10 @@ public class Meter
 	    		clsMeter.METER_ExecutePythonScriptAgainstMeter(objDictionary,strHost, "vehicle_reset_spot_1.py");
 	    		try {Thread.sleep(3000);}catch (Exception e) {}
 	    		clsMeter.METER_ExecutePythonScriptAgainstMeter(objDictionary,strHost, "vehicle_"+strVehicleDepartType+"_spot_1.py");
+	    		if(strVehicleDepartType.equals("empty"))
+	    		{
+	    			clsMeter.METER_ExecutePythonScriptAgainstMeter(objDictionary,strHost, "vehicle_leave_spot_1.py");
+	    		}
 	    		{clsMeter.GlobalWait(objDictionary, driver, "{WaitUntilMeterVariableBegunEqualFalse} NA", 30, "1",strHostType);}
 	    	}
 	    	else

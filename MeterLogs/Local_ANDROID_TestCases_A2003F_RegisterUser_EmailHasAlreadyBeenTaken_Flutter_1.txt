@@ -1,0 +1,33 @@
+[08/31 14:04:23.527] | INFO     | interaction | main_reactor | cash_out_or_void_payment: No payment
+[08/31 14:04:23.679] | INFO     | interaction | main_reactor | set_active_spot: ACTIVE SPOT None /home/mpsadmin/projects/Sentry_test/src/mps/ui/multi_user_interaction.py:1897
+[08/31 14:04:23.679] | INFO     | interaction | main_reactor | set_active_spot(): to None
+[08/31 14:04:23.680] | INFO     | parking.controller | main_reactor | set_active_spot(): to None
+[08/31 14:04:23.695] | INFO     | coin_event | Coin Vault | Info: REQUEST_MASTER_INHIBIT_STATUS indicates acceptor blocked
+[08/31 14:04:23.697] | INFO     | mps.ui     | main_reactor | suspend_background_tasks(): change to False
+[08/31 14:04:23.697] | INFO     | parking_serv | main_reactor | suspend_transfers(): False
+[08/31 14:04:23.698] | INFO     | epay       | main_reactor | auto_authorize(): Setting auto_authorize amount for 200
+[08/31 14:04:23.715] | INFO     | ui.multi   | main_reactor | UI_STATE_HOME -> UI_STATE_IDLE (_on_timeout(): )
+[08/31 14:04:23.731] | INFO     | gui        | MainThread | QT: Home: transition to PSV_STATE_VALID (file:///tmp/tmpH_zj8J/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[08/31 14:04:30.888] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/31 14:04:30.889] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/31 14:04:33.602] | INFO     | mps.ui     | main_reactor | RESWIPE OFF
+[08/31 14:04:33.603] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to reswipeoff (file:///tmp/tmpH_zj8J/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[08/31 14:04:33.603] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: calling reswipeoff (file:///tmp/tmpH_zj8J/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:913)
+[08/31 14:04:33.604] | INFO     | gui        | MainThread | QT: Home: transition to reswipeoff (file:///tmp/tmpH_zj8J/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[08/31 14:04:33.604] | INFO     | gui        | MainThread | QT: Home: calling reswipeoff (file:///tmp/tmpH_zj8J/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:400)
+[08/31 14:04:33.605] | INFO     | gui        | MainThread | QT: MultiHome: transition to reswipeoff (file:///tmp/tmpH_zj8J/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[08/31 14:04:33.606] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to processingoff (file:///tmp/tmpH_zj8J/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[08/31 14:04:33.606] | INFO     | gui        | MainThread | QT: Home: transition to processingoff (file:///tmp/tmpH_zj8J/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[08/31 14:04:33.607] | INFO     | gui        | MainThread | QT: MultiHome: transition to processingoff (file:///tmp/tmpH_zj8J/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[08/31 14:04:33.615] | INFO     | gui        | MainThread | QT: DualNonEmptyHome: transition to declineoff (file:///tmp/tmpH_zj8J/sentry.egg-tmp/mps/resources/qml/screens/dual/DualNonEmptyHome.qml:1181)
+[08/31 14:04:33.615] | INFO     | gui        | MainThread | QT: MultiHome: transition to declineoff (file:///tmp/tmpH_zj8J/sentry.egg-tmp/mps/resources/qml/screens/multi/MultiHome.qml:873)
+[08/31 14:04:50.874] | INFO     | micro.wdog | microcomm_reactor | qml_ping_sender(): Sending QML ping
+[08/31 14:04:50.882] | INFO     | credit_call | credit_call_reactor | _retry_offline_messages(): deferring cpu_load 4.82 > 3.5 - #0 messages waiting
+[08/31 14:04:52.492] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 44095 rp_min_to_free 44095
+[08/31 14:04:56.436] | INFO     | watchdog   | watchdog   | _check_running_status(): started, threads_not_running []
+[08/31 14:04:56.436] | INFO     | watchdog   | watchdog   | _check_running_status(): completed _reboot_required False threads_not_running []
+[08/31 14:04:56.471] | INFO     | lib.seco   | watchdog   | SecoLib()::check_temp(): SECO cpu temperature is:  Kelvin 3221 Celsius 48
+[08/31 14:04:59.463] | INFO     | gui        | MainThread | QT: Home: transition to PSV_STATE_VALID (file:///tmp/tmpH_zj8J/sentry.egg-tmp/mps/resources/qml/screens/single/Home.qml:588)
+[08/31 14:05:32.245] | INFO     | detection  | main_reactor | Watchdog puck: 1 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/31 14:05:32.246] | INFO     | detection  | main_reactor | Watchdog puck: 2 SUM energy: 0 Z energy: 0 light 1000 photocell state 0
+[08/31 14:05:52.512] | WARNING  | parking.event_mon | main_reactor | _is_free_or_no_parking_now(): current_srb_type fixed next_srb_type fixed min_to_free 44094 rp_min_to_free 44094
