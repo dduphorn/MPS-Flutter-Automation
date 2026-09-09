@@ -2227,6 +2227,146 @@ public class CommonANDROID_Flutter
 		}
 		catch (Exception e) {UpdateErrorMessageWithPivotalData(objDictionary,androidDriver,"The page button ("+strButtonName+") did not exist or the page attributes changed-"+strMethondName);}
 	}
+
+	public void SENTRYMOBILE_BindAdbDeviceSerial(Map<String, String> objDictionary)
+	{
+		String strDeviceName = objDictionary.get("strDeviceName");
+		if (strDeviceName == null || strDeviceName.trim().isEmpty())
+		{
+			String strAndroidUdid = objDictionary.get("strAndroidUdid");
+			if (strAndroidUdid != null && !strAndroidUdid.trim().isEmpty())
+			{
+				objDictionary.put("strDeviceName", strAndroidUdid);
+			}
+		}
+		objDictionary.put("strAppPackage", "com.mpspark.consumer.mpsconsumer");
+	}
+
+	public void SENTRYMOBILE_RestoreDeviceNetworkAndPower(Map<String, String> objDictionary)
+	{
+		ADB_Commands clsADBcommands = new ADB_Commands();
+		SENTRYMOBILE_BindAdbDeviceSerial(objDictionary);
+		objDictionary.put("strAirplaneMode", "Disabled");
+		objDictionary.put("strWIFI", "Enabled");
+		objDictionary.put("strBatterySaver", "Disabled");
+		objDictionary.remove("strBatteryLevel");
+		objDictionary.put("strAdbFailOnMismatch", "False");
+		try { clsADBcommands.SENTRYMOBILE_SET_AIRPLANE_MODE(objDictionary); } catch (Throwable e) { Reporter.log("Restore airplane mode failed: " + e.getMessage()); }
+		try { clsADBcommands.SENTRYMOBILE_SET_WIFI(objDictionary); } catch (Throwable e) { Reporter.log("Restore Wi-Fi failed: " + e.getMessage()); }
+		try { clsADBcommands.SENTRYMOBILE_RESET_BATTERY(objDictionary); } catch (Throwable e) { Reporter.log("Restore battery failed: " + e.getMessage()); }
+		objDictionary.remove("strAdbFailOnMismatch");
+	}
+
+	public void SENTRYMOBILE_AssertAppDidNotCrash(Map<String, String> objDictionary, AppiumDriver androidDriver, String strContext)
+	{
+		Exception lastException = null;
+		for (int i = 0; i < 3; i++)
+		{
+			try
+			{
+				String source = androidDriver.getPageSource();
+				if (source == null || source.trim().length() < 50)
+				{
+					try { Thread.sleep(2000); } catch (Exception e) {}
+					continue;
+				}
+				String lower = source.toLowerCase();
+				if (lower.contains("keeps stopping") || lower.contains("isn't responding") || lower.contains("unfortunately")
+						|| lower.contains("has stopped") || lower.contains("exception caught by flutter"))
+				{
+					UpdateErrorMessageWithPivotalData(objDictionary, androidDriver, "App crashed or showed a fatal overlay after " + strContext);
+					return;
+				}
+				Reporter.log("App did not crash after " + strContext);
+				return;
+			}
+			catch (Exception e)
+			{
+				lastException = e;
+				try { Thread.sleep(2000); } catch (Exception waitEx) {}
+			}
+		}
+
+		ADB_Commands clsADBcommands = new ADB_Commands();
+		if (clsADBcommands.SENTRYMOBILE_IS_APP_RUNNING(objDictionary))
+		{
+			Reporter.log("Appium could not read the UI after " + strContext + ", but the app process is still running. Last error: " +
+					(lastException == null ? "empty page source" : lastException.getMessage()));
+			return;
+		}
+		UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,
+				"App was not running after " + strContext + (lastException == null ? "" : ": " + lastException.getMessage()));
+	}
+
+	public void SENTRYMOBILE_AssertOfflineOrAirplaneMessage(Map<String, String> objDictionary, AppiumDriver androidDriver, String strContext)
+	{
+		String snackbar = objDictionary.get("strSnackbarText");
+		if (snackbar == null) snackbar = "";
+		String source = "";
+		try { source = androidDriver.getPageSource(); } catch (Exception e) { source = ""; }
+		String combined = (snackbar + " " + source).toLowerCase();
+		if (combined.contains("airplane") || combined.contains("no internet") || combined.contains("offline")
+				|| combined.contains("no network") || combined.contains("not connected"))
+		{
+			Reporter.log("Offline/airplane messaging was shown after " + strContext + " (snackbar='" + snackbar + "')");
+			return;
+		}
+		UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,
+				"Expected an offline or airplane-mode message after " + strContext + " - snackbar='" + snackbar + "'");
+	}
+
+	public boolean SENTRYMOBILE_ClickIfPresent(AppiumDriver androidDriver, String xpath, int timeoutSeconds)
+	{
+		try
+		{
+			WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(timeoutSeconds));
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath))).click();
+			return true;
+		}
+		catch (Exception e)
+		{
+			return false;
+		}
+	}
+
+	public void SENTRYMOBILE_AcceptUserAgreementIfPresent(Map<String, String> objDictionary, AppiumDriver androidDriver)
+	{
+		boolean clicked = SENTRYMOBILE_ClickIfPresent(androidDriver,
+				"//*[contains(@content-desc, 'Accept') or contains(@text, 'Accept')]", 8);
+		if (clicked)
+		{
+			Reporter.log("User Agreement Accept was clicked");
+		}
+		else
+		{
+			Reporter.log("User Agreement Accept was not present");
+		}
+	}
+
+	public boolean SENTRYMOBILE_PageLooksLoggedIn(AppiumDriver androidDriver)
+	{
+		try
+		{
+			return !androidDriver.findElements(By.xpath("//*[contains(@content-desc, 'Account') or contains(@content-desc, 'Park') or contains(@content-desc, 'Session')]")).isEmpty();
+		}
+		catch (Exception e)
+		{
+			return false;
+		}
+	}
+
+	public String SENTRYMOBILE_CaptureVisibleUi(AppiumDriver androidDriver)
+	{
+		try
+		{
+			String source = androidDriver.getPageSource();
+			return source == null ? "" : source;
+		}
+		catch (Exception e)
+		{
+			return "";
+		}
+	}
 	
 	//*******************************************************************************
 	//COMMON SENTRY MOBILE

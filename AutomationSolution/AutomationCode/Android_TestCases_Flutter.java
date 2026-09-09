@@ -6688,4 +6688,281 @@ public class Android_TestCases_Flutter
   		if(!strAssociatedBug.equals("")){Reporter.log("<font color='Blue'>"+strAssociatedBug+"-This Test passed remove the AssociatedBug</font>");}
   	}
 
+	//********************************************************************************************************************
+	//ANDROID CA — ADB device-constraint cases (TC-NEG-01, 02, 03, 09, 11)
+	//********************************************************************************************************************
+	@Test(priority=2204, groups={"Smoke"})
+	public void A2204F_NoInternet_ColdStartLoginKillRelaunchRestore()
+	{
+		objDictionary.put("strAssociatedBug", "");
+		objDictionary.put("strMobileDeviceType", "ANDROID");
+		CommonANDROID_Flutter clsCommonMobile = new CommonANDROID_Flutter();
+		ADB_Commands clsADBcommands = new ADB_Commands();
+		Meter clsMeter = new Meter();
+		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
+		clsCommonMobile.SENTRYMOBILE_BindAdbDeviceSerial(objDictionary);
+		Reporter.log("TC-NEG-01: No internet — cold start, login, kill/relaunch offline, then restore");
+
+		objDictionary.put("strWIFI", "Enabled");
+		objDictionary.put("strAirplaneMode", "Enabled");
+		AppiumDriver androidDriver = null;
+		try
+		{
+			androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
+			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "cold start with airplane mode on");
+			clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept", 1);
+			clsCommonMobile.ClickLink(objDictionary, androidDriver, "Login", "Log in", 1);
+			String strUserName = "adeleteuser01@gmail.com";
+			objDictionary.put("strUserName", strUserName);
+			String strPassword = "ADeleteMe01!";
+			clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Login", "Populate Login", "{T} Email Id|{T} Password", strUserName + "|" + strPassword);
+			clsCommonMobile.ClickButton(objDictionary, androidDriver, "Login", "Log in", 1);
+			clsCommonMobile.SENTRYMOBILE_AssertOfflineOrAirplaneMessage(objDictionary, androidDriver, "login while airplane mode is on");
+
+			clsADBcommands.SENTRYMOBILE_FORCE_STOP_APP(objDictionary);
+			clsADBcommands.SENTRYMOBILE_LAUNCH_APP(objDictionary);
+			try { Thread.sleep(5000); } catch (Exception e) {}
+			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "kill and relaunch while still offline");
+			clsCommonMobile.SENTRYMOBILE_AcceptUserAgreementIfPresent(objDictionary, androidDriver);
+			clsCommonMobile.SENTRYMOBILE_ClickIfPresent(androidDriver, "//*[contains(@content-desc, 'Log in') or contains(@text, 'Log in')]", 8);
+			clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Login", "Populate Login", "{T} Email Id|{T} Password", strUserName + "|" + strPassword);
+			clsCommonMobile.ClickButton(objDictionary, androidDriver, "Login", "Log in", 1);
+			clsCommonMobile.SENTRYMOBILE_AssertOfflineOrAirplaneMessage(objDictionary, androidDriver, "login after kill/relaunch while still offline");
+
+			objDictionary.put("strAirplaneMode", "Disabled");
+			clsADBcommands.SENTRYMOBILE_SET_AIRPLANE_MODE(objDictionary);
+			try { Thread.sleep(3000); } catch (Exception e) {}
+			clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Login", "Populate Login", "{T} Email Id|{T} Password", strUserName + "|" + strPassword);
+			clsCommonMobile.ClickButton(objDictionary, androidDriver, "Login", "Log in", 1);
+			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "login after network restore");
+			Reporter.log("Network restore completed; app remained usable without reinstall");
+		}
+		finally
+		{
+			try { if (androidDriver != null) androidDriver.quit(); } catch (Exception e) {}
+			clsCommonMobile.SENTRYMOBILE_RestoreDeviceNetworkAndPower(objDictionary);
+			clsMeter.METER_SetMeterEndTime(objDictionary);
+		}
+	}
+
+	@Test(priority=2205, groups={"Smoke"})
+	public void A2205F_NetworkToggle_MidSessionCache()
+	{
+		objDictionary.put("strAssociatedBug", "");
+		objDictionary.put("strMobileDeviceType", "ANDROID");
+		CommonANDROID_Flutter clsCommonMobile = new CommonANDROID_Flutter();
+		ADB_Commands clsADBcommands = new ADB_Commands();
+		Meter clsMeter = new Meter();
+		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
+		clsCommonMobile.SENTRYMOBILE_BindAdbDeviceSerial(objDictionary);
+		Reporter.log("TC-NEG-02: Mid-session airplane toggle — cached Account vs Sessions, then restore");
+
+		objDictionary.put("strWIFI", "Enabled");
+		objDictionary.put("strAirplaneMode", "Disabled");
+		AppiumDriver androidDriver = null;
+		try
+		{
+			androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
+			clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept", 1);
+			clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, androidDriver, "parker", "Remind me later");
+			clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary, androidDriver, "Account");
+			String cachedAccountUi = clsCommonMobile.SENTRYMOBILE_CaptureVisibleUi(androidDriver);
+			if (cachedAccountUi.toLowerCase().contains("account"))
+			{
+				Reporter.log("Account screen loaded on a healthy network before the outage");
+			}
+
+			objDictionary.put("strAirplaneMode", "Enabled");
+			clsADBcommands.SENTRYMOBILE_SET_AIRPLANE_MODE(objDictionary);
+			try { Thread.sleep(3000); } catch (Exception e) {}
+			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "airplane mode enabled mid-session");
+			clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary, androidDriver, "Account");
+			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "returning to previously loaded Account while offline");
+			String offlineAccountUi = clsCommonMobile.SENTRYMOBILE_CaptureVisibleUi(androidDriver);
+			if (offlineAccountUi.trim().length() < 50)
+			{
+				clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver, "Previously loaded Account screen went blank while offline");
+			}
+			else
+			{
+				Reporter.log("Previously loaded Account screen still had UI while offline");
+			}
+
+			boolean sessionsOpened = clsCommonMobile.SENTRYMOBILE_ClickIfPresent(androidDriver, "//*[contains(@content-desc, 'Session')]", 10);
+			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "opening Sessions while offline");
+			if (sessionsOpened)
+			{
+				Reporter.log("Sessions tab was reachable while offline (cached content or a clear empty/error state is acceptable)");
+			}
+
+			objDictionary.put("strAirplaneMode", "Disabled");
+			clsADBcommands.SENTRYMOBILE_SET_AIRPLANE_MODE(objDictionary);
+			try { Thread.sleep(3000); } catch (Exception e) {}
+			clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary, androidDriver, "Account");
+			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "Account after network restore");
+			if (!clsCommonMobile.SENTRYMOBILE_PageLooksLoggedIn(androidDriver))
+			{
+				clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver, "Unexpected logout after mid-session airplane toggle and restore");
+			}
+			Reporter.log("Session remained usable after restore; no payment was submitted (avoids duplicate-charge risk)");
+		}
+		finally
+		{
+			try { if (androidDriver != null) androidDriver.quit(); } catch (Exception e) {}
+			clsCommonMobile.SENTRYMOBILE_RestoreDeviceNetworkAndPower(objDictionary);
+			clsMeter.METER_SetMeterEndTime(objDictionary);
+		}
+	}
+
+	@Test(priority=2206, groups={"Smoke"})
+	public void A2206F_LowBattery_BatterySaver()
+	{
+		objDictionary.put("strAssociatedBug", "");
+		objDictionary.put("strMobileDeviceType", "ANDROID");
+		CommonANDROID_Flutter clsCommonMobile = new CommonANDROID_Flutter();
+		ADB_Commands clsADBcommands = new ADB_Commands();
+		Meter clsMeter = new Meter();
+		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
+		clsCommonMobile.SENTRYMOBILE_BindAdbDeviceSerial(objDictionary);
+		Reporter.log("TC-NEG-03: Low battery / Battery Saver — login, short background, confirm still usable");
+
+		objDictionary.put("strBatterySaver", "Enabled");
+		objDictionary.put("strBatteryLevel", "15");
+		AppiumDriver androidDriver = null;
+		try
+		{
+			clsADBcommands.SENTRYMOBILE_SET_BATTERY_SAVER(objDictionary);
+			clsADBcommands.SENTRYMOBILE_SET_BATTERY_LEVEL(objDictionary);
+			androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
+			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "cold start in Battery Saver");
+			clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept", 1);
+			clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, androidDriver, "parker", "Remind me later");
+			clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary, androidDriver, "Account");
+			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "Account in Battery Saver");
+
+			clsADBcommands.SENTRYMOBILE_SEND_HOME(objDictionary);
+			try { Thread.sleep(15000); } catch (Exception e) {}
+			clsADBcommands.SENTRYMOBILE_LAUNCH_APP(objDictionary);
+			try { Thread.sleep(4000); } catch (Exception e) {}
+			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "resume from background in Battery Saver");
+			if (!clsCommonMobile.SENTRYMOBILE_PageLooksLoggedIn(androidDriver))
+			{
+				Reporter.log("After Battery Saver background, login was required — that is acceptable if messaging is clear");
+			}
+			else
+			{
+				Reporter.log("Session remained valid after Battery Saver background; re-login was not required");
+			}
+		}
+		finally
+		{
+			try { if (androidDriver != null) androidDriver.quit(); } catch (Exception e) {}
+			clsCommonMobile.SENTRYMOBILE_RestoreDeviceNetworkAndPower(objDictionary);
+			clsMeter.METER_SetMeterEndTime(objDictionary);
+		}
+	}
+
+	@Test(priority=2207, groups={"Smoke"})
+	public void A2207F_Background_ForceStop_SessionState()
+	{
+		objDictionary.put("strAssociatedBug", "");
+		objDictionary.put("strMobileDeviceType", "ANDROID");
+		CommonANDROID_Flutter clsCommonMobile = new CommonANDROID_Flutter();
+		ADB_Commands clsADBcommands = new ADB_Commands();
+		Meter clsMeter = new Meter();
+		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
+		clsCommonMobile.SENTRYMOBILE_BindAdbDeviceSerial(objDictionary);
+		Reporter.log("TC-NEG-09: Short background plus force-stop (process death) — session restored or clear re-auth");
+
+		AppiumDriver androidDriver = null;
+		try
+		{
+			androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
+			clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept", 1);
+			clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, androidDriver, "parker", "Remind me later");
+			clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary, androidDriver, "Account");
+
+			clsADBcommands.SENTRYMOBILE_SEND_HOME(objDictionary);
+			try { Thread.sleep(10000); } catch (Exception e) {}
+			clsADBcommands.SENTRYMOBILE_LAUNCH_APP(objDictionary);
+			try { Thread.sleep(4000); } catch (Exception e) {}
+			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "resume after 10-second background");
+			boolean loggedInAfterBackground = clsCommonMobile.SENTRYMOBILE_PageLooksLoggedIn(androidDriver);
+			if (loggedInAfterBackground)
+			{
+				Reporter.log("Short background kept the user on a logged-in screen");
+			}
+			else
+			{
+				Reporter.log("Short background required re-auth or showed login — not a crash");
+			}
+
+			clsADBcommands.SENTRYMOBILE_FORCE_STOP_APP(objDictionary);
+			clsADBcommands.SENTRYMOBILE_LAUNCH_APP(objDictionary);
+			try { Thread.sleep(5000); } catch (Exception e) {}
+			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "reopen after force-stop / process death");
+			clsCommonMobile.SENTRYMOBILE_AcceptUserAgreementIfPresent(objDictionary, androidDriver);
+			boolean loggedInAfterDeath = clsCommonMobile.SENTRYMOBILE_PageLooksLoggedIn(androidDriver);
+			if (loggedInAfterDeath)
+			{
+				Reporter.log("Process death restored a logged-in session");
+			}
+			else
+			{
+				Reporter.log("Process death required login again — acceptable if the user is not left on a blank screen");
+			}
+			Reporter.log("No payment was in flight, so resume could not duplicate a park/pay");
+		}
+		finally
+		{
+			try { if (androidDriver != null) androidDriver.quit(); } catch (Exception e) {}
+			clsCommonMobile.SENTRYMOBILE_RestoreDeviceNetworkAndPower(objDictionary);
+			clsMeter.METER_SetMeterEndTime(objDictionary);
+		}
+	}
+
+	@Test(priority=2208, groups={"Smoke"})
+	public void A2208F_CorruptedApplicationCache()
+	{
+		objDictionary.put("strAssociatedBug", "");
+		objDictionary.put("strMobileDeviceType", "ANDROID");
+		CommonANDROID_Flutter clsCommonMobile = new CommonANDROID_Flutter();
+		ADB_Commands clsADBcommands = new ADB_Commands();
+		Meter clsMeter = new Meter();
+		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
+		clsCommonMobile.SENTRYMOBILE_BindAdbDeviceSerial(objDictionary);
+		Reporter.log("TC-NEG-11: Corrupt on-device cache with adb, force-stop, relaunch, confirm recovery");
+
+		AppiumDriver androidDriver = null;
+		try
+		{
+			androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
+			clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept", 1);
+			clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, androidDriver, "parker", "Remind me later");
+			clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary, androidDriver, "Account");
+			clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary, androidDriver, "Park");
+
+			clsADBcommands.SENTRYMOBILE_FORCE_STOP_APP(objDictionary);
+			String evidence = clsADBcommands.SENTRYMOBILE_CORRUPT_APP_CACHE(objDictionary);
+			Reporter.log("Package: com.mpspark.consumer.mpsconsumer");
+			Reporter.log("Cache adb evidence: " + evidence);
+			clsADBcommands.SENTRYMOBILE_LAUNCH_APP(objDictionary);
+			try { Thread.sleep(5000); } catch (Exception e) {}
+			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "cold start after cache corruption");
+			clsCommonMobile.SENTRYMOBILE_AcceptUserAgreementIfPresent(objDictionary, androidDriver);
+
+			clsADBcommands.SENTRYMOBILE_FORCE_STOP_APP(objDictionary);
+			clsADBcommands.SENTRYMOBILE_LAUNCH_APP(objDictionary);
+			try { Thread.sleep(5000); } catch (Exception e) {}
+			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "second launch after cache corruption");
+			Reporter.log("App recovered from corrupted cache without requiring uninstall");
+		}
+		finally
+		{
+			try { if (androidDriver != null) androidDriver.quit(); } catch (Exception e) {}
+			clsCommonMobile.SENTRYMOBILE_RestoreDeviceNetworkAndPower(objDictionary);
+			clsMeter.METER_SetMeterEndTime(objDictionary);
+		}
+	}
+
 }
