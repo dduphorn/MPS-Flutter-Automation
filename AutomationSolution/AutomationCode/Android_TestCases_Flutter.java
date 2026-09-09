@@ -6689,7 +6689,7 @@ public class Android_TestCases_Flutter
   	}
 
 	//********************************************************************************************************************
-	//ANDROID CA — ADB device-constraint cases (TC-NEG-01, 02, 03, 09, 11)
+	//ANDROID CA — ADB device-constraint cases (TC-NEG-01, 02, 03, 09, 11, 06, 07, 08, 10, 18, 19)
 	//********************************************************************************************************************
 	@Test(priority=2204, groups={"Smoke"})
 	public void A2204F_NoInternet_ColdStartLoginKillRelaunchRestore()
@@ -6956,6 +6956,269 @@ public class Android_TestCases_Flutter
 			try { Thread.sleep(5000); } catch (Exception e) {}
 			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "second launch after cache corruption");
 			Reporter.log("App recovered from corrupted cache without requiring uninstall");
+		}
+		finally
+		{
+			try { if (androidDriver != null) androidDriver.quit(); } catch (Exception e) {}
+			clsCommonMobile.SENTRYMOBILE_RestoreDeviceNetworkAndPower(objDictionary);
+			clsMeter.METER_SetMeterEndTime(objDictionary);
+		}
+	}
+
+	@Test(priority=2209, groups={"Smoke"})
+	public void A2209F_LocationServicesOff_DegradeThenEnable()
+	{
+		objDictionary.put("strAssociatedBug", "");
+		objDictionary.put("strMobileDeviceType", "ANDROID");
+		CommonANDROID_Flutter clsCommonMobile = new CommonANDROID_Flutter();
+		ADB_Commands clsADBcommands = new ADB_Commands();
+		Meter clsMeter = new Meter();
+		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
+		clsCommonMobile.SENTRYMOBILE_BindAdbDeviceSerial(objDictionary);
+		Reporter.log("TC-NEG-06: Location services off — degrade or prompt, then enable mid-flow and recover");
+
+		objDictionary.put("strLocationServices", "Disabled");
+		AppiumDriver androidDriver = null;
+		try
+		{
+			clsADBcommands.SENTRYMOBILE_SET_LOCATION_MODE(objDictionary);
+			androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "False", "Parker");
+			clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept", 1);
+			clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, androidDriver, "parker", "Remind me later");
+			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "login with location services off");
+			clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary, androidDriver, "Park");
+			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "Park with location services off");
+			clsCommonMobile.SENTRYMOBILE_AssertLocationDegradedOrPrompt(objDictionary, androidDriver, "Park with location services off");
+
+			objDictionary.put("strLocationServices", "Enabled");
+			clsADBcommands.SENTRYMOBILE_SET_LOCATION_MODE(objDictionary);
+			clsCommonMobile.SENTRYMOBILE_DismissLocationPromptsIfPresent(androidDriver);
+			clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary, androidDriver, "Park");
+			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "Park after re-enabling location services");
+			Reporter.log("Location services restored mid-flow; app remained usable without reinstall");
+		}
+		finally
+		{
+			try { if (androidDriver != null) androidDriver.quit(); } catch (Exception e) {}
+			clsCommonMobile.SENTRYMOBILE_RestoreDeviceNetworkAndPower(objDictionary);
+			clsMeter.METER_SetMeterEndTime(objDictionary);
+		}
+	}
+
+	@Test(priority=2210, groups={"Smoke"})
+	public void A2210F_PermissionDenied_LocationAndCamera()
+	{
+		objDictionary.put("strAssociatedBug", "");
+		objDictionary.put("strMobileDeviceType", "ANDROID");
+		CommonANDROID_Flutter clsCommonMobile = new CommonANDROID_Flutter();
+		ADB_Commands clsADBcommands = new ADB_Commands();
+		Meter clsMeter = new Meter();
+		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
+		clsCommonMobile.SENTRYMOBILE_BindAdbDeviceSerial(objDictionary);
+		Reporter.log("TC-NEG-07: Revoke location and camera at runtime — degrade without crash, then re-grant");
+
+		AppiumDriver androidDriver = null;
+		try
+		{
+			androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
+			clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept", 1);
+			clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, androidDriver, "parker", "Remind me later");
+			clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary, androidDriver, "Park");
+
+			objDictionary.put("strPermissionAction", "Revoke");
+			objDictionary.put("strPermissions",
+					"android.permission.ACCESS_FINE_LOCATION,android.permission.ACCESS_COARSE_LOCATION,android.permission.CAMERA");
+			clsADBcommands.SENTRYMOBILE_SET_APP_PERMISSIONS(objDictionary);
+			clsADBcommands.SENTRYMOBILE_FORCE_STOP_APP(objDictionary);
+			clsADBcommands.SENTRYMOBILE_LAUNCH_APP(objDictionary);
+			try { Thread.sleep(5000); } catch (Exception e) {}
+			clsCommonMobile.SENTRYMOBILE_AcceptUserAgreementIfPresent(objDictionary, androidDriver);
+			clsCommonMobile.SENTRYMOBILE_DismissLocationPromptsIfPresent(androidDriver);
+			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "relaunch after revoking location and camera");
+			boolean onPark = clsCommonMobile.SENTRYMOBILE_ClickIfPresent(androidDriver, "//android.widget.ImageView[contains(@content-desc, 'Park')]", 8);
+			if (onPark)
+			{
+				Reporter.log("Park tab was reachable after permission revoke");
+			}
+			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "Park after location/camera revoke");
+			clsCommonMobile.SENTRYMOBILE_AssertLocationDegradedOrPrompt(objDictionary, androidDriver, "Park after location/camera revoke");
+
+			objDictionary.put("strPermissionAction", "Grant");
+			clsADBcommands.SENTRYMOBILE_SET_APP_PERMISSIONS(objDictionary);
+			clsCommonMobile.SENTRYMOBILE_DismissLocationPromptsIfPresent(androidDriver);
+			clsCommonMobile.SENTRYMOBILE_ClickIfPresent(androidDriver, "//android.widget.ImageView[contains(@content-desc, 'Park')]", 8);
+			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "Park after re-granting location and camera");
+			Reporter.log("Permissions restored; app remained usable without uninstall");
+		}
+		finally
+		{
+			try { if (androidDriver != null) androidDriver.quit(); } catch (Exception e) {}
+			clsCommonMobile.SENTRYMOBILE_RestoreDeviceNetworkAndPower(objDictionary);
+			clsMeter.METER_SetMeterEndTime(objDictionary);
+		}
+	}
+
+	@Test(priority=2211, groups={"Smoke"})
+	public void A2211F_NotificationInterruption_MidSession()
+	{
+		objDictionary.put("strAssociatedBug", "");
+		objDictionary.put("strMobileDeviceType", "ANDROID");
+		CommonANDROID_Flutter clsCommonMobile = new CommonANDROID_Flutter();
+		ADB_Commands clsADBcommands = new ADB_Commands();
+		Meter clsMeter = new Meter();
+		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
+		clsCommonMobile.SENTRYMOBILE_BindAdbDeviceSerial(objDictionary);
+		Reporter.log("TC-NEG-08: Post a system notification mid-session and confirm the app does not crash or lose the screen");
+
+		AppiumDriver androidDriver = null;
+		try
+		{
+			androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
+			clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept", 1);
+			clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, androidDriver, "parker", "Remind me later");
+			clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary, androidDriver, "Account");
+			boolean loggedInBefore = clsCommonMobile.SENTRYMOBILE_PageLooksLoggedIn(androidDriver);
+
+			objDictionary.put("strNotificationTitle", "MPS Interrupt");
+			objDictionary.put("strNotificationText", "Interrupt during parking flow");
+			objDictionary.put("strNotificationTag", "MpsNeg08");
+			clsADBcommands.SENTRYMOBILE_POST_NOTIFICATION(objDictionary);
+			try { Thread.sleep(2000); } catch (Exception e) {}
+			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "system notification posted on Account");
+			clsADBcommands.SENTRYMOBILE_DISMISS_NOTIFICATION_SHADE(objDictionary);
+			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "dismissing notification shade");
+			boolean loggedInAfter = clsCommonMobile.SENTRYMOBILE_PageLooksLoggedIn(androidDriver);
+			if (loggedInBefore && loggedInAfter)
+			{
+				Reporter.log("Account session survived the notification interruption");
+			}
+			else if (loggedInAfter)
+			{
+				Reporter.log("App was still on a logged-in screen after the notification");
+			}
+			else
+			{
+				Reporter.log("Notification may have covered the UI; process was still running and did not crash");
+			}
+		}
+		finally
+		{
+			try { if (androidDriver != null) androidDriver.quit(); } catch (Exception e) {}
+			clsCommonMobile.SENTRYMOBILE_RestoreDeviceNetworkAndPower(objDictionary);
+			clsMeter.METER_SetMeterEndTime(objDictionary);
+		}
+	}
+
+	@Test(priority=2212, groups={"Smoke"})
+	public void A2212F_GpsToggle_DuringPark()
+	{
+		objDictionary.put("strAssociatedBug", "");
+		objDictionary.put("strMobileDeviceType", "ANDROID");
+		CommonANDROID_Flutter clsCommonMobile = new CommonANDROID_Flutter();
+		ADB_Commands clsADBcommands = new ADB_Commands();
+		Meter clsMeter = new Meter();
+		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
+		clsCommonMobile.SENTRYMOBILE_BindAdbDeviceSerial(objDictionary);
+		Reporter.log("TC-NEG-10: Toggle GPS off while on Park, then turn it back on and recover");
+
+		AppiumDriver androidDriver = null;
+		try
+		{
+			androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
+			clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept", 1);
+			clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, androidDriver, "parker", "Remind me later");
+			clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary, androidDriver, "Park");
+			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "Park with GPS on");
+
+			objDictionary.put("strLocationServices", "Disabled");
+			clsADBcommands.SENTRYMOBILE_SET_LOCATION_MODE(objDictionary);
+			try { Thread.sleep(2000); } catch (Exception e) {}
+			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "GPS turned off while on Park");
+			clsCommonMobile.SENTRYMOBILE_AssertLocationDegradedOrPrompt(objDictionary, androidDriver, "GPS off during Park");
+
+			objDictionary.put("strLocationServices", "Enabled");
+			clsADBcommands.SENTRYMOBILE_SET_LOCATION_MODE(objDictionary);
+			clsCommonMobile.SENTRYMOBILE_DismissLocationPromptsIfPresent(androidDriver);
+			clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary, androidDriver, "Park");
+			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "Park after GPS restored mid-flow");
+			Reporter.log("GPS toggle during Park did not crash the app; location was restored");
+		}
+		finally
+		{
+			try { if (androidDriver != null) androidDriver.quit(); } catch (Exception e) {}
+			clsCommonMobile.SENTRYMOBILE_RestoreDeviceNetworkAndPower(objDictionary);
+			clsMeter.METER_SetMeterEndTime(objDictionary);
+		}
+	}
+
+	@Test(priority=2213, groups={"Smoke"})
+	public void A2213F_ExcessiveInput_LoginEmail()
+	{
+		objDictionary.put("strAssociatedBug", "");
+		objDictionary.put("strMobileDeviceType", "ANDROID");
+		CommonANDROID_Flutter clsCommonMobile = new CommonANDROID_Flutter();
+		Meter clsMeter = new Meter();
+		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
+		clsCommonMobile.SENTRYMOBILE_BindAdbDeviceSerial(objDictionary);
+		Reporter.log("TC-NEG-18: 10,000-character login email via sendKeys/clipboard — no crash, login must not succeed");
+
+		String excessiveEmail = NegativeInputCases.excessiveInput('a');
+		AppiumDriver androidDriver = null;
+		try
+		{
+			androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
+			clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept", 1);
+			clsCommonMobile.ClickLink(objDictionary, androidDriver, "Login", "Log in", 1);
+			clsCommonMobile.SENTRYMOBILE_SendKeysToLoginField(objDictionary, androidDriver, "Email Id", excessiveEmail);
+			clsCommonMobile.SENTRYMOBILE_SendKeysToLoginField(objDictionary, androidDriver, "Password", "ADeleteMe01!");
+			boolean loginClicked = clsCommonMobile.SENTRYMOBILE_ClickIfPresent(androidDriver, "(//android.view.View[@content-desc=\"Log in\"])[2]", 8);
+			if (!loginClicked)
+			{
+				loginClicked = clsCommonMobile.SENTRYMOBILE_ClickIfPresent(androidDriver, "//*[contains(@content-desc, 'Log in') or contains(@text, 'Log in')]", 5);
+			}
+			Reporter.log("Login submit after 10k-character email clicked=" + loginClicked);
+			try { Thread.sleep(3000); } catch (Exception e) {}
+			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "submitting 10,000-character email");
+			clsCommonMobile.SENTRYMOBILE_AssertLoginWasNotBypassed(objDictionary, androidDriver, "10,000-character email login");
+			clsCommonMobile.SENTRYMOBILE_ClickIfPresent(androidDriver, "//*[contains(@content-desc, 'Ok') or contains(@text, 'Ok')]", 5);
+		}
+		finally
+		{
+			try { if (androidDriver != null) androidDriver.quit(); } catch (Exception e) {}
+			clsCommonMobile.SENTRYMOBILE_RestoreDeviceNetworkAndPower(objDictionary);
+			clsMeter.METER_SetMeterEndTime(objDictionary);
+		}
+	}
+
+	@Test(priority=2214, groups={"Smoke"})
+	public void A2214F_InjectionAsPlainText_Login()
+	{
+		objDictionary.put("strAssociatedBug", "");
+		objDictionary.put("strMobileDeviceType", "ANDROID");
+		CommonANDROID_Flutter clsCommonMobile = new CommonANDROID_Flutter();
+		Meter clsMeter = new Meter();
+		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
+		clsCommonMobile.SENTRYMOBILE_BindAdbDeviceSerial(objDictionary);
+		Reporter.log("TC-NEG-19: SQL/XSS strings on login must be treated as plain text — no crash, login must not succeed");
+
+		AppiumDriver androidDriver = null;
+		try
+		{
+			androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
+			clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept", 1);
+			clsCommonMobile.ClickLink(objDictionary, androidDriver, "Login", "Log in", 1);
+
+			for (String payload : NegativeInputCases.injectionPayloads())
+			{
+				Reporter.log("Trying injection payload as login email: " + payload);
+				clsCommonMobile.SENTRYMOBILE_SendKeysToLoginField(objDictionary, androidDriver, "Email Id", payload);
+				clsCommonMobile.SENTRYMOBILE_SendKeysToLoginField(objDictionary, androidDriver, "Password", "not-a-real-password");
+				clsCommonMobile.SENTRYMOBILE_ClickIfPresent(androidDriver, "(//android.view.View[@content-desc=\"Log in\"])[2]", 8);
+				try { Thread.sleep(2500); } catch (Exception e) {}
+				clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "login with payload " + payload);
+				clsCommonMobile.SENTRYMOBILE_AssertInjectionTreatedAsPlainText(objDictionary, androidDriver, payload, "login with payload " + payload);
+				clsCommonMobile.SENTRYMOBILE_ClickIfPresent(androidDriver, "//*[contains(@content-desc, 'Ok') or contains(@text, 'Ok')]", 5);
+			}
 		}
 		finally
 		{

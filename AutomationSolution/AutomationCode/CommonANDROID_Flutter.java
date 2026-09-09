@@ -2249,11 +2249,14 @@ public class CommonANDROID_Flutter
 		objDictionary.put("strAirplaneMode", "Disabled");
 		objDictionary.put("strWIFI", "Enabled");
 		objDictionary.put("strBatterySaver", "Disabled");
+		objDictionary.put("strLocationServices", "Enabled");
 		objDictionary.remove("strBatteryLevel");
 		objDictionary.put("strAdbFailOnMismatch", "False");
 		try { clsADBcommands.SENTRYMOBILE_SET_AIRPLANE_MODE(objDictionary); } catch (Throwable e) { Reporter.log("Restore airplane mode failed: " + e.getMessage()); }
 		try { clsADBcommands.SENTRYMOBILE_SET_WIFI(objDictionary); } catch (Throwable e) { Reporter.log("Restore Wi-Fi failed: " + e.getMessage()); }
 		try { clsADBcommands.SENTRYMOBILE_RESET_BATTERY(objDictionary); } catch (Throwable e) { Reporter.log("Restore battery failed: " + e.getMessage()); }
+		try { clsADBcommands.SENTRYMOBILE_SET_LOCATION_MODE(objDictionary); } catch (Throwable e) { Reporter.log("Restore location services failed: " + e.getMessage()); }
+		try { clsADBcommands.SENTRYMOBILE_GRANT_DEFAULT_CA_PERMISSIONS(objDictionary); } catch (Throwable e) { Reporter.log("Restore CA permissions failed: " + e.getMessage()); }
 		objDictionary.remove("strAdbFailOnMismatch");
 	}
 
@@ -2366,6 +2369,113 @@ public class CommonANDROID_Flutter
 		{
 			return "";
 		}
+	}
+
+	public void SENTRYMOBILE_DismissLocationPromptsIfPresent(AppiumDriver androidDriver)
+	{
+		SENTRYMOBILE_ClickIfPresent(androidDriver, "//*[contains(@content-desc, 'While using the app') or contains(@text, 'While using the app')]", 2);
+		SENTRYMOBILE_ClickIfPresent(androidDriver, "//*[contains(@content-desc, 'Allow only while using the app') or contains(@text, 'Allow only while using the app')]", 2);
+		SENTRYMOBILE_ClickIfPresent(androidDriver, "//*[contains(@content-desc, 'Turn on') or contains(@text, 'Turn on')]", 2);
+		SENTRYMOBILE_ClickIfPresent(androidDriver, "//*[contains(@content-desc, 'No thanks') or contains(@text, 'No thanks')]", 2);
+		SENTRYMOBILE_ClickIfPresent(androidDriver, "//*[contains(@content-desc, 'OK') or contains(@content-desc, 'Ok') or contains(@text, 'OK') or contains(@text, 'Ok')]", 2);
+	}
+
+	public void SENTRYMOBILE_SendKeysToLoginField(Map<String, String> objDictionary, AppiumDriver androidDriver, String strFieldName, String value)
+	{
+		WebElement field = GetTextFieldObj(objDictionary, androidDriver, "Login", strFieldName);
+		if (field == null)
+		{
+			UpdateErrorMessageWithPivotalData(objDictionary, androidDriver, "Login field (" + strFieldName + ") was not found for sendKeys");
+			return;
+		}
+		try
+		{
+			field.click();
+			try { field.clear(); } catch (Exception e) {}
+			if (value != null && value.length() > 500 && androidDriver instanceof AndroidDriver)
+			{
+				try
+				{
+					((AndroidDriver) androidDriver).setClipboardText(value);
+					ADB_Commands clsADBcommands = new ADB_Commands();
+					clsADBcommands.SENTRYMOBILE_PASTE_CLIPBOARD(objDictionary);
+					Reporter.log("Pasted " + value.length() + " characters into Login " + strFieldName + " via clipboard (not PopulateAction)");
+					return;
+				}
+				catch (Exception pasteEx)
+				{
+					Reporter.log("Clipboard paste failed for Login " + strFieldName + ", falling back to sendKeys: " + pasteEx.getMessage());
+				}
+			}
+			field.sendKeys(value == null ? "" : value);
+			Reporter.log("Sent " + (value == null ? 0 : value.length()) + " characters to Login " + strFieldName + " via sendKeys (not PopulateAction)");
+		}
+		catch (Exception e)
+		{
+			UpdateErrorMessageWithPivotalData(objDictionary, androidDriver, "Could not sendKeys to Login " + strFieldName + ": " + e.getMessage());
+		}
+	}
+
+	public void SENTRYMOBILE_AssertLocationDegradedOrPrompt(Map<String, String> objDictionary, AppiumDriver androidDriver, String strContext)
+	{
+		String source = SENTRYMOBILE_CaptureVisibleUi(androidDriver);
+		if (NegativeInputCases.looksLikeLocationOrPermissionPrompt(source))
+		{
+			Reporter.log("Location/permission prompt or degrade copy was shown after " + strContext);
+			return;
+		}
+		if (SENTRYMOBILE_PageLooksLoggedIn(androidDriver) || NegativeInputCases.looksLikeLoginForm(source))
+		{
+			Reporter.log("No explicit location dialog after " + strContext + "; app stayed on a usable screen (cached map / degrade without crash is acceptable)");
+			return;
+		}
+		UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,
+				"Expected a location/permission prompt or a usable degraded screen after " + strContext);
+	}
+
+	public void SENTRYMOBILE_AssertLoginWasNotBypassed(Map<String, String> objDictionary, AppiumDriver androidDriver, String strContext)
+	{
+		String source = SENTRYMOBILE_CaptureVisibleUi(androidDriver);
+		if (NegativeInputCases.looksLikeCrash(source))
+		{
+			UpdateErrorMessageWithPivotalData(objDictionary, androidDriver, "App crashed after " + strContext);
+			return;
+		}
+		if (NegativeInputCases.looksLikeLoggedIn(source) && !NegativeInputCases.looksLikeLoginForm(source))
+		{
+			UpdateErrorMessageWithPivotalData(objDictionary, androidDriver, "Login succeeded unexpectedly after " + strContext);
+			return;
+		}
+		if (NegativeInputCases.loginAttemptDidNotBypassAuth(source))
+		{
+			Reporter.log("Login was not bypassed after " + strContext);
+			return;
+		}
+		if (SENTRYMOBILE_PageLooksLoggedIn(androidDriver))
+		{
+			UpdateErrorMessageWithPivotalData(objDictionary, androidDriver, "Login succeeded unexpectedly after " + strContext);
+			return;
+		}
+		Reporter.log("Still on a non-authenticated screen after " + strContext);
+	}
+
+	public void SENTRYMOBILE_AssertInjectionTreatedAsPlainText(Map<String, String> objDictionary, AppiumDriver androidDriver, String payload, String strContext)
+	{
+		String source = SENTRYMOBILE_CaptureVisibleUi(androidDriver);
+		if (NegativeInputCases.looksLikeScriptExecuted(source, payload))
+		{
+			UpdateErrorMessageWithPivotalData(objDictionary, androidDriver, "Injection payload appeared to execute after " + strContext);
+			return;
+		}
+		if (NegativeInputCases.injectionAppearsAsPlainText(source, payload))
+		{
+			Reporter.log("Injection payload is still visible as plain text after " + strContext);
+		}
+		else
+		{
+			Reporter.log("Injection payload is not visible in the page source after " + strContext + " (validation message / rejected input is acceptable)");
+		}
+		SENTRYMOBILE_AssertLoginWasNotBypassed(objDictionary, androidDriver, strContext);
 	}
 	
 	//*******************************************************************************

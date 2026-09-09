@@ -405,6 +405,180 @@ public class ADB_Commands
 	    }
 	}
 
+	public void SENTRYMOBILE_PASTE_CLIPBOARD(Map<String, String> objDictionary)
+	{
+	    try {
+	        runAdbShell(objDictionary, "input", "keyevent", "279");
+	        Thread.sleep(500);
+	        Reporter.log("Sent KEYCODE_PASTE (279)");
+	    } catch (Exception e) {
+	        Reporter.log("KEYCODE_PASTE failed: " + e.getMessage());
+	    }
+	}
+
+	public void SENTRYMOBILE_DISMISS_NOTIFICATION_SHADE(Map<String, String> objDictionary)
+	{
+	    try {
+	        runAdbShell(objDictionary, "input", "keyevent", "KEYCODE_BACK");
+	        Thread.sleep(500);
+	        Reporter.log("Sent KEYCODE_BACK to dismiss notification shade if it was open");
+	    } catch (Exception e) {
+	        Reporter.log("Dismiss notification shade failed: " + e.getMessage());
+	    }
+	}
+
+	public void SENTRYMOBILE_SET_LOCATION_MODE(Map<String, String> objDictionary)
+	{
+	    String strLocationServices = objDictionary.get("strLocationServices");
+	    if (strLocationServices == null) strLocationServices = "Enabled";
+	    boolean shouldEnable = strLocationServices.equalsIgnoreCase("Enabled");
+	    String expectedMode = shouldEnable ? "3" : "0";
+	    boolean failOnMismatch = !"False".equalsIgnoreCase(objDictionary.get("strAdbFailOnMismatch"));
+
+	    try {
+	        String before = probeLocationEnabled(objDictionary);
+	        Reporter.log("Location probe before toggle: '" + before + "' (want enabled=" + shouldEnable + ")");
+	        if (locationProbeMatches(before, shouldEnable)) {
+	            Reporter.log("Location services already " + (shouldEnable ? "enabled" : "disabled"));
+	            return;
+	        }
+
+	        runAdbShell(objDictionary, "settings", "put", "secure", "location_mode", expectedMode);
+	        runAdbShell(objDictionary, "cmd", "location", "set-location-enabled", shouldEnable ? "true" : "false");
+	        runAdbShell(objDictionary, "cmd", "location", "providers", "set-user-enabled", "gps", shouldEnable ? "true" : "false");
+	        runAdbShell(objDictionary, "cmd", "location", "providers", "set-user-enabled", "network", shouldEnable ? "true" : "false");
+	        if (shouldEnable) {
+	            runAdbShell(objDictionary, "settings", "put", "secure", "location_providers_allowed", "+gps");
+	            runAdbShell(objDictionary, "settings", "put", "secure", "location_providers_allowed", "+network");
+	        } else {
+	            runAdbShell(objDictionary, "settings", "put", "secure", "location_providers_allowed", "-gps");
+	            runAdbShell(objDictionary, "settings", "put", "secure", "location_providers_allowed", "-network");
+	        }
+	        Thread.sleep(1500);
+
+	        String after = probeLocationEnabled(objDictionary);
+	        Reporter.log("Location probe after toggle: '" + after + "'");
+	        if (locationProbeMatches(after, shouldEnable) || after.isEmpty()) {
+	            if (after.isEmpty()) {
+	                Reporter.log("WARNING: Location mode probe was blank after toggle; commands were sent anyway.");
+	            } else {
+	                Reporter.log("Location services successfully " + (shouldEnable ? "enabled" : "disabled"));
+	            }
+	            return;
+	        }
+	        String message = "Location services did not change. Expected enabled=" + shouldEnable + ", probe=" + after;
+	        if (failOnMismatch) {
+	            UpdateErrorMessageWithPivotalData(objDictionary, message);
+	        } else {
+	            Reporter.log("WARNING: " + message + " (ignored during cleanup)");
+	        }
+	    } catch (Exception e) {
+	        if (failOnMismatch) {
+	            UpdateErrorMessageWithPivotalData(objDictionary, "Location services toggle failed: " + e.getMessage());
+	        } else {
+	            Reporter.log("WARNING: Location services toggle failed: " + e.getMessage() + " (ignored during cleanup)");
+	        }
+	    }
+	}
+
+	public void SENTRYMOBILE_SET_APP_PERMISSIONS(Map<String, String> objDictionary)
+	{
+	    String packageName = getCaPackageName(objDictionary);
+	    String action = objDictionary.get("strPermissionAction");
+	    if (action == null) action = "Grant";
+	    String list = objDictionary.get("strPermissions");
+	    if (list == null || list.trim().isEmpty()) {
+	        list = "android.permission.ACCESS_FINE_LOCATION,android.permission.ACCESS_COARSE_LOCATION,android.permission.CAMERA";
+	    }
+	    boolean shouldGrant = action.equalsIgnoreCase("Grant");
+	    String pmAction = shouldGrant ? "grant" : "revoke";
+	    boolean failOnMismatch = !"False".equalsIgnoreCase(objDictionary.get("strAdbFailOnMismatch"));
+
+	    try {
+	        String[] permissions = list.split(",");
+	        int attempted = 0;
+	        for (String permission : permissions) {
+	            String perm = permission.trim();
+	            if (perm.isEmpty()) continue;
+	            attempted++;
+	            String out = runAdbShell(objDictionary, "pm", pmAction, packageName, perm);
+	            Reporter.log("pm " + pmAction + " " + packageName + " " + perm + " -> " + (out == null || out.isEmpty() ? "ok" : out));
+	        }
+	        Thread.sleep(1000);
+	        Reporter.log("Applied " + pmAction + " to " + attempted + " permission(s) for " + packageName);
+	    } catch (Exception e) {
+	        if (failOnMismatch) {
+	            UpdateErrorMessageWithPivotalData(objDictionary, "pm " + (shouldGrant ? "grant" : "revoke") + " failed: " + e.getMessage());
+	        } else {
+	            Reporter.log("WARNING: Permission " + (shouldGrant ? "grant" : "revoke") + " failed: " + e.getMessage() + " (ignored during cleanup)");
+	        }
+	    }
+	}
+
+	public void SENTRYMOBILE_GRANT_DEFAULT_CA_PERMISSIONS(Map<String, String> objDictionary)
+	{
+	    objDictionary.put("strPermissionAction", "Grant");
+	    objDictionary.put("strPermissions",
+	            "android.permission.ACCESS_FINE_LOCATION,android.permission.ACCESS_COARSE_LOCATION,android.permission.CAMERA");
+	    SENTRYMOBILE_SET_APP_PERMISSIONS(objDictionary);
+	}
+
+	public void SENTRYMOBILE_POST_NOTIFICATION(Map<String, String> objDictionary)
+	{
+	    String title = objDictionary.get("strNotificationTitle");
+	    if (title == null || title.trim().isEmpty()) title = "MPS Interrupt";
+	    String text = objDictionary.get("strNotificationText");
+	    if (text == null || text.trim().isEmpty()) text = "Interrupt during parking flow";
+	    String tag = objDictionary.get("strNotificationTag");
+	    if (tag == null || tag.trim().isEmpty()) tag = "MpsNeg08";
+	    boolean failOnMismatch = !"False".equalsIgnoreCase(objDictionary.get("strAdbFailOnMismatch"));
+
+	    try {
+	        String out = runAdbShell(objDictionary, "cmd", "notification", "post", "-S", "bigtext", "-t", title, tag, text);
+	        if (out != null && (out.toLowerCase().contains("error") || out.toLowerCase().contains("unknown command")
+	                || out.toLowerCase().contains("unknown option"))) {
+	            out = runAdbShell(objDictionary, "cmd", "notification", "post", "-t", title, tag, text);
+	        }
+	        Reporter.log("Posted device notification tag=" + tag + " title='" + title + "' output='" + out + "'");
+	        if (out != null && (out.toLowerCase().contains("error") || out.toLowerCase().contains("unknown command"))) {
+	            String message = "Could not post a test notification via adb cmd notification: " + out;
+	            if (failOnMismatch) {
+	                UpdateErrorMessageWithPivotalData(objDictionary, message);
+	            } else {
+	                Reporter.log("WARNING: " + message);
+	            }
+	        }
+	    } catch (Exception e) {
+	        if (failOnMismatch) {
+	            UpdateErrorMessageWithPivotalData(objDictionary, "Posting a test notification failed: " + e.getMessage());
+	        } else {
+	            Reporter.log("WARNING: Posting a test notification failed: " + e.getMessage());
+	        }
+	    }
+	}
+
+	private String probeLocationEnabled(Map<String, String> objDictionary) throws Exception
+	{
+	    String mode = normalizeZeroOne(runAdbShell(objDictionary, "settings", "get", "secure", "location_mode"));
+	    if ("0".equals(mode)) return "0";
+	    if ("1".equals(mode) || "2".equals(mode) || "3".equals(mode)) return "1";
+
+	    String cmdOut = runAdbShell(objDictionary, "cmd", "location", "is-location-enabled");
+	    if (cmdOut != null) {
+	        String lower = cmdOut.toLowerCase();
+	        if (lower.contains("true") || lower.trim().equals("1")) return "1";
+	        if (lower.contains("false") || lower.trim().equals("0")) return "0";
+	    }
+	    return mode == null ? "" : mode.trim();
+	}
+
+	private boolean locationProbeMatches(String probe, boolean shouldEnable)
+	{
+	    if (probe == null || probe.isEmpty()) return false;
+	    if (shouldEnable) return "1".equals(probe) || "2".equals(probe) || "3".equals(probe);
+	    return "0".equals(probe);
+	}
+
 	public boolean SENTRYMOBILE_IS_APP_RUNNING(Map<String, String> objDictionary)
 	{
 	    String packageName = getCaPackageName(objDictionary);
