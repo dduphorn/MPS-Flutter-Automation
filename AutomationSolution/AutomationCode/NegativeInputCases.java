@@ -1,14 +1,19 @@
 package AutomationCode;
 
 /**
- * Device-free helpers for Mobile QA Test Plan input cases (TC-NEG-18, TC-NEG-19)
- * and shared crash / degrade / login-screen detection used by A2209F–A2214F.
+ * Device-free helpers for Mobile QA Test Plan input cases (TC-NEG-04, 05, 12, 13, 18, 19)
+ * and shared crash / degrade / login-screen detection used by A2209F–A2219F.
  */
 public class NegativeInputCases
 {
 	public static final int EXCESSIVE_INPUT_LENGTH = 10000;
 	public static final String SQL_INJECTION = "' OR 1=1 --";
 	public static final String XSS_INJECTION = "<script>alert(1)</script>";
+	public static final String STORAGE_FILL_PATH = "/sdcard/Download/mps_neg04_fill.bin";
+	public static final long STORAGE_FILL_CAP_KB = 512L * 1024L;
+	public static final long STORAGE_LEAVE_FREE_KB = 200L * 1024L;
+	public static final String HTTP_PROXY_BLACKHOLE = "192.0.2.1:8080";
+	public static final String PRIVATE_DNS_INVALID = "dns.invalid";
 
 	public static String excessiveInput(char fill)
 	{
@@ -117,6 +122,94 @@ public class NegativeInputCases
 		if (looksLikeCrash(pageSource)) return false;
 		if (looksLikeLoggedIn(pageSource)) return false;
 		return looksLikeLoginForm(pageSource) || looksLikeValidationOrInvalidLogin(pageSource);
+	}
+
+	public static boolean looksLikeLowStorage(String pageSource)
+	{
+		if (pageSource == null) return false;
+		String lower = pageSource.toLowerCase();
+		return lower.contains("not enough space")
+				|| lower.contains("free up")
+				|| lower.contains("storage space")
+				|| lower.contains("low storage")
+				|| lower.contains("insufficient storage")
+				|| lower.contains("disk full")
+				|| lower.contains("storage is running out");
+	}
+
+	public static boolean looksLikeBiometricPrompt(String pageSource)
+	{
+		if (pageSource == null) return false;
+		String lower = pageSource.toLowerCase();
+		return lower.contains("biometric")
+				|| lower.contains("fingerprint")
+				|| lower.contains("face unlock")
+				|| lower.contains("face id")
+				|| lower.contains("touch id")
+				|| lower.contains("not right now")
+				|| lower.contains("use fingerprint")
+				|| lower.contains("confirm fingerprint")
+				|| lower.contains("verify your identity");
+	}
+
+	public static boolean looksLikeApiOrNetworkError(String pageSource)
+	{
+		if (pageSource == null) return false;
+		String lower = pageSource.toLowerCase();
+		return lower.contains("timed out")
+				|| lower.contains("timeout")
+				|| lower.contains("try again")
+				|| lower.contains("retry")
+				|| lower.contains("unable to")
+				|| lower.contains("failed to")
+				|| lower.contains("certificate")
+				|| lower.contains("ssl")
+				|| lower.contains("proxy")
+				|| lower.contains("unable to connect")
+				|| lower.contains("connection")
+				|| lower.contains("unreachable")
+				|| lower.contains("something went wrong")
+				|| lower.contains("network request")
+				|| lower.contains("dns");
+	}
+
+	public static long parseAvailableKbFromDf(String dfOutput)
+	{
+		if (dfOutput == null || dfOutput.trim().isEmpty()) return -1;
+		String[] lines = dfOutput.trim().split("\\r?\\n");
+		for (int i = lines.length - 1; i >= 0; i--)
+		{
+			String line = lines[i].trim();
+			if (line.isEmpty() || line.toLowerCase().startsWith("filesystem")) continue;
+			String[] parts = line.split("\\s+");
+			if (parts.length >= 4)
+			{
+				try
+				{
+					return Long.parseLong(parts[3]);
+				}
+				catch (NumberFormatException e)
+				{
+					try
+					{
+						return Long.parseLong(parts[parts.length - 3]);
+					}
+					catch (NumberFormatException e2)
+					{
+						return -1;
+					}
+				}
+			}
+		}
+		return -1;
+	}
+
+	public static long computeFillKb(long availableKb, long capKb, long leaveFreeKb)
+	{
+		if (availableKb < 0) return 0;
+		long room = availableKb - leaveFreeKb;
+		if (room <= 0) return 0;
+		return Math.min(capKb, room);
 	}
 
 	static String xmlEscape(String value)

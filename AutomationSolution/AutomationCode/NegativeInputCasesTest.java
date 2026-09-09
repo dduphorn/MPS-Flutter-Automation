@@ -112,6 +112,41 @@ public class NegativeInputCasesTest
 				"&lt;script&gt;&quot;x&quot; &amp; &apos;y&apos;&lt;/script&gt;");
 	}
 
+	@Test(groups = {"Unit"})
+	public void looksLikeLowStorage_andBiometric_andApiError_coverPlanCopy()
+	{
+		Assert.assertFalse(NegativeInputCases.looksLikeLowStorage(null));
+		Assert.assertTrue(NegativeInputCases.looksLikeLowStorage("Not enough space. Free up storage space."));
+		Assert.assertTrue(NegativeInputCases.looksLikeLowStorage("Low storage"));
+		Assert.assertTrue(NegativeInputCases.looksLikeLowStorage("Disk full"));
+		Assert.assertFalse(NegativeInputCases.looksLikeBiometricPrompt(null));
+		Assert.assertTrue(NegativeInputCases.looksLikeBiometricPrompt("Do you want to enable biometric authentication for easier login?"));
+		Assert.assertTrue(NegativeInputCases.looksLikeBiometricPrompt("Confirm fingerprint"));
+		Assert.assertTrue(NegativeInputCases.looksLikeBiometricPrompt("NOT RIGHT NOW"));
+		Assert.assertFalse(NegativeInputCases.looksLikeApiOrNetworkError(null));
+		Assert.assertTrue(NegativeInputCases.looksLikeApiOrNetworkError("Request timed out. Try again."));
+		Assert.assertTrue(NegativeInputCases.looksLikeApiOrNetworkError("SSL certificate error"));
+		Assert.assertTrue(NegativeInputCases.looksLikeApiOrNetworkError("Unable to connect. Retry"));
+		Assert.assertTrue(NegativeInputCases.looksLikeApiOrNetworkError("DNS lookup failed"));
+	}
+
+	@Test(groups = {"Unit"})
+	public void parseAvailableKbFromDf_andComputeFillKb_neverOverfillThePhone()
+	{
+		Assert.assertEquals(NegativeInputCases.parseAvailableKbFromDf(null), -1);
+		Assert.assertEquals(NegativeInputCases.parseAvailableKbFromDf(""), -1);
+		String oneLine = "Filesystem     1K-blocks    Used Available Use% Mounted on\n"
+				+ "/dev/fuse      116886684 5000000 66886684  8% /storage/emulated/0";
+		Assert.assertEquals(NegativeInputCases.parseAvailableKbFromDf(oneLine), 66886684L);
+		Assert.assertEquals(NegativeInputCases.computeFillKb(-1, NegativeInputCases.STORAGE_FILL_CAP_KB, NegativeInputCases.STORAGE_LEAVE_FREE_KB), 0);
+		Assert.assertEquals(NegativeInputCases.computeFillKb(1000, 512L * 1024L, 200L * 1024L), 0);
+		Assert.assertEquals(NegativeInputCases.computeFillKb(1024L * 1024L, 512L * 1024L, 200L * 1024L), 512L * 1024L);
+		Assert.assertEquals(NegativeInputCases.computeFillKb(250L * 1024L, 512L * 1024L, 200L * 1024L), 50L * 1024L);
+		Assert.assertEquals(NegativeInputCases.STORAGE_FILL_PATH, "/sdcard/Download/mps_neg04_fill.bin");
+		Assert.assertEquals(NegativeInputCases.HTTP_PROXY_BLACKHOLE, "192.0.2.1:8080");
+		Assert.assertEquals(NegativeInputCases.PRIVATE_DNS_INVALID, "dns.invalid");
+	}
+
 	private static String repeat(String value, int times)
 	{
 		StringBuilder sb = new StringBuilder();

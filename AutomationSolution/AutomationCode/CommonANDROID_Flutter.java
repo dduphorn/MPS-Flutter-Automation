@@ -2257,6 +2257,12 @@ public class CommonANDROID_Flutter
 		try { clsADBcommands.SENTRYMOBILE_RESET_BATTERY(objDictionary); } catch (Throwable e) { Reporter.log("Restore battery failed: " + e.getMessage()); }
 		try { clsADBcommands.SENTRYMOBILE_SET_LOCATION_MODE(objDictionary); } catch (Throwable e) { Reporter.log("Restore location services failed: " + e.getMessage()); }
 		try { clsADBcommands.SENTRYMOBILE_GRANT_DEFAULT_CA_PERMISSIONS(objDictionary); } catch (Throwable e) { Reporter.log("Restore CA permissions failed: " + e.getMessage()); }
+		try { clsADBcommands.SENTRYMOBILE_CLEAR_STORAGE_FILL(objDictionary); } catch (Throwable e) { Reporter.log("Restore storage fill failed: " + e.getMessage()); }
+		try {
+			objDictionary.put("strHttpProxy", "Clear");
+			clsADBcommands.SENTRYMOBILE_SET_HTTP_PROXY(objDictionary);
+		} catch (Throwable e) { Reporter.log("Restore http_proxy failed: " + e.getMessage()); }
+		try { clsADBcommands.SENTRYMOBILE_RESTORE_PRIVATE_DNS(objDictionary); } catch (Throwable e) { Reporter.log("Restore private DNS failed: " + e.getMessage()); }
 		objDictionary.remove("strAdbFailOnMismatch");
 	}
 
@@ -2476,6 +2482,46 @@ public class CommonANDROID_Flutter
 			Reporter.log("Injection payload is not visible in the page source after " + strContext + " (validation message / rejected input is acceptable)");
 		}
 		SENTRYMOBILE_AssertLoginWasNotBypassed(objDictionary, androidDriver, strContext);
+	}
+
+	public boolean SENTRYMOBILE_DismissBiometricPromptIfPresent(AppiumDriver androidDriver)
+	{
+		boolean dismissed = SENTRYMOBILE_ClickIfPresent(androidDriver, "//*[contains(@content-desc, 'NOT RIGHT NOW') or contains(@text, 'NOT RIGHT NOW') or contains(@content-desc, 'Not right now') or contains(@text, 'Not right now')]", 3);
+		dismissed = SENTRYMOBILE_ClickIfPresent(androidDriver, "//*[contains(@content-desc, 'Cancel') or contains(@text, 'Cancel')]", 2) || dismissed;
+		dismissed = SENTRYMOBILE_ClickIfPresent(androidDriver, "//*[contains(@content-desc, 'No') or contains(@text, 'No')]", 2) || dismissed;
+		dismissed = SENTRYMOBILE_ClickIfPresent(androidDriver, "//*[contains(@content-desc, 'Skip') or contains(@text, 'Skip')]", 2) || dismissed;
+		if (dismissed)
+		{
+			Reporter.log("Dismissed a biometric or identity prompt");
+		}
+		return dismissed;
+	}
+
+	public void SENTRYMOBILE_AssertApiErrorOrUsableDegrade(Map<String, String> objDictionary, AppiumDriver androidDriver, String strContext)
+	{
+		String source = SENTRYMOBILE_CaptureVisibleUi(androidDriver);
+		if (NegativeInputCases.looksLikeApiOrNetworkError(source))
+		{
+			Reporter.log("API/network error or Retry copy was shown after " + strContext);
+			return;
+		}
+		if (SENTRYMOBILE_PageLooksLoggedIn(androidDriver) || NegativeInputCases.looksLikeLoginForm(source))
+		{
+			Reporter.log("No explicit API error after " + strContext + "; app stayed on a usable screen (cached data without crash is acceptable)");
+			return;
+		}
+		UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,
+				"Expected an API/network error, Retry, or a usable degraded screen after " + strContext);
+	}
+
+	public boolean SENTRYMOBILE_ClickRetryIfPresent(AppiumDriver androidDriver)
+	{
+		boolean clicked = SENTRYMOBILE_ClickIfPresent(androidDriver, "//*[contains(@content-desc, 'Retry') or contains(@text, 'Retry') or contains(@content-desc, 'Try again') or contains(@text, 'Try again')]", 4);
+		if (clicked)
+		{
+			Reporter.log("Clicked Retry / Try again");
+		}
+		return clicked;
 	}
 	
 	//*******************************************************************************

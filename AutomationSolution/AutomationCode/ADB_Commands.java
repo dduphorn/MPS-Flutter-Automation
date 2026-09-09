@@ -557,6 +557,144 @@ public class ADB_Commands
 	    }
 	}
 
+	public void SENTRYMOBILE_SIMULATE_LOW_STORAGE(Map<String, String> objDictionary)
+	{
+	    String fillPath = NegativeInputCases.STORAGE_FILL_PATH;
+	    objDictionary.put("strStorageFillPath", fillPath);
+	    boolean failOnMismatch = !"False".equalsIgnoreCase(objDictionary.get("strAdbFailOnMismatch"));
+	    try {
+	        runAdbShell(objDictionary, "mkdir", "-p", "/sdcard/Download");
+	        String dfBefore = runAdbShell(objDictionary, "df", "/sdcard");
+	        long availableKb = NegativeInputCases.parseAvailableKbFromDf(dfBefore);
+	        long fillKb = NegativeInputCases.computeFillKb(availableKb, NegativeInputCases.STORAGE_FILL_CAP_KB, NegativeInputCases.STORAGE_LEAVE_FREE_KB);
+	        Reporter.log("df /sdcard before fill:\n" + dfBefore);
+	        Reporter.log("Available KB=" + availableKb + " fill KB=" + fillKb + " (cap " + NegativeInputCases.STORAGE_FILL_CAP_KB + ")");
+
+	        if (fillKb > 0) {
+	            long fillBytes = fillKb * 1024L;
+	            String cmd = "fallocate -l " + fillBytes + " " + fillPath + " || truncate -s " + fillBytes + " " + fillPath;
+	            String fillOut = runAdbShell(objDictionary, "sh", "-c", cmd);
+	            Reporter.log("Storage fill command output: " + (fillOut == null || fillOut.isEmpty() ? "ok" : fillOut));
+	        } else {
+	            Reporter.log("Skipped file fill; partition is already at or below the leave-free threshold");
+	        }
+
+	        String broadcast = runAdbShell(objDictionary, "am", "broadcast", "-a", "android.intent.action.DEVICE_STORAGE_LOW");
+	        Reporter.log("DEVICE_STORAGE_LOW broadcast: " + broadcast);
+	        String dfAfter = runAdbShell(objDictionary, "df", "/sdcard");
+	        Reporter.log("df /sdcard after fill:\n" + dfAfter);
+	        objDictionary.put("strStorageFillEvidence", "before=" + availableKb + " fillKb=" + fillKb + " afterDf=" + dfAfter);
+	    } catch (Exception e) {
+	        if (failOnMismatch) {
+	            UpdateErrorMessageWithPivotalData(objDictionary, "Low-storage simulation failed: " + e.getMessage());
+	        } else {
+	            Reporter.log("WARNING: Low-storage simulation failed: " + e.getMessage());
+	        }
+	    }
+	}
+
+	public void SENTRYMOBILE_CLEAR_STORAGE_FILL(Map<String, String> objDictionary)
+	{
+	    String fillPath = objDictionary.get("strStorageFillPath");
+	    if (fillPath == null || fillPath.trim().isEmpty()) {
+	        fillPath = NegativeInputCases.STORAGE_FILL_PATH;
+	    }
+	    try {
+	        String rm = runAdbShell(objDictionary, "rm", "-f", fillPath);
+	        Reporter.log("Removed storage fill " + fillPath + " -> " + (rm == null || rm.isEmpty() ? "ok" : rm));
+	        String broadcast = runAdbShell(objDictionary, "am", "broadcast", "-a", "android.intent.action.DEVICE_STORAGE_OK");
+	        Reporter.log("DEVICE_STORAGE_OK broadcast: " + broadcast);
+	    } catch (Exception e) {
+	        Reporter.log("WARNING: Clearing storage fill failed: " + e.getMessage());
+	    }
+	}
+
+	public void SENTRYMOBILE_SET_HTTP_PROXY(Map<String, String> objDictionary)
+	{
+	    String proxy = objDictionary.get("strHttpProxy");
+	    boolean failOnMismatch = !"False".equalsIgnoreCase(objDictionary.get("strAdbFailOnMismatch"));
+	    boolean clear = proxy == null || proxy.trim().isEmpty() || proxy.equalsIgnoreCase("Clear") || proxy.equals(":0");
+	    try {
+	        objDictionary.put("strAdbChangedHttpProxy", "True");
+	        if (clear) {
+	            runAdbShell(objDictionary, "settings", "put", "global", "http_proxy", ":0");
+	            runAdbShell(objDictionary, "settings", "delete", "global", "http_proxy");
+	            Reporter.log("Cleared global http_proxy");
+	            return;
+	        }
+	        String out = runAdbShell(objDictionary, "settings", "put", "global", "http_proxy", proxy.trim());
+	        Reporter.log("Set global http_proxy=" + proxy.trim() + " -> " + (out == null || out.isEmpty() ? "ok" : out));
+	        Thread.sleep(1500);
+	    } catch (Exception e) {
+	        if (failOnMismatch) {
+	            UpdateErrorMessageWithPivotalData(objDictionary, "Setting http_proxy failed: " + e.getMessage());
+	        } else {
+	            Reporter.log("WARNING: Setting http_proxy failed: " + e.getMessage() + " (ignored during cleanup)");
+	        }
+	    }
+	}
+
+	public void SENTRYMOBILE_SET_PRIVATE_DNS(Map<String, String> objDictionary)
+	{
+	    String mode = objDictionary.get("strPrivateDnsMode");
+	    if (mode == null || mode.trim().isEmpty()) mode = "opportunistic";
+	    String specifier = objDictionary.get("strPrivateDnsSpecifier");
+	    boolean failOnMismatch = !"False".equalsIgnoreCase(objDictionary.get("strAdbFailOnMismatch"));
+	    try {
+	        if (!"True".equals(objDictionary.get("strOriginalPrivateDnsCaptured"))) {
+	            objDictionary.put("strOriginalPrivateDnsMode", runAdbShell(objDictionary, "settings", "get", "global", "private_dns_mode"));
+	            objDictionary.put("strOriginalPrivateDnsSpecifier", runAdbShell(objDictionary, "settings", "get", "global", "private_dns_specifier"));
+	            objDictionary.put("strOriginalPrivateDnsCaptured", "True");
+	        }
+	        objDictionary.put("strAdbChangedPrivateDns", "True");
+	        runAdbShell(objDictionary, "settings", "put", "global", "private_dns_mode", mode.trim());
+	        if (specifier != null && !specifier.trim().isEmpty() && !"null".equalsIgnoreCase(specifier.trim())) {
+	            runAdbShell(objDictionary, "settings", "put", "global", "private_dns_specifier", specifier.trim());
+	        }
+	        Reporter.log("Private DNS set to mode=" + mode + " specifier=" + specifier);
+	        Thread.sleep(2000);
+	    } catch (Exception e) {
+	        if (failOnMismatch) {
+	            UpdateErrorMessageWithPivotalData(objDictionary, "Setting private DNS failed: " + e.getMessage());
+	        } else {
+	            Reporter.log("WARNING: Setting private DNS failed: " + e.getMessage() + " (ignored during cleanup)");
+	        }
+	    }
+	}
+
+	public void SENTRYMOBILE_RESTORE_PRIVATE_DNS(Map<String, String> objDictionary)
+	{
+	    if (!"True".equals(objDictionary.get("strAdbChangedPrivateDns"))) return;
+	    try {
+	        String originalMode = objDictionary.get("strOriginalPrivateDnsMode");
+	        if (originalMode == null || originalMode.trim().isEmpty() || "null".equalsIgnoreCase(originalMode.trim())) {
+	            originalMode = "opportunistic";
+	        }
+	        runAdbShell(objDictionary, "settings", "put", "global", "private_dns_mode", originalMode.trim());
+	        String originalSpecifier = objDictionary.get("strOriginalPrivateDnsSpecifier");
+	        if (originalSpecifier != null && !originalSpecifier.trim().isEmpty() && !"null".equalsIgnoreCase(originalSpecifier.trim())) {
+	            runAdbShell(objDictionary, "settings", "put", "global", "private_dns_specifier", originalSpecifier.trim());
+	        }
+	        Reporter.log("Restored private DNS mode=" + originalMode + " specifier=" + originalSpecifier);
+	    } catch (Exception e) {
+	        Reporter.log("WARNING: Restoring private DNS failed: " + e.getMessage());
+	    }
+	}
+
+	public String SENTRYMOBILE_DUMP_FINGERPRINT(Map<String, String> objDictionary)
+	{
+	    try {
+	        String dump = runAdbShell(objDictionary, "dumpsys", "fingerprint");
+	        if (dump == null) dump = "";
+	        String snippet = dump.length() > 800 ? dump.substring(0, 800) : dump;
+	        Reporter.log("dumpsys fingerprint (truncated): " + snippet);
+	        return dump;
+	    } catch (Exception e) {
+	        Reporter.log("dumpsys fingerprint failed: " + e.getMessage());
+	        return "";
+	    }
+	}
+
 	private String probeLocationEnabled(Map<String, String> objDictionary) throws Exception
 	{
 	    String mode = normalizeZeroOne(runAdbShell(objDictionary, "settings", "get", "secure", "location_mode"));

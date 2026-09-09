@@ -6689,7 +6689,7 @@ public class Android_TestCases_Flutter
   	}
 
 	//********************************************************************************************************************
-	//ANDROID CA — ADB device-constraint cases (TC-NEG-01, 02, 03, 09, 11, 06, 07, 08, 10, 18, 19)
+	//ANDROID CA — ADB device-constraint cases (TC-NEG-01, 02, 03, 09, 11, 06, 07, 08, 10, 18, 19, 04, 05, 12, 13)
 	//********************************************************************************************************************
 	@Test(priority=2204, groups={"Smoke"})
 	public void A2204F_NoInternet_ColdStartLoginKillRelaunchRestore()
@@ -7219,6 +7219,223 @@ public class Android_TestCases_Flutter
 				clsCommonMobile.SENTRYMOBILE_AssertInjectionTreatedAsPlainText(objDictionary, androidDriver, payload, "login with payload " + payload);
 				clsCommonMobile.SENTRYMOBILE_ClickIfPresent(androidDriver, "//*[contains(@content-desc, 'Ok') or contains(@text, 'Ok')]", 5);
 			}
+		}
+		finally
+		{
+			try { if (androidDriver != null) androidDriver.quit(); } catch (Exception e) {}
+			clsCommonMobile.SENTRYMOBILE_RestoreDeviceNetworkAndPower(objDictionary);
+			clsMeter.METER_SetMeterEndTime(objDictionary);
+		}
+	}
+
+	@Test(priority=2215, groups={"Smoke"})
+	public void A2215F_LowStorage_DeviceStorageLow()
+	{
+		objDictionary.put("strAssociatedBug", "");
+		objDictionary.put("strMobileDeviceType", "ANDROID");
+		CommonANDROID_Flutter clsCommonMobile = new CommonANDROID_Flutter();
+		ADB_Commands clsADBcommands = new ADB_Commands();
+		Meter clsMeter = new Meter();
+		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
+		clsCommonMobile.SENTRYMOBILE_BindAdbDeviceSerial(objDictionary);
+		Reporter.log("TC-NEG-04: Low storage — install/login first, then fill (capped) plus DEVICE_STORAGE_LOW, relaunch, restore");
+
+		AppiumDriver androidDriver = null;
+		try
+		{
+			androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
+			clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept", 1);
+			clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, androidDriver, "parker", "Remind me later");
+			clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary, androidDriver, "Account");
+
+			clsADBcommands.SENTRYMOBILE_SIMULATE_LOW_STORAGE(objDictionary);
+			clsADBcommands.SENTRYMOBILE_FORCE_STOP_APP(objDictionary);
+			clsADBcommands.SENTRYMOBILE_LAUNCH_APP(objDictionary);
+			try { Thread.sleep(5000); } catch (Exception e) {}
+			clsCommonMobile.SENTRYMOBILE_AcceptUserAgreementIfPresent(objDictionary, androidDriver);
+			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "relaunch under low-storage simulation");
+			String source = clsCommonMobile.SENTRYMOBILE_CaptureVisibleUi(androidDriver);
+			if (NegativeInputCases.looksLikeLowStorage(source))
+			{
+				Reporter.log("Low-storage messaging was shown");
+			}
+			else
+			{
+				Reporter.log("No OS low-storage dialog (fill is capped at 512MB so the phone is not actually full); app must still not crash");
+			}
+			clsCommonMobile.SENTRYMOBILE_ClickIfPresent(androidDriver, "//android.widget.ImageView[contains(@content-desc, 'Account')]", 8);
+			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "Account after low-storage relaunch");
+		}
+		finally
+		{
+			try { if (androidDriver != null) androidDriver.quit(); } catch (Exception e) {}
+			clsCommonMobile.SENTRYMOBILE_RestoreDeviceNetworkAndPower(objDictionary);
+			clsMeter.METER_SetMeterEndTime(objDictionary);
+		}
+	}
+
+	@Test(priority=2216, groups={"Smoke"})
+	public void A2216F_BiometricPrompt_CancelFallback()
+	{
+		objDictionary.put("strAssociatedBug", "");
+		objDictionary.put("strMobileDeviceType", "ANDROID");
+		CommonANDROID_Flutter clsCommonMobile = new CommonANDROID_Flutter();
+		ADB_Commands clsADBcommands = new ADB_Commands();
+		Meter clsMeter = new Meter();
+		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
+		clsCommonMobile.SENTRYMOBILE_BindAdbDeviceSerial(objDictionary);
+		Reporter.log("TC-NEG-05: Biometric cancel / fallback — dismiss prompt if shown, stay on password/session, no crash");
+
+		AppiumDriver androidDriver = null;
+		try
+		{
+			androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
+			clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept", 1);
+			clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, androidDriver, "parker", "Remind me later");
+			clsADBcommands.SENTRYMOBILE_DUMP_FINGERPRINT(objDictionary);
+			boolean dismissed = clsCommonMobile.SENTRYMOBILE_DismissBiometricPromptIfPresent(androidDriver);
+			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "login with biometric cancel/fallback");
+			String source = clsCommonMobile.SENTRYMOBILE_CaptureVisibleUi(androidDriver);
+			if (NegativeInputCases.looksLikeBiometricPrompt(source) || dismissed)
+			{
+				Reporter.log("Biometric prompt was present and cancelled, or leftover copy remained; password/session path must remain usable");
+				clsADBcommands.SENTRYMOBILE_DISMISS_NOTIFICATION_SHADE(objDictionary);
+				clsCommonMobile.SENTRYMOBILE_DismissBiometricPromptIfPresent(androidDriver);
+			}
+			else
+			{
+				Reporter.log("Flutter CA did not show a biometric dialog after login (dumpsys fingerprint captured). Cancel path is still valid: app stayed up.");
+			}
+			clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary, androidDriver, "Account");
+			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "Account after biometric cancel/fallback");
+			if (!clsCommonMobile.SENTRYMOBILE_PageLooksLoggedIn(androidDriver))
+			{
+				clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver, "Expected to remain on a logged-in screen after biometric cancel/fallback");
+			}
+		}
+		finally
+		{
+			try { if (androidDriver != null) androidDriver.quit(); } catch (Exception e) {}
+			clsCommonMobile.SENTRYMOBILE_RestoreDeviceNetworkAndPower(objDictionary);
+			clsMeter.METER_SetMeterEndTime(objDictionary);
+		}
+	}
+
+	@Test(priority=2217, groups={"Smoke"})
+	public void A2217F_HttpProxyBlackhole_ApiTimeout()
+	{
+		objDictionary.put("strAssociatedBug", "");
+		objDictionary.put("strMobileDeviceType", "ANDROID");
+		CommonANDROID_Flutter clsCommonMobile = new CommonANDROID_Flutter();
+		ADB_Commands clsADBcommands = new ADB_Commands();
+		Meter clsMeter = new Meter();
+		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
+		clsCommonMobile.SENTRYMOBILE_BindAdbDeviceSerial(objDictionary);
+		Reporter.log("TC-NEG-12: API timeout without Charles — system http_proxy to TEST-NET blackhole, then Retry after clear");
+
+		AppiumDriver androidDriver = null;
+		try
+		{
+			androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
+			clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept", 1);
+			clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, androidDriver, "parker", "Remind me later");
+			clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary, androidDriver, "Account");
+
+			objDictionary.put("strHttpProxy", NegativeInputCases.HTTP_PROXY_BLACKHOLE);
+			clsADBcommands.SENTRYMOBILE_SET_HTTP_PROXY(objDictionary);
+			clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary, androidDriver, "Sessions");
+			try { Thread.sleep(4000); } catch (Exception e) {}
+			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "Sessions with http_proxy blackhole");
+			clsCommonMobile.SENTRYMOBILE_AssertApiErrorOrUsableDegrade(objDictionary, androidDriver, "Sessions with http_proxy blackhole");
+
+			objDictionary.put("strHttpProxy", "Clear");
+			clsADBcommands.SENTRYMOBILE_SET_HTTP_PROXY(objDictionary);
+			clsCommonMobile.SENTRYMOBILE_ClickRetryIfPresent(androidDriver);
+			clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary, androidDriver, "Account");
+			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "Account after clearing http_proxy");
+			Reporter.log("Proxy restored; app remained usable without reinstall");
+		}
+		finally
+		{
+			try { if (androidDriver != null) androidDriver.quit(); } catch (Exception e) {}
+			clsCommonMobile.SENTRYMOBILE_RestoreDeviceNetworkAndPower(objDictionary);
+			clsMeter.METER_SetMeterEndTime(objDictionary);
+		}
+	}
+
+	@Test(priority=2218, groups={"Smoke"})
+	public void A2218F_PrivateDnsInvalid_ApiFailure()
+	{
+		objDictionary.put("strAssociatedBug", "");
+		objDictionary.put("strMobileDeviceType", "ANDROID");
+		CommonANDROID_Flutter clsCommonMobile = new CommonANDROID_Flutter();
+		ADB_Commands clsADBcommands = new ADB_Commands();
+		Meter clsMeter = new Meter();
+		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
+		clsCommonMobile.SENTRYMOBILE_BindAdbDeviceSerial(objDictionary);
+		Reporter.log("TC-NEG-13: API failure without Charles — invalid Private DNS, then restore and Retry");
+
+		AppiumDriver androidDriver = null;
+		try
+		{
+			androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
+			clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept", 1);
+			clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, androidDriver, "parker", "Remind me later");
+
+			objDictionary.put("strPrivateDnsMode", "hostname");
+			objDictionary.put("strPrivateDnsSpecifier", NegativeInputCases.PRIVATE_DNS_INVALID);
+			clsADBcommands.SENTRYMOBILE_SET_PRIVATE_DNS(objDictionary);
+			clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary, androidDriver, "Sessions");
+			try { Thread.sleep(4000); } catch (Exception e) {}
+			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "Sessions with invalid Private DNS");
+			clsCommonMobile.SENTRYMOBILE_AssertApiErrorOrUsableDegrade(objDictionary, androidDriver, "Sessions with invalid Private DNS");
+
+			clsADBcommands.SENTRYMOBILE_RESTORE_PRIVATE_DNS(objDictionary);
+			clsCommonMobile.SENTRYMOBILE_ClickRetryIfPresent(androidDriver);
+			clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary, androidDriver, "Account");
+			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "Account after restoring Private DNS");
+		}
+		finally
+		{
+			try { if (androidDriver != null) androidDriver.quit(); } catch (Exception e) {}
+			clsCommonMobile.SENTRYMOBILE_RestoreDeviceNetworkAndPower(objDictionary);
+			clsMeter.METER_SetMeterEndTime(objDictionary);
+		}
+	}
+
+	@Test(priority=2219, groups={"Smoke"})
+	public void A2219F_HttpProxy_ParkThenRestoreRetry()
+	{
+		objDictionary.put("strAssociatedBug", "");
+		objDictionary.put("strMobileDeviceType", "ANDROID");
+		CommonANDROID_Flutter clsCommonMobile = new CommonANDROID_Flutter();
+		ADB_Commands clsADBcommands = new ADB_Commands();
+		Meter clsMeter = new Meter();
+		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
+		clsCommonMobile.SENTRYMOBILE_BindAdbDeviceSerial(objDictionary);
+		Reporter.log("TC-NEG-12/16 recover: Park with API blackhole, restore proxy, Retry — no crash, no duplicate pay");
+
+		AppiumDriver androidDriver = null;
+		try
+		{
+			androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
+			clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept", 1);
+			clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, androidDriver, "parker", "Remind me later");
+			clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary, androidDriver, "Park");
+
+			objDictionary.put("strHttpProxy", NegativeInputCases.HTTP_PROXY_BLACKHOLE);
+			clsADBcommands.SENTRYMOBILE_SET_HTTP_PROXY(objDictionary);
+			clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary, androidDriver, "Park");
+			try { Thread.sleep(3000); } catch (Exception e) {}
+			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "Park with http_proxy blackhole");
+			clsCommonMobile.SENTRYMOBILE_AssertApiErrorOrUsableDegrade(objDictionary, androidDriver, "Park with http_proxy blackhole");
+
+			objDictionary.put("strHttpProxy", "Clear");
+			clsADBcommands.SENTRYMOBILE_SET_HTTP_PROXY(objDictionary);
+			clsCommonMobile.SENTRYMOBILE_ClickRetryIfPresent(androidDriver);
+			clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary, androidDriver, "Park");
+			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "Park after proxy restore / Retry");
+			Reporter.log("No payment was completed while the proxy was blackholed, so restore could not duplicate a park/pay");
 		}
 		finally
 		{
