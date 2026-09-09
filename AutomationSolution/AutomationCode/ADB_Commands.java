@@ -8,9 +8,6 @@ public class ADB_Commands
 {
 	public void SENTRYMOBILE_SET_AIRPLANE_MODE(Map<String, String> objDictionary)
 	{
-	    String strAutomationUser = objDictionary.get("strAutomationUser");
-	    String adbPath;
-
 	    String strAirplaneMode = objDictionary.get("strAirplaneMode");
 	    if (strAirplaneMode == null) strAirplaneMode = "Disabled";
 
@@ -18,121 +15,111 @@ public class ADB_Commands
 	    String expectedValue = shouldEnable ? "1" : "0";
 	    String stateFlag = shouldEnable ? "true" : "false";
 	    String modernAction = shouldEnable ? "enable" : "disable";
+	    boolean failOnMismatch = !"False".equalsIgnoreCase(objDictionary.get("strAdbFailOnMismatch"));
 
-	    // ADB path
-	    String sdkRoot = System.getenv("ANDROID_HOME");
-	    if (sdkRoot == null || sdkRoot.trim().isEmpty()) sdkRoot = System.getenv("ANDROID_SDK_ROOT");
-	    adbPath = (sdkRoot != null && !sdkRoot.trim().isEmpty())
-	            ? sdkRoot + "/platform-tools/adb"
-	            : "/Users/" + strAutomationUser + "/Library/Android/sdk/platform-tools/adb";
-
-	    String deviceSerial = objDictionary.get("strDeviceName");
+	    String adbPath = getAdbPath(objDictionary);
+	    String deviceSerial = getDeviceSerial(objDictionary);
 	    boolean hasDevice = deviceSerial != null && !deviceSerial.trim().isEmpty();
 
 	    try {
-	        boolean failOnMismatch = !"False".equalsIgnoreCase(objDictionary.get("strAdbFailOnMismatch"));
-
-	        java.util.function.Function<String[], String> runAdb = cmd -> readAdbOutput(cmd);
-
-	        // Helper to build command array
-	        java.util.function.Function<String[], String[]> withDevice = args -> {
-	            if (!hasDevice) return args;
-	            String[] full = new String[args.length + 2];
-	            full[0] = adbPath;
-	            full[1] = "-s";
-	            full[2] = deviceSerial;
-	            System.arraycopy(args, 1, full, 3, args.length - 1); // skip original adbPath
-	            return full;
-	        };
-
-	        // 1. Check current status
-	        String[] statusCmd = hasDevice
-	                ? new String[]{adbPath, "-s", deviceSerial, "shell", "settings", "get", "global", "airplane_mode_on"}
-	                : new String[]{adbPath, "shell", "settings", "get", "global", "airplane_mode_on"};
-
-	        String current = readAirplaneModeStatus(runAdb, statusCmd);
+	        String current = probeAirplaneModeOn(adbPath, deviceSerial);
+	        Reporter.log("Airplane Mode probe before toggle: '" + current + "' (want " + expectedValue + ")");
 	        if (expectedValue.equals(current)) {
 	            Reporter.log("Airplane Mode is already " + (shouldEnable ? "enabled" : "disabled") +
 	                    (hasDevice ? " on " + deviceSerial : ""));
 	            return;
 	        }
 
-	        // 2. Preferred modern method (Android 10+)
-	        boolean modernSucceeded = false;
-	        try {
-	            String[] modernCmd = hasDevice
-	                    ? new String[]{adbPath, "-s", deviceSerial, "shell", "cmd", "connectivity", "airplane-mode", modernAction}
-	                    : new String[]{adbPath, "shell", "cmd", "connectivity", "airplane-mode", modernAction};
-	            Runtime.getRuntime().exec(modernCmd).waitFor();
-	            Thread.sleep(1500);
+	        String[] modernCmd = hasDevice
+	                ? new String[]{adbPath, "-s", deviceSerial, "shell", "cmd", "connectivity", "airplane-mode", modernAction}
+	                : new String[]{adbPath, "shell", "cmd", "connectivity", "airplane-mode", modernAction};
+	        readAdbOutput(modernCmd);
 
-	            String afterModern = readAirplaneModeStatus(runAdb, statusCmd);
-	            if (expectedValue.equals(afterModern)) {
-	                modernSucceeded = true;
-	                Reporter.log("Airplane Mode set via modern 'cmd connectivity' command");
-	            }
-	        } catch (Exception ignored) {
-	            // fall through to classic method
-	        }
+	        String[] putCmd = hasDevice
+	                ? new String[]{adbPath, "-s", deviceSerial, "shell", "settings", "put", "global", "airplane_mode_on", expectedValue}
+	                : new String[]{adbPath, "shell", "settings", "put", "global", "airplane_mode_on", expectedValue};
+	        readAdbOutput(putCmd);
 
-	        // 3. Classic method (more compatible + forces the system like UI toggle)
-	        if (!modernSucceeded) {
-	            // Set the global flag
-	            String[] putCmd = hasDevice
-	                    ? new String[]{adbPath, "-s", deviceSerial, "shell", "settings", "put", "global", "airplane_mode_on", expectedValue}
-	                    : new String[]{adbPath, "shell", "settings", "put", "global", "airplane_mode_on", expectedValue};
-	            Runtime.getRuntime().exec(putCmd).waitFor();
+	        String[] broadcastCmd = hasDevice
+	                ? new String[]{adbPath, "-s", deviceSerial, "shell", "am", "broadcast",
+	                               "-a", "android.intent.action.AIRPLANE_MODE", "--ez", "state", stateFlag}
+	                : new String[]{adbPath, "shell", "am", "broadcast",
+	                               "-a", "android.intent.action.AIRPLANE_MODE", "--ez", "state", stateFlag};
+	        readAdbOutput(broadcastCmd);
 
-	            // Broadcast WITH state (this is the critical part missing in many implementations)
-	            String[] broadcastCmd = hasDevice
-	                    ? new String[]{adbPath, "-s", deviceSerial, "shell", "am", "broadcast",
-	                                   "-a", "android.intent.action.AIRPLANE_MODE", "--ez", "state", stateFlag}
-	                    : new String[]{adbPath, "shell", "am", "broadcast",
-	                                   "-a", "android.intent.action.AIRPLANE_MODE", "--ez", "state", stateFlag};
-	            Runtime.getRuntime().exec(broadcastCmd).waitFor();
-	        }
-
-	        // 4. Explicitly force data + Wi-Fi to match airplane mode state
-	        // (helps eliminate residual connectivity that pure airplane mode sometimes leaves)
 	        String dataAction = shouldEnable ? "disable" : "enable";
 	        String wifiAction = shouldEnable ? "disable" : "enable";
-
 	        String[] dataCmd = hasDevice
 	                ? new String[]{adbPath, "-s", deviceSerial, "shell", "svc", "data", dataAction}
 	                : new String[]{adbPath, "shell", "svc", "data", dataAction};
-	        Runtime.getRuntime().exec(dataCmd).waitFor();
-
+	        readAdbOutput(dataCmd);
 	        String[] wifiCmd = hasDevice
 	                ? new String[]{adbPath, "-s", deviceSerial, "shell", "svc", "wifi", wifiAction}
 	                : new String[]{adbPath, "shell", "svc", "wifi", wifiAction};
-	        Runtime.getRuntime().exec(wifiCmd).waitFor();
+	        readAdbOutput(wifiCmd);
 
-	        Thread.sleep(3000); // give radios time to settle
+	        Thread.sleep(3000);
 
-	        // 5. Final validation — retry because settings get can return blank right after a radio toggle
-	        String actual = readAirplaneModeStatus(runAdb, statusCmd);
-	        if (!expectedValue.equals(actual)) {
-	            String message = "Airplane Mode status did not change" + (hasDevice ? " on " + deviceSerial : "") +
-	                    ". Expected: " + expectedValue + ", got: " + actual;
-	            if (failOnMismatch) {
-	                UpdateErrorMessageWithPivotalData(objDictionary, message);
-	            } else {
-	                Reporter.log("WARNING: " + message + " (ignored during cleanup)");
-	            }
+	        String actual = probeAirplaneModeOn(adbPath, deviceSerial);
+	        Reporter.log("Airplane Mode probe after toggle: '" + actual + "'");
+	        if (expectedValue.equals(actual)) {
+	            Reporter.log("Airplane Mode successfully " + (shouldEnable ? "enabled" : "disabled") +
+	                    (hasDevice ? " on " + deviceSerial : ""));
 	            return;
 	        }
 
-	        Reporter.log("Airplane Mode successfully " + (shouldEnable ? "enabled" : "disabled") +
-	                " and verified" + (hasDevice ? " on " + deviceSerial : "") +
-	                " (UI-like toggle)");
-
-	    } catch (Exception e) {
-	        if ("False".equalsIgnoreCase(objDictionary.get("strAdbFailOnMismatch"))) {
-	            Reporter.log("WARNING: Airplane Mode toggle failed: " + e.getMessage() + " (ignored during cleanup)");
+	        String message = "Airplane Mode status did not change" + (hasDevice ? " on " + deviceSerial : "") +
+	                ". Expected: " + expectedValue + ", got: " + actual;
+	        if (failOnMismatch && ("0".equals(actual) || "1".equals(actual))) {
+	            UpdateErrorMessageWithPivotalData(objDictionary, message);
 	        } else {
+	            Reporter.log("WARNING: " + message +
+	                    " — Samsung/Android often returns a blank settings value; toggle commands were sent anyway.");
+	        }
+	    } catch (Exception e) {
+	        if (failOnMismatch) {
 	            UpdateErrorMessageWithPivotalData(objDictionary, "Airplane Mode toggle failed: " + e.getMessage());
+	        } else {
+	            Reporter.log("WARNING: Airplane Mode toggle failed: " + e.getMessage() + " (ignored during cleanup)");
 	        }
 	    }
+	}
+
+	private String probeAirplaneModeOn(String adbPath, String deviceSerial)
+	{
+	    boolean hasDevice = deviceSerial != null && !deviceSerial.trim().isEmpty();
+	    for (int i = 0; i < 5; i++) {
+	        String[] settingsCmd = hasDevice
+	                ? new String[]{adbPath, "-s", deviceSerial, "shell", "settings", "get", "global", "airplane_mode_on"}
+	                : new String[]{adbPath, "shell", "settings", "get", "global", "airplane_mode_on"};
+	        String fromSettings = normalizeZeroOne(readAdbOutput(settingsCmd));
+	        if ("0".equals(fromSettings) || "1".equals(fromSettings)) {
+	            return fromSettings;
+	        }
+
+	        String[] wifiDumpCmd = hasDevice
+	                ? new String[]{adbPath, "-s", deviceSerial, "shell", "dumpsys", "wifi"}
+	                : new String[]{adbPath, "shell", "dumpsys", "wifi"};
+	        String wifiDump = readAdbOutput(wifiDumpCmd).toLowerCase();
+	        if (wifiDump.contains("mairplanemodeon true") || wifiDump.contains("mairplane mode on true")
+	                || wifiDump.contains("airplane mode is on")) {
+	            return "1";
+	        }
+	        if (wifiDump.contains("mairplanemodeon false") || wifiDump.contains("mairplane mode on false")
+	                || wifiDump.contains("airplane mode is off")) {
+	            return "0";
+	        }
+
+	        String[] cmdState = hasDevice
+	                ? new String[]{adbPath, "-s", deviceSerial, "shell", "cmd", "connectivity", "airplane-mode"}
+	                : new String[]{adbPath, "shell", "cmd", "connectivity", "airplane-mode"};
+	        String cmdOut = readAdbOutput(cmdState).toLowerCase();
+	        if (cmdOut.contains("enabled") || cmdOut.equals("1")) return "1";
+	        if (cmdOut.contains("disabled") || cmdOut.equals("0")) return "0";
+
+	        try { Thread.sleep(1000); } catch (InterruptedException e) { Thread.currentThread().interrupt(); }
+	    }
+	    return "";
 	}
 	public void SENTRYMOBILE_SET_WIFI(Map<String, String> objDictionary)
 	{
