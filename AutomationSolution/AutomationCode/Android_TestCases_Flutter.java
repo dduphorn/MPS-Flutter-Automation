@@ -6691,10 +6691,10 @@ public class Android_TestCases_Flutter
 	//********************************************************************************************************************
 	//ANDROID CA — ADB device-constraint cases (TC-NEG-01, 02, 03, 09, 11, 06, 07, 08, 10, 18, 19, 04, 05, 12, 13)
 	//********************************************************************************************************************
-	@Test(priority=2204, groups={"Smoke"})
-	public void A2204F_NoInternet_ColdStartLoginKillRelaunchRestore()
+	@Test(priority=5204, groups={"Smoke"})
+	public void A5204F_NoInternet_ColdStartLoginKillRelaunchRestore()
 	{
-		objDictionary.put("strAssociatedBug", "");
+		objDictionary.put("strAssociatedBug", "FLUTTERCA-260");
 		objDictionary.put("strMobileDeviceType", "ANDROID");
 		CommonANDROID_Flutter clsCommonMobile = new CommonANDROID_Flutter();
 		ADB_Commands clsADBcommands = new ADB_Commands();
@@ -6727,8 +6727,8 @@ public class Android_TestCases_Flutter
 			clsCommonMobile.SENTRYMOBILE_ClickIfPresent(androidDriver, "//*[contains(@content-desc, 'Log in') or contains(@text, 'Log in')]", 8);
 			clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Login", "Populate Login", "{T} Email Id|{T} Password", strUserName + "|" + strPassword);
 			clsCommonMobile.ClickButton(objDictionary, androidDriver, "Login", "Log in", 1);
-			clsCommonMobile.SENTRYMOBILE_AssertOfflineOrAirplaneMessage(objDictionary, androidDriver, "login after kill/relaunch while still offline");
-
+			clsCommonMobile.VerificationPointText(objDictionary, androidDriver, "Login", "Please disable Airplane Mode to continue using the app", 1, "Value", "Please disable Airplane Mode to continue using the app");
+	 		clsCommonMobile.SENTRYMOBILE_AssertOfflineOrAirplaneMessage(objDictionary, androidDriver, "login after kill/relaunch while still offline");
 			objDictionary.put("strAirplaneMode", "Disabled");
 			clsADBcommands.SENTRYMOBILE_SET_AIRPLANE_MODE(objDictionary);
 			try { Thread.sleep(3000); } catch (Exception e) {}
@@ -6744,11 +6744,10 @@ public class Android_TestCases_Flutter
 			clsMeter.METER_SetMeterEndTime(objDictionary);
 		}
 	}
-
-	@Test(priority=2205, groups={"Smoke"})
-	public void A2205F_NetworkToggle_MidSessionCache()
+	@Test(priority=5205, groups={"Smoke"})
+	public void A5205F_NetworkToggle_MidSessionCache()
 	{
-		objDictionary.put("strAssociatedBug", "");
+		objDictionary.put("strAssociatedBug", "FLUTTERCA-262");
 		objDictionary.put("strMobileDeviceType", "ANDROID");
 		CommonANDROID_Flutter clsCommonMobile = new CommonANDROID_Flutter();
 		ADB_Commands clsADBcommands = new ADB_Commands();
@@ -6813,9 +6812,8 @@ public class Android_TestCases_Flutter
 			clsMeter.METER_SetMeterEndTime(objDictionary);
 		}
 	}
-
-	@Test(priority=2206, groups={"Smoke"})
-	public void A2206F_LowBattery_BatterySaver()
+	@Test(priority=5206, groups={"Smoke"})
+	public void A5206F_LowBattery_BatterySaver()
 	{
 		objDictionary.put("strAssociatedBug", "");
 		objDictionary.put("strMobileDeviceType", "ANDROID");
@@ -6861,9 +6859,8 @@ public class Android_TestCases_Flutter
 			clsMeter.METER_SetMeterEndTime(objDictionary);
 		}
 	}
-
-	@Test(priority=2207, groups={"Smoke"})
-	public void A2207F_Background_ForceStop_SessionState()
+	@Test(priority=5207, groups={"Smoke"})
+	public void A5207F_Background_ForceStop_SessionState()
 	{
 		objDictionary.put("strAssociatedBug", "");
 		objDictionary.put("strMobileDeviceType", "ANDROID");
@@ -6920,9 +6917,8 @@ public class Android_TestCases_Flutter
 			clsMeter.METER_SetMeterEndTime(objDictionary);
 		}
 	}
-
-	@Test(priority=2208, groups={"Smoke"})
-	public void A2208F_CorruptedApplicationCache()
+	@Test(priority=5208, groups={"Smoke"})
+	public void A5208F_CorruptedApplicationCache()
 	{
 		objDictionary.put("strAssociatedBug", "");
 		objDictionary.put("strMobileDeviceType", "ANDROID");
@@ -6964,9 +6960,8 @@ public class Android_TestCases_Flutter
 			clsMeter.METER_SetMeterEndTime(objDictionary);
 		}
 	}
-
-	@Test(priority=2209, groups={"Smoke"})
-	public void A2209F_LocationServicesOff_DegradeThenEnable()
+	@Test(priority=5209, groups={"Smoke"})
+	public void A5209F_LocationServicesOff_DegradeThenEnable()
 	{
 		objDictionary.put("strAssociatedBug", "");
 		objDictionary.put("strMobileDeviceType", "ANDROID");
@@ -7004,9 +6999,8 @@ public class Android_TestCases_Flutter
 			clsMeter.METER_SetMeterEndTime(objDictionary);
 		}
 	}
-
-	@Test(priority=2210, groups={"Smoke"})
-	public void A2210F_PermissionDenied_LocationAndCamera()
+	@Test(priority=5210, groups={"Smoke"})
+	public void A5210F_PermissionDenied_LocationAndCamera()
 	{
 		objDictionary.put("strAssociatedBug", "");
 		objDictionary.put("strMobileDeviceType", "ANDROID");
@@ -7057,9 +7051,8 @@ public class Android_TestCases_Flutter
 			clsMeter.METER_SetMeterEndTime(objDictionary);
 		}
 	}
-
-	@Test(priority=2211, groups={"Smoke"})
-	public void A2211F_NotificationInterruption_MidSession()
+	@Test(priority=5211, groups={"Smoke"})
+	public void A5211F_NotificationInterruption_MidSession()
 	{
 		objDictionary.put("strAssociatedBug", "");
 		objDictionary.put("strMobileDeviceType", "ANDROID");
@@ -7108,9 +7101,8 @@ public class Android_TestCases_Flutter
 			clsMeter.METER_SetMeterEndTime(objDictionary);
 		}
 	}
-
-	@Test(priority=2212, groups={"Smoke"})
-	public void A2212F_GpsToggle_DuringPark()
+	@Test(priority=5212, groups={"Smoke"})
+	public void A5212F_GpsToggle_DuringPark()
 	{
 		objDictionary.put("strAssociatedBug", "");
 		objDictionary.put("strMobileDeviceType", "ANDROID");
@@ -7150,9 +7142,8 @@ public class Android_TestCases_Flutter
 			clsMeter.METER_SetMeterEndTime(objDictionary);
 		}
 	}
-
-	@Test(priority=2213, groups={"Smoke"})
-	public void A2213F_ExcessiveInput_LoginEmail()
+	@Test(priority=5213, groups={"Smoke"})
+	public void A5213F_ExcessiveInput_LoginEmail()
 	{
 		objDictionary.put("strAssociatedBug", "");
 		objDictionary.put("strMobileDeviceType", "ANDROID");
@@ -7189,9 +7180,8 @@ public class Android_TestCases_Flutter
 			clsMeter.METER_SetMeterEndTime(objDictionary);
 		}
 	}
-
-	@Test(priority=2214, groups={"Smoke"})
-	public void A2214F_InjectionAsPlainText_Login()
+	@Test(priority=5214, groups={"Smoke"})
+	public void A5214F_InjectionAsPlainText_Login()
 	{
 		objDictionary.put("strAssociatedBug", "");
 		objDictionary.put("strMobileDeviceType", "ANDROID");
@@ -7227,9 +7217,8 @@ public class Android_TestCases_Flutter
 			clsMeter.METER_SetMeterEndTime(objDictionary);
 		}
 	}
-
-	@Test(priority=2215, groups={"Smoke"})
-	public void A2215F_LowStorage_DeviceStorageLow()
+	@Test(priority=5215, groups={"Smoke"})
+	public void A5215F_LowStorage_DeviceStorageLow()
 	{
 		objDictionary.put("strAssociatedBug", "");
 		objDictionary.put("strMobileDeviceType", "ANDROID");
@@ -7273,9 +7262,8 @@ public class Android_TestCases_Flutter
 			clsMeter.METER_SetMeterEndTime(objDictionary);
 		}
 	}
-
-	@Test(priority=2216, groups={"Smoke"})
-	public void A2216F_BiometricPrompt_CancelFallback()
+	@Test(priority=5216, groups={"Smoke"})
+	public void A5216F_BiometricPrompt_CancelFallback()
 	{
 		objDictionary.put("strAssociatedBug", "");
 		objDictionary.put("strMobileDeviceType", "ANDROID");
@@ -7320,9 +7308,8 @@ public class Android_TestCases_Flutter
 			clsMeter.METER_SetMeterEndTime(objDictionary);
 		}
 	}
-
-	@Test(priority=2217, groups={"Smoke"})
-	public void A2217F_HttpProxyBlackhole_ApiTimeout()
+	@Test(priority=5217, groups={"Smoke"})
+	public void A5217F_HttpProxyBlackhole_ApiTimeout()
 	{
 		objDictionary.put("strAssociatedBug", "");
 		objDictionary.put("strMobileDeviceType", "ANDROID");
@@ -7362,9 +7349,8 @@ public class Android_TestCases_Flutter
 			clsMeter.METER_SetMeterEndTime(objDictionary);
 		}
 	}
-
-	@Test(priority=2218, groups={"Smoke"})
-	public void A2218F_PrivateDnsInvalid_ApiFailure()
+	@Test(priority=5218, groups={"Smoke"})
+	public void A5218F_PrivateDnsInvalid_ApiFailure()
 	{
 		objDictionary.put("strAssociatedBug", "");
 		objDictionary.put("strMobileDeviceType", "ANDROID");
@@ -7402,9 +7388,8 @@ public class Android_TestCases_Flutter
 			clsMeter.METER_SetMeterEndTime(objDictionary);
 		}
 	}
-
-	@Test(priority=2219, groups={"Smoke"})
-	public void A2219F_HttpProxy_ParkThenRestoreRetry()
+	@Test(priority=5219, groups={"Smoke"})
+	public void A5219F_HttpProxy_ParkThenRestoreRetry()
 	{
 		objDictionary.put("strAssociatedBug", "");
 		objDictionary.put("strMobileDeviceType", "ANDROID");
@@ -7444,5 +7429,4 @@ public class Android_TestCases_Flutter
 			clsMeter.METER_SetMeterEndTime(objDictionary);
 		}
 	}
-
 }

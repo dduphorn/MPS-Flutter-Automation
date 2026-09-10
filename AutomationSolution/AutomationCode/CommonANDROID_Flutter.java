@@ -169,6 +169,11 @@ public class CommonANDROID_Flutter
 				strPivotalPath = "https://mpspark.atlassian.net/browse/FLUTTERPEO-140";
     			strErrorMsg = "When WiFi & WIFI Scanning are disabled, the Location Accuracy prompt requires two taps on “No thanks”";
     			break;
+   			case "The button (Account) did not exist or the page attributes changed-NavigateToPageUsingMenuButtons":
+   				strPivotalId = "FLUTTERCA-262";Reporter.log(strErrorMsg);
+				strPivotalPath = "https://mpspark.atlassian.net/browse/FLUTTERCA-262";
+    			strErrorMsg = "HttpException when enabling Airplane Mode while the user is already logged in.";
+    			break;
   			case "The Button (Google Pay) did not exist":
    				strPivotalId = "FLUTTERCA-255";Reporter.log(strErrorMsg);
 				strPivotalPath = "https://mpspark.atlassian.net/browse/FLUTTERCA-255";
