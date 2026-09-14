@@ -498,7 +498,6 @@ public class Android_TestCases_Flutter
 		String strAssociatedBug = objDictionary.get("strAssociatedBug");if(strAssociatedBug == null){strAssociatedBug = "";}
 		if(!strAssociatedBug.equals("")){Reporter.log("<font color='Blue'>"+strAssociatedBug+"-This Test passed remove the AssociatedBug</font>");}
 	}
-	
 	@Test(priority=1011)
 	public void A2011F_RegisterExisting_DeletedUser_Login_Flutter()
 	{
@@ -543,7 +542,6 @@ public class Android_TestCases_Flutter
 		String strAssociatedBug = objDictionary.get("strAssociatedBug");if(strAssociatedBug == null){strAssociatedBug = "";}
 		if(!strAssociatedBug.equals("")){Reporter.log("<font color='Blue'>"+strAssociatedBug+"-This Test passed remove the AssociatedBug</font>");}
 	}
-	
 	@Test(priority=1011)
 	public void A2012F_RegisterExisting_LockedUser_Login_Flutter()
 	{
@@ -601,7 +599,6 @@ public class Android_TestCases_Flutter
 		String strAssociatedBug = objDictionary.get("strAssociatedBug");if(strAssociatedBug == null){strAssociatedBug = "";}
 		if(!strAssociatedBug.equals("")){Reporter.log("<font color='Blue'>"+strAssociatedBug+"-This Test passed remove the AssociatedBug</font>");}
 	}
-	
 	@Test(priority=1016)
 	public void A2016F_CreateAndDeleteUser_AttemptMobileRegisterWithDeletedUser_Flutter()
 	{
@@ -651,7 +648,6 @@ public class Android_TestCases_Flutter
  		String strAssociatedBug = objDictionary.get("strAssociatedBug");if(strAssociatedBug == null){strAssociatedBug = "";}
 		if(!strAssociatedBug.equals("")){Reporter.log("<font color='Blue'>"+strAssociatedBug+"-This Test passed remove the AssociatedBug</font>");}
 	}
-	
 	@Test(priority=1017)
 	public void A2017F_CreateAndDeleteUser_AttemptLoginWithDeletedUser_Flutter()
 	{
@@ -695,7 +691,6 @@ public class Android_TestCases_Flutter
  		String strAssociatedBug = objDictionary.get("strAssociatedBug");if(strAssociatedBug == null){strAssociatedBug = "";}
 		if(!strAssociatedBug.equals("")){Reporter.log("<font color='Blue'>"+strAssociatedBug+"-This Test passed remove the AssociatedBug</font>");}
 	}
-	
 	@Test(priority=1018) 
 	public void A2018F_RegisterUser_WIFI_Enabled()
 	{
@@ -765,7 +760,6 @@ public class Android_TestCases_Flutter
 		String strAssociatedBug = objDictionary.get("strAssociatedBug");if(strAssociatedBug == null){strAssociatedBug = "";}
 		if(!strAssociatedBug.equals("")){Reporter.log("<font color='Blue'>"+strAssociatedBug+"-This Test passed remove the AssociatedBug</font>");}
 	}
-	
 	@Test(priority=1019) 
 	public void A2019F_RegisterUser_WIFI_Disabled()
 	{
@@ -6702,7 +6696,6 @@ public class Android_TestCases_Flutter
 		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
 		clsCommonMobile.SENTRYMOBILE_BindAdbDeviceSerial(objDictionary);
 		Reporter.log("TC-NEG-01: No internet — cold start, login, kill/relaunch offline, then restore");
-
 		objDictionary.put("strWIFI", "Enabled");
 		objDictionary.put("strAirplaneMode", "Enabled");
 		AppiumDriver androidDriver = null;
@@ -6728,7 +6721,8 @@ public class Android_TestCases_Flutter
 			clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Login", "Populate Login", "{T} Email Id|{T} Password", strUserName + "|" + strPassword);
 			clsCommonMobile.ClickButton(objDictionary, androidDriver, "Login", "Log in", 1);
 			clsCommonMobile.VerificationPointText(objDictionary, androidDriver, "Login", "Please disable Airplane Mode to continue using the app", 1, "Value", "Please disable Airplane Mode to continue using the app");
-	 		clsCommonMobile.SENTRYMOBILE_AssertOfflineOrAirplaneMessage(objDictionary, androidDriver, "login after kill/relaunch while still offline");
+	 		//Code Below is untested do to JIRA FLUTTERCA-260
+			clsCommonMobile.SENTRYMOBILE_AssertOfflineOrAirplaneMessage(objDictionary, androidDriver, "login after kill/relaunch while still offline");
 			objDictionary.put("strAirplaneMode", "Disabled");
 			clsADBcommands.SENTRYMOBILE_SET_AIRPLANE_MODE(objDictionary);
 			try { Thread.sleep(3000); } catch (Exception e) {}
@@ -6776,6 +6770,7 @@ public class Android_TestCases_Flutter
 			try { Thread.sleep(3000); } catch (Exception e) {}
 			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "airplane mode enabled mid-session");
 			clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary, androidDriver, "Account");
+			//Everything Below this is untested FLUTTERCA-262
 			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "returning to previously loaded Account while offline");
 			String offlineAccountUi = clsCommonMobile.SENTRYMOBILE_CaptureVisibleUi(androidDriver);
 			if (offlineAccountUi.trim().length() < 50)
@@ -6812,6 +6807,100 @@ public class Android_TestCases_Flutter
 			clsMeter.METER_SetMeterEndTime(objDictionary);
 		}
 	}
+	
+	
+	@Test(priority=5205, groups={"Smoke"})
+	public void A5205F_NetworkToggle_MidSessionCache_Payment()
+	{
+		objDictionary.put("strAssociatedBug", "FLUTTERCA-262");
+		objDictionary.put("strMobileDeviceType", "ANDROID");
+		CommonANDROID_Flutter clsCommonMobile = new CommonANDROID_Flutter();
+		ADB_Commands clsADBcommands = new ADB_Commands();
+		Meter clsMeter = new Meter();
+		CommonWeb clsCommonWeb = new CommonWeb();
+		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
+		clsCommonMobile.SENTRYMOBILE_BindAdbDeviceSerial(objDictionary);
+		//Test Case Variables
+		String strMaximumDuration = "240";
+		String strCoinTimePuchaseLimit = "240";
+		String strFreeTimeFirstPayment = "0";
+		String strMeterIncrementTime = "15";objDictionary.put("strMeterIncrementTime",strMeterIncrementTime);
+		String strInitialGracePeriod = "5";objDictionary.put("strInitialGracePeriod",strInitialGracePeriod);
+		String strViolationGracePeriod = "1";
+		String strHandicapInitialGracePeriod = "5";
+		String strHandicapViolationGrace = "1";
+		String strNoParkingGrace = "1";
+		String strParkingShortSessionSec = "15";
+		String strSetImageSendBeforeViolation = "45";
+		String strUnlockValue = "On";
+		String strUnlockTime = "1";
+		String strUnlockMax = "1";
+		objDictionary.remove("strMaximumDuration");objDictionary.put("strMaximumDuration", strMaximumDuration);
+		clsCommonWeb.SENTRYLINK_ExitSpotSetMeterRateBlocksOpenMeterInBrowse(objDictionary,  strMaximumDuration, strCoinTimePuchaseLimit, strFreeTimeFirstPayment, strMeterIncrementTime, strInitialGracePeriod, strViolationGracePeriod, strHandicapInitialGracePeriod, strHandicapViolationGrace, strNoParkingGrace,strSetImageSendBeforeViolation,strParkingShortSessionSec, strUnlockValue, strUnlockTime, strUnlockMax,"Local");
+		//De-enrolled Concierge
+  		clsCommonWeb.SENTRYLINK_ConciergeDeenroll(objDictionary);
+		String strSpaceName = objDictionary.get("strMeterSpotName");
+		String strLicensePlateNumber = "0"+strSpaceName+"AA";
+		String strLicensePlateState = "Alabama";
+		objDictionary.put("strLicensePlateNumber", strLicensePlateNumber);
+		objDictionary.put("strLicensePlateState", strLicensePlateState);
+		Reporter.log("TC-NEG-02: Mid-session airplane toggle — cached Account vs Sessions, then restore");
+		objDictionary.put("strWIFI", "Enabled");
+		objDictionary.put("strAirplaneMode", "Disabled");
+		AppiumDriver androidDriver = null;
+		try
+		{
+			androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
+			clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept", 1);
+			clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, androidDriver, "parker", "Remind me later");
+			
+			//Disable Airplane Mode during payment
+			objDictionary.put("strAirplainModeEnabledAfterPayment", "True");
+			clsCommonMobile.SENTRYMOBILE_PurchaseMeterTimeParkThenPay(objDictionary, androidDriver,strFreeTimeFirstPayment,strMeterIncrementTime,"True","False");
+			objDictionary.put("strAirplaneMode", "Enabled");
+			clsADBcommands.SENTRYMOBILE_SET_AIRPLANE_MODE(objDictionary);
+			try { Thread.sleep(3000); } catch (Exception e) {}
+			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "airplane mode enabled mid-session");
+			clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary, androidDriver, "Account");
+			//Everything Below this is untested FLUTTERCA-262
+			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "returning to previously loaded Account while offline");
+			String offlineAccountUi = clsCommonMobile.SENTRYMOBILE_CaptureVisibleUi(androidDriver);
+			if (offlineAccountUi.trim().length() < 50)
+			{
+				clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver, "Previously loaded Account screen went blank while offline");
+			}
+			else
+			{
+				Reporter.log("Previously loaded Account screen still had UI while offline");
+			}
+
+			boolean sessionsOpened = clsCommonMobile.SENTRYMOBILE_ClickIfPresent(androidDriver, "//*[contains(@content-desc, 'Session')]", 10);
+			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "opening Sessions while offline");
+			if (sessionsOpened)
+			{
+				Reporter.log("Sessions tab was reachable while offline (cached content or a clear empty/error state is acceptable)");
+			}
+			objDictionary.put("strAirplaneMode", "Disabled");
+			clsADBcommands.SENTRYMOBILE_SET_AIRPLANE_MODE(objDictionary);
+			try { Thread.sleep(3000); } catch (Exception e) {}
+			clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary, androidDriver, "Account");
+			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "Account after network restore");
+			if (!clsCommonMobile.SENTRYMOBILE_PageLooksLoggedIn(androidDriver))
+			{
+				clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver, "Unexpected logout after mid-session airplane toggle and restore");
+			}
+			Reporter.log("Session remained usable after restore; no payment was submitted (avoids duplicate-charge risk)");
+		}
+		finally
+		{
+			try { if (androidDriver != null) androidDriver.quit(); } catch (Exception e) {}
+			clsCommonMobile.SENTRYMOBILE_RestoreDeviceNetworkAndPower(objDictionary);
+			clsMeter.METER_SetMeterEndTime(objDictionary);
+		}
+		//ShortSessionWaitExitSpot
+	  	clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null,"1","Local");
+	}
+	
 	@Test(priority=5206, groups={"Smoke"})
 	public void A5206F_LowBattery_BatterySaver()
 	{

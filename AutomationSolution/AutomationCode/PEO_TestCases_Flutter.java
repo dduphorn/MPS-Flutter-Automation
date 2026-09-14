@@ -3538,6 +3538,13 @@ public class PEO_TestCases_Flutter
 		String strUserName = "PEODeleteUser1@gmail.com";
 		objDictionary.put("strUserName","PEODeleteUser1@gmail.com");
 		String strPassword = "PEODeleteMe02!";
+		//UU Unlock User
+		String strBrowser = objDictionary.get("strBrowser");
+		String strRemotePath = objDictionary.get("strRemotePath");
+		threadDriver = clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath, objDictionary);
+		WebDriver driver = getDriver();
+		clsCommonWeb.SENTRYLINK_OpenLoginPage(objDictionary, driver);
+		clsCommonWeb.SENTRYLINK_UnlockAccount(objDictionary,driver,strUserName);
 		//DPEOU: Delete PEO User
 		clsCommonWeb.SENTRYLINK_DestroyUser2(objDictionary, strUserName, strPassword);
 		//CPEOU: Create PEO User
@@ -3582,10 +3589,10 @@ public class PEO_TestCases_Flutter
 		if(strSnackbarText.equals("Invalid Credentials.")){Reporter.log("The Text (Error Message) with index (1) contained (" + strSnackbarText + ")");}
 		else{clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary,androidDriver,"The Text (Error Message) with index (1) did not contain (Invalid Credentials.) - actual value ("+strSnackbarText+")");}
 		//UU Unlock User
-		String strBrowser = objDictionary.get("strBrowser");
-		String strRemotePath = objDictionary.get("strRemotePath");
+		strBrowser = objDictionary.get("strBrowser");
+		strRemotePath = objDictionary.get("strRemotePath");
 		threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath, objDictionary);
-		WebDriver driver = getDriver();
+		driver = getDriver();
 		clsCommonWeb.SENTRYLINK_OpenLoginPage(objDictionary, driver);
 		clsCommonWeb.SENTRYLINK_AdminLoginIn(objDictionary, driver);
 		String strCurrentPageName = clsCommonWeb.GetCurrentPageName(objDictionary, driver);

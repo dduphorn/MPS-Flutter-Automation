@@ -162,7 +162,7 @@ public class CommonANDROID_Flutter
 		{
   			strErrorMsg = clsMeter.METER_CheckForErrorsInMeterLogs(objDictionary, strErrorMsg);
 		}
-  		switch (strErrorMsg)
+ 		switch (strErrorMsg)
    		{	
    			case "Expected the 	button (No thanks) at index (1) to be gone, but it was still present on the screen.":
    				strPivotalId = "FLUTTERPEO-140";Reporter.log(strErrorMsg);
@@ -3138,6 +3138,14 @@ public class CommonANDROID_Flutter
      	{
      		clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "SentryMobile Account");
      		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Review and Pay", "Proceed", 1);
+     		
+     		String strAirplainModeEnabledAfterPayment = objDictionary.get("strAirplainModeEnabledAfterPayment");if (strAirplainModeEnabledAfterPayment == null) {strAirplainModeEnabledAfterPayment = "False";}
+     		if(strAirplainModeEnabledAfterPayment.equals("True"))
+     		{
+	     		ADB_Commands clsADBcommands = new ADB_Commands();
+	     		objDictionary.put("strAirplaneMode", "Enabled");
+				clsADBcommands.SENTRYMOBILE_SET_AIRPLANE_MODE(objDictionary);
+     		}
        	}
      	else
      	{
