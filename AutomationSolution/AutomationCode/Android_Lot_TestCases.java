@@ -3233,6 +3233,7 @@ public class Android_Lot_TestCases
   		clsMeter.METER_MeterWaitWithMessage(objDictionary,60, "Wait 60 seconds Until Parking Id gets created");
   		//Store Lot Parking Id
   		String strParkingId = clsHttpConnections.GetJsonParkingSessionId(objDictionary);objDictionary.put("strParkingId", strParkingId);
+  		try {Thread.sleep(5000);}catch (Exception e) {}
   		//Exit Lot
   		clsHttpConnections.CURL_ExitLot(objDictionary,strLicensePlateNumber, "MN",strLotExitId,"False");
   		Android_Lot_ParkingSessions clsAndroidLotParkingSessions = new Android_Lot_ParkingSessions ();

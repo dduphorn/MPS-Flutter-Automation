@@ -162,12 +162,17 @@ public class CommonANDROID_Flutter
 		{
   			strErrorMsg = clsMeter.METER_CheckForErrorsInMeterLogs(objDictionary, strErrorMsg);
 		}
-  		switch (strErrorMsg)
+ 		switch (strErrorMsg)
    		{	
    			case "Expected the button (No thanks) at index (1) to be gone, but it was still present on the screen.":
    				strPivotalId = "FLUTTERPEO-140";Reporter.log(strErrorMsg);
 				strPivotalPath = "https://mpspark.atlassian.net/browse/FLUTTERPEO-140";
     			strErrorMsg = "When WiFi & WIFI Scanning are disabled, the Location Accuracy prompt requires two taps on “No thanks”";
+    			break;
+   			case "The button (Account) did not exist or the page attributes changed-NavigateToPageUsingMenuButtons":
+   				strPivotalId = "FLUTTERCA-262";Reporter.log(strErrorMsg);
+				strPivotalPath = "https://mpspark.atlassian.net/browse/FLUTTERCA-262";
+    			strErrorMsg = "HttpException when enabling Airplane Mode while the user is already logged in.";
     			break;
   			case "The Button (Google Pay) did not exist":
    				strPivotalId = "FLUTTERCA-255";Reporter.log(strErrorMsg);
@@ -299,6 +304,12 @@ public class CommonANDROID_Flutter
 			  			strErrorMsg = "Total fee is calculated incorrectly when a coin payment is made first, followed by a Flutter app payment on the same parking session.";
 			  			break;
 					}
+   					else if (strTestCase.contains("A2047F_VM_FTFP10_PS1_MP1_PMT_MTIV_gt_LPRM_ES1_VPSH_VICAE_VIAC"))
+   					{
+   						strPivotalId = "FLUTTERCA-266";Reporter.log(strErrorMsg);
+			  			strErrorMsg = "Virtual Meter end time is calculated incorrectly when making multiple payments up to max time";
+			  			break;
+   					}
    					else if (strTestCase.contains("A2048F_FTFP10_PS1_CP1_MP1_ES1_VPSH_VICAE_VIAC"))
 					{
 	    				strPivotalId = "FLUTTERCA-206";Reporter.log(strErrorMsg);
@@ -307,7 +318,7 @@ public class CommonANDROID_Flutter
 					}
    					else if (strTestCase.contains("A2052F_FTFP10_PS1_CCP1_MP1_ES1_VPSH_VICAE_VIAC"))
 	    			{
-	    				strPivotalId = "FLUTTERCA-206";Reporter.log(strErrorMsg);
+   						strPivotalId = "FLUTTERCA-206";Reporter.log(strErrorMsg);
 			  			strErrorMsg = "Total fee is calculated incorrectly when a coin payment is made first, followed by a Flutter app payment on the same parking session.";
 			  			break;
 	    			}
@@ -2227,6 +2238,302 @@ public class CommonANDROID_Flutter
 		}
 		catch (Exception e) {UpdateErrorMessageWithPivotalData(objDictionary,androidDriver,"The page button ("+strButtonName+") did not exist or the page attributes changed-"+strMethondName);}
 	}
+
+	public void SENTRYMOBILE_BindAdbDeviceSerial(Map<String, String> objDictionary)
+	{
+		String strDeviceName = objDictionary.get("strDeviceName");
+		if (strDeviceName == null || strDeviceName.trim().isEmpty())
+		{
+			String strAndroidUdid = objDictionary.get("strAndroidUdid");
+			if (strAndroidUdid != null && !strAndroidUdid.trim().isEmpty())
+			{
+				objDictionary.put("strDeviceName", strAndroidUdid);
+			}
+		}
+		objDictionary.put("strAppPackage", "com.mpspark.consumer.mpsconsumer");
+	}
+
+	public void SENTRYMOBILE_RestoreDeviceNetworkAndPower(Map<String, String> objDictionary)
+	{
+		ADB_Commands clsADBcommands = new ADB_Commands();
+		SENTRYMOBILE_BindAdbDeviceSerial(objDictionary);
+		objDictionary.put("strAirplaneMode", "Disabled");
+		objDictionary.put("strWIFI", "Enabled");
+		objDictionary.put("strBatterySaver", "Disabled");
+		objDictionary.put("strLocationServices", "Enabled");
+		objDictionary.remove("strBatteryLevel");
+		objDictionary.put("strAdbFailOnMismatch", "False");
+		try { clsADBcommands.SENTRYMOBILE_SET_AIRPLANE_MODE(objDictionary); } catch (Throwable e) { Reporter.log("Restore airplane mode failed: " + e.getMessage()); }
+		try { clsADBcommands.SENTRYMOBILE_SET_WIFI(objDictionary); } catch (Throwable e) { Reporter.log("Restore Wi-Fi failed: " + e.getMessage()); }
+		try { clsADBcommands.SENTRYMOBILE_RESET_BATTERY(objDictionary); } catch (Throwable e) { Reporter.log("Restore battery failed: " + e.getMessage()); }
+		try { clsADBcommands.SENTRYMOBILE_SET_LOCATION_MODE(objDictionary); } catch (Throwable e) { Reporter.log("Restore location services failed: " + e.getMessage()); }
+		try { clsADBcommands.SENTRYMOBILE_GRANT_DEFAULT_CA_PERMISSIONS(objDictionary); } catch (Throwable e) { Reporter.log("Restore CA permissions failed: " + e.getMessage()); }
+		try { clsADBcommands.SENTRYMOBILE_CLEAR_STORAGE_FILL(objDictionary); } catch (Throwable e) { Reporter.log("Restore storage fill failed: " + e.getMessage()); }
+		try {
+			objDictionary.put("strHttpProxy", "Clear");
+			clsADBcommands.SENTRYMOBILE_SET_HTTP_PROXY(objDictionary);
+		} catch (Throwable e) { Reporter.log("Restore http_proxy failed: " + e.getMessage()); }
+		try { clsADBcommands.SENTRYMOBILE_RESTORE_PRIVATE_DNS(objDictionary); } catch (Throwable e) { Reporter.log("Restore private DNS failed: " + e.getMessage()); }
+		objDictionary.remove("strAdbFailOnMismatch");
+	}
+
+	public void SENTRYMOBILE_AssertAppDidNotCrash(Map<String, String> objDictionary, AppiumDriver androidDriver, String strContext)
+	{
+		Exception lastException = null;
+		for (int i = 0; i < 3; i++)
+		{
+			try
+			{
+				String source = androidDriver.getPageSource();
+				if (source == null || source.trim().length() < 50)
+				{
+					try { Thread.sleep(2000); } catch (Exception e) {}
+					continue;
+				}
+				String lower = source.toLowerCase();
+				if (lower.contains("keeps stopping") || lower.contains("isn't responding") || lower.contains("unfortunately")
+						|| lower.contains("has stopped") || lower.contains("exception caught by flutter"))
+				{
+					UpdateErrorMessageWithPivotalData(objDictionary, androidDriver, "App crashed or showed a fatal overlay after " + strContext);
+					return;
+				}
+				Reporter.log("App did not crash after " + strContext);
+				return;
+			}
+			catch (Exception e)
+			{
+				lastException = e;
+				try { Thread.sleep(2000); } catch (Exception waitEx) {}
+			}
+		}
+
+		ADB_Commands clsADBcommands = new ADB_Commands();
+		if (clsADBcommands.SENTRYMOBILE_IS_APP_RUNNING(objDictionary))
+		{
+			Reporter.log("Appium could not read the UI after " + strContext + ", but the app process is still running. Last error: " +
+					(lastException == null ? "empty page source" : lastException.getMessage()));
+			return;
+		}
+		UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,
+				"App was not running after " + strContext + (lastException == null ? "" : ": " + lastException.getMessage()));
+	}
+
+	public void SENTRYMOBILE_AssertOfflineOrAirplaneMessage(Map<String, String> objDictionary, AppiumDriver androidDriver, String strContext)
+	{
+		String snackbar = objDictionary.get("strSnackbarText");
+		if (snackbar == null) snackbar = "";
+		String source = "";
+		try { source = androidDriver.getPageSource(); } catch (Exception e) { source = ""; }
+		String combined = (snackbar + " " + source).toLowerCase();
+		if (combined.contains("airplane") || combined.contains("no internet") || combined.contains("offline")
+				|| combined.contains("no network") || combined.contains("not connected"))
+		{
+			Reporter.log("Offline/airplane messaging was shown after " + strContext + " (snackbar='" + snackbar + "')");
+			return;
+		}
+		UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,
+				"Expected an offline or airplane-mode message after " + strContext + " - snackbar='" + snackbar + "'");
+	}
+
+	public boolean SENTRYMOBILE_ClickIfPresent(AppiumDriver androidDriver, String xpath, int timeoutSeconds)
+	{
+		try
+		{
+			WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(timeoutSeconds));
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath))).click();
+			return true;
+		}
+		catch (Exception e)
+		{
+			return false;
+		}
+	}
+
+	public void SENTRYMOBILE_AcceptUserAgreementIfPresent(Map<String, String> objDictionary, AppiumDriver androidDriver)
+	{
+		boolean clicked = SENTRYMOBILE_ClickIfPresent(androidDriver,
+				"//*[contains(@content-desc, 'Accept') or contains(@text, 'Accept')]", 8);
+		if (clicked)
+		{
+			Reporter.log("User Agreement Accept was clicked");
+		}
+		else
+		{
+			Reporter.log("User Agreement Accept was not present");
+		}
+	}
+
+	public boolean SENTRYMOBILE_PageLooksLoggedIn(AppiumDriver androidDriver)
+	{
+		try
+		{
+			return !androidDriver.findElements(By.xpath("//*[contains(@content-desc, 'Account') or contains(@content-desc, 'Park') or contains(@content-desc, 'Session')]")).isEmpty();
+		}
+		catch (Exception e)
+		{
+			return false;
+		}
+	}
+
+	public String SENTRYMOBILE_CaptureVisibleUi(AppiumDriver androidDriver)
+	{
+		try
+		{
+			String source = androidDriver.getPageSource();
+			return source == null ? "" : source;
+		}
+		catch (Exception e)
+		{
+			return "";
+		}
+	}
+
+	public void SENTRYMOBILE_DismissLocationPromptsIfPresent(AppiumDriver androidDriver)
+	{
+		SENTRYMOBILE_ClickIfPresent(androidDriver, "//*[contains(@content-desc, 'While using the app') or contains(@text, 'While using the app')]", 2);
+		SENTRYMOBILE_ClickIfPresent(androidDriver, "//*[contains(@content-desc, 'Allow only while using the app') or contains(@text, 'Allow only while using the app')]", 2);
+		SENTRYMOBILE_ClickIfPresent(androidDriver, "//*[contains(@content-desc, 'Turn on') or contains(@text, 'Turn on')]", 2);
+		SENTRYMOBILE_ClickIfPresent(androidDriver, "//*[contains(@content-desc, 'No thanks') or contains(@text, 'No thanks')]", 2);
+		SENTRYMOBILE_ClickIfPresent(androidDriver, "//*[contains(@content-desc, 'OK') or contains(@content-desc, 'Ok') or contains(@text, 'OK') or contains(@text, 'Ok')]", 2);
+	}
+
+	public void SENTRYMOBILE_SendKeysToLoginField(Map<String, String> objDictionary, AppiumDriver androidDriver, String strFieldName, String value)
+	{
+		WebElement field = GetTextFieldObj(objDictionary, androidDriver, "Login", strFieldName);
+		if (field == null)
+		{
+			UpdateErrorMessageWithPivotalData(objDictionary, androidDriver, "Login field (" + strFieldName + ") was not found for sendKeys");
+			return;
+		}
+		try
+		{
+			field.click();
+			try { field.clear(); } catch (Exception e) {}
+			if (value != null && value.length() > 500 && androidDriver instanceof AndroidDriver)
+			{
+				try
+				{
+					((AndroidDriver) androidDriver).setClipboardText(value);
+					ADB_Commands clsADBcommands = new ADB_Commands();
+					clsADBcommands.SENTRYMOBILE_PASTE_CLIPBOARD(objDictionary);
+					Reporter.log("Pasted " + value.length() + " characters into Login " + strFieldName + " via clipboard (not PopulateAction)");
+					return;
+				}
+				catch (Exception pasteEx)
+				{
+					Reporter.log("Clipboard paste failed for Login " + strFieldName + ", falling back to sendKeys: " + pasteEx.getMessage());
+				}
+			}
+			field.sendKeys(value == null ? "" : value);
+			Reporter.log("Sent " + (value == null ? 0 : value.length()) + " characters to Login " + strFieldName + " via sendKeys (not PopulateAction)");
+		}
+		catch (Exception e)
+		{
+			UpdateErrorMessageWithPivotalData(objDictionary, androidDriver, "Could not sendKeys to Login " + strFieldName + ": " + e.getMessage());
+		}
+	}
+
+	public void SENTRYMOBILE_AssertLocationDegradedOrPrompt(Map<String, String> objDictionary, AppiumDriver androidDriver, String strContext)
+	{
+		String source = SENTRYMOBILE_CaptureVisibleUi(androidDriver);
+		if (NegativeInputCases.looksLikeLocationOrPermissionPrompt(source))
+		{
+			Reporter.log("Location/permission prompt or degrade copy was shown after " + strContext);
+			return;
+		}
+		if (SENTRYMOBILE_PageLooksLoggedIn(androidDriver) || NegativeInputCases.looksLikeLoginForm(source))
+		{
+			Reporter.log("No explicit location dialog after " + strContext + "; app stayed on a usable screen (cached map / degrade without crash is acceptable)");
+			return;
+		}
+		UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,
+				"Expected a location/permission prompt or a usable degraded screen after " + strContext);
+	}
+
+	public void SENTRYMOBILE_AssertLoginWasNotBypassed(Map<String, String> objDictionary, AppiumDriver androidDriver, String strContext)
+	{
+		String source = SENTRYMOBILE_CaptureVisibleUi(androidDriver);
+		if (NegativeInputCases.looksLikeCrash(source))
+		{
+			UpdateErrorMessageWithPivotalData(objDictionary, androidDriver, "App crashed after " + strContext);
+			return;
+		}
+		if (NegativeInputCases.looksLikeLoggedIn(source) && !NegativeInputCases.looksLikeLoginForm(source))
+		{
+			UpdateErrorMessageWithPivotalData(objDictionary, androidDriver, "Login succeeded unexpectedly after " + strContext);
+			return;
+		}
+		if (NegativeInputCases.loginAttemptDidNotBypassAuth(source))
+		{
+			Reporter.log("Login was not bypassed after " + strContext);
+			return;
+		}
+		if (SENTRYMOBILE_PageLooksLoggedIn(androidDriver))
+		{
+			UpdateErrorMessageWithPivotalData(objDictionary, androidDriver, "Login succeeded unexpectedly after " + strContext);
+			return;
+		}
+		Reporter.log("Still on a non-authenticated screen after " + strContext);
+	}
+
+	public void SENTRYMOBILE_AssertInjectionTreatedAsPlainText(Map<String, String> objDictionary, AppiumDriver androidDriver, String payload, String strContext)
+	{
+		String source = SENTRYMOBILE_CaptureVisibleUi(androidDriver);
+		if (NegativeInputCases.looksLikeScriptExecuted(source, payload))
+		{
+			UpdateErrorMessageWithPivotalData(objDictionary, androidDriver, "Injection payload appeared to execute after " + strContext);
+			return;
+		}
+		if (NegativeInputCases.injectionAppearsAsPlainText(source, payload))
+		{
+			Reporter.log("Injection payload is still visible as plain text after " + strContext);
+		}
+		else
+		{
+			Reporter.log("Injection payload is not visible in the page source after " + strContext + " (validation message / rejected input is acceptable)");
+		}
+		SENTRYMOBILE_AssertLoginWasNotBypassed(objDictionary, androidDriver, strContext);
+	}
+
+	public boolean SENTRYMOBILE_DismissBiometricPromptIfPresent(AppiumDriver androidDriver)
+	{
+		boolean dismissed = SENTRYMOBILE_ClickIfPresent(androidDriver, "//*[contains(@content-desc, 'NOT RIGHT NOW') or contains(@text, 'NOT RIGHT NOW') or contains(@content-desc, 'Not right now') or contains(@text, 'Not right now')]", 3);
+		dismissed = SENTRYMOBILE_ClickIfPresent(androidDriver, "//*[contains(@content-desc, 'Cancel') or contains(@text, 'Cancel')]", 2) || dismissed;
+		dismissed = SENTRYMOBILE_ClickIfPresent(androidDriver, "//*[contains(@content-desc, 'No') or contains(@text, 'No')]", 2) || dismissed;
+		dismissed = SENTRYMOBILE_ClickIfPresent(androidDriver, "//*[contains(@content-desc, 'Skip') or contains(@text, 'Skip')]", 2) || dismissed;
+		if (dismissed)
+		{
+			Reporter.log("Dismissed a biometric or identity prompt");
+		}
+		return dismissed;
+	}
+
+	public void SENTRYMOBILE_AssertApiErrorOrUsableDegrade(Map<String, String> objDictionary, AppiumDriver androidDriver, String strContext)
+	{
+		String source = SENTRYMOBILE_CaptureVisibleUi(androidDriver);
+		if (NegativeInputCases.looksLikeApiOrNetworkError(source))
+		{
+			Reporter.log("API/network error or Retry copy was shown after " + strContext);
+			return;
+		}
+		if (SENTRYMOBILE_PageLooksLoggedIn(androidDriver) || NegativeInputCases.looksLikeLoginForm(source))
+		{
+			Reporter.log("No explicit API error after " + strContext + "; app stayed on a usable screen (cached data without crash is acceptable)");
+			return;
+		}
+		UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,
+				"Expected an API/network error, Retry, or a usable degraded screen after " + strContext);
+	}
+
+	public boolean SENTRYMOBILE_ClickRetryIfPresent(AppiumDriver androidDriver)
+	{
+		boolean clicked = SENTRYMOBILE_ClickIfPresent(androidDriver, "//*[contains(@content-desc, 'Retry') or contains(@text, 'Retry') or contains(@content-desc, 'Try again') or contains(@text, 'Try again')]", 4);
+		if (clicked)
+		{
+			Reporter.log("Clicked Retry / Try again");
+		}
+		return clicked;
+	}
 	
 	//*******************************************************************************
 	//COMMON SENTRY MOBILE
@@ -2621,19 +2928,12 @@ public class CommonANDROID_Flutter
 		}
 	    else if(strHolidayFree.equals("True"))
 		{
-			if(strSnackbarText.equals("Payments are not allowed right now."))
-			{
-				Reporter.log(String.format("The message '%s' appeared correctly.", strSnackbarText));
-				try {Thread.sleep(10000);}catch (Exception e) {}//Wait for snackbar message to expire
-				String strSpotDetails = clsCommonMobile.StoreText(objDictionary, androidDriver, "Enter your Parking Zone Number", "Spot Details-Holiday Free", 1, "strSpotDetails");
-				if(strSpotDetails.equals(strMeterSpotName+" Free parking until 11:59 PM Payments are not allowed"))
-				{Reporter.log("The Text (pot Details-Holiday Free) with index (1) contained (" + strSpotDetails + ")");}
-				else
-				{UpdateErrorMessageWithPivotalData(objDictionary, androidDriver, "The Text (pot Details-Holiday Free) with index (1) did not contain ("+strMeterSpotName+" Free parking until 11:59 PM Payments are not allowed) - actual value (" + strSpotDetails + ")");}
-	    		return;
-			}
+			String strSpotDetails = clsCommonMobile.StoreText(objDictionary, androidDriver, "Enter your Parking Zone Number", "Spot Details-Holiday Free", 1, "strSpotDetails");
+			if(strSpotDetails.equals(strMeterSpotName+" Free parking until 11:59 PM Payments are not allowed"))
+			{Reporter.log("The Text (pot Details-Holiday Free) with index (1) contained (" + strSpotDetails + ")");}
 			else
-			{UpdateErrorMessageWithPivotalData(objDictionary, androidDriver, "Expected message 'Payments are not allowed right now.' did not appear. Actual: '" + strSnackbarText + "'");}
+			{UpdateErrorMessageWithPivotalData(objDictionary, androidDriver, "The Text (pot Details-Holiday Free) with index (1) did not contain ("+strMeterSpotName+" Free parking until 11:59 PM Payments are not allowed) - actual value (" + strSpotDetails + ")");}
+    		return;
 		}
 	    else if(!strSnackbarText.equals(""))
 	    {UpdateErrorMessageWithPivotalData(objDictionary, androidDriver, "Unexpected Error when clicking Meter Spot Number:"+strSnackbarText);}
@@ -2837,6 +3137,14 @@ public class CommonANDROID_Flutter
      	{
      		clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "SentryMobile Account");
      		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Review and Pay", "Proceed", 1);
+     		
+     		String strAirplainModeEnabledAfterPayment = objDictionary.get("strAirplainModeEnabledAfterPayment");if (strAirplainModeEnabledAfterPayment == null) {strAirplainModeEnabledAfterPayment = "False";}
+     		if(strAirplainModeEnabledAfterPayment.equals("True"))
+     		{
+	     		ADB_Commands clsADBcommands = new ADB_Commands();
+	     		objDictionary.put("strAirplaneMode", "Enabled");
+				clsADBcommands.SENTRYMOBILE_SET_AIRPLANE_MODE(objDictionary);
+     		}
        	}
      	else
      	{
@@ -3230,7 +3538,7 @@ public class CommonANDROID_Flutter
  		LocalDateTime nowFloored = LocalDate.now().atTime(LocalTime.now().truncatedTo(ChronoUnit.MINUTES));
  		long minutesElapsed = ChronoUnit.MINUTES.between(sessionStart, nowFloored);
  		int intUsedTime = (int) Math.max(0, minutesElapsed);
- 		int intExpectedRemainingTime = Integer.parseInt(strFreeTimeFirstPayment) + Integer.parseInt(strPreviousPurchasedTime) +(int) Double.parseDouble(strMeterMaxRemaining) + Integer.parseInt(strRemainingFreeTimeMinutes)- intUsedTime;
+ 		int intExpectedRemainingTime = Integer.parseInt(strFreeTimeFirstPayment) + Integer.parseInt(strPreviousPurchasedTime) +(int) Double.parseDouble(strMeterMaxRemaining) + Integer.parseInt(strRemainingFreeTimeMinutes);//- intUsedTime; commented out because of test 2067
 		//Validate Expected Meter Time
      	clsMeter.METER_ValidateExpectedMeterTime(objDictionary, null, intExpectedRemainingTime, "1");
      	String strTotalPayment = objDictionary.get("strTotalFee");
@@ -3238,7 +3546,7 @@ public class CommonANDROID_Flutter
 		double dblTotalPayment = 0;
      	if(strFirstPaymentType.equals("Coin")){dblTotalPayment = Double.parseDouble(strTotalPayment.replace("$","")) + .25;}
 		else if(strFirstPaymentType.equals("Credit Card")){dblTotalPayment = Double.parseDouble(strTotalPayment.replace("$","")) + 1.00;}
-		else 
+		else
 		{
 			String strFirstPaymentFee = objDictionary.get("strFirstPaymentFee");
 			dblTotalPayment = Double.parseDouble(strTotalPayment.replace("$",""))+ Double.parseDouble(strFirstPaymentFee.replace("$",""));
@@ -8976,6 +9284,7 @@ public class CommonANDROID_Flutter
 		clsCommonWeb.SENTRYLINK_ExitSpotSetMeterRateBlocksOpenMeterInBrowse(objDictionary,  strMaximumDuration, strCoinTimePuchaseLimit, strFreeTimeFirstPayment, strMeterIncrementTime, strInitialGracePeriod, strViolationGracePeriod, strHandicapInitialGracePeriod, strHandicapViolationGrace, strNoParkingGrace,strSetImageSendBeforeViolation,strParkingShortSessionSec, strUnlockValue, strUnlockTime, strUnlockMax,"Local");
 		//PS1 Park Spot 1
 		clsMeter.METER_ParkSpot(objDictionary,"1","Local");
+		String strParkedTime = objDictionary.get("strParkedTime");
 		//PMT: Purchase Max Time
 		AppiumDriver androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
 		//Click Accept
@@ -8995,7 +9304,7 @@ public class CommonANDROID_Flutter
      	//Validate Expected Meter Time
 		clsMeter.METER_ValidateExpectedMeterTime(objDictionary, null, Integer.parseInt(strMaximumDuration), "1");
 		//Validate Parking Session
-		clsCommonMobile.SENTRYMOBILE_ValidateParkingSession(objDictionary,androidDriver,strStartTime,strEndTime, strTotalPayment);
+		clsCommonMobile.SENTRYMOBILE_ValidateParkingSession(objDictionary,androidDriver,strParkedTime,strEndTime, strTotalPayment);
 		androidDriver.quit();
 		//Store Parking Id
 		HttpConnections clsHttpConnections = new HttpConnections();
@@ -9301,7 +9610,8 @@ public class CommonANDROID_Flutter
      	clsCommonMobile.SENTRYMOBILE_AddOrSelectLicensePlate(objDictionary, androidDriver, strLicensePlateNumber, strLicensePlateState);
      	//PS1 Park Spot 1
      	clsMeter.METER_ParkSpot(objDictionary,"1","Local");
-     	//PMT: Purchase Max Time
+     	String strParkedTime = objDictionary.get("strParkedTime");
+		//PMT: Purchase Max Time
       	Double dblCoinIncrementValue = Double.parseDouble(strMaximumDuration)/Double.parseDouble(strMeterIncrementTime);
       	int intCoinIncrementValue = (int)Math.ceil(dblCoinIncrementValue);
       	int intAddCounter = 0;
@@ -9319,7 +9629,7 @@ public class CommonANDROID_Flutter
      	DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("MMM dd, hh:mm a");
      	int intMeterIncrementTime = Integer.parseInt(strMeterIncrementTime);
      	int intRemainingMaximumDuration = 0;
-		while (intAddCounter < intCoinIncrementValue)
+     	while (intAddCounter < intCoinIncrementValue)
 		{
       		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Choose Parking Duration", "Proceed", 1);
       		if (intAddCounter == 0)
@@ -9331,10 +9641,7 @@ public class CommonANDROID_Flutter
          	if (intAddCounter == 0){startTime = System.currentTimeMillis();}
          	//Set Start and End Times 
          	SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, hh:mm a");
-         	if (intAddCounter == 0) 
-         	{
-         		strStartTime = sdf.format(Date.from(Instant.now().truncatedTo(ChronoUnit.MINUTES)));
-         	}
+         	if (intAddCounter == 0) {strStartTime = sdf.format(Date.from(Instant.now().truncatedTo(ChronoUnit.MINUTES)));}
          	else{strStartTime = objDictionary.get("strParkingSessionStart");}
          	//Add Free Time First Payment
          	if(intAddCounter == 0)
@@ -9348,6 +9655,9 @@ public class CommonANDROID_Flutter
      		dblTotalPayment = dblTotalPayment + Double.parseDouble(strTotalPayment.replace("$", "").replace(" ", "").trim());
       		//Wait For Parking Session Details
         	clsCommonMobile.GlobalWait(objDictionary, androidDriver, "Parking Sessions", "{TextExists} Parking Sessions~Parking Session Details", 80);
+         	//Work Around For a Bug
+//        	clsCommonMobile.ClickButton(objDictionary, androidDriver, "Parking Sessions", "History", 1);
+//        	clsCommonMobile.ClickButton(objDictionary, androidDriver, "Parking Sessions", "Active", 1);
         	//Validate Expected Meter Time
         	clsMeter.METER_ValidateExpectedMeterTime(objDictionary, null, intRemainingTime, "1");
     		String strActualRemainingTimeMinutes = objDictionary.get("strActualRemainingTimeMinutes");

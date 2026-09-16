@@ -8,9 +8,6 @@ public class ADB_Commands
 {
 	public void SENTRYMOBILE_SET_AIRPLANE_MODE(Map<String, String> objDictionary)
 	{
-	    String strAutomationUser = objDictionary.get("strAutomationUser");
-	    String adbPath;
-
 	    String strAirplaneMode = objDictionary.get("strAirplaneMode");
 	    if (strAirplaneMode == null) strAirplaneMode = "Disabled";
 
@@ -18,127 +15,111 @@ public class ADB_Commands
 	    String expectedValue = shouldEnable ? "1" : "0";
 	    String stateFlag = shouldEnable ? "true" : "false";
 	    String modernAction = shouldEnable ? "enable" : "disable";
+	    boolean failOnMismatch = !"False".equalsIgnoreCase(objDictionary.get("strAdbFailOnMismatch"));
 
-	    // ADB path
-	    String sdkRoot = System.getenv("ANDROID_HOME");
-	    if (sdkRoot == null || sdkRoot.trim().isEmpty()) sdkRoot = System.getenv("ANDROID_SDK_ROOT");
-	    adbPath = (sdkRoot != null && !sdkRoot.trim().isEmpty())
-	            ? sdkRoot + "/platform-tools/adb"
-	            : "/Users/" + strAutomationUser + "/Library/Android/sdk/platform-tools/adb";
-
-	    String deviceSerial = objDictionary.get("strDeviceName");
+	    String adbPath = getAdbPath(objDictionary);
+	    String deviceSerial = getDeviceSerial(objDictionary);
 	    boolean hasDevice = deviceSerial != null && !deviceSerial.trim().isEmpty();
 
 	    try {
-	        // Helper that returns full output (trimmed)
-	        java.util.function.Function<String[], String> runAdb = cmd -> {
-	            try {
-	                Process p = Runtime.getRuntime().exec(cmd);
-	                java.io.BufferedReader r = new java.io.BufferedReader(
-	                        new java.io.InputStreamReader(p.getInputStream()));
-	                StringBuilder sb = new StringBuilder();
-	                String line;
-	                while ((line = r.readLine()) != null) {
-	                    sb.append(line).append("\n");
-	                }
-	                p.waitFor();
-	                return sb.toString().trim();
-	            } catch (Exception e) {
-	                return null;
-	            }
-	        };
-
-	        // Helper to build command array
-	        java.util.function.Function<String[], String[]> withDevice = args -> {
-	            if (!hasDevice) return args;
-	            String[] full = new String[args.length + 2];
-	            full[0] = adbPath;
-	            full[1] = "-s";
-	            full[2] = deviceSerial;
-	            System.arraycopy(args, 1, full, 3, args.length - 1); // skip original adbPath
-	            return full;
-	        };
-
-	        // 1. Check current status
-	        String[] statusCmd = hasDevice
-	                ? new String[]{adbPath, "-s", deviceSerial, "shell", "settings", "get", "global", "airplane_mode_on"}
-	                : new String[]{adbPath, "shell", "settings", "get", "global", "airplane_mode_on"};
-
-	        String current = runAdb.apply(statusCmd);
+	        String current = probeAirplaneModeOn(adbPath, deviceSerial);
+	        Reporter.log("Airplane Mode probe before toggle: '" + current + "' (want " + expectedValue + ")");
 	        if (expectedValue.equals(current)) {
 	            Reporter.log("Airplane Mode is already " + (shouldEnable ? "enabled" : "disabled") +
 	                    (hasDevice ? " on " + deviceSerial : ""));
 	            return;
 	        }
 
-	        // 2. Preferred modern method (Android 10+)
-	        boolean modernSucceeded = false;
-	        try {
-	            String[] modernCmd = hasDevice
-	                    ? new String[]{adbPath, "-s", deviceSerial, "shell", "cmd", "connectivity", "airplane-mode", modernAction}
-	                    : new String[]{adbPath, "shell", "cmd", "connectivity", "airplane-mode", modernAction};
-	            Runtime.getRuntime().exec(modernCmd).waitFor();
-	            Thread.sleep(1500);
+	        String[] modernCmd = hasDevice
+	                ? new String[]{adbPath, "-s", deviceSerial, "shell", "cmd", "connectivity", "airplane-mode", modernAction}
+	                : new String[]{adbPath, "shell", "cmd", "connectivity", "airplane-mode", modernAction};
+	        readAdbOutput(modernCmd);
 
-	            String afterModern = runAdb.apply(statusCmd);
-	            if (expectedValue.equals(afterModern)) {
-	                modernSucceeded = true;
-	                Reporter.log("Airplane Mode set via modern 'cmd connectivity' command");
-	            }
-	        } catch (Exception ignored) {
-	            // fall through to classic method
-	        }
+	        String[] putCmd = hasDevice
+	                ? new String[]{adbPath, "-s", deviceSerial, "shell", "settings", "put", "global", "airplane_mode_on", expectedValue}
+	                : new String[]{adbPath, "shell", "settings", "put", "global", "airplane_mode_on", expectedValue};
+	        readAdbOutput(putCmd);
 
-	        // 3. Classic method (more compatible + forces the system like UI toggle)
-	        if (!modernSucceeded) {
-	            // Set the global flag
-	            String[] putCmd = hasDevice
-	                    ? new String[]{adbPath, "-s", deviceSerial, "shell", "settings", "put", "global", "airplane_mode_on", expectedValue}
-	                    : new String[]{adbPath, "shell", "settings", "put", "global", "airplane_mode_on", expectedValue};
-	            Runtime.getRuntime().exec(putCmd).waitFor();
+	        String[] broadcastCmd = hasDevice
+	                ? new String[]{adbPath, "-s", deviceSerial, "shell", "am", "broadcast",
+	                               "-a", "android.intent.action.AIRPLANE_MODE", "--ez", "state", stateFlag}
+	                : new String[]{adbPath, "shell", "am", "broadcast",
+	                               "-a", "android.intent.action.AIRPLANE_MODE", "--ez", "state", stateFlag};
+	        readAdbOutput(broadcastCmd);
 
-	            // Broadcast WITH state (this is the critical part missing in many implementations)
-	            String[] broadcastCmd = hasDevice
-	                    ? new String[]{adbPath, "-s", deviceSerial, "shell", "am", "broadcast",
-	                                   "-a", "android.intent.action.AIRPLANE_MODE", "--ez", "state", stateFlag}
-	                    : new String[]{adbPath, "shell", "am", "broadcast",
-	                                   "-a", "android.intent.action.AIRPLANE_MODE", "--ez", "state", stateFlag};
-	            Runtime.getRuntime().exec(broadcastCmd).waitFor();
-	        }
-
-	        // 4. Explicitly force data + Wi-Fi to match airplane mode state
-	        // (helps eliminate residual connectivity that pure airplane mode sometimes leaves)
 	        String dataAction = shouldEnable ? "disable" : "enable";
 	        String wifiAction = shouldEnable ? "disable" : "enable";
-
 	        String[] dataCmd = hasDevice
 	                ? new String[]{adbPath, "-s", deviceSerial, "shell", "svc", "data", dataAction}
 	                : new String[]{adbPath, "shell", "svc", "data", dataAction};
-	        Runtime.getRuntime().exec(dataCmd).waitFor();
-
+	        readAdbOutput(dataCmd);
 	        String[] wifiCmd = hasDevice
 	                ? new String[]{adbPath, "-s", deviceSerial, "shell", "svc", "wifi", wifiAction}
 	                : new String[]{adbPath, "shell", "svc", "wifi", wifiAction};
-	        Runtime.getRuntime().exec(wifiCmd).waitFor();
+	        readAdbOutput(wifiCmd);
 
-	        Thread.sleep(3000); // give radios time to settle
+	        Thread.sleep(3000);
 
-	        // 5. Final validation
-	        String actual = runAdb.apply(statusCmd);
-	        if (!expectedValue.equals(actual)) {
-	            UpdateErrorMessageWithPivotalData(objDictionary,
-	                    "Airplane Mode status did not change" + (hasDevice ? " on " + deviceSerial : "") +
-	                    ". Expected: " + expectedValue + ", got: " + actual);
+	        String actual = probeAirplaneModeOn(adbPath, deviceSerial);
+	        Reporter.log("Airplane Mode probe after toggle: '" + actual + "'");
+	        if (expectedValue.equals(actual)) {
+	            Reporter.log("Airplane Mode successfully " + (shouldEnable ? "enabled" : "disabled") +
+	                    (hasDevice ? " on " + deviceSerial : ""));
 	            return;
 	        }
 
-	        Reporter.log("Airplane Mode successfully " + (shouldEnable ? "enabled" : "disabled") +
-	                " and verified" + (hasDevice ? " on " + deviceSerial : "") +
-	                " (UI-like toggle)");
-
+	        String message = "Airplane Mode status did not change" + (hasDevice ? " on " + deviceSerial : "") +
+	                ". Expected: " + expectedValue + ", got: " + actual;
+	        if (failOnMismatch && ("0".equals(actual) || "1".equals(actual))) {
+	            UpdateErrorMessageWithPivotalData(objDictionary, message);
+	        } else {
+	            Reporter.log("WARNING: " + message +
+	                    " — Samsung/Android often returns a blank settings value; toggle commands were sent anyway.");
+	        }
 	    } catch (Exception e) {
-	        UpdateErrorMessageWithPivotalData(objDictionary, "Airplane Mode toggle failed: " + e.getMessage());
+	        if (failOnMismatch) {
+	            UpdateErrorMessageWithPivotalData(objDictionary, "Airplane Mode toggle failed: " + e.getMessage());
+	        } else {
+	            Reporter.log("WARNING: Airplane Mode toggle failed: " + e.getMessage() + " (ignored during cleanup)");
+	        }
 	    }
+	}
+
+	private String probeAirplaneModeOn(String adbPath, String deviceSerial)
+	{
+	    boolean hasDevice = deviceSerial != null && !deviceSerial.trim().isEmpty();
+	    for (int i = 0; i < 5; i++) {
+	        String[] settingsCmd = hasDevice
+	                ? new String[]{adbPath, "-s", deviceSerial, "shell", "settings", "get", "global", "airplane_mode_on"}
+	                : new String[]{adbPath, "shell", "settings", "get", "global", "airplane_mode_on"};
+	        String fromSettings = normalizeZeroOne(readAdbOutput(settingsCmd));
+	        if ("0".equals(fromSettings) || "1".equals(fromSettings)) {
+	            return fromSettings;
+	        }
+
+	        String[] wifiDumpCmd = hasDevice
+	                ? new String[]{adbPath, "-s", deviceSerial, "shell", "dumpsys", "wifi"}
+	                : new String[]{adbPath, "shell", "dumpsys", "wifi"};
+	        String wifiDump = readAdbOutput(wifiDumpCmd).toLowerCase();
+	        if (wifiDump.contains("mairplanemodeon true") || wifiDump.contains("mairplane mode on true")
+	                || wifiDump.contains("airplane mode is on")) {
+	            return "1";
+	        }
+	        if (wifiDump.contains("mairplanemodeon false") || wifiDump.contains("mairplane mode on false")
+	                || wifiDump.contains("airplane mode is off")) {
+	            return "0";
+	        }
+
+	        String[] cmdState = hasDevice
+	                ? new String[]{adbPath, "-s", deviceSerial, "shell", "cmd", "connectivity", "airplane-mode"}
+	                : new String[]{adbPath, "shell", "cmd", "connectivity", "airplane-mode"};
+	        String cmdOut = readAdbOutput(cmdState).toLowerCase();
+	        if (cmdOut.contains("enabled") || cmdOut.equals("1")) return "1";
+	        if (cmdOut.contains("disabled") || cmdOut.equals("0")) return "0";
+
+	        try { Thread.sleep(1000); } catch (InterruptedException e) { Thread.currentThread().interrupt(); }
+	    }
+	    return "";
 	}
 	public void SENTRYMOBILE_SET_WIFI(Map<String, String> objDictionary)
 	{
@@ -182,10 +163,14 @@ public class ADB_Commands
 	        boolean isAirplaneOn = "1".equals(airplaneStatus);
 
 	        if (shouldEnable && isAirplaneOn) {
-	            UpdateErrorMessageWithPivotalData(objDictionary,
-	                    "Cannot enable Wi-Fi while Airplane Mode is enabled" +
+	            String message = "Cannot enable Wi-Fi while Airplane Mode is enabled" +
 	                    (hasDevice ? " on " + deviceSerial : "") +
-	                    ". Please disable Airplane Mode first.");
+	                    ". Please disable Airplane Mode first.";
+	            if ("False".equalsIgnoreCase(objDictionary.get("strAdbFailOnMismatch"))) {
+	                Reporter.log("WARNING: " + message + " (ignored during cleanup)");
+	            } else {
+	                UpdateErrorMessageWithPivotalData(objDictionary, message);
+	            }
 	            return;
 	        }
 
@@ -316,8 +301,587 @@ public class ADB_Commands
 	        UpdateErrorMessageWithPivotalData(objDictionary, "Wi-Fi scanning toggle failed: " + e.getMessage());
 	    }
 	}
-	
-	
+
+	public void SENTRYMOBILE_SET_BATTERY_SAVER(Map<String, String> objDictionary)
+	{
+	    String strBatterySaver = objDictionary.get("strBatterySaver");
+	    if (strBatterySaver == null) strBatterySaver = "Disabled";
+	    boolean shouldEnable = strBatterySaver.equalsIgnoreCase("Enabled");
+	    String expectedValue = shouldEnable ? "1" : "0";
+	    boolean failOnMismatch = !"False".equalsIgnoreCase(objDictionary.get("strAdbFailOnMismatch"));
+
+	    try {
+	        String current = runAdbShell(objDictionary, "settings", "get", "global", "low_power");
+	        if (expectedValue.equals(normalizeZeroOne(current))) {
+	            Reporter.log("Battery Saver is already " + (shouldEnable ? "enabled" : "disabled"));
+	            return;
+	        }
+
+	        runAdbShell(objDictionary, "settings", "put", "global", "low_power", expectedValue);
+	        runAdbShell(objDictionary, "am", "broadcast", "-a", "android.os.action.POWER_SAVE_MODE_CHANGED");
+	        Thread.sleep(1500);
+
+	        String actual = normalizeZeroOne(runAdbShell(objDictionary, "settings", "get", "global", "low_power"));
+	        if (!expectedValue.equals(actual)) {
+	            String message = "Battery Saver status did not change. Expected: " + expectedValue + ", got: " + actual;
+	            if (failOnMismatch) {
+	                UpdateErrorMessageWithPivotalData(objDictionary, message);
+	            } else {
+	                Reporter.log("WARNING: " + message + " (ignored during cleanup)");
+	            }
+	            return;
+	        }
+	        Reporter.log("Battery Saver successfully " + (shouldEnable ? "enabled" : "disabled") + " (low_power=" + actual + ")");
+	    } catch (Exception e) {
+	        if (failOnMismatch) {
+	            UpdateErrorMessageWithPivotalData(objDictionary, "Battery Saver toggle failed: " + e.getMessage());
+	        } else {
+	            Reporter.log("WARNING: Battery Saver toggle failed: " + e.getMessage());
+	        }
+	    }
+	}
+
+	public void SENTRYMOBILE_SET_BATTERY_LEVEL(Map<String, String> objDictionary)
+	{
+	    String strBatteryLevel = objDictionary.get("strBatteryLevel");
+	    if (strBatteryLevel == null || strBatteryLevel.trim().isEmpty()) {
+	        SENTRYMOBILE_RESET_BATTERY(objDictionary);
+	        return;
+	    }
+
+	    try {
+	        runAdbShell(objDictionary, "dumpsys", "battery", "unplug");
+	        runAdbShell(objDictionary, "dumpsys", "battery", "set", "level", strBatteryLevel);
+	        Thread.sleep(1000);
+	        Reporter.log("Battery level set to " + strBatteryLevel + "% (simulated via dumpsys battery)");
+	    } catch (Exception e) {
+	        UpdateErrorMessageWithPivotalData(objDictionary, "Setting battery level failed: " + e.getMessage());
+	    }
+	}
+
+	public void SENTRYMOBILE_RESET_BATTERY(Map<String, String> objDictionary)
+	{
+	    try {
+	        runAdbShell(objDictionary, "dumpsys", "battery", "reset");
+	        runAdbShell(objDictionary, "settings", "put", "global", "low_power", "0");
+	        Reporter.log("Battery simulation reset and Battery Saver disabled");
+	    } catch (Exception e) {
+	        Reporter.log("Battery reset failed: " + e.getMessage());
+	    }
+	}
+
+	public void SENTRYMOBILE_FORCE_STOP_APP(Map<String, String> objDictionary)
+	{
+	    String packageName = getCaPackageName(objDictionary);
+	    try {
+	        runAdbShell(objDictionary, "am", "force-stop", packageName);
+	        Thread.sleep(2000);
+	        Reporter.log("Force-stopped " + packageName);
+	    } catch (Exception e) {
+	        UpdateErrorMessageWithPivotalData(objDictionary, "Force-stop failed for " + packageName + ": " + e.getMessage());
+	    }
+	}
+
+	public void SENTRYMOBILE_LAUNCH_APP(Map<String, String> objDictionary)
+	{
+	    String packageName = getCaPackageName(objDictionary);
+	    try {
+	        runAdbShell(objDictionary, "monkey", "-p", packageName, "-c", "android.intent.category.LAUNCHER", "1");
+	        Thread.sleep(5000);
+	        Reporter.log("Launched " + packageName + " from launcher");
+	    } catch (Exception e) {
+	        UpdateErrorMessageWithPivotalData(objDictionary, "Launch failed for " + packageName + ": " + e.getMessage());
+	    }
+	}
+
+	public void SENTRYMOBILE_SEND_HOME(Map<String, String> objDictionary)
+	{
+	    try {
+	        runAdbShell(objDictionary, "input", "keyevent", "KEYCODE_HOME");
+	        Thread.sleep(1000);
+	        Reporter.log("Sent device Home key");
+	    } catch (Exception e) {
+	        UpdateErrorMessageWithPivotalData(objDictionary, "Sending Home key failed: " + e.getMessage());
+	    }
+	}
+
+	public void SENTRYMOBILE_PASTE_CLIPBOARD(Map<String, String> objDictionary)
+	{
+	    try {
+	        runAdbShell(objDictionary, "input", "keyevent", "279");
+	        Thread.sleep(500);
+	        Reporter.log("Sent KEYCODE_PASTE (279)");
+	    } catch (Exception e) {
+	        Reporter.log("KEYCODE_PASTE failed: " + e.getMessage());
+	    }
+	}
+
+	public void SENTRYMOBILE_DISMISS_NOTIFICATION_SHADE(Map<String, String> objDictionary)
+	{
+	    try {
+	        runAdbShell(objDictionary, "input", "keyevent", "KEYCODE_BACK");
+	        Thread.sleep(500);
+	        Reporter.log("Sent KEYCODE_BACK to dismiss notification shade if it was open");
+	    } catch (Exception e) {
+	        Reporter.log("Dismiss notification shade failed: " + e.getMessage());
+	    }
+	}
+
+	public void SENTRYMOBILE_SET_LOCATION_MODE(Map<String, String> objDictionary)
+	{
+	    String strLocationServices = objDictionary.get("strLocationServices");
+	    if (strLocationServices == null) strLocationServices = "Enabled";
+	    boolean shouldEnable = strLocationServices.equalsIgnoreCase("Enabled");
+	    String expectedMode = shouldEnable ? "3" : "0";
+	    boolean failOnMismatch = !"False".equalsIgnoreCase(objDictionary.get("strAdbFailOnMismatch"));
+
+	    try {
+	        String before = probeLocationEnabled(objDictionary);
+	        Reporter.log("Location probe before toggle: '" + before + "' (want enabled=" + shouldEnable + ")");
+	        if (locationProbeMatches(before, shouldEnable)) {
+	            Reporter.log("Location services already " + (shouldEnable ? "enabled" : "disabled"));
+	            return;
+	        }
+
+	        runAdbShell(objDictionary, "settings", "put", "secure", "location_mode", expectedMode);
+	        runAdbShell(objDictionary, "cmd", "location", "set-location-enabled", shouldEnable ? "true" : "false");
+	        runAdbShell(objDictionary, "cmd", "location", "providers", "set-user-enabled", "gps", shouldEnable ? "true" : "false");
+	        runAdbShell(objDictionary, "cmd", "location", "providers", "set-user-enabled", "network", shouldEnable ? "true" : "false");
+	        if (shouldEnable) {
+	            runAdbShell(objDictionary, "settings", "put", "secure", "location_providers_allowed", "+gps");
+	            runAdbShell(objDictionary, "settings", "put", "secure", "location_providers_allowed", "+network");
+	        } else {
+	            runAdbShell(objDictionary, "settings", "put", "secure", "location_providers_allowed", "-gps");
+	            runAdbShell(objDictionary, "settings", "put", "secure", "location_providers_allowed", "-network");
+	        }
+	        Thread.sleep(1500);
+
+	        String after = probeLocationEnabled(objDictionary);
+	        Reporter.log("Location probe after toggle: '" + after + "'");
+	        if (locationProbeMatches(after, shouldEnable) || after.isEmpty()) {
+	            if (after.isEmpty()) {
+	                Reporter.log("WARNING: Location mode probe was blank after toggle; commands were sent anyway.");
+	            } else {
+	                Reporter.log("Location services successfully " + (shouldEnable ? "enabled" : "disabled"));
+	            }
+	            return;
+	        }
+	        String message = "Location services did not change. Expected enabled=" + shouldEnable + ", probe=" + after;
+	        if (failOnMismatch) {
+	            UpdateErrorMessageWithPivotalData(objDictionary, message);
+	        } else {
+	            Reporter.log("WARNING: " + message + " (ignored during cleanup)");
+	        }
+	    } catch (Exception e) {
+	        if (failOnMismatch) {
+	            UpdateErrorMessageWithPivotalData(objDictionary, "Location services toggle failed: " + e.getMessage());
+	        } else {
+	            Reporter.log("WARNING: Location services toggle failed: " + e.getMessage() + " (ignored during cleanup)");
+	        }
+	    }
+	}
+
+	public void SENTRYMOBILE_SET_APP_PERMISSIONS(Map<String, String> objDictionary)
+	{
+	    String packageName = getCaPackageName(objDictionary);
+	    String action = objDictionary.get("strPermissionAction");
+	    if (action == null) action = "Grant";
+	    String list = objDictionary.get("strPermissions");
+	    if (list == null || list.trim().isEmpty()) {
+	        list = "android.permission.ACCESS_FINE_LOCATION,android.permission.ACCESS_COARSE_LOCATION,android.permission.CAMERA";
+	    }
+	    boolean shouldGrant = action.equalsIgnoreCase("Grant");
+	    String pmAction = shouldGrant ? "grant" : "revoke";
+	    boolean failOnMismatch = !"False".equalsIgnoreCase(objDictionary.get("strAdbFailOnMismatch"));
+
+	    try {
+	        String[] permissions = list.split(",");
+	        int attempted = 0;
+	        for (String permission : permissions) {
+	            String perm = permission.trim();
+	            if (perm.isEmpty()) continue;
+	            attempted++;
+	            String out = runAdbShell(objDictionary, "pm", pmAction, packageName, perm);
+	            Reporter.log("pm " + pmAction + " " + packageName + " " + perm + " -> " + (out == null || out.isEmpty() ? "ok" : out));
+	        }
+	        Thread.sleep(1000);
+	        Reporter.log("Applied " + pmAction + " to " + attempted + " permission(s) for " + packageName);
+	    } catch (Exception e) {
+	        if (failOnMismatch) {
+	            UpdateErrorMessageWithPivotalData(objDictionary, "pm " + (shouldGrant ? "grant" : "revoke") + " failed: " + e.getMessage());
+	        } else {
+	            Reporter.log("WARNING: Permission " + (shouldGrant ? "grant" : "revoke") + " failed: " + e.getMessage() + " (ignored during cleanup)");
+	        }
+	    }
+	}
+
+	public void SENTRYMOBILE_GRANT_DEFAULT_CA_PERMISSIONS(Map<String, String> objDictionary)
+	{
+	    objDictionary.put("strPermissionAction", "Grant");
+	    objDictionary.put("strPermissions",
+	            "android.permission.ACCESS_FINE_LOCATION,android.permission.ACCESS_COARSE_LOCATION,android.permission.CAMERA");
+	    SENTRYMOBILE_SET_APP_PERMISSIONS(objDictionary);
+	}
+
+	public void SENTRYMOBILE_POST_NOTIFICATION(Map<String, String> objDictionary)
+	{
+	    String title = objDictionary.get("strNotificationTitle");
+	    if (title == null || title.trim().isEmpty()) title = "MPS Interrupt";
+	    String text = objDictionary.get("strNotificationText");
+	    if (text == null || text.trim().isEmpty()) text = "Interrupt during parking flow";
+	    String tag = objDictionary.get("strNotificationTag");
+	    if (tag == null || tag.trim().isEmpty()) tag = "MpsNeg08";
+	    boolean failOnMismatch = !"False".equalsIgnoreCase(objDictionary.get("strAdbFailOnMismatch"));
+
+	    try {
+	        String out = runAdbShell(objDictionary, "cmd", "notification", "post", "-S", "bigtext", "-t", title, tag, text);
+	        if (out != null && (out.toLowerCase().contains("error") || out.toLowerCase().contains("unknown command")
+	                || out.toLowerCase().contains("unknown option"))) {
+	            out = runAdbShell(objDictionary, "cmd", "notification", "post", "-t", title, tag, text);
+	        }
+	        Reporter.log("Posted device notification tag=" + tag + " title='" + title + "' output='" + out + "'");
+	        if (out != null && (out.toLowerCase().contains("error") || out.toLowerCase().contains("unknown command"))) {
+	            String message = "Could not post a test notification via adb cmd notification: " + out;
+	            if (failOnMismatch) {
+	                UpdateErrorMessageWithPivotalData(objDictionary, message);
+	            } else {
+	                Reporter.log("WARNING: " + message);
+	            }
+	        }
+	    } catch (Exception e) {
+	        if (failOnMismatch) {
+	            UpdateErrorMessageWithPivotalData(objDictionary, "Posting a test notification failed: " + e.getMessage());
+	        } else {
+	            Reporter.log("WARNING: Posting a test notification failed: " + e.getMessage());
+	        }
+	    }
+	}
+
+	public void SENTRYMOBILE_SIMULATE_LOW_STORAGE(Map<String, String> objDictionary)
+	{
+	    String fillPath = NegativeInputCases.STORAGE_FILL_PATH;
+	    objDictionary.put("strStorageFillPath", fillPath);
+	    boolean failOnMismatch = !"False".equalsIgnoreCase(objDictionary.get("strAdbFailOnMismatch"));
+	    try {
+	        runAdbShell(objDictionary, "mkdir", "-p", "/sdcard/Download");
+	        String dfBefore = runAdbShell(objDictionary, "df", "/sdcard");
+	        long availableKb = NegativeInputCases.parseAvailableKbFromDf(dfBefore);
+	        long fillKb = NegativeInputCases.computeFillKb(availableKb, NegativeInputCases.STORAGE_FILL_CAP_KB, NegativeInputCases.STORAGE_LEAVE_FREE_KB);
+	        Reporter.log("df /sdcard before fill:\n" + dfBefore);
+	        Reporter.log("Available KB=" + availableKb + " fill KB=" + fillKb + " (cap " + NegativeInputCases.STORAGE_FILL_CAP_KB + ")");
+
+	        if (fillKb > 0) {
+	            long fillBytes = fillKb * 1024L;
+	            String cmd = "fallocate -l " + fillBytes + " " + fillPath + " || truncate -s " + fillBytes + " " + fillPath;
+	            String fillOut = runAdbShell(objDictionary, "sh", "-c", cmd);
+	            Reporter.log("Storage fill command output: " + (fillOut == null || fillOut.isEmpty() ? "ok" : fillOut));
+	        } else {
+	            Reporter.log("Skipped file fill; partition is already at or below the leave-free threshold");
+	        }
+
+	        String broadcast = runAdbShell(objDictionary, "am", "broadcast", "-a", "android.intent.action.DEVICE_STORAGE_LOW");
+	        Reporter.log("DEVICE_STORAGE_LOW broadcast: " + broadcast);
+	        String dfAfter = runAdbShell(objDictionary, "df", "/sdcard");
+	        Reporter.log("df /sdcard after fill:\n" + dfAfter);
+	        objDictionary.put("strStorageFillEvidence", "before=" + availableKb + " fillKb=" + fillKb + " afterDf=" + dfAfter);
+	    } catch (Exception e) {
+	        if (failOnMismatch) {
+	            UpdateErrorMessageWithPivotalData(objDictionary, "Low-storage simulation failed: " + e.getMessage());
+	        } else {
+	            Reporter.log("WARNING: Low-storage simulation failed: " + e.getMessage());
+	        }
+	    }
+	}
+
+	public void SENTRYMOBILE_CLEAR_STORAGE_FILL(Map<String, String> objDictionary)
+	{
+	    String fillPath = objDictionary.get("strStorageFillPath");
+	    if (fillPath == null || fillPath.trim().isEmpty()) {
+	        fillPath = NegativeInputCases.STORAGE_FILL_PATH;
+	    }
+	    try {
+	        String rm = runAdbShell(objDictionary, "rm", "-f", fillPath);
+	        Reporter.log("Removed storage fill " + fillPath + " -> " + (rm == null || rm.isEmpty() ? "ok" : rm));
+	        String broadcast = runAdbShell(objDictionary, "am", "broadcast", "-a", "android.intent.action.DEVICE_STORAGE_OK");
+	        Reporter.log("DEVICE_STORAGE_OK broadcast: " + broadcast);
+	    } catch (Exception e) {
+	        Reporter.log("WARNING: Clearing storage fill failed: " + e.getMessage());
+	    }
+	}
+
+	public void SENTRYMOBILE_SET_HTTP_PROXY(Map<String, String> objDictionary)
+	{
+	    String proxy = objDictionary.get("strHttpProxy");
+	    boolean failOnMismatch = !"False".equalsIgnoreCase(objDictionary.get("strAdbFailOnMismatch"));
+	    boolean clear = proxy == null || proxy.trim().isEmpty() || proxy.equalsIgnoreCase("Clear") || proxy.equals(":0");
+	    try {
+	        objDictionary.put("strAdbChangedHttpProxy", "True");
+	        if (clear) {
+	            runAdbShell(objDictionary, "settings", "put", "global", "http_proxy", ":0");
+	            runAdbShell(objDictionary, "settings", "delete", "global", "http_proxy");
+	            Reporter.log("Cleared global http_proxy");
+	            return;
+	        }
+	        String out = runAdbShell(objDictionary, "settings", "put", "global", "http_proxy", proxy.trim());
+	        Reporter.log("Set global http_proxy=" + proxy.trim() + " -> " + (out == null || out.isEmpty() ? "ok" : out));
+	        Thread.sleep(1500);
+	    } catch (Exception e) {
+	        if (failOnMismatch) {
+	            UpdateErrorMessageWithPivotalData(objDictionary, "Setting http_proxy failed: " + e.getMessage());
+	        } else {
+	            Reporter.log("WARNING: Setting http_proxy failed: " + e.getMessage() + " (ignored during cleanup)");
+	        }
+	    }
+	}
+
+	public void SENTRYMOBILE_SET_PRIVATE_DNS(Map<String, String> objDictionary)
+	{
+	    String mode = objDictionary.get("strPrivateDnsMode");
+	    if (mode == null || mode.trim().isEmpty()) mode = "opportunistic";
+	    String specifier = objDictionary.get("strPrivateDnsSpecifier");
+	    boolean failOnMismatch = !"False".equalsIgnoreCase(objDictionary.get("strAdbFailOnMismatch"));
+	    try {
+	        if (!"True".equals(objDictionary.get("strOriginalPrivateDnsCaptured"))) {
+	            objDictionary.put("strOriginalPrivateDnsMode", runAdbShell(objDictionary, "settings", "get", "global", "private_dns_mode"));
+	            objDictionary.put("strOriginalPrivateDnsSpecifier", runAdbShell(objDictionary, "settings", "get", "global", "private_dns_specifier"));
+	            objDictionary.put("strOriginalPrivateDnsCaptured", "True");
+	        }
+	        objDictionary.put("strAdbChangedPrivateDns", "True");
+	        runAdbShell(objDictionary, "settings", "put", "global", "private_dns_mode", mode.trim());
+	        if (specifier != null && !specifier.trim().isEmpty() && !"null".equalsIgnoreCase(specifier.trim())) {
+	            runAdbShell(objDictionary, "settings", "put", "global", "private_dns_specifier", specifier.trim());
+	        }
+	        Reporter.log("Private DNS set to mode=" + mode + " specifier=" + specifier);
+	        Thread.sleep(2000);
+	    } catch (Exception e) {
+	        if (failOnMismatch) {
+	            UpdateErrorMessageWithPivotalData(objDictionary, "Setting private DNS failed: " + e.getMessage());
+	        } else {
+	            Reporter.log("WARNING: Setting private DNS failed: " + e.getMessage() + " (ignored during cleanup)");
+	        }
+	    }
+	}
+
+	public void SENTRYMOBILE_RESTORE_PRIVATE_DNS(Map<String, String> objDictionary)
+	{
+	    if (!"True".equals(objDictionary.get("strAdbChangedPrivateDns"))) return;
+	    try {
+	        String originalMode = objDictionary.get("strOriginalPrivateDnsMode");
+	        if (originalMode == null || originalMode.trim().isEmpty() || "null".equalsIgnoreCase(originalMode.trim())) {
+	            originalMode = "opportunistic";
+	        }
+	        runAdbShell(objDictionary, "settings", "put", "global", "private_dns_mode", originalMode.trim());
+	        String originalSpecifier = objDictionary.get("strOriginalPrivateDnsSpecifier");
+	        if (originalSpecifier != null && !originalSpecifier.trim().isEmpty() && !"null".equalsIgnoreCase(originalSpecifier.trim())) {
+	            runAdbShell(objDictionary, "settings", "put", "global", "private_dns_specifier", originalSpecifier.trim());
+	        }
+	        Reporter.log("Restored private DNS mode=" + originalMode + " specifier=" + originalSpecifier);
+	    } catch (Exception e) {
+	        Reporter.log("WARNING: Restoring private DNS failed: " + e.getMessage());
+	    }
+	}
+
+	public String SENTRYMOBILE_DUMP_FINGERPRINT(Map<String, String> objDictionary)
+	{
+	    try {
+	        String dump = runAdbShell(objDictionary, "dumpsys", "fingerprint");
+	        if (dump == null) dump = "";
+	        String snippet = dump.length() > 800 ? dump.substring(0, 800) : dump;
+	        Reporter.log("dumpsys fingerprint (truncated): " + snippet);
+	        return dump;
+	    } catch (Exception e) {
+	        Reporter.log("dumpsys fingerprint failed: " + e.getMessage());
+	        return "";
+	    }
+	}
+
+	private String probeLocationEnabled(Map<String, String> objDictionary) throws Exception
+	{
+	    String mode = normalizeZeroOne(runAdbShell(objDictionary, "settings", "get", "secure", "location_mode"));
+	    if ("0".equals(mode)) return "0";
+	    if ("1".equals(mode) || "2".equals(mode) || "3".equals(mode)) return "1";
+
+	    String cmdOut = runAdbShell(objDictionary, "cmd", "location", "is-location-enabled");
+	    if (cmdOut != null) {
+	        String lower = cmdOut.toLowerCase();
+	        if (lower.contains("true") || lower.trim().equals("1")) return "1";
+	        if (lower.contains("false") || lower.trim().equals("0")) return "0";
+	    }
+	    return mode == null ? "" : mode.trim();
+	}
+
+	private boolean locationProbeMatches(String probe, boolean shouldEnable)
+	{
+	    if (probe == null || probe.isEmpty()) return false;
+	    if (shouldEnable) return "1".equals(probe) || "2".equals(probe) || "3".equals(probe);
+	    return "0".equals(probe);
+	}
+
+	public boolean SENTRYMOBILE_IS_APP_RUNNING(Map<String, String> objDictionary)
+	{
+	    String packageName = getCaPackageName(objDictionary);
+	    try {
+	        String pid = runAdbShell(objDictionary, "pidof", packageName);
+	        boolean running = pid != null && !pid.trim().isEmpty() && !pid.toLowerCase().contains("not found");
+	        Reporter.log(packageName + (running ? " is running (pid=" + pid.trim() + ")" : " is not running"));
+	        return running;
+	    } catch (Exception e) {
+	        Reporter.log("Could not check whether " + packageName + " is running: " + e.getMessage());
+	        return false;
+	    }
+	}
+
+	public String SENTRYMOBILE_CORRUPT_APP_CACHE(Map<String, String> objDictionary)
+	{
+	    String packageName = getCaPackageName(objDictionary);
+	    StringBuilder evidence = new StringBuilder();
+	    boolean wroteCorruptFile = false;
+
+	    try {
+	        String[] cacheDirs = {"cache", "code_cache"};
+	        for (String dir : cacheDirs) {
+	            String listing = runAsPackage(objDictionary, packageName, "ls", dir);
+	            evidence.append(dir).append(" listing: ").append(listing == null ? "(unavailable)" : listing).append("\n");
+	            if (listing != null && !listing.toLowerCase().contains("permission denied") && !listing.toLowerCase().contains("no such file")) {
+	                String[] files = listing.split("\\s+");
+	                for (String file : files) {
+	                    if (file == null || file.trim().isEmpty() || file.contains("/") || file.equals("..") || file.equals(".")) continue;
+	                    runAsPackage(objDictionary, packageName, "sh", "-c", "echo 'corrupt data' > " + dir + "/" + file);
+	                    evidence.append("Corrupted ").append(dir).append("/").append(file).append("\n");
+	                    wroteCorruptFile = true;
+	                    break;
+	                }
+	            }
+	            String sentinel = runAsPackage(objDictionary, packageName, "sh", "-c", "echo 'corrupt data' > " + dir + "/adb_corrupt_cache.txt");
+	            if (sentinel == null || (!sentinel.toLowerCase().contains("permission denied") && !sentinel.toLowerCase().contains("can't"))) {
+	                wroteCorruptFile = true;
+	                evidence.append("Wrote sentinel ").append(dir).append("/adb_corrupt_cache.txt\n");
+	            }
+	        }
+
+	        if (!wroteCorruptFile) {
+	            String externalCache = "/sdcard/Android/data/" + packageName + "/cache";
+	            runAdbShell(objDictionary, "mkdir", "-p", externalCache);
+	            String external = runAdbShell(objDictionary, "sh", "-c", "echo 'corrupt data' > " + externalCache + "/adb_corrupt_cache.txt");
+	            evidence.append("External cache write: ").append(external == null ? "ok" : external).append("\n");
+	        }
+
+	        Reporter.log("Cache corruption evidence for " + packageName + ":\n" + evidence);
+	        objDictionary.put("strCacheCorruptionEvidence", evidence.toString());
+	        return evidence.toString();
+	    } catch (Exception e) {
+	        UpdateErrorMessageWithPivotalData(objDictionary, "Cache corruption failed: " + e.getMessage());
+	        return evidence.toString();
+	    }
+	}
+
+	private String getCaPackageName(Map<String, String> objDictionary)
+	{
+	    String packageName = objDictionary.get("strAppPackage");
+	    if (packageName == null || packageName.trim().isEmpty()) {
+	        packageName = "com.mpspark.consumer.mpsconsumer";
+	    }
+	    return packageName;
+	}
+
+	private String getAdbPath(Map<String, String> objDictionary)
+	{
+	    String strAutomationUser = objDictionary.get("strAutomationUser");
+	    String sdkRoot = System.getenv("ANDROID_HOME");
+	    if (sdkRoot == null || sdkRoot.trim().isEmpty()) sdkRoot = System.getenv("ANDROID_SDK_ROOT");
+	    if (sdkRoot != null && !sdkRoot.trim().isEmpty()) {
+	        return sdkRoot + "/platform-tools/adb";
+	    }
+	    return "/Users/" + strAutomationUser + "/Library/Android/sdk/platform-tools/adb";
+	}
+
+	private String getDeviceSerial(Map<String, String> objDictionary)
+	{
+	    String deviceSerial = objDictionary.get("strDeviceName");
+	    if (deviceSerial == null || deviceSerial.trim().isEmpty()) {
+	        deviceSerial = objDictionary.get("strAndroidUdid");
+	    }
+	    return deviceSerial;
+	}
+
+	private String readAdbOutput(String[] cmd)
+	{
+	    try {
+	        ProcessBuilder pb = new ProcessBuilder(cmd);
+	        pb.redirectErrorStream(true);
+	        Process p = pb.start();
+	        java.io.BufferedReader r = new java.io.BufferedReader(new java.io.InputStreamReader(p.getInputStream()));
+	        StringBuilder sb = new StringBuilder();
+	        String line;
+	        while ((line = r.readLine()) != null) {
+	            sb.append(line).append("\n");
+	        }
+	        p.waitFor();
+	        return sb.toString().trim();
+	    } catch (Exception e) {
+	        return "";
+	    }
+	}
+
+	private String readAirplaneModeStatus(java.util.function.Function<String[], String> runAdb, String[] statusCmd)
+	{
+	    String actual = "";
+	    for (int i = 0; i < 5; i++) {
+	        actual = normalizeZeroOne(runAdb.apply(statusCmd));
+	        if ("0".equals(actual) || "1".equals(actual)) {
+	            return actual;
+	        }
+	        try { Thread.sleep(1000); } catch (InterruptedException e) { Thread.currentThread().interrupt(); }
+	    }
+	    return actual == null ? "" : actual;
+	}
+
+	private String normalizeZeroOne(String raw)
+	{
+	    if (raw == null) return "";
+	    String trimmed = raw.trim();
+	    if ("0".equals(trimmed) || "1".equals(trimmed)) return trimmed;
+	    java.util.regex.Matcher m = java.util.regex.Pattern.compile("(?m)^([01])$").matcher(trimmed);
+	    if (m.find()) return m.group(1);
+	    return trimmed;
+	}
+
+	private String runAdbShell(Map<String, String> objDictionary, String... shellArgs) throws Exception
+	{
+	    String adbPath = getAdbPath(objDictionary);
+	    String deviceSerial = getDeviceSerial(objDictionary);
+	    boolean hasDevice = deviceSerial != null && !deviceSerial.trim().isEmpty();
+
+	    String[] cmd;
+	    if (hasDevice) {
+	        cmd = new String[4 + shellArgs.length];
+	        cmd[0] = adbPath;
+	        cmd[1] = "-s";
+	        cmd[2] = deviceSerial;
+	        cmd[3] = "shell";
+	        System.arraycopy(shellArgs, 0, cmd, 4, shellArgs.length);
+	    } else {
+	        cmd = new String[2 + shellArgs.length];
+	        cmd[0] = adbPath;
+	        cmd[1] = "shell";
+	        System.arraycopy(shellArgs, 0, cmd, 2, shellArgs.length);
+	    }
+	    return readAdbOutput(cmd);
+	}
+
+	private String runAsPackage(Map<String, String> objDictionary, String packageName, String... innerArgs)
+	{
+	    try {
+	        String[] shellArgs = new String[2 + innerArgs.length];
+	        shellArgs[0] = "run-as";
+	        shellArgs[1] = packageName;
+	        System.arraycopy(innerArgs, 0, shellArgs, 2, innerArgs.length);
+	        return runAdbShell(objDictionary, shellArgs);
+	    } catch (Exception e) {
+	        return e.getMessage();
+	    }
+	}
+
 	public void UpdateErrorMessageWithPivotalData(Map<String, String> objDictionary,String strErrorMsg)
 	{
 		String strAssociatedBug = objDictionary.get("strAssociatedBug");

@@ -4730,7 +4730,7 @@ public class HttpConnections
 	 * @return API response body on success, null on error
 	 */
 	public String CURL_Lot_Boot_Notice(Map<String, String> objDictionary, String strLicensePlateNumber, String takenAt) {
-	    
+
 	    HttpConnections clsHttpConnections = new HttpConnections();
 	    CommonWeb clsCommonWeb = new CommonWeb();
 
@@ -4738,22 +4738,34 @@ public class HttpConnections
 	    String strEnvironment = objDictionary.get("strEnvironment");
 	    String strMunicipalitySubdomain = objDictionary.get("strMunicipalitySubdomain");
 	    String strJsonAdminToken = objDictionary.get("strJsonAdminToken");
-	    //g8k-cvYC54J2R2Pc9bqp
+
 	    if (strJsonAdminToken == null || strJsonAdminToken.trim().isEmpty()) {
 	        strJsonAdminToken = clsHttpConnections.StoreJsonAdminToken(objDictionary);
 	    }
-	    String strAdminUser = clsCommonWeb.SENTRYLINK_GetUserName(objDictionary, "admin").toLowerCase();
-	    // Determine Lot ID
+
+	    String strAdminUser = clsCommonWeb.SENTRYLINK_GetUserName(objDictionary, "admin");
+	    if (strAdminUser == null || strAdminUser.trim().isEmpty()) {
+	        clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary, null, "Missing admin user", "Local");
+	        return null;
+	    }
+	    strAdminUser = strAdminUser.toLowerCase();
+
+	    if (strDeviceId == null || strEnvironment == null || strMunicipalitySubdomain == null
+	            || strLicensePlateNumber == null || takenAt == null) {
+	        clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary, null, "Missing required parameter(s)", "Local");
+	        return null;
+	    }
+
 	    String strLotId;
 	    switch (strDeviceId) {
 	        case "Lot Auto One Pay":
 	            strLotId = "175";
 	            break;
 	        default:
-	            clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary, null,"Unknown strDeviceId: " + strDeviceId, "Local");
+	            clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary, null, "Unknown strDeviceId: " + strDeviceId, "Local");
 	            return null;
 	    }
-	    // Determine API URL
+
 	    String strUrl;
 	    switch (strEnvironment) {
 	        case "QA":
@@ -4763,42 +4775,58 @@ public class HttpConnections
 	            strUrl = "https://" + strMunicipalitySubdomain + ".staging.sentry-link.com/api/v1/license_plates/action_taken.json";
 	            break;
 	        default:
-	            clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary, null,"Unknown environment: " + strEnvironment, "Local");
+	            clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary, null, "Unknown environment: " + strEnvironment, "Local");
 	            return null;
 	    }
-	    // Build JSON payload – location_id as number, no quotes!
+
+	    // Escape values so plates / timestamps cannot break JSON
 	    String jsonPayload = String.format(
 	        "{\"location_id\":%s,\"action_taken\":\"booted\",\"taken_at\":\"%s\",\"plate_attributes\":[{\"plate\":\"%s\"}]}",
-	        strLotId, takenAt, strLicensePlateNumber
-	    ).trim();
+	        strLotId,
+	        escapeJson(takenAt),
+	        escapeJson(strLicensePlateNumber)
+	    );
+
 	    HttpPost httpPost = new HttpPost(strUrl);
 	    httpPost.addHeader("Content-Type", "application/json");
-	    httpPost.addHeader("Accept", "application/json");           // REQUIRED for Rails APIs
+	    httpPost.addHeader("Accept", "application/json");
 	    httpPost.addHeader("X-User-Token", strJsonAdminToken);
 	    httpPost.addHeader("X-User-Email", strAdminUser);
+	    httpPost.setEntity(new StringEntity(jsonPayload, ContentType.APPLICATION_JSON));
 
-	    StringEntity entity = new StringEntity(jsonPayload, ContentType.APPLICATION_JSON);
-	    httpPost.setEntity(entity);
+	    try (CloseableHttpClient httpClient = HttpClients.createDefault();
+	         CloseableHttpResponse response = httpClient.execute(httpPost)) {
 
-	    CloseableHttpClient httpClient = HttpClients.createDefault();
-
-	    try (CloseableHttpResponse response = httpClient.execute(httpPost)) {
 	        int statusCode = response.getStatusLine().getStatusCode();
-	        String responseBody = EntityUtils.toString(response.getEntity(), "UTF-8");
+	        String responseBody = response.getEntity() != null
+	            ? EntityUtils.toString(response.getEntity(), "UTF-8")
+	            : "";
 
 	        if (statusCode >= 200 && statusCode < 300) {
-	            return responseBody;  // Success
-	        } else {
-	            clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary, null,
-	                "Boot notice failed → HTTP " + statusCode + " | Response: " + responseBody, "Local");
-	            return null;
+	            return responseBody;
 	        }
+
+	        clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary, null,
+	            "Boot notice failed → HTTP " + statusCode + " | Response: " + responseBody, "Local");
+	        return null;
 
 	    } catch (Exception e) {
 	        clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary, null,
 	            "CURL_Lot_Boot_Notice exception: " + e.getMessage(), "Local");
 	        return null;
 	    }
+	}
+
+	private static String escapeJson(String value) {
+	    if (value == null) {
+	        return "";
+	    }
+	    return value
+	        .replace("\\", "\\\\")
+	        .replace("\"", "\\\"")
+	        .replace("\n", "\\n")
+	        .replace("\r", "\\r")
+	        .replace("\t", "\\t");
 	}
 	//******************************************************************************************************************************************************
 	//METER GROUP SETTING
