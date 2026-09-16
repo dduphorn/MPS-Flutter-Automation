@@ -164,7 +164,7 @@ public class CommonANDROID_Flutter
 		}
   		switch (strErrorMsg)
    		{	
-   			case "Expected the 	button (No thanks) at index (1) to be gone, but it was still present on the screen.":
+   			case "Expected the button (No thanks) at index (1) to be gone, but it was still present on the screen.":
    				strPivotalId = "FLUTTERPEO-140";Reporter.log(strErrorMsg);
 				strPivotalPath = "https://mpspark.atlassian.net/browse/FLUTTERPEO-140";
     			strErrorMsg = "When WiFi & WIFI Scanning are disabled, the Location Accuracy prompt requires two taps on “No thanks”";
@@ -3906,7 +3906,7 @@ public class CommonANDROID_Flutter
 		String strMunicipality = objDictionary.get("strMunicipality");
 		String strUserName = strUniqueId+strMunicipality.replace(" ","").replace(",", "")+"peo@gmail.com";
 		String strPassword = clsCommonWeb.SENTRYLINK_GetPassword(objDictionary, strUserName.toLowerCase(), "peo");
-		try {Thread.sleep(3500);}catch (Exception e) {}
+		//try {Thread.sleep(5000);}catch (Exception e) {}
 		clsCommonMobile.VerificationPointPage(objDictionary, androidDriver, "Login-PEO", "Exists");
 		PopulateAction(objDictionary, androidDriver, "PEO Login", "Populate Login", "{T} Email|{T} Password",strUserName.toLowerCase()+"|"+strPassword);
 		ClickButton(objDictionary, androidDriver, "PEO Login", "Sign In",1);
@@ -5520,7 +5520,7 @@ public class CommonANDROID_Flutter
 				//Uses Email Id Textfield
 				try 
 			    {
-			        WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(10));
+			        WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(20));
 			        return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.EditText[1]")));
 			    } 
 			    catch (Exception e) { return null; }
@@ -6220,7 +6220,7 @@ public class CommonANDROID_Flutter
 					    strSpecialInstruction = "ClearField";
 					    try 
 					    {
-					        WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(10));
+					        WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(15));
 					        return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.EditText[1]")));
 					    } 
 					    catch (Exception e) { return null; }

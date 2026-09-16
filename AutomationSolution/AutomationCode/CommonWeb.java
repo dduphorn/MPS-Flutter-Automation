@@ -241,6 +241,11 @@ public class CommonWeb {
 				Reporter.log(strErrorMsg);
 				strErrorMsg = "The cell value in row (2) column (4) of the table (Parking Session History) did not equal ($ 2.00) - actual value ($ 2.08)";
 				break;
+			case "The cell value in row (2) column (12) of the table (Violations) did not equal (Generating Ticket) - actual value (Claimed)":
+				strPivotalId = "FLUTTERPEO-122";
+				Reporter.log(strErrorMsg);
+				strErrorMsg = "Duplicate 'Ticket Generating' event are unexpectedly generated";
+				break;
 			case "The Button (Delete Rate Block)  did not exist-ClickButton":
 				// Click Back
 				driver.navigate().back();
@@ -1437,6 +1442,7 @@ public class CommonWeb {
 		clsCommonWeb.ClickLink(objDictionary, driver, "Recent Parking Sessions", strParkingId, 1);
 		clsCommonWeb.PopulateAction(objDictionary, driver, "Parking Session", "Populate License Plate Information","{T} License Plate|{T} Province/State", strLicensePlate + "|" + strState);
 		clsCommonWeb.ClickButton(objDictionary, driver, "Parking Session", "Create", 1, "Local");
+		try {Thread.sleep(2000);} catch (Exception e) {}
 		driver.quit();
 	}
 	// ************************

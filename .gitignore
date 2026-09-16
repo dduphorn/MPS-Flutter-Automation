@@ -27,16 +27,41 @@ APK/
 *.aab
 *.ipa
 Lib/chromedriver*
+Lib/Android_Chromedriver/chromedriver
 Lib/selenium-server-*.jar
 *.jar
 *.log
+*.bak
+*.tmp
 .DS_Store
+**/.DS_Store
 /.apt_generated/
 /.apt_generated_tests/
 
-# Local screenshot folders
-ScreenShots/
-MeterLogs
-MeterScreenShots/
+# Java / Maven / Eclipse build output
+*.class
+bin/
 target/
+TargetAndroid/
+.mtj.tmp/
+hs_err_pid*
+
+# Test run artifacts
+ScreenShots/
+MeterLogs/
+MeterScreenShots/
 test-output/
+ImgurImages/
+MessageLogs/
+
+# Local logs and home-directory leftovers
+Lib/LocalTracelog.txt
+Lib/selenium-log.txt
+Lib/PythonScripts/.bash_history
+Lib/PythonScripts/.python-history
+Lib/PythonScripts/.ssh/
+Lib/PythonScripts/.dbus/
+Lib/PythonScripts/.gstreamer-0.10/
+Lib/PythonScripts/.config/
+Lib/PythonScripts/.profile
+Lib/PythonScripts/.profile.orig

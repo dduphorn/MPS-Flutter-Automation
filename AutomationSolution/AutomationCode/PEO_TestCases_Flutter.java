@@ -3537,7 +3537,13 @@ public class PEO_TestCases_Flutter
 		//Delete User
 		String strUserName = "PEODeleteUser1@gmail.com";
 		objDictionary.put("strUserName","PEODeleteUser1@gmail.com");
-		String strPassword = "PEODeleteMe02!";
+		String strPassword = "PEODeleteMe01!";
+		String strBrowser = objDictionary.get("strBrowser");
+		String strRemotePath = objDictionary.get("strRemotePath");
+		threadDriver = clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath, objDictionary);
+		WebDriver driver = getDriver(); // driver.quit();
+		clsCommonWeb.SENTRYLINK_OpenLoginPage(objDictionary, driver);
+		clsCommonWeb.SENTRYLINK_UnlockAccount(objDictionary,driver,strUserName);
 		//DPEOU: Delete PEO User
 		clsCommonWeb.SENTRYLINK_DestroyUser2(objDictionary, strUserName, strPassword);
 		//CPEOU: Create PEO User
@@ -3582,10 +3588,8 @@ public class PEO_TestCases_Flutter
 		if(strSnackbarText.equals("Invalid Credentials.")){Reporter.log("The Text (Error Message) with index (1) contained (" + strSnackbarText + ")");}
 		else{clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary,androidDriver,"The Text (Error Message) with index (1) did not contain (Invalid Credentials.) - actual value ("+strSnackbarText+")");}
 		//UU Unlock User
-		String strBrowser = objDictionary.get("strBrowser");
-		String strRemotePath = objDictionary.get("strRemotePath");
 		threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath, objDictionary);
-		WebDriver driver = getDriver();
+		driver = getDriver();
 		clsCommonWeb.SENTRYLINK_OpenLoginPage(objDictionary, driver);
 		clsCommonWeb.SENTRYLINK_AdminLoginIn(objDictionary, driver);
 		String strCurrentPageName = clsCommonWeb.GetCurrentPageName(objDictionary, driver);
@@ -3620,7 +3624,7 @@ public class PEO_TestCases_Flutter
   		Reporter.log("CGPV1: Create Grace Period Violation Spot 1                 ");
   		Reporter.log("AV: Approve Violation                                       ");
   		Reporter.log("ES1: Exit Spot 1                                            ");
-  		Reporter.log("VVR: Validate Violation Removed                              ");
+  		Reporter.log("VVR: Validate Violation Removed                             ");
   		Reporter.log("VPSH: Validate Parking Session History                      ");
   		Reporter.log("VICAE: Validate Image Count After Exit                      ");
   		Reporter.log("VIAC: Validate Images Appear Correctly                      ");
@@ -5081,9 +5085,9 @@ public class PEO_TestCases_Flutter
   	@Test(priority=339)
   	public void P4039F_FTFP0_CGPV1_DNAATTPAV_AV_CAV_PCV_VIPV_CVP_AATTPAV_PGT_VGTV_PIT_VITV_ES1()
 	{
-  		objDictionary.put("strAssociatedBug", "FLUTTERPEO-108");
+  		objDictionary.put("strAssociatedBug", "FLUTTERPEO-122");
   		objDictionary.put("strMobileDeviceType", "ANDROID");
-		//Classes
+  		//Classes
   		CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
 		CommonWeb clsCommonWeb = new CommonWeb();
 		Meter clsMeter = new Meter();
@@ -5262,7 +5266,7 @@ public class PEO_TestCases_Flutter
   	@Test(priority=340)
   	public void P4040F_FTFP0_CGPV1_DNAATTPAV_AV_CAV_PCV_VIPV_CVP_AATTPAV_PGT_VGTV_PIT_VITV_ES1()
 	{
-  		objDictionary.put("strAssociatedBug", "FLUTTERPEO-108");
+  		objDictionary.put("strAssociatedBug", "FLUTTERPEO-122|FLUTTERPEO-108");
   		objDictionary.put("strMobileDeviceType", "ANDROID");
 		//Classes
   		CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
