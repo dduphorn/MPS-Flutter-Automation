@@ -131,6 +131,42 @@ public class NegativeInputCasesTest
 	}
 
 	@Test(groups = {"Unit"})
+	public void peoNullHandling_detectsLoginEmptyFallbackAndNullIntentCommand()
+	{
+		String peoLogin = "<android.widget.EditText/><android.widget.Button content-desc=\"Sign In\"/><android.view.View content-desc=\"Email\"/><android.view.View content-desc=\"Password\"/>";
+		String peoHome = "<android.view.View content-desc=\"New Violations\"/><android.widget.Button content-desc=\"Claim\"/>";
+		String emptyState = "<android.view.View content-desc=\"Please enter email address\"/>";
+		String crash = repeat("x", 50) + " keeps stopping";
+		Assert.assertEquals(NegativeInputCases.PEO_PACKAGE, "com.mpspark.mobileOfficer");
+		Assert.assertTrue(NegativeInputCases.looksLikePeoLoginForm(peoLogin));
+		Assert.assertFalse(NegativeInputCases.looksLikePeoLoggedIn(peoLogin));
+		Assert.assertTrue(NegativeInputCases.looksLikePeoLoggedIn(peoHome));
+		Assert.assertFalse(NegativeInputCases.looksLikePeoLoginForm(peoHome));
+		Assert.assertFalse(NegativeInputCases.looksLikePeoLoginForm(null));
+		Assert.assertFalse(NegativeInputCases.looksLikePeoLoggedIn(null));
+		Assert.assertTrue(NegativeInputCases.looksLikeEmptyOrNullFallbackUi(emptyState, ""));
+		Assert.assertTrue(NegativeInputCases.looksLikeEmptyOrNullFallbackUi("", "Invalid Credentials."));
+		Assert.assertTrue(NegativeInputCases.looksLikeEmptyOrNullFallbackUi("No violations found", null));
+		Assert.assertFalse(NegativeInputCases.looksLikeEmptyOrNullFallbackUi(null, null));
+		Assert.assertTrue(NegativeInputCases.peoNullOrEmptyDidNotBypassAuth(peoLogin, ""));
+		Assert.assertTrue(NegativeInputCases.peoNullOrEmptyDidNotBypassAuth(emptyState, "Please enter email address"));
+		Assert.assertFalse(NegativeInputCases.peoNullOrEmptyDidNotBypassAuth(peoHome, ""));
+		Assert.assertFalse(NegativeInputCases.peoNullOrEmptyDidNotBypassAuth(crash, ""));
+		String[] extras = NegativeInputCases.nullIntentExtraKeys();
+		Assert.assertEquals(extras.length, 5);
+		Assert.assertEquals(extras[0], "USER");
+		Assert.assertEquals(extras[1], "TOKEN");
+		String command = NegativeInputCases.amStartLauncherWithNullExtras(null);
+		Assert.assertTrue(command.contains("am start"));
+		Assert.assertTrue(command.contains("-p " + NegativeInputCases.PEO_PACKAGE));
+		Assert.assertTrue(command.contains("--esn USER"));
+		Assert.assertTrue(command.contains("--esn TOKEN"));
+		Assert.assertTrue(command.contains("--esn extra"));
+		Assert.assertEquals(NegativeInputCases.amStartLauncherWithNullExtras("com.example.app"),
+				"am start -a android.intent.action.MAIN -c android.intent.category.LAUNCHER -p com.example.app --esn USER --esn TOKEN --esn extra --esn userId --esn authToken");
+	}
+
+	@Test(groups = {"Unit"})
 	public void parseAvailableKbFromDf_andComputeFillKb_neverOverfillThePhone()
 	{
 		Assert.assertEquals(NegativeInputCases.parseAvailableKbFromDf(null), -1);

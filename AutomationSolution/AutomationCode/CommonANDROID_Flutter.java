@@ -2253,6 +2253,40 @@ public class CommonANDROID_Flutter
 		objDictionary.put("strAppPackage", "com.mpspark.consumer.mpsconsumer");
 	}
 
+	public void PEO_BindAdbDeviceSerial(Map<String, String> objDictionary)
+	{
+		SENTRYMOBILE_BindAdbDeviceSerial(objDictionary);
+		objDictionary.put("strAppPackage", NegativeInputCases.PEO_PACKAGE);
+	}
+
+	public void PEO_AssertLoginOrEmptyFallbackWithoutCrash(Map<String, String> objDictionary, AppiumDriver androidDriver, String strContext)
+	{
+		SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, strContext);
+		String snackbar = objDictionary.get("strSnackbarText");
+		String source = SENTRYMOBILE_CaptureVisibleUi(androidDriver);
+		if (NegativeInputCases.looksLikePeoLoggedIn(source))
+		{
+			UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,
+					"PEO logged in after " + strContext + " — null/empty data must not bypass auth");
+			return;
+		}
+		if (!NegativeInputCases.peoNullOrEmptyDidNotBypassAuth(source, snackbar))
+		{
+			UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,
+					"Expected PEO login or an empty/error placeholder after " + strContext +
+					" - snackbar='" + (snackbar == null ? "" : snackbar) + "'");
+			return;
+		}
+		if (NegativeInputCases.looksLikeEmptyOrNullFallbackUi(source, snackbar))
+		{
+			Reporter.log("Empty/null fallback UI was shown after " + strContext + " (snackbar='" + (snackbar == null ? "" : snackbar) + "')");
+		}
+		else
+		{
+			Reporter.log("PEO stayed on the login screen after " + strContext + " (no crash, auth not bypassed)");
+		}
+	}
+
 	public void SENTRYMOBILE_RestoreDeviceNetworkAndPower(Map<String, String> objDictionary)
 	{
 		ADB_Commands clsADBcommands = new ADB_Commands();

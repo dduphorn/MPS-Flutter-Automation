@@ -6861,4 +6861,65 @@ public class PEO_TestCases_Flutter
 		if(!strAssociatedBug.equals("")){Reporter.log("<font color='Blue'>"+strAssociatedBug+"-This Test passed remove the AssociatedBug</font>");}
 	}
 
+	@Test(priority=4061, groups={"Smoke"})
+	public void P4061F_NullEmptyLoginFields_ShowFallback_NoCrash()
+	{
+		objDictionary.put("strAssociatedBug", "");
+		objDictionary.put("strMobileDeviceType", "ANDROID");
+		CommonANDROID_Flutter clsCommonMobile = new CommonANDROID_Flutter();
+		Meter clsMeter = new Meter();
+		clsCommonMobile.PEO_AddReportVariables(objDictionary);
+		clsCommonMobile.PEO_BindAdbDeviceSerial(objDictionary);
+		Reporter.log("Null handling: submit PEO Sign In with empty email/password (Espresso-style null form extras). App must not crash; show login or empty-state/error text.");
+
+		AppiumDriver androidDriver = null;
+		try
+		{
+			androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "PEO", "True", "Parker");
+			clsCommonMobile.VerificationPointPage(objDictionary, androidDriver, "Login-PEO", "Exists");
+			clsCommonMobile.PopulateAction(objDictionary, androidDriver, "PEO Login", "Populate Login", "{T} Email|{T} Password", "|");
+			clsCommonMobile.ClickButton(objDictionary, androidDriver, "PEO Login", "Sign In", 1);
+			try { Thread.sleep(2000); } catch (Exception e) {}
+			clsCommonMobile.PEO_AssertLoginOrEmptyFallbackWithoutCrash(objDictionary, androidDriver, "empty PEO login submit");
+		}
+		finally
+		{
+			try { if (androidDriver != null) androidDriver.quit(); } catch (Exception e) {}
+			clsMeter.METER_SetMeterEndTime(objDictionary);
+			String strAssociatedBug = objDictionary.get("strAssociatedBug");if(strAssociatedBug == null){strAssociatedBug = "";}
+			if(!strAssociatedBug.equals("")){Reporter.log("<font color='Blue'>"+strAssociatedBug+"-This Test passed remove the AssociatedBug</font>");}
+		}
+	}
+
+	@Test(priority=4062, groups={"Smoke"})
+	public void P4062F_NullIntentExtras_ColdStart_ShowLogin_NoCrash()
+	{
+		objDictionary.put("strAssociatedBug", "");
+		objDictionary.put("strMobileDeviceType", "ANDROID");
+		CommonANDROID_Flutter clsCommonMobile = new CommonANDROID_Flutter();
+		ADB_Commands clsADBcommands = new ADB_Commands();
+		Meter clsMeter = new Meter();
+		clsCommonMobile.PEO_AddReportVariables(objDictionary);
+		clsCommonMobile.PEO_BindAdbDeviceSerial(objDictionary);
+		Reporter.log("Null handling: cold-start PEO with am start --esn USER/TOKEN/extra (Espresso-style null intent extras). App must not crash; login or empty-state fallback.");
+
+		AppiumDriver androidDriver = null;
+		try
+		{
+			androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "PEO", "True", "Parker");
+			clsCommonMobile.VerificationPointPage(objDictionary, androidDriver, "Login-PEO", "Exists");
+			clsADBcommands.SENTRYMOBILE_FORCE_STOP_APP(objDictionary);
+			clsADBcommands.PEO_LAUNCH_APP_WITH_NULL_EXTRAS(objDictionary);
+			try { Thread.sleep(3000); } catch (Exception e) {}
+			clsCommonMobile.PEO_AssertLoginOrEmptyFallbackWithoutCrash(objDictionary, androidDriver, "cold start with null intent extras");
+		}
+		finally
+		{
+			try { if (androidDriver != null) androidDriver.quit(); } catch (Exception e) {}
+			clsMeter.METER_SetMeterEndTime(objDictionary);
+			String strAssociatedBug = objDictionary.get("strAssociatedBug");if(strAssociatedBug == null){strAssociatedBug = "";}
+			if(!strAssociatedBug.equals("")){Reporter.log("<font color='Blue'>"+strAssociatedBug+"-This Test passed remove the AssociatedBug</font>");}
+		}
+	}
+
 }

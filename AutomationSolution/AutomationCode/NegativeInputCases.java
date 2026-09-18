@@ -1,8 +1,9 @@
 package AutomationCode;
 
 /**
- * Device-free helpers for Mobile QA Test Plan input cases (TC-NEG-04, 05, 12, 13, 18, 19)
- * and shared crash / degrade / login-screen detection used by A2209F–A2219F.
+ * Device-free helpers for Mobile QA Test Plan input cases (TC-NEG-04, 05, 12, 13, 18, 19),
+ * shared crash / degrade / login-screen detection used by A2209F–A2219F, and PEO
+ * Espresso-style null/empty fallback checks used by P4061F–P4062F.
  */
 public class NegativeInputCases
 {
@@ -14,6 +15,7 @@ public class NegativeInputCases
 	public static final long STORAGE_LEAVE_FREE_KB = 200L * 1024L;
 	public static final String HTTP_PROXY_BLACKHOLE = "192.0.2.1:8080";
 	public static final String PRIVATE_DNS_INVALID = "dns.invalid";
+	public static final String PEO_PACKAGE = "com.mpspark.mobileOfficer";
 
 	public static String excessiveInput(char fill)
 	{
@@ -122,6 +124,73 @@ public class NegativeInputCases
 		if (looksLikeCrash(pageSource)) return false;
 		if (looksLikeLoggedIn(pageSource)) return false;
 		return looksLikeLoginForm(pageSource) || looksLikeValidationOrInvalidLogin(pageSource);
+	}
+
+	public static String[] nullIntentExtraKeys()
+	{
+		return new String[] { "USER", "TOKEN", "extra", "userId", "authToken" };
+	}
+
+	public static String amStartLauncherWithNullExtras(String packageName)
+	{
+		if (packageName == null || packageName.trim().isEmpty())
+		{
+			packageName = PEO_PACKAGE;
+		}
+		StringBuilder sb = new StringBuilder();
+		sb.append("am start -a android.intent.action.MAIN -c android.intent.category.LAUNCHER -p ");
+		sb.append(packageName);
+		for (String key : nullIntentExtraKeys())
+		{
+			sb.append(" --esn ").append(key);
+		}
+		return sb.toString();
+	}
+
+	public static boolean looksLikePeoLoginForm(String pageSource)
+	{
+		if (pageSource == null) return false;
+		if (looksLikePeoLoggedIn(pageSource)) return false;
+		String lower = pageSource.toLowerCase();
+		boolean signIn = lower.contains("sign in");
+		boolean credentials = lower.contains("email") || lower.contains("password");
+		return signIn && credentials;
+	}
+
+	public static boolean looksLikePeoLoggedIn(String pageSource)
+	{
+		if (pageSource == null) return false;
+		String lower = pageSource.toLowerCase();
+		return lower.contains("new violations")
+				|| lower.contains("create violation")
+				|| lower.contains("snoozed violations");
+	}
+
+	public static boolean looksLikeEmptyOrNullFallbackUi(String pageSource, String snackbar)
+	{
+		String combined = ((snackbar == null ? "" : snackbar) + " " + (pageSource == null ? "" : pageSource)).toLowerCase();
+		if (combined.trim().isEmpty()) return false;
+		return combined.contains("please enter")
+				|| combined.contains("cannot be blank")
+				|| combined.contains("cannot be empty")
+				|| combined.contains("is required")
+				|| combined.contains("invalid credential")
+				|| combined.contains("invalid email")
+				|| combined.contains("no violation")
+				|| combined.contains("no results")
+				|| combined.contains("nothing to display")
+				|| combined.contains("no data")
+				|| combined.contains("try again")
+				|| combined.contains("something went wrong")
+				|| combined.contains("unable to")
+				|| combined.contains("failed to");
+	}
+
+	public static boolean peoNullOrEmptyDidNotBypassAuth(String pageSource, String snackbar)
+	{
+		if (looksLikeCrash(pageSource)) return false;
+		if (looksLikePeoLoggedIn(pageSource)) return false;
+		return looksLikePeoLoginForm(pageSource) || looksLikeEmptyOrNullFallbackUi(pageSource, snackbar);
 	}
 
 	public static boolean looksLikeLowStorage(String pageSource)
