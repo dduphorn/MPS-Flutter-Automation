@@ -394,6 +394,36 @@ public class ADB_Commands
 	    }
 	}
 
+	public void PEO_LAUNCH_APP_WITH_NULL_EXTRAS(Map<String, String> objDictionary)
+	{
+	    String packageName = getCaPackageName(objDictionary);
+	    if (packageName == null || packageName.trim().isEmpty()
+	            || "com.mpspark.consumer.mpsconsumer".equals(packageName)) {
+	        packageName = NegativeInputCases.PEO_PACKAGE;
+	    }
+	    try {
+	        java.util.ArrayList<String> args = new java.util.ArrayList<String>();
+	        args.add("am");
+	        args.add("start");
+	        args.add("-a");
+	        args.add("android.intent.action.MAIN");
+	        args.add("-c");
+	        args.add("android.intent.category.LAUNCHER");
+	        args.add("-p");
+	        args.add(packageName);
+	        for (String extra : NegativeInputCases.nullIntentExtraKeys()) {
+	            args.add("--esn");
+	            args.add(extra);
+	        }
+	        String out = runAdbShell(objDictionary, args.toArray(new String[0]));
+	        Reporter.log("Launched " + packageName + " with null extras (--esn). adb: " +
+	                (out == null || out.isEmpty() ? "ok" : out));
+	        Thread.sleep(5000);
+	    } catch (Exception e) {
+	        UpdateErrorMessageWithPivotalData(objDictionary, "Null-extra launch failed for " + packageName + ": " + e.getMessage());
+	    }
+	}
+
 	public void SENTRYMOBILE_SEND_HOME(Map<String, String> objDictionary)
 	{
 	    try {

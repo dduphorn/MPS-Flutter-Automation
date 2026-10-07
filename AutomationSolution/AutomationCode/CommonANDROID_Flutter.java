@@ -2153,8 +2153,23 @@ public class CommonANDROID_Flutter
 		    	objTextField.click();
 		    	if(strSpecialInstruction == "Lowercase"){strObjectValue = strObjectValue.toLowerCase();}strSpecialInstruction = "";
 	    		if(strAutomationUser.equals("Padma")){strAutomationUser = "chris";}
-		    	try{Runtime.getRuntime().exec("/Users/"+strAutomationUser+"/Library/Android/sdk/platform-tools//adb -s "+strDeviceName+" shell input text "+strObjectValue);}
-	    		catch(Exception e){clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androiddriver,"The Textfield (" + strObjectName + ") did not exist");}
+		    	String strAndroidUdid = objDictionary.get("strAndroidUdid");
+		    	int intAndroidVersion = 0;
+		    	try{intAndroidVersion = clsCommonMobile.METER_ADB_GetAndriodVersion(strAndroidUdid,"getprop ro.build.version.release");}
+		    	catch(Exception e){}
+		    	try
+		    	{
+		    		if(intAndroidVersion == 12)
+		    		{
+		    			try {Thread.sleep(500);}catch (Exception e) {}
+		    			AdbSlowTextInput.typeText("/Users/"+strAutomationUser+"/Library/Android/sdk/platform-tools/adb", strDeviceName, strObjectValue);
+		    		}
+		    		else
+		    		{
+		    			Runtime.getRuntime().exec("/Users/"+strAutomationUser+"/Library/Android/sdk/platform-tools//adb -s "+strDeviceName+" shell input text "+strObjectValue);
+		    		}
+		    	}
+	    		catch(Exception e){clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androiddriver,"The Textfield (" + strObjectName + ") did not exist-"+e);}
 		    	try {Thread.sleep(1000);}catch (Exception e) {}
 		    }
 		    else
@@ -2251,6 +2266,40 @@ public class CommonANDROID_Flutter
 			}
 		}
 		objDictionary.put("strAppPackage", "com.mpspark.consumer.mpsconsumer");
+	}
+
+	public void PEO_BindAdbDeviceSerial(Map<String, String> objDictionary)
+	{
+		SENTRYMOBILE_BindAdbDeviceSerial(objDictionary);
+		objDictionary.put("strAppPackage", NegativeInputCases.PEO_PACKAGE);
+	}
+
+	public void PEO_AssertLoginOrEmptyFallbackWithoutCrash(Map<String, String> objDictionary, AppiumDriver androidDriver, String strContext)
+	{
+		SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, strContext);
+		String snackbar = objDictionary.get("strSnackbarText");
+		String source = SENTRYMOBILE_CaptureVisibleUi(androidDriver);
+		if (NegativeInputCases.looksLikePeoLoggedIn(source))
+		{
+			UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,
+					"PEO logged in after " + strContext + " — null/empty data must not bypass auth");
+			return;
+		}
+		if (!NegativeInputCases.peoNullOrEmptyDidNotBypassAuth(source, snackbar))
+		{
+			UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,
+					"Expected PEO login or an empty/error placeholder after " + strContext +
+					" - snackbar='" + (snackbar == null ? "" : snackbar) + "'");
+			return;
+		}
+		if (NegativeInputCases.looksLikeEmptyOrNullFallbackUi(source, snackbar))
+		{
+			Reporter.log("Empty/null fallback UI was shown after " + strContext + " (snackbar='" + (snackbar == null ? "" : snackbar) + "')");
+		}
+		else
+		{
+			Reporter.log("PEO stayed on the login screen after " + strContext + " (no crash, auth not bypassed)");
+		}
 	}
 
 	public void SENTRYMOBILE_RestoreDeviceNetworkAndPower(Map<String, String> objDictionary)
