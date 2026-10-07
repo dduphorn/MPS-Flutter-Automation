@@ -15891,8 +15891,23 @@ public class CommonANDROID
 		    	objTextField.click();
 		    	if(strSpecialInstruction == "Lowercase"){strObjectValue = strObjectValue.toLowerCase();}strSpecialInstruction = "";
 	    		if(strAutomationUser.equals("Padma")){strAutomationUser = "chris";}
-		    	try{Runtime.getRuntime().exec("/Users/"+strAutomationUser+"/Library/Android/sdk/platform-tools//adb -s "+strDeviceName+" shell input text "+strObjectValue);}
-	    		catch(Exception e){clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androiddriver,"The Textfield (" + strObjectName + ") did not exist");}
+		    	String strAndroidUdid = objDictionary.get("strAndroidUdid");
+		    	int intAndroidVersion = 0;
+		    	try{intAndroidVersion = clsCommonMobile.METER_ADB_GetAndriodVersion(strAndroidUdid,"getprop ro.build.version.release");}
+		    	catch(Exception e){}
+		    	try
+		    	{
+		    		if(intAndroidVersion == 12)
+		    		{
+		    			try {Thread.sleep(500);}catch (Exception e) {}
+		    			AdbSlowTextInput.typeText("/Users/"+strAutomationUser+"/Library/Android/sdk/platform-tools/adb", strDeviceName, strObjectValue);
+		    		}
+		    		else
+		    		{
+		    			Runtime.getRuntime().exec("/Users/"+strAutomationUser+"/Library/Android/sdk/platform-tools//adb -s "+strDeviceName+" shell input text "+strObjectValue);
+		    		}
+		    	}
+	    		catch(Exception e){clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androiddriver,"The Textfield (" + strObjectName + ") did not exist-"+e);}
 		    	try {Thread.sleep(1000);}catch (Exception e) {}
 		    }
 		    else
