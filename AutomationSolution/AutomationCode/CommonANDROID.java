@@ -15899,26 +15899,43 @@ public class CommonANDROID
 		    	{
 		    		if(AdbSlowTextInput.usesUnicodeIme(intAndroidVersion))
 		    		{
-		    			// Android 12 drops adb "input text" unless the EditText is focused, and UnicodeIME
-		    			// only commits an explicit ADB_INPUT_B64 broadcast.
-		    			try { AdbSlowTextInput.prepareUnicodeIme(strAdbPath, strSerial); }
-		    			catch (Exception imeError) { Reporter.log("Unicode IME prepare: " + imeError.getMessage()); }
+		    			// Android 12 drops adb "input text" unless the EditText is focused. UnicodeIME
+		    			// commits sendKeys; the broadcast is the fallback when sendKeys leaves the hint in place.
+		    			System.out.println("Android12TextEntry " + strObjectName + " serial=" + strSerial);
+		    			Reporter.log("<font color='green'>Android12TextEntry " + strObjectName + " serial=" + strSerial + "</font>");
 		    			focusAndroidTextField(objTextField);
-		    			AdbSlowTextInput.typeText(strAdbPath, strSerial, strObjectValue);
-		    			try { Thread.sleep(400); } catch (Exception ignored) {}
-		    			String strFieldText = androidFieldText(objTextField);
 		    			String strHint = "";
 		    			try { strHint = objTextField.getAttribute("hint"); } catch (Exception ignored) {}
 		    			boolean blnPassword = false;
 		    			try { blnPassword = "true".equalsIgnoreCase(objTextField.getAttribute("password")); } catch (Exception ignored) {}
-		    			if(AdbSlowTextInput.shouldRetryWithKeyEvents(strFieldText, strHint, strObjectValue, blnPassword))
+		    			boolean blnSendKeysFailed = false;
+		    			try { objTextField.sendKeys(strObjectValue); }
+		    			catch (Exception sendKeysError)
+		    			{
+		    				blnSendKeysFailed = true;
+		    				Reporter.log("Android12TextEntry sendKeys: " + sendKeysError.getMessage());
+		    			}
+		    			try { Thread.sleep(400); } catch (Exception ignored) {}
+		    			String strFieldText = androidFieldText(objTextField);
+		    			boolean blnTryAdb = blnPassword ? (blnSendKeysFailed || (strFieldText.length() > 0 && !strFieldText.equals(strObjectValue))) : AdbSlowTextInput.shouldRetryWithKeyEvents(strFieldText, strHint, strObjectValue, false);
+		    			if(blnTryAdb)
+		    			{
+		    				try { AdbSlowTextInput.prepareUnicodeIme(strAdbPath, strSerial); }
+		    				catch (Exception imeError) { Reporter.log("Unicode IME prepare: " + imeError.getMessage()); }
+		    				try { objTextField.clear(); } catch (Exception ignored) {}
+		    				focusAndroidTextField(objTextField);
+		    				AdbSlowTextInput.typeText(strAdbPath, strSerial, strObjectValue);
+		    				try { Thread.sleep(400); } catch (Exception ignored) {}
+		    				strFieldText = androidFieldText(objTextField);
+		    			}
+		    			if(!blnPassword && AdbSlowTextInput.shouldRetryWithKeyEvents(strFieldText, strHint, strObjectValue, false))
 		    			{
 		    				try { objTextField.clear(); } catch (Exception ignored) {}
 		    				focusAndroidTextField(objTextField);
 		    				AdbSlowTextInput.typeSlowly(strAdbPath, strSerial, strObjectValue);
 		    				try { Thread.sleep(400); } catch (Exception ignored) {}
 		    				strFieldText = androidFieldText(objTextField);
-		    				if(AdbSlowTextInput.shouldRetryWithKeyEvents(strFieldText, strHint, strObjectValue, blnPassword))
+		    				if(AdbSlowTextInput.shouldRetryWithKeyEvents(strFieldText, strHint, strObjectValue, false))
 		    				{
 		    					String strFocused = "";
 		    					try { strFocused = objTextField.getAttribute("focused"); } catch (Exception ignored) {}
