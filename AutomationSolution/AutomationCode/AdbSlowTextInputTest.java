@@ -118,6 +118,16 @@ public class AdbSlowTextInputTest
 	}
 
 	@Test(groups = {"Unit"})
+	public void needsAnotherEntryAttempt_retriesFailedPasswordReplaceAndEmptyVisibleFields()
+	{
+		Assert.assertTrue(AdbSlowTextInput.needsAnotherEntryAttempt("", null, "XDeleteMeMN01", true, true));
+		Assert.assertFalse(AdbSlowTextInput.needsAnotherEntryAttempt("", null, "XDeleteMeMN01", true, false));
+		Assert.assertTrue(AdbSlowTextInput.needsAnotherEntryAttempt("", null, "Delete", false, false));
+		Assert.assertTrue(AdbSlowTextInput.needsAnotherEntryAttempt("This will be your user id", "This will be your user id", "XDeleteUser@gmail.com", false, false));
+		Assert.assertFalse(AdbSlowTextInput.needsAnotherEntryAttempt("Delete", null, "Delete", false, false));
+	}
+
+	@Test(groups = {"Unit"})
 	public void shouldRetryWithKeyEvents_retriesEmptyOrHintAndSkipsPasswords()
 	{
 		Assert.assertTrue(AdbSlowTextInput.shouldRetryWithKeyEvents("", null, "Delete", false));

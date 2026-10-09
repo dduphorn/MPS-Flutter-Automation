@@ -126,6 +126,20 @@ public final class AdbSlowTextInput
 		return !actualText.equals(expected);
 	}
 
+	/**
+	 * Password fields often stay blank in the hierarchy after a successful setText, so they are
+	 * retried only when replaceElementValue itself failed. Other fields are retried while they
+	 * still show empty or hint text.
+	 */
+	public static boolean needsAnotherEntryAttempt(String actualText, String hint, String expected, boolean password, boolean replaceFailed)
+	{
+		if (password)
+		{
+			return replaceFailed;
+		}
+		return shouldRetryWithKeyEvents(actualText, hint, expected, false);
+	}
+
 	public static void prepareUnicodeIme(String adbPath, String serial) throws IOException, InterruptedException
 	{
 		ACTIVE_IME_PACKAGE.set(selectUnicodeIme(adbPath, serial, AdbSlowTextInput::run));

@@ -46,6 +46,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.ITestContext;
@@ -15897,7 +15898,20 @@ public class CommonANDROID
 		    	if("Lowercase".equals(strSpecialInstruction)){strObjectValue = strObjectValue.toLowerCase();}strSpecialInstruction = "";
 		    	try
 		    	{
-		    		if(AdbSlowTextInput.usesUnicodeIme(intAndroidVersion))
+		    		System.out.println("PopulateTextfield setText " + strObjectName + " android=" + intAndroidVersion);
+		    		Reporter.log("<font color='green'>PopulateTextfield setText " + strObjectName + " android=" + intAndroidVersion + "</font>");
+		    		boolean blnReplaceFailed = !setTextDirectly(androiddriver, objTextField, strObjectValue);
+		    		try { Thread.sleep(300); } catch (Exception ignored) {}
+		    		String strHintAfterSet = "";
+		    		try { strHintAfterSet = objTextField.getAttribute("hint"); } catch (Exception ignored) {}
+		    		boolean blnPasswordField = false;
+		    		try { blnPasswordField = "true".equalsIgnoreCase(objTextField.getAttribute("password")); } catch (Exception ignored) {}
+		    		String strFieldTextAfterSet = androidFieldText(objTextField);
+		    		if(!AdbSlowTextInput.needsAnotherEntryAttempt(strFieldTextAfterSet, strHintAfterSet, strObjectValue, blnPasswordField, blnReplaceFailed))
+		    		{
+		    			// Value is already in the EditText.
+		    		}
+		    		else if(AdbSlowTextInput.usesUnicodeIme(intAndroidVersion))
 		    		{
 		    			// Android 12 drops adb "input text" unless the EditText is focused. UnicodeIME
 		    			// commits sendKeys; the broadcast is the fallback when sendKeys leaves the hint in place.
@@ -15995,6 +16009,23 @@ public class CommonANDROID
 			return intFromCapability;
 		}
 		return intAndroidVersion < 0 ? 0 : intAndroidVersion;
+	}
+	private boolean setTextDirectly(AndroidDriver androiddriver, WebElement objTextField, String strObjectValue)
+	{
+		if (!(objTextField instanceof RemoteWebElement))
+		{
+			return false;
+		}
+		try
+		{
+			androiddriver.replaceElementValue((RemoteWebElement) objTextField, strObjectValue);
+			return true;
+		}
+		catch (Exception e)
+		{
+			Reporter.log("replaceElementValue: " + e.getMessage());
+			return false;
+		}
 	}
 	private void focusAndroidTextField(WebElement objTextField)
 	{
