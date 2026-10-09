@@ -15887,12 +15887,52 @@ public class CommonANDROID
 		    	{
 		    		strAutomationUser = "mpsadmin";
 		    	}
+		    	if(strAutomationUser.equals("Padma")){strAutomationUser = "chris";}
 		        String strDeviceName = (String)androiddriver.getCapabilities().getCapability("deviceName");
-		    	objTextField.click();
-		    	if(strSpecialInstruction == "Lowercase"){strObjectValue = strObjectValue.toLowerCase();}strSpecialInstruction = "";
-	    		if(strAutomationUser.equals("Padma")){strAutomationUser = "chris";}
-		    	try{Runtime.getRuntime().exec("/Users/"+strAutomationUser+"/Library/Android/sdk/platform-tools//adb -s "+strDeviceName+" shell input text "+strObjectValue);}
-	    		catch(Exception e){clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androiddriver,"The Textfield (" + strObjectName + ") did not exist");}
+		        String strCapabilityUdid = capabilityText(androiddriver, "udid");
+		        String strAndroidUdid = objDictionary.get("strAndroidUdid");
+		        String strSerial = AdbSlowTextInput.resolveSerial(strAndroidUdid, strCapabilityUdid, strDeviceName);
+		        String strAdbPath = AdbSlowTextInput.adbPathForUser(strAutomationUser);
+		        int intAndroidVersion = androidMajorVersion(clsCommonMobile, androiddriver, strSerial);
+		    	if("Lowercase".equals(strSpecialInstruction)){strObjectValue = strObjectValue.toLowerCase();}strSpecialInstruction = "";
+		    	try
+		    	{
+		    		if(AdbSlowTextInput.usesUnicodeIme(intAndroidVersion))
+		    		{
+		    			// Android 12 drops adb "input text" unless the EditText is focused, and UnicodeIME
+		    			// only commits an explicit ADB_INPUT_B64 broadcast.
+		    			try { AdbSlowTextInput.prepareUnicodeIme(strAdbPath, strSerial); }
+		    			catch (Exception imeError) { Reporter.log("Unicode IME prepare: " + imeError.getMessage()); }
+		    			focusAndroidTextField(objTextField);
+		    			AdbSlowTextInput.typeText(strAdbPath, strSerial, strObjectValue);
+		    			try { Thread.sleep(400); } catch (Exception ignored) {}
+		    			String strFieldText = androidFieldText(objTextField);
+		    			String strHint = "";
+		    			try { strHint = objTextField.getAttribute("hint"); } catch (Exception ignored) {}
+		    			boolean blnPassword = false;
+		    			try { blnPassword = "true".equalsIgnoreCase(objTextField.getAttribute("password")); } catch (Exception ignored) {}
+		    			if(AdbSlowTextInput.shouldRetryWithKeyEvents(strFieldText, strHint, strObjectValue, blnPassword))
+		    			{
+		    				try { objTextField.clear(); } catch (Exception ignored) {}
+		    				focusAndroidTextField(objTextField);
+		    				AdbSlowTextInput.typeSlowly(strAdbPath, strSerial, strObjectValue);
+		    				try { Thread.sleep(400); } catch (Exception ignored) {}
+		    				strFieldText = androidFieldText(objTextField);
+		    				if(AdbSlowTextInput.shouldRetryWithKeyEvents(strFieldText, strHint, strObjectValue, blnPassword))
+		    				{
+		    					String strFocused = "";
+		    					try { strFocused = objTextField.getAttribute("focused"); } catch (Exception ignored) {}
+		    					clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androiddriver, "The Textfield (" + strObjectName + ") was not populated on Android " + intAndroidVersion + " (focused=" + strFocused + ", serial=" + strSerial + ")");
+		    				}
+		    			}
+		    		}
+		    		else
+		    		{
+		    			objTextField.click();
+		    			AdbSlowTextInput.typeWithInputText(strAdbPath, strSerial, strObjectValue);
+		    		}
+		    	}
+	    		catch(Exception e){clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androiddriver,"The Textfield (" + strObjectName + ") did not exist-"+e);}
 		    	try {Thread.sleep(1000);}catch (Exception e) {}
 		    }
 		    else
@@ -15908,6 +15948,58 @@ public class CommonANDROID
             { objDictionary.put("strStoredPopulateVariable", strStoreValueAsVariableName + ": " + strObjectValue + "|"); }
             strStoreValueAsVariableName = "";
         }
+	}
+	private String capabilityText(AndroidDriver androiddriver, String strName)
+	{
+		if (androiddriver == null || androiddriver.getCapabilities() == null) { return ""; }
+		Object objValue = androiddriver.getCapabilities().getCapability(strName);
+		if (objValue == null) { objValue = androiddriver.getCapabilities().getCapability("appium:" + strName); }
+		return objValue == null ? "" : objValue.toString();
+	}
+	private int androidMajorVersion(CommonANDROID clsCommonMobile, AndroidDriver androiddriver, String strSerial)
+	{
+		int intAndroidVersion = 0;
+		try
+		{
+			if (strSerial != null && !strSerial.isEmpty())
+			{
+				intAndroidVersion = clsCommonMobile.METER_ADB_GetAndriodVersion(strSerial, "getprop ro.build.version.release");
+			}
+		}
+		catch (Exception e) {}
+		// getprop returns a bare integer. "12.1" throws, and a missed device comes back as the method's fallback 5.
+		if (intAndroidVersion > 0 && intAndroidVersion != 5)
+		{
+			return intAndroidVersion;
+		}
+		int intFromCapability = AdbSlowTextInput.majorVersion(capabilityText(androiddriver, "platformVersion"));
+		if (intFromCapability > 0)
+		{
+			return intFromCapability;
+		}
+		return intAndroidVersion < 0 ? 0 : intAndroidVersion;
+	}
+	private void focusAndroidTextField(WebElement objTextField)
+	{
+		try { objTextField.click(); } catch (Exception e) {}
+		try { Thread.sleep(500); } catch (Exception e) {}
+		String strFocused = "";
+		try { strFocused = objTextField.getAttribute("focused"); } catch (Exception e) {}
+		if (!"true".equalsIgnoreCase(strFocused))
+		{
+			try { objTextField.click(); } catch (Exception e) {}
+			try { Thread.sleep(500); } catch (Exception e) {}
+		}
+	}
+	private String androidFieldText(WebElement objTextField)
+	{
+		String strText = "";
+		try { strText = objTextField.getAttribute("text"); } catch (Exception e) {}
+		if (strText == null || strText.isEmpty())
+		{
+			try { strText = objTextField.getText(); } catch (Exception e) {}
+		}
+		return strText == null ? "" : strText;
 	}
 	public void PopulateRadioButton(Map<String, String> objDictionary,AndroidDriver androiddriver, String strPageName, String strObjectName, String strObjectValue)
 	{
