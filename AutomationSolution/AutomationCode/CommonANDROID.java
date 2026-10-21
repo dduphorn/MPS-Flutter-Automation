@@ -46,6 +46,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.ITestContext;
@@ -15887,24 +15888,79 @@ public class CommonANDROID
 		    	{
 		    		strAutomationUser = "mpsadmin";
 		    	}
+		    	if(strAutomationUser.equals("Padma")){strAutomationUser = "chris";}
 		        String strDeviceName = (String)androiddriver.getCapabilities().getCapability("deviceName");
-		    	objTextField.click();
-		    	if(strSpecialInstruction == "Lowercase"){strObjectValue = strObjectValue.toLowerCase();}strSpecialInstruction = "";
-	    		if(strAutomationUser.equals("Padma")){strAutomationUser = "chris";}
-		    	String strAndroidUdid = objDictionary.get("strAndroidUdid");
-		    	int intAndroidVersion = 0;
-		    	try{intAndroidVersion = clsCommonMobile.METER_ADB_GetAndriodVersion(strAndroidUdid,"getprop ro.build.version.release");}
-		    	catch(Exception e){}
+		        String strCapabilityUdid = capabilityText(androiddriver, "udid");
+		        String strAndroidUdid = objDictionary.get("strAndroidUdid");
+		        String strSerial = AdbSlowTextInput.resolveSerial(strAndroidUdid, strCapabilityUdid, strDeviceName);
+		        String strAdbPath = AdbSlowTextInput.adbPathForUser(strAutomationUser);
+		        int intAndroidVersion = androidMajorVersion(clsCommonMobile, androiddriver, strSerial);
+		    	if("Lowercase".equals(strSpecialInstruction)){strObjectValue = strObjectValue.toLowerCase();}strSpecialInstruction = "";
 		    	try
 		    	{
-		    		if(intAndroidVersion == 12)
+		    		System.out.println("PopulateTextfield setText " + strObjectName + " android=" + intAndroidVersion);
+		    		Reporter.log("<font color='green'>PopulateTextfield setText " + strObjectName + " android=" + intAndroidVersion + "</font>");
+		    		boolean blnReplaceFailed = !setTextDirectly(androiddriver, objTextField, strObjectValue);
+		    		try { Thread.sleep(300); } catch (Exception ignored) {}
+		    		String strHintAfterSet = "";
+		    		try { strHintAfterSet = objTextField.getAttribute("hint"); } catch (Exception ignored) {}
+		    		boolean blnPasswordField = false;
+		    		try { blnPasswordField = "true".equalsIgnoreCase(objTextField.getAttribute("password")); } catch (Exception ignored) {}
+		    		String strFieldTextAfterSet = androidFieldText(objTextField);
+		    		if(!AdbSlowTextInput.needsAnotherEntryAttempt(strFieldTextAfterSet, strHintAfterSet, strObjectValue, blnPasswordField, blnReplaceFailed))
 		    		{
-		    			try {Thread.sleep(500);}catch (Exception e) {}
-		    			AdbSlowTextInput.typeText("/Users/"+strAutomationUser+"/Library/Android/sdk/platform-tools/adb", strDeviceName, strObjectValue);
+		    			// Value is already in the EditText.
+		    		}
+		    		else if(AdbSlowTextInput.usesUnicodeIme(intAndroidVersion))
+		    		{
+		    			// Android 12 drops adb "input text" unless the EditText is focused. UnicodeIME
+		    			// commits sendKeys; the broadcast is the fallback when sendKeys leaves the hint in place.
+		    			System.out.println("Android12TextEntry " + strObjectName + " serial=" + strSerial);
+		    			Reporter.log("<font color='green'>Android12TextEntry " + strObjectName + " serial=" + strSerial + "</font>");
+		    			focusAndroidTextField(objTextField);
+		    			String strHint = "";
+		    			try { strHint = objTextField.getAttribute("hint"); } catch (Exception ignored) {}
+		    			boolean blnPassword = false;
+		    			try { blnPassword = "true".equalsIgnoreCase(objTextField.getAttribute("password")); } catch (Exception ignored) {}
+		    			boolean blnSendKeysFailed = false;
+		    			try { objTextField.sendKeys(strObjectValue); }
+		    			catch (Exception sendKeysError)
+		    			{
+		    				blnSendKeysFailed = true;
+		    				Reporter.log("Android12TextEntry sendKeys: " + sendKeysError.getMessage());
+		    			}
+		    			try { Thread.sleep(400); } catch (Exception ignored) {}
+		    			String strFieldText = androidFieldText(objTextField);
+		    			boolean blnTryAdb = blnPassword ? (blnSendKeysFailed || (strFieldText.length() > 0 && !strFieldText.equals(strObjectValue))) : AdbSlowTextInput.shouldRetryWithKeyEvents(strFieldText, strHint, strObjectValue, false);
+		    			if(blnTryAdb)
+		    			{
+		    				try { AdbSlowTextInput.prepareUnicodeIme(strAdbPath, strSerial); }
+		    				catch (Exception imeError) { Reporter.log("Unicode IME prepare: " + imeError.getMessage()); }
+		    				try { objTextField.clear(); } catch (Exception ignored) {}
+		    				focusAndroidTextField(objTextField);
+		    				AdbSlowTextInput.typeText(strAdbPath, strSerial, strObjectValue);
+		    				try { Thread.sleep(400); } catch (Exception ignored) {}
+		    				strFieldText = androidFieldText(objTextField);
+		    			}
+		    			if(!blnPassword && AdbSlowTextInput.shouldRetryWithKeyEvents(strFieldText, strHint, strObjectValue, false))
+		    			{
+		    				try { objTextField.clear(); } catch (Exception ignored) {}
+		    				focusAndroidTextField(objTextField);
+		    				AdbSlowTextInput.typeSlowly(strAdbPath, strSerial, strObjectValue);
+		    				try { Thread.sleep(400); } catch (Exception ignored) {}
+		    				strFieldText = androidFieldText(objTextField);
+		    				if(AdbSlowTextInput.shouldRetryWithKeyEvents(strFieldText, strHint, strObjectValue, false))
+		    				{
+		    					String strFocused = "";
+		    					try { strFocused = objTextField.getAttribute("focused"); } catch (Exception ignored) {}
+		    					clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androiddriver, "The Textfield (" + strObjectName + ") was not populated on Android " + intAndroidVersion + " (focused=" + strFocused + ", serial=" + strSerial + ")");
+		    				}
+		    			}
 		    		}
 		    		else
 		    		{
-		    			Runtime.getRuntime().exec("/Users/"+strAutomationUser+"/Library/Android/sdk/platform-tools//adb -s "+strDeviceName+" shell input text "+strObjectValue);
+		    			objTextField.click();
+		    			AdbSlowTextInput.typeWithInputText(strAdbPath, strSerial, strObjectValue);
 		    		}
 		    	}
 	    		catch(Exception e){clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androiddriver,"The Textfield (" + strObjectName + ") did not exist-"+e);}
@@ -15923,6 +15979,75 @@ public class CommonANDROID
             { objDictionary.put("strStoredPopulateVariable", strStoreValueAsVariableName + ": " + strObjectValue + "|"); }
             strStoreValueAsVariableName = "";
         }
+	}
+	private String capabilityText(AndroidDriver androiddriver, String strName)
+	{
+		if (androiddriver == null || androiddriver.getCapabilities() == null) { return ""; }
+		Object objValue = androiddriver.getCapabilities().getCapability(strName);
+		if (objValue == null) { objValue = androiddriver.getCapabilities().getCapability("appium:" + strName); }
+		return objValue == null ? "" : objValue.toString();
+	}
+	private int androidMajorVersion(CommonANDROID clsCommonMobile, AndroidDriver androiddriver, String strSerial)
+	{
+		int intAndroidVersion = 0;
+		try
+		{
+			if (strSerial != null && !strSerial.isEmpty())
+			{
+				intAndroidVersion = clsCommonMobile.METER_ADB_GetAndriodVersion(strSerial, "getprop ro.build.version.release");
+			}
+		}
+		catch (Exception e) {}
+		// getprop returns a bare integer. "12.1" throws, and a missed device comes back as the method's fallback 5.
+		if (intAndroidVersion > 0 && intAndroidVersion != 5)
+		{
+			return intAndroidVersion;
+		}
+		int intFromCapability = AdbSlowTextInput.majorVersion(capabilityText(androiddriver, "platformVersion"));
+		if (intFromCapability > 0)
+		{
+			return intFromCapability;
+		}
+		return intAndroidVersion < 0 ? 0 : intAndroidVersion;
+	}
+	private boolean setTextDirectly(AndroidDriver androiddriver, WebElement objTextField, String strObjectValue)
+	{
+		if (!(objTextField instanceof RemoteWebElement))
+		{
+			return false;
+		}
+		try
+		{
+			androiddriver.replaceElementValue((RemoteWebElement) objTextField, strObjectValue);
+			return true;
+		}
+		catch (Exception e)
+		{
+			Reporter.log("replaceElementValue: " + e.getMessage());
+			return false;
+		}
+	}
+	private void focusAndroidTextField(WebElement objTextField)
+	{
+		try { objTextField.click(); } catch (Exception e) {}
+		try { Thread.sleep(500); } catch (Exception e) {}
+		String strFocused = "";
+		try { strFocused = objTextField.getAttribute("focused"); } catch (Exception e) {}
+		if (!"true".equalsIgnoreCase(strFocused))
+		{
+			try { objTextField.click(); } catch (Exception e) {}
+			try { Thread.sleep(500); } catch (Exception e) {}
+		}
+	}
+	private String androidFieldText(WebElement objTextField)
+	{
+		String strText = "";
+		try { strText = objTextField.getAttribute("text"); } catch (Exception e) {}
+		if (strText == null || strText.isEmpty())
+		{
+			try { strText = objTextField.getText(); } catch (Exception e) {}
+		}
+		return strText == null ? "" : strText;
 	}
 	public void PopulateRadioButton(Map<String, String> objDictionary,AndroidDriver androiddriver, String strPageName, String strObjectName, String strObjectValue)
 	{
