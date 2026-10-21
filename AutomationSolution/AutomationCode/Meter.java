@@ -3923,8 +3923,8 @@ public class Meter
 		{
 			//RPSS: Remain Parked Short Session
 			clsMeter.METER_MeterWaitWithMessage(objDictionary,Integer.parseInt(strParkingShortSessionSec), "Remain Parked ("+Integer.parseInt(strParkingShortSessionSec)+") seconds-Spot"+strSpotNumber);
-			try {Thread.sleep(1000);}catch (Exception e) {}
 			clsMeter.METER_ExitSpotAfterRejectedViolation(objDictionary, driver, strSpotNumber, strHostType);
+			clsHttpConnections.WaitForParkingSessionToEnd(objDictionary);
 		}
 	}
 
@@ -4805,10 +4805,14 @@ public class Meter
 		}
 		Reporter.log("Waited ("+intInitialGracePeriod+") seconds for grace period violation");
 		GlobalWait(objDictionary, driver, "{WaitUntilMeterViolationEqualsTrue} NA", 65,strSpotNumber,"Local");
+		Calendar calendar = Calendar.getInstance();
+   		String strTrueUpStartTime = new SimpleDateFormat("HH:mm:ss").format(calendar.getTime());
+   		objDictionary.put("strTrueUpStartTime", strTrueUpStartTime);
+		
 		//Grace Period Violation Time
 //		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd H:mm a");
 //		String strGracePeriodViolationTime = dateFormat.format(new Date());
-		Calendar calendar = Calendar.getInstance();
+		//Calendar calendar = Calendar.getInstance();
 		String strGracePeriodViolationTime = new SimpleDateFormat("HH:mm:ss").format(calendar.getTime());
 		Reporter.log("<font color='Green'>Grace Peroid Violation Time "+strGracePeriodViolationTime+"</font>");
 		objDictionary.put("strGracePeriodViolationTime", strGracePeriodViolationTime);
@@ -13126,7 +13130,10 @@ public class Meter
 	  		strCurrentUIState = clsMeter.METER_GetMeterUIState(objDictionary,null,"1","Local");
 		}
   		strCurrentUIState = clsMeter.METER_GetMeterUIState(objDictionary,null,"1","Local");
-  		if(!strCurrentUIState.equals(strExpectedScreen)){UpdateErrorMessageWithPivotalData(objDictionary,driver,"Unable to add a payent, Meter screen was not at the (SCREEN_MULTI_HOME) - The Unable to add a payment"+strMethodName);}
+  		if(!strCurrentUIState.equals(strExpectedScreen))
+  		{
+  			UpdateErrorMessageWithPivotalData(objDictionary,driver,"Unable to add a payent, Meter screen was not at the (SCREEN_MULTI_HOME) - The Unable to add a payment"+strMethodName);
+  		}
   		if (strFamily.equals("Handicap"))
 		{
 			clsMeter.METER_ExecutePythonScriptAgainstMeter(objDictionary,strLocalHost,"testauto_handicap_session_spot_1.sh");
@@ -13918,36 +13925,64 @@ public class Meter
 		return intMinutesBeforeNextRate;
 	}
 
-
-	public int METER_CalculateRemainingTrueUpTime(Map<String, String> objDictionary, WebDriver driver,String strRemainingTrueUpTimeStart, String strMeterIncrementTime) 
-	{
+	public int METER_CalculateRemainingTrueUpTime(Map<String, String> objDictionary, WebDriver driver, String strRemainingTrueUpTimeStart, String strMeterIncrementTime) {
 	    String strMethodName = new Object(){}.getClass().getEnclosingMethod().getName();
 	    System.out.println(strMethodName);
 	    Reporter.log("<font color='orange'>     " + strMethodName + "</font>");
 	    try {
-	        // Use modern java.time API
 	        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-	        LocalTime startTime = LocalTime.parse(strRemainingTrueUpTimeStart, formatter);
-	        LocalTime now = LocalTime.now();  // or LocalTime.parse(strRemainingTimeStop, formatter)
-	        // Handle midnight crossover properly
+	        LocalTime startTime = LocalTime.parse(strRemainingTrueUpTimeStart.trim(), formatter);
+	        LocalTime now = LocalTime.now();
+	        
 	        Duration durationUsed = Duration.between(startTime, now);
 	        if (durationUsed.isNegative()) {
-	            durationUsed = durationUsed.plusDays(1); // crossed midnight
+	            durationUsed = durationUsed.plusDays(1);
 	        }
-	        long usedMinutes = durationUsed.toMinutes(); // or Math.round if you need rounding
-	        int incrementMinutes = Integer.parseInt(strMeterIncrementTime.trim());
-	        return Math.max(0, incrementMinutes - (int) usedMinutes);
 
+	        // Floor to whole minutes: 5 min 59 sec -> 5
+	        long usedMinutes = Math.floorDiv(durationUsed.getSeconds(), 60);
+
+	        int incrementMinutes = Integer.parseInt(strMeterIncrementTime.trim());
+	        return (int) Math.max(0L, incrementMinutes - usedMinutes);
+	        
 	    } catch (Exception e) {
-	        // Better logging
 	        String errorMsg = "Unable to calculate Remaining TrueUp Time. Start: " + strRemainingTrueUpTimeStart + ", Increment: " + strMeterIncrementTime;
 	        System.err.println(errorMsg);
 	        e.printStackTrace();
-	        // Your existing error reporter
 	        new Meter().UpdateErrorMessageWithPivotalData(objDictionary, driver, errorMsg);
-	        return 0; // or throw a custom exception
+	        return 0;
 	    }
 	}
+
+//	public int METER_CalculateRemainingTrueUpTime(Map<String, String> objDictionary, WebDriver driver,String strRemainingTrueUpTimeStart, String strMeterIncrementTime) 
+//	{
+//	    String strMethodName = new Object(){}.getClass().getEnclosingMethod().getName();
+//	    System.out.println(strMethodName);
+//	    Reporter.log("<font color='orange'>     " + strMethodName + "</font>");
+//	    try {
+//	        // Use modern java.time API
+//	        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+//	        LocalTime startTime = LocalTime.parse(strRemainingTrueUpTimeStart, formatter);
+//	        LocalTime now = LocalTime.now();  // or LocalTime.parse(strRemainingTimeStop, formatter)
+//	        // Handle midnight crossover properly
+//	        Duration durationUsed = Duration.between(startTime, now);
+//	        if (durationUsed.isNegative()) {
+//	            durationUsed = durationUsed.plusDays(1); // crossed midnight
+//	        }
+//	        long usedMinutes = durationUsed.toMinutes(); // or Math.round if you need rounding
+//	        int incrementMinutes = Integer.parseInt(strMeterIncrementTime.trim());
+//	        return Math.max(0, incrementMinutes - (int) usedMinutes);
+//
+//	    } catch (Exception e) {
+//	        // Better logging
+//	        String errorMsg = "Unable to calculate Remaining TrueUp Time. Start: " + strRemainingTrueUpTimeStart + ", Increment: " + strMeterIncrementTime;
+//	        System.err.println(errorMsg);
+//	        e.printStackTrace();
+//	        // Your existing error reporter
+//	        new Meter().UpdateErrorMessageWithPivotalData(objDictionary, driver, errorMsg);
+//	        return 0; // or throw a custom exception
+//	    }
+//	}
 	public int METER_CalculateUsedTime(Map<String, String> objDictionary, WebDriver driver, String strUsedTimeStart)
 	{
 		Meter clsMeter = new Meter();

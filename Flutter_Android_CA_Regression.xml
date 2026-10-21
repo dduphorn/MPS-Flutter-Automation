@@ -4,10 +4,18 @@
 	    <parameter name="strStopAndStartAppiumServer" value="True"></parameter>
 	    <parameter name="strAppiumPort" value="5555"></parameter>
 	    <parameter name="strDeviceAppiumPort" value="4723"></parameter>
-     	<parameter name="strMobileAPK" value="SentryMobile-Staging-10.0.500.apk"></parameter>
+	    <!--QA Environment-->
+	    <parameter name="strMobileAPK" value="SentryMobile-Quality-10.0.500.apk"></parameter>
+	    <parameter name="strDeviceId" value="9401-9402"></parameter>
+<!--      	<parameter name="strDeviceId" value="5591-5592"></parameter> -->
+     	<!--SG Environment-->
+<!--      	<parameter name="strMobileAPK" value="SentryMobile-Staging-10.0.500.apk"></parameter> -->
+<!--      	<parameter name="strDeviceId" value="9010-9011"></parameter> -->
+<!--      	<parameter name="strDeviceId" value="9096-9097"></parameter> -->
+     	<!--Android Device ID-->
        	<parameter name="strAndroidUdid" value="R5CT71MQ2MM"></parameter>
-       	<parameter name="strDeviceId" value="9010-9011"></parameter>
-	  	<parameter name="strRemotePath" value="http://localhost:4723"></parameter>
+<!--       	<parameter name="strAndroidUdid" value="R5CT71MQ5YT"></parameter> -->
+       	<parameter name="strRemotePath" value="http://localhost:4723"></parameter>
 	   	<classes>
 	   	<class name="AutomationCode.Android_TestCases_Flutter">
 		   		<methods>
@@ -27,7 +35,6 @@
 <!--  					<include name="A2017F_CreateAndDeleteUser_AttemptLoginWithDeletedUser_Flutter"></include> -->
 <!-- 					<include name="A2018F_RegisterUser_WIFI_Enabled"></include> -->
 <!-- 					<include name="A2019F_RegisterUser_WIFI_Disabled"></include> -->
-<!--  					<include name="A2021F_FTFP0_PS1_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
 <!--  					<include name="A2021F_FTFP0_PS1_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
 <!--  					<include name="A2021F_FTFP0_PS1_MP1_ES1_VPSH_VICAE_VIAC_WIFI_Disabled"></include> -->
 <!--  					<include name="A2022F_VM_FTFP0_PS1_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
@@ -204,7 +211,7 @@
 <!-- 		   			<include name="A5215F_LowStorage_DeviceStorageLow"></include> -->
 <!-- 		   			<include name="A5216F_BiometricPrompt_CancelFallback"></include> -->
 <!-- 		   			<include name="A5217F_HttpProxyBlackhole_ApiTimeout"></include> -->
-<!-- 		   			<include name="A5218F_PrivateDnsInvalid_ApiFailure"></include> -->
+		   			<include name="A5218F_PrivateDnsInvalid_ApiFailure"></include>
 <!-- 		   			<include name="A5219F_HttpProxy_ParkThenRestoreRetry"></include> -->
 
 
