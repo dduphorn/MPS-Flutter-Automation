@@ -73,6 +73,87 @@ import java.time.format.DateTimeFormatter;
 
 public class Meter
 {
+	// JSch's timed connect opens one background socket and keeps that failure. Open a new socket for each attempt before the SSH handshake.
+	void connectMeterSession(Session session) throws com.jcraft.jsch.JSchException
+	{
+		session.setSocketFactory(new MeterSocketFactory());
+		session.connect(8000);
+	}
+
+	static final class MeterSocketFactory implements com.jcraft.jsch.SocketFactory
+	{
+		public java.net.Socket createSocket(String host, int port) throws java.io.IOException
+		{
+			java.io.IOException lastException = null;
+			for (int intAttempt = 1; intAttempt <= 5; intAttempt++)
+			{
+				java.net.Socket socket = new java.net.Socket();
+				try
+				{
+					socket.connect(new java.net.InetSocketAddress(host, port), 2000);
+					return socket;
+				}
+				catch (java.io.IOException e)
+				{
+					lastException = e;
+					try
+					{
+						socket.close();
+					}
+					catch (java.io.IOException ignored)
+					{
+					}
+					if (!shouldRetryMeterConnect(e) || intAttempt == 5)
+					{
+						throw e;
+					}
+					try
+					{
+						Thread.sleep(400);
+					}
+					catch (InterruptedException interruptedException)
+					{
+						Thread.currentThread().interrupt();
+						throw e;
+					}
+				}
+			}
+			throw lastException;
+		}
+
+		public java.io.InputStream getInputStream(java.net.Socket socket) throws java.io.IOException
+		{
+			return socket.getInputStream();
+		}
+
+		public java.io.OutputStream getOutputStream(java.net.Socket socket) throws java.io.IOException
+		{
+			return socket.getOutputStream();
+		}
+	}
+
+	static boolean shouldRetryMeterConnect(Throwable exception)
+	{
+		Throwable current = exception;
+		while (current != null)
+		{
+			if (current instanceof java.net.NoRouteToHostException
+				|| current instanceof java.net.ConnectException
+				|| current instanceof java.net.SocketTimeoutException
+				|| current instanceof java.net.UnknownHostException)
+			{
+				return true;
+			}
+			String message = current.getMessage();
+			if (message != null && (message.contains("No route to host") || message.contains("Connection timed out") || message.contains("Connection refused")))
+			{
+				return true;
+			}
+			current = current.getCause();
+		}
+		return false;
+	}
+
 	public String strActualWaitType = "";
 	public String strActualWaitValue = "";
 	public ThreadLocal<RemoteWebDriver> threadDriver = null;
@@ -2781,7 +2862,7 @@ public class Meter
 		    		Session session = jsch.getSession(strMeterUser, strHost, port);
 		    		session.setPassword(strPassword);
 			        session.setConfig("StrictHostKeyChecking", "no");
-			        session.connect();
+			        connectMeterSession(session);
 			        Reporter.log(strHostType+" SessionId: "+session.toString().replace("com.jcraft.jsch.Session@", ""));
 		    		return session;
 			    }catch(Exception e)
@@ -3307,7 +3388,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, strHost, port);
 		    session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("strings /var/lib/sentry/repo/main/rates.pdo");
 	        channel.setInputStream(null);
@@ -3376,7 +3457,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 		    session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("strings /var/lib/sentry/repo/main/rates.pdo");
 	        channel.setInputStream(null);
@@ -3525,7 +3606,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 		    session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/testauto_dump_sessions.py");
 	        channel.setInputStream(null);
@@ -3638,7 +3719,7 @@ public class Meter
 	        session = jsch.getSession(strMeterUser, host, port);
 	        session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 
 	        channel = (ChannelExec) session.openChannel("exec");
 	        // Command to check if the Python script exists and then run it
@@ -3740,7 +3821,7 @@ public class Meter
 	        session = jsch.getSession(strMeterUser, host, port);
 	        session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 
 	        channel = (ChannelExec) session.openChannel("exec");
 	        // Command to check if the Python script exists and then run it
@@ -4316,7 +4397,7 @@ public class Meter
 	    		Session session = jsch.getSession(strMeterUser, strHost, port);
 		    	session.setPassword(strPassword);
 		    	session.setConfig("StrictHostKeyChecking", "no");
-		    	session.connect();
+		    	connectMeterSession(session);
 		        Channel channel=session.openChannel("exec");
 		        SimpleDateFormat dateFormatGmt = new SimpleDateFormat("HH:mm:ss.SSS");dateFormatGmt.setTimeZone(TimeZone.getTimeZone("GMT"));
 				//LOG BEGINNING TIME EXECUTED
@@ -4476,7 +4557,7 @@ public class Meter
 	    		Session session = jsch.getSession(strMeterUser, strHost, port);
 		    	session.setPassword(strPassword);
 		    	session.setConfig("StrictHostKeyChecking", "no");
-		    	session.connect();
+		    	connectMeterSession(session);
 		        Channel channel=session.openChannel("exec");
 		        SimpleDateFormat dateFormatGmt = new SimpleDateFormat("HH:mm:ss.SSS");
 				dateFormatGmt.setTimeZone(TimeZone.getTimeZone("GMT"));
@@ -4528,7 +4609,7 @@ public class Meter
 //	    	Session session = jsch.getSession(strHostType1, strHost1, 22);
 //	    	session.setPassword(strPassword);
 //	        session.setConfig("StrictHostKeyChecking", "no");
-//	        session.connect();
+//	        connectMeterSession(session);
 //	        Channel channel=session.openChannel("exec");
 //	        ((ChannelExec)channel).setCommand("/usr/local/bin/settings_get_settings.py");
 //	        channel.setInputStream(null);
@@ -4804,7 +4885,8 @@ public class Meter
 			objDictionary.put("strRemainingTimeBeforeNoParkingAtViolation",Integer.toString(intRemainingTimeBeforeNoParkingAtViolation));
 		}
 		Reporter.log("Waited ("+intInitialGracePeriod+") seconds for grace period violation");
-		GlobalWait(objDictionary, driver, "{WaitUntilMeterViolationEqualsTrue} NA", 65,strSpotNumber,"Local");
+		//GlobalWait(objDictionary, driver, "{WaitUntilMeterViolationEqualsTrue} NA", 65,strSpotNumber,"Local");
+		GlobalWait(objDictionary, driver, "{WaitUntilMeterViolationEqualsTrue} NA", 80,strSpotNumber,"Local");
 		//Grace Period Violation Time
 //		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd H:mm a");
 //		String strGracePeriodViolationTime = dateFormat.format(new Date());
@@ -5059,7 +5141,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 	    	session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("strings /var/lib/sentry/repo/main/rates.pdo");
 	        channel.setInputStream(null);
@@ -5123,7 +5205,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 	    	session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("strings /var/lib/sentry/repo/main/rates.pdo");
 	        channel.setInputStream(null);
@@ -5694,7 +5776,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 		    session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/testauto_dump_sessions.py");
 	        channel.setInputStream(null);
@@ -5803,7 +5885,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 	    	session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/coin_percent_full.py");
 	        channel.setInputStream(null);
@@ -6198,7 +6280,7 @@ public class Meter
 			    	Session session = jsch.getSession(user, host, port);
 			    	session.setPassword(strPassword);
 			        session.setConfig("StrictHostKeyChecking", "no");
-			        session.connect();
+			        connectMeterSession(session);
 			        Channel channel=session.openChannel("exec");
 			        ((ChannelExec)channel).setCommand("dpkg -l silverbullet | tail -1");
 			        channel.setInputStream(null);
@@ -6292,7 +6374,7 @@ public class Meter
 			    	Session session = jsch.getSession(strMeterUser, strHost, port);
 			    	session.setPassword(strPassword);
 			        session.setConfig("StrictHostKeyChecking", "no");
-			        session.connect();
+			        connectMeterSession(session);
 			        Channel channel=session.openChannel("exec");
 			        ((ChannelExec)channel).setCommand("cat /etc/os_release");
 			        channel.setInputStream(null);
@@ -6401,7 +6483,7 @@ public class Meter
 			    	Session session = jsch.getSession(strMeterUser, strHost, port);
 			    	session.setPassword(strPassword);
 			        session.setConfig("StrictHostKeyChecking", "no");
-			        session.connect();
+			        connectMeterSession(session);
 			        Channel channel=session.openChannel("exec");
 			        ((ChannelExec)channel).setCommand("cat /etc/os_release");
 			        channel.setInputStream(null);
@@ -6511,7 +6593,7 @@ public class Meter
 			    	Session session = jsch.getSession(strMeterUser, strHost, port);
 			    	session.setPassword(strPassword);
 			        session.setConfig("StrictHostKeyChecking", "no");
-			        session.connect();
+			        connectMeterSession(session);
 			        Channel channel=session.openChannel("exec");
 			        ((ChannelExec)channel).setCommand("cat /etc/os_release");
 			        channel.setInputStream(null);
@@ -6689,7 +6771,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 		    session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/testauto_dump_sessions.py");
 	        channel.setInputStream(null);
@@ -6801,7 +6883,7 @@ public class Meter
     		Session session = jsch.getSession(strMeterUser, strHost, port);
 		    session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/testauto_dump_sessions.py");
 	        channel.setInputStream(null);
@@ -6883,7 +6965,7 @@ public class Meter
 		    	Session session = jsch.getSession(strMeterUser, strHost, port);
 			    session.setPassword(strPassword);
 		        session.setConfig("StrictHostKeyChecking", "no");
-		        session.connect();
+		        connectMeterSession(session);
 		        Channel channel=session.openChannel("exec");
 		        ((ChannelExec)channel).setCommand("/usr/local/bin/testauto_dump_sessions.py");
 		        channel.setInputStream(null);
@@ -6964,7 +7046,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, strHost, port);
 		    session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/testauto_dump_sessions.py");
 	        channel.setInputStream(null);
@@ -7121,7 +7203,7 @@ public class Meter
 		    	Session session = jsch.getSession(strMeterUser, strHost, port);
 		    	session.setPassword(strPassword);
 		        session.setConfig("StrictHostKeyChecking", "no");
-		        session.connect();
+		        connectMeterSession(session);
 		        Channel channel=session.openChannel("exec");
 		        ((ChannelExec)channel).setCommand("/usr/local/bin/settings_get_setting.py SYS_NUMBER_OF_SPOTS");
 		        channel.setInputStream(null);
@@ -7206,7 +7288,7 @@ public class Meter
 		    	Session session = jsch.getSession(strMeterUser, strHost, port);
 		    	session.setPassword(strPassword);
 		        session.setConfig("StrictHostKeyChecking", "no");
-		        session.connect();
+		        connectMeterSession(session);
 		        Channel channel=session.openChannel("exec");
 		        ((ChannelExec)channel).setCommand("/usr/local/bin/settings_get_setting.py PARKING_TRUEUP_ENABLED");
 		        channel.setInputStream(null);
@@ -7290,7 +7372,7 @@ public class Meter
 		    	Session session = jsch.getSession(strMeterUser, strHost, port);
 		    	session.setPassword(strPassword);
 		        session.setConfig("StrictHostKeyChecking", "no");
-		        session.connect();
+		        connectMeterSession(session);
 		        Channel channel=session.openChannel("exec");
 		        ((ChannelExec)channel).setCommand("/usr/local/bin/settings_get_setting.py PARKING_RATE_DEFAULT_MINIMUM_COST");
 		        channel.setInputStream(null);
@@ -7382,7 +7464,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 		    session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/settings_get_setting.py PARKING_FREE_TIME_ON_FIRST_PAYMENT");
 	        channel.setInputStream(null);
@@ -7436,7 +7518,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 		    session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/settings_get_setting.py "+strMeterSetting);
 	        channel.setInputStream(null);
@@ -7530,7 +7612,7 @@ public class Meter
 		    	Session session = jsch.getSession(strMeterUser, strHost, 22);
 		    	session.setPassword(strPassword);
 		    	session.setConfig("StrictHostKeyChecking", "no");
-		        session.connect();
+		        connectMeterSession(session);
 		        Channel channel=session.openChannel("exec");
 		        ((ChannelExec)channel).setCommand("/usr/local/bin/testauto_dump_sessions.py");
 		        channel.setInputStream(null);
@@ -7664,7 +7746,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, strHost, 22);
 	    	session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/testauto_dump_sessions.py");
 	        channel.setInputStream(null);
@@ -7711,7 +7793,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 		    session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/testauto_dump_sessions.py");
 	        channel.setInputStream(null);
@@ -7780,7 +7862,7 @@ public class Meter
 		    	Session session = jsch.getSession(strMeterUser, host, port);
 		    	session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/settings_get_setting.py PARKING_IMAGE_DURATION_ENTRANCE");
 	        channel.setInputStream(null);
@@ -7829,7 +7911,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 	    	session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/settings_get_setting.py PARKING_IMAGE_LOOK_AHEAD_ENTRANCE");
 	        channel.setInputStream(null);
@@ -7878,7 +7960,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 		    session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/settings_get_setting.py PARKING_IMAGE_DURATION_EXIT");
 	        channel.setInputStream(null);
@@ -7927,7 +8009,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 		    session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/settings_get_setting.py PARKING_IMAGE_COUNT_VIOLATION");
 	        channel.setInputStream(null);
@@ -7979,7 +8061,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 		    session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/settings_get_setting.py SYS_DEBUG_MASK");
 	        channel.setInputStream(null);
@@ -8028,7 +8110,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 	    	session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/settings_get_setting.py SYS_MAC_ADDRESS");
 	        channel.setInputStream(null);
@@ -8119,7 +8201,7 @@ public class Meter
 		    	Session session = jsch.getSession(strMeterUser, strHost, port);
 		    	session.setPassword(strPassword);
 		        session.setConfig("StrictHostKeyChecking", "no");
-		        session.connect();
+		        connectMeterSession(session);
 		        Channel channel=session.openChannel("exec");
 		        ((ChannelExec)channel).setCommand("/usr/local/bin/settings_get_setting.py SYS_FORCE_MULTI");
 		        channel.setInputStream(null);
@@ -8251,7 +8333,7 @@ public class Meter
 			    	Session session = jsch.getSession(strMeterUser, host, port);
 			    	session.setPassword(strPassword);
 			        session.setConfig("StrictHostKeyChecking", "no");
-			        session.connect();
+			        connectMeterSession(session);
 			        Channel channel=session.openChannel("exec");
 			        ((ChannelExec)channel).setCommand("md5sum /opt/mps/sentry.egg");
 			        channel.setInputStream(null);
@@ -8358,7 +8440,7 @@ public class Meter
 			       	Session session = jsch.getSession(strMeterUser, strHost, port);
 			       	session.setPassword(strPassword);
 			        session.setConfig("StrictHostKeyChecking", "no");
-			        session.connect();
+			        connectMeterSession(session);
 			        Channel channel=session.openChannel("exec");
 			        ((ChannelExec)channel).setCommand("/usr/local/bin/sys_get_sw_version.py");
 			        channel.setInputStream(null);
@@ -8415,7 +8497,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 	    	session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/parking_get_rate_blk_ids.py");
 	        channel.setInputStream(null);
@@ -8515,7 +8597,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 		    session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/testauto_dump_sessions.py");
 	        channel.setInputStream(null);
@@ -8616,7 +8698,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 		    session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/testauto_dump_sessions.py");
 	        channel.setInputStream(null);
@@ -8677,7 +8759,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 		    session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/testauto_dump_sessions.py");
 	        channel.setInputStream(null);
@@ -8733,7 +8815,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 		    session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/testauto_dump_sessions.py");
 	        channel.setInputStream(null);
@@ -8793,7 +8875,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, strHost, port);
 		    session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/testauto_dump_sessions.py");
 	        channel.setInputStream(null);
@@ -8874,7 +8956,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 	    	session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/testauto_dump_sessions.py");
 	        channel.setInputStream(null);
@@ -8955,7 +9037,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 	    	session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/testauto_dump_sessions.py");
 	        channel.setInputStream(null);
@@ -9020,7 +9102,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 		    session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/testauto_dump_sessions.py");
 	        channel.setInputStream(null);
@@ -9085,7 +9167,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 		    session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/testauto_dump_sessions.py");
 	        channel.setInputStream(null);
@@ -9150,7 +9232,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 	    	session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/testauto_dump_sessions.py");
 	        channel.setInputStream(null);
@@ -9259,7 +9341,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 		    session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/testauto_dump_sessions.py");
 	        channel.setInputStream(null);
@@ -9553,7 +9635,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 	    	session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/settings_get_setting.py PARKING_INIT_GRACE_PERIOD");
 	        channel.setInputStream(null);
@@ -9601,7 +9683,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 	    	session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/settings_get_setting.py PARKING_ACCEPT_COIN_NO_SPOT_SCREEN_TIMEOUT");
 	        channel.setInputStream(null);
@@ -9649,7 +9731,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 	    	session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/settings_get_setting.py PARKING_VIOLATION_GRACE_PERIOD");
 	        channel.setInputStream(null);
@@ -9698,7 +9780,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 	    	session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/settings_get_setting.py PARKING_UNLOCK_TIME");
 	        channel.setInputStream(null);
@@ -9746,7 +9828,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 		    session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/settings_get_setting.py PARKING_MINS_ACCEPT_FREE_BEFORE_RATE_PAYMENT");
 	        channel.setInputStream(null);
@@ -9794,7 +9876,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 		    session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/settings_get_setting.py PARKING_NOFINE_SUPPORT");
 	        channel.setInputStream(null);
@@ -9890,7 +9972,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 	    	session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/testauto_dump_sessions.py");
 	        channel.setInputStream(null);
@@ -9949,7 +10031,7 @@ public class Meter
 		    	Session session = jsch.getSession(strMeterUser, strHost, port);
 		    	session.setPassword(strPassword);
 		        session.setConfig("StrictHostKeyChecking", "no");
-		        session.connect();
+		        connectMeterSession(session);
 		        if(strMeterUser.equals("seco"))
 		        {
 		        	Channel channel=session.openChannel("exec");
@@ -9984,7 +10066,7 @@ public class Meter
 			    	Session session = jsch.getSession(strRemoteUser, strRemoteHost, port);
 			    	session.setPassword(strPassword);
 			        session.setConfig("StrictHostKeyChecking", "no");
-			        session.connect();
+			        connectMeterSession(session);
 			        if(strRemoteUser.equals("seco"))
 			        {
 				        Channel channel=session.openChannel("exec");
@@ -10028,7 +10110,7 @@ public class Meter
 		    	Session session = jsch.getSession(strMeterUser, strLocalHost, port);
 		    	session.setPassword(strPassword);
 		        session.setConfig("StrictHostKeyChecking", "no");
-		        session.connect();
+		        connectMeterSession(session);
 		        Channel channel=session.openChannel("exec");
 		        ((ChannelExec)channel).setCommand(strCommand);
 		        channel.connect();
@@ -10051,7 +10133,7 @@ public class Meter
 				    	Session session = jsch.getSession(strRemoteUser, strRemoteHost, port);
 				    	session.setPassword(strPassword);
 				        session.setConfig("StrictHostKeyChecking", "no");
-				        session.connect();
+				        connectMeterSession(session);
 				        Channel channel=session.openChannel("exec");
 				        ((ChannelExec)channel).setCommand(strCommand);
 				        channel.connect();
@@ -10081,7 +10163,7 @@ public class Meter
 				Session session = jsch.getSession(strMeterUser, host, port);
 				session.setPassword(strPassword);
 		        session.setConfig("StrictHostKeyChecking", "no");
-		        session.connect();
+		        connectMeterSession(session);
 		        Channel channel=session.openChannel("exec");
 		        System.out.println("/usr/bin/nohup tail -f /var/log/Xsession.log > /tmp/"+strTraceLogName+".txt &");
 		        ((ChannelExec)channel).setCommand("/usr/bin/nohup tail -f /var/log/Xsession.log > /tmp/"+strTraceLogName+".txt &");
@@ -10099,7 +10181,7 @@ public class Meter
 				Session session = jsch.getSession(strMeterUser, host, port);
 				session.setPassword(strPassword);
 		        session.setConfig("StrictHostKeyChecking", "no");
-		        session.connect();
+		        connectMeterSession(session);
 		        Channel channel=session.openChannel("exec");
 		        System.out.println("/usr/bin/journalctl -t sentry.service -f -o cat > /tmp/\"+strTraceLogName+\".txt &");
 		        ((ChannelExec)channel).setCommand("/bin/journalctl -t sentry.service -f -o cat > /tmp/"+strTraceLogName+".txt &");
@@ -10361,7 +10443,7 @@ public class Meter
 			Session session = jsch.getSession(strMeterUser, strLocalHost, port);
 			session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("ps -ef | grep '/bin/journalctl -t sentry.service -f -o cat'| grep -v grep | awk '{print $2}' | xargs kill -9");
 	        channel.connect();
@@ -10376,7 +10458,7 @@ public class Meter
 			Session session = jsch.getSession(strMeterUser, strRemoteHost, port);
 			session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("ps -ef | grep '/bin/journalctl -t sentry.service -f -o cat'| grep -v grep | awk '{print $2}' | xargs kill -9");
 	        channel.connect();
@@ -14180,7 +14262,7 @@ public class Meter
 			Session session = jsch.getSession(strMeterUser, strHost, port);
 			session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("free");
 	        channel.setInputStream(null);
@@ -14310,7 +14392,7 @@ public class Meter
 			Session session = jsch.getSession(strMeterUser, strHost, port);
 			session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("uptime");
 	        channel.setInputStream(null);
@@ -14358,7 +14440,7 @@ public class Meter
 			Session session = jsch.getSession(strMeterUser, strHost, port);
 			session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("top -n1");
 	        channel.setInputStream(null);
@@ -14399,7 +14481,7 @@ public class Meter
 				Session session = jsch.getSession(strMeterUser, strHost, port);
 				session.setPassword(strPassword);
 		        session.setConfig("StrictHostKeyChecking", "no");
-		        session.connect();
+		        connectMeterSession(session);
 		        Channel channel=session.openChannel("exec");
 		        ((ChannelExec)channel).setCommand("ps | grep \"tail -f /var/lib/sentry/messages\" | grep -v grep | awk '{print $1}' | xargs kill -9");
 		        channel.connect();
@@ -14425,7 +14507,7 @@ public class Meter
 		    	Session session = jsch.getSession(strMeterUser, strHost, port);
 		    	session.setPassword(strPassword);
 		        session.setConfig("StrictHostKeyChecking", "no");
-		        session.connect();
+		        connectMeterSession(session);
 		        Channel channel=session.openChannel("exec");
 		        ((ChannelExec)channel).setCommand("/usr/bin/nohup tail -f /var/lib/sentry/messages > /tmp/MessageTracelog.txt &");
 		        channel.connect();
@@ -14525,7 +14607,7 @@ public class Meter
 		    	Session session = jsch.getSession(strMeterUser, host, port);
 		    	session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand(strMeterLogCommand);
 	        channel.setInputStream(null);
@@ -14608,7 +14690,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 	    	session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand(strMeterLogCommand);
 	        channel.setInputStream(null);
@@ -14731,7 +14813,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 		    session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/testauto_dump_reservations.py");
 	        channel.setInputStream(null);
@@ -14771,7 +14853,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 		    session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/testauto_dump_reservations.py");
 	        channel.setInputStream(null);
@@ -14811,7 +14893,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 		    session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/testauto_dump_reservations.py");
 	        channel.setInputStream(null);
@@ -14891,7 +14973,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, strHost, port);
 	    	session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/testauto_dump_sessions.py");
 	        channel.setInputStream(null);
@@ -14992,7 +15074,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, strHost, port);
 	    	session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/testauto_dump_sessions.py");
 	        channel.setInputStream(null);
@@ -15093,7 +15175,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, strHost, port);
 	    	session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/testauto_dump_sessions.py");
 	        channel.setInputStream(null);
@@ -15150,7 +15232,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 	    	session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/testauto_dump_sessions.py");
 	        channel.setInputStream(null);
@@ -15195,7 +15277,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 	    	session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/testauto_dump_sessions.py");
 	        channel.setInputStream(null);
@@ -15233,7 +15315,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 	    	session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/testauto_dump_sessions.py");
 	        channel.setInputStream(null);
@@ -15276,7 +15358,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 	    	session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/testauto_dump_sessions.py");
 	        channel.setInputStream(null);
@@ -15329,7 +15411,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 	    	session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("strings /var/lib/sentry/repo/main/rates.pdo");
 	        channel.setInputStream(null);
@@ -15993,7 +16075,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 	    	session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("/usr/local/bin/testauto_dump_sessions.py");
 	        channel.setInputStream(null);
@@ -16162,7 +16244,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, strHost, port);
 	    	session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        //Run this on meter to see number of "global_pay_rates.pdo | wc"
 	        ((ChannelExec)channel).setCommand("strings /var/lib/sentry/repo/main/global_pay_rates.pdo");
@@ -16243,7 +16325,7 @@ public class Meter
 	        Session session = jsch.getSession(strMeterUser, strHost, port);
 	        session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 
 	        Channel channel = session.openChannel("exec");
 	        ((ChannelExec) channel).setCommand("strings /var/lib/sentry/repo/main/rates.pdo");
@@ -16345,7 +16427,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, strHost, port);
 		    session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("strings /var/lib/sentry/repo/main/rates.pdo");
 	        channel.setInputStream(null);
@@ -16390,7 +16472,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 	    	session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("strings /var/lib/sentry/repo/main/rates.pdo");
 	        channel.setInputStream(null);
@@ -16430,7 +16512,7 @@ public class Meter
 	    	Session session = jsch.getSession(strMeterUser, host, port);
 	    	session.setPassword(strPassword);
 	        session.setConfig("StrictHostKeyChecking", "no");
-	        session.connect();
+	        connectMeterSession(session);
 	        Channel channel=session.openChannel("exec");
 	        ((ChannelExec)channel).setCommand("strings /var/lib/sentry/repo/main/rates.pdo");
 	        channel.setInputStream(null);

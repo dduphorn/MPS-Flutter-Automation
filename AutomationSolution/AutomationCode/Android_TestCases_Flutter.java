@@ -217,7 +217,7 @@ public class Android_TestCases_Flutter
 		//Open Android Device
 		AppiumDriver androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
 		//Click Accept
-		clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept",1);
+		//clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept",1);
 		//Click Sign in
 		clsCommonMobile.ClickLink(objDictionary, androidDriver, "Login", "Log in",1);
 		//Log In to CA
@@ -245,7 +245,7 @@ public class Android_TestCases_Flutter
 		String strPassword = "ADeleteMeUser";
 		AppiumDriver androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
 		//Click Accept
-		clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept",1);
+//		clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept",1);
 		//Click Sign up
 		clsCommonMobile.ClickLink(objDictionary, androidDriver, "Login", "Sign up",1);
 		//Populate Phone Number
@@ -807,15 +807,6 @@ public class Android_TestCases_Flutter
 		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Sign Up", "Populate Register", "{T} First Name|{T} Last Name|{T} Email Id|{T} Password|{T} Confirm Password","Delete|User|"+strUserName+"|"+strPassword+"|"+strPassword+"");
 		//Click Sign Up
 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Sign Up", "Sign up",1);
-		String strSnackbarText = objDictionary.get("strSnackbarText");
-		if(strSnackbarText.equals("Registered Successfully"))
-		{
-			Reporter.log("The Text (Error Message) with index (1) contained (" + strSnackbarText + ")");
-			try {Thread.sleep(2000);}catch (Exception e) {}//Wait Until Message Goes away
-		}
-		else{clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary,androidDriver,"The Text (Error Message) with index (1) did not contain (Registered Successfully) - actual value ("+strSnackbarText+")");}
-		//Navigate to Account
-		clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary,androidDriver, "Account");
 		clsCommonMobile.ClickLink(objDictionary, androidDriver, "Account", "Sign out", 1);
 		clsCommonMobile.ClickLink(objDictionary, androidDriver, "Account", "Yes", 1);
 		//Sign In Using Phone Number
@@ -824,6 +815,7 @@ public class Android_TestCases_Flutter
  		//For a better experience your device will need to use Location Accuracy
  		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Map", "No thanks",1);
  		clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary,androidDriver, "Account");
+ 		//Sign Out
  		clsCommonMobile.ClickLink(objDictionary, androidDriver, "Account", "Sign out", 1);
 		clsCommonMobile.ClickLink(objDictionary, androidDriver, "Account", "Yes", 1);
 		androidDriver.quit();

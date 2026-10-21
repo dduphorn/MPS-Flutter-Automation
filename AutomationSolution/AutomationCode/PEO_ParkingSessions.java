@@ -2221,7 +2221,7 @@ public class PEO_ParkingSessions
   		try {Thread.sleep(1000);} catch (Exception e) {}
   		List<WebElement> images = driver.findElements(By.xpath("//div[contains(@class,'jcarousel-navigation')]//ul/li/img"));
   		int intActualNumberOfImages = images.size();
-  		if(intActualNumberOfImages == 7)
+  		if(intActualNumberOfImages == 8)
       	{Reporter.log(intActualNumberOfImages+" Violation Images Correctly Appeared in the Parking Session");}
       	else
       	{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The Number of Violation Images were incorrect expected "+intActualNumberOfImages+" Actual "+intActualNumberOfImages,"Local");}
@@ -2264,4 +2264,126 @@ public class PEO_ParkingSessions
 	  	}
       	driver.quit();
   	}
+	//Dual PEO Test Cases
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_P4050F_MPEO_FTFP0_CGPV1_VVEOBD_AV_PEO1_LI_CAV_VVR_PEO2_CV_IT_LO_ES1_NTVH_VPSH(Map<String, String> objDictionary, String strViolationId)
+  	{
+  		CommonWeb clsCommonWeb = new CommonWeb();
+  		Meter clsMeter = new Meter();
+  		//Dictionary Variables
+	  	String strBrowser = objDictionary.get("strBrowser");
+      	String strRemotePath = objDictionary.get("strRemotePath");
+      	String strSpotNumber = objDictionary.get("strSpotNumber");
+      	//NTPS: Navigate To Parking Session
+	  	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath, objDictionary);
+	  	WebDriver driver = getDriver();
+	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
+	  	clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
+  		try {Thread.sleep(1000);} catch (Exception e) {}
+  		List<WebElement> images = driver.findElements(By.xpath("//div[contains(@class,'jcarousel-navigation')]//ul/li/img"));
+  		int intActualNumberOfImages = images.size();
+  		if(intActualNumberOfImages == 8)
+      	{Reporter.log(intActualNumberOfImages+" Violation Images Correctly Appeared in the Parking Session");}
+      	else
+      	{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The Number of Violation Images were incorrect expected "+intActualNumberOfImages+" Actual "+intActualNumberOfImages,"Local");}
+      	// VIAC: Validate Images Appear Correctly
+  		clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
+  		Actions actions = new Actions(driver);
+  	    actions.sendKeys(Keys.ESCAPE).build().perform();
+  	    try{Thread.sleep(1000);}catch (Exception e) {}
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation"+strViolationId);
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "License Plate Changed");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Approved "+strViolationId);
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "To Verify");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Claimed "+strViolationId);
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Verified");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Generating Ticket "+strViolationId);
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "Ticket Generated "+strViolationId);
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","3", "CellValue", "Notified "+strViolationId);
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "11","3", "CellValue", "Exited");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "12","0", "Row Does Not Exist", "");
+  		String strValidateImageFlag = objDictionary.get("strValidateImageFlag");if(strValidateImageFlag == null){strValidateImageFlag = "True";}
+  		if(strValidateImageFlag.equals("True"))
+	  	{
+	  		//Wait For Images to Load
+	  		clsMeter.METER_MeterWaitWithMessage(objDictionary,15, "Waiting for 15 seconds for Images to load to Sentry Link-Spot"+strSpotNumber);
+	 		driver.navigate().refresh();
+			//Click Image Link
+	      	clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
+	      	try {Thread.sleep(1000);}catch (Exception e) {}
+	      	//VICAE: Validate Image Count After Exit
+	      	String strParkingImageDurationEntrance = clsMeter.METER_GetPARKING_IMAGE_DURATION_ENTRANCE(objDictionary, null);
+	      	String strParkingImageLookAheadEntrance = clsMeter.METER_GetPARKING_IMAGE_LOOK_AHEAD_ENTRANCE(objDictionary, null);
+	      	String strParkingImageDurationExit  = clsMeter.METER_GetPARKING_IMAGE_DURATION_EXIT(objDictionary, null);
+	      	int intTotalImageSeconds = Integer.parseInt(strParkingImageDurationEntrance) + Integer.parseInt(strParkingImageLookAheadEntrance) + Integer.parseInt(strParkingImageDurationExit);
+	      	clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary,driver,intTotalImageSeconds,1,"False");
+	      	//VIAC: Validate Images Appear Correctly
+	      	clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
+	  	}
+      	driver.quit();
+  	}
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_P4051F_MPEO_FTFP0_CGPV1_VVEOBD_AV_PEO1_CV_PEO2_VVR_SV_LSTE_VVE_VVEOBD_PEO2_CV_SV_USV_IT_LO_ES1_NTVH_VPSH(Map<String, String> objDictionary, String strViolationId)
+  	{
+  		CommonWeb clsCommonWeb = new CommonWeb();
+  		Meter clsMeter = new Meter();
+  		//Dictionary Variables
+	  	String strBrowser = objDictionary.get("strBrowser");
+      	String strRemotePath = objDictionary.get("strRemotePath");
+      	String strSpotNumber = objDictionary.get("strSpotNumber");
+      	//NTPS: Navigate To Parking Session
+	  	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath, objDictionary);
+	  	WebDriver driver = getDriver();
+	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
+	  	clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
+  		try {Thread.sleep(1000);} catch (Exception e) {}
+  		List<WebElement> images = driver.findElements(By.xpath("//div[contains(@class,'jcarousel-navigation')]//ul/li/img"));
+  		int intActualNumberOfImages = images.size();
+  		if(intActualNumberOfImages == 8)
+      	{Reporter.log(intActualNumberOfImages+" Violation Images Correctly Appeared in the Parking Session");}
+      	else
+      	{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The Number of Violation Images were incorrect expected "+intActualNumberOfImages+" Actual "+intActualNumberOfImages,"Local");}
+      	// VIAC: Validate Images Appear Correctly
+  		clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
+  		Actions actions = new Actions(driver);
+  	    actions.sendKeys(Keys.ESCAPE).build().perform();
+  	    try{Thread.sleep(1000);}catch (Exception e) {}
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation"+strViolationId);
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "License Plate Changed");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Approved "+strViolationId);
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "To Verify");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Claimed "+strViolationId);
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Snoozed "+strViolationId);
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "New "+strViolationId);
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "Claimed "+strViolationId);
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","3", "CellValue", "Snoozed "+strViolationId);
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "11","3", "CellValue", "Claimed "+strViolationId);
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "12","3", "CellValue", "Verified");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "13","3", "CellValue", "Generating Ticket "+strViolationId);
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "14","3", "CellValue", "Ticket Generated "+strViolationId);
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "15","3", "CellValue", "Notified "+strViolationId);
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "16","3", "CellValue", "Exited");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "17","0", "Row Does Not Exist", "");
+  		String strValidateImageFlag = objDictionary.get("strValidateImageFlag");if(strValidateImageFlag == null){strValidateImageFlag = "True";}
+  		if(strValidateImageFlag.equals("True"))
+	  	{
+	  		//Wait For Images to Load
+	  		clsMeter.METER_MeterWaitWithMessage(objDictionary,15, "Waiting for 15 seconds for Images to load to Sentry Link-Spot"+strSpotNumber);
+	 		driver.navigate().refresh();
+			//Click Image Link
+	      	clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
+	      	try {Thread.sleep(1000);}catch (Exception e) {}
+	      	//VICAE: Validate Image Count After Exit
+	      	String strParkingImageDurationEntrance = clsMeter.METER_GetPARKING_IMAGE_DURATION_ENTRANCE(objDictionary, null);
+	      	String strParkingImageLookAheadEntrance = clsMeter.METER_GetPARKING_IMAGE_LOOK_AHEAD_ENTRANCE(objDictionary, null);
+	      	String strParkingImageDurationExit  = clsMeter.METER_GetPARKING_IMAGE_DURATION_EXIT(objDictionary, null);
+	      	int intTotalImageSeconds = Integer.parseInt(strParkingImageDurationEntrance) + Integer.parseInt(strParkingImageLookAheadEntrance) + Integer.parseInt(strParkingImageDurationExit);
+	      	clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary,driver,intTotalImageSeconds,1,"False");
+	      	//VIAC: Validate Images Appear Correctly
+	      	clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
+	  	}
+      	driver.quit();
+  	}
+	
+	
 }

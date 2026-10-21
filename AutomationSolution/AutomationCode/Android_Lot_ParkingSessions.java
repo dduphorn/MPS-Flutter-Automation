@@ -120,11 +120,25 @@ public class Android_Lot_ParkingSessions
 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "3", "3", "CellValue", "Violation "+strViolationId);
 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "3", "4", "CellValue", "$ 55.00 ");
 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "3", "5", "CellValue", "Unpermitted Entrance");
-		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "4", "3", "CellValue", "Voided "+strViolationId);
-		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "4", "5", "CellValue", "Reason: booted ");
-		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "5", "3", "CellValue", "Exited");
-		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "5", "5", "CellValue", "Plate Read ");
-		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "6", "0", "Row Does Not Exist", "");
+		String strRow4Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow4Column3", "4", "3");
+  	  	if(strRow4Column3.equals("Voided "+strViolationId))
+  	  	{
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "4", "3", "CellValue", "Voided "+strViolationId);
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "4", "5", "CellValue", "Reason: booted ");
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "5", "3", "CellValue", "Exited");
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "5", "5", "CellValue", "Plate Read ");
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "6", "0", "Row Does Not Exist", "");
+  	  	}
+  	  	else
+  	  	{
+  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "4", "3", "CellValue", "Exited");
+  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "5", "3", "CellValue", "Lot AIMLC Result Rejected");
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "6", "3", "CellValue", "Voided "+strViolationId);
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "6", "5", "CellValue", "Reason: booted");
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "7", "3", "CellValue", "Voided "+strViolationId);
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "7", "5", "CellValue", "Reason: rejected aimlc_auto_rejected skynet@mpspark.com");
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "8", "0", "Row Does Not Exist", "");
+  		}
 		driver.quit();
 	}
 	public void SENTRYLINK_ValidateParkingSessionHistory_BOOT_NOTICE_2(Map<String, String> objDictionary, String strViolationId) 

@@ -1,14 +1,12 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Regression_LotAndroid" verbose="1"  parallel ="tests"  thread-count="9">
 	<test name = "Android_Lot_TestCases">
-	    <parameter name="strStopAndStartAppiumServer" value="True"></parameter>
-	    <parameter name="strAppiumPort" value="4723"></parameter>
-	    <parameter name="strDeviceAppiumPort" value="5556"></parameter>
-	    <!-- G6 -->
-<!-- 	    <parameter name="strAndroidUdid" value="VS9885891d1d3"></parameter> -->
-	    <!-- Galaxy Note 9 -->
-	   <parameter name="strAndroidUdid" value="R5CT71MQ2MM"></parameter>
-	   <parameter name="strMobileAPK" value="SENTRYMOBILE-Staging-9.13.446.apk"></parameter>
+		<parameter name="strStopAndStartAppiumServer" value="True"></parameter>
+	    <parameter name="strAppiumPort" value="9438"></parameter>
+	    <parameter name="strDeviceAppiumPort" value="4723"></parameter>
+	    <parameter name="strAndroidUdid" value="R5CT71MQ5YT"></parameter>
+<!-- 	   	<parameter name="strAndroidUdid" value="R5CT71MQ2MM"></parameter> -->
+	   	<parameter name="strMobileAPK" value="SENTRYMOBILE-Staging-9.13.450.apk"></parameter>
 <!-- 	   <parameter name="strMobileAPK" value="SENTRYMOBILE-Staging-8.1.379.apk"></parameter> -->
 <!-- 		<parameter name="strAndroidUdid" value="LMG900TMYTNRKBX8QW"></parameter> -->
 <!-- 	    <parameter name="strAndroidUdid" value=""></parameter> -->
@@ -59,14 +57,14 @@
 
 <!-- 				<include name="AL1902_A_CS_LP_VCAPS_LE_VSPS"></include> -->
 
-<!-- 				Need Bug For strEndAppPermitsOnExit = "True" 	  -->
+<!-- 				Need Bug For strEndAppPermitsOnExit = "True" Don't run these 2	  -->
 <!-- 				<include name="AL1903_CS_TUD_EAPOEE_LP_VCAPS_LE_LP_VSPS"></include> -->
 <!-- 				<include name="AL1904_CS_TUE_EAPOEE_LP_VCAPS_LE_LP_VSPS"></include> -->
 
 <!-- 				<include name="AL1905_CS_TUD_EAPOED_LP_VCAPS_LE_LP_VSPS"></include> -->
 <!-- 				<include name="AL1906_CS_TUE_EAPOED_LP_VCAPS_LE_LP_VSPS"></include> -->
 
-<!-- 				Need to figure out why this fails 	  -->
+<!-- 				Don't run in Regression Need to figure out why this fails -->
 <!-- 				<include name="AL1907_TS_PRE_PPSL_LP_VUE_LE_PEOASLV_VTN_UNOD_ROVP_VTN2_UNOD_ROVP_VTN3_VSPS"></include> -->
 
 

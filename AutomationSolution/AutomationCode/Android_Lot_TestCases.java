@@ -5431,6 +5431,13 @@ public class Android_Lot_TestCases
 		clsCommonWeb.ClickLink(objDictionary, driver, "Violations", strViolationId, 1);
 		clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
 		clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Star 5", 1);
+		try {Thread.sleep(500);} catch (Exception e) {}
+		clsCommonWeb.ClickButton(objDictionary, driver, "Parking Session", "Advance Pictures", 1, "Local");
+		clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Star 5", 1);
+		try {Thread.sleep(500);} catch (Exception e) {}
+		clsCommonWeb.ClickButton(objDictionary, driver, "Parking Session", "Advance Pictures", 1, "Local");
+		clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Star 5", 1);
+		try {Thread.sleep(500);} catch (Exception e) {}
 		clsCommonWeb.ClickButton(objDictionary, driver, "Parking Session", "DoubleRightArrorBar", 1, "Local");
 		clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Star 5", 1);
 		clsCommonWeb.ClickButton(objDictionary, driver, "Parking Session", "Update Plate", 1, "Local");

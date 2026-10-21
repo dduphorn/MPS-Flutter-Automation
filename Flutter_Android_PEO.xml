@@ -5,11 +5,11 @@
 	   <parameter name="strStopAndStartAppiumServer" value="True"></parameter>
 	    <parameter name="strAppiumPort" value="5555"></parameter>
 	    <parameter name="strDeviceAppiumPort" value="4723"></parameter>
-	  	 <parameter name="strAndroidUdid" value="R5CT71MQ2MM"></parameter>
-       	<parameter name="strAndroidUdid" value="R5CT71MQ5YT"></parameter>
+<!-- 	  	 <parameter name="strAndroidUdid" value="R5CT71MQ2MM"></parameter> -->
+       	<parameter name="strAndroidUdid" value= "R5CW42VHVZY"></parameter>
 	    <parameter name="strAVDName" value = ""></parameter>
 	    <parameter name="strDeviceId" value="9000-9001"></parameter>
-	    <parameter name="strMobileAPK" value="MPSPEO-Flutter-Staging-2.0.14.apk"></parameter>
+	    <parameter name="strMobileAPK" value="MPSPEO-Flutter-Staging-2.0.18.apk"></parameter>
 	   	<parameter name="strRemotePath" value="http://localhost:4723"></parameter>
 	   	<classes>
 	   		<class name="AutomationCode.PEO_TestCases_Flutter">
@@ -56,6 +56,11 @@
 <!--  					<include name="P4038F_VM_JMP_VPLS_CLS_VPSH"></include>  -->
 <!--  					<include name="P4039F_FTFP0_CGPV1_DNAATTPAV_AV_CAV_PCV_VIPV_CVP_AATTPAV_PGT_VGTV_PIT_VITV_ES1"></include>  -->
 <!--  					<include name="P4040F_FTFP0_CGPV1_DNAATTPAV_AV_CAV_PCV_VIPV_CVP_AATTPAV_PGT_VGTV_PIT_VITV_ES1"></include>  -->
+
+<!--               Multiple PEO Tests Requires 2 Devices-->
+<!-- 					<include name="P4050F_MPEO_FTFP0_CGPV1_VVEOBD_AV_PEO1_LI_CAV_VVR_PEO2_CV_IT_LO_ES1_NTVH_VPSH"></include> -->
+<!-- 					<include name="P4051F_MPEO_FTFP0_CGPV1_VVEOBD_AV_PEO1_CV_PEO2_VVR_SV_LSTE_VVE_VVEOBD_PEO2_CV_SV_USV_IT_LO_ES1_NTVH_VPSH"></include> -->
+
 
 <!--                Ticket Service Test Cases-->	
 <!--   					<include name="TS4042F_TSLOB_FTFP0_CGPV_AV_AVPEO_VTPDF_ATDD_VTPDF_ATDD_VTPDF_ES1_VPSH"></include>   -->

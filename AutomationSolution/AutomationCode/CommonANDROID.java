@@ -18736,6 +18736,7 @@ public class CommonANDROID
 	        case "R5CW42VHVZY":        objDictionary.put("strDevicePhone", "16124777378"); break;
 	        case "VS986a4741414":      objDictionary.put("strDevicePhone", "16513413525"); break;
 	        case "LGTP2605408c68a":    objDictionary.put("strDevicePhone", "195220054"); break;
+	        case "R5CT71MQ5YT":        objDictionary.put("strDevicePhone", "16124777378"); break;
 	    }
 
 	    // === CLEAR STALE ADB PORT FORWARDS ===

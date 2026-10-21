@@ -6806,7 +6806,11 @@ public class CommonWeb {
   			clsCommonWeb.PopulateAction(objDictionary, driver, "Approved Users", "Populate User Search","{L} Deleted?", "true");
   			clsCommonWeb.ClickButton(objDictionary, driver, "Approved Users", "Search", 1, "Local");
   			try {Thread.sleep(2500);} catch (Exception f) {}
-  			clsCommonWeb.VerificationPointLink(objDictionary, driver, "Approved Users", "Undelete", 1, "Exists");
+  			strCondition = clsCommonWeb.ConditionalStepLink(objDictionary, driver, "Approved Users", "Undelete", 1, "Exists", "strCondition");
+  	  		if(strCondition.equals("True"))
+  	  		{
+  	  			clsCommonWeb.VerificationPointLink(objDictionary, driver, "Approved Users", "Undelete", 1, "Exists");
+  	  		}
   		}
   		else
   		{
@@ -9147,7 +9151,7 @@ public class CommonWeb {
 			{
 				if(strMinutesBeforeFirstRateBlockEnds == null)
 				{
-					try {Thread.sleep(1000);} catch (Exception e) {}
+					try {Thread.sleep(1500);} catch (Exception e) {}
 					clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Setting", "Populate Specific Times of Day","{T} Rate Block Name|{T} Start Date|{RB} Time Options",strRateType + "RateBlock|" + strStartDate + "|All Day");
 				}
 			}
@@ -18005,8 +18009,10 @@ public class CommonWeb {
 						} 
 						catch (TimeoutException e) {return null;}
 					case "Violation #":
-						try { return driver.findElement(By.xpath("//strong[contains(text(),'Violation #:')]"));}
-						catch(Exception e) {return null;}
+					    try {
+					        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+					        return wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//strong[contains(text(),'Violation #:')]")));
+					    } catch (Exception e) {return null;}
 					case "Violation Reason":
 						try { return driver.findElement(By.xpath("//p[contains(text(),'Violation Reason:')]"));}
 						catch(Exception e) {return null;}

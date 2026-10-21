@@ -415,6 +415,7 @@ public class PEO_TestCases_Flutter
 		clsCommonMobile.PEO_Login(objDictionary, androidDriver);
 		//Handle "For a better experience your device will need to user Location Accuracy"
 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "New Violations", "No thanks", 1);
+		try {Thread.sleep(1000);} catch (Exception e) {}
 		clsCommonMobile.VerificationPointButton(objDictionary, androidDriver, "New Violations", "No thanks", 1, "Does Not Exist");
 		String strNumberOfViolationImages = "8";
 		objDictionary.put("strNumberOfViolationImages",strNumberOfViolationImages);
@@ -494,6 +495,8 @@ public class PEO_TestCases_Flutter
 		String strAssociatedBug = objDictionary.get("strAssociatedBug");if(strAssociatedBug == null){strAssociatedBug = "";}
 		if(!strAssociatedBug.equals("")){Reporter.log("<font color='Blue'>"+strAssociatedBug+"-This Test passed remove the AssociatedBug</font>");}
 	}
+  	
+  	
   	@Test(priority=304)
  	public void P4002AF_PEO_CMV_IGPE_VVXD() throws Exception
 	{
@@ -890,8 +893,7 @@ public class PEO_TestCases_Flutter
   	@Test(priority=306)
 	public void P4006F_FTFP0_CGPV_PLI_AV_CV_IT_DV_DWDV_PDV_ES1_VPSH_VICAE_VIAC()throws Exception
 	{
-  		objDictionary.put("strAssociatedBug", "FLUTTERPEO-122");
-		objDictionary.put("strMobileDeviceType", "ANDROID");
+  		objDictionary.put("strMobileDeviceType", "ANDROID");
 		//Classes
 		CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
 		CommonWeb clsCommonWeb = new CommonWeb();
@@ -1716,7 +1718,6 @@ public class PEO_TestCases_Flutter
       	String strAssociatedBug = objDictionary.get("strAssociatedBug");if(strAssociatedBug == null){strAssociatedBug = "";}
 		if(!strAssociatedBug.equals("")){Reporter.log("<font color='Blue'>"+strAssociatedBug+"-This Test passed remove the AssociatedBug</font>");}
 	}
-  	
   	@Test(priority=312)
   	public void P4012F_FTFP0_CGPV_AV_CV_CNIT_RA_VIR_ES1_VPSH_VICAE_VIAC()
   	{
@@ -5085,7 +5086,6 @@ public class PEO_TestCases_Flutter
   	@Test(priority=339)
   	public void P4039F_FTFP0_CGPV1_DNAATTPAV_AV_CAV_PCV_VIPV_CVP_AATTPAV_PGT_VGTV_PIT_VITV_ES1()
 	{
-  		objDictionary.put("strAssociatedBug", "FLUTTERPEO-122");
   		objDictionary.put("strMobileDeviceType", "ANDROID");
   		//Classes
   		CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
@@ -5215,6 +5215,11 @@ public class PEO_TestCases_Flutter
 				{clsCommonMobile.ClickButton(objDictionary, androidDriver, "Create Violation", "Add Photo",1);}
 				try {Thread.sleep(1000);}catch (Exception e) {}
 				clsCommonMobile.ClickButton(objDictionary, androidDriver, "Create Violation", "Violation Photo",1);
+				if(intViolationCount == 1)
+				{
+					clsCommonMobile.VerificationPointText(objDictionary, androidDriver, "Create Violation", "Permission Message", 1, "Value", "Allow MPS PEO to take pictures and record video?");
+					clsCommonMobile.ClickButton(objDictionary, androidDriver, "Create Violation", "While using the app",1);
+				}
 				clsCommonMobile.ClickButton(objDictionary, androidDriver, "Create Violation", "Picture Button",1);
 				clsCommonMobile.ClickLink(objDictionary, androidDriver, "Create Violation", "OK", 1);
 				objTicketFrame = androidDriver.findElement(By.xpath(".//android.widget.ScrollView[1]"));
@@ -5266,7 +5271,6 @@ public class PEO_TestCases_Flutter
   	@Test(priority=340)
   	public void P4040F_FTFP0_CGPV1_DNAATTPAV_AV_CAV_PCV_VIPV_CVP_AATTPAV_PGT_VGTV_PIT_VITV_ES1()
 	{
-  		objDictionary.put("strAssociatedBug", "FLUTTERPEO-122|FLUTTERPEO-108");
   		objDictionary.put("strMobileDeviceType", "ANDROID");
 		//Classes
   		CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
@@ -5395,6 +5399,11 @@ public class PEO_TestCases_Flutter
 				{clsCommonMobile.ClickButton(objDictionary, androidDriver, "Create Violation", "Add Photo",1);}
 				try {Thread.sleep(1000);}catch (Exception e) {}
 				clsCommonMobile.ClickButton(objDictionary, androidDriver, "Create Violation", "Violation Photo",1);
+				if(intViolationCount == 1)
+				{
+					clsCommonMobile.VerificationPointText(objDictionary, androidDriver, "Create Violation", "Permission Message", 1, "Value", "Allow MPS PEO to take pictures and record video?");
+					clsCommonMobile.ClickButton(objDictionary, androidDriver, "Create Violation", "While using the app",1);
+				}
 				clsCommonMobile.ClickButton(objDictionary, androidDriver, "Create Violation", "Picture Button",1);
 				clsCommonMobile.ClickLink(objDictionary, androidDriver, "Create Violation", "OK", 1);
 				objTicketFrame = androidDriver.findElement(By.xpath(".//android.widget.ScrollView[1]"));
@@ -5442,6 +5451,389 @@ public class PEO_TestCases_Flutter
 		String strAssociatedBug = objDictionary.get("strAssociatedBug");if(strAssociatedBug == null){strAssociatedBug = "";}
 		if(!strAssociatedBug.equals("")){Reporter.log("<font color='Blue'>"+strAssociatedBug+"-This Test passed remove the AssociatedBug</font>");}
 	}
+  	
+  	
+  	//********************************************************************************************************************
+   	//Multiple PEO
+   	//********************************************************************************************************************
+  	@Test(priority=4050)
+  	public void P4050F_MPEO_FTFP0_CGPV1_VVEOBD_AV_PEO1_LI_CAV_VVR_PEO2_CV_IT_LO_ES1_NTVH_VPSH()
+	{
+		objDictionary.put("strAssociatedBug", "");
+		objDictionary.put("strMobileDeviceType", "ANDROID");
+		//Classes
+		CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
+		HttpConnections clsHttpConnections = new HttpConnections();
+		CommonWeb clsCommonWeb = new CommonWeb();
+		Meter clsMeter = new Meter();
+		clsCommonMobile.PEO_AddReportVariables(objDictionary);
+		Reporter.log("***************TestCase Description*************************");
+		Reporter.log("MPEO: Multiple PEOs                                         ");
+		Reporter.log("FTFP0: Set Free Time First Payment 0                        ");
+		Reporter.log("CGPV1: Create Grace Period Violation Spot 1                 ");
+		Reporter.log("VVEOBD: Validate Violation Exists On Both Devices           ");
+		Reporter.log("AV: Approve Violation                                       ");
+		Reporter.log("PEO1: 1st PEO                                               ");
+		Reporter.log("LI: Log In                                                  ");
+		Reporter.log("CAV: Clear All Violations                                   ");
+		Reporter.log("VVR: Validate Violation Removed                             ");
+		Reporter.log("PEO2: 2nd PEO                                               ");
+		Reporter.log("CV: Claim Violation                                         ");
+		Reporter.log("IT: Issue Ticket                                            ");
+		Reporter.log("LO: Log Out                                                 ");
+		Reporter.log("ES1: Exit Spot 1                                            ");
+		Reporter.log("NTVH: Navigate To Violation History                         ");
+  		Reporter.log("VPSH: Validate Parking Session History                      ");
+  		Reporter.log("************************************************************");
+		//Dictionary Variables
+		String strHost = objDictionary.get("strHost");
+		String strSpotNumber = objDictionary.get("strSpotNumber");
+		String strBrowser = objDictionary.get("strBrowser");
+		String strRemotePath = objDictionary.get("strRemotePath");
+  		//Test Case Variables
+		String strMaximumDuration = "240";
+		String strCoinTimePuchaseLimit = "240";
+		String strFreeTimeFirstPayment = "0";
+		String strCreditCardIncrementTime = "3";
+		String strInitialGracePeriod = "1";
+		String strViolationGracePeriod = "1";
+		String strHandicapInitialGracePeriod = "5";
+		String strHandicapViolationGrace = "1";
+		String strNoParkingGrace = "1";
+		String strSetImageSendBeforeViolation = "40";
+		String strParkingShortSessionSec = "15";
+		String strUnlockValue =  "On";
+		String strUnlockTime = "1";
+		String strUnlockMax = "1";
+		String strMethondName = new Object(){}.getClass().getEnclosingMethod().getName();
+		String strLicensePlateNumber = "0"+strMethondName.substring(0,strMethondName.indexOf("_"))+"BB";
+		String strLiceseState = "Minnesota";
+		//Populate Violation Fields
+		objDictionary.put("strLicensePlateNumber",strLicensePlateNumber);
+  	 	objDictionary.put("strLicensePlateState",strLiceseState);
+		//ExitSpotAndSetMeterRateBlocks
+		clsCommonWeb.SENTRYLINK_ExitSpotSetMeterRateBlocksOpenMeterInBrowse(objDictionary, strMaximumDuration, strCoinTimePuchaseLimit, strFreeTimeFirstPayment, strCreditCardIncrementTime, strInitialGracePeriod, strViolationGracePeriod, strHandicapInitialGracePeriod, strHandicapViolationGrace, strNoParkingGrace,strSetImageSendBeforeViolation,strParkingShortSessionSec, strUnlockValue, strUnlockTime, strUnlockMax,"Local");
+		// Login PEO 1
+		String strPeo1Udid = objDictionary.get("strAndroidUdid");
+		String strPeo1AppiumPort = objDictionary.getOrDefault("strDeviceAppiumPort", "4723");
+		String strPeo1UniqueId = objDictionary.get("strUniqueId");
+		objDictionary.put("strKeepAppRunning", "true");
+		objDictionary.put("strDeviceName", strPeo1Udid);
+		objDictionary.put("strSystemPort", "8200");
+		objDictionary.put("strMjpegServerPort", "7810");
+		objDictionary.put("strUniqueId", strPeo1UniqueId);
+		objDictionary.put("strAutoGrantPermissions", "True");
+		AppiumDriver androidDriver1 = clsCommonMobile.SetMobileDriver(objDictionary, "PEO", "True", "Parker");
+		clsCommonMobile.PEO_Login(objDictionary, androidDriver1);
+		// Login PEO 2 - Mac Mini 3
+		objDictionary.put("strStopAndStartAppiumServer", "false");
+		objDictionary.put("strKeepAppRunning", "true");
+		objDictionary.put("strAndroidUdid", "R5CT71MQ5YT");
+		objDictionary.put("strDeviceName", "R5CT71MQ5YT");
+		objDictionary.put("strDeviceAppiumPort", strPeo1AppiumPort);
+		objDictionary.put("strSystemPort", "8201");
+		objDictionary.put("strMjpegServerPort", "7811");
+		objDictionary.put("strAutoGrantPermissions", "True");
+		objDictionary.put("strUniqueId", strPeo1UniqueId + "a");
+		AppiumDriver androidDriver2 = clsCommonMobile.SetMobileDriver(objDictionary, "PEO", "True", "Parker");
+		clsCommonMobile.PEO_Login(objDictionary, androidDriver2);
+		//Create Grace Period Violation
+		clsMeter.METER_CreateGracePeriodViolation(objDictionary, null,  strHost, strSpotNumber, strInitialGracePeriod);
+		//Store Parking Id
+		clsHttpConnections.HTTPCONNECTIONS_StoreParkingId(objDictionary, "Local", "1");
+		//Store Grace Period Violation Number
+ 		String strViolationId = clsCommonWeb.SENTRYLINK_StoreGracePeriodViolationNumber(objDictionary);
+ 		threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath, objDictionary);
+		WebDriver driver = getDriver();
+		clsCommonWeb.SENTRYLINK_NavigateToAndApproveViolations(objDictionary,driver,strLicensePlateNumber, strLiceseState, "Initial Grace Period Exceeded",strViolationId,1);
+		//Validate Violation Exists On Both Devices
+		clsCommonMobile.PEO_ValidateViolationExists(objDictionary,  androidDriver1,  strViolationId);
+		clsCommonMobile.PEO_ValidateViolationExists(objDictionary,  androidDriver2,  strViolationId);
+		//CAV: Clear All Violations   
+		clsCommonMobile.ClickButton(objDictionary, androidDriver1, "New Violations", "More Options icon", 1);
+		clsCommonMobile.ClickLink(objDictionary, androidDriver1, "New Violations", "Clear violations", 1);
+		clsCommonMobile.ClickLink(objDictionary, androidDriver1, "New Violations", "Yes, clear them all", 1);
+		//VVR: Validate Violation Removed 
+		clsCommonMobile.PEO_ValidateViolationRemoved(objDictionary, androidDriver1, strViolationId);
+		//PEO 2 Claim Violation
+		clsCommonMobile.PEO_ClaimViolation(objDictionary, androidDriver2,strViolationId);
+		try {Thread.sleep(1000);}catch (Exception e) {}
+		clsCommonWeb.SENTRYLINK_ValidateViolationStatus(objDictionary, driver, "Initial Grace Period Exceeded","Claimed");
+		//IT - Issue Ticket
+		clsCommonMobile.ClickButton(objDictionary, androidDriver2, "Violation Details", "Issue Ticket",1);
+		clsCommonMobile.VerificationPointTextField(objDictionary, androidDriver2, "Create Violation", "License plate", 1, "Contains", "~strLicensePlate~");
+		clsCommonMobile.VerificationPointTextField(objDictionary, androidDriver2, "Create Violation", "License plate state", 1, "Value", "~strLicenseState~");
+		clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver2, "Create Violation", "Registration Type", "Passenger");
+		try {Thread.sleep(1000);}catch (Exception e) {}
+		clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver2, "Create Violation", "Vehicle Body Type", "TRUCK");
+		ElementSwipe  clsElementSwipe  = new ElementSwipe();
+		WebElement objTicketFrame = androidDriver2.findElement(By.xpath(".//android.widget.ScrollView[1]"));
+		clsElementSwipe.Swipe_Flutter(androidDriver2,objTicketFrame,"SWIPE_UP");
+		clsElementSwipe.Swipe_Flutter(androidDriver2,objTicketFrame,"SWIPE_UP");
+		String strNumberOfViolationImages = "2";
+		WebElement objPictureFrame = androidDriver2.findElement(By.xpath("//android.view.View[@content-desc='Violation Details:\nViolation Photos:']/android.view.View[3]/android.view.View[1]"));
+		clsElementSwipe  = new ElementSwipe();
+		clsElementSwipe.Swipe_Flutter(androidDriver2,objPictureFrame,"SWIPE_LEFT");
+		if(!strNumberOfViolationImages.equals("0"))
+		{
+			int intNumberOfViolationImages = Integer.parseInt(strNumberOfViolationImages);
+			for(int intViolationCount = 1; intViolationCount<= intNumberOfViolationImages; intViolationCount++)
+			{
+				//Add 1st Violation Picture
+				if(intViolationCount > 1)
+				{clsCommonMobile.ClickButton(objDictionary, androidDriver2, "Create Violation", "Add Photo",1);}
+				try {Thread.sleep(1000);}catch (Exception e) {}
+				clsCommonMobile.ClickButton(objDictionary, androidDriver2, "Create Violation", "Violation Photo",1);
+				clsCommonMobile.ClickButton(objDictionary, androidDriver2, "Create Violation", "Picture Button",1);
+				clsCommonMobile.ClickLink(objDictionary, androidDriver2, "Create Violation", "OK", 1);
+				objTicketFrame = androidDriver2.findElement(By.xpath(".//android.widget.ScrollView[1]"));
+				clsElementSwipe.Swipe_Flutter(androidDriver2,objTicketFrame,"SWIPE_UP");
+				objPictureFrame = androidDriver2.findElement(By.xpath("//android.view.View[@content-desc=\"Violation Details:\nViolation Photos:\"]/android.view.View/android.view.View"));
+				clsElementSwipe.Swipe_Flutter(androidDriver2,objPictureFrame,"SWIPE_LEFT");
+				if(intViolationCount > 4)//Additional Swipe need to center image.
+				{
+					clsElementSwipe.Swipe_Flutter(androidDriver2,objPictureFrame,"SWIPE_LEFT");
+				}
+			}
+		}
+		else
+		{
+			objTicketFrame = androidDriver1.findElement(By.xpath(".//android.widget.ScrollView[1]"));
+			clsElementSwipe.Swipe_Flutter(androidDriver2,objTicketFrame,"SWIPE_UP");
+		}
+		clsCommonMobile.ClickButton(objDictionary, androidDriver2, "Create Violation", "Generate Ticket",1);
+		clsCommonMobile.ClickButton(objDictionary, androidDriver2, "Ticket", "Issued", 1);
+		clsCommonMobile.ClickLink(objDictionary, androidDriver2, "Ticket", "Leave", 1);
+		clsCommonMobile.DismissNotification(androidDriver2);
+		clsCommonMobile.ClickButton(objDictionary, androidDriver2, "New Violations", "More Options icon", 1);
+		clsCommonMobile.ClickLink(objDictionary, androidDriver2, "New Violations", "Log out", 1);
+		//Validate Violation Status Missed
+		threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath, objDictionary);
+		driver = getDriver();
+		clsCommonWeb.SENTRYLINK_OpenLoginPage(objDictionary, driver);
+		clsCommonWeb.SENTRYLINK_AdminLoginIn(objDictionary, driver);
+		String strPageName = clsCommonWeb.GetCurrentPageName(objDictionary, driver);
+		clsCommonWeb.SENTRYLINK_NavigateToViolationsPage(objDictionary, driver, strPageName);
+		//Validate Notified
+		clsCommonWeb.SENTRYLINK_ValidateViolationStatus(objDictionary, driver, "Initial Grace Period Exceeded","Notified");
+		clsCommonWeb.ClickLink(objDictionary, driver, "Violations", "~strViolationId~", 1);
+		clsCommonWeb.VerificationPointText(objDictionary, driver, "Violations", "License Plate", 1, "Contains", "~strLicensePlate~");
+		clsCommonWeb.VerificationPointText(objDictionary, driver, "Violations", "Province/State", 1, "Value", "~strLicenseState~");
+		driver.quit();
+		clsMeter.METER_MeterWaitWithMessage(objDictionary,60, "Wait For Ticket To Get Generated");
+		//ShortSessionWaitExitSpot
+      	clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null, "1","Local");
+     	//ValidateParkingSessionHistoryAndImages
+      	PEO_ParkingSessions clsPEO_ParkingSessions = new PEO_ParkingSessions();
+      	clsPEO_ParkingSessions.SENTRYLINK_ValidateParkingSessionHistoryAndImages_P4050F_MPEO_FTFP0_CGPV1_VVEOBD_AV_PEO1_LI_CAV_VVR_PEO2_CV_IT_LO_ES1_NTVH_VPSH(objDictionary,strViolationId);
+      	clsMeter.METER_SetMeterEndTime(objDictionary);
+      	String strAssociatedBug = objDictionary.get("strAssociatedBug");if(strAssociatedBug == null){strAssociatedBug = "";}
+		if(!strAssociatedBug.equals("")){Reporter.log("<font color='Blue'>"+strAssociatedBug+"-This Test passed remove the AssociatedBug</font>");}
+	}
+  	
+  	@Test(priority=4050)
+  	public void P4051F_MPEO_FTFP0_CGPV1_VVEOBD_AV_PEO1_CV_PEO2_VVR_SV_LSTE_VVE_VVEOBD_PEO2_CV_SV_USV_IT_LO_ES1_NTVH_VPSH()
+	{
+		objDictionary.put("strAssociatedBug", "");
+		objDictionary.put("strMobileDeviceType", "ANDROID");
+		//Classes
+		CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
+		HttpConnections clsHttpConnections = new HttpConnections();
+		CommonWeb clsCommonWeb = new CommonWeb();
+		Meter clsMeter = new Meter();
+		clsCommonMobile.PEO_AddReportVariables(objDictionary);
+		Reporter.log("***************TestCase Description*************************");
+		Reporter.log("MPEO: Multiple PEOs                                         ");
+		Reporter.log("FTFP0: Set Free Time First Payment 0                        ");
+		Reporter.log("CGPV1: Create Grace Period Violation Spot 1                 ");
+		Reporter.log("VVEOBD: Validate Violation Exists On Both Devices           ");
+		Reporter.log("AV: Approve Violation                                       ");
+		Reporter.log("PEO1: 1st PEO                                               ");
+		Reporter.log("CV: Claim Violation                                         ");
+		Reporter.log("PEO2: 2nd PEO                                               ");
+		Reporter.log("VVR: Validate Violation Removed                             ");
+		Reporter.log("SV: Snooze Violation                                        ");
+		Reporter.log("LSTE: Let Snooze Time Expire                                ");
+		Reporter.log("VVEOBD: Validate Violation Exists On Both Devices           ");
+		Reporter.log("PEO2: 1st PEO                                               ");
+		Reporter.log("CV: Claim Violation                                         ");
+		Reporter.log("SV: Snooze Violation                                        ");
+		Reporter.log("USV: UnSnooze Violation                                     ");
+		Reporter.log("IT: Issue Ticket                                            ");
+		Reporter.log("LO: Log Out                                                 ");
+		Reporter.log("ES1: Exit Spot 1                                            ");
+		Reporter.log("NTVH: Navigate To Violation History                         ");
+  		Reporter.log("VPSH: Validate Parking Session History                      ");
+  		Reporter.log("************************************************************");
+		//Dictionary Variables
+		String strHost = objDictionary.get("strHost");
+		String strSpotNumber = objDictionary.get("strSpotNumber");
+		String strBrowser = objDictionary.get("strBrowser");
+		String strRemotePath = objDictionary.get("strRemotePath");
+  		//Test Case Variables
+		String strMaximumDuration = "240";
+		String strCoinTimePuchaseLimit = "240";
+		String strFreeTimeFirstPayment = "0";
+		String strCreditCardIncrementTime = "3";
+		String strInitialGracePeriod = "1";
+		String strViolationGracePeriod = "1";
+		String strHandicapInitialGracePeriod = "5";
+		String strHandicapViolationGrace = "1";
+		String strNoParkingGrace = "1";
+		String strSetImageSendBeforeViolation = "40";
+		String strParkingShortSessionSec = "15";
+		String strUnlockValue =  "On";
+		String strUnlockTime = "1";
+		String strUnlockMax = "1";
+		String strMethondName = new Object(){}.getClass().getEnclosingMethod().getName();
+		String strLicensePlateNumber = "0"+strMethondName.substring(0,strMethondName.indexOf("_"))+"BB";
+		String strLiceseState = "Minnesota";
+		//Populate Violation Fields
+		objDictionary.put("strLicensePlateNumber",strLicensePlateNumber);
+  	 	objDictionary.put("strLicensePlateState",strLiceseState);
+		//ExitSpotAndSetMeterRateBlocks
+		clsCommonWeb.SENTRYLINK_ExitSpotSetMeterRateBlocksOpenMeterInBrowse(objDictionary, strMaximumDuration, strCoinTimePuchaseLimit, strFreeTimeFirstPayment, strCreditCardIncrementTime, strInitialGracePeriod, strViolationGracePeriod, strHandicapInitialGracePeriod, strHandicapViolationGrace, strNoParkingGrace,strSetImageSendBeforeViolation,strParkingShortSessionSec, strUnlockValue, strUnlockTime, strUnlockMax,"Local");
+		// Login PEO 1
+		String strPeo1Udid = objDictionary.get("strAndroidUdid");
+		String strPeo1AppiumPort = objDictionary.getOrDefault("strDeviceAppiumPort", "4723");
+		String strPeo1UniqueId = objDictionary.get("strUniqueId");
+		objDictionary.put("strKeepAppRunning", "true");
+		objDictionary.put("strDeviceName", strPeo1Udid);
+		objDictionary.put("strSystemPort", "8200");
+		objDictionary.put("strMjpegServerPort", "7810");
+		objDictionary.put("strUniqueId", strPeo1UniqueId);
+		objDictionary.put("strAutoGrantPermissions", "True");
+		AppiumDriver androidDriver1 = clsCommonMobile.SetMobileDriver(objDictionary, "PEO", "True", "Parker");
+		clsCommonMobile.PEO_Login(objDictionary, androidDriver1);
+		// Login PEO 2 - Mac Mini 3
+		objDictionary.put("strStopAndStartAppiumServer", "false");
+		objDictionary.put("strKeepAppRunning", "true");
+		objDictionary.put("strAndroidUdid", "R5CT71MQ5YT");
+		objDictionary.put("strDeviceName", "R5CT71MQ5YT");
+		objDictionary.put("strDeviceAppiumPort", strPeo1AppiumPort);
+		objDictionary.put("strSystemPort", "8201");
+		objDictionary.put("strMjpegServerPort", "7811");
+		objDictionary.put("strAutoGrantPermissions", "True");
+		objDictionary.put("strUniqueId", strPeo1UniqueId + "a");
+		AppiumDriver androidDriver2 = clsCommonMobile.SetMobileDriver(objDictionary, "PEO", "True", "Parker");
+		clsCommonMobile.PEO_Login(objDictionary, androidDriver2);
+		//Create Grace Period Violation
+		clsMeter.METER_CreateGracePeriodViolation(objDictionary, null,  strHost, strSpotNumber, strInitialGracePeriod);
+		//Store Parking Id
+		clsHttpConnections.HTTPCONNECTIONS_StoreParkingId(objDictionary, "Local", "1");
+		//Store Grace Period Violation Number
+ 		String strViolationId = clsCommonWeb.SENTRYLINK_StoreGracePeriodViolationNumber(objDictionary);
+ 		threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath, objDictionary);
+		WebDriver driver = getDriver();
+		clsCommonWeb.SENTRYLINK_NavigateToAndApproveViolations(objDictionary,driver,strLicensePlateNumber, strLiceseState, "Initial Grace Period Exceeded",strViolationId,1);
+		//Validate Violation Exists On Both Devices
+		clsCommonMobile.PEO_ValidateViolationExists(objDictionary,  androidDriver1,  strViolationId);
+		clsCommonMobile.PEO_ValidateViolationExists(objDictionary,  androidDriver2,  strViolationId);
+		//PEO ` Claim Violation
+		clsCommonMobile.PEO_ClaimViolation(objDictionary, androidDriver1,strViolationId);
+		//VVR: Validate Violation Removed 
+		clsCommonMobile.PEO_ValidateViolationRemoved(objDictionary, androidDriver2, strViolationId);
+		//Snooze Violation
+		clsCommonMobile.ClickButton(objDictionary, androidDriver1, "Violation Details", "Snooze",1);
+		clsCommonMobile.PEO_SelectSnoozeTime(androidDriver1, 1);
+		driver.navigate().refresh();
+		try {Thread.sleep(3000);}catch (Exception e) {}
+		clsCommonWeb.SENTRYLINK_ValidateViolationStatus(objDictionary, driver, "Initial Grace Period Exceeded","Snoozed");
+		//Let Snooze Time Expire
+		clsMeter.METER_MeterWaitWithMessage(objDictionary,65, "Waiting for Snooze Time to expire");
+   		Reporter.log("Waited (65) seconds for Snooze Timer to Violate");
+		//Validate Violation Exists On Both Devices
+		clsCommonMobile.PEO_ValidateViolationExists(objDictionary,  androidDriver1,  strViolationId);
+		clsCommonMobile.PEO_ValidateViolationExists(objDictionary,  androidDriver2,  strViolationId);
+   		//PEO 2 Claim Violation
+		clsCommonMobile.PEO_ClaimViolation(objDictionary, androidDriver2,strViolationId);
+		//VVR: Validate Violation Removed 
+		clsCommonMobile.PEO_ValidateViolationRemoved(objDictionary, androidDriver1, strViolationId);
+		clsCommonMobile.ClickButton(objDictionary, androidDriver2, "Violation Details", "Snooze",1);
+		clsCommonMobile.PEO_SelectSnoozeTime(androidDriver2, 3);
+		driver.navigate().refresh();
+		try {Thread.sleep(3000);}catch (Exception e) {}
+		clsCommonWeb.SENTRYLINK_ValidateViolationStatus(objDictionary, driver, "Initial Grace Period Exceeded","Snoozed");
+		//Unsnooze Violation
+		clsCommonMobile.ClickButton(objDictionary, androidDriver2, "New Violations", "Menu", 1);
+		clsCommonMobile.ClickLink(objDictionary, androidDriver2, "New Violations", "Snoozed Violations", 1);
+		clsCommonMobile.ClickButton(objDictionary, androidDriver2, "Snoozed Violations", "Unsnooze", 1);
+		//VVR: Validate Violation Doesn't appear After PEO Unsnooze Violation
+		clsCommonMobile.PEO_ValidateViolationRemoved(objDictionary, androidDriver1, strViolationId);
+		try {Thread.sleep(1000);}catch (Exception e) {}
+		clsCommonWeb.SENTRYLINK_ValidateViolationStatus(objDictionary, driver, "Initial Grace Period Exceeded","Claimed");
+		//IT - Issue Ticket
+		clsCommonMobile.ClickButton(objDictionary, androidDriver2, "Violation Details", "Issue Ticket",1);
+		clsCommonMobile.VerificationPointTextField(objDictionary, androidDriver2, "Create Violation", "License plate", 1, "Contains", "~strLicensePlate~");
+		clsCommonMobile.VerificationPointTextField(objDictionary, androidDriver2, "Create Violation", "License plate state", 1, "Value", "~strLicenseState~");
+		clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver2, "Create Violation", "Registration Type", "Passenger");
+		try {Thread.sleep(1000);}catch (Exception e) {}
+		clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver2, "Create Violation", "Vehicle Body Type", "TRUCK");
+		ElementSwipe  clsElementSwipe  = new ElementSwipe();
+		WebElement objTicketFrame = androidDriver2.findElement(By.xpath(".//android.widget.ScrollView[1]"));
+		clsElementSwipe.Swipe_Flutter(androidDriver2,objTicketFrame,"SWIPE_UP");
+		clsElementSwipe.Swipe_Flutter(androidDriver2,objTicketFrame,"SWIPE_UP");
+		String strNumberOfViolationImages = "2";
+		WebElement objPictureFrame = androidDriver2.findElement(By.xpath("//android.view.View[@content-desc='Violation Details:\nViolation Photos:']/android.view.View[3]/android.view.View[1]"));
+		clsElementSwipe  = new ElementSwipe();
+		clsElementSwipe.Swipe_Flutter(androidDriver2,objPictureFrame,"SWIPE_LEFT");
+		if(!strNumberOfViolationImages.equals("0"))
+		{
+			int intNumberOfViolationImages = Integer.parseInt(strNumberOfViolationImages);
+			for(int intViolationCount = 1; intViolationCount<= intNumberOfViolationImages; intViolationCount++)
+			{
+				//Add 1st Violation Picture
+				if(intViolationCount > 1)
+				{clsCommonMobile.ClickButton(objDictionary, androidDriver2, "Create Violation", "Add Photo",1);}
+				try {Thread.sleep(1000);}catch (Exception e) {}
+				clsCommonMobile.ClickButton(objDictionary, androidDriver2, "Create Violation", "Violation Photo",1);
+				clsCommonMobile.ClickButton(objDictionary, androidDriver2, "Create Violation", "Picture Button",1);
+				clsCommonMobile.ClickLink(objDictionary, androidDriver2, "Create Violation", "OK", 1);
+				objTicketFrame = androidDriver2.findElement(By.xpath(".//android.widget.ScrollView[1]"));
+				clsElementSwipe.Swipe_Flutter(androidDriver2,objTicketFrame,"SWIPE_UP");
+				objPictureFrame = androidDriver2.findElement(By.xpath("//android.view.View[@content-desc=\"Violation Details:\nViolation Photos:\"]/android.view.View/android.view.View"));
+				clsElementSwipe.Swipe_Flutter(androidDriver2,objPictureFrame,"SWIPE_LEFT");
+				if(intViolationCount > 4)//Additional Swipe need to center image.
+				{
+					clsElementSwipe.Swipe_Flutter(androidDriver2,objPictureFrame,"SWIPE_LEFT");
+				}
+			}
+		}
+		else
+		{
+			objTicketFrame = androidDriver1.findElement(By.xpath(".//android.widget.ScrollView[1]"));
+			clsElementSwipe.Swipe_Flutter(androidDriver2,objTicketFrame,"SWIPE_UP");
+		}
+		clsCommonMobile.ClickButton(objDictionary, androidDriver2, "Create Violation", "Generate Ticket",1);
+		clsCommonMobile.ClickButton(objDictionary, androidDriver2, "Ticket", "Issued", 1);
+		clsCommonMobile.ClickLink(objDictionary, androidDriver2, "Ticket", "Leave", 1);
+		clsCommonMobile.DismissNotification(androidDriver2);
+		clsCommonMobile.ClickButton(objDictionary, androidDriver2, "New Violations", "More Options icon", 1);
+		clsCommonMobile.ClickLink(objDictionary, androidDriver2, "New Violations", "Log out", 1);
+		//Validate Violation Status Missed
+		threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath, objDictionary);
+		driver = getDriver();
+		clsCommonWeb.SENTRYLINK_OpenLoginPage(objDictionary, driver);
+		clsCommonWeb.SENTRYLINK_AdminLoginIn(objDictionary, driver);
+		String strPageName = clsCommonWeb.GetCurrentPageName(objDictionary, driver);
+		clsCommonWeb.SENTRYLINK_NavigateToViolationsPage(objDictionary, driver, strPageName);
+		//Validate Notified
+		clsCommonWeb.SENTRYLINK_ValidateViolationStatus(objDictionary, driver, "Initial Grace Period Exceeded","Notified");
+		clsCommonWeb.ClickLink(objDictionary, driver, "Violations", "~strViolationId~", 1);
+		clsCommonWeb.VerificationPointText(objDictionary, driver, "Violations", "License Plate", 1, "Contains", "~strLicensePlate~");
+		clsCommonWeb.VerificationPointText(objDictionary, driver, "Violations", "Province/State", 1, "Value", "~strLicenseState~");
+		driver.quit();
+		clsMeter.METER_MeterWaitWithMessage(objDictionary,60, "Wait For Ticket To Get Generated");
+		//ShortSessionWaitExitSpot
+      	clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null, "1","Local");
+     	//ValidateParkingSessionHistoryAndImages
+      	PEO_ParkingSessions clsPEO_ParkingSessions = new PEO_ParkingSessions();
+      	clsPEO_ParkingSessions.SENTRYLINK_ValidateParkingSessionHistoryAndImages_P4051F_MPEO_FTFP0_CGPV1_VVEOBD_AV_PEO1_CV_PEO2_VVR_SV_LSTE_VVE_VVEOBD_PEO2_CV_SV_USV_IT_LO_ES1_NTVH_VPSH(objDictionary,strViolationId);
+      	clsMeter.METER_SetMeterEndTime(objDictionary);
+      	String strAssociatedBug = objDictionary.get("strAssociatedBug");if(strAssociatedBug == null){strAssociatedBug = "";}
+		if(!strAssociatedBug.equals("")){Reporter.log("<font color='Blue'>"+strAssociatedBug+"-This Test passed remove the AssociatedBug</font>");}
+	}
+  	
   	
   	@Test(priority=341)
  	public void P4041F_PEO_CMS() throws Exception
