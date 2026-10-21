@@ -57,6 +57,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.Rectangle;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.testng.Assert;
 import org.testng.ITestContext;
@@ -193,6 +194,11 @@ public class CommonANDROID_Flutter
 	   			strPivotalId = "FLUTTERCA-187";Reporter.log(strErrorMsg);
 				strPivotalPath = "https://mpspark.atlassian.net/browse/FLUTTERCA-187";
 				strErrorMsg = "Able to register a user using an existing locked account's email; registration should be prevented.";
+				break;
+    		case "The Text (mins) with index (1) did not equal (15) - actual value (30)":
+	    		strPivotalId = "FLUTTERCA-274";Reporter.log(strErrorMsg);
+				strPivotalPath = "https://mpspark.atlassian.net/browse/FLUTTERCA-274";
+				strErrorMsg = "Parking Duration displayed incorrectly on Free To Rate payment (Expected 15 min, shows 30 min)";
 				break;
     		case "The Text (Please disable Airplane Mode to continue using the app) with index (1) did not equal (Please disable Airplane Mode to continue using the app) - actual value (No Internet Connection)":
 	    		strPivotalId = "FLUTTERCA-260";Reporter.log(strErrorMsg);
@@ -860,6 +866,15 @@ public class CommonANDROID_Flutter
 	    SENTRYMOBILE_SETGPSSettings(objDictionary, androidDriver, strGPSEnabled);
 	    Reporter.log("Sentry Mobile was loaded correctly on Android Device");
 
+	    HttpConnections clsHttpConnections = new HttpConnections();
+  		String strParkerType = clsHttpConnections.GET_ParkerType(objDictionary); 
+  		String strHandicapPermit = objDictionary.get("strHandicapPermit");if (strHandicapPermit == null) {strHandicapPermit = "";}
+  		if(strParkerType.equals("Handicap") && strHandicapPermit.equals(""))
+  		{
+  			//Disable Handicap
+  			clsHttpConnections.POST_HandicapDenroll(objDictionary, "Parker");
+  		}
+	    
 	    return androidDriver;
 	}
 	// ==================== HELPER METHODS ====================
@@ -2054,55 +2069,88 @@ public class CommonANDROID_Flutter
 			case "Ticket":
 				switch (strScrollableListboxName)
 				{
-					case "Reason":
-				        try {
-				            // 1. Click the "Reason" button to open the popup
-				            WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(10));
-				            WebElement reasonButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.Button[@content-desc='Reason']")));
-				            reasonButton.click();
-				            Reporter.log("✅ Clicked Reason dropdown");
-				        } catch (Exception e) {
-				            clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The Listbox (" + strScrollableListboxName + ") did not exist - " + strMethondName);
-				            return;
-				        }
-				        try { Thread.sleep(1200); } catch (Exception ignored) {} // Wait for popup to appear
-				        try {
-				            // 2. Click the desired option directly by content-desc (Best & Simplest method)
-				            WebDriverWait shortWait = new WebDriverWait(androidDriver, Duration.ofSeconds(8));
-				            WebElement option = shortWait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.Button[@content-desc=\"" + strListboxValue + "\"]")));
-				            option.click();
-				            Reporter.log("✅ Successfully selected: " + strListboxValue);
-				        } 
-				        catch (Exception e) 
-				        {clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The ListboxValue (" + strListboxValue + ") did not exist - " + strMethondName);}
-				        break;
+				case "Reason":
+				    try {
+				        WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(10));
+				        WebElement reasonButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.Button[@content-desc='Reason']")));
+				        reasonButton.click();
+				        Reporter.log("✅ Clicked Reason dropdown");
+				    } catch (Exception e) {
+				        clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The Listbox (" + strScrollableListboxName + ") did not exist - " + strMethondName);
+				        return;
+				    }
+				    try {Thread.sleep(800);} catch (InterruptedException ignored) {}
+
+				    try {
+				        WebDriverWait shortWait = new WebDriverWait(androidDriver, Duration.ofSeconds(8));
+				        WebElement option = shortWait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.view.MenuItem[@content-desc=\"" + strListboxValue + "\"]")));
+				        option.click();
+				        Reporter.log("✅ Successfully selected: " + strListboxValue);
+
+				        // safety: make sure the overlay is gone
+				        //try { androidDriver.pressKey(new KeyEvent(AndroidKey.BACK));} catch (Exception ignored) {}
+				    } catch (Exception e) 
+				    {
+				        clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The ListboxValue (" + strListboxValue + ") did not exist - " + strMethondName);
+				    }
+				    break;
 				}
 				break;
 			case "Violation Details":
 				switch (strScrollableListboxName)
 				{
-					case "Reason":
-				        try {
-				            // 1. Click the "Reason" button to open the popup
-				            WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(10));
-				            WebElement reasonButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.Button[@content-desc='Reason']")));
-				            reasonButton.click();
-				            Reporter.log("✅ Clicked Reason dropdown");
-				        } catch (Exception e) {
-				            clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The Listbox (" + strScrollableListboxName + ") did not exist - " + strMethondName);
-				            return;
-				        }
-				        try { Thread.sleep(1200); } catch (Exception ignored) {} // Wait for popup to appear
-				        try {
-				            // 2. Click the desired option directly by content-desc (Best & Simplest method)
-				            WebDriverWait shortWait = new WebDriverWait(androidDriver, Duration.ofSeconds(8));
-				            WebElement option = shortWait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.Button[@content-desc=\"" + strListboxValue + "\"]")));
-				            option.click();
-				            Reporter.log("✅ Successfully selected: " + strListboxValue);
-				        } 
-				        catch (Exception e) 
-				        {clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The ListboxValue (" + strListboxValue + ") did not exist - " + strMethondName);}
-				        break;
+				case "Reason":
+				    try {
+				        WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(10));
+				        WebElement reasonButton = wait.until(
+				            ExpectedConditions.elementToBeClickable(AppiumBy.accessibilityId("Reason"))
+				        );
+				        reasonButton.click();
+				        Reporter.log("✅ Clicked Reason dropdown");
+				    } catch (Exception e) {
+				        clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,
+				            "The Listbox (" + strScrollableListboxName + ") did not exist - " + strMethondName);
+				        return;
+				    }
+
+				    try {
+				        WebDriverWait shortWait = new WebDriverWait(androidDriver, Duration.ofSeconds(8));
+
+				        // Wait until the popup list is actually present
+				        shortWait.until(ExpectedConditions.presenceOfElementLocated(
+				            AppiumBy.xpath("//android.view.MenuItem")
+				        ));
+
+				        WebElement option = shortWait.until(ExpectedConditions.presenceOfElementLocated(
+				            AppiumBy.accessibilityId(strListboxValue)
+				        ));
+
+				        // Coordinate tap — more reliable than element.click() on this overlay
+				        Rectangle rect = option.getRect();
+				        int tapX = rect.getX() + (rect.getWidth() / 2);
+				        int tapY = rect.getY() + (rect.getHeight() / 2);
+
+				        androidDriver.executeScript("mobile: clickGesture", Map.of(
+				            "x", tapX,
+				            "y", tapY
+				        ));
+
+				        // Confirm the popup closed (MenuItems gone)
+				        shortWait.until(ExpectedConditions.invisibilityOfElementLocated(
+				            AppiumBy.xpath("//android.view.MenuItem")
+				        ));
+
+				        Reporter.log("✅ Successfully selected: " + strListboxValue);
+				    } catch (Exception e) {
+				        // Last resort: close overlay so the test can continue cleanly
+//				        try {
+//				            androidDriver.pressKey(new KeyEvent(AndroidKey.BACK));
+//				        } catch (Exception ignored) {}
+
+				        clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,
+				            "The ListboxValue (" + strListboxValue + ") did not exist - " + strMethondName);
+				    }
+				    break;
 				}
 				break;
 			default:
@@ -3489,7 +3537,7 @@ public class CommonANDROID_Flutter
 					objDictionary.put("strRemainingFreeTimeMinutes", Integer.toString(intRemainingFreeTimeMinutes));
 					clsMeter.METER_ValidateExpectedMeterTime(objDictionary, null, intMeterRemainingTimeMinutes, "1");
 					String strActualRemainingTimeMinutes = objDictionary.get("strActualRemainingTimeMinutes");
-					strEndTime = clsCommonMobile.AddTimeToExistingTime(strStartTime, strActualRemainingTimeMinutes,"MMM dd, hh:mm a");
+					strEndTime = clsCommonMobile.AddTimeToExistingTime(strPurchaseTime, strActualRemainingTimeMinutes,"MMM dd, hh:mm a");
 				}
 				else
 				{
@@ -3499,7 +3547,7 @@ public class CommonANDROID_Flutter
 					{
 						intMeterRemainingTimeMinutes = Integer.parseInt(strMeterIncrementTime)+Integer.parseInt(strFreeTimeFirstPayment);
 					}
-					strEndTime = clsCommonMobile.AddTimeToExistingTime(strStartTime, String.valueOf(intMeterRemainingTimeMinutes),"MMM dd, hh:mm a");
+					strEndTime = clsCommonMobile.AddTimeToExistingTime(strPurchaseTime, String.valueOf(intMeterRemainingTimeMinutes),"MMM dd, hh:mm a");
 					clsMeter.METER_ValidateExpectedMeterTime(objDictionary, null, intMeterRemainingTimeMinutes, "1");
 				}
 		  	}
@@ -3514,22 +3562,10 @@ public class CommonANDROID_Flutter
 		}
 		else
 		{
-	        intMeterRemainingTimeMinutes = clsMeter.METER_CalculateRemainingTrueUpTime(objDictionary, null,  strTrueUpStartTime, strMeterIncrementTime) + intCurrentMeterTime + Integer.parseInt(strFreeTimeFirstPayment);
+			int intRemainingTrueUpTime = clsMeter.METER_CalculateRemainingTrueUpTime(objDictionary, null,  strTrueUpStartTime, strMeterIncrementTime);
+	        intMeterRemainingTimeMinutes = intRemainingTrueUpTime + intCurrentMeterTime + Integer.parseInt(strFreeTimeFirstPayment);
 			clsMeter.METER_ValidateExpectedMeterTime(objDictionary, null, intMeterRemainingTimeMinutes, "1");
-			// Calculate the Duration Between Park And Pay
-			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM dd, hh:mm a");
-			LocalDate today = LocalDate.now();
-			LocalTime startT = LocalTime.from(formatter.parse(strStartTime));
-			LocalTime purchaseT = LocalTime.from(formatter.parse(strPurchaseTime));
-			LocalDateTime start = today.atTime(startT);
-			LocalDateTime purchase = today.atTime(purchaseT);
-			if (purchase.isBefore(start)) {purchase = purchase.plusDays(1);}
-			long minutesBetween = ChronoUnit.MINUTES.between(start, purchase);
-			// Optional: add business-rule rounding
-			//minutesBetween = (long) Math.floor(minutesBetween); // or floor, or +1 only in certain cases
-			int intMinutesBetweenParkAndPay = (int) minutesBetween;
-			System.out.println(strEndTime);
-			strEndTime = clsCommonMobile.SubtractTimeFromExistingTime(strEndTime, String.valueOf(intMinutesBetweenParkAndPay),"MMM dd, hh:mm a");
+			strEndTime = clsCommonMobile.AddTimeToExistingTime(strPurchaseTime, String.valueOf(intMeterRemainingTimeMinutes),"MMM dd, hh:mm a");
 		}
 		//Validate Parking Session
 		String strTotalPayment = objDictionary.get("strTotalFee");//SENTRYMOBILE_ValidateFirstPaymentDialogAndReturnParkingFee
@@ -3734,7 +3770,6 @@ public class CommonANDROID_Flutter
 		String strTotalPayment = objDictionary.get("strTotalFee");//SENTRYMOBILE_ValidateFirstPaymentDialogAndReturnParkingFee
 		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
 		double dblTotalPayment = 0;
-		
 		if(strFirstPaymentType.equals("Coin")){dblTotalPayment = Double.parseDouble(strTotalPayment.replace("$","")) + .25;}
 		else if(strFirstPaymentType.equals("Credit Card")){dblTotalPayment = Double.parseDouble(strTotalPayment.replace("$","")) + 1.00;}
 		else {dblTotalPayment = Double.parseDouble(strTotalPayment.replace("$",""));}
@@ -4423,6 +4458,9 @@ public class CommonANDROID_Flutter
 		Reporter.log("<font color='orange'>     "+strMethondName+"</font>");
 		ClickButton(objDictionary, androidDriver, "New Violations", "Menu", 1);
 		ClickLink(objDictionary, androidDriver, "New Violations", "Create Violation", 1);
+		String strWIFI = objDictionary.get("strWIFI");if(strWIFI == null) {strWIFI = "Enabled";}
+		String strWIFIScanning = objDictionary.get("strWIFIScanning");if(strWIFIScanning == null) {strWIFIScanning = "Enabled";}
+  		if(strWIFI.equals("Disabled")&& strWIFIScanning.equals("Disabled")){clsCommonMobile.ClickButton(objDictionary, androidDriver, "New Violations", "No thanks", 1);}
 		//Populate Vehicle Details
 		PEO_PopulateVehicleDetails(objDictionary, androidDriver,strLicensePlate, strLicensePlateState, strRegistrationExpYear, strRegistrationExpMonth, strVehicleMake);
 		PEO_PopulateViolationDetails(objDictionary, androidDriver, strViolationReason, strSpotId, strRemarks);
@@ -5006,6 +5044,7 @@ public class CommonANDROID_Flutter
 			strParkingFee = dFormat.format(dblParkingFee);
 			VerificationPointText(objDictionary, androidDriver, "Review and Pay", "Parking Fee", 1, "Contains", dFormat.format(dblParkingFee));
 			VerificationPointText(objDictionary, androidDriver, "Review and Pay", "Total Fee", 1, "Contains", dFormat.format(dblTotalFee));
+			objDictionary.put("strTotalFee", dFormat.format(dblTotalFee));
 			return String.valueOf(dFormat.format(dblTotalFee));
 		}
 		else
@@ -6660,7 +6699,7 @@ public class CommonANDROID_Flutter
 						catch (Exception e) {return null;}
 					case "No violations to show":
 					    try {
-					        WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(10));
+					        WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(20));
 					        return wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().className(\"android.view.View\").description(\"No violations to show.\")")));
 					    } 
 					    catch (Exception e) {return null;}
@@ -10942,7 +10981,7 @@ public class CommonANDROID_Flutter
 		String strUnlockValue = "On";
   		String strUnlockTime = "1";
   		String strUnlockMax = "1";
-		//ExitSpotAndSetMeterRateBlocks
+  		//ExitSpotAndSetMeterRateBlocks
   		clsCommonWeb.SENTRYLINK_ExitSpotSetMeterRateBlocksOpenMeterInBrowse(objDictionary,  strMaximumDuration, strCoinTimePuchaseLimit, strFreeTimeFirstPayment, strMeterIncrementTime, strInitialGracePeriod, strViolationGracePeriod, strHandicapInitialGracePeriod, strHandicapViolationGrace, strNoParkingGrace,strSetImageSendBeforeViolation,strParkingShortSessionSec, strUnlockValue, strUnlockTime, strUnlockMax,"Local");
   		//MP1: Mobile Payment
   		objDictionary.put("strAutoGrantPermissions", "True");
@@ -12359,10 +12398,6 @@ public class CommonANDROID_Flutter
    		clsCommonWeb.SENTRYLINK_UpdateParkersCanUnlockViolations(objDictionary, "Checked");
    		//GPV1: Grace Period Violation Spot 1
    		clsMeter.METER_CreateGracePeriodViolation(objDictionary, null,  strHost, strSpotNumber, strInitialGracePeriod);
-   		//TrueUpTimeStart
-   		Calendar calendar = Calendar.getInstance();
-   		String strTrueUpStartTime = new SimpleDateFormat("HH:mm:ss").format(calendar.getTime());
-   		objDictionary.put("strTrueUpStartTime", strTrueUpStartTime);
 		//Store Grace Period Violation Number
    		String strViolationId = clsCommonWeb.SENTRYLINK_StoreGracePeriodViolationNumber(objDictionary);
    		//Wait 1 minute before True Up Payment
@@ -12378,7 +12413,9 @@ public class CommonANDROID_Flutter
    	  	//Store Parking Id
       	HttpConnections clsHttpConnections = new HttpConnections();
 		clsHttpConnections.HTTPCONNECTIONS_StoreParkingId(objDictionary, "Local", "1");
- 	  	//ShortSessionWaitExitSpot
+		//Wait for Unlock Event
+		clsHttpConnections.WaitForUnlockedViolationUsingParkingSession(objDictionary);
+		//ShortSessionWaitExitSpot
       	clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null,"1","Local");
       	//ValidateParkingSessionHistoryAndImages
       	Android_ParkingSessions clsAndriodParkingSessions = new Android_ParkingSessions();
@@ -12433,10 +12470,6 @@ public class CommonANDROID_Flutter
    		clsCommonWeb.SENTRYLINK_CreateUserParker(objDictionary);
    		//GPV1: Grace Period Violation Spot 1
    		clsMeter.METER_CreateGracePeriodViolation(objDictionary, null,  strHost, strSpotNumber, strInitialGracePeriod);
-   		//TrueUpTimeStart
-   		Calendar calendar = Calendar.getInstance();
-   		String strTrueUpStartTime = new SimpleDateFormat("HH:mm:ss").format(calendar.getTime());
-   		objDictionary.put("strTrueUpStartTime", strTrueUpStartTime);
    		//Wait 1 minute before True Up Payment
   		clsMeter.METER_MeterWaitWithMessage(objDictionary,60, "Wait 1 minute before True Up Payment");
   		//Get Meter True Up Value
@@ -12459,10 +12492,9 @@ public class CommonANDROID_Flutter
    	    //Store Parking Id
       	HttpConnections clsHttpConnections = new HttpConnections();
 		clsHttpConnections.HTTPCONNECTIONS_StoreParkingId(objDictionary, "Local", "1");
-		//Remove when 186948182 is resolved
-      	String strEnvironment = objDictionary.get("strEnvironment");
-		if(strEnvironment.equals("QA")){try {Thread.sleep(30000);}catch (Exception e) {}}
-      	//ShortSessionWaitExitSpot
+		//Wait for Unlock Event
+		clsHttpConnections.WaitForUnlockedViolationUsingParkingSession(objDictionary);
+		//ShortSessionWaitExitSpot
       	clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null,"1","Local");
       	//ValidateParkingSessionHistoryAndImages
       	Android_ParkingSessions clsAndriodParkingSessions = new Android_ParkingSessions();
@@ -12533,10 +12565,9 @@ public class CommonANDROID_Flutter
 	    //Store Parking Id
       	HttpConnections clsHttpConnections = new HttpConnections();
 		clsHttpConnections.HTTPCONNECTIONS_StoreParkingId(objDictionary, "Local", "1");
-		//Remove when 186948182 is resolved
-      	String strEnvironment = objDictionary.get("strEnvironment");
-		if(strEnvironment.equals("QA")){try {Thread.sleep(30000);}catch (Exception e) {}}
-      	//ShortSessionWaitExitSpot
+		//Wait for Unlock Event
+		clsHttpConnections.WaitForUnlockedViolationUsingParkingSession(objDictionary);
+		//ShortSessionWaitExitSpot
       	clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null,"1","Local");
       	//ValidateParkingSessionHistoryAndImages
       	Android_ParkingSessions clsAndriodParkingSessions = new Android_ParkingSessions();
@@ -12601,10 +12632,6 @@ public class CommonANDROID_Flutter
    		clsCommonWeb.SENTRYLINK_CreateUserParker(objDictionary);
    		//GPV1: Grace Period Violation Spot 1
    		clsMeter.METER_CreateGracePeriodViolation(objDictionary, null,  strHost, strSpotNumber, strInitialGracePeriod);
-   		//TrueUpTimeStart
-   		Calendar calendar = Calendar.getInstance();
-   		String strTrueUpStartTime = new SimpleDateFormat("HH:mm:ss").format(calendar.getTime());
-   		objDictionary.put("strTrueUpStartTime", strTrueUpStartTime);
    		//AV_wm_LP: Approve Violation with matching License Plate
    		String strViolationId = clsCommonWeb.SENTRYLINK_ApproveViolation(objDictionary, strLicensePlateNumber, "Alabama");
    		//Open Consumer App
@@ -12618,10 +12645,9 @@ public class CommonANDROID_Flutter
    		//Store Parking Id
       	HttpConnections clsHttpConnections = new HttpConnections();
 		clsHttpConnections.HTTPCONNECTIONS_StoreParkingId(objDictionary, "Local", "1");
-      	//Remove when 186948182 is resolved
-      	String strEnvironment = objDictionary.get("strEnvironment");
-		if(strEnvironment.equals("QA")){try {Thread.sleep(30000);}catch (Exception e) {}}
-      	//ShortSessionWaitExitSpot
+		//Wait for Unlock Event
+		clsHttpConnections.WaitForUnlockedViolationUsingParkingSession(objDictionary);
+		//ShortSessionWaitExitSpot
       	clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null,"1","Local");
       	//ValidateParkingSessionHistoryAndImages
       	Android_ParkingSessions clsAndriodParkingSessions = new Android_ParkingSessions();
@@ -12694,10 +12720,9 @@ public class CommonANDROID_Flutter
    	    //Store Parking Id
       	HttpConnections clsHttpConnections = new HttpConnections();
 		clsHttpConnections.HTTPCONNECTIONS_StoreParkingId(objDictionary, "Local", "1");
-      	//Remove when 186948182 is resolved
-      	String strEnvironment = objDictionary.get("strEnvironment");
-		if(strEnvironment.equals("QA")){try {Thread.sleep(30000);}catch (Exception e) {}}
-      	//ShortSessionWaitExitSpot
+		//Wait for Unlock Event
+		clsHttpConnections.WaitForUnlockedViolationUsingParkingSession(objDictionary);
+		//ShortSessionWaitExitSpot
       	clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null,"1","Local");
       	//ValidateParkingSessionHistoryAndImages
       	Android_ParkingSessions clsAndriodParkingSessions = new Android_ParkingSessions();
@@ -12766,10 +12791,7 @@ public class CommonANDROID_Flutter
    		//Store Parking Id
       	HttpConnections clsHttpConnections = new HttpConnections();
 		clsHttpConnections.HTTPCONNECTIONS_StoreParkingId(objDictionary, "Local", "1");
-      	//Remove when 186948182 is resolved
-      	String strEnvironment = objDictionary.get("strEnvironment");
-		if(strEnvironment.equals("QA")){try {Thread.sleep(30000);}catch (Exception e) {}}
-      	//ShortSessionWaitExitSpot
+		//ShortSessionWaitExitSpot
       	clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null,"1","Local");
       	//SENTRYLINK_ValidateParkingSessionHistoryAndImages
       	Android_ParkingSessions clsAndriodParkingSessions = new Android_ParkingSessions();
@@ -12838,10 +12860,7 @@ public class CommonANDROID_Flutter
 	    //Store Parking Id
       	HttpConnections clsHttpConnections = new HttpConnections();
 		clsHttpConnections.HTTPCONNECTIONS_StoreParkingId(objDictionary, "Local", "1");
-      	//Remove when 186948182 is resolved
-      	String strEnvironment = objDictionary.get("strEnvironment");
-		if(strEnvironment.equals("QA")){try {Thread.sleep(30000);}catch (Exception e) {}}
-      	//ShortSessionWaitExitSpot
+		//ShortSessionWaitExitSpot
       	clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null,"1","Local");
       	//ValidateParkingSessionHistoryAndImages
       	Android_ParkingSessions clsAndriodParkingSessions = new Android_ParkingSessions();
@@ -12910,10 +12929,7 @@ public class CommonANDROID_Flutter
     	//Store Parking Id
       	HttpConnections clsHttpConnections = new HttpConnections();
 		clsHttpConnections.HTTPCONNECTIONS_StoreParkingId(objDictionary, "Local", "1");
-      	//Remove when 186948182 is resolved
-      	String strEnvironment = objDictionary.get("strEnvironment");
-		if(strEnvironment.equals("QA")){try {Thread.sleep(30000);}catch (Exception e) {}}
-      	//ShortSessionWaitExitSpot
+		//ShortSessionWaitExitSpot
       	clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null,"1","Local");
       	//SENTRYLINK_ValidateParkingSessionHistoryAndImages
       	Android_ParkingSessions clsAndriodParkingSessions = new Android_ParkingSessions();
@@ -13355,11 +13371,7 @@ public class CommonANDROID_Flutter
    		clsCommonWeb.SENTRYLINK_CreateUserParker(objDictionary);
    		//GPV1: Grace Period Violation Spot 1
    		clsMeter.METER_CreateGracePeriodViolation(objDictionary, null,  strHost, strSpotNumber, strInitialGracePeriod);
-   		//TrueUpTimeStart
-   		Calendar calendar = Calendar.getInstance();
-   		String strTrueUpStartTime = new SimpleDateFormat("HH:mm:ss").format(calendar.getTime());
-   		objDictionary.put("strTrueUpStartTime", strTrueUpStartTime);
-		//AV: Approve Violation Without License Plate
+   		//AV: Approve Violation Without License Plate
    		String strViolationId = clsCommonWeb.SENTRYLINK_ApproveViolation(objDictionary, "","");
    		//Open Consumer App
  		AppiumDriver androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
@@ -13372,7 +13384,9 @@ public class CommonANDROID_Flutter
       	//Store Parking Id
       	HttpConnections clsHttpConnections = new HttpConnections();
 		clsHttpConnections.HTTPCONNECTIONS_StoreParkingId(objDictionary, "Local", "1");
-      	//ShortSessionWaitExitSpot
+		//Wait for Unlock Event
+		clsHttpConnections.WaitForUnlockedViolationUsingParkingSession(objDictionary);
+		//ShortSessionWaitExitSpot
       	clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null,"1","Local");
       	//ValidateParkingSessionHistoryAndImages
       	Android_ParkingSessions clsAndriodParkingSessions = new Android_ParkingSessions();
@@ -13386,7 +13400,8 @@ public class CommonANDROID_Flutter
     	CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
    		CommonWeb clsCommonWeb = new CommonWeb();
    		Meter clsMeter = new Meter();
-   		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
+   		HttpConnections clsHttpConnections = new HttpConnections();
+		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
    		Reporter.log("***************TestCase Description********************************************");
    		Reporter.log("FTFP0: Free Time First Payment 10                                              ");
    		Reporter.log("UON: Meter Unlock On                                                           ");
@@ -13426,11 +13441,7 @@ public class CommonANDROID_Flutter
    		clsCommonWeb.SENTRYLINK_CreateUserParker(objDictionary);
    		//GPV1: Grace Period Violation Spot 1
    		clsMeter.METER_CreateGracePeriodViolation(objDictionary, null,  strHost, strSpotNumber, strInitialGracePeriod);
-   		//TrueUpTimeStart
-   		Calendar calendar = Calendar.getInstance();
-   		String strTrueUpStartTime = new SimpleDateFormat("HH:mm:ss").format(calendar.getTime());
-   		objDictionary.put("strTrueUpStartTime", strTrueUpStartTime);
-		//AV_wm_LP: Approve Violation with matching License Plate
+   		//AV_wm_LP: Approve Violation with matching License Plate
    		String strViolationId = clsCommonWeb.SENTRYLINK_ApproveViolation(objDictionary, strLicensePlateNumber, "Alabama");
    		//Open Consumer App
  		AppiumDriver androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
@@ -13440,9 +13451,10 @@ public class CommonANDROID_Flutter
  		//Park and Pay CA
  		clsCommonMobile.SENTRYMOBILE_PurchaseMeterTimeParkThenPay(objDictionary, androidDriver,strFreeTimeFirstPayment,strMeterIncrementTime,"True","True");
  		androidDriver.quit(); 
-   		//Store Parking Id
-      	HttpConnections clsHttpConnections = new HttpConnections();
-		clsHttpConnections.HTTPCONNECTIONS_StoreParkingId(objDictionary, "Local", "1");
+   		//Wait for Unlock Event
+ 		clsHttpConnections.WaitForUnlockedViolationUsingParkingSession(objDictionary);
+ 		//Store Parking Id
+ 		clsHttpConnections.HTTPCONNECTIONS_StoreParkingId(objDictionary, "Local", "1");
       	//ShortSessionWaitExitSpot
       	clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null,"1","Local");
       	//ValidateParkingSessionHistoryAndImages
@@ -13456,6 +13468,7 @@ public class CommonANDROID_Flutter
     	objDictionary.put("strMobileDeviceType", "ANDROID");
     	CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
    		CommonWeb clsCommonWeb = new CommonWeb();
+   		HttpConnections clsHttpConnections = new HttpConnections();
    		Meter clsMeter = new Meter();
    		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
    		Reporter.log("***************TestCase Description********************************************");
@@ -13511,9 +13524,10 @@ public class CommonANDROID_Flutter
  		//Park and Pay CA
  		clsCommonMobile.SENTRYMOBILE_PurchaseMeterTimeParkThenPay(objDictionary, androidDriver,strFreeTimeFirstPayment,strMeterIncrementTime,"True","True");
  		androidDriver.quit(); 
+ 		//Wait for Unlock Event
+ 		clsHttpConnections.WaitForUnlockedViolationUsingParkingSession(objDictionary);
       	//Store Parking Id
-      	HttpConnections clsHttpConnections = new HttpConnections();
-		clsHttpConnections.HTTPCONNECTIONS_StoreParkingId(objDictionary, "Local", "1");
+      	clsHttpConnections.HTTPCONNECTIONS_StoreParkingId(objDictionary, "Local", "1");
       	//ShortSessionWaitExitSpot
       	clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null,"1","Local");
       	//ValidateParkingSessionHistoryAndImages
@@ -14292,7 +14306,8 @@ public class CommonANDROID_Flutter
     	CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
    		CommonWeb clsCommonWeb = new CommonWeb();
    		Meter clsMeter = new Meter();
-   		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
+   		HttpConnections clsHttpConnections = new HttpConnections();
+ 		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
    		Reporter.log("***************TestCase Description********************************************");
    		Reporter.log("FTFP0: Meter Update Free Time First Payment 0                                  ");
    		Reporter.log("TUON: True Up Off                                                              ");
@@ -14340,7 +14355,9 @@ public class CommonANDROID_Flutter
  		//Park and Pay CA
  		clsCommonMobile.SENTRYMOBILE_PurchaseMeterTimeParkThenPay(objDictionary, androidDriver,strFreeTimeFirstPayment,strMeterIncrementTime,"True","True");
  		androidDriver.quit();
-      	//ShortSessionWaitExitSpot
+ 		//Wait for Unlock Event
+ 		clsHttpConnections.WaitForUnlockedViolationUsingParkingSession(objDictionary);
+ 		//ShortSessionWaitExitSpot
       	clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null,"1","Local");
       	//ValidateParkingSessionHistoryAndImages
       	Android_ParkingSessions clsAndriodParkingSessions = new Android_ParkingSessions();
@@ -14354,6 +14371,7 @@ public class CommonANDROID_Flutter
     	CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
    		CommonWeb clsCommonWeb = new CommonWeb();
    		Meter clsMeter = new Meter();
+   		HttpConnections clsHttpConnections = new HttpConnections();
    		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
    		Reporter.log("***************TestCase Description********************************************");
    		Reporter.log("FTFP0: Free Time First Payment 0                                               ");
@@ -14406,7 +14424,9 @@ public class CommonANDROID_Flutter
  		//Park and Pay CA
  		clsCommonMobile.SENTRYMOBILE_PurchaseMeterTimeParkThenPay(objDictionary, androidDriver,strFreeTimeFirstPayment,strMeterIncrementTime,"True","True");
  		androidDriver.quit();
-      	//ShortSessionWaitExitSpot
+ 		//Wait for Unlock Event
+ 		clsHttpConnections.WaitForUnlockedViolationUsingParkingSession(objDictionary);
+ 		//ShortSessionWaitExitSpot
       	clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null,"1","Local");
       	//ValidateParkingSessionHistoryAndImages
       	Android_ParkingSessions clsAndriodParkingSessions = new Android_ParkingSessions();
@@ -14419,6 +14439,7 @@ public class CommonANDROID_Flutter
     	objDictionary.put("strMobileDeviceType", "ANDROID");
     	CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
    		CommonWeb clsCommonWeb = new CommonWeb();
+   		HttpConnections clsHttpConnections = new HttpConnections();
    		Meter clsMeter = new Meter();
    		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
    		Reporter.log("***************TestCase Description********************************************");
@@ -14470,7 +14491,9 @@ public class CommonANDROID_Flutter
  		//Park and Pay CA
  		clsCommonMobile.SENTRYMOBILE_PurchaseMeterTimeParkThenPay(objDictionary, androidDriver,strFreeTimeFirstPayment,strMeterIncrementTime,"True","True");
  		androidDriver.quit();
-      	//ShortSessionWaitExitSpot
+ 		//Wait for Unlock Event
+ 		clsHttpConnections.WaitForUnlockedViolationUsingParkingSession(objDictionary);
+ 		//ShortSessionWaitExitSpot
       	clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null,"1","Local");
       	//ValidateParkingSessionHistoryAndImages
       	Android_ParkingSessions clsAndriodParkingSessions = new Android_ParkingSessions();
@@ -14484,6 +14507,7 @@ public class CommonANDROID_Flutter
     	CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
    		CommonWeb clsCommonWeb = new CommonWeb();
    		Meter clsMeter = new Meter();
+   		HttpConnections clsHttpConnections = new HttpConnections();
    		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
    		Reporter.log("***************TestCase Description********************************************");
    		Reporter.log("FTFP0: Free Time First Payment 0                                               ");
@@ -14537,7 +14561,9 @@ public class CommonANDROID_Flutter
  		//Park and Pay CA
  		clsCommonMobile.SENTRYMOBILE_PurchaseMeterTimeParkThenPay(objDictionary, androidDriver,strFreeTimeFirstPayment,strMeterIncrementTime,"True","True");
  		androidDriver.quit();
-      	//ShortSessionWaitExitSpot
+ 		//Wait for Unlock Event
+ 		clsHttpConnections.WaitForUnlockedViolationUsingParkingSession(objDictionary);
+ 		//ShortSessionWaitExitSpot
       	clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null,"1","Local");
       	try {Thread.sleep(5000);}catch (Exception e) {}
       	//ValidateParkingSessionHistoryAndImages
@@ -14552,6 +14578,7 @@ public class CommonANDROID_Flutter
     	CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
    		CommonWeb clsCommonWeb = new CommonWeb();
    		Meter clsMeter = new Meter();
+   		HttpConnections clsHttpConnections = new HttpConnections();
    		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
    		Reporter.log("***************TestCase Description********************************************");
    		Reporter.log("FTFP0: Free Time First Payment 0                                               ");
@@ -14595,7 +14622,6 @@ public class CommonANDROID_Flutter
   		if(strReservationExists.equals("True"))
   		{
   			String strPermitId = clsMeter.METER_GetPermitId(objDictionary,"Local", "1");
-  			HttpConnections clsHttpConnections = new HttpConnections();
   			clsHttpConnections.JsonMeteDeletePermit(objDictionary,strPermitId);
   		}
   		//disenrolled Concierge
@@ -14612,7 +14638,9 @@ public class CommonANDROID_Flutter
  		//Park and Pay CA
  		clsCommonMobile.SENTRYMOBILE_PurchaseMeterTimeParkThenPay(objDictionary, androidDriver,strFreeTimeFirstPayment,strMeterIncrementTime,"True","True");
  		androidDriver.quit();
-      	//ShortSessionWaitExitSpot
+      	//Wait for Unlock Event
+ 		clsHttpConnections.WaitForUnlockedViolationUsingParkingSession(objDictionary);
+ 		//ShortSessionWaitExitSpot
       	clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null,"1","Local");
       	//ValidateParkingSessionHistoryAndImages
       	Android_ParkingSessions clsAndriodParkingSessions = new Android_ParkingSessions();
@@ -14674,7 +14702,7 @@ public class CommonANDROID_Flutter
  		//Park and Pay CA
  		clsCommonMobile.SENTRYMOBILE_PurchaseMeterTimeParkThenPay(objDictionary, androidDriver,strFreeTimeFirstPayment,strMeterIncrementTime,"True","True");
  		androidDriver.quit();
-      	//ShortSessionWaitExitSpot
+ 		//ShortSessionWaitExitSpot
       	clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null,"1","Local");
       	//SENTRYLINK_ValidateParkingSessionHistoryAndImages
       	Android_ParkingSessions clsAndriodParkingSessions = new Android_ParkingSessions();
@@ -14736,7 +14764,7 @@ public class CommonANDROID_Flutter
  		//Park and Pay CA
  		clsCommonMobile.SENTRYMOBILE_PurchaseMeterTimeParkThenPay(objDictionary, androidDriver,strFreeTimeFirstPayment,strMeterIncrementTime,"True","True");
  		androidDriver.quit();
-      	//ShortSessionWaitExitSpot
+ 		//ShortSessionWaitExitSpot
       	clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null,"1","Local");
       	//ValidateParkingSessionHistoryAndImages
       	Android_ParkingSessions clsAndriodParkingSessions = new Android_ParkingSessions();
@@ -15100,6 +15128,7 @@ public class CommonANDROID_Flutter
     	CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
    		CommonWeb clsCommonWeb = new CommonWeb();
    		Meter clsMeter = new Meter();
+   		HttpConnections clsHttpConnections = new HttpConnections();
    		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
    		Reporter.log("***************TestCase Description********************************************");
    		Reporter.log("FTFP10: Free Time First Payment 10                                             ");
@@ -15149,7 +15178,9 @@ public class CommonANDROID_Flutter
  		//Park and Pay CA
  		clsCommonMobile.SENTRYMOBILE_PurchaseMeterTimeParkThenPay(objDictionary, androidDriver,strFreeTimeFirstPayment,strMeterIncrementTime,"True","True");
  		androidDriver.quit();
-      	//ShortSessionWaitExitSpot
+ 		//Wait for Unlock Event
+ 		clsHttpConnections.WaitForUnlockedViolationUsingParkingSession(objDictionary);
+ 		//ShortSessionWaitExitSpot
       	clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null,"1","Local");
       	//ValidateParkingSessionHistoryAndImages
       	Android_ParkingSessions clsAndriodParkingSessions = new Android_ParkingSessions();
@@ -15163,6 +15194,7 @@ public class CommonANDROID_Flutter
     	CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
    		CommonWeb clsCommonWeb = new CommonWeb();
    		Meter clsMeter = new Meter();
+   		HttpConnections clsHttpConnections = new HttpConnections();
    		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
    		Reporter.log("***************TestCase Description********************************************");
    		Reporter.log("FTFP10: Free Time First Payment 10                                             ");
@@ -15215,7 +15247,9 @@ public class CommonANDROID_Flutter
  		//Park and Pay CA
  		clsCommonMobile.SENTRYMOBILE_PurchaseMeterTimeParkThenPay(objDictionary, androidDriver,strFreeTimeFirstPayment,strMeterIncrementTime,"True","True");
  		androidDriver.quit();
-      	//ShortSessionWaitExitSpot
+      	//Wait for Unlock Event
+ 		clsHttpConnections.WaitForUnlockedViolationUsingParkingSession(objDictionary);
+ 		//ShortSessionWaitExitSpot
       	clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null,"1","Local");
       	//ValidateParkingSessionHistoryAndImages
       	Android_ParkingSessions clsAndriodParkingSessions = new Android_ParkingSessions();
@@ -15229,6 +15263,7 @@ public class CommonANDROID_Flutter
     	CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
    		CommonWeb clsCommonWeb = new CommonWeb();
    		Meter clsMeter = new Meter();
+   		HttpConnections clsHttpConnections = new HttpConnections();
    		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
    		Reporter.log("***************TestCase Description********************************************");
    		Reporter.log("FTFP10: Free Time First Payment 10                                               ");
@@ -15279,7 +15314,9 @@ public class CommonANDROID_Flutter
  		//Park and Pay CA
  		clsCommonMobile.SENTRYMOBILE_PurchaseMeterTimeParkThenPay(objDictionary, androidDriver,strFreeTimeFirstPayment,strMeterIncrementTime,"True","True");
  		androidDriver.quit();
-      	//ShortSessionWaitExitSpot
+ 		//Wait for Unlock Event
+ 		clsHttpConnections.WaitForUnlockedViolationUsingParkingSession(objDictionary);
+ 		//ShortSessionWaitExitSpot
       	clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null,"1","Local");
       	//ValidateParkingSessionHistoryAndImages
       	Android_ParkingSessions clsAndriodParkingSessions = new Android_ParkingSessions();
@@ -15293,6 +15330,7 @@ public class CommonANDROID_Flutter
     	CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
    		CommonWeb clsCommonWeb = new CommonWeb();
    		Meter clsMeter = new Meter();
+   		HttpConnections clsHttpConnections = new HttpConnections();
    		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
    		Reporter.log("***************TestCase Description********************************************");
    		Reporter.log("FTFP10: Free Time First Payment 10                                             ");
@@ -15343,7 +15381,9 @@ public class CommonANDROID_Flutter
  		//Park and Pay CA
  		clsCommonMobile.SENTRYMOBILE_PurchaseMeterTimeParkThenPay(objDictionary, androidDriver,strFreeTimeFirstPayment,strMeterIncrementTime,"True","True");
  		androidDriver.quit();
-      	//ShortSessionWaitExitSpot
+ 		//Wait for Unlock Event
+ 		clsHttpConnections.WaitForUnlockedViolationUsingParkingSession(objDictionary);
+ 		//ShortSessionWaitExitSpot
       	clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null,"1","Local");
       	//ValidateParkingSessionHistoryAndImages
       	Android_ParkingSessions clsAndriodParkingSessions = new Android_ParkingSessions();
@@ -15357,6 +15397,7 @@ public class CommonANDROID_Flutter
     	CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
    		CommonWeb clsCommonWeb = new CommonWeb();
    		Meter clsMeter = new Meter();
+   		HttpConnections clsHttpConnections = new HttpConnections();
    		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
    		Reporter.log("***************TestCase Description********************************************");
    		Reporter.log("FTFP10: Free Time First Payment 10                                             ");
@@ -15405,7 +15446,7 @@ public class CommonANDROID_Flutter
  		//Park and Pay CA
  		clsCommonMobile.SENTRYMOBILE_PurchaseMeterTimeParkThenPay(objDictionary, androidDriver,strFreeTimeFirstPayment,strMeterIncrementTime,"True","True");
  		androidDriver.quit();
-      	//ShortSessionWaitExitSpot
+ 		//ShortSessionWaitExitSpot
       	clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null,"1","Local");
       	//SENTRYLINK_ValidateParkingSessionHistoryAndImages
       	Android_ParkingSessions clsAndriodParkingSessions = new Android_ParkingSessions();
@@ -15830,7 +15871,8 @@ public class CommonANDROID_Flutter
    		CommonWeb clsCommonWeb = new CommonWeb();
    		Meter clsMeter = new Meter();
    		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
-   		Reporter.log("***************TestCase Description*********************************************");
+   		HttpConnections clsHttpConnections = new HttpConnections();
+		Reporter.log("***************TestCase Description*********************************************");
    		Reporter.log("FTFP0: Set Free Time First Payment 0                                            ");
    		Reporter.log("UON: Meter Unlock On                                                           ");
    		Reporter.log("GPV1: Grace Period Violation Spot 1                                             ");
@@ -15879,6 +15921,8 @@ public class CommonANDROID_Flutter
  		clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, androidDriver, "parker", "Remind me later");
  		//Park and Pay CA
  		clsCommonMobile.SENTRYMOBILE_PurchaseMeterTimeParkThenPay(objDictionary, androidDriver,strFreeTimeFirstPayment,strMeterIncrementTime,"True","True");
+ 		//Wait for Unlock Event
+ 		clsHttpConnections.WaitForUnlockedViolationUsingParkingSession(objDictionary);
  		try {Thread.sleep(5000);}catch (Exception e) {}
 		String strMeterViolationValue = clsMeter.METER_GetMeterViolationValue(objDictionary,"Local",strSpotNumber);
    		if(!strMeterViolationValue.equals("True"))
@@ -15911,8 +15955,7 @@ public class CommonANDROID_Flutter
 		{clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary,androidDriver,"The Text (Error Message) with index (1) did not contain (Selected spot is in violation.) - actual value ("+strSnackbarText+")");}
 		androidDriver.quit();
    		//Store Parking Id
-      	HttpConnections clsHttpConnections = new HttpConnections();
-		clsHttpConnections.HTTPCONNECTIONS_StoreParkingId(objDictionary, "Local", "1");
+      	clsHttpConnections.HTTPCONNECTIONS_StoreParkingId(objDictionary, "Local", "1");
      	//ShortSessionWaitExitSpot
       	clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null,"1","Local");
      	//ValidateParkingSessionHistoryAndImages

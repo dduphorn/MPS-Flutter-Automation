@@ -807,6 +807,7 @@ public class Android_TestCases_Flutter
 		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Sign Up", "Populate Register", "{T} First Name|{T} Last Name|{T} Email Id|{T} Password|{T} Confirm Password","Delete|User|"+strUserName+"|"+strPassword+"|"+strPassword+"");
 		//Click Sign Up
 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Sign Up", "Sign up",1);
+		//Sign Out
 		clsCommonMobile.ClickLink(objDictionary, androidDriver, "Account", "Sign out", 1);
 		clsCommonMobile.ClickLink(objDictionary, androidDriver, "Account", "Yes", 1);
 		//Sign In Using Phone Number
@@ -2014,9 +2015,17 @@ public class Android_TestCases_Flutter
 		CommonWeb clsCommonWeb = new CommonWeb();
 		GlobalClass clsGlobal = new GlobalClass();
 		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
-		//Dictionary Variables
-		objDictionary.remove("strDeviceId");objDictionary.put("strDeviceId", "AVMeter4");
-		clsGlobal.GetMeterProperties(objDictionary, "AVMeter4");
+		String strEnvironment = objDictionary.get("strEnvironment");
+		if(strEnvironment.equals("QA"))
+		{
+			objDictionary.remove("strDeviceId");objDictionary.put("strDeviceId", "QAVMeter4");
+			clsGlobal.GetMeterProperties(objDictionary, "QAVMeter4");
+		}
+		else
+		{
+			objDictionary.remove("strDeviceId");objDictionary.put("strDeviceId", "AVMeter4");
+			clsGlobal.GetMeterProperties(objDictionary, "AVMeter4");
+		}
 		//Function Variables
 		String strSpaceName = objDictionary.get("strMeterSpotName");
 		String strLicensePlateNumber = "F"+strSpaceName.toUpperCase();
@@ -2038,7 +2047,6 @@ public class Android_TestCases_Flutter
 	@Test(priority=1065)
 	public void A2065F_FTFP0_FTR_RFT_gt_MTIV_PS1_MP1_VMT_BMT_VPSH_VICAE_VIAC() throws Exception
 	{
-		//objDictionary.put("strAssociatedBug", "183916351");
 		String strSpaceName = objDictionary.get("strMeterSpotName");
 		String strLicensePlateNumber = "0"+strSpaceName+"AA";
 		String strLicensePlateState = "Alabama";
@@ -3507,7 +3515,16 @@ public class Android_TestCases_Flutter
  		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Forgot Password", "Send Reset Instructions", 1);
      	String strToken = "InvalidToken";
 		String strSentryLinkCurrentPassword = clsCommonWeb.SENTRYLINK_GetPassword(objDictionary, strGmailUserName, "").replace("!", "");
-		int intCurrentVersion =  Integer.parseInt(strSentryLinkCurrentPassword.substring(strSentryLinkCurrentPassword.indexOf("Fires@le")+8,strSentryLinkCurrentPassword.length()));
+		int intCurrentVersion;
+		String strEnvironment = objDictionary.get("strEnvironment");
+		if(strEnvironment.equals("QA"))
+		{
+			intCurrentVersion = Integer.parseInt(strSentryLinkCurrentPassword.substring(strSentryLinkCurrentPassword.indexOf("Fires@leMN")+10,strSentryLinkCurrentPassword.length()));
+		}
+		else
+		{
+			intCurrentVersion = Integer.parseInt(strSentryLinkCurrentPassword.substring(strSentryLinkCurrentPassword.indexOf("Fires@le")+8,strSentryLinkCurrentPassword.length()));
+		}
 		int intNewVersion = intCurrentVersion +1;
 		String strNewPassword = strSentryLinkCurrentPassword.replace(Integer.toString(intCurrentVersion), Integer.toString(intNewVersion))+"!";
 		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Set New Password", "Populate Reset Password", "{T} Reset Token|{T} New Password|{T} Confirm New Password", strToken+"|"+strNewPassword+"|"+strNewPassword);
@@ -3547,12 +3564,21 @@ public class Android_TestCases_Flutter
  		String strSnackbarText = objDictionary.get("strSnackbarText");
  		if(strSnackbarText.equals("Email has been sent")){Reporter.log("The Text (Message) with index (1) contained (" + strSnackbarText + ")");}
 		else{clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary,androidDriver,"The Text (Message) with index (1) did not contain (Email has been sent) - actual value ("+strSnackbarText+")");}
- 		try {Thread.sleep(5000);}catch (Exception e) {}
+ 		try {Thread.sleep(8000);}catch (Exception e) {}
   		//Open GMAIL
 		String strToken = clsGmail.Gmail_GetResetToken(strGmailUserName,strGmailPassword);
 		if(strToken.equals("")){clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary,androidDriver,"The Password Reset Token did not exist");}
 		String strSentryLinkCurrentPassword = clsCommonWeb.SENTRYLINK_GetPassword(objDictionary, strGmailUserName, "");
-		int intCurrentVersion =  Integer.parseInt(strSentryLinkCurrentPassword.substring(strSentryLinkCurrentPassword.indexOf("Fires@le")+8,strSentryLinkCurrentPassword.length()-1));
+		int intCurrentVersion;
+		String strEnvironment = objDictionary.get("strEnvironment");
+		if(strEnvironment.equals("QA"))
+		{
+			intCurrentVersion = Integer.parseInt(strSentryLinkCurrentPassword.substring(strSentryLinkCurrentPassword.indexOf("Fires@leMN")+10,strSentryLinkCurrentPassword.length()));
+		}
+		else
+		{
+			intCurrentVersion = Integer.parseInt(strSentryLinkCurrentPassword.substring(strSentryLinkCurrentPassword.indexOf("Fires@le")+8,strSentryLinkCurrentPassword.length()));
+		}
 		int intNewVersion = intCurrentVersion +1;
 		String strNewPassword = strSentryLinkCurrentPassword.replace(Integer.toString(intCurrentVersion), Integer.toString(intNewVersion));
 		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Set New Password", "Populate Reset Password", "{T} Reset Token|{T} New Password|{T} Confirm New Password", strToken+"|"+strNewPassword+"|InvalidPassword");
@@ -3642,8 +3668,17 @@ public class Android_TestCases_Flutter
  		try {Thread.sleep(5000);}catch (Exception e) {}
  		String strSecondToken = clsGmail.Gmail_GetResetToken(strGmailUserName,strGmailPassword);
    		String strSentryLinkCurrentPassword = clsCommonWeb.SENTRYLINK_GetPassword(objDictionary, strGmailUserName, "");
-		int intCurrentVersion =  Integer.parseInt(strSentryLinkCurrentPassword.substring(strSentryLinkCurrentPassword.indexOf("Fires@le")+8,strSentryLinkCurrentPassword.length()-1));
-		int intNewVersion = intCurrentVersion +1;
+   		int intCurrentVersion;
+		String strEnvironment = objDictionary.get("strEnvironment");
+		if(strEnvironment.equals("QA"))
+		{
+			intCurrentVersion = Integer.parseInt(strSentryLinkCurrentPassword.substring(strSentryLinkCurrentPassword.indexOf("Fires@leMN")+10,strSentryLinkCurrentPassword.length()));
+		}
+		else
+		{
+			intCurrentVersion = Integer.parseInt(strSentryLinkCurrentPassword.substring(strSentryLinkCurrentPassword.indexOf("Fires@le")+8,strSentryLinkCurrentPassword.length()));
+		}
+   		int intNewVersion = intCurrentVersion +1;
 		String strNewPassword = strSentryLinkCurrentPassword.replace(Integer.toString(intCurrentVersion), Integer.toString(intNewVersion));
 		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Set New Password", "Populate Reset Password", "{T} Reset Token|{T} New Password|{T} Confirm New Password", strFirstToken+"|"+strNewPassword+"|"+strNewPassword);
 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Set New Password", "Reset", 1);
@@ -3699,7 +3734,15 @@ public class Android_TestCases_Flutter
  		try {Thread.sleep(5000);}catch (Exception e) {}
 		String strSecondToken = clsGmail.Gmail_GetResetToken(strGmailUserName,strGmailPassword);
 		String strSentryLinkCurrentPassword = clsCommonWeb.SENTRYLINK_GetPassword(objDictionary, strGmailUserName, "");
-		int intCurrentVersion =  Integer.parseInt(strSentryLinkCurrentPassword.substring(strSentryLinkCurrentPassword.indexOf("Fires@le")+8,strSentryLinkCurrentPassword.length()-1));
+		int intCurrentVersion;
+		if(strEnvironment.equals("QA"))
+		{
+			intCurrentVersion = Integer.parseInt(strSentryLinkCurrentPassword.substring(strSentryLinkCurrentPassword.indexOf("Fires@leMN")+10,strSentryLinkCurrentPassword.length()));
+		}
+		else
+		{
+			intCurrentVersion = Integer.parseInt(strSentryLinkCurrentPassword.substring(strSentryLinkCurrentPassword.indexOf("Fires@le")+8,strSentryLinkCurrentPassword.length()));
+		}
 		int intNewVersion = intCurrentVersion +1;
 		String strNewPassword = strSentryLinkCurrentPassword.replace(Integer.toString(intCurrentVersion), Integer.toString(intNewVersion));
 		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Set New Password", "Populate Reset Password", "{T} Reset Token|{T} New Password|{T} Confirm New Password", strSecondToken+"|"+strNewPassword+"|"+strNewPassword);
@@ -3759,7 +3802,15 @@ public class Android_TestCases_Flutter
 		String strToken = clsGmail.Gmail_GetResetToken(strGmailUserName,strGmailPassword);
 		if(strToken.equals("")){clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary,androidDriver,"The Password Reset Token did not exist");}
 		String strSentryLinkCurrentPassword = clsCommonWeb.SENTRYLINK_GetPassword(objDictionary, strGmailUserName, "");
-		int intCurrentVersion =  Integer.parseInt(strSentryLinkCurrentPassword.substring(strSentryLinkCurrentPassword.indexOf("Fires@le")+8,strSentryLinkCurrentPassword.length()-1));
+		int intCurrentVersion;
+		if(strEnvironment.equals("QA"))
+		{
+			intCurrentVersion = Integer.parseInt(strSentryLinkCurrentPassword.substring(strSentryLinkCurrentPassword.indexOf("Fires@leMN")+10,strSentryLinkCurrentPassword.length()));
+		}
+		else
+		{
+			intCurrentVersion = Integer.parseInt(strSentryLinkCurrentPassword.substring(strSentryLinkCurrentPassword.indexOf("Fires@le")+8,strSentryLinkCurrentPassword.length()));
+		}
 		int intNewVersion = intCurrentVersion +1;
 		String strNewPassword = strSentryLinkCurrentPassword.replace(Integer.toString(intCurrentVersion), Integer.toString(intNewVersion));
 		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Set New Password", "Populate Reset Password", "{T} Reset Token|{T} New Password|{T} Confirm New Password", strToken+"|"+strNewPassword+"|"+strNewPassword);
@@ -3818,7 +3869,15 @@ public class Android_TestCases_Flutter
 		String strToken = clsGmail.Gmail_GetResetToken(strGmailUserName,strGmailPassword);
 		if(strToken.equals("")){clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary,androidDriver,"The Password Reset Token did not exist");}
 		String strSentryLinkCurrentPassword = clsCommonWeb.SENTRYLINK_GetPassword(objDictionary, strGmailUserName, "");
-		int intCurrentVersion =  Integer.parseInt(strSentryLinkCurrentPassword.substring(strSentryLinkCurrentPassword.indexOf("Fires@le")+8,strSentryLinkCurrentPassword.length()-1));
+		int intCurrentVersion;
+		if(strEnvironment.equals("QA"))
+		{
+			intCurrentVersion = Integer.parseInt(strSentryLinkCurrentPassword.substring(strSentryLinkCurrentPassword.indexOf("Fires@leMN")+10,strSentryLinkCurrentPassword.length()));
+		}
+		else
+		{
+			intCurrentVersion = Integer.parseInt(strSentryLinkCurrentPassword.substring(strSentryLinkCurrentPassword.indexOf("Fires@le")+8,strSentryLinkCurrentPassword.length()));
+		}
 		int intNewVersion = intCurrentVersion +1;
 		String strNewPassword = strSentryLinkCurrentPassword.replace(Integer.toString(intCurrentVersion), Integer.toString(intNewVersion));
 		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Set New Password", "Populate Reset Password", "{T} Reset Token|{T} New Password|{T} Confirm New Password", strToken+"|"+strNewPassword+"|"+strNewPassword);
@@ -5477,17 +5536,17 @@ public class Android_TestCases_Flutter
   		clsMeter.METER_ExecutePythonScriptAgainstMeter(objDictionary,strHost,"settings_set_setting_true.py PARKING_RCV_ON_SB_LPR_PLATE_MATCH");
   		//GPV1: Create Grace Period Violation Spot 1 
   		clsMeter.METER_CreateGracePeriodViolation(objDictionary, null,  strHost, "1", strInitialGracePeriod);
-  		clsHttpConnections.HTTPCONNECTIONS_GetViolationNumberUsingParkingSessionId(objDictionary, "Local", "1");
   		String strParkTime = objDictionary.get("strParkedTime");
-  		String strEndTime = "";
-  		try {
-  		    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM dd, hh:mm a");
-  		    LocalDateTime start = LocalDateTime.parse(strParkTime + ", " + Year.now().getValue(),DateTimeFormatter.ofPattern("MMM dd, hh:mm a, yyyy"));
-  		    LocalDateTime end = start.plus(Integer.parseInt(strMeterIncrementTime), ChronoUnit.MINUTES);
-  		    end = end.plus(Integer.parseInt(strInitialGracePeriod), ChronoUnit.MINUTES);
-  		    strEndTime = end.format(formatter);
-  		} 
-  		catch (Exception e) {clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, null, "Unable to format start or end date: " + e);}
+  		clsHttpConnections.HTTPCONNECTIONS_GetViolationNumberUsingParkingSessionId(objDictionary, "Local", "1");
+//  		String strEndTime = "";
+//  		try {
+//  		    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM dd, hh:mm a");
+//  		    LocalDateTime start = LocalDateTime.parse(strParkTime + ", " + Year.now().getValue(),DateTimeFormatter.ofPattern("MMM dd, hh:mm a, yyyy"));
+//  		    LocalDateTime end = start.plus(Integer.parseInt(strMeterIncrementTime), ChronoUnit.MINUTES);
+//  		    end = end.plus(Integer.parseInt(strInitialGracePeriod), ChronoUnit.MINUTES);
+//  		    strEndTime = end.format(formatter);
+//  		} 
+//  		catch (Exception e) {clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, null, "Unable to format start or end date: " + e);}
   		//Store Parking Id
   		clsHttpConnections.HTTPCONNECTIONS_StoreParkingId(objDictionary, "Local", "1");
   	 	//ALPTPS: Add License Plate To Parking Session 
@@ -5502,6 +5561,20 @@ public class Android_TestCases_Flutter
 	  	driver.quit();
 	  	//Wait For SL Parking Session Concierge Value to equal True
   		clsMeter.GlobalWait(objDictionary, null, "{WaitParkingSessionConciergeValueEqualsTrue} NA", 50,"1","Local");
+  		
+  		//Test Here
+  		String strEndTime = "";
+  		try {
+  		    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM dd, hh:mm a");
+  		    LocalDateTime start = LocalDateTime.parse(strParkTime + ", " + Year.now().getValue(),DateTimeFormatter.ofPattern("MMM dd, hh:mm a, yyyy"));
+  		    LocalDateTime end = start.plus(Integer.parseInt(strMeterIncrementTime), ChronoUnit.MINUTES);
+  		    end = end.plus(Integer.parseInt(strInitialGracePeriod), ChronoUnit.MINUTES);
+  		    strEndTime = end.format(formatter);
+  		} 
+  		catch (Exception e) {clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, null, "Unable to format start or end date: " + e);}
+  		
+  		//Test End
+  		
     	String strMeterName = objDictionary.get("strMeterName");
   		clsMeter.METER_ExecutePythonScriptAgainstMeter(objDictionary,strHost,"testautof_touch_screen.py");
   		String strForcedMulti = clsMeter.METER_GetSYS_FORCE_MULTI(objDictionary,null, "Local");

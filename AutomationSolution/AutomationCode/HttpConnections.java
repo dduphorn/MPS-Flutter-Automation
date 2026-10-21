@@ -57,7 +57,7 @@ public class HttpConnections
   		{
   			case "QA":
   				//strUrl= "http://quality.sentry-link.com/api/v1/tokens.json";
-  				strUrl="https://mps.quality.sentry-link.com/api/v1/tokens.json";
+  				strUrl="https://quality.sentry-link.com/api/v1/tokens.json";
   				break;
   			case "SG":
   				strUrl="https://staging.sentry-link.com/api/v1/tokens.json";
@@ -414,7 +414,7 @@ public class HttpConnections
   		switch (strEnvironment)
   		{
   			case "QA":
-  				strUrl="http://quality.sentry-link.com/api/v1/tokens.json";
+  				strUrl="https://quality.sentry-link.com/api/v1/tokens.json";
   				strPassword = clsCommonWeb.SENTRYLINK_GetPassword(objDictionary, strAdminUser.toLowerCase(), "Admin");
   				break;
   			case "SG":
@@ -772,11 +772,10 @@ public class HttpConnections
 		String strAdminUser = clsCommonWeb.SENTRYLINK_GetUserName(objDictionary, "admin").toLowerCase();
 		String strJsonAdminToken = objDictionary.get("strJsonAdminToken");
 		if(strJsonAdminToken == null){strJsonAdminToken = clsHttpConnections.StoreJsonAdminToken(objDictionary);}
-		String strMunicipalitySubdomain = objDictionary.get("strMunicipalitySubdomain");
 		switch (strEnvironment)
   		{
   			case "QA":
-  				strUrl = "https://mps.quality.sentry-link.com/api/v1/users/"+strJsonUserId+"/quality_and_staging_user_removal";
+  				strUrl = "https://sentrylink.quality.sentry-link.com/api/v1/users/"+strJsonUserId+"/quality_and_staging_user_removal";
   				break;
   			case "SG":
   				strUrl = "https://sentrylink.staging.sentry-link.com/api/v1/users/"+strJsonUserId+"/quality_and_staging_user_removal";
@@ -802,7 +801,7 @@ public class HttpConnections
 			}
 	    	else if(response1.toString().contains("406"))
 			{
-	    		System.out.println("MIH");
+	    		Reporter.log("The User ("+strUserName+") was already destroyed");
 			}
 	    	else
 	    	{
@@ -866,81 +865,6 @@ public class HttpConnections
             // Optional: You may want to add more sophisticated error handling here
         }
     }
-//	public void CURL_SetNextOverdueToNow(Map<String, String> objDictionary, String strRole)
-//	{
-//	    String strMethodName = new Object(){}.getClass().getEnclosingMethod().getName();
-//	    String strUrl = "";
-//	    String strEnvironment = objDictionary.get("strEnvironment");
-//	    String strMunicipalitySubdomain = objDictionary.get("strMunicipalitySubdomain");
-//
-//	    String strMunicipality = objDictionary.get("strMunicipality");
-//		String strUniqueId = objDictionary.get("strUniqueId");
-//
-//		CURL_ResetAPIToken(objDictionary, "api_ticket_service");
-//
-//		//ffAutomationMunicipalityapi_ticket_service@gmail.com
-//
-//		String strUserName = (strUniqueId+strMunicipality.replace(" ","").replace(",", "")+"api_ticket_service@gmail.com").toLowerCase();
-//		CommonWeb clsCommonWeb = new CommonWeb();
-//		String strPassword = clsCommonWeb.SENTRYLINK_GetPassword(objDictionary, strUserName.toLowerCase(), strRole);
-//		String strJsonToken = StoreJsonUserToken(objDictionary, strUserName.toLowerCase(), strPassword);
-//
-//
-//
-////	    String strUserName = "mpssnoopybrown@gmail.com"; // Hardcoded based on curl example
-////	    // Assuming tokens and password retrieval are handled elsewhere
-////	    String strJsonToken = "DsfHhSmxcMUqzFxorJrC"; // Hardcoded based on curl example
-//	    String strSLViolationId = objDictionary.get("strSLViolationId");
-//	    switch (strEnvironment) {
-//	        case "QA":
-//	            strUrl = "http://" + strMunicipalitySubdomain + ".quality.sentry-link.com/api/v1/violations/" + strSLViolationId + "/set_next_overdue_to_now";
-//	            break;
-//	        case "SG":
-//	            strUrl = "https://" + strMunicipalitySubdomain + ".staging.sentry-link.com/api/v1/violations/" + strSLViolationId + "/set_next_overdue_to_now";
-//	            break;
-//	        case "PROD":
-//	            strUrl = "https://" + strMunicipalitySubdomain + ".mpspark.com/api/v1/violations/" + strSLViolationId + "/set_next_overdue_to_now";
-//	            break;
-//	    }
-//	    String[] command = {
-//	        "curl",
-//	        "-s",
-//	        "-X",
-//	        "PUT",
-//	        "-H",
-//	        "Accept: application/json",
-//	        "-H",
-//	        "X-User-Token:" + strJsonToken,
-//	        "-H",
-//	        "X-User-Email:" + strUserName.toLowerCase(),
-//	        "-H",
-//	        "Content-Type: application/json",
-//	        strUrl
-//	    };
-//	    ProcessBuilder processBuilder = new ProcessBuilder(command);
-//	    Process process;
-//	    try {
-//	        process = processBuilder.start();
-//	        process.waitFor();  // Wait for the process to complete
-//
-//	        // Read the response if needed
-//	        BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-//	        String line;
-//	        StringBuilder stringBuilder = new StringBuilder();
-//	        while ((line = reader.readLine()) != null) {
-//	            stringBuilder.append(line).append("\n");
-//	        }
-//	        String strResponse = stringBuilder.toString();
-//	        System.out.println(strResponse);
-//
-//	        // Use strResponse as needed
-//
-//	    } catch (IOException | InterruptedException e) {
-//	        // Handle exceptions
-//	        Reporter.log("<font color='red'>" + strMethodName + "-" + e.toString() + "</font>");
-//	        Assert.fail(strMethodName + "-" + e.toString());
-//	    }
-//	}
 	public void CURL_ResetAPIToken(Map<String, String> objDictionary, String strRole) {
         String strEnvironment = objDictionary.get("strEnvironment");
         String strMunicipalitySubdomain = objDictionary.get("strMunicipalitySubdomain");
@@ -1061,96 +985,262 @@ public class HttpConnections
 	}
 	public void ReportJsonParkingSessionInformation(Map<String, String> objDictionary) throws IOException
 	{
-		CommonWeb clsCommonWeb = new CommonWeb();
-		String strMethodName = new Object(){}.getClass().getEnclosingMethod().getName();
-		String strEnvironment = objDictionary.get("strEnvironment");
-		String strUniqueId = objDictionary.get("strUniqueId");
-  		String strMunicipality = objDictionary.get("strMunicipality");
-  		String strRole = objDictionary.get("strRole");
-  		String strMunicipalitySubdomain = objDictionary.get("strMunicipalitySubdomain");
-  		String strUserName = strUniqueId+strMunicipality.replace(" ","").replace(",", "")+strRole.replace(" ","")+"@gmail.com";
-  		String strPassword = clsCommonWeb.SENTRYLINK_GetPassword(objDictionary, strUserName.toLowerCase(), strRole);
-		String strUrl = "";
-		String strJsonToken = StoreJsonUserToken(objDictionary, strUserName, strPassword);
-		BufferedReader in = null;
-        String data = null;
-        switch (strEnvironment)
-  		{
-  			case "QA":
-  				strUrl = "http://"+strMunicipalitySubdomain+".quality.sentry-link.com/api/v1/parking_sessions.json";
-  				break;
-  			case "SG":
-  				strUrl=  "https://"+strMunicipalitySubdomain+".staging.sentry-link.com/api/v1/parking_sessions.json";
-  				break;
-  			case "PROD":
-  				strUrl= "https://"+strMunicipalitySubdomain+".mpspark.com/api/v1/parking_sessions.json";
-  				break;
-  		}
-	    //Create Delete Request
-	    HttpGet httpGet = new HttpGet(strUrl);
-	    httpGet.addHeader(new BasicHeader("Accept", "application/json"));
-	    httpGet.addHeader(new BasicHeader("Content-Type", "application/json"));
-	    httpGet.addHeader(new BasicHeader("X-User-Token",strJsonToken));
-	    httpGet.addHeader(new BasicHeader("X-User-Email", strUserName.toLowerCase()));
-	    //Send Request
-	    try
+	    CommonWeb clsCommonWeb = new CommonWeb();
+	    String strMethodName = new Object(){}.getClass().getEnclosingMethod().getName();
+	    String strEnvironment = objDictionary.get("strEnvironment");
+	    String strUniqueId = objDictionary.get("strUniqueId");
+	    String strMunicipality = objDictionary.get("strMunicipality");
+	    String strRole = objDictionary.get("strRole");
+	    String strMunicipalitySubdomain = objDictionary.get("strMunicipalitySubdomain");
+	    String strUserName = strUniqueId + strMunicipality.replace(" ", "").replace(",", "") + strRole.replace(" ", "") + "@gmail.com";
+	    String strPassword = clsCommonWeb.SENTRYLINK_GetPassword(objDictionary, strUserName.toLowerCase(), strRole);
+	    String strUrl = "";
+	    String strJsonToken = StoreJsonUserToken(objDictionary, strUserName, strPassword);
+
+	    switch (strEnvironment)
 	    {
-	    	RequestConfig globalConfig = RequestConfig.custom().setCookieSpec(CookieSpecs.DEFAULT).build();
-	        CloseableHttpClient httpClient = HttpClients.custom().setDefaultRequestConfig(globalConfig).build();
+	        case "QA":
+	            strUrl = "http://" + strMunicipalitySubdomain + ".quality.sentry-link.com/api/v1/parking_sessions.json";
+	            break;
+	        case "SG":
+	            strUrl = "https://" + strMunicipalitySubdomain + ".staging.sentry-link.com/api/v1/parking_sessions.json";
+	            break;
+	        case "PROD":
+	            strUrl = "https://" + strMunicipalitySubdomain + ".mpspark.com/api/v1/parking_sessions.json";
+	            break;
+	    }
+
+	    int maxAttempts = 12;          // ~60 seconds total
+	    int waitMillis = 5000;         // 5 seconds between tries
+	    String data = null;
+	    boolean foundSession = false;
+
+	    RequestConfig globalConfig = RequestConfig.custom().setCookieSpec(CookieSpecs.DEFAULT).build();
+	    try (CloseableHttpClient httpClient = HttpClients.custom().setDefaultRequestConfig(globalConfig).build())
+	    {
 	        RequestConfig localConfig = RequestConfig.copy(globalConfig).setCookieSpec(CookieSpecs.STANDARD).build();
-	        httpGet.setConfig(localConfig);
-	    	CloseableHttpResponse response1 = httpClient.execute(httpGet);
-	    	if(response1.toString().contains("200"))
-			{
-	    		response1.getStatusLine().getStatusCode();
-	    		in = new BufferedReader(new InputStreamReader(response1.getEntity().getContent()));
-	            StringBuffer sb = new StringBuffer("");
-	            String l = "";
-	            String nl = System.getProperty("line.separator");
-	            while ((l = in.readLine()) !=null){sb.append(l + nl);}
-	            in.close();
-	            data = sb.toString();
-	            if(data.contains("{\"parking_sessions\":[]}"))
+
+	        for (int attempt = 1; attempt <= maxAttempts; attempt++)
+	        {
+	            HttpGet httpGet = new HttpGet(strUrl);
+	            httpGet.addHeader(new BasicHeader("Accept", "application/json"));
+	            httpGet.addHeader(new BasicHeader("Content-Type", "application/json"));
+	            httpGet.addHeader(new BasicHeader("X-User-Token", strJsonToken));
+	            httpGet.addHeader(new BasicHeader("X-User-Email", strUserName.toLowerCase()));
+	            httpGet.setConfig(localConfig);
+
+	            try (CloseableHttpResponse response1 = httpClient.execute(httpGet))
 	            {
-	            	clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,null, "No Parking Session Information Existed-"+strMethodName,"Local");
+	                int status = response1.getStatusLine().getStatusCode();
+	                if (status != 200)
+	                {
+	                    clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary, null, response1.toString(), "Local");
+	                    return;
+	                }
+
+	                BufferedReader in = new BufferedReader(new InputStreamReader(response1.getEntity().getContent()));
+	                StringBuilder sb = new StringBuilder();
+	                String line;
+	                String nl = System.getProperty("line.separator");
+	                while ((line = in.readLine()) != null)
+	                {
+	                    sb.append(line).append(nl);
+	                }
+	                in.close();
+	                data = sb.toString();
+
+	                boolean blank = data == null
+	                        || data.trim().isEmpty()
+	                        || data.contains("{\"parking_sessions\":[]}")
+	                        || data.contains("\"parking_sessions\":[]");
+
+	                if (!blank)
+	                {
+	                    foundSession = true;
+	                    break;
+	                }
+
+	                Reporter.log("Parking sessions still blank on attempt " + attempt + " of " + maxAttempts);
+	                if (attempt < maxAttempts)
+	                {
+	                    Thread.sleep(waitMillis);
+	                }
 	            }
-	            else
-	            {
-		            //Parse out Parked At Time
-		            String strPaymentTimeFull = data.substring(data.indexOf("payment_timestamp"), data.indexOf("transaction_number"));
-		            String strPaymentTime = strPaymentTimeFull.substring(strPaymentTimeFull.indexOf("T")+1,strPaymentTimeFull.indexOf("Z"));
-		            System.out.print(TimeZone.getDefault().inDaylightTime( new Date() ));
-					if(TimeZone.getDefault().inDaylightTime( new Date()))
-					{strPaymentTime = SubtractTimeToExistingTime(strPaymentTime, "300","HH:mm:ss");}
-					else
-					{strPaymentTime = SubtractTimeToExistingTime(strPaymentTime, "360","HH:mm:ss");}
-					SimpleDateFormat sdf1 = new SimpleDateFormat("HH:mm:ss");
-				    SimpleDateFormat sdf2 = new SimpleDateFormat("h:mm a");
-				    try
-				    {
-			    		Date date = sdf1.parse(strPaymentTime);
-			    		System.out.println(sdf1.format(date));//ParkingTimeStamp - Add To Dictionary
-			    		objDictionary.remove("strJsonParkedAtTimeStamp");objDictionary.put("strJsonParkedAtTimeStamp", sdf1.format(date));
-			    		System.out.println(sdf2.format(date));
-			    		strPaymentTime = sdf2.format(date);
-				    }catch (Exception e) {System.out.println("MIH");}
-				    Reporter.log("strPaymentTime: "+strPaymentTime);
-				    Reporter.log("***************************************PARKING SESSION JSON*************************************************************************************************************************");
-		            Reporter.log(data);
-		            Reporter.log("************************************************************************************************************************************************************************************");
-	            }
-			}
-	    	else
-	    	{
-	    		String strErrorMsg = response1.toString();
-	    		clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,null, strErrorMsg,"Local");
-	    	}
+	        }
+	    }
+	    catch (InterruptedException ie)
+	    {
+	        Thread.currentThread().interrupt();
+	        clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary, null, strMethodName + "-" + ie, "Local");
+	        return;
 	    }
 	    catch (Exception e)
 	    {
-	    	String strErrorMsg = strMethodName+"-"+e.toString()+"";
-	    	clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,null, strErrorMsg,"Local");
+	        clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary, null, strMethodName + "-" + e, "Local");
+	        return;
 	    }
+
+	    if (!foundSession)
+	    {
+	        clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary, null, "No Parking Session Information Existed-" + strMethodName, "Local");
+	        return;
+	    }
+
+	    // Parse parked-at time from a non-empty payload
+	    String strPaymentTimeFull = data.substring(data.indexOf("payment_timestamp"), data.indexOf("transaction_number"));
+	    String strPaymentTime = strPaymentTimeFull.substring(strPaymentTimeFull.indexOf("T") + 1, strPaymentTimeFull.indexOf("Z"));
+	    System.out.print(TimeZone.getDefault().inDaylightTime(new Date()));
+	    if (TimeZone.getDefault().inDaylightTime(new Date()))
+	    {
+	        strPaymentTime = SubtractTimeToExistingTime(strPaymentTime, "300", "HH:mm:ss");
+	    }
+	    else
+	    {
+	        strPaymentTime = SubtractTimeToExistingTime(strPaymentTime, "360", "HH:mm:ss");
+	    }
+	    SimpleDateFormat sdf1 = new SimpleDateFormat("HH:mm:ss");
+	    SimpleDateFormat sdf2 = new SimpleDateFormat("h:mm a");
+	    try
+	    {
+	        Date date = sdf1.parse(strPaymentTime);
+	        System.out.println(sdf1.format(date));
+	        objDictionary.remove("strJsonParkedAtTimeStamp");
+	        objDictionary.put("strJsonParkedAtTimeStamp", sdf1.format(date));
+	        System.out.println(sdf2.format(date));
+	        strPaymentTime = sdf2.format(date);
+	    }
+	    catch (Exception e)
+	    {
+	        System.out.println("MIH");
+	    }
+	    Reporter.log("strPaymentTime: " + strPaymentTime);
+	    Reporter.log("***************************************PARKING SESSION JSON*************************************************************************************************************************");
+	    Reporter.log(data);
+	    Reporter.log("************************************************************************************************************************************************************************************");
+	}
+	public void WaitForParkingSessionToEnd(Map<String, String> objDictionary)
+	{
+	    CommonWeb clsCommonWeb = new CommonWeb();
+	    String strMethodName = new Object(){}.getClass().getEnclosingMethod().getName();
+	    String strEnvironment = objDictionary.get("strEnvironment");
+	    String strUniqueId = objDictionary.get("strUniqueId");
+	    String strMunicipality = objDictionary.get("strMunicipality");
+	    String strRole = objDictionary.get("strRole");
+	    String strMunicipalitySubdomain = objDictionary.get("strMunicipalitySubdomain");
+	    String strUserName = strUniqueId + strMunicipality.replace(" ", "").replace(",", "") + strRole.replace(" ", "") + "@gmail.com";
+	    String strPassword = clsCommonWeb.SENTRYLINK_GetPassword(objDictionary, strUserName.toLowerCase(), strRole);
+	    String strJsonToken = StoreJsonUserToken(objDictionary, strUserName, strPassword);
+
+	    String strUrl = "";
+	    switch (strEnvironment)
+	    {
+	        case "QA":
+	            strUrl = "http://" + strMunicipalitySubdomain + ".quality.sentry-link.com/api/v1/parking_sessions.json";
+	            break;
+	        case "SG":
+	            strUrl = "https://" + strMunicipalitySubdomain + ".staging.sentry-link.com/api/v1/parking_sessions.json";
+	            break;
+	        case "PROD":
+	            strUrl = "https://" + strMunicipalitySubdomain + ".mpspark.com/api/v1/parking_sessions.json";
+	            break;
+	        default:
+	            clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary, null, "Unknown environment-" + strMethodName, "Local");
+	            return;
+	    }
+
+	    int maxAttempts = 12;   // 12 * 5s = 60 seconds
+	    int waitMillis = 5000;
+	    String data = null;
+	    boolean sessionEnded = false;
+
+	    RequestConfig globalConfig = RequestConfig.custom().setCookieSpec(CookieSpecs.DEFAULT).build();
+	    try (CloseableHttpClient httpClient = HttpClients.custom().setDefaultRequestConfig(globalConfig).build())
+	    {
+	        RequestConfig localConfig = RequestConfig.copy(globalConfig).setCookieSpec(CookieSpecs.STANDARD).build();
+
+	        for (int attempt = 1; attempt <= maxAttempts; attempt++)
+	        {
+	            HttpGet httpGet = new HttpGet(strUrl);
+	            httpGet.addHeader(new BasicHeader("Accept", "application/json"));
+	            httpGet.addHeader(new BasicHeader("Content-Type", "application/json"));
+	            httpGet.addHeader(new BasicHeader("X-User-Token", strJsonToken));
+	            httpGet.addHeader(new BasicHeader("X-User-Email", strUserName.toLowerCase()));
+	            httpGet.setConfig(localConfig);
+
+	            try (CloseableHttpResponse response1 = httpClient.execute(httpGet))
+	            {
+	                int status = response1.getStatusLine().getStatusCode();
+	                if (status != 200)
+	                {
+	                    clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary, null, response1.toString(), "Local");
+	                    return;
+	                }
+
+	                BufferedReader in = new BufferedReader(new InputStreamReader(response1.getEntity().getContent()));
+	                StringBuilder sb = new StringBuilder();
+	                String line;
+	                String nl = System.getProperty("line.separator");
+	                while ((line = in.readLine()) != null)
+	                {
+	                    sb.append(line).append(nl);
+	                }
+	                in.close();
+	                data = sb.toString();
+
+	                if (isEmptyParkingSessions(data))
+	                {
+	                    sessionEnded = true;
+	                    Reporter.log("parking_sessions empty on attempt " + attempt + " of " + maxAttempts);
+	                    break;
+	                }
+
+	                Reporter.log("parking_sessions still present on attempt " + attempt + " of " + maxAttempts);
+	                if (attempt < maxAttempts)
+	                {
+	                    Thread.sleep(waitMillis);
+	                }
+	            }
+	        }
+	    }
+	    catch (InterruptedException ie)
+	    {
+	        Thread.currentThread().interrupt();
+	        clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary, null, strMethodName + "-" + ie, "Local");
+	        return;
+	    }
+	    catch (Exception e)
+	    {
+	        clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary, null, strMethodName + "-" + e, "Local");
+	        return;
+	    }
+
+	    if (!sessionEnded)
+	    {
+	        clsCommonWeb.UpdateErrorMessageWithPivotalData(
+	                objDictionary,
+	                null,
+	                "parking_sessions still not empty after 60 seconds-" + strMethodName,
+	                "Local");
+	        return;
+	    }
+
+	    Reporter.log("***************************************PARKING SESSION JSON (ENDED)****************************************************************************************************************");
+	    Reporter.log(data);
+	    Reporter.log("************************************************************************************************************************************************************************************");
+	}
+
+	/** True when the payload is an empty sessions list, including whitespace variants. */
+	private boolean isEmptyParkingSessions(String data)
+	{
+	    if (data == null)
+	    {
+	        return false;
+	    }
+
+	    String compact = data.replaceAll("\\s+", "");
+	    return compact.isEmpty()
+	            || compact.contains("{\"parking_sessions\":[]}")
+	            || compact.contains("\"parking_sessions\":[]");
 	}
 	public String HTTPCONNECTION_GetMobileSubscriptionPreference(Map<String, String> objDictionary,String strNotifications, String strNotificationPreference)
 	{
@@ -1451,7 +1541,6 @@ public class HttpConnections
 	    }
 	    return "";
 	}
-
 
 	//**************************************************************************************************************
 	//Delete PERMIT or Delete Reservation
@@ -1861,7 +1950,7 @@ public class HttpConnections
   		String strMunicipalitySubdomain = objDictionary.get("strMunicipalitySubdomain");
   		switch (strEnvironment)
   		{
-  			case "QA":strUrl = "http://"+strMunicipalitySubdomain+".quality.sentry-link.com/api/v1/mobile/message_subscription_preferences.json";break;
+  			case "QA":strUrl = "https://"+strMunicipalitySubdomain+".quality.sentry-link.com/api/v1/mobile/message_subscription_preferences.json";break;
   			case "SG":strUrl = "https://"+strMunicipalitySubdomain+".staging.sentry-link.com/api/v1/mobile/message_subscription_preferences.json";break;
   			case "PROD":strUrl= "https://"+strMunicipalitySubdomain+".mpspark.com/api/v1/mobile/message_subscription_preferences.json";break;
   			default:clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,null, "The Environment ("+strEnvironment+") has not been added-"+strMethodName,"Local");
@@ -1896,7 +1985,6 @@ public class HttpConnections
 	    catch (Exception e)
 	    {clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,null,  strMethodName+"-"+e.toString(),"Local");}
 	}
-
 	public String GET_GetSubscriptionPreference(Map<String, String> objDictionary,String strNotificationType, String strNotificationPreference,String strRole)
 	{
 		//strNotificatoinPreference (app, text, email)
@@ -2961,7 +3049,6 @@ public class HttpConnections
 	    catch (Exception e) {clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,null, e.toString()+":"+strMethondName,"Local");}
 		return "";
 	}
-
 	public String GET_MunicipalitySubdomain(Map<String, String> objDictionary, String strUserName, String strPassword)
 	{	
 		String strMethodName = new Object(){}.getClass().getEnclosingMethod().getName();
@@ -3105,6 +3192,123 @@ public class HttpConnections
 	    return "";
 	}
 
+	//******************************************************************************************************************************************************
+	//Handicap Payments
+	//******************************************************************************************************************************************************
+	public String GET_ParkerType(Map<String, String> objDictionary)  
+	{
+		CommonWeb clsCommonWeb = new CommonWeb();
+		String strMethondName = new Object(){}.getClass().getEnclosingMethod().getName();
+		String strUrl = ""; BufferedReader in = null; String data = null;
+        String strEnvironment = objDictionary.get("strEnvironment");
+        String strMunicipalitySubdomain = objDictionary.get("strMunicipalitySubdomain");
+		String strUniqueId = objDictionary.get("strUniqueId");
+        String strMunicipality = objDictionary.get("strMunicipality");
+  		String strUserName = strUniqueId+strMunicipality.replace(" ","").replace(",", "")+"Parker".replace(" ","")+"@gmail.com";
+  		String strPassword = clsCommonWeb.SENTRYLINK_GetPassword(objDictionary, strUserName.toLowerCase(), "Parker");
+  		String strJsonToken = "";
+  		String strJsonUserId = "";
+  		if(strEnvironment.equals("PROD"))
+  		{
+  			strJsonToken = StoreJsonUserToken(objDictionary, strUserName.toLowerCase(), strPassword);
+  			strJsonUserId = StoreJsonUserId(objDictionary, strUserName.toLowerCase(), strPassword);
+  		}
+  		else
+  		{
+  			strJsonToken = objDictionary.get("strJsonUserToken");
+  			if(strJsonToken == null){strJsonToken = StoreJsonUserToken(objDictionary, strUserName.toLowerCase(), strPassword);}
+  			strJsonUserId = objDictionary.get("strJsonUserId");
+  			if(strJsonUserId == null) {strJsonUserId = StoreJsonUserId(objDictionary, strUserName.toLowerCase(), strPassword);}
+  		}
+  		switch (strEnvironment)
+  		{
+  			case "QA":strUrl = "https://"+strMunicipalitySubdomain+".quality.sentry-link.com/api/v1/users/"+strJsonUserId+".json";break;
+  			case "SG":strUrl = "https://"+strMunicipalitySubdomain+".staging.sentry-link.com/api/v1/users/"+strJsonUserId+".json";break;
+  			case "PROD":strUrl= "https://"+strMunicipalitySubdomain+".mpspark.com/api/v1/users/"+strJsonUserId+".json";break;
+  		}
+	    //Create GET Request
+	    HttpGet httpGet = new HttpGet(strUrl);
+	    httpGet.addHeader(new BasicHeader("Content-Type", "application/json"));
+	    httpGet.addHeader(new BasicHeader("X-User-Token",strJsonToken));
+	    httpGet.addHeader(new BasicHeader("X-User-Email", strUserName.toLowerCase()));
+		try
+	    {
+			RequestConfig globalConfig = RequestConfig.custom().setCookieSpec(CookieSpecs.DEFAULT).build();
+	        CloseableHttpClient httpClient = HttpClients.custom().setDefaultRequestConfig(globalConfig).build();
+	        RequestConfig localConfig = RequestConfig.copy(globalConfig).setCookieSpec(CookieSpecs.STANDARD).build();
+	        httpGet.setConfig(localConfig);
+	        CloseableHttpResponse response1 = httpClient.execute(httpGet);
+	    	if(response1.toString().contains("200"))
+	    	{	
+	    		response1.getStatusLine().getStatusCode();
+	    		in = new BufferedReader(new InputStreamReader(response1.getEntity().getContent()));
+	    		StringBuffer sb = new StringBuffer("");
+	            String l = "";String nl = System.getProperty("line.separator");while ((l = in.readLine()) !=null){sb.append(l + nl);}in.close();
+	            data = sb.toString();response1.close();
+	    		JSONParser jsonParser = new JSONParser();
+	    		JSONObject jsonObject = (JSONObject) jsonParser.parse(data);
+	    		String strUserValues = jsonObject.get("user").toString();
+	    		JSONObject jsonObject1 = (JSONObject) jsonParser.parse(strUserValues);
+	    		String strParkerType = jsonObject1.get("parker_type").toString();
+	    		Reporter.log("strParkerType: "+strParkerType);
+	    		return strParkerType;
+			}
+		    else{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,null, response1.toString()+":"+strMethondName,"Local");}
+		    response1.close();
+	    }
+	    catch (Exception e) {clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,null, e.toString()+":"+strMethondName,"Local");}
+		return "";
+	}
+	public void POST_HandicapDenroll(Map<String, String> objDictionary, String strRole)
+	{
+		CommonWeb clsCommonWeb = new CommonWeb();
+		String strMethondName = new Object(){}.getClass().getEnclosingMethod().getName();
+		String strUrl = "";
+        String strEnvironment = objDictionary.get("strEnvironment");
+        String strMunicipalitySubdomain = objDictionary.get("strMunicipalitySubdomain");
+		String strUniqueId = objDictionary.get("strUniqueId");
+        String strMunicipality = objDictionary.get("strMunicipality");
+  		String strUserName = strUniqueId+strMunicipality.replace(" ","").replace(",", "")+strRole.replace(" ","")+"@gmail.com";
+  		String strPassword = clsCommonWeb.SENTRYLINK_GetPassword(objDictionary, strUserName.toLowerCase(), strRole);
+		String strJsonToken = objDictionary.get("strJsonUserToken");
+  		if(strJsonToken == null){strJsonToken = StoreJsonUserToken(objDictionary, strUserName.toLowerCase(), strPassword);}
+  		String strJsonUserId = objDictionary.get("strJsonUserId");
+  		if(strJsonUserId == null) {strJsonUserId = StoreJsonUserId(objDictionary, strUserName.toLowerCase(), strPassword);}
+		switch (strEnvironment)
+  		{
+  			case "QA":strUrl = "https://"+strMunicipalitySubdomain+".quality.sentry-link.com/api/v1/users/"+strJsonUserId+".json";break;
+  			case "SG":strUrl = "https://"+strMunicipalitySubdomain+".staging.sentry-link.com/api/v1/users/"+strJsonUserId+".json";break;
+  			case "PROD":strUrl= "https://"+strMunicipalitySubdomain+".mpspark.com/api/v1/users/"+strJsonUserId+".json";break;
+  		}
+	    //Create GET Request
+		HttpPut httpPut = new HttpPut(strUrl);
+	    httpPut.addHeader(new BasicHeader("Content-Type", "application/json"));
+	    httpPut.addHeader(new BasicHeader("X-User-Token",strJsonToken));
+	    httpPut.addHeader(new BasicHeader("X-User-Email", strUserName.toLowerCase()));
+	    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+  		sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
+  		System.out.println(sdf.format(new Date()));
+  		StringEntity entity = new StringEntity("{\"user\":{\"handicap_permit_id\":\"\",\"parker_type\":\"Normal\"}}", "UTF-8");
+  		httpPut.setEntity(entity);
+	    try
+	    {
+    		RequestConfig globalConfig = RequestConfig.custom().setCookieSpec(CookieSpecs.DEFAULT).build();
+	        CloseableHttpClient httpClient = HttpClients.custom().setDefaultRequestConfig(globalConfig).build();
+	        RequestConfig localConfig = RequestConfig.copy(globalConfig).setCookieSpec(CookieSpecs.STANDARD).build();
+	        httpPut.setConfig(localConfig);
+	    	CloseableHttpResponse response1 = httpClient.execute(httpPut);
+	    	if(response1.toString().contains("200"))
+	    	{Reporter.log("The user ("+strUserName.toLowerCase()+") was de-enrolled from handicap");}
+	    	else
+	    	{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,null, response1.toString()+"-"+strMethondName,"Local");}
+	    }
+	    catch (Exception e)
+	    {
+	    	String strErrorMsg = strMethondName+"-"+e.toString()+"";
+	    	clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,null, strErrorMsg+"-"+strMethondName,"Local");
+	    }
+	}
+	
 	//******************************************************************************************************************************************************
 	//Mobile Payments
 	//******************************************************************************************************************************************************
@@ -3670,9 +3874,6 @@ public class HttpConnections
 	    }
 	    return "";
 	}
-
-
-
 	public String GetVirtualMeterRateBlockId(Map<String, String> objDictionary)
 	{
 		String strMethondName = new Object(){}.getClass().getEnclosingMethod().getName();
@@ -3747,10 +3948,10 @@ public class HttpConnections
 	        {clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,null,response1+":"+strMethondName,"Local");}
 	    }
 	    catch (Exception e)
-	    {
-	    	String strErrorMsg = strMethondName+"-"+e.toString()+"";
-			Reporter.log("<font color='red'>"+strErrorMsg+"</font>");Assert.fail(strErrorMsg);
-	    }
+    {
+    	String strErrorMsg = strMethondName+"-"+e.toString()+"";
+		Reporter.log("<font color='red'>"+strErrorMsg+"</font>");Assert.fail(strErrorMsg);
+    }
 	    return "";
 	}
 	public String CheckIfVirtualMeterRateBlockIsNull(Map<String, String> objDictionary)
@@ -3823,13 +4024,12 @@ public class HttpConnections
 			}
 	    }
 	    catch (Exception e)
-	    {
-	    	String strErrorMsg = strMethondName+"-"+e.toString()+"";
-			Reporter.log("<font color='red'>"+strErrorMsg+"</font>");Assert.fail(strErrorMsg);
-	    }
+    {
+    	String strErrorMsg = strMethondName+"-"+e.toString()+"";
+		Reporter.log("<font color='red'>"+strErrorMsg+"</font>");Assert.fail(strErrorMsg);
+    }
 	    return "";
 	}
-
 
 	//**********************
 	//KIOSK RATE BLOCK GROUP
@@ -4816,7 +5016,6 @@ public class HttpConnections
 	        return null;
 	    }
 	}
-
 	private static String escapeJson(String value) {
 	    if (value == null) {
 	        return "";
@@ -5127,48 +5326,48 @@ public class HttpConnections
 	        RequestConfig localConfig = RequestConfig.copy(globalConfig).setCookieSpec(CookieSpecs.STANDARD).build();
 	        httpGet.setConfig(localConfig);
 	        CloseableHttpResponse response1 = httpClient.execute(httpGet);
-	    		if(response1.toString().contains("200"))
-				{
-		    			response1.getStatusLine().getStatusCode();
-		            in = new BufferedReader(new InputStreamReader(response1.getEntity().getContent()));
-		            StringBuffer sb = new StringBuffer("");
-		            String l = "";
-		            String nl = System.getProperty("line.separator");
-		            while ((l = in.readLine()) !=null){sb.append(l + nl);}
-		            in.close();
-		            data = sb.toString();
-			    		response1.close();
-			    		JSONParser jsonParser = new JSONParser();
-			    		JSONObject jsonObject = (JSONObject) jsonParser.parse(data);
-			    		JSONArray lang= (JSONArray) jsonObject.get("transaction_fee_schedules");
-			    		for(int i=0; i<lang.size(); i++)
-			    		{
-			    			System.out.println("The " + i + " element of the array: "+lang.get(i));
-			    		}
-			    		Iterator<?> i = lang.iterator();
-			    		// Take Each Value from the json Array Separtely
-			    		while (i.hasNext())
-			    		{
-			    			JSONObject innerObj = (JSONObject) i.next();
-			    			switch (innerObj.get("fee_type").toString())
-			    			{
-				    			case "FirstPayment":
-				    				objDictionary.remove("strFirstPayment");objDictionary.put("strFirstPayment", innerObj.get("fee").toString());
-				    				Reporter.log("The value (strFirstPayment) was stored as variable name (" + innerObj.get("fee").toString() + ")");
-				    				break;
-				    			case "SubsequentPayment":
-				    				objDictionary.remove("strSubsequentPayment");objDictionary.put("strSubsequentPayment", innerObj.get("fee").toString());
-				    				Reporter.log("The value (strSubsequentPayment) was stored as variable name (" + innerObj.get("fee").toString() + ")");
-				    				break;
-			    			}
-			    		}
-				}
-		    	else
-		    	{
-		    		String strErrorMsg = response1.toString();
-		    		clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,null, strErrorMsg,"Local");
-		    		Reporter.log("<font color='red'>"+strErrorMsg+"</font>");Assert.fail(strErrorMsg);
-		    	}
+    		if(response1.toString().contains("200"))
+			{
+	    			response1.getStatusLine().getStatusCode();
+	            in = new BufferedReader(new InputStreamReader(response1.getEntity().getContent()));
+	            StringBuffer sb = new StringBuffer("");
+	            String l = "";
+	            String nl = System.getProperty("line.separator");
+	            while ((l = in.readLine()) !=null){sb.append(l + nl);}
+	            in.close();
+	            data = sb.toString();
+	    		response1.close();
+	    		JSONParser jsonParser = new JSONParser();
+	    		JSONObject jsonObject = (JSONObject) jsonParser.parse(data);
+	    		JSONArray lang= (JSONArray) jsonObject.get("transaction_fee_schedules");
+	    		for(int i=0; i<lang.size(); i++)
+	    		{
+	    			System.out.println("The " + i + " element of the array: "+lang.get(i));
+	    		}
+	    		Iterator<?> i = lang.iterator();
+	    		// Take Each Value from the json Array Separtely
+	    		while (i.hasNext())
+	    		{
+	    			JSONObject innerObj = (JSONObject) i.next();
+	    			switch (innerObj.get("fee_type").toString())
+	    			{
+		    			case "FirstPayment":
+		    				objDictionary.remove("strFirstPayment");objDictionary.put("strFirstPayment", innerObj.get("fee").toString());
+		    				Reporter.log("The value (strFirstPayment) was stored as variable name (" + innerObj.get("fee").toString() + ")");
+		    				break;
+		    			case "SubsequentPayment":
+		    				objDictionary.remove("strSubsequentPayment");objDictionary.put("strSubsequentPayment", innerObj.get("fee").toString());
+		    				Reporter.log("The value (strSubsequentPayment) was stored as variable name (" + innerObj.get("fee").toString() + ")");
+		    				break;
+	    			}
+	    		}
+			}
+	    	else
+	    	{
+	    		String strErrorMsg = response1.toString();
+	    		clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,null, strErrorMsg,"Local");
+	    		Reporter.log("<font color='red'>"+strErrorMsg+"</font>");Assert.fail(strErrorMsg);
+	    	}
 	    }
 	    catch (Exception e)
 	    {
@@ -5176,7 +5375,6 @@ public class HttpConnections
 			Reporter.log("<font color='red'>"+strErrorMsg+"</font>");Assert.fail(strErrorMsg);
 	    }
 	}
-	
 	public void HTTPCONNECTIONS_StoreKioskTransactionFees(Map<String, String> objDictionary) throws IOException
 	{
 		CommonWeb clsCommonWeb = new CommonWeb();
@@ -5272,7 +5470,6 @@ public class HttpConnections
 			Reporter.log("<font color='red'>"+strErrorMsg+"</font>");Assert.fail(strErrorMsg);
 	    }
 	}
-	
 	public void HTTPCONNECTIONS_StoreMeterTransactionFees(Map<String, String> objDictionary) throws IOException 
 	{
 		CommonWeb clsCommonWeb = new CommonWeb();
@@ -5370,7 +5567,6 @@ public class HttpConnections
 			Reporter.log("<font color='red'>"+strErrorMsg+"</font>");Assert.fail(strErrorMsg);
 	    }
 	}
-	
 	public String HTTPCONNECTIONS_FetchLegacyMeterStatus(Map<String, String> objDictionary,String strLicensePlate)
 	{
 		// Basic HTTP Authentication
@@ -6150,7 +6346,8 @@ public class HttpConnections
 	    }
 	    return "";
 	}
-	public String GetJsonViolationIdUsingParkingSession(Map<String, String> objDictionary) {
+	public String GetJsonViolationIdUsingParkingSession(Map<String, String> objDictionary) 
+	{
 	    CommonWeb clsCommonWeb = new CommonWeb();
 	    String strMethondName = new Object() {}.getClass().getEnclosingMethod().getName();
 	    String strEnvironment = objDictionary.get("strEnvironment");
@@ -6352,7 +6549,6 @@ public class HttpConnections
 	    }
 	    return "";
 	}
-	
 	public String CURL_GetViolationsAlertTime(Map<String, String> objDictionary, String strViolationId) {
 		CommonWeb clsCommonWeb = new CommonWeb();
 		String strMethodName = new Object(){}.getClass().getEnclosingMethod().getName();
@@ -6415,6 +6611,126 @@ public class HttpConnections
 	    return "";
 	}
 
+	public String WaitForUnlockedViolationUsingParkingSession(Map<String, String> objDictionary) {
+	    CommonWeb clsCommonWeb = new CommonWeb();
+	    String strMethondName = new Object() {}.getClass().getEnclosingMethod().getName();
+	    String strEnvironment = objDictionary.get("strEnvironment");
+	    String strUniqueId = objDictionary.get("strUniqueId");
+	    String strMunicipality = objDictionary.get("strMunicipality");
+	    String strRole = "admin";
+	    String strAdminUserName = "";
+
+	    if ("PROD".equals(strEnvironment)) {
+	        strAdminUserName = "darinadmin@mpspark.com";
+	    } else {
+	        strAdminUserName = strUniqueId
+	                + strMunicipality.replace(" ", "").replace(",", "")
+	                + strRole.replace(" ", "")
+	                + "@gmail.com";
+	    }
+
+	    String strAdminPassword = clsCommonWeb.SENTRYLINK_GetPassword(objDictionary, strAdminUserName, strRole);
+	    String strJsonToken = StoreJsonUserToken(objDictionary, strAdminUserName, strAdminPassword);
+	    String strParkingId = objDictionary.get("strParkingId");
+	    String strMunicipalitySubdomain = objDictionary.get("strMunicipalitySubdomain");
+
+	    String strUrl;
+	    switch (strEnvironment) {
+	        case "QA":
+	            strUrl = "https://" + strMunicipalitySubdomain + ".quality.sentry-link.com/parking_sessions/" + strParkingId + ".json";
+	            break;
+	        case "SG":
+	            strUrl = "https://" + strMunicipalitySubdomain + ".staging.sentry-link.com/parking_sessions/" + strParkingId + ".json";
+	            break;
+	        case "PROD":
+	            strUrl = "https://" + strMunicipalitySubdomain + ".mpspark.com/parking_sessions/" + strParkingId + ".json";
+	            break;
+	        default:
+	            Assert.fail(strMethondName + "-Unsupported environment: " + strEnvironment);
+	            return "";
+	    }
+
+	    final long timeoutMs = 60_000L;
+	    final long pollIntervalMs = 3_000L;
+	    long start = System.currentTimeMillis();
+	    String lastState = "";
+
+	    while (System.currentTimeMillis() - start < timeoutMs) {
+	        CloseableHttpClient httpClient = null;
+	        CloseableHttpResponse response1 = null;
+	        BufferedReader in = null;
+	        try {
+	            HttpGet httpGet = new HttpGet(strUrl);
+	            httpGet.addHeader(new BasicHeader("Accept", "application/json"));
+	            httpGet.addHeader(new BasicHeader("Content-Type", "application/json"));
+	            httpGet.addHeader(new BasicHeader("X-User-Token", strJsonToken));
+	            httpGet.addHeader(new BasicHeader("X-User-Email", strAdminUserName.toLowerCase()));
+
+	            RequestConfig globalConfig = RequestConfig.custom().setCookieSpec(CookieSpecs.DEFAULT).build();
+	            httpClient = HttpClients.custom().setDefaultRequestConfig(globalConfig).build();
+	            RequestConfig localConfig = RequestConfig.copy(globalConfig).setCookieSpec(CookieSpecs.STANDARD).build();
+	            httpGet.setConfig(localConfig);
+
+	            response1 = httpClient.execute(httpGet);
+	            int status = response1.getStatusLine().getStatusCode();
+
+	            if (status == 200) {
+	                in = new BufferedReader(new InputStreamReader(response1.getEntity().getContent()));
+	                StringBuilder sb = new StringBuilder();
+	                String line;
+	                while ((line = in.readLine()) != null) {
+	                    sb.append(line);
+	                }
+	                String data = sb.toString();
+
+	                JSONParser jsonParser = new JSONParser();
+	                JSONObject jsonObject = (JSONObject) jsonParser.parse(data);
+	                JSONArray violationsGroups = (JSONArray) jsonObject.get("violations");
+
+	                if (violationsGroups != null && !violationsGroups.isEmpty()) {
+	                    JSONObject firstViolation = (JSONObject) violationsGroups.get(0);
+	                    Object stateObj = firstViolation.get("state");
+	                    lastState = stateObj == null ? "" : stateObj.toString();
+
+	                    if ("unlocked".equalsIgnoreCase(lastState) || "unlock".equalsIgnoreCase(lastState)) {
+	                        Object violationNumber = firstViolation.get("violation_number");
+	                        return violationNumber == null ? "" : violationNumber.toString();
+	                    }
+	                } else {
+	                    lastState = "no_violation";
+	                }
+	            } else {
+	                lastState = "http_" + status;
+	                Reporter.log("<font color='orange'>" + strMethondName + " status " + status + ", retrying</font>");
+	            }
+	        } catch (Exception e) {
+	            lastState = "exception";
+	            Reporter.log("<font color='orange'>" + strMethondName + "-" + e.toString() + ", retrying</font>");
+	        } finally {
+	            try { if (in != null) in.close(); } catch (Exception ignored) {}
+	            try { if (response1 != null) response1.close(); } catch (Exception ignored) {}
+	            try { if (httpClient != null) httpClient.close(); } catch (Exception ignored) {}
+	        }
+
+	        long remaining = timeoutMs - (System.currentTimeMillis() - start);
+	        if (remaining <= 0) {
+	            break;
+	        }
+	        try {
+	            Thread.sleep(Math.min(pollIntervalMs, remaining));
+	        } catch (InterruptedException ie) {
+	            Thread.currentThread().interrupt();
+	            Assert.fail(strMethondName + "-Interrupted while waiting for unlocked state");
+	            return "";
+	        }
+	    }
+
+	    String strErrorMsg = strMethondName + "-Violation state did not become unlocked within 60 seconds. Last state: " + lastState;
+	    clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary, null, strErrorMsg, "Local");
+	    Reporter.log("<font color='red'>" + strErrorMsg + "</font>");
+	    Assert.fail(strErrorMsg);
+	    return "";
+	}
 	///*******************
 	//LOTS
 	//********************
@@ -6582,8 +6898,6 @@ public class HttpConnections
 	    catch (Exception e){clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,null, e.toString()+"_"+strMethondName,"Local");}
 	    return "";
 	}
-
-
 	public String HTTPCONNECTIONS_GetParkingSessionConciergeValue(Map<String, String> objDictionary, String strHostType, String strSpotNumber)
 	{
 		CommonWeb clsCommonWeb = new CommonWeb();
@@ -6677,8 +6991,6 @@ public class HttpConnections
 	    {clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,null, e.toString()+"_"+strMethondName,"Local");}
 	    return "";
 	}
-
-
 	public void HTTPCONNECTIONS_StorePaymentReceiptValues(Map<String, String> objDictionary, String strHostType, String strSpotNumber)
 	{
 		CommonWeb clsCommonWeb = new CommonWeb();
@@ -6802,7 +7114,6 @@ public class HttpConnections
 	    catch (Exception e)
 	    {clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,null, e.toString()+"_"+strMethondName,"Local");}
 	}
-
 	public String HTTPCONNECTIONS_StoreParkingId(Map<String, String> objDictionary, String strHostType, String strSpotNumber)
 	{
 		CommonWeb clsCommonWeb = new CommonWeb();
@@ -6901,7 +7212,6 @@ public class HttpConnections
 	    catch (Exception e){clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,null, e.toString()+"_"+strMethondName,"Local");}
 	    return strParkingId;
 	}
-
 	public String HTTPCONNECTIONS_StoreHandicapEnabled(Map<String, String> objDictionary, String strHostType, String strSpotNumber)
 	{
 		CommonWeb clsCommonWeb = new CommonWeb();

@@ -70,7 +70,7 @@ public class GlobalClass
 		objDictionary.put("strUniquePassword", strUniquePassword);
 		//if(strAppiumPort == null){strAppiumPort = "4723";}
 		//********************************************************************
-		objDictionary.put("strParkingShortSessionSec","15");
+		objDictionary.put("strParkingShortSessionSec","5");
 		Reporter.log("Automation User: "+strAutomationUser);
 		Properties props = System.getProperties();
 		//Get Headless Setting form Jenkins
@@ -607,7 +607,27 @@ public class GlobalClass
 //					objDictionary.put("strRemoteHost1", "10.10.100.146");
 //					objDictionary.put("strVehicleParkType", "occupy");
 //					objDictionary.put("strVehicleDepartType", "empty");
-					break;	
+					break;
+				case "9401-9402":
+					objDictionary.remove("strRemotePath");
+					objDictionary.put("strRemotePath", "http://localhost:9991");
+					objDictionary.put("strBootstrapPort","6994");
+					objDictionary.put("strEnvironment", "QA");
+					objDictionary.put("strDeviceId", strDeviceId);
+					objDictionary.put("strHost", "10.10.102.156");
+					objDictionary.remove("strMeterUser");objDictionary.put("strMeterUser", "root");
+					objDictionary.put("strSilverBullet", "10.10.102.157");
+					objDictionary.put("strLocation", "-93.43552 44.972176");
+					objDictionary.put("strMeterGroup", "A");
+					objDictionary.put("strMeterAddress", "");
+					objDictionary.put("strMeterName", "9401");//Space
+					objDictionary.put("strMeterSpotName", "9401");
+					objDictionary.put("strMunicipality", "AutomationMunicipality");
+					objDictionary.put("strRateBlockGroup", "AutomationRateBlockGroup17");
+					objDictionary.put("strUniqueId", "ge");
+					objDictionary.put("strPermitGroup", "Automation Permit Group");
+					objDictionary.put("strReservationBlockGroup", "ReservationRateBlockGroup17");
+					break;
 				case "9301-9302"://Taxes Muni
 					objDictionary.remove("strRemotePath");
 					objDictionary.put("strRemotePath", "http://localhost:9991");
@@ -1271,6 +1291,18 @@ public class GlobalClass
 					objDictionary.put("strMunicipality", "AutomationMunicipality");
 					objDictionary.put("strRateBlockGroup", "AutomationRateBlockGroup12");
 					objDictionary.put("strUniqueId", "jj");
+					break;
+				case "QAVMeter4":
+					objDictionary.put("strBootstrapPort","6692");
+					objDictionary.put("strEnvironment", "QA");
+					objDictionary.put("strDeviceId", strDeviceId);
+					objDictionary.put("strLocation", "-93.436315 44.972122");
+					objDictionary.put("strMeterGroup", "VirtualAutomationMeterGroup");
+					objDictionary.put("strMeterName", "QAVMeter4");
+					objDictionary.put("strMeterAddress", "9821 Dakota Road");
+					objDictionary.put("strMeterSpotName", "QAVMeter4");
+					objDictionary.put("strRateBlockGroup", "AutomationRateBlockGroup16");
+					objDictionary.put("strUniqueId", "av");
 					break;
 				case "AVMeter4":
 					String strMunicipality = objDictionary.get("strMunicipality");

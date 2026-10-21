@@ -5965,7 +5965,9 @@ public class CommonWeb {
 			{
 				String strTestCaseName = objDictionary.get("strTestCaseName");
 				String strFirstLetter = strTestCaseName.substring(0, 1);
-				clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Group", "Populate Add Set to This Group", "{L} Add Set to This Group", "25 buys 15 min fixed");
+				String strRateBlockGroup = objDictionary.get("strRateBlockGroup");
+				String strRateSetName = strRateBlockGroup.replace("AutomationRateBlockGroup", "AutomationRateSet");
+		  		clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Group", "Populate Add Set to This Group", "{L} Add Set to This Group", strRateSetName+"Fixed");
 //				clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Group", "Populate Add Set to This Group", "{L} Add Set to This Group", strFirstLetter+" Paid Parking");
 			}
 			clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Group","Add Set to This Group", 1,"Local");
@@ -8580,7 +8582,7 @@ public class CommonWeb {
 							try {Thread.sleep(1500);} catch (Exception f) {}
 							clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Setting", "Save Rate Block", 1, "Local");
 							//Set 2nd Rate Block
-							try {Thread.sleep(1500);} catch (Exception f) {}
+							try {Thread.sleep(2000);} catch (Exception f) {}
 							clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Group", "Populate Add Set to This Group","{L} Add Set to This Group", strRateSetName);
 							try {Thread.sleep(1500);} catch (Exception f) {}
 							clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Group", "Add Set to This Group", 1, "Local");
@@ -11671,7 +11673,7 @@ public class CommonWeb {
                 	UpdateErrorMessageWithPivotalData(objDictionary, driver, "Error clicking the Button (" + strButtonName + ") - " + strMethodName, strHostType);
                 }
 	        }
-	        	        // Dynamic wait for objects if needed
+	        // Dynamic wait for objects if needed
 	        if (!strWaitObjects.isEmpty()) {
 	            DynamicObjectWait(objDictionary, driver, strPageName);
 	        }
@@ -17055,7 +17057,7 @@ public class CommonWeb {
 						try { return driver.findElement(By.id("inputStartTime"));}catch(Exception e) {return null;}
 					case "Rate Block Name":
 						try {
-						    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+						    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 						    return wait.until(ExpectedConditions.presenceOfElementLocated(By.id("inputName")));
 						} catch (Exception e) {
 						    return null;
@@ -17862,7 +17864,7 @@ public class CommonWeb {
 				switch (strTextName)
 				{        
 					case "UserName":
-						try { return driver.findElement(By.xpath("//ul[contains(@class,'navbar-nav text-lg-right text-left')]//li[3]"));}catch(Exception e) {return null;}
+						try { return driver.findElement(By.xpath("//ul[contains(@class,'nav pull-right')]//li[1]"));}catch(Exception e) {return null;}
 					default:
 						UpdateErrorMessageWithPivotalData(objDictionary,driver,"The Text (" + strTextName + ") for the page (" + strPageName + ") had not been added-"+strMethodName,"Local");
 				}
