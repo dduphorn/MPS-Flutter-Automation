@@ -234,6 +234,12 @@ public class IOS_Common_Flutter
   	        URL appiumUrl = new URL("http://127.0.0.1:" + strDeviceAppiumPort);
   	        iosdriver = new IOSDriver(appiumUrl, capabilities);
   	        Reporter.log("Sentry Mobile loaded correctly on iOS Device (Fresh Install from .ipa)");
+  	        if (iosdriver.getSessionId() != null && strDeviceAppiumPort != null) {
+  	            String attachMessage = AppiumInspectorServer.attachMessage(
+  	                    String.valueOf(iosdriver.getSessionId()), strDeviceAppiumPort, strIOSUdid);
+  	            System.out.println(attachMessage);
+  	            Reporter.log(attachMessage);
+  	        }
   	    } catch (Exception e) {
   	        String errorMsg = "Could not start iOS session. " + e.getMessage();
   	        UpdateErrorMessageWithPivotalData(objDictionary, null, errorMsg + " - " + strMethodName);
@@ -16498,10 +16504,10 @@ public class IOS_Common_Flutter
                     .withIPAddress("127.0.0.1")
                     .usingPort(port)
                     .withArgument(GeneralServerFlag.SESSION_OVERRIDE)
-                    .withArgument(() -> "--allow-cors")           // ← This is the correct syntax
                     .withArgument(GeneralServerFlag.LOG_LEVEL, "debug")
                     .withLogFile(new File(logFilePath))
                     .withTimeout(Duration.ofSeconds(30));
+            AppiumInspectorServer.apply(builder);
 
             service = AppiumDriverLocalService.buildService(builder);
             service.start();
@@ -16509,8 +16515,8 @@ public class IOS_Common_Flutter
             // Extra buffer so Inspector can reliably connect
             Thread.sleep(5000);
 
-            Reporter.log("Appium server started successfully on port " + port + " (with --allow-cors)");
-            System.out.println("✅ Appium server started on http://127.0.0.1:" + port + " with CORS enabled");
+            Reporter.log("Appium server started successfully on port " + port + " (Inspector can attach)");
+            System.out.println("Appium server started on http://127.0.0.1:" + port + "/ with CORS and session discovery");
 
         } catch (Exception e) {
             e.printStackTrace();
