@@ -21152,14 +21152,11 @@ public class CommonANDROID
         command.addArgument("--port", false);
         command.addArgument(strDeviceAppiumPort);
         
-        // === Important flags for Appium Inspector compatibility ===
+        // Inspector attaches to the device session already running on this server.
         command.addArgument("--session-override", true);
-        command.addArgument("--allow-cors", true);           // Required for Inspector
-        command.addArgument("--relaxed-security", true);     // Enables session_discovery + other needed features
-        
-        // Optional: Only enable the exact feature instead of relaxed-security
-        // command.addArgument("--enable-feature", false);
-        // command.addArgument("session_discovery", false);
+        for (String inspectorArgument : AppiumInspectorServer.arguments()) {
+            command.addArgument(inspectorArgument, false);
+        }
 
         DefaultExecuteResultHandler resultHandler = new DefaultExecuteResultHandler();
         DefaultExecutor executor = new DefaultExecutor();

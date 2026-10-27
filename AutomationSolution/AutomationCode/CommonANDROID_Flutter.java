@@ -579,6 +579,9 @@ public class CommonANDROID_Flutter
 	        command.addArgument("--port", false);
 	        command.addArgument(strDeviceAppiumPort);
 	        command.addArgument("--session-override", true);
+	        for (String inspectorArgument : AppiumInspectorServer.arguments()) {
+	            command.addArgument(inspectorArgument, false);
+	        }
 
 	        DefaultExecuteResultHandler resultHandler = new DefaultExecuteResultHandler();
 	        DefaultExecutor executor = new DefaultExecutor();
@@ -727,6 +730,9 @@ public class CommonANDROID_Flutter
 	                .withIPAddress("127.0.0.1")
 	                .usingPort(port)
 	                .withArgument(GeneralServerFlag.LOG_LEVEL, "info");
+	        // Inspector attaches to this device session. CORS lets the Inspector UI call the
+	        // server, and session_discovery lists the session on the Attach to Session tab.
+	        AppiumInspectorServer.apply(builder);
 
 	        appiumService = AppiumDriverLocalService.buildService(builder);
 	        appiumService.start();
@@ -820,7 +826,10 @@ public class CommonANDROID_Flutter
 	        clearStaleDeviceSession(strAndroidUdid, appPackage, objDictionary.get("strSystemPort"), objDictionary.get("strMjpegServerPort"));
 
 	        androidDriver = new AppiumDriver(serverUrl, options);
-	        System.out.println("Session created successfully on " + strAndroidUdid + "!");
+	        String attachMessage = AppiumInspectorServer.attachMessage(
+	                String.valueOf(androidDriver.getSessionId()), strDeviceAppiumPort, strAndroidUdid);
+	        System.out.println(attachMessage);
+	        Reporter.log(attachMessage);
 
 	        try {
 	            ((io.appium.java_client.InteractsWithApps) androidDriver).activateApp(appPackage);
