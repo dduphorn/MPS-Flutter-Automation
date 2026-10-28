@@ -176,6 +176,8 @@ public class Gmail
 	  			return "G6AGA78d22jTCYJ";
 	  		case "rbExcelsiorMNpeo@gmail.com":
 	  			return "ovxzkytwswrtwdcn";
+	  		case "gdAutomationMunicipalitypeo@gmail.com"://QA
+	  			return "wdhmoqxknzcikgad ";
 	  		//	return "rbExcelsiorMNpeo2!";
 	  			//Need to setup the App Password in the google account
 	  		default:
@@ -391,36 +393,74 @@ public class Gmail
                  	}
                  	strFormatedFeeTimestamp = date.format(formatter);
                  	String strDeviceId = objDictionary.get("strDeviceId");
-                    String strExpectedMessage = strGmailUserName+",\n" +
-		            		"\n" +
-		            		"Your violation has been paid successfully.\n" +
-		            		"\n" +
-		            		"Violation details:\n" +
-		            		"\n" +
-		            		"Violation Number: "+strViolationNumber+"\n" +
-		            		"\n" +
-		            		"Time issued: "+strFormatedInitialViolationTimestamp+"\n" +
-		            		"\n" +
-		            		"Location: "+strDeviceId+"\n" +
-		            		"\n" +
-		            		"\n" +
-		            		"Violation payment history:\n" +
-		            		"\n" +
-		            		"\n" +
-		            		"\n" +
-		            		"Time: "+strFormatedstrPaymentTimestamp+"\n" +
-		            		"\n" +
-		            		"Method: Credit Card\n" +
-		            		"\n" +
-		            		"Source: Online\n" +
-		            		"\n" +
-		            		"Reference Number: "+strTransactionNumber+"\n" +
-		            		" Violation Fee: USD 30.00"+
-		            		" Violation Processing Fee: "+strFormatedFeeTimestamp+": USD 7.00" +
-		            		"Sales Tax: USD 0.00" +
-							"\n" +
-		            		"Amount: "+strFormattedViolationAmount+"\n" +
-		            		"";
+                 	String strEnvironment = objDictionary.get("strEnvironment");
+                 	String strExpectedMessage = "";
+            		if(strEnvironment.equals("QA"))
+            		{
+            			strExpectedMessage = strGmailUserName+",\n" +
+			            		"\n" +
+			            		"Your violation has been paid successfully.\n" +
+			            		"\n" +
+			            		"Violation details:\n" +
+			            		"\n" +
+			            		"Violation Number: "+strViolationNumber+"\n" +
+			            		"\n" +
+			            		"Time issued: "+strFormatedInitialViolationTimestamp+"\n" +
+			            		"\n" +
+			            		"Location: "+strDeviceId+"\n" +
+			            		"\n" +
+			            		"\n" +
+			            		"Violation payment history:\n" +
+			            		"\n" +
+			            		"\n" +
+			            		"\n" +
+			            		"Time: "+strFormatedstrPaymentTimestamp+"\n" +
+			            		"\n" +
+			            		"Method: Credit Card\n" +
+			            		"\n" +
+			            		"Source: Online\n" +
+			            		"\n" +
+			            		"Reference Number: "+strTransactionNumber+"\n" +
+			            		" Violation Processing Fee: "+strFormatedFeeTimestamp+": USD 7.00" +
+			            		" Violation Fee: USD 30.00"+
+			            		"Sales Tax: USD 0.00" +
+								"\n" +
+			            		"Amount: "+strFormattedViolationAmount+"\n" +
+			            		"";
+            		}
+            		else
+            		{
+	                 	strExpectedMessage = strGmailUserName+",\n" +
+			            		"\n" +
+			            		"Your violation has been paid successfully.\n" +
+			            		"\n" +
+			            		"Violation details:\n" +
+			            		"\n" +
+			            		"Violation Number: "+strViolationNumber+"\n" +
+			            		"\n" +
+			            		"Time issued: "+strFormatedInitialViolationTimestamp+"\n" +
+			            		"\n" +
+			            		"Location: "+strDeviceId+"\n" +
+			            		"\n" +
+			            		"\n" +
+			            		"Violation payment history:\n" +
+			            		"\n" +
+			            		"\n" +
+			            		"\n" +
+			            		"Time: "+strFormatedstrPaymentTimestamp+"\n" +
+			            		"\n" +
+			            		"Method: Credit Card\n" +
+			            		"\n" +
+			            		"Source: Online\n" +
+			            		"\n" +
+			            		"Reference Number: "+strTransactionNumber+"\n" +
+			            		" Violation Fee: USD 30.00"+
+			            		" Violation Processing Fee: "+strFormatedFeeTimestamp+": USD 7.00" +
+			            		"Sales Tax: USD 0.00" +
+								"\n" +
+			            		"Amount: "+strFormattedViolationAmount+"\n" +
+			            		"";
+            		}
 
                     // Check if the content is text/plain
                     if (content instanceof String) {

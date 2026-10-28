@@ -4922,6 +4922,9 @@ public class Meter
 		//DEVICE SETTINGS
 		switch (strEnvironment)
 		{
+			case "QA":
+				objDictionary.remove("strViolationReason");objDictionary.put("strViolationReason", "Initial Grace Period Exceeded");
+				break;
 			case "SG":
 				objDictionary.remove("strViolationReason");objDictionary.put("strViolationReason", "Initial Grace Period Exceeded");
 				break;
