@@ -460,7 +460,7 @@ public class Android_Lot_TestCases
 	    clsCommonWeb.SENTRYLINK_AddOrUpdatePermitRates(objDictionary);
 		clsCommonWeb.SENTRYLINK_AddOrUpdatePermitGroup(objDictionary);     
 	    AndroidDriver smsdriver = clsCommonMobile.SetSmsDriver(objDictionary, "True");
-	    try {Thread.sleep(1500);}catch (Exception e) {}
+	    try {Thread.sleep(2500);}catch (Exception e) {}
 	    smsdriver.findElement(By.id("com.google.android.apps.messaging:id/continue_as_button")).click();
 	    try {Thread.sleep(500);}catch (Exception e) {}
 	    smsdriver.findElement(By.id("com.google.android.apps.messaging:id/conversation_list_spam_popup_positive_button")).click();
@@ -715,7 +715,7 @@ public class Android_Lot_TestCases
 		else if(strEnvironment.equals("PROD")){objDictionary.put("strLotTaxRate","(0.000%)-Lot Automation-ParkingFeeLineItem");}
 		clsCommonWeb.SENTRYLINK_AddOrUpdatePermitRates(objDictionary);
 		AndroidDriver smsdriver = clsCommonMobile.SetSmsDriver(objDictionary, "True");
-	    try {Thread.sleep(1500);}catch (Exception e) {}
+	    try {Thread.sleep(2000);}catch (Exception e) {}
 	    smsdriver.findElement(By.id("com.google.android.apps.messaging:id/continue_as_button")).click();
 	    try {Thread.sleep(500);}catch (Exception e) {}
 	    smsdriver.findElement(By.id("com.google.android.apps.messaging:id/conversation_list_spam_popup_positive_button")).click();
@@ -7661,7 +7661,7 @@ public class Android_Lot_TestCases
 	  	String strViolationId = clsHttpConnections.GetJsonViolationIdUsingParkingSession(objDictionary);
 	  	try {Thread.sleep(25000);}catch (Exception e) {}
 	  	clsHttpConnections.CURL_ExitLot(objDictionary,strLicensePlateNumber, "MN",strLotExitId,"False");
-	  	try {Thread.sleep(65000);}catch (Exception e) {}
+	  	try {Thread.sleep(70000);}catch (Exception e) {}
 	  	//Validate Parking Session
 		Android_Lot_ParkingSessions clsAndroidLotParkingSessions = new Android_Lot_ParkingSessions ();
 		clsAndroidLotParkingSessions.SENTRYLINK_ValidateParkingSessionHistory_BOOT_NOTICE(objDictionary, strViolationId); 

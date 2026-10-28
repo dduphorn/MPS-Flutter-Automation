@@ -217,7 +217,7 @@ public class Android_TestCases_Flutter
 		//Open Android Device
 		AppiumDriver androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
 		//Click Accept
-		//clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept",1);
+		clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept",1);
 		//Click Sign in
 		clsCommonMobile.ClickLink(objDictionary, androidDriver, "Login", "Log in",1);
 		//Log In to CA
@@ -245,7 +245,7 @@ public class Android_TestCases_Flutter
 		String strPassword = "ADeleteMeUser";
 		AppiumDriver androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
 		//Click Accept
-//		clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept",1);
+		clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept",1);
 		//Click Sign up
 		clsCommonMobile.ClickLink(objDictionary, androidDriver, "Login", "Sign up",1);
 		//Populate Phone Number
@@ -922,7 +922,7 @@ public class Android_TestCases_Flutter
 		GlobalClass clsGlobal = new GlobalClass();
 		//Function Variables
 		String strSpaceName = objDictionary.get("strMeterSpotName");
-		String strLicensePlateNumber = "F"+strSpaceName;
+		String strLicensePlateNumber = "F"+strSpaceName.toUpperCase();
 		objDictionary.put("strLicensePlateNumber", strLicensePlateNumber);
 		//Add License Plate
 		objDictionary.remove("strDeviceId");objDictionary.put("strDeviceId", "AVMeter4");
@@ -969,7 +969,7 @@ public class Android_TestCases_Flutter
 		clsGlobal.GetMeterProperties(objDictionary, "AVMeter4");
   		//Function Variables
 		String strSpaceName = objDictionary.get("strMeterSpotName");
-		String strLicensePlateNumber = "F"+strSpaceName;
+		String strLicensePlateNumber = "F"+strSpaceName.toUpperCase();
 		String strLicensePlateState = "Alabama";
 		objDictionary.put("strLicensePlateState", strLicensePlateState);
 		objDictionary.put("strLicensePlateNumber", strLicensePlateNumber.toUpperCase());
@@ -1305,7 +1305,7 @@ public class Android_TestCases_Flutter
 		clsGlobal.GetMeterProperties(objDictionary, "AVMeter4");
   		//Function Variables
 		String strSpaceName = objDictionary.get("strMeterSpotName");
-		String strLicensePlateNumber = "F"+strSpaceName;
+		String strLicensePlateNumber = "F"+strSpaceName.toUpperCase();
 		String strLicensePlateState = "Minnesota";
 		objDictionary.put("strLicensePlateNumber", strLicensePlateNumber);
 		objDictionary.put("strLicensePlateState", strLicensePlateState);
@@ -1313,7 +1313,7 @@ public class Android_TestCases_Flutter
   		HttpConnections clsHttpConnections = new HttpConnections();
 		clsHttpConnections.HTTPCONNECTIONS_DeleteAllParkerLicensePlates(objDictionary);
 		//Add License Plate
-		clsHttpConnections.POST_LicensePlate(objDictionary,"Parker", strLicensePlateNumber,"Alabama");
+		clsHttpConnections.POST_LicensePlate(objDictionary,"Parker", strLicensePlateNumber.toUpperCase(),"Alabama");
   		//Dictionary Variables
   		objDictionary.remove("strDeviceId");objDictionary.put("strDeviceId", "AVMeter4");
 		clsGlobal.GetMeterProperties(objDictionary, "AVMeter4");
@@ -1355,7 +1355,7 @@ public class Android_TestCases_Flutter
 		clsGlobal.GetMeterProperties(objDictionary, "AVMeter4");
 		//Function Variables
 		String strSpaceName = objDictionary.get("strMeterSpotName");
-		String strLicensePlateNumber = "F"+strSpaceName;
+		String strLicensePlateNumber = "F"+strSpaceName.toUpperCase();
 		String strLicensePlateState = "Alabama";
 		objDictionary.put("strLicensePlateNumber", strLicensePlateNumber);
 		objDictionary.put("strLicensePlateState", strLicensePlateState);
@@ -1693,7 +1693,7 @@ public class Android_TestCases_Flutter
   		HttpConnections clsHttpConnections = new HttpConnections();
 		clsHttpConnections.HTTPCONNECTIONS_DeleteAllParkerLicensePlates(objDictionary);
 		//Add License Plate
-		clsHttpConnections.POST_LicensePlate(objDictionary,"Parker", strLicensePlateNumber,"Alabama");
+		clsHttpConnections.POST_LicensePlate(objDictionary,"Parker", strLicensePlateNumber.toUpperCase(),"Alabama");
   		//Simulator
   		objDictionary.put("strVirtualMeter", "True");
   		clsCommonWeb.SENTRYLINK_EnableVirtualMeterPayments(objDictionary);
@@ -1753,6 +1753,7 @@ public class Android_TestCases_Flutter
 		AppiumDriver androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "False", "Parker");
 		//Click Accept
 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept",1);
+		//objDictionary.put("strAutoGrantPermissions", "False");
 		clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, androidDriver, "parker","Remind me later");
 		//ParkTP: Park Then Pay
 		clsCommonMobile.SENTRYMOBILE_PurchaseMeterTimeParkThenPay(objDictionary, androidDriver,strFreeTimeFirstPayment,strMeterIncrementTime,"True","False");
@@ -2247,7 +2248,7 @@ public class Android_TestCases_Flutter
   		HttpConnections clsHttpConnections = new HttpConnections();
 		clsHttpConnections.HTTPCONNECTIONS_DeleteAllParkerLicensePlates(objDictionary);
 		//Add License Plate
-		clsHttpConnections.POST_LicensePlate(objDictionary,"Parker", strLicensePlateNumber,"Alabama");
+		clsHttpConnections.POST_LicensePlate(objDictionary,"Parker", strLicensePlateNumber.toUpperCase(),"Alabama");
   		//Simulator
   		objDictionary.put("strVirtualMeter", "True");
   		clsCommonWeb.SENTRYLINK_EnableVirtualMeterPayments(objDictionary);
@@ -2377,7 +2378,7 @@ public class Android_TestCases_Flutter
   		HttpConnections clsHttpConnections = new HttpConnections();
 		clsHttpConnections.HTTPCONNECTIONS_DeleteAllParkerLicensePlates(objDictionary);
 		//Add License Plate
-		clsHttpConnections.POST_LicensePlate(objDictionary,"Parker", strLicensePlateNumber,"Alabama");
+		clsHttpConnections.POST_LicensePlate(objDictionary,"Parker", strLicensePlateNumber.toUpperCase(),"Alabama");
   		//Simulator
   		objDictionary.put("strVirtualMeter", "True");
   		clsCommonWeb.SENTRYLINK_EnableVirtualMeterPayments(objDictionary);
@@ -3571,14 +3572,7 @@ public class Android_TestCases_Flutter
 		String strSentryLinkCurrentPassword = clsCommonWeb.SENTRYLINK_GetPassword(objDictionary, strGmailUserName, "");
 		int intCurrentVersion;
 		String strEnvironment = objDictionary.get("strEnvironment");
-		if(strEnvironment.equals("QA"))
-		{
-			intCurrentVersion = Integer.parseInt(strSentryLinkCurrentPassword.substring(strSentryLinkCurrentPassword.indexOf("Fires@leMN")+10,strSentryLinkCurrentPassword.length()));
-		}
-		else
-		{
-			intCurrentVersion = Integer.parseInt(strSentryLinkCurrentPassword.substring(strSentryLinkCurrentPassword.indexOf("Fires@le")+8,strSentryLinkCurrentPassword.length()));
-		}
+		intCurrentVersion = Integer.parseInt(strSentryLinkCurrentPassword.replaceAll("\\D+", ""));
 		int intNewVersion = intCurrentVersion +1;
 		String strNewPassword = strSentryLinkCurrentPassword.replace(Integer.toString(intCurrentVersion), Integer.toString(intNewVersion));
 		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Set New Password", "Populate Reset Password", "{T} Reset Token|{T} New Password|{T} Confirm New Password", strToken+"|"+strNewPassword+"|InvalidPassword");
@@ -3668,17 +3662,8 @@ public class Android_TestCases_Flutter
  		try {Thread.sleep(5000);}catch (Exception e) {}
  		String strSecondToken = clsGmail.Gmail_GetResetToken(strGmailUserName,strGmailPassword);
    		String strSentryLinkCurrentPassword = clsCommonWeb.SENTRYLINK_GetPassword(objDictionary, strGmailUserName, "");
-   		int intCurrentVersion;
-		String strEnvironment = objDictionary.get("strEnvironment");
-		if(strEnvironment.equals("QA"))
-		{
-			intCurrentVersion = Integer.parseInt(strSentryLinkCurrentPassword.substring(strSentryLinkCurrentPassword.indexOf("Fires@leMN")+10,strSentryLinkCurrentPassword.length()));
-		}
-		else
-		{
-			intCurrentVersion = Integer.parseInt(strSentryLinkCurrentPassword.substring(strSentryLinkCurrentPassword.indexOf("Fires@le")+8,strSentryLinkCurrentPassword.length()));
-		}
-   		int intNewVersion = intCurrentVersion +1;
+   		int intCurrentVersion = Integer.parseInt(strSentryLinkCurrentPassword.replaceAll("\\D+", ""));
+		int intNewVersion = intCurrentVersion +1;
 		String strNewPassword = strSentryLinkCurrentPassword.replace(Integer.toString(intCurrentVersion), Integer.toString(intNewVersion));
 		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Set New Password", "Populate Reset Password", "{T} Reset Token|{T} New Password|{T} Confirm New Password", strFirstToken+"|"+strNewPassword+"|"+strNewPassword);
 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Set New Password", "Reset", 1);
@@ -3734,15 +3719,7 @@ public class Android_TestCases_Flutter
  		try {Thread.sleep(5000);}catch (Exception e) {}
 		String strSecondToken = clsGmail.Gmail_GetResetToken(strGmailUserName,strGmailPassword);
 		String strSentryLinkCurrentPassword = clsCommonWeb.SENTRYLINK_GetPassword(objDictionary, strGmailUserName, "");
-		int intCurrentVersion;
-		if(strEnvironment.equals("QA"))
-		{
-			intCurrentVersion = Integer.parseInt(strSentryLinkCurrentPassword.substring(strSentryLinkCurrentPassword.indexOf("Fires@leMN")+10,strSentryLinkCurrentPassword.length()));
-		}
-		else
-		{
-			intCurrentVersion = Integer.parseInt(strSentryLinkCurrentPassword.substring(strSentryLinkCurrentPassword.indexOf("Fires@le")+8,strSentryLinkCurrentPassword.length()));
-		}
+		int intCurrentVersion = Integer.parseInt(strSentryLinkCurrentPassword.replaceAll("\\D+", ""));
 		int intNewVersion = intCurrentVersion +1;
 		String strNewPassword = strSentryLinkCurrentPassword.replace(Integer.toString(intCurrentVersion), Integer.toString(intNewVersion));
 		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Set New Password", "Populate Reset Password", "{T} Reset Token|{T} New Password|{T} Confirm New Password", strSecondToken+"|"+strNewPassword+"|"+strNewPassword);
@@ -3802,15 +3779,7 @@ public class Android_TestCases_Flutter
 		String strToken = clsGmail.Gmail_GetResetToken(strGmailUserName,strGmailPassword);
 		if(strToken.equals("")){clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary,androidDriver,"The Password Reset Token did not exist");}
 		String strSentryLinkCurrentPassword = clsCommonWeb.SENTRYLINK_GetPassword(objDictionary, strGmailUserName, "");
-		int intCurrentVersion;
-		if(strEnvironment.equals("QA"))
-		{
-			intCurrentVersion = Integer.parseInt(strSentryLinkCurrentPassword.substring(strSentryLinkCurrentPassword.indexOf("Fires@leMN")+10,strSentryLinkCurrentPassword.length()));
-		}
-		else
-		{
-			intCurrentVersion = Integer.parseInt(strSentryLinkCurrentPassword.substring(strSentryLinkCurrentPassword.indexOf("Fires@le")+8,strSentryLinkCurrentPassword.length()));
-		}
+		int intCurrentVersion = Integer.parseInt(strSentryLinkCurrentPassword.replaceAll("\\D+", ""));
 		int intNewVersion = intCurrentVersion +1;
 		String strNewPassword = strSentryLinkCurrentPassword.replace(Integer.toString(intCurrentVersion), Integer.toString(intNewVersion));
 		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Set New Password", "Populate Reset Password", "{T} Reset Token|{T} New Password|{T} Confirm New Password", strToken+"|"+strNewPassword+"|"+strNewPassword);
@@ -3869,15 +3838,7 @@ public class Android_TestCases_Flutter
 		String strToken = clsGmail.Gmail_GetResetToken(strGmailUserName,strGmailPassword);
 		if(strToken.equals("")){clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary,androidDriver,"The Password Reset Token did not exist");}
 		String strSentryLinkCurrentPassword = clsCommonWeb.SENTRYLINK_GetPassword(objDictionary, strGmailUserName, "");
-		int intCurrentVersion;
-		if(strEnvironment.equals("QA"))
-		{
-			intCurrentVersion = Integer.parseInt(strSentryLinkCurrentPassword.substring(strSentryLinkCurrentPassword.indexOf("Fires@leMN")+10,strSentryLinkCurrentPassword.length()));
-		}
-		else
-		{
-			intCurrentVersion = Integer.parseInt(strSentryLinkCurrentPassword.substring(strSentryLinkCurrentPassword.indexOf("Fires@le")+8,strSentryLinkCurrentPassword.length()));
-		}
+		int intCurrentVersion = Integer.parseInt(strSentryLinkCurrentPassword.replaceAll("\\D+", ""));
 		int intNewVersion = intCurrentVersion +1;
 		String strNewPassword = strSentryLinkCurrentPassword.replace(Integer.toString(intCurrentVersion), Integer.toString(intNewVersion));
 		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Set New Password", "Populate Reset Password", "{T} Reset Token|{T} New Password|{T} Confirm New Password", strToken+"|"+strNewPassword+"|"+strNewPassword);
@@ -5233,7 +5194,7 @@ public class Android_TestCases_Flutter
 	    clsCommonMobile.SENTRYMOBILE_AddOrSelectLicensePlate(objDictionary, androidDriver, strLicensePlateNumber, "Minnesota");
 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Choose Parking Duration", "Proceed", 1);
      	//Select Payment Option and Pay
-     	clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "SentryMobile Account");
+     	clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "FusionAI Mobile Account");
      	clsCommonMobile.ClickButton(objDictionary, androidDriver, "Review and Pay", "Proceed", 1);
      	//Validate Message Device Rejected
 	 	clsCommonMobile.VerificationPointText(objDictionary, androidDriver, "Review and Pay", "Payment rejected, spot is reserved", 1, "Exists", "");
@@ -5992,7 +5953,7 @@ public class Android_TestCases_Flutter
 		clsCommonMobile.SENTRYMOBILE_MobilePaymentInitialPaymentMaxTime(objDictionary, androidDriver);
 		String strTotalPayment = objDictionary.get("strTotalFee");//SENTRYMOBILE_BuyMaxTime
 		//Select Payment Option and Pay
-     	clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "SentryMobile Account");
+     	clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "FusionAI Mobile Account");
      	//Set Start and End Times
      	SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, hh:mm a");
   		String strStartTime = sdf.format(Date.from(Instant.now().truncatedTo(ChronoUnit.MINUTES)));
@@ -6783,10 +6744,10 @@ public class Android_TestCases_Flutter
 			clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, androidDriver, "kill and relaunch while still offline");
 			clsCommonMobile.SENTRYMOBILE_AcceptUserAgreementIfPresent(objDictionary, androidDriver);
 			clsCommonMobile.SENTRYMOBILE_ClickIfPresent(androidDriver, "//*[contains(@content-desc, 'Log in') or contains(@text, 'Log in')]", 8);
-			clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Login", "Populate Login", "{T} Email Id|{T} Password", strUserName + "|" + strPassword);
-			clsCommonMobile.ClickButton(objDictionary, androidDriver, "Login", "Log in", 1);
 			clsCommonMobile.VerificationPointText(objDictionary, androidDriver, "Login", "Please disable Airplane Mode to continue using the app", 1, "Value", "Please disable Airplane Mode to continue using the app");
-	 		//Code Below is untested do to JIRA FLUTTERCA-260
+	 		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Login", "Populate Login", "{T} Email Id|{T} Password", strUserName + "|" + strPassword);
+			clsCommonMobile.ClickButton(objDictionary, androidDriver, "Login", "Log in", 1);
+			//Code Below is untested do to JIRA FLUTTERCA-260
 			clsCommonMobile.SENTRYMOBILE_AssertOfflineOrAirplaneMessage(objDictionary, androidDriver, "login after kill/relaunch while still offline");
 			objDictionary.put("strAirplaneMode", "Disabled");
 			clsADBcommands.SENTRYMOBILE_SET_AIRPLANE_MODE(objDictionary);

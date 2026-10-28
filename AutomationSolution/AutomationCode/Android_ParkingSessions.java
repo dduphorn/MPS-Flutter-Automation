@@ -5668,7 +5668,7 @@ public class Android_ParkingSessions
 		else if (strRow2Column5.contains("App Purchased " + strMeterIncrementTime+ " Minutes (" + intRemainingFreeTimeMinusOne + " free)")) 
 		{Reporter.log("The cell value in row (" + strRowNumber + ") column (" + strColumnNumber+ ") of the table (Parking Session History) equalled (App Purchased "+ strMeterIncrementTime + " Minutes");}
 		else 
-		{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary, driver,"The cell value in row (" + strRowNumber + ") column (" + strColumnNumber+ ") of the table (Parking Session History) did not equal (App Purchased "+ intExpectedRemainingTimeMinutesFirstPayment + " Minutes) - actual value (" + strRow2Column5+ ")","Local");}
+		{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary, driver,"The cell value in row (" + strRowNumber + ") column (" + strColumnNumber+ ") of the table (Parking Session History) did not equal (App Purchased " + strMeterIncrementTime + " Minutes ("+ intRemainingFreeTime + " free)) - actual value (" + strRow2Column5+ ")","Local");}
 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1,"3", "3", "CellValue", "Virt Payment #1");
 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1,"3", "5", "CellValue", "Received 10 Free Minutes with First Payment");
 		String strFirstPayment = objDictionary.get("strFirstPayment");

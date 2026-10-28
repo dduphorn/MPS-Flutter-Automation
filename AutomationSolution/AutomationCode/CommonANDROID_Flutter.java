@@ -579,6 +579,9 @@ public class CommonANDROID_Flutter
 	        command.addArgument("--port", false);
 	        command.addArgument(strDeviceAppiumPort);
 	        command.addArgument("--session-override", true);
+	        // Inspector lists live sessions only when Appium 3 session discovery is on.
+	        command.addArgument("--allow-cors", true);
+	        command.addArgument("--relaxed-security", true);
 
 	        DefaultExecuteResultHandler resultHandler = new DefaultExecuteResultHandler();
 	        DefaultExecutor executor = new DefaultExecutor();
@@ -684,7 +687,6 @@ public class CommonANDROID_Flutter
 	    if (strAndroidUdid == null || strAndroidUdid.trim().isEmpty()) {
 	        strAndroidUdid = "R5CT71MQ2MM";
 	    } else {
-	        // ADB helpers prefer strDeviceName. Point them at this phone so phone 2 does not toggle phone 1.
 	        objDictionary.put("strDeviceName", strAndroidUdid);
 	    }
 	    String strDeviceAppiumPort = objDictionary.getOrDefault("strDeviceAppiumPort", "4723");
@@ -726,7 +728,11 @@ public class CommonANDROID_Flutter
 	                .withAppiumJS(new File(appiumJSPath))
 	                .withIPAddress("127.0.0.1")
 	                .usingPort(port)
-	                .withArgument(GeneralServerFlag.LOG_LEVEL, "info");
+	                .withArgument(GeneralServerFlag.LOG_LEVEL, "info")
+	                // Appium 3 hides GET /appium/sessions until relaxed security is on.
+	                // That list is what Inspector's Refresh Discovered Sessions button reads.
+	                .withArgument(GeneralServerFlag.RELAXED_SECURITY)
+	                .withArgument(() -> "--allow-cors");
 
 	        appiumService = AppiumDriverLocalService.buildService(builder);
 	        appiumService.start();
@@ -746,7 +752,18 @@ public class CommonANDROID_Flutter
 	    }
 
 	    setupDeviceEnvironment(strAndroidUdid);
-	    String appPackage = "PEO".equals(strApplication) ? "com.mpspark.mobileOfficer" : "com.mpspark.consumer.mpsconsumer";
+
+	    // *** FIXED PACKAGE LOGIC ***
+	    // FusionAIMobile / Staging APK uses com.mpspark.consumer.faimobile
+	    // Keep PEO on the old package; everything else (SentryMobile / FusionAI) uses faimobile
+	    String appPackage;
+	    String appActivity = null;
+	    if ("PEO".equals(strApplication)) {
+	        appPackage = "com.mpspark.mobileOfficer";
+	    } else {
+	        appPackage = "com.mpspark.consumer.faimobile";
+	        appActivity = "com.mpspark.consumer.faimobile.MainActivity";
+	    }
 
 	    if ("true".equalsIgnoreCase(objDictionary.get("strResetPermissions"))) {
 	        resetAppPermissions(strAndroidUdid, appPackage);
@@ -765,6 +782,12 @@ public class CommonANDROID_Flutter
 	            .setUdid(strAndroidUdid)
 	            .setApp(fullApkPath);
 
+	    // Explicitly set package (and activity when known) so Appium does not wait for the wrong package
+	    options.setAppPackage(appPackage);
+	    if (appActivity != null) {
+	        options.setAppActivity(appActivity);
+	    }
+
 	    // --- Fixed autoGrantPermissions handling ---
 	    String strAutoGrantPermissions = objDictionary.get("strAutoGrantPermissions");
 	    boolean autoGrant = strAutoGrantPermissions == null || "true".equalsIgnoreCase(strAutoGrantPermissions);
@@ -774,12 +797,12 @@ public class CommonANDROID_Flutter
 	    options.setCapability("noReset", false);
 	    options.setCapability("fullReset", true);
 	    options.setCapability("appWaitActivity", "*");
-	    options.setCapability("appWaitPackage", appPackage);
+	    options.setCapability("appWaitPackage", appPackage);   // now matches the real package
 	    options.setCapability("disableWindowAnimation", true);
 	    options.setCapability("skipUnlock", true);
 	    options.setCapability("appium:unicodeKeyboard", true);
 	    options.setCapability("newCommandTimeout", 3600);
-	    options.setCapability("appium:enableNotificationListener", true);
+	    // options.setCapability("appium:enableNotificationListener", true);  // not recognized by uiautomator2 – removed
 	    options.setCapability("appium:forceAppLaunch", true);
 
 	    // A second phone must not reuse 8200. That forward belongs to the first session, and taking it closes that app.
@@ -792,7 +815,6 @@ public class CommonANDROID_Flutter
 
 	    boolean keepAppRunning = "true".equalsIgnoreCase(objDictionary.get("strKeepAppRunning"));
 	    if (keepAppRunning) {
-	        // fullReset uninstalls the app when a session ends. Leave the app installed so phone 1 stays up.
 	        options.setFullReset(false);
 	        options.setNoReset(false);  // must stay false for autoGrantPermissions to work
 	        options.setCapability("appium:shouldTerminateApp", false);
@@ -805,7 +827,8 @@ public class CommonANDROID_Flutter
 	    System.out.println("Starting " + strApplication + " on " + strAndroidUdid
 	            + " systemPort=" + objDictionary.getOrDefault("strSystemPort", "auto")
 	            + " keepAppRunning=" + keepAppRunning
-	            + " autoGrant=" + autoGrant);
+	            + " autoGrant=" + autoGrant
+	            + " package=" + appPackage);
 
 	    AppiumDriver androidDriver = null;
 	    try {
@@ -814,7 +837,6 @@ public class CommonANDROID_Flutter
 	        System.out.println("Connecting to Appium at: " + serverUrl);
 
 	        if (keepAppRunning) {
-	            // Each phone gets a new install at the start of the run.
 	            uninstallApp(strAndroidUdid, appPackage);
 	        }
 	        clearStaleDeviceSession(strAndroidUdid, appPackage, objDictionary.get("strSystemPort"), objDictionary.get("strMjpegServerPort"));
@@ -830,7 +852,7 @@ public class CommonANDROID_Flutter
 	            startAppActivity(strAndroidUdid, appPackage);
 	        }
 
-	        // === Explicitly grant all permissions after session start (more reliable than autoGrantPermissions capability) ===
+	        // === Explicitly grant all permissions after session start ===
 	        if (autoGrant) {
 	            try {
 	                Map<String, Object> params = new HashMap<>();
@@ -841,13 +863,10 @@ public class CommonANDROID_Flutter
 	                System.out.println("[" + strAndroidUdid + "] Explicitly granted all permissions via mobile: changePermissions");
 	            } catch (Exception grantError) {
 	                System.err.println("[" + strAndroidUdid + "] Failed to grant permissions via mobile: changePermissions: " + grantError.getMessage());
-	                // Optional fallback: grant the common ones via ADB if you have a helper
-	                // grantCommonPermissions(strAndroidUdid, appPackage);
 	            }
 	        }
 
 	        if ("true".equalsIgnoreCase(objDictionary.get("strResetPermissions"))) {
-	            // Appium can grant during startup. Revoke again so sign-in still raises the dialogs.
 	            revokeRuntimePermissions(strAndroidUdid, appPackage);
 	        }
 	    } catch (Exception e) {
@@ -867,13 +886,12 @@ public class CommonANDROID_Flutter
 	    Reporter.log("Sentry Mobile was loaded correctly on Android Device");
 
 	    HttpConnections clsHttpConnections = new HttpConnections();
-  		String strParkerType = clsHttpConnections.GET_ParkerType(objDictionary); 
-  		String strHandicapPermit = objDictionary.get("strHandicapPermit");if (strHandicapPermit == null) {strHandicapPermit = "";}
-  		if(strParkerType.equals("Handicap") && strHandicapPermit.equals(""))
-  		{
-  			//Disable Handicap
-  			clsHttpConnections.POST_HandicapDenroll(objDictionary, "Parker");
-  		}
+	    String strParkerType = clsHttpConnections.GET_ParkerType(objDictionary); 
+	    String strHandicapPermit = objDictionary.get("strHandicapPermit");
+	    if (strHandicapPermit == null) { strHandicapPermit = ""; }
+	    if (strParkerType.equals("Handicap") && strHandicapPermit.equals("")) {
+	        clsHttpConnections.POST_HandicapDenroll(objDictionary, "Parker");
+	    }
 	    
 	    return androidDriver;
 	}
@@ -3150,7 +3168,7 @@ public class CommonANDROID_Flutter
 	    clsCommonMobile.SENTRYMOBILE_AddOrSelectLicensePlate(objDictionary, androidDriver, strLicensePlateNumber, strState);
 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Choose Parking Duration", "Proceed", 1);
      	//Select Payment Option and Pay
-     	clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "SentryMobile Account");
+     	clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "FusionAI Mobile Account");
      	clsCommonMobile.ClickButton(objDictionary, androidDriver, "Review and Pay", "Proceed", 1);
 	 	//Validate Message Device Rejected
 	 	clsCommonMobile.VerificationPointText(objDictionary, androidDriver, "Review and Pay", "Spot is in Free parking going into Reserved Parking", 1, "Exists", "");
@@ -3183,7 +3201,7 @@ public class CommonANDROID_Flutter
 	    clsCommonMobile.SENTRYMOBILE_AddOrSelectLicensePlate(objDictionary, androidDriver, strLicensePlateNumber, strState);
 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Choose Parking Duration", "Proceed", 1);
      	//Select Payment Option and Pay
-     	clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "SentryMobile Account");
+     	clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "FusionAI Mobile Account");
      	clsCommonMobile.ClickButton(objDictionary, androidDriver, "Review and Pay", "Proceed", 1);
   	 	//Validate Message Device Rejected
 	 	clsCommonMobile.VerificationPointText(objDictionary, androidDriver, "Review and Pay", "Payment rejected, spot is reserved", 1, "Exists", "");
@@ -3438,7 +3456,7 @@ public class CommonANDROID_Flutter
      	String strAltPayment = objDictionary.get("strAltPayment");
      	if(strAltPayment == null)
      	{
-     		clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "SentryMobile Account");
+     		clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "FusionAI Mobile Account");
      		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Review and Pay", "Proceed", 1);
      		
      		String strAirplainModeEnabledAfterPayment = objDictionary.get("strAirplainModeEnabledAfterPayment");if (strAirplainModeEnabledAfterPayment == null) {strAirplainModeEnabledAfterPayment = "False";}
@@ -3631,7 +3649,7 @@ public class CommonANDROID_Flutter
      	strMeterNextRateCost = "$" + String.format("%.2f", dblMeterNextRateCost);
      	clsCommonMobile.SENTRYMOBILE_ValidateFirstPaymentDialogAndReturnParkingFee(objDictionary, androidDriver, strMeterNextRateCost,"1");
      	//Select Payment Option and Pay
-     	clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "SentryMobile Account");
+     	clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "FusionAI Mobile Account");
      	clsCommonMobile.ClickButton(objDictionary, androidDriver, "Review and Pay", "Proceed", 1);
      	String strStartTime = "";
      	//Set in METER_ParkSpot
@@ -3736,7 +3754,7 @@ public class CommonANDROID_Flutter
      	strMeterNextRateCost = "$" + String.format("%.2f", dblMeterNextRateCost);
      	clsCommonMobile.SENTRYMOBILE_ValidateSubsequentPaymentDialogAndReturnParkingFee(objDictionary, androidDriver, strMeterNextRateCost);
      	//Select Payment Option and Pay
-     	clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "SentryMobile Account");
+     	clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "FusionAI Mobile Account");
      	clsCommonMobile.ClickButton(objDictionary, androidDriver, "Review and Pay", "Proceed", 1);
      	String strSnackbarText = objDictionary.get("strSnackbarText");
      	if(!strSnackbarText.equals("")){UpdateErrorMessageWithPivotalData(objDictionary,androidDriver,"Clicking Proceed triggers this unexpected message: "+strSnackbarText);}
@@ -3807,7 +3825,7 @@ public class CommonANDROID_Flutter
      	strMeterNextRateCost = "$" + String.format("%.2f", dblMeterNextRateCost);
      	clsCommonMobile.SENTRYMOBILE_ValidateSubsequentPaymentDialogAndReturnParkingFee(objDictionary, androidDriver, strMeterNextRateCost);
      	//Select Payment Option and Pay
-     	clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "SentryMobile Account");
+     	clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "FusionAI Mobile Account");
      	clsCommonMobile.ClickButton(objDictionary, androidDriver, "Review and Pay", "Proceed", 1);
      	SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, hh:mm a");
 		String strPurchaseTime = sdf.format(Date.from(Instant.now().truncatedTo(ChronoUnit.MINUTES)));
@@ -4002,7 +4020,7 @@ public class CommonANDROID_Flutter
 	 	strMeterNextRateCost = "$" + String.format("%.2f", dblMeterNextRateCost);
 	 	String strSubsequentPaymentTotal = clsCommonMobile.SENTRYMOBILE_ValidateSubsequentPaymentDialogAndReturnParkingFee(objDictionary, androidDriver, strMeterNextRateCost);
 	    //Select Payment Option and Pay
-	 	clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "SentryMobile Account");
+	 	clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "FusionAI Mobile Account");
 	 	clsCommonMobile.ClickButton(objDictionary, androidDriver, "Review and Pay", "Proceed", 1);
 		String strStartTime = objDictionary.get("strParkingSessionStart");//SENTRYMOBILE_PurchaseMeterTimeParkThenPay
 		String strMeterIncrementTime = objDictionary.get("strMeterIncrementTime");
@@ -5365,7 +5383,7 @@ public class CommonANDROID_Flutter
 	                    try {
 	                        WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(5));
 	                        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(
-	                                By.xpath("//android.widget.Button[@resource-id='com.mpspark.consumer.mpsconsumer:id/bt_button']")
+	                                By.xpath("//android.widget.Button[contains(@resource-id, 'bt_button')]")
 	                        ));
 	                        return element;
 	                    } 
@@ -6758,23 +6776,23 @@ public class CommonANDROID_Flutter
 				{
 					case "Card Number":
 						try {
-							WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(10));
-					        WebElement cardNumberField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.EditText[@resource-id='com.mpspark.consumer.mpsconsumer:id/bt_card_form_card_number']")));
-							return cardNumberField;
+							WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(15));
+					        WebElement cardNumberField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.EditText[contains(@resource-id, 'bt_card_form_card_number')]")));
+					  		return cardNumberField;
 						} catch (Exception e) { return null;}
 					case "CVC":
 						try {
 							WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(10));
-							WebElement cvcField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.EditText[@resource-id='com.mpspark.consumer.mpsconsumer:id/bt_card_form_cvv']")));
+							WebElement cvcField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.EditText[contains(@resource-id, 'bt_card_form_cvv')]")));
 							return cvcField;
 						} catch (Exception e) { return null;}
 					case "Expiration Date":
 						try {
 							WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(10));
 					        WebElement expirationField = wait.until(ExpectedConditions.visibilityOfElementLocated(
-					            By.xpath("//android.widget.EditText[@resource-id='com.mpspark.consumer.mpsconsumer:id/bt_card_form_expiration']")
+					            By.xpath("//android.widget.EditText[contains(@resource-id, 'bt_card_form_expiration')]")
 					        ));
-							return expirationField;
+					  		return expirationField;
 						} catch (Exception e) { return null;}
 					default:
 						clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, androidDriver,"The Textfield (" + strTextFieldName + ") had not been added to "+strMethondName+" for the page (" + strPageName + ")");
@@ -8297,7 +8315,7 @@ public class CommonANDROID_Flutter
 		clsCommonMobile.SENTRYMOBILE_MobilePaymentInitialPaymentMaxTime(objDictionary, androidDriver);
 		String strTotalPayment = objDictionary.get("strTotalFee");//SENTRYMOBILE_BuyMaxTime
 		//Select Payment Option and Pay
-     	clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "SentryMobile Account");
+     	clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "FusionAI Mobile Account");
      	//Set Start and End Times
      	SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, hh:mm a");
   		String strPaymentTime = sdf.format(Date.from(Instant.now().truncatedTo(ChronoUnit.MINUTES)));
@@ -8390,7 +8408,7 @@ public class CommonANDROID_Flutter
 			{clsCommonMobile.SENTRYMOBILE_ValidateFirstPaymentDialogAndReturnParkingFee(objDictionary, androidDriver, strMeterNextRateCost,"1");}
 			else
 			{clsCommonMobile.SENTRYMOBILE_ValidateSubsequentPaymentDialogAndReturnParkingFee(objDictionary, androidDriver, strMeterNextRateCost);}
-			clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "SentryMobile Account");
+      		clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "FusionAI Mobile Account");
          	clsCommonMobile.ClickButton(objDictionary, androidDriver, "Review and Pay", "Proceed", 1);
          	if (intAddCounter == 0){startTime = System.currentTimeMillis();}
          	//Set Start and End Times 
@@ -8507,7 +8525,7 @@ public class CommonANDROID_Flutter
 			{clsCommonMobile.SENTRYMOBILE_ValidateFirstPaymentDialogAndReturnParkingFee(objDictionary, androidDriver, strMeterNextRateCost,"1");}
 			else
 			{clsCommonMobile.SENTRYMOBILE_ValidateSubsequentPaymentDialogAndReturnParkingFee(objDictionary, androidDriver, strMeterNextRateCost);}
-			clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "SentryMobile Account");
+			clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "FusionAI Mobile Account");
          	clsCommonMobile.ClickButton(objDictionary, androidDriver, "Review and Pay", "Proceed", 1);
          	if (intAddCounter == 0){startTime = System.currentTimeMillis();}
          	//Set Start and End Times 
@@ -8627,7 +8645,7 @@ public class CommonANDROID_Flutter
 			{clsCommonMobile.SENTRYMOBILE_ValidateFirstPaymentDialogAndReturnParkingFee(objDictionary, androidDriver, strMeterNextRateCost,"1");}
 			else
 			{clsCommonMobile.SENTRYMOBILE_ValidateSubsequentPaymentDialogAndReturnParkingFee(objDictionary, androidDriver, strMeterNextRateCost);}
-			clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "SentryMobile Account");
+			clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "FusionAI Mobile Account");
          	clsCommonMobile.ClickButton(objDictionary, androidDriver, "Review and Pay", "Proceed", 1);
          	//Set Start and End Times 
          	SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, hh:mm a");
@@ -8752,7 +8770,7 @@ public class CommonANDROID_Flutter
 			{clsCommonMobile.SENTRYMOBILE_ValidateFirstPaymentDialogAndReturnParkingFee(objDictionary, androidDriver, strMeterNextRateCost,"1");}
 			else
 			{clsCommonMobile.SENTRYMOBILE_ValidateSubsequentPaymentDialogAndReturnParkingFee(objDictionary, androidDriver, strMeterNextRateCost);}
-			clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "SentryMobile Account");
+			clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "FusionAI Mobile Account");
          	clsCommonMobile.ClickButton(objDictionary, androidDriver, "Review and Pay", "Proceed", 1);
          	//Set Start and End Times 
          	SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, hh:mm a");
@@ -9724,7 +9742,7 @@ public class CommonANDROID_Flutter
 		//Validate Max Time Parking Session
 		String strTotalPayment = objDictionary.get("strTotalFee");//SENTRYMOBILE_BuyMaxTime
 		//Select Payment Option and Pay
-     	clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "SentryMobile Account");
+     	clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "FusionAI Mobile Account");
      	//Set Start and End Times
      	SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, hh:mm a");
   		String strStartTime = sdf.format(Date.from(Instant.now().truncatedTo(ChronoUnit.MINUTES)));
@@ -9815,7 +9833,7 @@ public class CommonANDROID_Flutter
 			{clsCommonMobile.SENTRYMOBILE_ValidateFirstPaymentDialogAndReturnParkingFee(objDictionary, androidDriver, strMeterNextRateCost,"1");}
 			else
 			{clsCommonMobile.SENTRYMOBILE_ValidateSubsequentPaymentDialogAndReturnParkingFee(objDictionary, androidDriver, strMeterNextRateCost);}
-			clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "SentryMobile Account");
+			clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "FusionAI Mobile Account");
          	clsCommonMobile.ClickButton(objDictionary, androidDriver, "Review and Pay", "Proceed", 1);
          	if (intAddCounter == 0){startTime = System.currentTimeMillis();}
          	//Set Start and End Times 
@@ -9937,7 +9955,7 @@ public class CommonANDROID_Flutter
 			{clsCommonMobile.SENTRYMOBILE_ValidateFirstPaymentDialogAndReturnParkingFee(objDictionary, androidDriver, strMeterNextRateCost,"1");}
 			else
 			{clsCommonMobile.SENTRYMOBILE_ValidateSubsequentPaymentDialogAndReturnParkingFee(objDictionary, androidDriver, strMeterNextRateCost);}
-			clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "SentryMobile Account");
+			clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "FusionAI Mobile Account");
          	clsCommonMobile.ClickButton(objDictionary, androidDriver, "Review and Pay", "Proceed", 1);
          	if (intAddCounter == 0){startTime = System.currentTimeMillis();}
          	//Set Start and End Times 
@@ -10067,7 +10085,7 @@ public class CommonANDROID_Flutter
 			{clsCommonMobile.SENTRYMOBILE_ValidateFirstPaymentDialogAndReturnParkingFee(objDictionary, androidDriver, strMeterNextRateCost,"1");}
 			else
 			{clsCommonMobile.SENTRYMOBILE_ValidateSubsequentPaymentDialogAndReturnParkingFee(objDictionary, androidDriver, strMeterNextRateCost);}
-			clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "SentryMobile Account");
+			clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "FusionAI Mobile Account");
          	clsCommonMobile.ClickButton(objDictionary, androidDriver, "Review and Pay", "Proceed", 1);
          	if (intAddCounter == 0){startTime = System.currentTimeMillis();}
          	//Set Start and End Times 
@@ -11189,7 +11207,7 @@ public class CommonANDROID_Flutter
   		strEndTime = clsCommonMobile.AddTimeToExistingTime(strEndTime, Integer.toString(intRemainingFreeTimeMinutes),"MMM dd, hh:mm a");
   		int intMeterMaxTime = Integer.parseInt(strMaximumDuration) + intRemainingFreeTimeMinutes;
 		//Select Payment Option and Pay
-     	clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "SentryMobile Account");
+     	clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "FusionAI Mobile Account");
      	clsCommonMobile.ClickButton(objDictionary, androidDriver, "Review and Pay", "Proceed", 1);
 	 	//Wait For Parking Session Details
     	clsCommonMobile.GlobalWait(objDictionary, androidDriver, "Parking Sessions", "{TextExists} Parking Sessions~Parking Session Details", 80);
@@ -12316,7 +12334,7 @@ public class CommonANDROID_Flutter
 		//Validate Max Time Parking Session
 		String strTotalPayment = objDictionary.get("strTotalFee");//SENTRYMOBILE_BuyMaxTime
 		//Select Payment Option and Pay
-     	clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "SentryMobile Account");
+     	clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "FusionAI Mobile Account");
      	//Set Start and End Times
     	String strParkedAtTime_MMMddhhmma = objDictionary.remove("strParkedAtTime_MMMddhhmma");
     	String strStartTime = "";
@@ -16208,7 +16226,7 @@ public class CommonANDROID_Flutter
      	String strEndTime = "";
      	if(strAltPayment == null)
      	{
-     		clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "SentryMobile Account");
+     		clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "FusionAI Mobile Account");
      		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Review and Pay", "Proceed", 1);
      		//Set Start and End Times
      		SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, hh:mm a");
@@ -16351,7 +16369,7 @@ public class CommonANDROID_Flutter
      	String strEndTime = "";
      	if(strAltPayment == null)
      	{
-     		clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "SentryMobile Account");
+     		clsCommonMobile.PopulateScrollableListbox(objDictionary,androidDriver, "Review and Pay", "Select Payment Option", "FusionAI Mobile Account");
      		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Review and Pay", "Proceed", 1);
      		//Set Start and End Times
      		SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, hh:mm a");

@@ -2224,7 +2224,7 @@ public class PEO_ParkingSessions
   		if(intActualNumberOfImages == 8)
       	{Reporter.log(intActualNumberOfImages+" Violation Images Correctly Appeared in the Parking Session");}
       	else
-      	{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The Number of Violation Images were incorrect expected "+intActualNumberOfImages+" Actual "+intActualNumberOfImages,"Local");}
+      	{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The Number of Violation Images were incorrect expected 8 Actual "+intActualNumberOfImages,"Local");}
       	// VIAC: Validate Images Appear Correctly
   		clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
   		Actions actions = new Actions(driver);
@@ -2284,7 +2284,7 @@ public class PEO_ParkingSessions
   		if(intActualNumberOfImages == 8)
       	{Reporter.log(intActualNumberOfImages+" Violation Images Correctly Appeared in the Parking Session");}
       	else
-      	{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The Number of Violation Images were incorrect expected "+intActualNumberOfImages+" Actual "+intActualNumberOfImages,"Local");}
+      	{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The Number of Violation Images were incorrect expected 8 Actual "+intActualNumberOfImages,"Local");}
       	// VIAC: Validate Images Appear Correctly
   		clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
   		Actions actions = new Actions(driver);
