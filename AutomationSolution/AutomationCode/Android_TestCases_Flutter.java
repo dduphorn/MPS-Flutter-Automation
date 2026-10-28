@@ -1750,6 +1750,8 @@ public class Android_TestCases_Flutter
 		clsCommonWeb.SENTRYLINK_ExitSpotSetMeterRateBlocksOpenMeterInBrowse(objDictionary, strMaximumDuration, strCoinTimePuchaseLimit, strFreeTimeFirstPayment, strMeterIncrementTime, strInitialGracePeriod, strViolationGracePeriod, strHandicapInitialGracePeriod, strHandicapViolationGrace, strNoParkingGrace,strSetImageSendBeforeViolation,strParkingShortSessionSec, strUnlockValue, strUnlockTime, strUnlockMax,"Local");
 		//ParkTP: Park Then Pay
 		clsCommonWeb.SENTRYLINK_ConciergeDeenroll(objDictionary);
+		
+		//objDictionary.put("strAutoGrantPermissions", "False");
 		AppiumDriver androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "False", "Parker");
 		//Click Accept
 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept",1);

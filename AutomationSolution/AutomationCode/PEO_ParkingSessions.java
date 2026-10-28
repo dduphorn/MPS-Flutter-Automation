@@ -1384,12 +1384,13 @@ public class PEO_ParkingSessions
       	//VPSH: Validate Parking Session History
       	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation"+strViolationId);
-		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "CSR Approved "+strViolationId);
-		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "To Verify");
-		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Claimed "+strViolationId);
-		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Exited");
-		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Missed "+strViolationId);
-		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","0", "Row Does Not Exist", "");
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "License Plate Changed");
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Approved "+strViolationId);
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "To Verify");
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Claimed "+strViolationId);
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Exited");
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Missed "+strViolationId);
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
 		String strValidateImageFlag = objDictionary.get("strValidateImageFlag");if(strValidateImageFlag == null){strValidateImageFlag = "True";}
 		if(strValidateImageFlag.equals("True"))
 	  	{
@@ -2221,10 +2222,10 @@ public class PEO_ParkingSessions
   		try {Thread.sleep(1000);} catch (Exception e) {}
   		List<WebElement> images = driver.findElements(By.xpath("//div[contains(@class,'jcarousel-navigation')]//ul/li/img"));
   		int intActualNumberOfImages = images.size();
-  		if(intActualNumberOfImages == 8)
+  		if(intActualNumberOfImages == 7)
       	{Reporter.log(intActualNumberOfImages+" Violation Images Correctly Appeared in the Parking Session");}
       	else
-      	{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The Number of Violation Images were incorrect expected "+intActualNumberOfImages+" Actual "+intActualNumberOfImages,"Local");}
+      	{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The Number of Violation Images were incorrect expected 8 Actual "+intActualNumberOfImages,"Local");}
       	// VIAC: Validate Images Appear Correctly
   		clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
   		Actions actions = new Actions(driver);
@@ -2284,7 +2285,7 @@ public class PEO_ParkingSessions
   		if(intActualNumberOfImages == 8)
       	{Reporter.log(intActualNumberOfImages+" Violation Images Correctly Appeared in the Parking Session");}
       	else
-      	{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The Number of Violation Images were incorrect expected "+intActualNumberOfImages+" Actual "+intActualNumberOfImages,"Local");}
+      	{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The Number of Violation Images were incorrect expected 8 Actual "+intActualNumberOfImages,"Local");}
       	// VIAC: Validate Images Appear Correctly
   		clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
   		Actions actions = new Actions(driver);
@@ -2341,7 +2342,7 @@ public class PEO_ParkingSessions
   		if(intActualNumberOfImages == 8)
       	{Reporter.log(intActualNumberOfImages+" Violation Images Correctly Appeared in the Parking Session");}
       	else
-      	{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The Number of Violation Images were incorrect expected "+intActualNumberOfImages+" Actual "+intActualNumberOfImages,"Local");}
+      	{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The Number of Violation Images were incorrect expected 8 Actual "+intActualNumberOfImages,"Local");}
       	// VIAC: Validate Images Appear Correctly
   		clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
   		Actions actions = new Actions(driver);

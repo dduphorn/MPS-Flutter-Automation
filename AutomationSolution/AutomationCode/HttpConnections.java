@@ -3217,8 +3217,16 @@ public class HttpConnections
   		{
   			strJsonToken = objDictionary.get("strJsonUserToken");
   			if(strJsonToken == null){strJsonToken = StoreJsonUserToken(objDictionary, strUserName.toLowerCase(), strPassword);}
-  			strJsonUserId = objDictionary.get("strJsonUserId");
-  			if(strJsonUserId == null) {strJsonUserId = StoreJsonUserId(objDictionary, strUserName.toLowerCase(), strPassword);}
+//  			strJsonUserId = objDictionary.get("strJsonUserId");
+//  			if(strJsonUserId == null)
+//  			{
+  				strJsonUserId = StoreJsonUserId(objDictionary, strUserName.toLowerCase(), strPassword);
+//  			}
+  		}
+  		if(strJsonUserId.equals("CheckIfUserIsDeleted"))
+  		{
+  			Reporter.log("Unable to get Parker Type because Parker Does Not Exist");
+  			return "";
   		}
   		switch (strEnvironment)
   		{
@@ -6833,7 +6841,7 @@ public class HttpConnections
         switch (strEnvironment)
   		{
   			case "QA":
-  				strUrl = "http://sentrylink.quality.sentry-link.com/api/v1/meters/"+strMeterId+"/current_rates.json";
+  				strUrl = "https://"+strMunicipalitySubdomain+".quality.sentry-link.com/api/v1/devices/"+strMeterId+"/parking_sessions.json?include_extended_data=true;spot_identifier=SPOT_"+strSpotNumber;
   				break;
   			case "SG":
   				strUrl = "https://"+strMunicipalitySubdomain+".staging.sentry-link.com/api/v1/devices/"+strMeterId+"/parking_sessions.json?include_extended_data=true;spot_identifier=SPOT_"+strSpotNumber;

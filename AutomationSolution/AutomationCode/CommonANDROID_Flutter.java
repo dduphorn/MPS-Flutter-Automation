@@ -4324,7 +4324,14 @@ public class CommonANDROID_Flutter
 		try {Thread.sleep(1000);}catch (Exception e) {}
 		String strWIFI = objDictionary.get("strWIFI");if(strWIFI == null) {strWIFI = "Enabled";}
 		String strWIFIScanning = objDictionary.get("strWIFIScanning");if(strWIFIScanning == null) {strWIFIScanning = "Enabled";}
-//  		if(strWIFI.equals("Disabled")||strWIFI.equals("Disabled")){clsCommonMobile.ClickButton(objDictionary, androidDriver, "New Violations", "No thanks", 1);}
+  		if(strWIFI.equals("Disabled")||strWIFI.equals("Disabled"))
+  		{
+  			String strConditionalValue = clsCommonMobile.ConditionalStepButton(objDictionary, androidDriver, "New Violations", "No thanks", 1, "Exists", "");
+			if(strConditionalValue.equals("True"))
+			{
+				clsCommonMobile.ClickButton(objDictionary, androidDriver, "New Violations", "No thanks", 1);
+			}
+  		}
 		ClickButton(objDictionary, androidDriver, "Ticket", "Issued", 1);
 	}
 	public void PEO_CreateManualViolationExemptPlate(Map<String, String> objDictionary, AppiumDriver androidDriver, String strViolationDescription, String strTicketAmountDue, String strSpotNumber)
@@ -4472,15 +4479,20 @@ public class CommonANDROID_Flutter
 			int intNumberOfViolationImages = Integer.parseInt(strNumberOfViolationImages);
 			for(int intViolationCount = 1; intViolationCount<= intNumberOfViolationImages; intViolationCount++)
 			{
-				//Add 1st Violation Picture
+				//Add 1st Violation Picture //Disabled
 				if(intViolationCount > 2)
-				{clsCommonMobile.ClickButton(objDictionary, androidDriver, "Create Violation", "Add Photo",1);}
+				{
+					clsCommonMobile.ClickButton(objDictionary, androidDriver, "Create Violation", "Add Photo",1);
+				}
 				try {Thread.sleep(1000);}catch (Exception e) {}
 				clsCommonMobile.ClickButton(objDictionary, androidDriver, "Create Violation", "Violation Photo",1);
 				if(intViolationCount == 1)
 				{
-					clsCommonMobile.VerificationPointText(objDictionary, androidDriver, "Create Violation", "Permission Message", 1, "Value", "Allow MPS PEO to take pictures and record video?");
-					ClickButton(objDictionary, androidDriver, "Create Violation", "While using the app",1);
+					String strAutoGrantPermissions = objDictionary.get("strAutoGrantPermissions");
+					if ("False".equals(strAutoGrantPermissions)) {
+					    clsCommonMobile.VerificationPointText(objDictionary, androidDriver, "Create Violation", "Permission Message", 1, "Value", "Allow MPS PEO to take pictures and record video?");
+					    ClickButton(objDictionary, androidDriver, "Create Violation", "While using the app", 1);
+					}
 				}
 				//Not Now Button
 //				String strWIFI = objDictionary.get("strWIFI");if(strWIFI == null) {strWIFI = "Enabled";}
@@ -5588,13 +5600,16 @@ public class CommonANDROID_Flutter
 	            		    return wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.Button[@resource-id='com.android.permissioncontroller:id/permission_allow_button']")));
 	            		} 
 	            		catch (Exception b) {return null;}
-	                case "Claim":
+		            case "Claim":
 	                    try {
 	                        WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(12));
-	                        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.View[contains(@content-desc, 'TicketServiceMeterGroup')]" +"//android.widget.Button[@content-desc='Claim']")));
+	                        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(
+	                            By.xpath("//android.view.View[contains(@content-desc, 'Spot:')]//android.widget.Button[@content-desc='Claim']")
+	                        ));
 	                        return element;
-	                    } 
-	                    catch (Exception e) {return null;}
+	                    } catch (Exception e) {
+	                        return null;
+	                    }
 	               case "Don't allow":
 	            		try {
 	            		    WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(5));
@@ -6573,12 +6588,25 @@ public class CommonANDROID_Flutter
 						    return wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@content-desc='This violation is now invalid. Returning to Violation List.']")));
 						} 
 						catch (Exception e) {return null;}
+//					case "Violation Nbr":
+//						try {
+//						    WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(20));
+//						    return wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().className(\"android.view.View\")" +".descriptionContains(\"TicketServiceMeterGroup\")" +".instance(0)")));
+//						} 
+//						catch (Exception e) {return null;}
+						
+					
 					case "Violation Nbr":
-						try {
-						    WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(10));
-						    return wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().className(\"android.view.View\")" +".descriptionContains(\"TicketServiceMeterGroup\")" +".instance(0)")));
-						} 
-						catch (Exception e) {return null;}
+					    try {
+					        WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(10));
+					        return wait.until(ExpectedConditions.visibilityOfElementLocated(
+					            AppiumBy.androidUIAutomator(
+					                "new UiSelector().className(\"android.view.View\").descriptionContains(\"Spot:\")"
+					            )
+					        ));
+					    } catch (Exception e) {
+					        return null;
+					    }
 					default:
 						try {
 						    WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(10));

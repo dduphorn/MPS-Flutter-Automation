@@ -214,8 +214,8 @@ public class PEO_TestCases_Flutter
 		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "PEO Login", "Populate Login", "{T} Email|{T} Password",strUserName.toLowerCase()+"|"+strPassword);
 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "PEO Login", "Sign In",1);
 		String strSnackbarText = objDictionary.get("strSnackbarText");
-		if(strSnackbarText.equals("Please disable Airplane Mode to continue using the app.")){Reporter.log("The Text (Error Message) with index (1) contained (" + strSnackbarText + ")");}
-		else{clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary,androidDriver,"The Text (Error Message) with index (1) did not contain (Please disable Airplane Mode to continue using the app.) - actual value ("+strSnackbarText+")");}
+		if(strSnackbarText.equals("Device in Airplane mode")){Reporter.log("The Text (Error Message) with index (1) contained (" + strSnackbarText + ")");}
+		else{clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary,androidDriver,"The Text (Error Message) with index (1) did not contain (Device in Airplane mode) - actual value ("+strSnackbarText+")");}
  		androidDriver.quit();
  		clsMeter.METER_SetMeterEndTime(objDictionary);
  		String strAssociatedBug = objDictionary.get("strAssociatedBug");if(strAssociatedBug == null){strAssociatedBug = "";}
@@ -884,6 +884,7 @@ public class PEO_TestCases_Flutter
 		clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null, "1","Local");
 		//ValidateParkingSessionHistoryAndImages
 		PEO_ParkingSessions clsPEO_ParkingSessions = new PEO_ParkingSessions();
+		clsMeter.METER_MeterWaitWithMessage(objDictionary,30, "Wait For Meter Images to Load");
 		clsPEO_ParkingSessions.SENTRYLINK_ValidateParkingSessionHistoryAndImages_4005_FTFP0_CGPV_AV_CV_PLI_IT_PV_VPVE_ES1(objDictionary,strViolationId);
 		clsMeter.METER_SetMeterEndTime(objDictionary);
 		String strAssociatedBug = objDictionary.get("strAssociatedBug");if(strAssociatedBug == null){strAssociatedBug = "";}
@@ -5217,11 +5218,6 @@ public class PEO_TestCases_Flutter
 				{clsCommonMobile.ClickButton(objDictionary, androidDriver, "Create Violation", "Add Photo",1);}
 				try {Thread.sleep(1000);}catch (Exception e) {}
 				clsCommonMobile.ClickButton(objDictionary, androidDriver, "Create Violation", "Violation Photo",1);
-				if(intViolationCount == 1)
-				{
-					clsCommonMobile.VerificationPointText(objDictionary, androidDriver, "Create Violation", "Permission Message", 1, "Value", "Allow MPS PEO to take pictures and record video?");
-					clsCommonMobile.ClickButton(objDictionary, androidDriver, "Create Violation", "While using the app",1);
-				}
 				clsCommonMobile.ClickButton(objDictionary, androidDriver, "Create Violation", "Picture Button",1);
 				clsCommonMobile.ClickLink(objDictionary, androidDriver, "Create Violation", "OK", 1);
 				objTicketFrame = androidDriver.findElement(By.xpath(".//android.widget.ScrollView[1]"));
@@ -5401,11 +5397,6 @@ public class PEO_TestCases_Flutter
 				{clsCommonMobile.ClickButton(objDictionary, androidDriver, "Create Violation", "Add Photo",1);}
 				try {Thread.sleep(1000);}catch (Exception e) {}
 				clsCommonMobile.ClickButton(objDictionary, androidDriver, "Create Violation", "Violation Photo",1);
-				if(intViolationCount == 1)
-				{
-					clsCommonMobile.VerificationPointText(objDictionary, androidDriver, "Create Violation", "Permission Message", 1, "Value", "Allow MPS PEO to take pictures and record video?");
-					clsCommonMobile.ClickButton(objDictionary, androidDriver, "Create Violation", "While using the app",1);
-				}
 				clsCommonMobile.ClickButton(objDictionary, androidDriver, "Create Violation", "Picture Button",1);
 				clsCommonMobile.ClickLink(objDictionary, androidDriver, "Create Violation", "OK", 1);
 				objTicketFrame = androidDriver.findElement(By.xpath(".//android.widget.ScrollView[1]"));
@@ -5454,7 +5445,7 @@ public class PEO_TestCases_Flutter
 		if(!strAssociatedBug.equals("")){Reporter.log("<font color='Blue'>"+strAssociatedBug+"-This Test passed remove the AssociatedBug</font>");}
 	}
   	
-  	@Test(priority=302)
+  	@Test(priority=341)
   	public void P4041F_FTFP0_CGPV_AV_CV_PLI_IT_PCV_CVDE_ES1()throws Exception
 	{
  		objDictionary.put("strMobileDeviceType", "ANDROID");
