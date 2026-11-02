@@ -6089,7 +6089,7 @@ public class Meter
 		{
 			//Upload Meter Screenshot Imgur
 			file = new File(strFullMeterScreenShotPath);
-//			String strImageURL = ImgurClient_Old.getInstance().UploadImage1(file, strTestCaseName+"_" + Instant.now());
+//			String strImageURL = ImgurClient.getInstance().UploadImage1(file, strTestCaseName+"_" + Instant.now());
 			String strImageURL = ImgurClient.getInstance().UploadImage(file, strTestCaseName+"_" + Instant.now());
 			if(strImageURL != null)
 			{

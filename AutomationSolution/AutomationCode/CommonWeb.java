@@ -3328,17 +3328,7 @@ public class CommonWeb {
 		  		ClickLink(objDictionary, driver, "Violations", "SentryLink Admin",1);
 		  		ClickLink(objDictionary, driver, "Municipalities", "Users",1);
 		  		ClickLink(objDictionary, driver, "Municipalities", "Concierge Vehicles",1);
-  				break;
-		  	case "Health Sessions":
-		  		strMunicipalitySubdomain = objDictionary.get("strMunicipalitySubdomain");
-		  		if(strMunicipalitySubdomain == null) 
-	 			{
-	 				strUserName = clsCommonWeb.SENTRYLINK_GetUserName(objDictionary, "parker");
-		 			strPassword = clsCommonWeb.SENTRYLINK_GetPassword(objDictionary, strUserName.toLowerCase(), "parker");
-	 				strMunicipalitySubdomain = clsHttpConnections.GET_MunicipalitySubdomain(objDictionary, strUserName, strPassword);
-	 			}
-	 			driver.navigate().to("https://"+strMunicipalitySubdomain.toLowerCase()+".staging.sentry-link.com/reports/health_session_reports");
-	 			break;
+		  		break;
 		  	case "Lot Group":
 		  		clsCommonWeb.ClickLink(objDictionary,driver,strCurrentPageName, strMunicipality, 1); 
 	  			clsCommonWeb.ClickLink(objDictionary,driver,"Violations","Settings",1); 
@@ -15846,16 +15836,6 @@ public class CommonWeb {
 				{
 					case "Other Subscriptions":
 						try { return driver.findElement(By.xpath("//div[@id='other-subscriptions']/table[contains(@class,'table table-sm')]"));}
-						catch(Exception e) {return null;}
-					default:
-						UpdateErrorMessageWithPivotalData(objDictionary,driver,"The Table (" + strTableName + ") for the page (" + strPageName + ") had not been added-"+strMethodName,"Local");
-				}
-				break;
-			case "Health Sessions":
-				switch (strTableName)
-				{
-					case "Health Sessions":
-						try { return driver.findElement(By.xpath("//table[contains(@class,'table table-hover table-sm table-bordered')]"));}
 						catch(Exception e) {return null;}
 					default:
 						UpdateErrorMessageWithPivotalData(objDictionary,driver,"The Table (" + strTableName + ") for the page (" + strPageName + ") had not been added-"+strMethodName,"Local");
