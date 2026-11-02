@@ -950,9 +950,7 @@ public class PEO_TestCases_Flutter
  		String strViolationId = clsCommonWeb.SENTRYLINK_StoreGracePeriodViolationNumber(objDictionary);
 		//Check If Parking Enforcement Officer Exists
 		clsCommonWeb.SENTRYLINK_CreatePEOUser(objDictionary);
-		//CGPV1: Create Grace Period Violation Spot 1
-      	clsMeter.METER_CreateGracePeriodViolation(objDictionary, null,  strHost, strSpotNumber, strInitialGracePeriod);
-      	//Store Parking Id
+		//Store Parking Id
   		clsHttpConnections.HTTPCONNECTIONS_StoreParkingId(objDictionary, "Local", "1");
   	  	//Covert Iternal to External Violation Reason
       	String strRandomUserRegistrationType = clsHttpConnections.HTTPCONNECTION_ReturnRandomUserRegistrationType(objDictionary);
