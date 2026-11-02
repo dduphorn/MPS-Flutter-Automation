@@ -1,6 +1,7 @@
 # Flutter Automated Test Architecture — Assessment
 
 **Date:** 2026-11-02  
+**Revision:** 2026-11-02 — Flutter suite XML comments reframed as intentional run-selection workflow (repo owner).  
 **Scope:** Assessment only (no framework or test code changes).  
 **Repository:** MPS / SentryLink mobile E2E automation (Java, TestNG, Appium, Selenium).
 
@@ -10,11 +11,11 @@
 
 This repo is a **mature, monolithic Java E2E framework** that automates MPS parking products end-to-end: **native and Flutter mobile apps** (Sentry Mobile / Consumer App, PEO / Mobile Officer), **physical and virtual meters**, and **SentryLink / Launchpad web** (admin, violations, payment site, session history). Tests are **keyword-driven**: large `Common*` libraries expose `PopulateAction`, `ClickButton`, and `VerificationPoint*` APIs backed by implicit page/locator maps, not a classic Page Object Model.
 
-There are **~1,450+ `@Test` methods** across platform classes, plus **Global Pay** and **SentryLink role** suites in `TestCases.java`. **Flutter coverage exists** (`*_Flutter.java`, `CommonANDROID_Flutter.java`, `IOS_Common_Flutter.java`) but **Flutter TestNG suites are almost entirely commented out**; only one Flutter Android case is active in `Flutter_Android_CA_Regression.xml`. Legacy suites under `TestSuites/` still reference **removed class names** (`PackageTestCases.ClassTestCases`) and **obsolete test method names** (`A20_*` vs current `A2019_*` / `A2xxxF_*`), so **CI/smoke configuration and code have diverged**.
+There are **~1,450+ `@Test` methods** across platform classes, plus **Global Pay** and **SentryLink role** suites in `TestCases.java`. **Flutter coverage exists** in Java (`*_Flutter.java`, `CommonANDROID_Flutter.java`, `IOS_Common_Flutter.java`); **`Flutter_*.xml` files use commented `<include>` lines on purpose** so engineers enable only the tests running on a given lab/Jenkins job and avoid merge conflicts in shared suite files (repo owner workflow—not a defect). Separately, **legacy** suites under `TestSuites/` still reference **removed class names** (`PackageTestCases.ClassTestCases`) and **obsolete test method names** (`A20_*` vs current `A2019_*` / `A2xxxF_*`)—that drift is a real maintenance issue.
 
 **Build:** `mvn compile` **succeeds** on Java 21 with current `pom.xml` (verified in this environment).
 
-**Highest-impact next work:** (1) repair suite wiring and a minimal Flutter smoke pipeline, (2) externalize secrets and environment config, (3) enable and run the new Flutter negative/resilience tests (A5204F–A5219F), (4) reduce `Thread.sleep` / brittle XPath on Flutter semantics, (5) close iOS Flutter and PEO Flutter execution gaps vs Android.
+**Highest-impact next work:** (1) fix broken legacy suite references and validate active runs, (2) externalize secrets and environment config, (3) reduce `Thread.sleep` / brittle Flutter locators, (4) modularize Flutter common code for faster test authoring, (5) add high-priority Flutter coverage in Java (negative/resilience, iOS/PEO parity, product gaps) with execution documented via the existing suite-selection workflow.
 
 ---
 
@@ -118,34 +119,37 @@ Each platform class **duplicates** `@BeforeMethod` / `@AfterMethod` / `@Listener
 | **GPS / location** | Medium | E2E + settings | `GPSOFF_*`, `A5209F_*`, permission tests |
 | **Violations / images / SentryLink** | High | E2E + web verify | `VICAE`, `VIAC`, `VPSH`, PEO `P*` flows |
 | **PEO violations** (claim, photos, NTAAV, dispute) | High native; Medium Flutter | E2E | `PEO_*`, `PEO_TestCases_Flutter` |
-| **Reservations (`RSVN_*`)** | Medium–high in code | Regression | Flutter Android tests A2199F–A2203F (suites commented) |
-| **Payments** (card, Google Pay, PayPal refs) | Medium | E2E | `A400*`, `PaymentTest_*` (many commented in Flutter XML) |
+| **Reservations (`RSVN_*`)** | Medium–high in code | Regression | Flutter Android tests A2199F–A2203F |
+| **Payments** (card, Google Pay, PayPal refs) | Medium | E2E | `A400*`, `PaymentTest_*` |
 | **Global Pay multi-meter** | Medium | Integration E2E | `GP1001_*` in `TestCases` |
 | **User roles (SentryLink admin)** | Medium | RBAC E2E | `UserRole_TestCases` |
 | **Prod smoke crawlers** | Low | Smoke | `PROD_*` in `TestCases` |
-| **Negative / resilience (TC-NEG-*)** | **Implemented, barely scheduled** | Edge / non-functional | `A5204F`–`A5219F`, `NegativeInputCases`, `NegativeInputCasesTest` |
+| **Negative / resilience (TC-NEG-*)** | **Implemented in Java; run set varies by job** | Edge / non-functional | `A5204F`–`A5219F`, `NegativeInputCases`, `NegativeInputCasesTest` |
 | **Lot / TuffPark** | Low | Smoke/regression | 47 + 9 tests |
 
 ### 2.3 Test typing (how the repo thinks about tests)
 
 - **Explicit TestNG groups:** `Smoke` appears on a **small subset** (e.g. some Flutter/Lot/TuffPark tests); **`Regression` group is not used** in Java — “regression” is implied by suite XML names only.
-- **Smoke vs regression in practice:** Defined by **which methods are `<include>`d** in XML, not annotations — and most Flutter includes are **commented out**.
+- **Smoke vs regression in practice:** Defined by **which methods are active `<include>`s** in the suite XML passed to the runner (Flutter files keep inactive tests **commented** so merges do not fight over the same lines).
 - **E2E:** Default — almost every test drives mobile + meter and/or SentryLink.
 - **Unit-style:** Only `NegativeInputCasesTest`, `AdbSlowTextInputTest`, plus TestRail client tests in vendored tree.
 
-### 2.4 Active suite snapshot (XML vs code)
+### 2.4 Suite selection workflow (Flutter vs legacy)
 
-| Suite file | Active `<include>` count | Notes |
-|------------|-------------------------|--------|
-| `Flutter_Android_CA_Regression.xml` | **1** | Only `A5209F_LocationServicesOff_DegradeThenEnable` |
-| `Flutter_Android_PEO.xml` | **0** | All commented |
-| `Flutter_IOS_CA_Regression.xml` | **0** | All commented |
-| `Flutter_RegressionLotAndroid.xml` | **0** | All commented |
-| `TestSuites/Smoke.xml` | Broken | Class `PackageTestCases.ClassTestCases` **missing** |
-| `TestSuites/ProdSmokeTest.xml` | 66 includes | References **`AutomationCode.TestCases`** methods like `A20_*` — **no longer exist** (renamed to `A2019_*` etc. in `Android_TestCases`) |
-| `TestSuites/Regression_Android.xml` | 1 active | Points at `TestCases` + `M1_*` (meter methods live in `Meter_TestCases`) |
+**Flutter `Flutter_*.xml` (intentional):** The team **comments out** tests that are not part of the current run and **uncomments** the subset for that job. At assessment time, for example, `Flutter_Android_CA_Regression.xml` had a **small active set** (e.g. `A5209F_LocationServicesOff_DegradeThenEnable`) while hundreds of other includes remained commented as a **catalog** for the next run—not as abandoned tests. PEO/iOS/Lot Flutter XML files may show **zero** active includes when no Flutter job is using them; that reflects **run selection**, not missing implementations.
 
-**Conclusion:** Inventory in **source is large**; inventory ** routinely executed in Flutter pipelines is tiny** unless Jenkins uses unpublished job configs.
+*Optional merge-friendly alternatives (not required by current workflow):* thin **run-specific suite files** (e.g. `Flutter_Android_CA_Smoke.active.xml` generated or hand-maintained), or **TestNG `groups`** on `@Test` with `<groups>` filters in XML, so the large regression file does not change on every job toggle.
+
+**Legacy `TestSuites/*.xml` (broken references):**
+
+| Suite file | Issue |
+|------------|--------|
+| `TestSuites/Smoke.xml` | Class `PackageTestCases.ClassTestCases` **missing** |
+| `TestSuites/ProdSmokeTest.xml` | References **`AutomationCode.TestCases`** methods like `A20_*` — **no longer exist** (renamed to `A2019_*` etc. in `Android_TestCases`) |
+| `TestSuites/Regression_Android.xml` | Points at `TestCases` + `M1_*` (meter methods live in `Meter_TestCases`) |
+| Several regression templates | Same `PackageTestCases` / wrong-class patterns |
+
+**Conclusion:** **Java inventory is large**; **what runs** is whichever includes are active for that job. Flutter commenting is **by design**. Legacy suite **class/method mismatches** should still be fixed or retired so anyone using those files gets a valid run.
 
 ---
 
@@ -153,22 +157,22 @@ Each platform class **duplicates** `@BeforeMethod` / `@AfterMethod` / `@Listener
 
 ### 3.1 Flutter vs native
 
-- **Android Flutter:** Broad `A2xxxF` parity with legacy Android (`A2xxx`) in source (~210 tests), but suites disable almost all.
-- **iOS Flutter:** ~162 tests in `IOS_TestCases_Flutter.java`, **zero active** in `Flutter_IOS_CA_Regression.xml`.
-- **PEO Flutter:** ~65 tests; **PEO Flutter XML has no active includes**.
+- **Android Flutter:** Broad `A2xxxF` parity with legacy Android (`A2xxx`) in source (~210 tests); **which subset runs** is chosen via Flutter suite XML (comment/uncomment workflow), not implied by comment state alone.
+- **iOS Flutter:** ~162 tests in `IOS_TestCases_Flutter.java` — **coverage gap vs Android Flutter** if lab jobs rarely select iOS includes (product/release risk, not an XML-style issue).
+- **PEO Flutter:** ~65 tests in Java; gap if PEO Flutter jobs are infrequent compared to CA.
 - **No Flutter Driver / integration tests** — reliance on semantics tree increases risk when accessibility labels change.
 
 ### 3.2 New products
 
 - **FusionAIMobile** — APK referenced; no dedicated test class name prefix (likely reuses CA flows) — **unclear dedicated coverage**.
 - **Lot / TuffPark** — 56 tests total vs hundreds for on-street CA; **off-street flows thin**.
-- **Consumer App “CS_*” / handicap / mobile-payment-blocked** — present in commented Flutter XML (`A2301F`–`A2308F`), **not scheduled**.
+- **Consumer App “CS_*” / handicap / mobile-payment-blocked** — tests exist in Java/XML catalog (`A2301F`–`A2308F`); **gap if no job selects them**, not because commenting is wrong.
 
 ### 3.3 Negative and edge cases
 
-- **TC-NEG-01–19** scenarios implemented under `A5204F`–`A5219F` with shared helpers in `NegativeInputCases.java` — **17 cases commented out in suite**, only location-degrade active.
-- **Biometric, low storage, proxy/DNS failure, injection, excessive input** — coded, not in default run.
-- **PEO null/empty login (`P4061F`–`P4062F`)** — present, not in active PEO suite.
+- **TC-NEG-01–19** scenarios implemented under `A5204F`–`A5219F` with shared helpers in `NegativeInputCases.java` — **strong code coverage**; **product gap** if lab jobs do not include the full negative set in their active suite selection (e.g. only one TC-NEG case enabled at assessment time).
+- **Biometric, low storage, proxy/DNS failure, injection, excessive input** — coded in Java; prioritize for **new run profiles** when hardening Flutter CA/PEO.
+- **PEO null/empty login (`P4061F`–`P4062F`)** — present; include when scheduling PEO Flutter negative passes.
 
 ### 3.4 Platform and environment
 
@@ -215,8 +219,9 @@ Each platform class **duplicates** `@BeforeMethod` / `@AfterMethod` / `@Listener
 
 ### 4.5 Dead, stale, or broken artifacts
 
+- **Flutter suite comments:** **Not** listed here—commenting inactive `<include>`s in `Flutter_*.xml` is **intentional** (see §2.4).
 - **`PackageTestCases.ClassTestCases`:** Referenced in `Smoke.xml`, `Regression_IOS.xml`, `Regression_PEO.xml`, `Regression_Meter.xml`, `RunSameTestMultipleTimes.xml` — **class not in repo**.
-- **Suite method names** (`A20_*`, `I1_*` on wrong class) **do not match** current `Android_TestCases` / `IOS_TestCases` / `Meter_TestCases` naming.
+- **Legacy suite method/class names** (`A20_*`, `I1_*` on wrong class) **do not match** current `Android_TestCases` / `IOS_TestCases` / `Meter_TestCases` naming.
 - **`TestRails.java`:** Commented out; vendored TestRail modules add noise.
 - **`ImgurClient_Old.java`**, duplicate Selenium versions in `Lib/`, Grid launcher on **Selenium 2.52**.
 - **`pom.xml`:** Surefire `suiteXmlFiles` empty — easy to run **zero tests** by mistake.
@@ -242,14 +247,13 @@ Effort: **S** ≈ days, **M** ≈ 1–2 weeks, **L** ≈ multi-week / epic (team
 
 | Priority | Item | Effort | Why it matters |
 |----------|------|--------|----------------|
-| **1** | **Repair TestNG suite wiring:** Replace `PackageTestCases.ClassTestCases`; point suites at correct classes (`Android_TestCases`, `Android_TestCases_Flutter`, `Meter_TestCases`, etc.); regenerate includes from actual method names; add one **verified smoke suite** checked into CI. | **M** | Without this, “regression” XML is misleading and Flutter work cannot run reliably. |
+| **1** | **Fix legacy TestNG suite wiring:** Replace `PackageTestCases.ClassTestCases`; point `TestSuites/*` at correct classes (`Android_TestCases`, `Android_TestCases_Flutter`, `Meter_TestCases`, etc.); align method names with current code; add CI check that **active** includes resolve to real `@Test` methods. | **M** | Legacy XML fails at runtime; distinct from Flutter comment workflow. |
 | **2** | **Secrets and config externalization:** Remove Gmail creds from `EmailableReporter2`; load from env/vault; replace `GlobalClass` username gate with env flag; move device/meter maps to YAML/JSON + profiles (`qa`, `sg`). | **M** | Security incident risk; blocks new developers and cloud agents. |
-| **3** | **Enable Flutter smoke + negative pipeline:** Uncomment tier-1 CA tests (login, single park, extend) + full **A5204F–A5219F** suite on one lab device; mirror for PEO (`P4001F` smoke + `P4061F`). | **L** | Aligns execution with Flutter product direction; TC-NEG coverage is already written. |
-| **4** | **Shared sync/wait layer:** Replace sleeps with meter-event polling, `WebDriverWait` wrappers, and session-state helpers; ban raw `Thread.sleep` in new code via review. | **L** | Biggest flake reducer; `CommonWeb` alone has 400+ sleeps. |
-| **5** | **Incremental modularization for Flutter:** Extract screen-specific locator maps (Login, Park, Session, Account) from `CommonANDROID_Flutter`; keep `PopulateAction` as facade; add parity tests ensuring native vs Flutter step codes stay aligned. | **L** | Lowers cost of adding tests; reduces duplicate native/Flutter maintenance. |
-| **6** | **iOS Flutter CI parity** | **M** | 162 tests dormant while Android Flutter is focus — release risk on iOS. |
-| **7** | **Upgrade TestNG + reporting** | **S** | Modern listeners, stable Java 21 support, fix `--enable-preview` need. |
-| **8** | **Document runbook** (`docs/RUNNING.md`): Maven command, required env vars, Appium/device setup, suite matrix. | **S** | Onboarding; complements this assessment. |
+| **3** | **Shared sync/wait layer:** Replace sleeps with meter-event polling, `WebDriverWait` wrappers, and session-state helpers; ban raw `Thread.sleep` in new code via review. | **L** | Biggest flake reducer; `CommonWeb` alone has 400+ sleeps. |
+| **4** | **Incremental modularization for Flutter:** Extract screen-specific locator maps (Login, Park, Session, Account) from `CommonANDROID_Flutter`; keep `PopulateAction` as facade; add parity tests ensuring native vs Flutter step codes stay aligned. | **L** | Lowers cost of adding tests; reduces duplicate native/Flutter maintenance. |
+| **5** | **Expand Flutter coverage in Java + document run profiles:** Prioritize new/port high-value tests (full **TC-NEG** series, iOS/PEO parity, Fusion/Lot/CS flows); define **which profile** (smoke, negative, full regression) maps to which active includes or Jenkins job—using existing comment/uncomment on `Flutter_*.xml` or optional thin suite files / TestNG groups to reduce merge churn. | **L** | Closes product gaps without treating the comment catalog as technical debt. |
+| **6** | **Upgrade TestNG + reporting** | **S** | Modern listeners, stable Java 21 support, fix `--enable-preview` need. |
+| **7** | **Document runbook** (`docs/RUNNING.md`): Maven command, env vars, Appium/device setup, **Flutter suite selection** vs legacy suites. | **S** | Onboarding; makes intentional workflow visible to new contributors. |
 
 ---
 
@@ -265,11 +269,11 @@ Effort: **S** ≈ days, **M** ≈ 1–2 weeks, **L** ≈ multi-week / epic (team
 
 ## 7. Suggested “definition of done” for follow-up work
 
-1. A green **Flutter Android smoke** job (≥5 tests: login, park, logout, one negative) on staging.  
-2. All suite XML references **valid class and method names** (automated check in CI).  
+1. A green **Flutter Android smoke** job (≥5 tests: login, park, logout, one negative) on staging, with active includes documented for that job.  
+2. All **active** suite XML references **valid class and method names** (automated check in CI).  
 3. No **plaintext credentials** in repo.  
 4. `GlobalClass` runs under **`AUTOMATION_USER` env** without hardcoded OS username list.  
-5. Documented **suite matrix** mapping products → XML → device requirements.
+5. Documented **run profile matrix** (smoke / negative / regression) mapping products → suite file → device requirements—not “uncomment everything.”
 
 ---
 
@@ -284,7 +288,7 @@ Effort: **S** ≈ days, **M** ≈ 1–2 weeks, **L** ≈ multi-week / epic (team
 | Meter control | `Meter.java`, `Lib/PythonScripts/*` |
 | Negative/resilience helpers | `NegativeInputCases.java`, `NegativeInputCasesTest.java` |
 | Email reporting | `EmailableReporter2.java`, `EmailableReporter3.java` |
-| Flutter suite (active) | `Flutter_Android_CA_Regression.xml` |
+| Flutter suite catalog / run selection | `Flutter_*.xml` (comment/uncomment workflow) |
 | Legacy suites | `TestSuites/*.xml` |
 
 ---
