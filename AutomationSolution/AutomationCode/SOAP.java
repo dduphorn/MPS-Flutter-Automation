@@ -73,7 +73,7 @@ public class SOAP
       		switch (strEnvironment)
      		{
      			case "QA":
-     				soapResponse = soapConnection.call(soapRequest, "http://"+strMunicipalitySubdomain+".quality.sentry-link.com/api/v1/violation_exports/action");
+     				soapResponse = soapConnection.call(soapRequest, "https://"+strMunicipalitySubdomain+".quality.sentry-link.com/api/v1/violation_exports/action");
      				break;
      			case "SG":
      				soapResponse = soapConnection.call(soapRequest, "https://"+strMunicipalitySubdomain+".staging.sentry-link.com/api/v1/violation_exports/action");
@@ -163,6 +163,10 @@ public class SOAP
     	String strViolationCharged = objDictionary.get("strViolationExternalReason");
     	String strTypeOfLaw = "VO";
     	String strLawSection = objDictionary.get("strStatuteCode");
+    	if (strEnvironment.equals("QA"))
+		{
+    		strLawSection = "NA";//Need to figure out what staging and Quality are different
+		}
     	//CourtDate
     	Date dateCourtDate = addDay(dateobj, 30);
     	String strCourtDate = df.format(dateCourtDate);
@@ -214,7 +218,7 @@ public class SOAP
 	    		String strMunicipality = objDictionary.get("strMunicipality");
 	    		if(strMunicipality.equals("Excelsior, MN")){strEnvViolationId = "CM"+strViolationId;}
 	    	}
-	    	else{strEnvViolationId = "E15"+strViolationId;}
+	    	else{strEnvViolationId = strViolationId;}
 		    if(getCharacterDataFromElement(line).contains(strEnvViolationId))
 		    {
 		    	NodeList PlateNumber = element.getElementsByTagName("PlateNumber");
@@ -308,7 +312,7 @@ public class SOAP
     		    NodeList RegExpires = element.getElementsByTagName("RegExpires");
     		    line = (Element) RegExpires.item(0);
     		    if(getCharacterDataFromElement(line).equals(strRegExpires))
-		    	{Reporter.log("The ;RegExpires Node value was ("+strRegExpires+")");}
+		    	{Reporter.log("The RegExpires Node value was ("+strRegExpires+")");}
         		else
         		{UpdateErrorMessageWithPivotalData(objDictionary,"The RegExpires Node value was not ("+strRegExpires+") - Actual Value ("+getCharacterDataFromElement(line)+")-"+strMethodName);}
     		    
@@ -363,6 +367,13 @@ public class SOAP
 			case "The Year Node value was not (2010) - Actual Value (NA)-ValidateVolationXMLData":
 				strPivotalId = "148185703";
 				break;
+			default:
+				if (strErrorMsg.matches("The RegExpires Node value was not (.*) - Actual Value \\(NA\\)-ValidateVolationXMLData"))
+				{
+					strPivotalId = "FLUTTERPEO-165";Reporter.log(strErrorMsg);
+					strErrorMsg = "PEO Flutter: Plate Registration Expiration date is sent as empty string, causing SOAP ExportNotifications <RegExpires> to return NA";
+					break;
+				}
 		}
 		if(!strPivotalId.equals(""))
 		{

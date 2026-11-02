@@ -259,7 +259,7 @@ public class PEO_TestCases_Flutter
   	@Test(priority=303)
  	public void P4002F_PEO_CMV_IGPE_VVXD() throws Exception
 	{
-  		objDictionary.put("strAssociatedBug", "SL-7856");
+  		objDictionary.put("strAssociatedBug", "SL-7856|FLUTTERPEO-165");
   		objDictionary.put("strMobileDeviceType", "ANDROID");
 		//Classes
   		CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
@@ -294,10 +294,11 @@ public class PEO_TestCases_Flutter
 		objDictionary.put("strInstallApp", "True");
 		AppiumDriver androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "PEO", "True", "Parker");
 		clsCommonMobile.PEO_Login(objDictionary, androidDriver);
-		String strNumberOfViolationImages = "8";
+		String strNumberOfViolationImages = "5";
 		objDictionary.put("strNumberOfViolationImages",strNumberOfViolationImages);
 		clsCommonMobile.PEO_CreateManualViolationForDescriptionAndStatuteCodeValidation(objDictionary, androidDriver, strViolationDescription, strTicketAmountDue,"1");
 		clsCommonMobile.ClickLink(objDictionary, androidDriver, "Ticket", "Leave", 1);
+		try{Thread.sleep(5000);}catch (Exception e) {}
 		androidDriver.quit();
 		//Validate Manual Violation In SL
 		threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath, objDictionary);
@@ -312,7 +313,7 @@ public class PEO_TestCases_Flutter
   		clsCommonWeb.StoreTableValue(objDictionary, driver, "Violations", "Violations", 1, "strViolationId", "~strViolationRowNumber~", "2");
   		clsCommonWeb.SENTRYLINK_ValidateViolationStatus(objDictionary, driver, strViolationDescription, "Notified");
   		String strViolationId = objDictionary.get("strViolationId");
-  		clsCommonWeb.ClickLink(objDictionary, driver, "Violations", strViolationId, 1);
+   		clsCommonWeb.ClickLink(objDictionary, driver, "Violations", strViolationId, 1);
   		try{Thread.sleep(1000);}catch (Exception e) {}
   		clsCommonWeb.ClickLink(objDictionary, driver, "Violations", "Vehicle Details", 1);
   		try{Thread.sleep(1000);}catch (Exception e) {}
@@ -375,6 +376,7 @@ public class PEO_TestCases_Flutter
   	@Test(priority=303)
  	public void P4002F_PEO_CMV_IGPE_VVXD_WIFI_And_WIFIScanning_Disabled() throws Exception
 	{
+  		objDictionary.put("strAssociatedBug", "FLUTTERPEO-165");
   		objDictionary.put("strMobileDeviceType", "ANDROID");
 		//Classes
   		CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
@@ -420,6 +422,8 @@ public class PEO_TestCases_Flutter
 		objDictionary.put("strNumberOfViolationImages",strNumberOfViolationImages);
 		clsCommonMobile.PEO_CreateManualViolationForDescriptionAndStatuteCodeValidation(objDictionary, androidDriver, strViolationDescription, strTicketAmountDue,"1");
 		clsCommonMobile.ClickLink(objDictionary, androidDriver, "Ticket", "Leave", 1);
+		try {Thread.sleep(5000);} catch (Exception e) {}
+		clsCommonMobile.ClickButton(objDictionary, androidDriver, "New Violations", "No thanks", 1);
 		androidDriver.quit();
 		//Validate Manual Violation In SL
 		threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath, objDictionary);
@@ -499,7 +503,7 @@ public class PEO_TestCases_Flutter
   	@Test(priority=304)
  	public void P4002AF_PEO_CMV_IGPE_VVXD() throws Exception
 	{
-  		objDictionary.put("strAssociatedBug", "SL-7856");
+  		objDictionary.put("strAssociatedBug", "SL-7856|FLUTTERPEO-165");
   		objDictionary.put("strMobileDeviceType", "ANDROID");
 		//Classes
   		CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
@@ -538,6 +542,7 @@ public class PEO_TestCases_Flutter
 		objDictionary.put("strNumberOfViolationImages",strNumberOfViolationImages);
 		clsCommonMobile.PEO_CreateManualViolationForDescriptionAndStatuteCodeValidation(objDictionary, androidDriver, strViolationDescription, strTicketAmountDue,"1");
 		clsCommonMobile.ClickLink(objDictionary, androidDriver, "Ticket", "Leave", 1);
+		try {Thread.sleep(5000);} catch (Exception e) {}
 		androidDriver.quit();
 		threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath, objDictionary);
 		WebDriver driver = getDriver();
@@ -596,7 +601,7 @@ public class PEO_TestCases_Flutter
   	@Test(priority=305)
  	public void P4003F_PEO_CMV2_IGPE_VVXD() throws Exception
 	{
-  		objDictionary.put("strAssociatedBug", "SL-7856");
+  		objDictionary.put("strAssociatedBug", "SL-7856|FLUTTERPEO-165");
   		objDictionary.put("strMobileDeviceType", "ANDROID");
 		//Classes
   		CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
@@ -659,7 +664,7 @@ public class PEO_TestCases_Flutter
   	@Test(priority=306)
  	public void P4004F_PEO_CMV_EIO60D_VVXD() throws Exception
 	{
-  		objDictionary.put("strAssociatedBug", "SL-7856");
+  		objDictionary.put("strAssociatedBug", "SL-7856|FLUTTERPEO-165");
 		objDictionary.put("strMobileDeviceType", "ANDROID");
 		//Classes
 		CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
@@ -950,9 +955,7 @@ public class PEO_TestCases_Flutter
  		String strViolationId = clsCommonWeb.SENTRYLINK_StoreGracePeriodViolationNumber(objDictionary);
 		//Check If Parking Enforcement Officer Exists
 		clsCommonWeb.SENTRYLINK_CreatePEOUser(objDictionary);
-		//CGPV1: Create Grace Period Violation Spot 1
-      	clsMeter.METER_CreateGracePeriodViolation(objDictionary, null,  strHost, strSpotNumber, strInitialGracePeriod);
-      	//Store Parking Id
+		//Store Parking Id
   		clsHttpConnections.HTTPCONNECTIONS_StoreParkingId(objDictionary, "Local", "1");
   	  	//Covert Iternal to External Violation Reason
       	String strRandomUserRegistrationType = clsHttpConnections.HTTPCONNECTION_ReturnRandomUserRegistrationType(objDictionary);
@@ -966,11 +969,8 @@ public class PEO_TestCases_Flutter
 		clsCommonWeb.SENTRYLINK_NavigateToViolationsPage(objDictionary, driver, strPageName);
 		//NavigateToNewViolation
 		clsCommonWeb.SENTRYLINK_NavigateToNewViolation(objDictionary, driver, "Initial Grace Period Exceeded",strViolationId,"");
-		//Add License Plate To Violation
-		//clsCommonWeb.PopulateAction(objDictionary, driver, "Parking Session", "Populate License Plate Information", "{T} License Plate|{T} Province/State",strLicensePlateNumber+"|Minnesota");
-		clsCommonWeb.ClickButton(objDictionary, driver, "Parking Session", "Create", 1,"Local");
 		//Approve Violation
-		try {Thread.sleep(10000);}catch (Exception e) {}
+		try {Thread.sleep(5000);}catch (Exception e) {}
 		clsCommonWeb.SENTRYLINK_ApproveViolation(objDictionary, driver);
 		//Open Sentry Mobile
 		objDictionary.put("strInstallApp", "True");
@@ -3205,6 +3205,7 @@ public class PEO_TestCases_Flutter
   	@Test(priority=325)
 	public void P4025F_FTFP0_MUON_CGPV1_NTAAV_SV_CP1_USBDNE_VPSH_VICAE_VIAC()
 	{
+  		objDictionary.put("strAssociatedBug", "FLUTTERPEO-168");
 		objDictionary.put("strMobileDeviceType", "ANDROID");
 		CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
 		CommonWeb clsCommonWeb = new CommonWeb();
@@ -3273,6 +3274,8 @@ public class PEO_TestCases_Flutter
 		//CP1-Coin Payment Spot 1 X 3
 		clsMeter.METER_InsertCoin(objDictionary, null,"1","Local");
 		clsMeter.GlobalWait(objDictionary, null,  "{WaitUntilMeterViolationEqualsFalse} NA", 45, strSpotNumber,"Local");
+		//Wait for Unlock Event
+		clsHttpConnections.WaitForUnlockedViolationUsingParkingSession(objDictionary);
 		//Wait Until Display Arrows are gone
 		String strScreenTimeoutTime = clsMeter.METER_GetScreenTimeoutWhenNoSpotSelected(objDictionary, null);
       	int intScreenTimeoutTime = Integer.parseInt(strScreenTimeoutTime) * 2000;
@@ -3303,7 +3306,7 @@ public class PEO_TestCases_Flutter
   	@Test(priority=326)
   	public void P4026F_FTFP10_MUON_CGPV1_NTAAV_SV_CP1_USBDNE_VPSH_VICAE_VIAC()
 	{
-  		objDictionary.put("strAssociatedBug", "184791360|176871794");
+  		objDictionary.put("strAssociatedBug", "FLUTTERPEO-168|184791360|176871794");
 		objDictionary.put("strMobileDeviceType", "ANDROID");
 		//Classes
 		CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
@@ -3415,6 +3418,7 @@ public class PEO_TestCases_Flutter
   	@Test(priority=327)
   	public void P4027F_AMMOEE_MUON_CGPV1_NTAAV_SV_LS1_USBDNE_VPSH_VICAE_VIAC()
 	{
+  		objDictionary.put("strAssociatedBug", "FLUTTERPEO-168");
   		objDictionary.put("strMobileDeviceType", "ANDROID");
 		//Classes
 		CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
@@ -4640,7 +4644,7 @@ public class PEO_TestCases_Flutter
   		String strMeterSpotName = clsMeter.METER_GetMeterSpotName(objDictionary, strSpotNumber);
   		String strExpectedMessage = "A parking violation occurred for a vehicle with license plate "+strLicensePlateNumber+" at "+strViolationAlertTime+" at meter "+strMeterSpotName+" because: Initial Grace Period Exceeded";
 		try {Thread.sleep(20000);}catch (Exception e) {}
-		clsGmail.Gmail_ValidateViolationAlertEmailContains(objDictionary,strLicensePlateNumber,strUserName,strPassword,"Parking Violation at spot "+strMeterSpotName+": Initial Grace Period Exceeded", strExpectedMessage);
+		clsGmail.Gmail_ValidateViolationAlertEmailContains(objDictionary,strLicensePlateNumber,strUserName.toLowerCase(),strPassword,"Parking Violation at spot "+strMeterSpotName+": Initial Grace Period Exceeded", strExpectedMessage);
 		//Delete All Email
   		clsGmail.Gmail_DeleteAllEmails(strUserName,strPassword);
   		//ShortSessionWaitExitSpot

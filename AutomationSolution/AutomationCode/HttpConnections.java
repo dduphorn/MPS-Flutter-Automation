@@ -6571,7 +6571,7 @@ public class HttpConnections
 	    String strMunicipalitySubdomain = objDictionary.get("strMunicipalitySubdomain");
 	    switch (strEnvironment) {
 	        case "QA":
-	            strUrl = "http://" + strMunicipalitySubdomain + ".quality.sentry-link.com/api/v1/license_plates.json";
+	            strUrl = "https://" + strMunicipalitySubdomain + ".quality.sentry-link.com/api/v1/violations/" + strViolationId + ".json";
 	            break;
 	        case "SG":
 	            strUrl = "https://" + strMunicipalitySubdomain + ".staging.sentry-link.com/api/v1/violations/" + strViolationId + ".json";

@@ -136,6 +136,11 @@ public class Gmail
 			case "ffTicketServiceTestingparker@gmail.com":
 				return "jmfhvuiqqzkfdamz";
 	  			//Web Password "FireS@le";
+			case "gdAutomationMunicipalitypeo@gmail.com"://QA
+	  			return "wdhmoqxknzcikgad ";
+			case "gdAutomationMunicipalityparker@gmail.com":
+				return "dkkbqfltsixxaiur";
+				//Web Password "FireS@le";
 	  		default:
 	  			UpdateErrorMessageWithPivotalData(objDictionary,"The UserName ("+strUserName+") has not been added-"+strMethondName);
 	  			break;
@@ -176,6 +181,8 @@ public class Gmail
 	  			return "G6AGA78d22jTCYJ";
 	  		case "rbExcelsiorMNpeo@gmail.com":
 	  			return "ovxzkytwswrtwdcn";
+	  		case "geAutomationMunicipalitypeo@gmail.com"://QA
+	  			return "sijilouazsmfbwrw";
 	  		case "gdAutomationMunicipalitypeo@gmail.com"://QA
 	  			return "wdhmoqxknzcikgad ";
 	  		//	return "rbExcelsiorMNpeo2!";

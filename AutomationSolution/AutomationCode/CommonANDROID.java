@@ -113,7 +113,7 @@ public class CommonANDROID
 		}
   		switch (strErrorMsg)
   		{	
-   			case "The Text (Permitted License Plate) at index (1) did not exist, so it could not perform the (Value) validation":
+  			case "The Text (Permitted License Plate) at index (1) did not exist, so it could not perform the (Value) validation":
    				strPivotalId = "188081069";Reporter.log(strErrorMsg);
 				strPivotalPath = "https://www.pivotaltracker.com/n/projects/2315567/stories/188081069";
     			strErrorMsg = "When I park then purchase a permit at the kiosk, then open the Consumer App I see a validate permit session, but when I click to view active permits no permit is displayed.";

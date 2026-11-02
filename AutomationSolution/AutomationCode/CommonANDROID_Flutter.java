@@ -165,6 +165,11 @@ public class CommonANDROID_Flutter
 		}
    		switch (strErrorMsg)
    		{	
+   			case "Expected the button (Unsnooze) at index (1) to be gone, but it was still present on the screen.":
+				strPivotalId = "FLUTTERPEO-168";Reporter.log(strErrorMsg);
+				strPivotalPath = "https://mpspark.atlassian.net/browse/FLUTTERPEO-168";
+				strErrorMsg = "Quality – PEO Flutter: Snoozed violation stays in the Snoozed Violations list with an Unsnooze button after a coin payment unlocks it";
+				break;
    			case "Expected the button (No thanks) at index (1) to be gone, but it was still present on the screen.":
    				strPivotalId = "FLUTTERPEO-140";Reporter.log(strErrorMsg);
 				strPivotalPath = "https://mpspark.atlassian.net/browse/FLUTTERPEO-140";

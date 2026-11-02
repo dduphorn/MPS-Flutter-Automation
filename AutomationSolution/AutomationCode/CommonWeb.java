@@ -3658,7 +3658,7 @@ public class CommonWeb {
 		clsCommonWeb.PopulateAction(objDictionary, driver, "Dispute Violations", "Populate Dispute Violation","{T} Email|{T} Dispute Reason", strGmailParkerUserName.toLowerCase() + "|The devil made me do it");
 		clsCommonWeb.ClickButton(objDictionary, driver, "Dispute Violations", "Submit My Dispute", 1, "Local");
 		try {Thread.sleep(15000);} catch (Exception e) {}
-		if(!strEnvironment.equals("PROD"))
+		if(strEnvironment.equals("SG"))
 		{
 			//Validate Parker Disputed Violation Email
 			clsGmail.Gmail_ValidateDisputedViolationEmailParker(objDictionary, strGmailParkerUserName, strGmailParkerPassword,strViolationNumber);
