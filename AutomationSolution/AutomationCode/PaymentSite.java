@@ -39,9 +39,9 @@ public class PaymentSite
   		CommonWeb clsCommonWeb = new CommonWeb();
   		String strTestCase = objDictionary.get("strTestCase");if(strTestCase == null){strTestCase = "";}
   		clsCommonWeb.TakeWebScreenShot(objDictionary, driver);
-  		if (ImgurClient_Old.getLastUrl() != null){objDictionary.put("link", ImgurClient_Old.getLastUrl());}
+  		if (ImgurClient.getLastUrl() != null){objDictionary.put("link", ImgurClient.getLastUrl());}
   		driver.quit();
-  		SendEmail(strTestCase, ImgurClient_Old.getLastUrl());
+  		SendEmail(strTestCase, ImgurClient.getLastUrl());
 		Assert.fail(strErrorMsg);
   	}
 

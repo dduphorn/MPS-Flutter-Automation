@@ -162,7 +162,7 @@ public class PEO_TestCases_Flutter
 				}catch (Exception e) {}
 				objDictionary.put("strErrorMessage", strErrorMessage);
 			}
-			if (ImgurClient_Old.getLastUrl() != null){objDictionary.put("link", ImgurClient_Old.getLastUrl());}
+			if (ImgurClient.getLastUrl() != null){objDictionary.put("link", ImgurClient.getLastUrl());}
 			clsDatabase.WriteTestResultsTo_PaymentSitesDatabase(objDictionary);
 		}
 		else
