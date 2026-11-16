@@ -140,6 +140,8 @@ public class Gmail
 	  			return "wdhmoqxknzcikgad ";
 			case "gdAutomationMunicipalityparker@gmail.com":
 				return "dkkbqfltsixxaiur";
+			case "geAutomationMunicipalityparker@gmail.com":
+				return "aenkjxvidykeswru";
 				//Web Password "FireS@le";
 	  		default:
 	  			UpdateErrorMessageWithPivotalData(objDictionary,"The UserName ("+strUserName+") has not been added-"+strMethondName);
@@ -182,9 +184,9 @@ public class Gmail
 	  		case "rbExcelsiorMNpeo@gmail.com":
 	  			return "ovxzkytwswrtwdcn";
 	  		case "geAutomationMunicipalitypeo@gmail.com"://QA
-	  			return "sijilouazsmfbwrw";
+	  			return "gtuscjrwgecpwadf";
 	  		case "gdAutomationMunicipalitypeo@gmail.com"://QA
-	  			return "wdhmoqxknzcikgad ";
+	  			return "ejtezcxrnukjojhh";
 	  		//	return "rbExcelsiorMNpeo2!";
 	  			//Need to setup the App Password in the google account
 	  		default:

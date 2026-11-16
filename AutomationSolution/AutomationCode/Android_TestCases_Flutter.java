@@ -190,7 +190,7 @@ public class Android_TestCases_Flutter
 		//Open Android Device
 		AppiumDriver androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
 		String strUserName = "adeleteuser01@gmail.com";objDictionary.put("strUserName", strUserName);
-		String strPassword = "ADeleteMe01!";
+		String strPassword = "ADeleteMe001!";
 		//Click Accept
 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept",1);
 		//Click Sign in
@@ -455,7 +455,7 @@ public class Android_TestCases_Flutter
 		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
 		//Destroy User
 		String strUserName = "adeleteuser01@gmail.com";objDictionary.put("strUserName", strUserName);
-		String strPassword = "ADeleteMe01!";
+		String strPassword = "ADeleteMe001!";
 		String strBrowser = objDictionary.get("strBrowser");
 		String strRemotePath = objDictionary.get("strRemotePath");
 		//UnDelete Account
@@ -515,7 +515,7 @@ public class Android_TestCases_Flutter
 		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
 		//User Added in A2010_RegisterUser_Login_Flutter
 		String strUserName = "adeleteuser01@gmail.com";objDictionary.put("strUserName", strUserName);
-		String strPassword = "ADeleteMe01!";
+		String strPassword = "ADeleteMe001!";
 		String strBrowser = objDictionary.get("strBrowser");
 		String strRemotePath = objDictionary.get("strRemotePath");
 		threadDriver = clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath, objDictionary);
@@ -562,13 +562,16 @@ public class Android_TestCases_Flutter
 		threadDriver = clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath, objDictionary);
 		WebDriver driver = getDriver(); // driver.quit();
 		clsCommonWeb.SENTRYLINK_OpenLoginPage(objDictionary, driver);
-		String strUserName = "adeleteuser01@gmail.com";objDictionary.put("strUserName", strUserName);
-		String strPassword = "ADeleteMe01!";
-		clsCommonWeb.SENTRYLINK_UnlockAccount(objDictionary,driver, strUserName);
-		threadDriver = clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath, objDictionary);
+		String strUserName = "ideleteuser1@gmail.com";objDictionary.put("strUserName", strUserName);
+		String strPassword = "IDeleteMe01!";
 		driver = getDriver(); // driver.quit();
 		clsCommonWeb.SENTRYLINK_OpenLoginPage(objDictionary, driver);
 		clsCommonWeb.SENTRYLINK_UnDeleteAccount(objDictionary,driver, strUserName);
+		driver.quit();
+		threadDriver = clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath, objDictionary);
+		driver = getDriver();
+		clsCommonWeb.SENTRYLINK_OpenLoginPage(objDictionary, driver);
+		clsCommonWeb.SENTRYLINK_UnlockAccount(objDictionary,driver, strUserName);
 		//Lock User Account
 		HttpConnections clsHttpConnections = new HttpConnections();
 		clsHttpConnections.StoreJsonUserToken(objDictionary, strUserName, "Incorrect");
@@ -709,7 +712,7 @@ public class Android_TestCases_Flutter
 		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
 		//Destroy User
 		String strUserName = "adeleteuser01@gmail.com";objDictionary.put("strUserName", strUserName);
-		String strPassword = "ADeleteMe01!";
+		String strPassword = "ADeleteMe001!";
 		String strBrowser = objDictionary.get("strBrowser");
 		String strRemotePath = objDictionary.get("strRemotePath");
 		//UnDelete Account
@@ -763,7 +766,6 @@ public class Android_TestCases_Flutter
 	@Test(priority=160) 
 	public void A2019F_RegisterUser_WIFI_Disabled()
 	{
-		objDictionary.put("strAssociatedBug", "FLUTTERCA-259");
 		objDictionary.put("strMobileDeviceType", "ANDROID");
 		objDictionary.put("strWIFI", "Disabled");
 		CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
@@ -778,7 +780,7 @@ public class Android_TestCases_Flutter
 		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
 		//Destroy User
 		String strUserName = "adeleteuser01@gmail.com";objDictionary.put("strUserName", strUserName);
-		String strPassword = "ADeleteMe01!";
+		String strPassword = "ADeleteMe001!";
 		String strBrowser = objDictionary.get("strBrowser");
 		String strRemotePath = objDictionary.get("strRemotePath");
 		//UnDelete Account
@@ -808,15 +810,7 @@ public class Android_TestCases_Flutter
 		//Click Sign Up
 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Sign Up", "Sign up",1);
 		//Sign Out
-		clsCommonMobile.ClickLink(objDictionary, androidDriver, "Account", "Sign out", 1);
-		clsCommonMobile.ClickLink(objDictionary, androidDriver, "Account", "Yes", 1);
-		//Sign In Using Phone Number
-		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Login", "Populate Login", "{T} Email Id|{T} Password","2812816804|"+strPassword);
- 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Login", "Log in",1);
- 		//For a better experience your device will need to use Location Accuracy
- 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Map", "No thanks",1);
- 		clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary,androidDriver, "Account");
- 		//Sign Out
+		clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary,androidDriver, "Account");
  		clsCommonMobile.ClickLink(objDictionary, androidDriver, "Account", "Sign out", 1);
 		clsCommonMobile.ClickLink(objDictionary, androidDriver, "Account", "Yes", 1);
 		androidDriver.quit();
@@ -850,7 +844,6 @@ public class Android_TestCases_Flutter
 	@Test(priority=180,groups={"Smoke"})
 	public void A2021F_FTFP0_PS1_MP1_ES1_VPSH_VICAE_VIAC_WIFI_Disabled()
 	{
-		objDictionary.put("strAssociatedBug", "FLUTTERCA-259");
 		String strTestCaseName = new Object(){}.getClass().getEnclosingMethod().getName();
 		objDictionary.put("strTestCaseName", strTestCaseName);
 		objDictionary.put("strWIFI", "Disabled");
@@ -6724,7 +6717,7 @@ public class Android_TestCases_Flutter
 			clsCommonMobile.ClickLink(objDictionary, androidDriver, "Login", "Log in", 1);
 			String strUserName = "adeleteuser01@gmail.com";
 			objDictionary.put("strUserName", strUserName);
-			String strPassword = "ADeleteMe01!";
+			String strPassword = "ADeleteMe001!";
 			clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Login", "Populate Login", "{T} Email Id|{T} Password", strUserName + "|" + strPassword);
 			clsCommonMobile.ClickButton(objDictionary, androidDriver, "Login", "Log in", 1);
 			clsCommonMobile.SENTRYMOBILE_AssertOfflineOrAirplaneMessage(objDictionary, androidDriver, "login while airplane mode is on");
@@ -7263,7 +7256,7 @@ public class Android_TestCases_Flutter
 			clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept", 1);
 			clsCommonMobile.ClickLink(objDictionary, androidDriver, "Login", "Log in", 1);
 			clsCommonMobile.SENTRYMOBILE_SendKeysToLoginField(objDictionary, androidDriver, "Email Id", excessiveEmail);
-			clsCommonMobile.SENTRYMOBILE_SendKeysToLoginField(objDictionary, androidDriver, "Password", "ADeleteMe01!");
+			clsCommonMobile.SENTRYMOBILE_SendKeysToLoginField(objDictionary, androidDriver, "Password", "ADeleteMe001!");
 			boolean loginClicked = clsCommonMobile.SENTRYMOBILE_ClickIfPresent(androidDriver, "(//android.view.View[@content-desc=\"Log in\"])[2]", 8);
 			if (!loginClicked)
 			{

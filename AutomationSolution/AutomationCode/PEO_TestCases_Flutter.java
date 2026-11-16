@@ -2709,7 +2709,7 @@ public class PEO_TestCases_Flutter
   	@Test(priority=321)
   	public void P4021F_CGPV1_AV_PCV_PIT_CP1_VMU_VPVR_VPSH_VICAE_VIAC()
 	{
-  		objDictionary.put("strAssociatedBug", "FLUTTERPEO-90");
+  		objDictionary.put("strAssociatedBug", "FLUTTERPEO-90|FLUTTERPEO-123");
 		objDictionary.put("strMobileDeviceType", "ANDROID");
 		//Classes
 		CommonWeb clsCommonWeb = new CommonWeb();
@@ -5265,7 +5265,8 @@ public class PEO_TestCases_Flutter
       	clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null, "1","Local");
      	//ValidateParkingSessionHistoryAndImages
       	PEO_ParkingSessions clsPEO_ParkingSessions = new PEO_ParkingSessions();
-      	clsPEO_ParkingSessions.SENTRYLINK_ValidateParkingSessionHistoryAndImages_P4039_FTFP0_CGPV1_DNAATTPAV_AV_CAV_PCV_VIPV_CVP_AATTPAV_PGT_VGTV_PIT_VITV_ES1(objDictionary,strViolationId);
+      	clsMeter.METER_MeterWaitWithMessage(objDictionary,30, "Wait For Meter Images to Load");
+		clsPEO_ParkingSessions.SENTRYLINK_ValidateParkingSessionHistoryAndImages_P4039_FTFP0_CGPV1_DNAATTPAV_AV_CAV_PCV_VIPV_CVP_AATTPAV_PGT_VGTV_PIT_VITV_ES1(objDictionary,strViolationId);
       	clsMeter.METER_SetMeterEndTime(objDictionary);
 		String strAssociatedBug = objDictionary.get("strAssociatedBug");if(strAssociatedBug == null){strAssociatedBug = "";}
 		if(!strAssociatedBug.equals("")){Reporter.log("<font color='Blue'>"+strAssociatedBug+"-This Test passed remove the AssociatedBug</font>");}

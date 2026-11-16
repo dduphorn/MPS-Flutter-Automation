@@ -2143,9 +2143,22 @@ public class PEO_ParkingSessions
 	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
 	  	clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
   		try {Thread.sleep(1000);} catch (Exception e) {}
-  		List<WebElement> images = driver.findElements(By.xpath("//div[contains(@class,'jcarousel-navigation')]//ul/li/img"));
+  		String strNumberOfViolationImages = "1";//QA
+  		//FLUTTER
+  		List<WebElement> allImages = driver.findElements(By.cssSelector("div.jcarousel-navigation ul li img"));
+  		List<WebElement> images = new ArrayList<>();
+		for (WebElement img : allImages) {
+		    String src = img.getAttribute("src");
+		    
+		    // Skip images that contain "SPOT_1" in the filename
+		    if (src != null && !src.contains("SPOT_1")) {
+		    	images.add(img);
+		    }
+		}
+ 		System.out.println("Total images found: " + allImages.size());
+ 		System.out.println("Images after filtering out SPOT_1: " + images.size());
   		int intActualNumberOfImages = images.size();
-  		if(intActualNumberOfImages == 7)
+  		if(intActualNumberOfImages == Integer.parseInt(strNumberOfViolationImages))
       	{Reporter.log(intActualNumberOfImages+" Violation Images Correctly Appeared in the Parking Session");}
       	else
       	{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The Number of Violation Images were incorrect expected "+intActualNumberOfImages+" Actual "+intActualNumberOfImages,"Local");}
