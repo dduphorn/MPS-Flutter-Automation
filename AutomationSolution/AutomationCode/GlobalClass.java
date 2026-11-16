@@ -974,64 +974,6 @@ public class GlobalClass
 	//				objDictionary.put("strVehicleDepartType", "leave");
 	//				break;
 				//#######################################################################################
-				//Sentry Health
-				//#######################################################################################
-				case "Health Kiosk Blue":
-					objDictionary.remove("strRemotePath");
-					objDictionary.put("strRemotePath", "http://localhost:6989");
-					objDictionary.put("strBootstrapPort","3993");
-					objDictionary.put("strEnvironment", "SG");
-					objDictionary.put("strDeviceId", strDeviceId);
-					objDictionary.put("strHost", "10.10.100.78");
-					objDictionary.remove("strMeterUser");objDictionary.put("strMeterUser", "seco");
-					objDictionary.put("strSilverBullet", "192.168.100.101");
-					objDictionary.put("strLocation", "-93.43552 44.972176");
-					objDictionary.put("strMeterGroup", "Health Dev");
-					objDictionary.put("strMeterAddress", "");
-					objDictionary.put("strMeterName", "Health Kiosk Blue");//Space
-					objDictionary.put("strMeterSpotName", "SH72");
-					objDictionary.put("strMunicipality", "Excelsior, MN");
-					objDictionary.put("strRateBlockGroup", "Health RBG");
-					objDictionary.put("strUniqueId", "ha");
-					break;
-				case "SH72":
-					objDictionary.remove("strRemotePath");
-					objDictionary.put("strRemotePath", "http://localhost:6990");
-					objDictionary.put("strBootstrapPort","3994");
-					objDictionary.put("strEnvironment", "SG");
-					objDictionary.put("strDeviceId", strDeviceId);
-					objDictionary.put("strHost", "223.168.254.160");
-					objDictionary.remove("strMeterUser");objDictionary.put("strMeterUser", "seco");
-					objDictionary.put("strSilverBullet", "192.168.100.101");
-					objDictionary.put("strLocation", "-93.43552 44.972176");
-					objDictionary.put("strMeterGroup", "Test Health");
-					objDictionary.put("strMeterAddress", "");
-					objDictionary.put("strMeterName", "SH72");//Space
-					objDictionary.put("strMeterSpotName", "SH72");
-					objDictionary.put("strMunicipality", "Excelsior, MN");
-					objDictionary.put("strRateBlockGroup", "Health RBG");
-					objDictionary.put("strUniqueId", "hb");
-					break;
-
-				case "SH79":
-					objDictionary.remove("strRemotePath");
-					objDictionary.put("strRemotePath", "http://localhost:6991");
-					objDictionary.put("strBootstrapPort","3994");
-					objDictionary.put("strEnvironment", "SG");
-					objDictionary.put("strDeviceId", strDeviceId);
-					objDictionary.put("strHost", "10.10.102.144");
-					objDictionary.remove("strMeterUser");objDictionary.put("strMeterUser", "seco");
-					objDictionary.put("strSilverBullet", "192.168.100.101");
-//					objDictionary.put("strLocation", "-93.43552 44.972176");
-					objDictionary.put("strMeterGroup", "Test Health");
-//					objDictionary.put("strMeterAddress", "");
-					objDictionary.put("strMeterName", "SH79");//Space
-//					objDictionary.put("strMeterSpotName", "SH79");
-					objDictionary.put("strMunicipality", "Excelsior, MN");
-					objDictionary.put("strRateBlockGroup", "Health RBG");
-					objDictionary.put("strUniqueId", "hc");
-					break;
-				//#######################################################################################
 				case "7846L-7846R"://Steve
 					objDictionary.put("strBootstrapPort","6684");
 					objDictionary.put("strEnvironment", "SG");

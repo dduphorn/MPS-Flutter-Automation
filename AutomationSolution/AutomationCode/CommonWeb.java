@@ -2473,7 +2473,7 @@ public class CommonWeb {
 				strGmailUserName = strMobileDeviceType.substring(0, 1).toLowerCase() + "sentrystaging@gmail.com";
 				//This is the App password Use Chat GPT and ask this: How do you setup a App password in gmail?
 				if (strGmailUserName.equals("isentrystaging@gmail.com")) {
-					strGmailPassword = "lkujizefoqxbcazc";
+					strGmailPassword = "eygmvgasqgigmhja";
 				} 
 				else if (strGmailUserName.equals("asentrystaging@gmail.com")) {
 					strGmailPassword = "tgjlnrolsuutwbmp";
@@ -3328,17 +3328,7 @@ public class CommonWeb {
 		  		ClickLink(objDictionary, driver, "Violations", "SentryLink Admin",1);
 		  		ClickLink(objDictionary, driver, "Municipalities", "Users",1);
 		  		ClickLink(objDictionary, driver, "Municipalities", "Concierge Vehicles",1);
-  				break;
-		  	case "Health Sessions":
-		  		strMunicipalitySubdomain = objDictionary.get("strMunicipalitySubdomain");
-		  		if(strMunicipalitySubdomain == null) 
-	 			{
-	 				strUserName = clsCommonWeb.SENTRYLINK_GetUserName(objDictionary, "parker");
-		 			strPassword = clsCommonWeb.SENTRYLINK_GetPassword(objDictionary, strUserName.toLowerCase(), "parker");
-	 				strMunicipalitySubdomain = clsHttpConnections.GET_MunicipalitySubdomain(objDictionary, strUserName, strPassword);
-	 			}
-	 			driver.navigate().to("https://"+strMunicipalitySubdomain.toLowerCase()+".staging.sentry-link.com/reports/health_session_reports");
-	 			break;
+		  		break;
 		  	case "Lot Group":
 		  		clsCommonWeb.ClickLink(objDictionary,driver,strCurrentPageName, strMunicipality, 1); 
 	  			clsCommonWeb.ClickLink(objDictionary,driver,"Violations","Settings",1); 
@@ -8514,6 +8504,7 @@ public class CommonWeb {
 		clsCommonWeb.ClickLink(objDictionary, driver, "Rate Block Groups", strRateBlockGroup, 1);
 		try {Thread.sleep(3500);} catch (Exception e) {}
 		clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Group", "Populate Add Set to This Group","{L} Add Set to This Group", strRateSetName);
+		try {Thread.sleep(1000);} catch (Exception e) {}
 		clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Group", "Add Set to This Group", 1, "Local");
 		clsCommonWeb.GlobalObjectWait(objDictionary, driver, "Rate Block Setting","{TextFieldExists} Rate Block Setting~Rate Block Name", 30);
 		try {Thread.sleep(5000);} catch (Exception e) {}
@@ -8786,7 +8777,7 @@ public class CommonWeb {
 			{
 				if(strMinutesBeforeFirstRateBlockEnds == null)
 				{
-					try {Thread.sleep(1500);} catch (Exception e) {}
+					try {Thread.sleep(2000);} catch (Exception e) {}
 					clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Setting", "Populate Specific Times of Day","{T} Rate Block Name|{T} Start Date|{RB} Time Options",strRateType + "RateBlock|" + strStartDate + "|All Day");
 				}
 			}
@@ -15846,16 +15837,6 @@ public class CommonWeb {
 				{
 					case "Other Subscriptions":
 						try { return driver.findElement(By.xpath("//div[@id='other-subscriptions']/table[contains(@class,'table table-sm')]"));}
-						catch(Exception e) {return null;}
-					default:
-						UpdateErrorMessageWithPivotalData(objDictionary,driver,"The Table (" + strTableName + ") for the page (" + strPageName + ") had not been added-"+strMethodName,"Local");
-				}
-				break;
-			case "Health Sessions":
-				switch (strTableName)
-				{
-					case "Health Sessions":
-						try { return driver.findElement(By.xpath("//table[contains(@class,'table table-hover table-sm table-bordered')]"));}
 						catch(Exception e) {return null;}
 					default:
 						UpdateErrorMessageWithPivotalData(objDictionary,driver,"The Table (" + strTableName + ") for the page (" + strPageName + ") had not been added-"+strMethodName,"Local");

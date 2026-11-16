@@ -5482,7 +5482,8 @@ public class Meter
 		if (strVirtualMeter.equals("False"))
 		{
 			//This value is used so active Sentry Link session doesn't get lost
-			String strCheckIfSpotPresumedOccupied = objDictionary.get("strCheckIfSpotPresumedOccupied"); if(strCheckIfSpotPresumedOccupied == null) {strCheckIfSpotPresumedOccupied = "True";}
+			String strCheckIfSpotPresumedOccupied = objDictionary.get("strCheckIfSpotPresumedOccupied"); 
+			if(strCheckIfSpotPresumedOccupied == null) {strCheckIfSpotPresumedOccupied = "False";}
 			if(strCheckIfSpotPresumedOccupied.equals("True"))
 			{
 				HttpConnections clsHttpConnections = new HttpConnections();
@@ -5493,6 +5494,7 @@ public class Meter
 	    			try {Thread.sleep(15000);}catch (Exception e) {}
 	      		}
 			}
+			try {Thread.sleep(1500);}catch (Exception e) {}
 			clsMeter.METER_ExecutePythonScriptAgainstMeter(objDictionary,strHost, "vehicle_"+strVehicleDepartType+"_spot_"+strSpotNumber+".py");
 			clsMeter.GlobalWait(objDictionary, driver, "{WaitUntilMeterVariableBegunEqualFalse} NA", 30, strSpotNumber,strHostType);
 		}
@@ -6089,7 +6091,7 @@ public class Meter
 		{
 			//Upload Meter Screenshot Imgur
 			file = new File(strFullMeterScreenShotPath);
-//			String strImageURL = ImgurClient_Old.getInstance().UploadImage1(file, strTestCaseName+"_" + Instant.now());
+//			String strImageURL = ImgurClient.getInstance().UploadImage1(file, strTestCaseName+"_" + Instant.now());
 			String strImageURL = ImgurClient.getInstance().UploadImage(file, strTestCaseName+"_" + Instant.now());
 			if(strImageURL != null)
 			{
