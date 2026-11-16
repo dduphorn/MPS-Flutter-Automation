@@ -9028,7 +9028,8 @@ public class IOS_Common_Flutter
 		//Populate Spot
 		clsCommonMobile.SENTRYMOBILE_Populate_MeterPayment_SelectSpot(objDictionary,iosDriver,"1");
 		clsCommonMobile.SENTRYMOBILE_AddOrSelectLicensePlate(objDictionary, iosDriver, strLicensePlateNumber, strLicensePlateState);
-		clsCommonMobile.ClickButton(objDictionary, iosDriver, "Choose Parking Duration", "Proceed", 1);
+		//clsCommonMobile.GlobalWait(objDictionary, iosDriver, "Parking Sessions", "{TextFieldExists} Choose Parking Duration~mins", 20);
+     	clsCommonMobile.ClickButton(objDictionary, iosDriver, "Choose Parking Duration", "Proceed", 1);
      	//Validate First Payment Dialog
      	String strMeterNextRateCost = clsMeter.GetMeterNextRateCost(objDictionary);
      	double dblMeterNextRateCost = Double.parseDouble(strMeterNextRateCost) / 100;
@@ -11725,10 +11726,11 @@ public class IOS_Common_Flutter
 						} 
 						catch (Exception e) {return null;}
 					case "License Plate":
-						String strLicensePlateNumber = objDictionary.get("strLicensePlateNumber");
-						if (strLicensePlateNumber == null || strLicensePlateNumber.trim().isEmpty()) {UpdateErrorMessageWithPivotalData(objDictionary, iosDriver,"Failed to retrieve the License Plate object because the required key 'strLicensePlateNumber' was null or missing in objDictionary.");}
-						try {return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//XCUIElementTypeButton[@name='" + strLicensePlateNumber.toUpperCase() + "']")));}
-						catch (Exception e) {return null;}
+					    String strLicensePlateNumber = objDictionary.get("strLicensePlateNumber");
+					    if (strLicensePlateNumber == null || strLicensePlateNumber.trim().isEmpty()) 
+					    {UpdateErrorMessageWithPivotalData(objDictionary, iosDriver,"Failed to retrieve the License Plate object because the required key 'strLicensePlateNumber' was null or missing in objDictionary.");}
+					    try {return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//XCUIElementTypeButton[@name='" + strLicensePlateNumber.toUpperCase() + "']")));}
+					    catch (Exception e) {return null;}
 					default:
 						UpdateErrorMessageWithPivotalData(objDictionary, iosDriver,"The Button (" + strButtonName + ") had not been added to GetButtonObj for the page (" + strPageName + ")-"+strMethodName);
 				}
