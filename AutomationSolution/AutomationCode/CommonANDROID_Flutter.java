@@ -9533,9 +9533,7 @@ public class CommonANDROID_Flutter
   		String strUnlockMax = "1";
   		//ExitSpotAndSetMeterRateBlocks
 		clsCommonWeb.SENTRYLINK_ExitSpotSetMeterRateBlocksOpenMeterInBrowse(objDictionary,  strMaximumDuration, strCoinTimePuchaseLimit, strFreeTimeFirstPayment, strMeterIncrementTime, strInitialGracePeriod, strViolationGracePeriod, strHandicapInitialGracePeriod, strHandicapViolationGrace, strNoParkingGrace,strSetImageSendBeforeViolation,strParkingShortSessionSec, strUnlockValue, strUnlockTime, strUnlockMax,"Local");
-		//PS1: Park Spot 1
-      	clsMeter.METER_ParkSpot(objDictionary,"1","Local");
-      	AppiumDriver androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
+		AppiumDriver androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
 		//Click Accept
 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept",1);
 		clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, androidDriver, "parker", "Enroll later");
@@ -9729,7 +9727,6 @@ public class CommonANDROID_Flutter
       	clsAndriodParkingSessions.SENTRYLINK_ValidateParkingSessionHistoryAndImages_2044_VM_FTFP10_PS1_MP1_BMT_ES1(objDictionary);
       	clsMeter.METER_SetMeterEndTime(objDictionary);
    	}
-	
 	public void SENTRYMOBILE_2045_FTFP10_PS1_PMT_ES1_VPSH_VICAE_VIAC(Map<String, String> objDictionary, String strLicensePlateNumber)throws Exception
 	{
     	objDictionary.put("strMobileDeviceType", "ANDROID");
@@ -10317,9 +10314,7 @@ public class CommonANDROID_Flutter
   		String strUnlockMax = "1";
   		//ExitSpotAndSetMeterRateBlocks
   		clsCommonWeb.SENTRYLINK_ExitSpotSetMeterRateBlocksOpenMeterInBrowse(objDictionary,  strMaximumDuration, strCoinTimePuchaseLimit, strFreeTimeFirstPayment, strMeterIncrementTime, strInitialGracePeriod, strViolationGracePeriod, strHandicapInitialGracePeriod, strHandicapViolationGrace, strNoParkingGrace,strSetImageSendBeforeViolation,strParkingShortSessionSec, strUnlockValue, strUnlockTime, strUnlockMax,"Local");
-  		//PS1: Park Spot 1
-  		clsMeter.METER_ParkSpot(objDictionary,"1","Local");
-      	AppiumDriver androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
+  		AppiumDriver androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
 		//Click Accept
 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept",1);
 		clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, androidDriver, "parker", "Enroll later");
@@ -10374,8 +10369,6 @@ public class CommonANDROID_Flutter
   		String strUnlockMax = "1";
   		//ExitSpotAndSetMeterRateBlocks
   		clsCommonWeb.SENTRYLINK_ExitSpotSetMeterRateBlocksOpenMeterInBrowse(objDictionary,  strMaximumDuration, strCoinTimePuchaseLimit, strFreeTimeFirstPayment, strMeterIncrementTime, strInitialGracePeriod, strViolationGracePeriod, strHandicapInitialGracePeriod, strHandicapViolationGrace, strNoParkingGrace,strSetImageSendBeforeViolation,strParkingShortSessionSec, strUnlockValue, strUnlockTime, strUnlockMax,"Local");
-  		//PS1: Park Spot 1
-  		clsMeter.METER_ParkSpot(objDictionary,"1","Local");
   		//MP1: Mobile Payment
   		AppiumDriver androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
 		//Click Accept
@@ -10557,8 +10550,6 @@ public class CommonANDROID_Flutter
 		String strUnlockMax = "1";
 		//ExitSpotAndSetMeterRateBlocks
 		clsCommonWeb.SENTRYLINK_ExitSpotSetMeterRateBlocksOpenMeterInBrowse(objDictionary,  strMaximumDuration, strCoinTimePuchaseLimit, strFreeTimeFirstPayment, strMeterIncrementTime, strInitialGracePeriod, strViolationGracePeriod, strHandicapInitialGracePeriod, strHandicapViolationGrace, strNoParkingGrace,strSetImageSendBeforeViolation,strParkingShortSessionSec, strUnlockValue, strUnlockTime, strUnlockMax,"Local");
-		//PS1: Park Spot 1
-		clsMeter.METER_ParkSpot(objDictionary,"1","Local");
 		//MP1: Mobile Payment
 		AppiumDriver androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
 		//Click Accept
@@ -10617,8 +10608,6 @@ public class CommonANDROID_Flutter
 		String strUnlockMax = "1";
 		//ExitSpotAndSetMeterRateBlocks
 		clsCommonWeb.SENTRYLINK_ExitSpotSetMeterRateBlocksOpenMeterInBrowse(objDictionary,  strMaximumDuration, strCoinTimePuchaseLimit, strFreeTimeFirstPayment, strMeterIncrementTime, strInitialGracePeriod, strViolationGracePeriod, strHandicapInitialGracePeriod, strHandicapViolationGrace, strNoParkingGrace,strSetImageSendBeforeViolation,strParkingShortSessionSec, strUnlockValue, strUnlockTime, strUnlockMax,"Local");
-		//PS1: Park Spot 1
-		clsMeter.METER_ParkSpot(objDictionary,"1","Local");
 		//MP1: Mobile Payment
 		AppiumDriver androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
 		//Click Accept
@@ -10797,9 +10786,7 @@ public class CommonANDROID_Flutter
   		clsCommonWeb.SENTRYLINK_ExitSpotSetMeterRateBlocksOpenMeterInBrowse(objDictionary,  strMaximumDuration, strCoinTimePuchaseLimit, strFreeTimeFirstPayment, strMeterIncrementTime, strInitialGracePeriod, strViolationGracePeriod, strHandicapInitialGracePeriod, strHandicapViolationGrace, strNoParkingGrace,strSetImageSendBeforeViolation,strParkingShortSessionSec, strUnlockValue, strUnlockTime, strUnlockMax,"Local");
   		//Wait for Rates to make it to the Meter
   		try {Thread.sleep(15000);}catch (Exception e) {}
-  		//PS1: Park Spot 1
-    	if(strVirtualMeter.equals("False")){clsMeter.METER_ParkSpot(objDictionary,"1","Local");}
-		//MP1: Mobile Payment
+  		//MP1: Mobile Payment
 		AppiumDriver androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
 		//Click Accept
 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept",1);
@@ -12530,9 +12517,8 @@ public class CommonANDROID_Flutter
   		else
   		{clsMeter.UpdateErrorMessageWithPivotalData(objDictionary, null, "The Meter True Up Time did not equal (1) - Actual Time ("+strMeterTrueValue+")");}
 		//AV: Approve Violation Without License Plate
-   		//String strViolationId = clsCommonWeb.SENTRYLINK_ApproveViolation(objDictionary, "","");
-   		String strViolationId = "";
-   	   	//Open Consumer App
+   		String strViolationId = clsCommonWeb.SENTRYLINK_ApproveViolation(objDictionary, "","");
+   		//Open Consumer App
    		AppiumDriver androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
    		//Click Accept
 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept",1);

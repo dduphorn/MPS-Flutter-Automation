@@ -1265,6 +1265,170 @@ public class IOS_ParkingSessions
 		}
 		driver.quit();
 	}
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3028_A_VM_FTFP0_PS1_MP1_PMT_LPRM_e_MTIV_ES1(Map<String, String> objDictionary, String strCreditCardIncrementTime)
+	{
+		CommonWeb clsCommonWeb = new CommonWeb();
+		Meter clsMeter = new Meter();
+		// Get Fees On First Payment
+		String strFirstPayment = objDictionary.get("strFirstPayment");
+		String strSubsequentPayment = objDictionary.get("strSubsequentPayment");
+		String strSpotNumber = objDictionary.get("strSpotNumber");
+		String strBrowser = objDictionary.get("strBrowser");
+		String strRemotePath = objDictionary.get("strRemotePath");
+		String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
+		if (strValidateImageFlag == null) {strValidateImageFlag = "True";}
+		threadDriver = clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath, objDictionary);
+		WebDriver driver = getDriver();
+		clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter", "1");
+		// VPSH: Validate Parking Session History
+		if (strFirstPayment == null)
+		{
+			if (strSubsequentPayment == null)
+			{
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "1", "3", "CellValue", "Parked");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "2", "3", "CellValue", "Mps account Payment #1");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "2", "4", "CellValue", "$ 0.25");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "2", "5", "CellValue", "App Purchased " + strCreditCardIncrementTime + " Minutes");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "3", "3", "CellValue", "Mps account Payment #2");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "3", "4", "CellValue", "$ 0.25");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "3", "5", "CellValue", "App Purchased " + strCreditCardIncrementTime + " Minutes");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "4", "3", "CellValue", "Mps account Payment #3");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "4", "4", "CellValue", "$ 0.25");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "4", "5", "CellValue", "App Purchased " + strCreditCardIncrementTime + " Minutes");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "5", "3", "CellValue", "Mps account Payment #4");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "5", "4", "CellValue", "$ 0.25");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "5", "5", "CellValue", "App Purchased " + strCreditCardIncrementTime + " Minutes");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "6", "3", "CellValue", "Exited");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "7", "0", "Row Does Not Exist", "");
+			}
+			else
+			{
+				double dblSubsequentPayment = Integer.parseInt(strSubsequentPayment) * .01;
+				DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "1", "3", "CellValue", "Parked");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "2", "3", "CellValue", "Mps account Payment #1");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "2", "4", "CellValue", "$ 0.25");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "2", "5", "CellValue", "App Purchased " + strCreditCardIncrementTime + " Minutes");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "3", "3", "CellValue", "Mps account Payment #1");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "3", "4", "CellValue", dFormat.format(dblSubsequentPayment));
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "3", "5", "CellValue", "Transaction Fee Payment");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "4", "3", "CellValue", "Mps account Payment #2");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "4", "4", "CellValue", "$ 0.25");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "4", "5", "CellValue", "App Purchased " + strCreditCardIncrementTime + " Minutes");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "5", "3", "CellValue", "Mps account Payment #2");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "5", "4", "CellValue", dFormat.format(dblSubsequentPayment));
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "5", "5", "CellValue", "Transaction Fee Payment");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "6", "3", "CellValue", "Mps account Payment #3");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "6", "4", "CellValue", "$ 0.25");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "6", "5", "CellValue", "App Purchased " + strCreditCardIncrementTime + " Minutes");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "7", "3", "CellValue", "Mps account Payment #3");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "7", "4", "CellValue", dFormat.format(dblSubsequentPayment));
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "7", "5", "CellValue", "Transaction Fee Payment");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "8", "3", "CellValue", "Mps account Payment #4");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "8", "4", "CellValue", "$ 0.25");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "8", "5", "CellValue", "App Purchased " + strCreditCardIncrementTime + " Minutes");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "9", "3", "CellValue", "Exited");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "10", "0", "Row Does Not Exist", "");
+			}
+		}
+		else
+		{
+			if (strSubsequentPayment == null)
+			{
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "1", "3", "CellValue", "Parked");
+				String strPaymentRow2Column5 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strPaymentRow2Column5", "2", "5");
+				double dblFirstPaymentFee = Integer.parseInt(strFirstPayment) * .01;
+				DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+				if (strPaymentRow2Column5.equals("Transaction Fee Payment"))
+				{
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "2", "3", "CellValue", "Mps account Payment #1");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "2", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "2", "5", "CellValue", "Transaction Fee Payment");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "3", "CellValue", "Mps account Payment #1");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "4", "CellValue", "$ 0.25");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "5", "CellValue","App Purchased " + strCreditCardIncrementTime + " Minutes");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "3", "CellValue", "Mps account Payment #2");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "4", "CellValue", "$ 0.25");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "5", "CellValue","App Purchased " + strCreditCardIncrementTime + " Minutes");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "3", "CellValue", "Mps account Payment #3");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "4", "CellValue", "$ 0.25");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "5", "CellValue","App Purchased " + strCreditCardIncrementTime + " Minutes");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "6", "3", "CellValue", "Mps account Payment #4");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "6", "4", "CellValue", "$ 0.25");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "6", "5", "CellValue","App Purchased " + strCreditCardIncrementTime + " Minutes");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "7", "3", "CellValue", "Exited");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "8", "0", "Row Does Not Exist", "");
+				}
+				else
+				{
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "2", "3", "CellValue", "Mps account Payment #1");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "2", "4", "CellValue", "$ 0.25");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "2", "5", "CellValue","App Purchased " + strCreditCardIncrementTime + " Minutes");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "3", "CellValue", "Mps account Payment #1");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "5", "CellValue", "Transaction Fee Payment");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "3", "CellValue", "Mps account Payment #2");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "4", "CellValue", "$ 0.25");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "5", "CellValue","App Purchased " + strCreditCardIncrementTime + " Minutes");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "3", "CellValue", "Mps account Payment #3");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "4", "CellValue", "$ 0.25");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "5", "CellValue","App Purchased " + strCreditCardIncrementTime + " Minutes");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "6", "3", "CellValue", "Mps account Payment #4");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "6", "4", "CellValue", "$ 0.25");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "6", "5", "CellValue","App Purchased " + strCreditCardIncrementTime + " Minutes");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "7", "3", "CellValue", "Exited");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "8", "0", "Row Does Not Exist", "");
+				}
+			}
+			else
+			{
+				double dblFirstPaymentFee = Integer.parseInt(strFirstPayment) * .01;
+				double dblSubsequentPayment = Integer.parseInt(strSubsequentPayment) * .01;
+				DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "1", "3", "CellValue", "Parked");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "2", "3", "CellValue", "Mps account Payment #1");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "2", "4", "CellValue", "$ 0.25");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "2", "5", "CellValue", "App Purchased " + strCreditCardIncrementTime + " Minutes");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "3", "3", "CellValue", "Mps account Payment #1");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "3", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "3", "5", "CellValue", "Transaction Fee Payment");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "4", "3", "CellValue", "Mps account Payment #2");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "4", "4", "CellValue", "$ 0.25");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "4", "5", "CellValue", "App Purchased " + strCreditCardIncrementTime + " Minutes");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "5", "3", "CellValue", "Mps account Payment #2");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "5", "4", "CellValue", dFormat.format(dblSubsequentPayment));
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "5", "5", "CellValue", "Transaction Fee Payment");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "6", "3", "CellValue", "Mps account Payment #3");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "6", "4", "CellValue", "$ 0.25");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "6", "5", "CellValue", "App Purchased " + strCreditCardIncrementTime + " Minutes");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "7", "3", "CellValue", "Mps account Payment #3");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "7", "4", "CellValue", dFormat.format(dblSubsequentPayment));
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "7", "5", "CellValue", "Transaction Fee Payment");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "8", "3", "CellValue", "Mps account Payment #4");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "8", "4", "CellValue", "$ 0.25");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "8", "5", "CellValue", "App Purchased " + strCreditCardIncrementTime + " Minutes");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "9", "3", "CellValue", "Mps account Payment #4");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "9", "4", "CellValue", dFormat.format(dblSubsequentPayment));
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "9", "5", "CellValue", "Transaction Fee Payment");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "10", "3", "CellValue", "Exited");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "11", "0", "Row Does Not Exist", "");
+			}
+		}
+		if (strValidateImageFlag.equals("True"))
+		{
+			// Wait For Images to Load
+			clsMeter.METER_MeterWaitWithMessage(objDictionary, 10,"Waiting for 10 seconds for Images to load to Sentry Link-Spot" + strSpotNumber);
+			driver.navigate().refresh();
+			// Click Image Link
+			clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
+			try {Thread.sleep(1000);} catch (Exception e) {}
+			// VICAE: Validate Image Count After Exit
+			clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary, driver, 0, 2, "False");
+			// VIAC: Validate Images Appear Correctly
+			clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
+		}
+		driver.quit();
+	}
 	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3029_FTFP0_PS1_MP1_PMT_MTIV_gt_LPRM_ES1(Map<String, String> objDictionary, String strCreditCardIncrementTime, int intRemainingMinutes)
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
@@ -2766,9 +2930,9 @@ public class IOS_ParkingSessions
   	}
 	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3044_VM_FTFP10_PS1_MP1_BMT_ES1(Map<String, String> objDictionary)
   	{
-  		CommonWeb clsCommonWeb = new CommonWeb();
+		CommonWeb clsCommonWeb = new CommonWeb();
   		//Dictionary Variables
-  	  	String strBrowser = objDictionary.get("strBrowser");
+  		String strBrowser = objDictionary.get("strBrowser");
       	String strRemotePath = objDictionary.get("strRemotePath");
       	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
       	String strFreeTimeFirstPayment = "10";objDictionary.put("strFreeTimeFirstPayment", strFreeTimeFirstPayment);
@@ -2785,12 +2949,31 @@ public class IOS_ParkingSessions
   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #1");
   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Received 10 Free Minutes with First Payment");
-		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #2");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","4", "CellValue", "$ 0.25");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
-        if(strValidateImageFlag.equals("True"))
+  		String strFirstPayment = objDictionary.get("strFirstPayment");
+  		if (strFirstPayment != null)
+	  	{
+  			DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+		  	double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #1");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Transaction Fee Payment");
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #2");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #2");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Transaction Fee Payment");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Exited");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","0", "Row Does Not Exist", "");
+  	  	}
+  		else
+  		{
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #2");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","4", "CellValue", "$ 0.25");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
+  		}
+	  	if(strValidateImageFlag.equals("True"))
 	  	{
 	  		//Click Image Link
 	  		clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
@@ -2802,7 +2985,55 @@ public class IOS_ParkingSessions
 	  	}
 		driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3045_FTFP10_PS1_MP1_PMT_LPRM_e_MTIV_ES1(Map<String, String> objDictionary)
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3045_FTFP10_PS1_PMT_ES1(Map<String, String> objDictionary)
+  	{
+		CommonWeb clsCommonWeb = new CommonWeb();
+  		Meter clsMeter = new Meter();
+	  	//Get Fees On First Payment
+	  	String strSpotNumber = objDictionary.get("strSpotNumber");
+	  	String strBrowser = objDictionary.get("strBrowser");
+      	String strRemotePath = objDictionary.get("strRemotePath");
+      	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
+      	if(strValidateImageFlag == null){strValidateImageFlag = "True";}
+      	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
+      	WebDriver driver = getDriver();
+      	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
+	  	//VPSH: Validate Parking Session History
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 1.00");
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "App Purchased 240 Minutes");
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #1");
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Received 10 Free Minutes with First Payment");
+		String strRow3Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strRow3Column3", "4", "3");
+		if (strRow3Column3.equals("Mps account Payment #1"))
+		{
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #1");
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Transaction Fee Payment");
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
+		}
+		else
+		{
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
+		}
+	  	if(strValidateImageFlag.equals("True"))
+	  	{
+	  		//Wait For Images to Load
+	  		clsMeter.METER_MeterWaitWithMessage(objDictionary,5, "Waiting for 5 seconds for Images to load to Sentry Link-Spot"+strSpotNumber);
+	   		driver.navigate().refresh();
+	  		//Click Image Link
+	      	clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
+	      	try {Thread.sleep(1000);}catch (Exception e) {}
+	  		//VICAE: Validate Image Count After Exit
+	  		clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary,driver,0,2,"False");
+	      	//VIAC: Validate Images Appear Correctly
+	      	clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
+	  	}
+  		driver.quit();
+  	}
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3045_A_FTFP10_PS1_MP1_PMT_LPRM_e_MTIV_ES1_VPSH_VICAE_VIAC(Map<String, String> objDictionary)
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
   		Meter clsMeter = new Meter();
@@ -3038,31 +3269,94 @@ public class IOS_ParkingSessions
 	  	WebDriver driver = getDriver();
 	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
 	  	//VPSH: Validate Parking Session History
+	  	DecimalFormat dFormat = new DecimalFormat("$ 0.00");
 	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #1");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","4", "CellValue", "$ 0.06");
   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Received 10 Free Minutes with First Payment");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #2");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","4", "CellValue", "$ 0.25");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #3");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #4");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", "$ 0.25");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mps account Payment #5");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","4", "CellValue", "$ 0.25");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Mps account Payment #6");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","4", "CellValue", "$ 0.25");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","5", "CellValue", "App Purchased "+intRemainingMinutes+" Minutes");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "Exited");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","0", "Row Does Not Exist", "");
-	    if(strValidateImageFlag.equals("True"))
+  		String strRow4Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strRow4Column3", "4", "3");
+		if (strRow4Column3.equals("Mps account Payment #1"))
+		{
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #1");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "	Transaction Fee Payment");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #2");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
+	  		String strSubsequentPayment = objDictionary.get("strSubsequentPayment");
+		  	if (strSubsequentPayment == null)
+	      	{
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #3");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", "$ 0.25");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mps account Payment #4");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","4", "CellValue", "$ 0.25");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Mps account Payment #5");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","4", "CellValue", "$ 0.25");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "Mps account Payment #6");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","4", "CellValue", "$ 0.25");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","5", "CellValue", "App Purchased "+intRemainingMinutes+" Minutes");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","3", "CellValue", "Exited");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "12","0", "Row Does Not Exist", "");
+	      	}
+		  	else
+		  	{
+		  		double dblSubsequentPayment = Integer.parseInt(strSubsequentPayment)*.01;
+	      		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #2");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", dFormat.format(dblSubsequentPayment));
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Transaction Fee Payment");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mps account Payment #3");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","4", "CellValue", "$ 0.25");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Mps account Payment #3");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","4", "CellValue", dFormat.format(dblSubsequentPayment));
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","5", "CellValue", "Transaction Fee Payment");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "Mps account Payment #4");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","4", "CellValue", "$ 0.25");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","3", "CellValue", "Mps account Payment #4");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","4", "CellValue", dFormat.format(dblSubsequentPayment));
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","5", "CellValue", "Transaction Fee Payment");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "11","3", "CellValue", "Mps account Payment #5");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "11","4", "CellValue", "$ 0.25");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "11","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "12","3", "CellValue", "Mps account Payment #5");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "12","4", "CellValue", dFormat.format(dblSubsequentPayment));
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "12","5", "CellValue", "Transaction Fee Payment");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "13","3", "CellValue", "Mps account Payment #6");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "13","4", "CellValue", "$ 0.25");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "13","5", "CellValue", "App Purchased "+intRemainingMinutes+" Minutes");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "14","3", "CellValue", "Mps account Payment #6");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "14","4", "CellValue", dFormat.format(dblSubsequentPayment));
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "14","5", "CellValue", "Transaction Fee Payment");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "15","3", "CellValue", "Exited");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "16","0", "Row Does Not Exist", "");
+		  	}
+		}
+		else
+		{
+  		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #2");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","4", "CellValue", "$ 0.25");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #3");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #4");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", "$ 0.25");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mps account Payment #5");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","4", "CellValue", "$ 0.25");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Mps account Payment #6");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","4", "CellValue", "$ 0.25");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","5", "CellValue", "App Purchased "+intRemainingMinutes+" Minutes");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "Exited");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","0", "Row Does Not Exist", "");
+		}
+	  	if(strValidateImageFlag.equals("True"))
 	    {
 	    	//Wait For Images to Load
 	    	clsMeter.METER_MeterWaitWithMessage(objDictionary,10, "Waiting for 10 seconds for Images to load to Sentry Link-Spot"+strSpotNumber);
@@ -3315,45 +3609,13 @@ public class IOS_ParkingSessions
     	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
     	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
     	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #1");
-    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","4", "CellValue", "$ 0.08");
+    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","4", "CellValue", "$ 0.17");
     	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Received 10 Free Minutes with First Payment");
     	String strFirstPayment = objDictionary.get("strFirstPayment");
-  		if (strFirstPayment != null)
+	  	DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+	  	double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+	  	if (strFirstPayment == null)
 		{
-  			double dblFirstPaymentFee = Integer.parseInt(strFirstPayment) * .01;
-			DecimalFormat dFormat = new DecimalFormat("$ 0.00");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #1");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","4", "CellValue", dFormat.format(dblFirstPaymentFee));
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Transaction Fee Payment");
-	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Cash Payment #2");
-	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
-	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "Meter Purchased "+strMeterIncrementTime+" Minutes");
-	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Cash Payment #3");
-	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", "$ 0.25");
-	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Meter Purchased "+strMeterIncrementTime+" Minutes");
-	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Cash Payment #4");
-	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","4", "CellValue", "$ 0.25");
-	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Meter Purchased "+strMeterIncrementTime+" Minutes");
-	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Cash Payment #5");
-	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","4", "CellValue", "$ 0.25");
-	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","5", "CellValue", "Meter Purchased "+strMeterIncrementTime+" Minutes");
-	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "Cash Payment #6");
-	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","4", "CellValue", "$ 0.25");
-	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","5", "CellValue", "Meter Purchased "+strMeterIncrementTime+" Minutes");
-	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","3", "CellValue", "Cash Payment #7");
-	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","4", "CellValue", "$ 0.25");
-	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","5", "CellValue", "Meter Purchased "+strMeterIncrementTime+" Minutes");
-	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "11","3", "CellValue", "Cash Payment #8");
-	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "11","4", "CellValue", "$ 0.25");
-	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "11","5", "CellValue", "Meter Purchased "+strMeterIncrementTime+" Minutes");
-	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "12","3", "CellValue", "Cash Payment #9");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "12","4", "CellValue", "$ 0.25");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "12","5", "CellValue", "Meter Purchased "+strMeterIncrementTime+" Minutes");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "13","3", "CellValue", "Exited");
-		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "14","0", "Row Does Not Exist", "");
-		}
-  		else
-  		{
 	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Cash Payment #2");
 	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","4", "CellValue", "$ 0.25");
 	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Meter Purchased "+strMeterIncrementTime+" Minutes");
@@ -3376,11 +3638,91 @@ public class IOS_ParkingSessions
 	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","4", "CellValue", "$ 0.25");
 	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","5", "CellValue", "Meter Purchased "+strMeterIncrementTime+" Minutes");
 	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "11","3", "CellValue", "Cash Payment #9");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "11","4", "CellValue", "$ 0.25");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "11","5", "CellValue", "Meter Purchased "+strMeterIncrementTime+" Minutes");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "12","3", "CellValue", "Exited");
-		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "13","0", "Row Does Not Exist", "");
-  		}
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "11","4", "CellValue", "$ 0.25");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "11","5", "CellValue", "Meter Purchased "+strMeterIncrementTime+" Minutes");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "12","3", "CellValue", "Cash Payment #10");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "12","4", "CellValue", "$ 0.25");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "12","5", "CellValue", "Meter Purchased "+strMeterIncrementTime+" Minutes");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "13","3", "CellValue", "Cash Payment #11");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "13","4", "CellValue", "$ 0.25");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "13","5", "CellValue", "Meter Purchased "+strMeterIncrementTime+" Minutes");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "14","3", "CellValue", "Cash Payment #12");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "14","4", "CellValue", "$ 0.25");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "14","5", "CellValue", "Meter Purchased "+strMeterIncrementTime+" Minutes");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "15","3", "CellValue", "Cash Payment #13");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "15","4", "CellValue", "$ 0.25");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "15","5", "CellValue", "Meter Purchased "+strMeterIncrementTime+" Minutes");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "16","3", "CellValue", "Cash Payment #14");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "16","4", "CellValue", "$ 0.25");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "16","5", "CellValue", "Meter Purchased "+strMeterIncrementTime+" Minutes");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "17","3", "CellValue", "Cash Payment #15");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "17","4", "CellValue", "$ 0.25");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "17","5", "CellValue", "Meter Purchased "+strMeterIncrementTime+" Minutes");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "18","3", "CellValue", "Cash Payment #16");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "18","4", "CellValue", "$ 0.25");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "18","5", "CellValue", "Meter Purchased "+strMeterIncrementTime+" Minutes");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "19","3", "CellValue", "Cash Payment #17");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "19","4", "CellValue", "$ 0.25");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "19","5", "CellValue", "Meter Purchased "+strMeterIncrementTime+" Minutes");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "20","3", "CellValue", "Exited");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "21","0", "Row Does Not Exist", "");
+		}
+	  	else
+	  	{
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #1 ");
+	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Transaction Fee Payment ");
+	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Cash Payment #2");
+	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
+	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "Meter Purchased "+strMeterIncrementTime+" Minutes");
+	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Cash Payment #3");
+	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", "$ 0.25");
+	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Meter Purchased "+strMeterIncrementTime+" Minutes");
+	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Cash Payment #4");
+	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","4", "CellValue", "$ 0.25");
+	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Meter Purchased "+strMeterIncrementTime+" Minutes");
+	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Cash Payment #5");
+	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","4", "CellValue", "$ 0.25");
+	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","5", "CellValue", "Meter Purchased "+strMeterIncrementTime+" Minutes");
+	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "Cash Payment #6");
+	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","4", "CellValue", "$ 0.25");
+	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","5", "CellValue", "Meter Purchased "+strMeterIncrementTime+" Minutes");
+	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","3", "CellValue", "Cash Payment #7");
+	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","4", "CellValue", "$ 0.25");
+	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","5", "CellValue", "Meter Purchased "+strMeterIncrementTime+" Minutes");
+	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "11","3", "CellValue", "Cash Payment #8");
+	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "11","4", "CellValue", "$ 0.25");
+	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "11","5", "CellValue", "Meter Purchased "+strMeterIncrementTime+" Minutes");
+	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "12","3", "CellValue", "Cash Payment #9");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "12","4", "CellValue", "$ 0.25");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "12","5", "CellValue", "Meter Purchased "+strMeterIncrementTime+" Minutes");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "13","3", "CellValue", "Cash Payment #10");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "13","4", "CellValue", "$ 0.25");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "13","5", "CellValue", "Meter Purchased "+strMeterIncrementTime+" Minutes");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "14","3", "CellValue", "Cash Payment #11");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "14","4", "CellValue", "$ 0.25");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "14","5", "CellValue", "Meter Purchased "+strMeterIncrementTime+" Minutes");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "15","3", "CellValue", "Cash Payment #12");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "15","4", "CellValue", "$ 0.25");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "15","5", "CellValue", "Meter Purchased "+strMeterIncrementTime+" Minutes");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "16","3", "CellValue", "Cash Payment #13");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "16","4", "CellValue", "$ 0.25");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "16","5", "CellValue", "Meter Purchased "+strMeterIncrementTime+" Minutes");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "17","3", "CellValue", "Cash Payment #14");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "17","4", "CellValue", "$ 0.25");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "17","5", "CellValue", "Meter Purchased "+strMeterIncrementTime+" Minutes");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "18","3", "CellValue", "Cash Payment #15");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "18","4", "CellValue", "$ 0.25");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "18","5", "CellValue", "Meter Purchased "+strMeterIncrementTime+" Minutes");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "19","3", "CellValue", "Cash Payment #16");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "19","4", "CellValue", "$ 0.25");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "19","5", "CellValue", "Meter Purchased "+strMeterIncrementTime+" Minutes");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "20","3", "CellValue", "Cash Payment #17");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "20","4", "CellValue", "$ 0.25");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "20","5", "CellValue", "Meter Purchased "+strMeterIncrementTime+" Minutes");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "21","3", "CellValue", "Exited");
+		    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "22","0", "Row Does Not Exist", "");
+	  	}
 	    if(strValidateImageFlag.equals("True"))
         {
         	//Wait For Images to Load
@@ -3786,37 +4128,38 @@ public class IOS_ParkingSessions
       	String strRemotePath = objDictionary.get("strRemotePath");
       	String strSpotNumber = objDictionary.get("strSpotNumber");
       	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
-     	String strMeterIncrementTime = objDictionary.get("strMeterIncrementTime");
+      	String strMeterIncrementTime = objDictionary.get("strMeterIncrementTime");
 		if(strValidateImageFlag == null){strValidateImageFlag = "True";}
       	//NTPS: Navigate To Parking Session
 	  	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
 	  	WebDriver driver = getDriver();
 	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
+	  	//double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+    	//DecimalFormat dFormat = new DecimalFormat("$ 0.00");
 	  	//VPSH: Validate Parking Session History
-	  	String strInitialPaymentRow = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strInitialParkingSessionRow", "1", "3");
-  		if(strInitialPaymentRow.equals("Parked"))
-  		{
-  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #1");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Received 10 Free Minutes with First Payment");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
-		}
-  		else
-  		{
-  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Mps account Payment #1");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","4", "CellValue", "$ 0.25");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Parked");
-	      	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #1");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Received 10 Free Minutes with First Payment");
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+      	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #1");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Received 10 Free Minutes with First Payment");
+  		String strFirstPayment = objDictionary.get("strFirstPayment");
+	  	DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+	  	if (strFirstPayment == null)
+	  	{
 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
-    	}
-	   	if(strValidateImageFlag.equals("True"))
+	  	}
+	  	else
+	  	{
+	  		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment) * .01;
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #1");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Transaction Fee Payment");
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
+	  	}
+  		if(strValidateImageFlag.equals("True"))
 	  	{
 	  		//Wait For Images to Load
 	  		clsMeter.METER_MeterWaitWithMessage(objDictionary,10, "Waiting for 10 seconds for Images to load to Sentry Link-Spot"+strSpotNumber);
@@ -4066,7 +4409,7 @@ public class IOS_ParkingSessions
 	  	}
 		driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3062_FTFP0_FTR_RFT_gt_MTIV_PS1_MP1_VMT(Map<String, String> objDictionary, String strMeterIncrementTime, int intRemainingFreeTime)
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3062_FTFP0_FTR_RFT_gt_MTIV_PS1_MP1(Map<String, String> objDictionary, String strMeterIncrementTime, int intRemainingFreeTime)
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
   		Meter clsMeter = new Meter();
@@ -4123,7 +4466,7 @@ public class IOS_ParkingSessions
 	  	}
   		driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3063_FTFP0_FTR_MTIV_gt_RFT_PS1_MP1_VMT(Map<String, String> objDictionary, String strMeterIncrementTime, int intActualRemainingTimeMinutes)
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3063_FTFP0_FTR_MTIV_gt_RFT_PS1_MP1(Map<String, String> objDictionary, String strMeterIncrementTime, int intActualRemainingTimeMinutes)
  	{
  		CommonWeb clsCommonWeb = new CommonWeb();
  		Meter clsMeter = new Meter();
@@ -4270,157 +4613,290 @@ public class IOS_ParkingSessions
 		}
 		driver.quit();
  	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3065_FTFP0_FTR_RFT_gt_MTIV_PS1_MP1_VMT_BMT(Map<String, String> objDictionary, String strMeterIncrementTime, int intActualRemainingTimeMinutes1, int intRemainingFreeMinutes)
- 	{
- 		CommonWeb clsCommonWeb = new CommonWeb();
- 		Meter clsMeter = new Meter();
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3065_FTFP0_FTR_RFT_gt_MTIV_PS1_MP1_VMT_BMT(Map<String, String> objDictionary, int intRemainingFreeMinutes)
+	{
+		CommonWeb clsCommonWeb = new CommonWeb();
+		Meter clsMeter = new Meter();
 		//Get Fees On First Payment
-		String strSpotNumber = objDictionary.get("strSpotNumber");
-		String strBrowser = objDictionary.get("strBrowser");
-		String strRemotePath = objDictionary.get("strRemotePath");
-		String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
-		String strVirtualMeter = objDictionary.get("strVirtualMeter"); if(strVirtualMeter == null) {strVirtualMeter = "False";}
+	  	String strMeterIncrementTime = objDictionary.get("strMeterIncrementTime");
+	  	String strSpotNumber = objDictionary.get("strSpotNumber");
+	  	String strBrowser = objDictionary.get("strBrowser");
+	  	String strRemotePath = objDictionary.get("strRemotePath");
+	  	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
+	  	String strVirtualMeter = objDictionary.get("strVirtualMeter"); if(strVirtualMeter == null) {strVirtualMeter = "False";}
 		if(strValidateImageFlag == null){strValidateImageFlag = "True";}
-	   	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
-	   	WebDriver driver = getDriver();
-	   	//Calculate Payment
-	   	intRemainingFreeMinutes = intRemainingFreeMinutes - 1;
-	   	int intRemainingFreeMinutesPlusOne = intRemainingFreeMinutes + 1;
-		int intRemainingFreeMinutesMinusOne = intRemainingFreeMinutes - 1;
-	   	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
-		//VPSH: Validate Parking Session History
- 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
- 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
- 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
- 		String strRowNumber = "2";
- 		String strColumnNumber = "5";
- 		String strPurchasedMinutes = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session", "Parking Session History", 1, "strPurchasedMinutes", strRowNumber, strColumnNumber);
- 		if(strPurchasedMinutes.contains("App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeMinutes+" free)"))
-		{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (App Purchased "+intActualRemainingTimeMinutes1+" Minutes ("+intRemainingFreeMinutes+") free)");}
- 		else if(strPurchasedMinutes.contains("App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeMinutesPlusOne+" free)"))
-		{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (App Purchased "+intActualRemainingTimeMinutes1+" Minutes ("+intRemainingFreeMinutes+") free)");}
- 		else if(strPurchasedMinutes.contains("App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeMinutesMinusOne+" free)"))
-		{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (App Purchased "+intActualRemainingTimeMinutes1+" Minutes ("+intRemainingFreeMinutesMinusOne+") free)");}
- 		else
-		{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) did not equal (Purchased "+intActualRemainingTimeMinutes1+" Minutes ("+intRemainingFreeMinutes+" free) - actual value ("+strPurchasedMinutes+")","Local");}
- 		String strFirstPayment = objDictionary.get("strFirstPayment");
+	  	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
+	  	WebDriver driver = getDriver();
+	  	//Calculate Payment
+	  	intRemainingFreeMinutes = intRemainingFreeMinutes - 1;
+	  	int intRemainingFreeMinutesPlusOne = intRemainingFreeMinutes + 1;
+	  	int intRemainingFreeMinutesMinusOne = intRemainingFreeMinutes - 1;
+	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
+	  	//VPSH: Validate Parking Session History
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
+		String strRowNumber = "2";
+		String strColumnNumber = "5";
+		String strPurchasedMinutes = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session", "Parking Session History", 1, "strPurchasedMinutes", strRowNumber, strColumnNumber);
+		if(strPurchasedMinutes.contains("App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeMinutesPlusOne+" free)"))
+		{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeMinutesPlusOne+") free)");}
+		else if(strPurchasedMinutes.contains("App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeMinutes+" free)"))
+		{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeMinutes+") free)");}
+		else if(strPurchasedMinutes.contains("App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeMinutesMinusOne+" free)"))
+		{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeMinutesMinusOne+") free)");}
+		else
+		{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) did not equal (Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeMinutes+" free) - actual value ("+strPurchasedMinutes+")","Local");}
+		String strFirstPayment = objDictionary.get("strFirstPayment");
 	  	DecimalFormat dFormat = new DecimalFormat("$ 0.00");
 	  	if (strFirstPayment != null)
       	{
 	  		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment) * .01;
 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "3", "CellValue", "Mps account Payment #1");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "5", "CellValue", "Transaction Fee Payment");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #2");
-	 		strRowNumber = "4"; strColumnNumber = "5";
-	 		strPurchasedMinutes = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session", "Parking Session History", 1, "strPurchasedMinutes", strRowNumber, strColumnNumber);
-	 		if(strPurchasedMinutes.contains("App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeMinutes+" free)"))
-			{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (App Purchased "+intActualRemainingTimeMinutes1+" Minutes ("+intRemainingFreeMinutes+") free)");}
-	 		else if(strPurchasedMinutes.contains("App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeMinutesPlusOne+" free)"))
-			{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (App Purchased "+intActualRemainingTimeMinutes1+" Minutes ("+intRemainingFreeMinutes+") free)");}
-	 		else if(strPurchasedMinutes.contains("App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeMinutesMinusOne+" free)"))
-			{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (App Purchased "+intActualRemainingTimeMinutes1+" Minutes ("+intRemainingFreeMinutesMinusOne+") free)");}
-	 		else
-			{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) did not equal (Purchased "+intActualRemainingTimeMinutes1+" Minutes ("+intRemainingFreeMinutes+" free) - actual value ("+strPurchasedMinutes+")","Local");}
-	 		String strSubsequentPayment = objDictionary.get("strSubsequentPayment");
-		  	if (strSubsequentPayment != null)
-		  	{
-		  		double dblSubsequentPayment = Integer.parseInt(strSubsequentPayment)*.01;
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "5", "CellValue", "Transaction Fee Payment");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #2");
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","4", "CellValue", "$ 0.25");
+			strRowNumber = "4";strColumnNumber = "5";
+			strPurchasedMinutes = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session", "Parking Session History", 1, "strPurchasedMinutes", strRowNumber, strColumnNumber);
+			if(strPurchasedMinutes.contains("App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeMinutesPlusOne+" free)"))
+			{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeMinutesPlusOne+") free)");}
+			else if(strPurchasedMinutes.contains("App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeMinutes+" free)"))
+			{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeMinutes+") free)");}
+			else if(strPurchasedMinutes.contains("App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeMinutesMinusOne+" free)"))
+			{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeMinutesMinusOne+") free)");}
+			else
+			{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) did not equal (Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeMinutes+" free) - actual value ("+strPurchasedMinutes+")","Local");}
+			String strSubsequentPayment = objDictionary.get("strSubsequentPayment");
+			if (strSubsequentPayment != null)
+          	{
+				double dblSubsequentPaymentFee = Integer.parseInt(strSubsequentPayment) * .01;
 		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "3", "CellValue", "Mps account Payment #2");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "4", "CellValue", dFormat.format(dblSubsequentPayment));
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "5", "CellValue", "Transaction Fee Payment");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Exited");
-			  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
-		  	}
-		  	else
-		  	{
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
-			  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
-		  	}
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "4", "CellValue", dFormat.format(dblSubsequentPaymentFee));
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "5", "CellValue", "Transaction Fee Payment");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Exited");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
+			}
+			else
+			{
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
+			}
       	}
 	  	else
 	  	{
-	 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #2");
-	 		strRowNumber = "3"; strColumnNumber = "5";
-	 		strPurchasedMinutes = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session", "Parking Session History", 1, "strPurchasedMinutes", strRowNumber, strColumnNumber);
-	 		if(strPurchasedMinutes.contains("App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeMinutes+" free)"))
-			{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (App Purchased "+intActualRemainingTimeMinutes1+" Minutes ("+intRemainingFreeMinutes+") free)");}
-	 		else if(strPurchasedMinutes.contains("App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeMinutesPlusOne+" free)"))
-			{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (App Purchased "+intActualRemainingTimeMinutes1+" Minutes ("+intRemainingFreeMinutes+") free)");}
-	 		else if(strPurchasedMinutes.contains("App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeMinutesMinusOne+" free)"))
-			{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (App Purchased "+intActualRemainingTimeMinutes1+" Minutes ("+intRemainingFreeMinutesMinusOne+") free)");}
-	 		else
-			{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) did not equal (Purchased "+intActualRemainingTimeMinutes1+" Minutes ("+intRemainingFreeMinutes+" free) - actual value ("+strPurchasedMinutes+")","Local");}
-	 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
-	 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #2");
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","4", "CellValue", "$ 0.25");
+			strRowNumber = "3";strColumnNumber = "5";
+			strPurchasedMinutes = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session", "Parking Session History", 1, "strPurchasedMinutes", strRowNumber, strColumnNumber);
+			if(strPurchasedMinutes.contains("App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeMinutesPlusOne+" free)"))
+			{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeMinutesPlusOne+") free)");}
+			else if(strPurchasedMinutes.contains("App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeMinutes+" free)"))
+			{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeMinutes+") free)");}
+			else if(strPurchasedMinutes.contains("App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeMinutesMinusOne+" free)"))
+			{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeMinutesMinusOne+") free)");}
+			else
+			{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) did not equal (Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeMinutes+" free) - actual value ("+strPurchasedMinutes+")","Local");}
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
 	  	}
 		if(strValidateImageFlag.equals("True"))
 		{
-			//Wait For Images to Load
-			clsMeter.METER_MeterWaitWithMessage(objDictionary,10, "Waiting for 10 seconds for Images to load to Sentry Link-Spot"+strSpotNumber);
-	  		driver.navigate().refresh();
-	  		//Click Image Link
-	  		clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
-	  		try {Thread.sleep(1000);}catch (Exception e) {}
-			//VICAE: Validate Image Count After Exit
-			clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary,driver,0,2,"False");
-			//VIAC: Validate Images Appear Correctly
-			clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
-		}
+	  		//Wait For Images to Load
+	  		clsMeter.METER_MeterWaitWithMessage(objDictionary,10, "Waiting for 10 seconds for Images to load to Sentry Link-Spot"+strSpotNumber);
+	   		driver.navigate().refresh();
+	   		//Click Image Link
+	      	clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
+	      	try {Thread.sleep(1000);}catch (Exception e) {}
+	  		//VICAE: Validate Image Count After Exit
+	  		clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary,driver,0,2,"False");
+	      	//VIAC: Validate Images Appear Correctly
+	      	clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
+	  	}
 		driver.quit();
- 	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3066_VM_FTFP0_FTR_RFT_gt_MTIV_PS1_MP1_VMT_BMT(Map<String, String> objDictionary, String strMeterIncrementTime, int intActualRemainingTimeMinutes1, int intRemainingFreeMinutes)
- 	{
- 		CommonWeb clsCommonWeb = new CommonWeb();
- 		Meter clsMeter = new Meter();
-		//Get Fees On First Payment
-		String strSpotNumber = objDictionary.get("strSpotNumber");
-		String strBrowser = objDictionary.get("strBrowser");
-		String strRemotePath = objDictionary.get("strRemotePath");
-		String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
-		String strVirtualMeter = objDictionary.get("strVirtualMeter"); if(strVirtualMeter == null) {strVirtualMeter = "False";}
+	}
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3066_VM_FTFP0_FTR_RFT_gt_MTIV_PS1_MP1_VMT_BMT(Map<String, String> objDictionary, int intRemainingFreeMinutes)
+  	{
+  		CommonWeb clsCommonWeb = new CommonWeb();
+  		Meter clsMeter = new Meter();
+	  	//Get Fees On First Payment
+	  	String strMeterIncrementTime = objDictionary.get("strMeterIncrementTime");
+	  	String strSpotNumber = objDictionary.get("strSpotNumber");
+	  	String strBrowser = objDictionary.get("strBrowser");
+      	String strRemotePath = objDictionary.get("strRemotePath");
+      	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
+      	String strVirtualMeter = objDictionary.get("strVirtualMeter"); if(strVirtualMeter == null) {strVirtualMeter = "False";}
 		if(strValidateImageFlag == null){strValidateImageFlag = "True";}
-	   	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
-	   	WebDriver driver = getDriver();
-	   	//Calculate Payment
-	   	intRemainingFreeMinutes = intRemainingFreeMinutes - 1;
-	   	int intRemainingFreeMinutesPlusOne = intRemainingFreeMinutes + 1;
-	   	int intRemainingFreeMinutesMinusOne = intRemainingFreeMinutes - 1;
-	   	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
-		//VPSH: Validate Parking Session History
- 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
- 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
- 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
- 		String strRowNumber = "2";
- 		String strColumnNumber = "5";
- 		String strPurchasedMinutes = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session", "Parking Session History", 1, "strPurchasedMinutes", strRowNumber, strColumnNumber);
- 		if(strPurchasedMinutes.contains("App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeMinutes+" free)"))
-		{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (App Purchased "+intActualRemainingTimeMinutes1+" Minutes ("+intRemainingFreeMinutes+") free)");}
- 		else if(strPurchasedMinutes.contains("App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeMinutesPlusOne+" free)"))
-		{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (App Purchased "+intActualRemainingTimeMinutes1+" Minutes ("+intRemainingFreeMinutes+") free)");}
- 		else if(strPurchasedMinutes.contains("App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeMinutesMinusOne+" free)"))
-		{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (App Purchased "+intActualRemainingTimeMinutes1+" Minutes ("+intRemainingFreeMinutesMinusOne+") free)");}
- 		else
-		{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) did not equal (Purchased "+intActualRemainingTimeMinutes1+" Minutes ("+intRemainingFreeMinutes+" free) - actual value ("+strPurchasedMinutes+")","Local");}
- 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #2");
- 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "App Purchased 15 Minutes");
- 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
- 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
-		if(strValidateImageFlag.equals("True"))
-		{
-			//Wait For Images to Load
-			clsMeter.METER_MeterWaitWithMessage(objDictionary,10, "Waiting for 10 seconds for Images to load to Sentry Link-Spot"+strSpotNumber);
-	  		driver.navigate().refresh();
-	  		//Click Image Link
-	  		clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
-	  		try {Thread.sleep(1000);}catch (Exception e) {}
-			//VICAE: Validate Image Count After Exit
-			clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary,driver,0,2,"False");
-			//VIAC: Validate Images Appear Correctly
-			clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
-		}
-		driver.quit();
- 	}
+      	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
+      	WebDriver driver = getDriver();
+      	//Calculate Payment
+      	intRemainingFreeMinutes = intRemainingFreeMinutes - 1;
+      	int intRemainingFreeMinutesPlusOne = intRemainingFreeMinutes + 1;
+      	int intRemainingFreeMinutesMinusOne = intRemainingFreeMinutes - 1;
+      	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
+	  	//VPSH: Validate Parking Session History
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
+  		String strRowNumber = "2";
+  		String strColumnNumber = "5";
+  		String strPurchasedMinutes = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session", "Parking Session History", 1, "strPurchasedMinutes", strRowNumber, strColumnNumber);
+  		if(strPurchasedMinutes.contains("App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeMinutesPlusOne+" free)"))
+		{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeMinutesPlusOne+") free)");}
+  		else if(strPurchasedMinutes.contains("App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeMinutes+" free)"))
+		{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeMinutes+") free)");}
+  		else if(strPurchasedMinutes.contains("App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeMinutesMinusOne+" free)"))
+		{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeMinutesMinusOne+") free)");}
+  		else
+		{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) did not equal (Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeMinutes+" free) - actual value ("+strPurchasedMinutes+")","Local");}
+  		String strFirstPayment = objDictionary.get("strFirstPayment");
+	  	DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+	  	if (strFirstPayment != null)
+      	{
+	  		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment) * .01;
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "3", "CellValue", "Mps account Payment #1");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "5", "CellValue", "Transaction Fee Payment");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #2");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","4", "CellValue", "$ 0.25");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
+	  		String strSubsequentPayment = objDictionary.get("strSubsequentPayment");
+			if (strSubsequentPayment != null)
+          	{
+				double dblSubsequentPaymentFee = Integer.parseInt(strSubsequentPayment) * .01;
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "3", "CellValue", "Mps account Payment #2");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "4", "CellValue", dFormat.format(dblSubsequentPaymentFee));
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "5", "CellValue", "Transaction Fee Payment");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Exited");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
+			}
+			else
+			{
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
+			}
+      	}
+	  	else
+	  	{
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #2");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","4", "CellValue", "$ 0.25");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
+	  	}
+  		if(strValidateImageFlag.equals("True"))
+	  	{
+	  		//Wait For Images to Load
+	  		clsMeter.METER_MeterWaitWithMessage(objDictionary,10, "Waiting for 10 seconds for Images to load to Sentry Link-Spot"+strSpotNumber);
+	   		driver.navigate().refresh();
+	   		//Click Image Link
+	      	clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
+	      	try {Thread.sleep(1000);}catch (Exception e) {}
+	  		//VICAE: Validate Image Count After Exit
+	  		clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary,driver,0,2,"False");
+	      	//VIAC: Validate Images Appear Correctly
+	      	clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
+	  	}
+	  	driver.quit();
+  	}
+	
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3067_FTFP0_FTR_RFT_gt_MTIV_PS1_MP1_VMT_PRT_VMT(Map<String, String> objDictionary, String strMeterIncrementTime, int intFirstPaymentMinutes, int intRemainingFreeMinutes)
+	{
+		CommonWeb clsCommonWeb = new CommonWeb();
+  		Meter clsMeter = new Meter();
+	  	//Get Fees On First Payment
+	  	String strSpotNumber = objDictionary.get("strSpotNumber");
+	  	String strBrowser = objDictionary.get("strBrowser");
+      	String strRemotePath = objDictionary.get("strRemotePath");
+      	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
+      	String strVirtualMeter = objDictionary.get("strVirtualMeter"); if(strVirtualMeter == null) {strVirtualMeter = "False";}
+		if(strValidateImageFlag == null){strValidateImageFlag = "True";}
+      	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
+      	WebDriver driver = getDriver();
+      	//Calculate Payment
+      	int intFirstPaymentMinutessMinusOne = intFirstPaymentMinutes - 1;
+      	int intRemainingFreeMinutesMinusOne = intRemainingFreeMinutes - 1;
+      	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
+	  	//VPSH: Validate Parking Session History
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
+  		//Validate Purchase Time
+  		String strRowNumber = "2";
+  		String strColumnNumber = "5";
+  		String strPurchasedMinutes = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session", "Parking Session History", 1, "strPurchasedMinutes", strRowNumber, strColumnNumber);
+  		if(strPurchasedMinutes.contains("App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeMinutes+" free)"))
+		{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (App Purchased "+intFirstPaymentMinutes+" Minutes ("+intRemainingFreeMinutes+") free)");}
+  		else if(strPurchasedMinutes.contains("App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeMinutesMinusOne+" free)"))
+		{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (App Purchased "+intFirstPaymentMinutes+" Minutes ("+intRemainingFreeMinutes+") free)");}
+  		else
+		{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) did not equal (Purchased "+intFirstPaymentMinutessMinusOne+" Minutes ("+intRemainingFreeMinutes+" free) - actual value ("+strPurchasedMinutes+")","Local");}
+  		String strFirstPayment = objDictionary.get("strFirstPayment");
+	  	DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+	  	if (strFirstPayment != null)
+      	{
+	  		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment) * .01;
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "3", "CellValue", "Mps account Payment #1");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "5", "CellValue", "Transaction Fee Payment");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #2");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","4", "CellValue", "$ 3.75");
+	  		strRowNumber = "4";
+	  		strColumnNumber = "5";
+	  		strPurchasedMinutes = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session", "Parking Session History", 1, "strPurchasedMinutes", strRowNumber, strColumnNumber);
+	  		if(strPurchasedMinutes.contains("App Purchased 225 Minutes ("+intRemainingFreeMinutes+" free)"))
+			{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (App Purchased 225 Minutes ("+intRemainingFreeMinutes+") free)");}
+	  		else if(strPurchasedMinutes.contains("App Purchased 225 Minutes ("+intRemainingFreeMinutesMinusOne+" free)"))
+			{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (App Purchased 225 Minutes ("+intRemainingFreeMinutes+") free)");}
+	  		else
+			{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) did not equal (Purchased 225 Minutes ("+intRemainingFreeMinutes+" free) - actual value ("+strPurchasedMinutes+")","Local");}
+	  		String strSubsequentPayment = objDictionary.get("strSubsequentPayment");
+			if (strSubsequentPayment != null)
+          	{
+				double dblSubsequentPaymentFee = Integer.parseInt(strSubsequentPayment) * .01;
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "3", "CellValue", "Mps account Payment #2");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "4", "CellValue", dFormat.format(dblSubsequentPaymentFee));
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "5", "CellValue", "Transaction Fee Payment");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Exited");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
+			}
+			else
+			{
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
+			}
+      	}
+	  	else
+	  	{
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #2");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","4", "CellValue", "$ 3.75");
+	  		strRowNumber = "3";
+	  		strColumnNumber = "5";
+	  		strPurchasedMinutes = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session", "Parking Session History", 1, "strPurchasedMinutes", strRowNumber, strColumnNumber);
+	  		if(strPurchasedMinutes.contains("App Purchased 225 Minutes ("+intRemainingFreeMinutes+" free)"))
+			{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (App Purchased 225 Minutes ("+intRemainingFreeMinutes+") free)");}
+	  		else if(strPurchasedMinutes.contains("App Purchased 225 Minutes ("+intRemainingFreeMinutesMinusOne+" free)"))
+			{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (App Purchased 225 Minutes ("+intRemainingFreeMinutes+") free)");}
+	  		else
+			{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) did not equal (Purchased 225 Minutes ("+intRemainingFreeMinutes+" free) - actual value ("+strPurchasedMinutes+")","Local");}
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
+	  	}
+	  	if(strValidateImageFlag.equals("True"))
+	  	{
+	  		//Wait For Images to Load
+	  		clsMeter.METER_MeterWaitWithMessage(objDictionary,10, "Waiting for 10 seconds for Images to load to Sentry Link-Spot"+strSpotNumber);
+	   		driver.navigate().refresh();
+	   		//Click Image Link
+	      	clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
+	      	try {Thread.sleep(1000);}catch (Exception e) {}
+	  		//VICAE: Validate Image Count After Exit
+	  		clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary,driver,0,2,"False");
+	      	//VIAC: Validate Images Appear Correctly
+	      	clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
+	  	}
+	  	driver.quit();
+	}
 	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3067_FTFP0_FTR_RFT_gt_MTIV_PS1_MP1_VMT_PRT(Map<String, String> objDictionary, String strMeterIncrementTime, int intFirstPaymentMinutes, int intRemainingFreeMinutes)
 	{
 		CommonWeb clsCommonWeb = new CommonWeb();
@@ -4602,7 +5078,7 @@ public class IOS_ParkingSessions
 	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
 	  	//VPSH: Validate Parking Session History
 	    String strVirtualMeter = objDictionary.get("strVirtualMeter"); if(strVirtualMeter == null) {strVirtualMeter = "False";}
-		int intRemainingFreeTime = intActualRemainingTimeMinutes - Integer.parseInt(strMeterIncrementTime) - Integer.parseInt(strFreeTimeFirstPayment);
+		int intRemainingFreeTime = intActualRemainingTimeMinutes ;
 		int intRemainingFreeTimePlusOne = intRemainingFreeTime +1;
 		int intRemainingFreeTimeMinusOne = intRemainingFreeTime -1;
 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
@@ -4957,7 +5433,7 @@ public class IOS_ParkingSessions
 	  	}
 		driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3075_FTFP10_FTR_RFT_gt_MTIV_PS1_MP1_VMT_CP1(Map<String, String> objDictionary, int intExpectedRemainingTimeMinutesFirstPayment)
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3075_FTFP10_FTR_RFT_gt_MTIV_PS1_MP1_VMT_CP1(Map<String, String> objDictionary, int intExpectedRemainingTimeMinutesFirstPayment) 
 	{
 		CommonWeb clsCommonWeb = new CommonWeb();
 		Meter clsMeter = new Meter();
@@ -4978,23 +5454,17 @@ public class IOS_ParkingSessions
 		WebDriver driver = getDriver();
 		clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter", "1");
 		// VPSH: Validate Parking Session History
-		int intRemainingFreeTime = intExpectedRemainingTimeMinutesFirstPayment - Integer.parseInt(strMeterIncrementTime) -  Integer.parseInt(strFreeTimeFirstPayment);
+		int intRemainingFreeTime = intExpectedRemainingTimeMinutesFirstPayment;    
 		int intRemainingFreeTimeMinusOne = intRemainingFreeTime - 1;
-		int intRemainingFreeTimeMinusTwo = intRemainingFreeTime - 2;
-		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1,"1", "3", "CellValue", "Parked");
-		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1,"2", "3", "CellValue", "Mps account Payment #1");
-		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1,"2", "4", "CellValue", "$ 0.25");
 		String strRowNumber = "2";
 		String strColumnNumber = "5";
-		String strRow2Column5 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strPurchasedMinutes", strRowNumber, strColumnNumber);
-		if (strRow2Column5.contains("App Purchased " + strMeterIncrementTime + " Minutes ("+ intRemainingFreeTime + " free)"))
-		{Reporter.log("The cell value in row (" + strRowNumber + ") column (" + strColumnNumber+ ") of the table (Parking Session History) equalled (App Purchased "+ intRemainingFreeTime + " Minutes");}
-		else if (strRow2Column5.contains("App Purchased " + strMeterIncrementTime+ " Minutes (" + intRemainingFreeTimeMinusOne + " free)"))
-		{Reporter.log("The cell value in row (" + strRowNumber + ") column (" + strColumnNumber+ ") of the table (Parking Session History) equalled (App Purchased "+ intRemainingFreeTimeMinusOne + " Minutes");}
-		else if (strRow2Column5.contains("App Purchased " + strMeterIncrementTime+ " Minutes (" + intRemainingFreeTimeMinusTwo + " free)"))
-		{Reporter.log("The cell value in row (" + strRowNumber + ") column (" + strColumnNumber+ ") of the table (Parking Session History) equalled (App Purchased "+ intRemainingFreeTimeMinusTwo + " Minutes");}
-		else
-		{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary, driver,"The cell value in row (" + strRowNumber + ") column (" + strColumnNumber+ ") of the table (Parking Session History) did not equal (App Purchased "+ intExpectedRemainingTimeMinutesFirstPayment + " Minutes) - actual value (" + strRowNumber+ ")","Local");}
+		String strRow2Column5 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strRow2Column5", "2", "5");
+		if (strRow2Column5.contains("App Purchased " + strMeterIncrementTime + " Minutes ("+ intRemainingFreeTime + " free)")) 
+		{Reporter.log("The cell value in row (" + strRowNumber + ") column (" + strColumnNumber+ ") of the table (Parking Session History) equalled (App Purchased "+ strMeterIncrementTime + " Minutes");}
+		else if (strRow2Column5.contains("App Purchased " + strMeterIncrementTime+ " Minutes (" + intRemainingFreeTimeMinusOne + " free)")) 
+		{Reporter.log("The cell value in row (" + strRowNumber + ") column (" + strColumnNumber+ ") of the table (Parking Session History) equalled (App Purchased "+ strMeterIncrementTime + " Minutes");}
+		else 
+		{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary, driver,"The cell value in row (" + strRowNumber + ") column (" + strColumnNumber+ ") of the table (Parking Session History) did not equal (App Purchased " + strMeterIncrementTime + " Minutes ("+ intRemainingFreeTime + " free)) - actual value (" + strRow2Column5+ ")","Local");}
 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1,"3", "3", "CellValue", "Virt Payment #1");
 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1,"3", "5", "CellValue", "Received 10 Free Minutes with First Payment");
 		String strFirstPayment = objDictionary.get("strFirstPayment");
@@ -5003,14 +5473,14 @@ public class IOS_ParkingSessions
       	{
 	  		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment) * .01;
 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "3", "CellValue", "Mps account Payment #1");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "5", "CellValue", "Transaction Fee Payment");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1,"5", "3", "CellValue", "Cash Payment #2");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "5", "CellValue", "Transaction Fee Payment");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1,"5", "3", "CellValue", "Cash Payment #2");
 			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1,"5", "4", "CellValue", "$ 0.25");
 			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1,"5", "5", "CellValue", "Meter Purchased " + strMeterIncrementTime + " Minutes");
 			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1,"6", "3", "CellValue", "Exited");
 			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1,"7", "0", "Row Does Not Exist", "");
-      	}
+	  	}
 	  	else
 	  	{
 			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1,"4", "3", "CellValue", "Cash Payment #2");
@@ -5244,7 +5714,7 @@ public class IOS_ParkingSessions
 	  	}
 		driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3078_FTFP0_FDON_RTF_MBF_gt_MTIV_PS1_MP1_VMT_BMT_VMT_ES1(Map<String, String> objDictionary, int intRemainingMinutesBeforeFree, int intTimePurchased)
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3078_FTFP0_FDON_RTF_MBF_gt_MTIV_PS1_MP1_VMT_BMT_VMT_ES1(Map<String, String> objDictionary, int intSubsequentPaymentMinutes)
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
   		Meter clsMeter = new Meter();
@@ -5260,9 +5730,8 @@ public class IOS_ParkingSessions
 	  	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
 	  	WebDriver driver = getDriver();
 	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
-	  	//Get Fees On First Payment
+	  	//VPSH: Validate Pa≠rking Session History
 	  	String strFirstPayment = objDictionary.get("strFirstPayment");
-	  	String strSubsequentPayment = objDictionary.get("strSubsequentPayment");
 	  	if (strFirstPayment == null)
 	  	{
 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
@@ -5273,23 +5742,23 @@ public class IOS_ParkingSessions
 	  		if(strNotificationSetting.equals("true"))
 	  		{
 		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mobile Push");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Expiring Session 15 minutes Confirmed");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValueContains", "Expiring Session 15 minute");
 		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #2");
 		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","4", "CellValue", "$ 0.25");
 		  		String strRow4Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow4Column5", "4", "5");
-		  		int intTimePurchasedMinusOne = intTimePurchased - 1;
-		  		int intTimePurchasedPlusOne = intTimePurchased + 1;
-		  		int intTimePurchasedPlusTwo = intTimePurchased + 2;
+		  		int intTimePurchasedMinusOne = intSubsequentPaymentMinutes - 1;
+		  		int intTimePurchasedPlusOne = intSubsequentPaymentMinutes + 1;
+		  		int intTimePurchasedPlusTwo = intSubsequentPaymentMinutes + 2;
 		  		if(strRow4Column5.contains("App Purchased "+intTimePurchasedPlusTwo+" Minutes"))
 		  		{Reporter.log("The cell value in row (3) column (5) of the table (Parking Session History) equalled (App Purchased "+intTimePurchasedPlusTwo+" Minutes)");}
 		  		else if(strRow4Column5.contains("App Purchased "+intTimePurchasedPlusOne+" Minutes"))
 		  		{Reporter.log("The cell value in row (3) column (5) of the table (Parking Session History) equalled (App Purchased "+intTimePurchasedPlusOne+" Minutes)");}
-		  		else if(strRow4Column5.contains("App Purchased "+intTimePurchased+" Minutes"))
-		  		{Reporter.log("The cell value in row (3) column (5) of the table (Parking Session History) equalled (App Purchased "+intTimePurchased+" Minutes)");}
+		  		else if(strRow4Column5.contains("App Purchased "+intSubsequentPaymentMinutes+" Minutes"))
+		  		{Reporter.log("The cell value in row (3) column (5) of the table (Parking Session History) equalled (App Purchased "+intSubsequentPaymentMinutes+" Minutes)");}
 				else if (strRow4Column5.contains("App Purchased "+intTimePurchasedMinusOne+" Minutes"))
 		  		{Reporter.log("The cell value in row (3) column (5) of the table (Parking Session History) equalled (App Purchased "+intTimePurchasedMinusOne+" Minutes)");}
 				else
-				{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row (4) column (5) of the table (Parking Session History) did not equal (App Purchased "+intTimePurchased+" Minutes) - actual value ("+strRow4Column5+")","Local");}
+				{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row (4) column (5) of the table (Parking Session History) did not equal (App Purchased "+intSubsequentPaymentMinutes+" Minutes) - actual value ("+strRow4Column5+")","Local");}
 		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
 		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
 	  		}
@@ -5297,42 +5766,20 @@ public class IOS_ParkingSessions
 	  		{
 	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #2");
 		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","4", "CellValue", "$ 0.25");
-		  		String strRow3Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow4Column5", "3", "5");
-		  		int intTimePurchasedMinusTwo = intTimePurchased - 2;
-		  		int intTimePurchasedMinusOne = intTimePurchased - 1;
-		  		int intTimePurchasedPlusOne = intTimePurchased + 1;
-		  		int intTimePurchasedPlusTwo = intTimePurchased + 2;
-		  		String strMinutesBeforeFreeParking = objDictionary.get("strMinutesBeforeFreeParking");
-		  		//The Free Time should even display here.
-		  		intRemainingMinutesBeforeFree = Integer.parseInt(strMinutesBeforeFreeParking);
-		  		int intRemainingMinutesBeforeFreePlusOne = Integer.parseInt(strMinutesBeforeFreeParking) + 1;
-		  		int intRemainingMinutesBeforeFreeMinusOne = Integer.parseInt(strMinutesBeforeFreeParking) -1;
-		  		int intRemainingMinutesBeforeFreeMinusTwo = Integer.parseInt(strMinutesBeforeFreeParking) -2;
-		  		int intRemainingMinutesBeforeFreeMinusThree = Integer.parseInt(strMinutesBeforeFreeParking) -3;
-		  		if(strRow3Column5.contains("App Purchased "+intTimePurchasedPlusTwo+" Minutes ("+intRemainingMinutesBeforeFreeMinusThree+" free)"))
-		  		{Reporter.log("The cell value in row (3) column (5) of the table (Parking Session History) equalled ("+strRow3Column5+")");}
-		  		else if(strRow3Column5.contains("App Purchased "+intTimePurchasedPlusTwo+" Minutes ("+intRemainingMinutesBeforeFreeMinusTwo+" free)"))
-		  		{Reporter.log("The cell value in row (3) column (5) of the table (Parking Session History) equalled ("+strRow3Column5+")");}
-		  		else if(strRow3Column5.contains("App Purchased "+intTimePurchasedPlusTwo+" Minutes ("+intRemainingMinutesBeforeFreeMinusOne+" free)"))
-		  		{Reporter.log("The cell value in row (3) column (5) of the table (Parking Session History) equalled ("+strRow3Column5+")");}
-		  		else if(strRow3Column5.contains("App Purchased "+intTimePurchasedPlusOne+" Minutes ("+intRemainingMinutesBeforeFree+" free)"))
-		  		{Reporter.log("The cell value in row (3) column (5) of the table (Parking Session History) equalled ("+strRow3Column5+")");}
-		  		else if(strRow3Column5.contains("App Purchased "+intTimePurchasedPlusOne+" Minutes ("+intRemainingMinutesBeforeFreeMinusTwo+" free)"))
-		  		{Reporter.log("The cell value in row (3) column (5) of the table (Parking Session History) equalled ("+strRow3Column5+")");}
-		  		else if(strRow3Column5.contains("App Purchased "+intTimePurchased+" Minutes ("+intRemainingMinutesBeforeFree+" free)"))
-		  		{Reporter.log("The cell value in row (3) column (5) of the table (Parking Session History) equalled ("+strRow3Column5+")");}
-		  		else if(strRow3Column5.contains("App Purchased "+intTimePurchased+" Minutes ("+intRemainingMinutesBeforeFreeMinusOne+" free)"))
-		  		{Reporter.log("The cell value in row (3) column (5) of the table (Parking Session History) equalled ("+strRow3Column5+")");}
-		  		else if (strRow3Column5.contains("App Purchased "+intTimePurchasedMinusOne+" Minutes ("+intRemainingMinutesBeforeFreePlusOne+" free)"))
-		  		{Reporter.log("The cell value in row (3) column (5) of the table (Parking Session History) equalled ("+strRow3Column5+")");}
-		  		else if (strRow3Column5.contains("App Purchased "+intTimePurchasedMinusOne+" Minutes ("+intRemainingMinutesBeforeFree+" free)"))
-		  		{Reporter.log("The cell value in row (3) column (5) of the table (Parking Session History) equalled ("+strRow3Column5+")");}
-		  		else if (strRow3Column5.contains("App Purchased "+intTimePurchasedMinusOne+" Minutes ("+intRemainingMinutesBeforeFreeMinusOne+" free)"))
-		  		{Reporter.log("The cell value in row (3) column (5) of the table (Parking Session History) equalled ("+strRow3Column5+")");}
-		  		else if (strRow3Column5.contains("App Purchased "+intTimePurchasedMinusTwo+" Minutes ("+intRemainingMinutesBeforeFreeMinusOne+" free)"))
-		  		{Reporter.log("The cell value in row (3) column (5) of the table (Parking Session History) equalled ("+strRow3Column5+")");}
-		  		else
-				{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row (3) column (5) of the table (Parking Session History) did not equal (App Purchased "+intTimePurchased+" Minutes ("+intRemainingMinutesBeforeFree+" Free) - actual value ("+strRow3Column5+")","Local");}
+		  		String strRow3Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow3Column5", "3", "5");
+		  		int intTimePurchasedMinusOne = intSubsequentPaymentMinutes - 1;
+		  		int intTimePurchasedPlusOne = intSubsequentPaymentMinutes + 1;
+		  		int intTimePurchasedPlusTwo = intSubsequentPaymentMinutes + 2;
+		  		if(strRow3Column5.contains("App Purchased "+intTimePurchasedPlusTwo+" Minutes"))
+		  		{Reporter.log("The cell value in row (3) column (5) of the table (Parking Session History) equalled (App Purchased "+intTimePurchasedPlusTwo+" Minutes)");}
+		  		else if(strRow3Column5.contains("App Purchased "+intTimePurchasedPlusOne+" Minutes"))
+		  		{Reporter.log("The cell value in row (3) column (5) of the table (Parking Session History) equalled (App Purchased "+intTimePurchasedPlusOne+" Minutes)");}
+		  		else if(strRow3Column5.contains("App Purchased "+intSubsequentPaymentMinutes+" Minutes"))
+		  		{Reporter.log("The cell value in row (3) column (5) of the table (Parking Session History) equalled (App Purchased "+intSubsequentPaymentMinutes+" Minutes)");}
+				else if (strRow3Column5.contains("App Purchased "+intTimePurchasedMinusOne+" Minutes"))
+		  		{Reporter.log("The cell value in row (3) column (5) of the table (Parking Session History) equalled (App Purchased "+intTimePurchasedMinusOne+" Minutes)");}
+				else
+				{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row (3) column (5) of the table (Parking Session History) did not equal (App Purchased "+intSubsequentPaymentMinutes+" Minutes) - actual value ("+strRow3Column5+")","Local");}
 		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
 		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
 	  		}
@@ -5364,26 +5811,28 @@ public class IOS_ParkingSessions
     	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #2");
 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","4", "CellValue", "$ 0.25");
 	  		String strRow4Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow4Column5", "4", "5");
-	  		int intTimePurchasedMinusOne = intTimePurchased - 1;
-	  		if(strRow4Column5.contains("App Purchased "+intTimePurchased+" Minutes"))
-	  		{Reporter.log("The cell value in row (4) column (5) of the table (Parking Session History) equalled (App Purchased "+intTimePurchased+" Minutes)");}
+	  		int intTimePurchasedMinusOne = intSubsequentPaymentMinutes - 1;
+	  		if(strRow4Column5.contains("App Purchased "+intSubsequentPaymentMinutes+" Minutes"))
+	  		{Reporter.log("The cell value in row (4) column (5) of the table (Parking Session History) equalled (App Purchased "+intSubsequentPaymentMinutes+" Minutes)");}
 			else if (strRow4Column5.contains("App Purchased "+intTimePurchasedMinusOne+" Minutes"))
 	  		{Reporter.log("The cell value in row (4) column (5) of the table (Parking Session History) equalled (App Purchased "+intTimePurchasedMinusOne+" Minutes)");}
 			else
-			{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row (4) column (5) of the table (Parking Session History) did not equal (App Purchased "+intTimePurchased+" Minutes) - actual value ("+strRow4Column5+")","Local");}
-    	 	if (strSubsequentPayment != null)
-          	{
-    	 		double dblSubsequentPayment = Integer.parseInt(strSubsequentPayment)*.01;
-        	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #2");
-    	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", dFormat.format(dblSubsequentPayment));
-    	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Exited");
-    	 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
-          	}
-    	 	else
-    	 	{
-    	 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
-    	 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
-    	 	}
+			{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row (4) column (5) of the table (Parking Session History) did not equal (App Purchased "+intSubsequentPaymentMinutes+" Minutes) - actual value ("+strRow4Column5+")","Local");}
+	  		String strSubsequentPayment = objDictionary.get("strSubsequentPayment");
+		  	if (strSubsequentPayment != null)
+	      	{
+		  		double dblSubsequentPayment = Integer.parseInt(strSubsequentPayment)*.01;
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #2");
+  		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", dFormat.format(dblSubsequentPayment));
+  		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "Transaction Fee Payment");
+	  		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Exited");
+	    	 	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
+  		  	}
+		  	else
+		  	{
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
+	    	 	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
+		  	}
 	    }
 	  	if(strValidateImageFlag.equals("True"))
 	  	{
@@ -5397,193 +5846,138 @@ public class IOS_ParkingSessions
 	  	}
 		driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3079_FTFP0_FDON_RTF_PS1_MP1_PMT_VMT_ES1(Map<String, String> objDictionary, int intRemainingTime)
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3079_FTFP0_FDON_RTF_PS1_MP1_BMT_VMT_ES1(Map<String, String> objDictionary, int intSubsequentPaymentMinutes)
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
-  		//Dictionary Variables
-  		String strFirstPayment = objDictionary.get("strFirstPayment");
-  		String strSubsequentPayment = objDictionary.get("strSubsequentPayment");
-  		String strBrowser = objDictionary.get("strBrowser");
+  		Meter clsMeter = new Meter();
+  		HttpConnections clsHttpConnections = new HttpConnections();
+  	  	//Dictionary Variables
+	  	String strBrowser = objDictionary.get("strBrowser");
       	String strRemotePath = objDictionary.get("strRemotePath");
-      	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");if(strValidateImageFlag == null){strValidateImageFlag = "True";}
-      	int intRemainingTimeMinusOne = intRemainingTime -1;
+      	String strSpotNumber = objDictionary.get("strSpotNumber");
+      	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
+      	String strMeterIncrementTime = objDictionary.get("strMeterIncrementTime");
+     	if(strValidateImageFlag == null){strValidateImageFlag = "True";}
       	//NTPS: Navigate To Parking Session
 	  	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
 	  	WebDriver driver = getDriver();
-	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Mobile app","1");
-	  	//Get Fees On First Payment
+	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
+	  	//VPSH: Validate Pa≠rking Session History
+	  	String strFirstPayment = objDictionary.get("strFirstPayment");
 	  	if (strFirstPayment == null)
 	  	{
 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 1.00");
-	  		String strPurchasedMinutes = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column3", "2", "5");
-	  	  	if(strPurchasedMinutes.equals("App Purchased "+intRemainingTime+" Minutes"))
-	  	  	{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled (App Purchased "+intRemainingTime+" Minutes");}
-	  	  	else if(strPurchasedMinutes.equals("App Purchased "+intRemainingTimeMinusOne+" Minutes"))
-	  	  	{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled (App Purchased "+intRemainingTimeMinusOne+" Minutes");}
-		  	else
-		  	{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row (2) column (5) of the table (Parking Session History) did not equal (App Purchased "+intRemainingTime+" Minutes - actual value ("+strPurchasedMinutes+")","Local");}
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","0", "Row Does Not Exist", "");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
+	  		String strNotificationSetting = clsHttpConnections.HTTPCONNECTION_GetMobileSubscriptionPreference(objDictionary,"Session Notifications","app");
+	  		if(strNotificationSetting.equals("true"))
+	  		{
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mobile Push");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValueContains", "Expiring Session 15 minute");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #2");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","4", "CellValue", "$ 0.25");
+		  		String strRow4Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow4Column5", "4", "5");
+		  		int intTimePurchasedMinusOne = intSubsequentPaymentMinutes - 1;
+		  		int intTimePurchasedPlusOne = intSubsequentPaymentMinutes + 1;
+		  		if(strRow4Column5.contains("App Purchased "+intTimePurchasedPlusOne+" Minutes"))
+		  		{Reporter.log("The cell value in row (4) column (5) of the table (Parking Session History) equalled (App Purchased "+intTimePurchasedPlusOne+" Minutes)");}
+		  		else if(strRow4Column5.contains("App Purchased "+intSubsequentPaymentMinutes+" Minutes"))
+		  		{Reporter.log("The cell value in row (4) column (5) of the table (Parking Session History) equalled (App Purchased "+intSubsequentPaymentMinutes+" Minutes)");}
+				else if (strRow4Column5.contains("App Purchased "+intTimePurchasedMinusOne+" Minutes"))
+		  		{Reporter.log("The cell value in row (4) column (5) of the table (Parking Session History) equalled (App Purchased "+intTimePurchasedMinusOne+" Minutes)");}
+				else
+				{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row (4) column (5) of the table (Parking Session History) did not equal (App Purchased "+intSubsequentPaymentMinutes+" Minutes) - actual value ("+strRow4Column5+")","Local");}
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
+	  		}
+	  		else
+	  		{
+	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #2");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","4", "CellValue", "$ 0.25");
+		  		String strRow3Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow4Column5", "3", "5");
+		  		int intTimePurchasedMinusOne = intSubsequentPaymentMinutes - 1;
+		  		int intTimePurchasedPlusOne = intSubsequentPaymentMinutes + 1;
+		  		String strMinutesBeforeFreeParking = objDictionary.get("strMinutesBeforeFreeParking");
+		  		//The Free Time should even display here.
+		  		intSubsequentPaymentMinutes = Integer.parseInt(strMinutesBeforeFreeParking);
+		  		int intRemainingMinutesBeforeFreePlusOne = Integer.parseInt(strMinutesBeforeFreeParking) + 1;
+		  		int intRemainingMinutesBeforeFreeMinusOne = Integer.parseInt(strMinutesBeforeFreeParking) -1;
+		  		if(strRow3Column5.contains("App Purchased "+intTimePurchasedPlusOne+" Minutes"))
+		  		{Reporter.log("The cell value in row (3) column (5) of the table (Parking Session History) equalled (App Purchased "+intTimePurchasedPlusOne+" Minutes)");}
+		  		else if(strRow3Column5.contains("App Purchased "+intSubsequentPaymentMinutes+" Minutes"))
+		  		{Reporter.log("The cell value in row (3) column (5) of the table (Parking Session History) equalled (App Purchased "+intSubsequentPaymentMinutes+" Minutes)");}
+				else if (strRow3Column5.contains("App Purchased "+intTimePurchasedMinusOne+" Minutes"))
+		  		{Reporter.log("The cell value in row (3) column (5) of the table (Parking Session History) equalled (App Purchased "+intTimePurchasedMinusOne+" Minutes)");}
+				else
+				{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row (4) column (5) of the table (Parking Session History) did not equal (App Purchased "+intSubsequentPaymentMinutes+" Minutes) - actual value ("+strRow3Column5+")","Local");}
+		 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
+	  		}
 	  	}
 	  	else
 	  	{
 	  		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
 	  		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
-	  		String strPurchasedMinutes = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column3", "2", "5");
-	  	  	if(strPurchasedMinutes.equals("App Purchased "+intRemainingTime+" Minutes"))
-	  	  	{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled (App Purchased "+intRemainingTime+" Minutes");}
-	  	  	else if(strPurchasedMinutes.equals("App Purchased "+intRemainingTimeMinusOne+" Minutes"))
-	  	  	{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled (App Purchased "+intRemainingTimeMinusOne+" Minutes");}
-		  	else
-		  	{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row (2) column (5) of the table (Parking Session History) did not equal (App Purchased "+intRemainingTime+" Minutes) - actual value ("+strPurchasedMinutes+")","Local");}
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #1");
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","4", "CellValue", dFormat.format(dblFirstPaymentFee));
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Transaction Fee Payment");
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #2");
+    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+    	   	String strPaymentRow2Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strPaymentRow3", "2", "5");
+    	   	if(strPaymentRow2Column5.equals("Transaction Fee Payment"))
+    	   	{
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+	    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "Transaction Fee Payment");
+	    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #1");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","4", "CellValue", "$ 0.25");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
+    	   	}
+    	   	else
+    	   	{
+    	   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
+    	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
+    	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
+    	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #1");
+	    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+	    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Transaction Fee Payment");
+		   	}
+    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #2");
 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","4", "CellValue", "$ 0.25");
-	  		//From SENTRYMOBILE_ValidateRateBuyMoreTimeParkingSessionValues
-	  		String strSecondPaymentMinutes = objDictionary.get("strSecondPaymentMinutes");
-	  		int intSecondPaymentMinutes = Integer.parseInt(strSecondPaymentMinutes);
-	  		int intSecondPaymentMinutesMinusOne = intSecondPaymentMinutes -1;
-	      	String strRow4Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow4Column3", "4", "5");
-	  	  	if(strRow4Column3.equals("App Purchased "+intSecondPaymentMinutes+" Minutes"))
-	  	  	{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled (App Purchased "+intSecondPaymentMinutes+" Minutes");}
-	  	  	else if(strPurchasedMinutes.equals("App Purchased "+intSecondPaymentMinutesMinusOne+" Minutes"))
-	  	  	{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled (App Purchased "+intSecondPaymentMinutesMinusOne+" Minutes");}
-		  	else
-		  	{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row (4) column (5) of the table (Parking Session History) did not equal (App Purchased "+intSecondPaymentMinutes+" Minutes) - actual value ("+strPurchasedMinutes+")","Local");}
-	  		if (strSubsequentPayment != null)
-		  	{
+	  		String strRow4Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow4Column5", "4", "5");
+	  		int intTimePurchasedMinusOne = intSubsequentPaymentMinutes - 1;
+	  		if(strRow4Column5.contains("App Purchased "+intSubsequentPaymentMinutes+" Minutes"))
+	  		{Reporter.log("The cell value in row (4) column (5) of the table (Parking Session History) equalled (App Purchased "+intSubsequentPaymentMinutes+" Minutes)");}
+			else if (strRow4Column5.contains("App Purchased "+intTimePurchasedMinusOne+" Minutes"))
+	  		{Reporter.log("The cell value in row (4) column (5) of the table (Parking Session History) equalled (App Purchased "+intTimePurchasedMinusOne+" Minutes)");}
+			else
+			{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row (4) column (5) of the table (Parking Session History) did not equal (App Purchased "+intSubsequentPaymentMinutes+" Minutes) - actual value ("+strRow4Column5+")","Local");}
+    	 	String strSubsequentPayment = objDictionary.get("strSubsequentPayment");
+		  	if (strSubsequentPayment != null)
+	      	{
 		  		double dblSubsequentPayment = Integer.parseInt(strSubsequentPayment)*.01;
 		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #2");
   		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", dFormat.format(dblSubsequentPayment));
   		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "Transaction Fee Payment");
-  		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Exited");
-  		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
-	  	  	}
-	  		else
-	  		{
-	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
-	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
-	  		}
+	  		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Exited");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
+	      	}
+		  	else
+		  	{
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
+		  	}
 	    }
 	  	if(strValidateImageFlag.equals("True"))
 	  	{
-	  		//Click Image Link
-	      	clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
-	      	try {Thread.sleep(1000);}catch (Exception e) {}
-	  		//VICAE: Validate Image Count After Exit
-	  		clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary,driver,0,2,"False");
-	      	//VIAC: Validate Images Appear Correctly
-	      	clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
-	  	}
-		driver.quit();
-  	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3080_FTFP10_FDON_RTF_MTIV_gt_MBF_gt_FTFP_PS1_MP1_VMT_ES1(Map<String, String> objDictionary, int intFirstPaymentMinutes)
-  	{
-  		CommonWeb clsCommonWeb = new CommonWeb();
-  		Meter clsMeter = new Meter();
-  		//Dictionary Variables
-	  	String strBrowser = objDictionary.get("strBrowser");
-      	String strRemotePath = objDictionary.get("strRemotePath");
-      	String strSpotNumber = objDictionary.get("strSpotNumber");
-      	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
-      	if(strValidateImageFlag == null){strValidateImageFlag = "True";}
-      	//NTPS: Navigate To Parking Session
-	  	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
-	  	WebDriver driver = getDriver();
-	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
-	  	//VPSH: Validate Parking Session History
-	  	String strFirstPayment = objDictionary.get("strFirstPayment");
-		int strFirstPaymentMinutesMinusOne = intFirstPaymentMinutes - 1;
-		int strFirstPaymentMinutesMinusTwo = intFirstPaymentMinutes - 2;
-	  	int strFirstPaymentMinutesPlusOne = intFirstPaymentMinutes + 1;
-	  	int strFirstPaymentMinutesPlusTwo = intFirstPaymentMinutes + 2;
-	  	if (strFirstPayment == null)
-	  	{
-      		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
-	  		String strRow2Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column5", "2", "5");
-	  		if(strRow2Column5.contains("Purchased "+strFirstPaymentMinutesMinusTwo+" Minutes"))
-	  		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+strRow2Column5+")");}
-	  		else if(strRow2Column5.contains("Purchased "+strFirstPaymentMinutesMinusOne+" Minutes"))
-	  		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+strRow2Column5+")");}
-	  		else if(strRow2Column5.contains("Purchased "+intFirstPaymentMinutes+" Minutes"))
-	  		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+strRow2Column5+")");}
-	  		else if(strRow2Column5.contains("Purchased "+strFirstPaymentMinutesPlusOne+" Minutes"))
-	  		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+strRow2Column5+")");}
-	  		else if(strRow2Column5.contains("Purchased "+strFirstPaymentMinutesPlusTwo+" Minutes"))
-	  		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+strRow2Column5+")");}
-	  		else
-			{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row (2) column (5) of the table (Parking Session History) did not equal (Purchased "+intFirstPaymentMinutes+" Minutes) - actual value ("+strRow2Column5+")","Local");}
-	  		HttpConnections clsHttpConnections = new HttpConnections();
-  	  		String strNotificationSetting = clsHttpConnections.HTTPCONNECTION_GetMobileSubscriptionPreference(objDictionary,"Session Notifications","app");
-	  		if(strNotificationSetting.equals("true"))
-	  		{
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mobile Push");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Expiring Session 15 minutes Confirmed");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
-	  		}
-	  		else
-	  		{
-	  			String strRow3Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow3Column3", "3", "3");
-		  		if(strRow3Column3.contains("Exited"))
-		  		{
-		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
-		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","0", "Row Does Not Exist", "");
-		  		}
-		  		else
-		  		{
-		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
-		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
-		  		}
-	  		}
-	  	}
-      	else
-      	{
-      		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
-      		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
-      		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
-	  		String strRow2Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column5", "2", "5");
-	  		if(strRow2Column5.contains("Purchased "+intFirstPaymentMinutes+" Minutes"))
-	  		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+strRow2Column5+")");}
-	  		else if(strRow2Column5.contains("Purchased "+strFirstPaymentMinutesPlusOne+" Minutes"))
-	  		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+strRow2Column5+")");}
-	  		else
-			{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row (2) column (5) of the table (Parking Session History) did not equal (Purchased "+intFirstPaymentMinutes+" Minutes) - actual value ("+strRow2Column5+")","Local");}
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #1");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Received 10 Free Minutes with First Payment");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #1");
-	   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","4", "CellValue", dFormat.format(dblFirstPaymentFee));
-	   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Transaction Fee Payment");
-	   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
-      	}
-	  	if(strValidateImageFlag.equals("True"))
-	  	{
-  	  		//Wait For Images to Load
-	  		clsMeter.METER_MeterWaitWithMessage(objDictionary,5, "Waiting for 5 seconds for Images to load to Sentry Link-Spot"+strSpotNumber);
+  	  		clsMeter.METER_MeterWaitWithMessage(objDictionary,5, "Waiting for 5 seconds for Images to load to Sentry Link-Spot"+strSpotNumber);
 	   		driver.navigate().refresh();
-	  		//Click Image Link
-	      	clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
+	  		clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
 	      	try {Thread.sleep(1000);}catch (Exception e) {}
-	  		//VICAE: Validate Image Count After Exit
 	  		clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary,driver,0,2,"False");
 	      	//VIAC: Validate Images Appear Correctly
 	      	clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
 	  	}
 		driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3081_FTFP10_FDON_RTF_MTIV_gt_FTFP_gt_MBF_PS1_MP1_VMT_ES1(Map<String, String> objDictionary)
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_I3080_FTFP10_FDON_RTF_MTIV_gt_MBF_gt_FTFP_PS1_MP1_VMT_ES1(Map<String, String> objDictionary)
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
   		Meter clsMeter = new Meter();
@@ -5593,22 +5987,97 @@ public class IOS_ParkingSessions
       	String strSpotNumber = objDictionary.get("strSpotNumber");
       	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
       	String strActualRemainingTimeMinutes= objDictionary.get("strActualRemainingTimeMinutes");//From METER_ValidateExpectedMeterTime
+      	String strFreeTimeFirstPayment = objDictionary.get("strFreeTimeFirstPayment");
+      	String strExpectedTime = String.valueOf(Math.abs(Integer.parseInt(strActualRemainingTimeMinutes) - Integer.parseInt(strFreeTimeFirstPayment)));
       	if(strValidateImageFlag == null){strValidateImageFlag = "True";}
       	//NTPS: Navigate To Parking Session
 	  	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
 	  	WebDriver driver = getDriver();
  	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
 	  	//VPSH: Validate Parking Session History
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
   		String strRow2Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column5", "2", "5");
-  		int intActualRemainingTimePlus1 = Integer.parseInt(strActualRemainingTimeMinutes) + 1;
+  		int intAppPurchaseTimePlusOne = Integer.parseInt(strExpectedTime) + 1;
+  		int intAppPurchaseTime = Integer.parseInt(strExpectedTime);
+  		int intAppPurchaseTimeMinusOne = Integer.parseInt(strExpectedTime) - 1;
+  		int intAppPurchaseTimeMinusTwo = Integer.parseInt(strExpectedTime) - 2;
+  		if(strRow2Column5.contains("App Purchased "+intAppPurchaseTimePlusOne+" Minutes"))
+		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+strRow2Column5+")");}
+		else if(strRow2Column5.contains("App Purchased "+intAppPurchaseTime+" Minutes"))
+		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+strRow2Column5+")");}
+		else if(strRow2Column5.contains("App Purchased "+intAppPurchaseTimeMinusOne+" Minutes"))
+		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+strRow2Column5+")");}
+		else if(strRow2Column5.contains("App Purchased "+intAppPurchaseTimeMinusTwo+" Minutes"))
+		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+strRow2Column5+")");}
+		else
+		{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row (2) column (5) of the table (Parking Session History) did not equal (App Purchased "+intAppPurchaseTime+" Minutes - actual value ("+strRow2Column5+")","Local");}
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #1");
+  		clsCommonWeb.VerificationPointTable(objDictionary, getDriver(), "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Received 10 Free Minutes with First Payment");
+  		String strFirstPayment = objDictionary.get("strFirstPayment");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+	   	if (strFirstPayment != null)
+      	{
+	   		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+	  		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #1");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Transaction Fee Payment");
+    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
+	   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
+	   	}
+	   	else
+	   	{
+	   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+	   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
+	   	}
+  		if(strValidateImageFlag.equals("True"))
+	  	{
+	  		//Wait For Images to Load
+	  		clsMeter.METER_MeterWaitWithMessage(objDictionary,5, "Waiting for 5 seconds for Images to load to Sentry Link-Spot"+strSpotNumber);
+	   		driver.navigate().refresh();
+	   		try {Thread.sleep(2000);}catch (Exception e) {}
+	  		//Click Image Link
+	      	clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
+	      	try {Thread.sleep(1000);}catch (Exception e) {}
+	  		//VICAE: Validate Image Count After Exit
+	  		clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary,driver,0,2,"False");
+	      	//VIAC: Validate Images Appear Correctly
+	      	clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
+	  	}
+		driver.quit();
+  	}
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3081_FTFP10_FDON_RTF_MTIV_gt_FTFP_gt_MBF_PS1_MP1_VMT_ES1(Map<String, String> objDictionary, int intRemainingFreeTime)throws IOException
+  	{
+  		CommonWeb clsCommonWeb = new CommonWeb();
+  		Meter clsMeter = new Meter();
+  		//Dictionary Variables
+	  	String strBrowser = objDictionary.get("strBrowser");
+      	String strRemotePath = objDictionary.get("strRemotePath");
+      	String strSpotNumber = objDictionary.get("strSpotNumber");
+      	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
+    	String strActualRemainingTimeMinutes= objDictionary.get("strActualRemainingTimeMinutes");//From METER_ValidateExpectedMeterTime
+       	if(strValidateImageFlag == null){strValidateImageFlag = "True";}
+      	//NTPS: Navigate To Parking Session
+	  	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
+	  	WebDriver driver = getDriver();
+	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
+	  	//VPSH: Validate Parking Session History
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
+  		String strRow2Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column5", "2", "5");
   		int intActualRemainingTimeMinus1 = Integer.parseInt(strActualRemainingTimeMinutes) - 1;
   		int intActualRemainingTimeMinus2 = Integer.parseInt(strActualRemainingTimeMinutes) - 2;
+  		int intActualRemainingTimePlus1 = Integer.parseInt(strActualRemainingTimeMinutes)+ 1;
   		if(strRow2Column5.contains("App Purchased "+intActualRemainingTimePlus1+" Minutes"))
 		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+strRow2Column5+")");}
-		else if(strRow2Column5.contains("App Purchased "+strActualRemainingTimeMinutes+" Minutes"))
+  		else if(strRow2Column5.contains("App Purchased "+intActualRemainingTimePlus1+" Minutes"))
+		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+strRow2Column5+")");}
+  		else if(strRow2Column5.contains("App Purchased "+strActualRemainingTimeMinutes+" Minutes"))
+		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+strRow2Column5+")");}
+  		else if(strRow2Column5.contains("App Purchased "+intActualRemainingTimeMinus1+" Minutes"))
 		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+strRow2Column5+")");}
 		else if(strRow2Column5.contains("App Purchased "+intActualRemainingTimeMinus1+" Minutes"))
 		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+strRow2Column5+")");}
@@ -5616,39 +6085,41 @@ public class IOS_ParkingSessions
 		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+strRow2Column5+")");}
 		else
 		{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row (2) column (5) of the table (Parking Session History) did not equal (App Purchased "+strActualRemainingTimeMinutes+" Minutes ("+strActualRemainingTimeMinutes+" free) - actual value ("+strRow2Column5+")","Local");}
-		String strFirstPayment = objDictionary.get("strFirstPayment");
-	  	DecimalFormat dFormat = new DecimalFormat("$ 0.00");
-	  	if (strFirstPayment != null)
-      	{
-	  		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment) * .01;
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "3", "CellValue", "Virt Payment #1");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "5", "CellValue", "Received 10 Free Minutes with First Payment");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "3", "CellValue", "Mps account Payment #1");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "5", "CellValue", "Transaction Fee Payment");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
-      	}
-	  	else
+		HttpConnections clsHttpConnections = new HttpConnections();
+  		String strNotificationSetting = clsHttpConnections.HTTPCONNECTION_GetMobileSubscriptionPreference(objDictionary,"Session Notifications","app");
+  		if(strNotificationSetting.equals("true"))
+  		{
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mobile Push");
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValueContains", "Expiring Session 15 minutes");
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
+  		}
+  		else
+  		{
+  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #1");
+  	  		clsCommonWeb.VerificationPointTable(objDictionary, getDriver(), "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Received 10 Free Minutes with First Payment");
+	  	  	String strFirstPayment = objDictionary.get("strFirstPayment");
+	  	  	if (strFirstPayment != null)
+	      	{
+	      		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+		  		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+		      	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #1");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+	    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Transaction Fee Payment");
+	    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
+		   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
+		   	}
+		   	else
+		   	{
+		   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+		   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
+		   	}
+  	  	}
+	  	if(strValidateImageFlag.equals("True"))
 	  	{
-	  		String strRow3Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column5", "3", "3");
-	  		if(strRow3Column3.contains("Exited"))
-	  		{
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","0", "Row Does Not Exist", "");
-	  		}
-	  		else
-	  		{
-	  	 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
-	  		}
-	  	}
-  		if(strValidateImageFlag.equals("True"))
-	  	{
-	  		//Wait For Images to Load
+  	  		//Wait For Images to Load
 	  		clsMeter.METER_MeterWaitWithMessage(objDictionary,5, "Waiting for 5 seconds for Images to load to Sentry Link-Spot"+strSpotNumber);
 	   		driver.navigate().refresh();
-	   		try {Thread.sleep(2000);}catch (Exception e) {}
 	  		//Click Image Link
 	      	clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
 	      	try {Thread.sleep(1000);}catch (Exception e) {}
@@ -5748,120 +6219,185 @@ public class IOS_ParkingSessions
 	  	}
 		driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3083_FTFP10_FDON_RTF_FTFP_gt_MBF_gt_MTIV_PS1_MP1_VMT_ES1(Map<String, String> objDictionary, String strRemainingTimeMinutes)
- 	{
- 		CommonWeb clsCommonWeb = new CommonWeb();
- 		Meter clsMeter = new Meter();
- 		//Dictionary Variables
-		String strBrowser = objDictionary.get("strBrowser");
-		String strRemotePath = objDictionary.get("strRemotePath");
-		String strSpotNumber = objDictionary.get("strSpotNumber");
-		String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
-		String strFreeTimeFirstPayment = objDictionary.get("strFreeTimeFirstPayment");
-		if(strValidateImageFlag == null){strValidateImageFlag = "True";}
-		//NTPS: Navigate To Parking Session
-		threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
-		WebDriver driver = getDriver();
-		clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
-		//VPSH: Validate Parking Session History
-		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
- 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
- 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
- 		int intRemainingTimeMinutes = Integer.parseInt(strRemainingTimeMinutes);
- 		int intRemainingTimeMinutesMinus1 = intRemainingTimeMinutes -1;
- 		int intRemainingTimeMinutesPlus1 = intRemainingTimeMinutes +1;
-  		String strPaymentRow2Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strPaymentRow3", "2", "5");
-  		if(strPaymentRow2Column5.contains("App Purchased "+intRemainingTimeMinutesMinus1+" Minutes"))
-  		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+strPaymentRow2Column5+")");}
-  		else if(strPaymentRow2Column5.contains("App Purchased "+intRemainingTimeMinutes+" Minutes"))
-  		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+strPaymentRow2Column5+")");}
-  		else if(strPaymentRow2Column5.contains("App Purchased "+intRemainingTimeMinutesPlus1+" Minutes"))
-  		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+strPaymentRow2Column5+")");}
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3083_FTFP10_FDON_RTF_FTFP_gt_MBF_gt_MTIV_PS1_MP1_VMT_ES1(Map<String, String> objDictionary, int intFirstPaymentMinutes)
+  	{
+  		CommonWeb clsCommonWeb = new CommonWeb();
+  		Meter clsMeter = new Meter();
+  		//Dictionary Variables
+	  	String strBrowser = objDictionary.get("strBrowser");
+      	String strRemotePath = objDictionary.get("strRemotePath");
+      	String strSpotNumber = objDictionary.get("strSpotNumber");
+      	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
+      	if(strValidateImageFlag == null){strValidateImageFlag = "True";}
+      	//NTPS: Navigate To Parking Session
+	  	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
+	  	WebDriver driver = getDriver();
+	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
+	  	//VPSH: Validate Parking Session History
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
+  		String strRow2Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column5", "2", "5");
+  		int strFirstPaymentMinutesMinusOne = intFirstPaymentMinutes - 1;
+  		int strFirstPaymentMinutesMinusTwo = intFirstPaymentMinutes - 2;
+  		int strFirstPaymentMinutesPlusOne = intFirstPaymentMinutes + 1;
+  		int strFirstPaymentMinutesPlusTwo = intFirstPaymentMinutes + 2;
+  		HttpConnections clsHttpConnections = new HttpConnections();
+  		String strNotificationSetting = clsHttpConnections.HTTPCONNECTION_GetMobileSubscriptionPreference(objDictionary,"Session Notifications","app");
+  		if(strRow2Column5.contains("Purchased "+strFirstPaymentMinutesMinusTwo+" Minutes"))
+  		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+strRow2Column5+")");}
+  		else if(strRow2Column5.contains("Purchased "+strFirstPaymentMinutesMinusOne+" Minutes"))
+  		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+strRow2Column5+")");}
+  		else if(strRow2Column5.contains("Purchased "+intFirstPaymentMinutes+" Minutes"))
+  		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+strRow2Column5+")");}
+  		else if(strRow2Column5.contains("Purchased "+strFirstPaymentMinutesPlusOne+" Minutes"))
+  		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+strRow2Column5+")");}
+  		else if(strRow2Column5.contains("Purchased "+strFirstPaymentMinutesPlusTwo+" Minutes"))
+  		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+strRow2Column5+")");}
   		else
-		{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row (2) column (5) of the table (Parking Session History) did not equal (App Purchased "+intRemainingTimeMinutes+" Minutes) - actual value ("+strPaymentRow2Column5+")","Local");}
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #1");
- 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Received 10 Free Minutes with First Payment");
- 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
-		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
-		if(strValidateImageFlag.equals("True"))
-		{
- 			//Wait For Images to Load
-			clsMeter.METER_MeterWaitWithMessage(objDictionary,5, "Waiting for 5 seconds for Images to load to Sentry Link-Spot"+strSpotNumber);
-	  		driver.navigate().refresh();
-			//Click Image Link
-	  		clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
-	  		try {Thread.sleep(1000);}catch (Exception e) {}
-			//VICAE: Validate Image Count After Exit
-			clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary,driver,0,2,"False");
-			//VIAC: Validate Images Appear Correctly
-			clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
-		}
-		driver.quit();
- 	}	
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3084_FTFP10_FDON_RTF_MBF_gt_MTIV_gt_FTFP_PS1_MP1_VMT_ES1(Map<String, String> objDictionary, String strRemainingTimeMinutes)
- 	{
- 		CommonWeb clsCommonWeb = new CommonWeb();
- 		Meter clsMeter = new Meter();
- 		//Dictionary Variables
-		String strBrowser = objDictionary.get("strBrowser");
-		String strRemotePath = objDictionary.get("strRemotePath");
-		String strSpotNumber = objDictionary.get("strSpotNumber");
-		String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
-		String strFreeTimeFirstPayment = objDictionary.get("strFreeTimeFirstPayment");
-		if(strValidateImageFlag == null){strValidateImageFlag = "True";}
-		//NTPS: Navigate To Parking Session
-		threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
-		WebDriver driver = getDriver();
-		clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
-		//VPSH: Validate Parking Session History
-		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
- 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
- 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
- 		int intRemainingTimeMinutes = Integer.parseInt(strRemainingTimeMinutes)- Integer.parseInt(strFreeTimeFirstPayment);
- 		int intRemainingTimeMinutesMinus1 = intRemainingTimeMinutes -1;
- 		int intRemainingTimeMinutesPlus1 = intRemainingTimeMinutes +1;
-  		String strPaymentRow2Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strPaymentRow3", "2", "5");
-  		if(strPaymentRow2Column5.contains("App Purchased "+intRemainingTimeMinutesMinus1+" Minutes"))
-  		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+strPaymentRow2Column5+")");}
-  		else if(strPaymentRow2Column5.contains("App Purchased "+intRemainingTimeMinutes+" Minutes"))
-  		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+strPaymentRow2Column5+")");}
-  		else if(strPaymentRow2Column5.contains("App Purchased "+intRemainingTimeMinutesPlus1+" Minutes"))
-  		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+strPaymentRow2Column5+")");}
+		{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row (2) column (5) of the table (Parking Session History) did not equal (Purchased "+intFirstPaymentMinutes+" Minutes) - actual value ("+strRow2Column5+")","Local");}
+  		String strRow3Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column5", "3", "3");
+  		if(strRow3Column3.contains("Virt Payment #1"))
+  		{
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #1");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Received 10 Free Minutes with First Payment");
+	  		if(strNotificationSetting.equals("true"))
+	  		{
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mobile Push");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValueContains", "Expiring Session 15 minutes");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
+	  		}
+	  		else
+	  		{
+	  			String strFirstPayment = objDictionary.get("strFirstPayment");
+		  	  	if (strFirstPayment != null)
+		      	{
+		      		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+			  		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+			      	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #1");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+		    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Transaction Fee Payment");
+		    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
+			   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
+			   	}
+			   	else
+			   	{
+			   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+			   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
+			   	}
+	   		}
+  		}
   		else
-		{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row (2) column (5) of the table (Parking Session History) did not equal (App Purchased "+intRemainingTimeMinutes+" Minutes) - actual value ("+strPaymentRow2Column5+")","Local");}
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #1");
- 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Received 10 Free Minutes with First Payment");
- 		String strFirstPayment = objDictionary.get("strFirstPayment");
-	  	DecimalFormat dFormat = new DecimalFormat("$ 0.00");
-	  	if (strFirstPayment != null)
-      	{
-  		  	double dblFirstPaymentFee = Integer.parseInt(strFirstPayment) * .01;
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "3", "CellValue", "Mps account Payment #1");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "5", "CellValue", "Transaction Fee Payment");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
-      	}
-	  	else
+  		{
+  			if(strNotificationSetting.equals("true"))
+	  		{
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mobile Push");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValueContains", "Expiring Session 15 minutes");
+		  		String strRow4Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column5", "4", "3");
+		  		if(strRow4Column3.equals("Mobile Push"))
+		  		{
+		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mobile Push");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValueContains", "Expiring Session 5 minutes");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
+		  		}
+		  		else
+		  		{
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
+		  		}
+	  		}
+	  		else
+	  		{
+	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","0", "Row Does Not Exist", "");
+	  		}
+  		}
+	  	if(strValidateImageFlag.equals("True"))
 	  	{
-	 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
+  	  		//Wait For Images to Load
+	  		clsMeter.METER_MeterWaitWithMessage(objDictionary,5, "Waiting for 5 seconds for Images to load to Sentry Link-Spot"+strSpotNumber);
+	   		driver.navigate().refresh();
+	  		//Click Image Link
+	      	clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
+	      	try {Thread.sleep(1000);}catch (Exception e) {}
+	  		//VICAE: Validate Image Count After Exit
+	  		clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary,driver,0,2,"False");
+	      	//VIAC: Validate Images Appear Correctly
+	      	clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
 	  	}
-		if(strValidateImageFlag.equals("True"))
-		{
- 			//Wait For Images to Load
-			clsMeter.METER_MeterWaitWithMessage(objDictionary,5, "Waiting for 5 seconds for Images to load to Sentry Link-Spot"+strSpotNumber);
-	  		driver.navigate().refresh();
-			//Click Image Link
-	  		clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
-	  		try {Thread.sleep(1000);}catch (Exception e) {}
-			//VICAE: Validate Image Count After Exit
-			clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary,driver,0,2,"False");
-			//VIAC: Validate Images Appear Correctly
-			clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
-		}
 		driver.quit();
- 	}
+  	}
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3084_FTFP10_FDON_RTF_MBF_gt_MTIV_gt_FTFP_PS1_MP1_VMT_ES1(Map<String, String> objDictionary, int intFirstPaymentMinutes)
+  	{
+  		CommonWeb clsCommonWeb = new CommonWeb();
+  		Meter clsMeter = new Meter();
+  		//Dictionary Variables
+	  	String strBrowser = objDictionary.get("strBrowser");
+      	String strRemotePath = objDictionary.get("strRemotePath");
+      	String strSpotNumber = objDictionary.get("strSpotNumber");
+      	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
+      	if(strValidateImageFlag == null){strValidateImageFlag = "True";}
+      	//NTPS: Navigate To Parking Session
+	  	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
+	  	WebDriver driver = getDriver();
+	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
+	  	//VPSH: Validate Parking Session History
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
+  		String strRow2Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column5", "2", "5");
+  		intFirstPaymentMinutes = intFirstPaymentMinutes - 10;
+  		int strFirstPaymentMinutesMinusOne = intFirstPaymentMinutes - 1;
+  		int strFirstPaymentMinutesMinusTwo = intFirstPaymentMinutes - 2;
+  		int strFirstPaymentMinutesPlusOne = intFirstPaymentMinutes + 1;
+  		int strFirstPaymentMinutesPlusTwo = intFirstPaymentMinutes + 2;
+  		if(strRow2Column5.contains("Purchased "+strFirstPaymentMinutesMinusTwo+" Minutes"))
+  		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+strRow2Column5+")");}
+  		else if(strRow2Column5.contains("Purchased "+strFirstPaymentMinutesMinusOne+" Minutes"))
+  		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+strRow2Column5+")");}
+  		else if(strRow2Column5.contains("Purchased "+intFirstPaymentMinutes+" Minutes"))
+  		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+strRow2Column5+")");}
+  		else if(strRow2Column5.contains("Purchased "+strFirstPaymentMinutesPlusOne+" Minutes"))
+  		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+strRow2Column5+")");}
+  		else if(strRow2Column5.contains("Purchased "+strFirstPaymentMinutesPlusTwo+" Minutes"))
+  		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+strRow2Column5+")");}
+  		else
+		{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row (2) column (5) of the table (Parking Session History) did not equal (Purchased "+intFirstPaymentMinutes+" Minutes) - actual value ("+strRow2Column5+")","Local");}
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #1");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Received 10 Free Minutes with First Payment");
+  		String strFirstPayment = objDictionary.get("strFirstPayment");
+  		if (strFirstPayment != null)
+      	{
+      		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+      		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+          	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #1");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Transaction Fee Payment");
+    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
+	   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
+	   	}
+	   	else
+	   	{
+	   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+	   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
+	   	}
+  		if(strValidateImageFlag.equals("True"))
+	  	{
+  	  		//Wait For Images to Load
+	  		clsMeter.METER_MeterWaitWithMessage(objDictionary,5, "Waiting for 5 seconds for Images to load to Sentry Link-Spot"+strSpotNumber);
+	   		driver.navigate().refresh();
+	  		//Click Image Link
+	      	clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
+	      	try {Thread.sleep(1000);}catch (Exception e) {}
+	  		//VICAE: Validate Image Count After Exit
+	  		clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary,driver,0,2,"False");
+	      	//VIAC: Validate Images Appear Correctly
+	      	clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
+	  	}
+		driver.quit();
+  	}
 	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3085_FTFP10_FDON_RTF_MBF_gt_FTFP_gt_MTIV_PS1_MP1_VMT_ES1(Map<String, String> objDictionary, String strMeterIncrementTime)
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
@@ -5928,8 +6464,6 @@ public class IOS_ParkingSessions
 	  	WebDriver driver = getDriver();
 	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
 	  	//VPSH: Validate Parking Session History
-
-	  	//Get Fees On First Payment
 	  	if (strFirstPayment == null)
 	  	{
       		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
@@ -5959,7 +6493,8 @@ public class IOS_ParkingSessions
 		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
 		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
 		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", dFormat.format(dblFirstPaymentFee));
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "Transaction Fee Payment");clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #1");
+	    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "Transaction Fee Payment");
+	    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #1");
 		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","4", "CellValue", "$ 0.25");
 		  		String strPaymentRow3Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strPaymentRow3", "3", "5");
 		  		int intFirstTimeMinutesMinusOne = intFirstTimeMinutes -1;
@@ -5972,29 +6507,47 @@ public class IOS_ParkingSessions
 		  		{Reporter.log("The cell value in row (3) column (5) of the table (Parking Session History) equalled ("+strPaymentRow3Column5+")");}
 		  		else
 				{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row (3) column (5) of the table (Parking Session History) did not equal (Purchased "+intFirstTimeMinutes+" Minutes ("+strFreeTimeMinutes+") free) - actual value ("+strPaymentRow3Column5+")","Local");}
-	        }
+		  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
+		  	}
 		  	else
 		  	{
 		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
 		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
 		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
+		  		String strFreeTimeFirstPayment = objDictionary.get("strFreeTimeFirstPayment");
+		  		intFirstTimeMinutes = intFirstTimeMinutes - Integer.parseInt(strFreeTimeFirstPayment);
 		  		int intFirstTimeMinutesPlusOne = intFirstTimeMinutes +1;
-		  		int intFreeTimeMinutesMinusOne = Integer.parseInt(strFreeTimeMinutes) - 1;
-		  		if(strRow2Column5.contains("Purchased "+intFirstTimeMinutes+" Minutes ("+strFreeTimeMinutes+" free"))
-		  		{Reporter.log("The cell value in row (3) column (5) of the table (Parking Session History) equalled ("+strRow2Column5+")");}
-		  		else if(strRow2Column5.contains("Purchased "+intFirstTimeMinutesPlusOne+" Minutes ("+strFreeTimeMinutes+" free"))
-		  		{Reporter.log("The cell value in row (3) column (5) of the table (Parking Session History) equalled ("+strRow2Column5+")");}
-		  		else if(strRow2Column5.contains("Purchased "+intFirstTimeMinutesPlusOne+" Minutes ("+intFreeTimeMinutesMinusOne+" free"))
-		  		{Reporter.log("The cell value in row (3) column (5) of the table (Parking Session History) equalled ("+strRow2Column5+")");}
+		  		int intFreeTimeMinutesMinusOne = intFirstTimeMinutes -1;
+		  		if(strRow2Column5.contains("App Purchased "+intFirstTimeMinutesPlusOne+" Minutes"))
+		  		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+strRow2Column5+")");}
+		  		else if(strRow2Column5.contains("App Purchased "+intFirstTimeMinutes+" Minutes"))
+		  		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+strRow2Column5+")");}
+		  		else if(strRow2Column5.contains("App Purchased "+intFreeTimeMinutesMinusOne+" Minutes"))
+		  		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+strRow2Column5+")");}
 		  		else
-				{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row (3) column (5) of the table (Parking Session History) did not equal (Purchased "+intFirstTimeMinutes+" Minutes ("+strFreeTimeMinutes+") free) - actual value ("+strRow2Column5+")","Local");}
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #1");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","4", "CellValue", dFormat.format(dblFirstPaymentFee));
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Transaction Fee Payment");
-		  	}
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
-	    }
+				{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row (2) column (5) of the table (Parking Session History) did not equal (Purchased "+intFirstTimeMinutes+" Minutes ("+strFreeTimeMinutes+") free) - actual value ("+strRow2Column5+")","Local");}
+		  		String strRow3Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow3Column3", "3", "3");
+			  	if(strRow3Column3.equals("Virt Payment #1"))
+			  	{
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #1");
+		    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Received 10 Free Minutes with First Payment");
+		    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #1");
+		    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+		    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Transaction Fee Payment");
+	    	  	}
+			  	else
+			  	{
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #1");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Transaction Fee Payment");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Virt Payment #1");
+		    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Received 10 Free Minutes with First Payment");
+		    	}
+			  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
+		   	}
+		}
 	  	if(strValidateImageFlag.equals("True"))
 	  	{
 	  		//Click Image Link
@@ -6007,53 +6560,104 @@ public class IOS_ParkingSessions
 	  	}
 		driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3087_FTFP10_FDOFF_RTF_MTIV_gt_FTFP_gt_MBF_PS1_MP1_VMT_ES1(Map<String, String> objDictionary)
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3087_FTFP10_FDOFF_RTF_MTIV_gt_FTFP_gt_MBF_PS1_MP1_VMT_ES1(Map<String, String> objDictionary, String strCreditCardIncrementTime, String strFreeTimeMinutes, int intRemainingFreeMinutes)
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
   		//Dictionary Variables
+	  	String strFirstPayment = objDictionary.get("strFirstPayment");
 	  	String strBrowser = objDictionary.get("strBrowser");
       	String strRemotePath = objDictionary.get("strRemotePath");
       	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
-      	String strActualRemainingTimeMinutes =  objDictionary.get("strActualRemainingTimeMinutes");
       	if(strValidateImageFlag == null){strValidateImageFlag = "True";}
+      	int intRemainingFreeMinutesMinusOne = intRemainingFreeMinutes - 1;
+		int intRemainingFreeMinutePlusOne = intRemainingFreeMinutes + 1;
       	//NTPS: Navigate To Parking Session
 	  	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
 	  	WebDriver driver = getDriver();
 	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
 	  	//VPSH: Validate Parking Session History
-	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
-  		String strRow2Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column3", "2", "5");
-  		int intActualRemainingTimePlus1 = Integer.parseInt(strActualRemainingTimeMinutes) + 1;
-  		int intActualRemainingTimeMinus1 = Integer.parseInt(strActualRemainingTimeMinutes) - 1;
-  		if(strRow2Column5.contains("App Purchased "+intActualRemainingTimePlus1+" Minutes"))
-  		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+strRow2Column5+")");}
-  		else if(strRow2Column5.contains("App Purchased "+strActualRemainingTimeMinutes+" Minutes"))
-  		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+strRow2Column5+")");}
-  		else if(strRow2Column5.contains("App Purchased "+intActualRemainingTimeMinus1+" Minutes"))
-  		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+strRow2Column5+")");}
-  		else
-		{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row (3) column (5) of the table (Parking Session History) did not equal (App Purchased "+strActualRemainingTimeMinutes+" Minutes) - actual value ("+strRow2Column5+")","Local");}
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #1");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Received 10 Free Minutes with First Payment");
-  		String strFirstPayment = objDictionary.get("strFirstPayment");
-  		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
-  		if (strFirstPayment != null)
-      	{
-  		  	double dblFirstPaymentFee = Integer.parseInt(strFirstPayment) * .01;
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "3", "CellValue", "Mps account Payment #1");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "5", "CellValue", "Transaction Fee Payment");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5","3", "CellValue", "Exited");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "6","0", "Row Does Not Exist", "");
-	  	}
-  		else
-  		{
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4","3", "CellValue", "Exited");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5","0", "Row Does Not Exist", "");
-  		}
-      	if(strValidateImageFlag.equals("True"))
+	  	if (strFirstPayment == null)
+     	{
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+ 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
+ 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
+ 	  		//Validate Purchase Time
+	  		String strRowNumber = "2";
+	  		String strColumnNumber = "5";
+	  		String strPurchasedMinutes = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session", "Parking Session History", 1, "strPurchasedMinutes", strRowNumber, strColumnNumber);
+	  		if(strPurchasedMinutes.contains("Purchased "+intRemainingFreeMinutesMinusOne+" Minutes ("+strFreeTimeMinutes+" free)"))
+			{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (Purchased "+intRemainingFreeMinutesMinusOne+" Minutes ("+strFreeTimeMinutes+") free)");}
+			else if(strPurchasedMinutes.contains("Purchased "+intRemainingFreeMinutePlusOne+" Minutes ("+strFreeTimeMinutes+" free)"))
+			{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (Purchased "+intRemainingFreeMinutePlusOne+" Minutes ("+strFreeTimeMinutes+") free)");}
+			else
+			{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) did not equal (Purchased "+intRemainingFreeMinutesMinusOne+" Minutes ("+strFreeTimeMinutes+" free) - actual value ("+strPurchasedMinutes+")","Local");}
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
+ 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","0", "Row Does Not Exist", "");
+      	}
+       	else
+       	{
+       		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+         	DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+     	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+     	   	String strRow2Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column3", "2", "5");
+	  	  	if(strRow2Column5.equals("Transaction Fee Payment"))
+	  	  	{
+	 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
+	     	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+	     	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "Transaction Fee Payment");
+	     	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #1");
+	 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","4", "CellValue", "$ 0.25");
+	 	  		//Validate Purchase Time
+		  		String strRowNumber = "3";
+		  		String strColumnNumber = "5";
+		  		String strPurchasedMinutes = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session", "Parking Session History", 1, "strPurchasedMinutes", strRowNumber, strColumnNumber);
+		  		if(strPurchasedMinutes.contains("Purchased "+intRemainingFreeMinutesMinusOne+" Minutes ("+strFreeTimeMinutes+" free)"))
+				{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (Purchased "+intRemainingFreeMinutesMinusOne+" Minutes ("+strFreeTimeMinutes+") free)");}
+				else if(strPurchasedMinutes.contains("Purchased "+intRemainingFreeMinutePlusOne+" Minutes ("+strFreeTimeMinutes+" free)"))
+				{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (Purchased "+intRemainingFreeMinutePlusOne+" Minutes) ("+strFreeTimeMinutes+" free)");}
+				else
+				{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) did not equal (Purchased "+intRemainingFreeMinutesMinusOne+" Minutes ("+strFreeTimeMinutes+") free) - actual value ("+strPurchasedMinutes+")","Local");}
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+	 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
+	      	}
+	  	  	else
+	  	  	{
+		  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
+	 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
+	 	  		//Validate Purchase Time
+		  		String strRowNumber = "2";
+		  		String strColumnNumber = "5";
+		  		String strPurchasedMinutes = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session", "Parking Session History", 1, "strPurchasedMinutes", strRowNumber, strColumnNumber);
+		  		if(strPurchasedMinutes.contains("App Purchased "+intRemainingFreeMinutesMinusOne+" Minutes"))
+				{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (Purchased "+intRemainingFreeMinutes+" Minutes ("+strFreeTimeMinutes+") free)");}
+				else if(strPurchasedMinutes.contains("App Purchased "+intRemainingFreeMinutes+" Minutes"))
+				{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (Purchased "+intRemainingFreeMinutesMinusOne+" Minutes ("+strFreeTimeMinutes+") free)");}
+				else if(strPurchasedMinutes.contains("App Purchased "+intRemainingFreeMinutePlusOne+" Minutes"))
+				{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (Purchased "+intRemainingFreeMinutePlusOne+" Minutes) ("+strFreeTimeMinutes+" free)");}
+				else
+				{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) did not equal (Purchased "+intRemainingFreeMinutesMinusOne+" Minutes ("+strFreeTimeMinutes+") free) - actual value ("+strPurchasedMinutes+")","Local");}
+		  		String strRow3Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow3Column3", "3", "3");
+			  	if(strRow3Column3.equals("Virt Payment #1"))
+			  	{
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #1");
+		    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Received 10 Free Minutes with First Payment");
+		    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #1");
+		    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+		    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Transaction Fee Payment");
+	    	  	}
+			  	else
+			  	{
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #1");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Transaction Fee Payment");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Virt Payment #1");
+		    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Received 10 Free Minutes with First Payment");
+		    	}
+			  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
+	  	  	}
+       	}
+	  	if(strValidateImageFlag.equals("True"))
 	  	{
 	  		//Click Image Link
 	      	clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
@@ -6133,7 +6737,7 @@ public class IOS_ParkingSessions
 	  	if (strFirstPayment == null)
 	  	{
 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
+    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 1.00");
 	  		String strPurchasedMinutes = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column3", "2", "5");
 	  	  	if(strPurchasedMinutes.equals("App Purchased "+intRemainingTime+" Minutes"))
@@ -6151,7 +6755,7 @@ public class IOS_ParkingSessions
 	  		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 1.00");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.50");
 	  		String strPurchasedMinutes = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column3", "2", "5");
 	  	  	if(strPurchasedMinutes.equals("App Purchased "+intRemainingTime+" Minutes"))
 	  	  	{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled (App Purchased "+intRemainingTime+" Minutes");}
@@ -6161,8 +6765,7 @@ public class IOS_ParkingSessions
 		  	{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row (2) column (5) of the table (Parking Session History) did not equal (App Purchased "+intRemainingTime+" Minutes) - actual value ("+strPurchasedMinutes+")","Local");}
 		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #1");
 		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","4", "CellValue", dFormat.format(dblFirstPaymentFee));
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Transaction Fee Payment");
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Transaction Fee Payment");clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
 	    }
 	  	if(strValidateImageFlag.equals("True"))
@@ -6177,65 +6780,83 @@ public class IOS_ParkingSessions
 	  	}
 		driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3089_FTFP10_FDOFF_RTF_FTFP_gt_MTIV_gt_MBF_PS1_MP1_VMT_ES1(Map<String, String> objDictionary)
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3089_FTFP10_FDOFF_RTF_FTFP_gt_MTIV_gt_MBF_PS1_MP1_VMT_ES1(Map<String, String> objDictionary, String strCreditCardIncrementTime, String strFreeTimeMinutes, int intRemainingFreeMinutes)
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
   		//Dictionary Variables
+	  	String strFirstPayment = objDictionary.get("strFirstPayment");
 	  	String strBrowser = objDictionary.get("strBrowser");
       	String strRemotePath = objDictionary.get("strRemotePath");
       	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
-      	String strActualRemainingTimeMinutes = objDictionary.get("strActualRemainingTimeMinutes");
-      	int intActualRemainingTimePlus1 = Integer.parseInt(strActualRemainingTimeMinutes) + 1;
-  		int intActualRemainingTimeMinus1 = Integer.parseInt(strActualRemainingTimeMinutes) - 1;
-  		if(strValidateImageFlag == null){strValidateImageFlag = "True";}
-  		//NTPS: Navigate To Parking Session
+      	if(strValidateImageFlag == null){strValidateImageFlag = "True";}
+      	int intRemainingFreeMinutesMinusOne = intRemainingFreeMinutes - 1;
+      	int intRemainingFreeMinutesPlusOne = intRemainingFreeMinutes + 1;
+		//NTPS: Navigate To Parking Session
 	  	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
 	  	WebDriver driver = getDriver();
 	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
 	  	//VPSH: Validate Parking Session History
-	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
-  		//Validate Purchase Time
-  		String strRowNumber = "2";
-  		String strColumnNumber = "5";
-  		String strPurchasedMinutes = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session", "Parking Session History", 1, "strPurchasedMinutes", strRowNumber, strColumnNumber);
-  		if(strPurchasedMinutes.contains("App Purchased "+intActualRemainingTimePlus1+" Minutes"))
-		{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (Purchased "+intActualRemainingTimePlus1+" Minutes");}
-  		else if(strPurchasedMinutes.contains("App Purchased "+strActualRemainingTimeMinutes+" Minutes"))
-		{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (Purchased "+strActualRemainingTimeMinutes+" Minutes");}
-		else if(strPurchasedMinutes.contains("App Purchased "+intActualRemainingTimeMinus1+" Minutes"))
-		{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (Purchased "+intActualRemainingTimeMinus1+" Minutes");}
-		else
-		{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) did not equal (Purchased "+strActualRemainingTimeMinutes+" Minutes) - actual value ("+strPurchasedMinutes+")","Local");}
-		String strRow3Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session", "Parking Session History", 1, "strPurchasedMinutes", "3", "3");
-		if(strRow3Column3.contains("Virt Payment"))
-		{
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #1");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Received 10 Free Minutes with First Payment");
-			String strFirstPayment = objDictionary.get("strFirstPayment");
-	  		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
-	  		if (strFirstPayment != null)
-	      	{
-	  		  	double dblFirstPaymentFee = Integer.parseInt(strFirstPayment) * .01;
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "3", "CellValue", "Mps account Payment #1");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "5", "CellValue", "Transaction Fee Payment");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
-		  	}
-	  		else
-	  		{
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
-	  		}
-		}
-		else
-		{
+	  	if (strFirstPayment == null)
+     	{
+       		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+ 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
+ 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
+ 	  		//Validate Purchase Time
+	  		String strRowNumber = "2";
+	  		String strColumnNumber = "5";
+	  		String strPurchasedMinutes = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session", "Parking Session History", 1, "strPurchasedMinutes", strRowNumber, strColumnNumber);
+	  		if(strPurchasedMinutes.contains("Purchased "+intRemainingFreeMinutes+" Minutes ("+strFreeTimeMinutes+" free)"))
+			{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (Purchased "+intRemainingFreeMinutes+" Minutes ("+strFreeTimeMinutes+") free)");}
+	  		else if(strPurchasedMinutes.contains("Purchased "+intRemainingFreeMinutesMinusOne+" Minutes ("+strFreeTimeMinutes+" free)"))
+			{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (Purchased "+intRemainingFreeMinutesMinusOne+" Minutes ("+strFreeTimeMinutes+") free)");}
+			else if(strPurchasedMinutes.contains("Purchased "+intRemainingFreeMinutesPlusOne+" Minutes ("+strFreeTimeMinutes+" free)"))
+			{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (Purchased "+intRemainingFreeMinutesPlusOne+" Minutes ("+strFreeTimeMinutes+") free)");}
+			else
+			{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) did not equal (Purchased "+intRemainingFreeMinutesMinusOne+" Minutes ("+strFreeTimeMinutes+" free) - actual value ("+strPurchasedMinutes+")","Local");}
 			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","0", "Row Does Not Exist", "");
-		}
-		if(strValidateImageFlag.equals("True"))
+ 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","0", "Row Does Not Exist", "");
+     	}
+       	else
+       	{
+       		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+         	DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+     	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+ 	   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
+ 	   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
+  			//Validate Purchase Time
+	  		String strRowNumber = "2";
+	  		String strColumnNumber = "5";
+	  		int intFreeTimeMinutesOne =  Integer.parseInt(strFreeTimeMinutes) - 1;
+	  		String strPurchasedMinutes = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session", "Parking Session History", 1, "strPurchasedMinutes", strRowNumber, strColumnNumber);
+	  		if(strPurchasedMinutes.contains("App Purchased "+intRemainingFreeMinutesMinusOne+" Minutes"))
+	  		{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled ("+strPurchasedMinutes+")");}
+	  		else if(strPurchasedMinutes.contains("App Purchased "+intRemainingFreeMinutes+" Minutes"))
+			{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled ("+strPurchasedMinutes+")");}
+			else if(strPurchasedMinutes.contains("App Purchased "+intRemainingFreeMinutesPlusOne+" Minutes"))
+			{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled ("+strPurchasedMinutes+")");}
+	  		else
+			{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) did not equal (App Purchased "+intRemainingFreeMinutes+" Minutes","Local");}
+	  		String strRow3Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow3Column3", "3", "3");
+		  	if(strRow3Column3.equals("Virt Payment #1"))
+		  	{
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #1");
+	    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Received 10 Free Minutes with First Payment");
+	    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #1");
+	    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+	    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Transaction Fee Payment");
+    	  	}
+		  	else
+		  	{
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #1");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Transaction Fee Payment");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Virt Payment #1");
+	    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Received 10 Free Minutes with First Payment");
+	    	}
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
+       	}
+	  	if(strValidateImageFlag.equals("True"))
 	  	{
 	  		//Click Image Link
 	       	clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
@@ -6247,7 +6868,7 @@ public class IOS_ParkingSessions
 	  	}
 		driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3090_FTFP10_TUON_UON_PS1_GPV1_MP1_ES1(Map<String, String> objDictionary, String strFreeTimeFirstPayment, String strMeterIncrementTime, String strViolationId)
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3090_FTFP10_UON_PS1_GPV1_MP1_ES1(Map<String, String> objDictionary, String strFreeTimeFirstPayment, String strMeterIncrementTime, String strViolationId)
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
   		Meter clsMeter = new Meter();
@@ -6262,49 +6883,33 @@ public class IOS_ParkingSessions
       	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
 	  	//VPSH: Validate Parking Session History
 	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-  		String strPaymentRow3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strPaymentRow3", "3", "3");
-  		if(strPaymentRow3.equals("Unlocked"))
-  		{
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Unlocked "+strViolationId);
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Rejected "+strViolationId);
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Virt Payment #1");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Received 10 Free Minutes with First Payment");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Exited");
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #1");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","4", "CellValue", "$ 0.25");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Virt Payment #1");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Received 10 Free Minutes with First Payment");
+  		String strFirstPayment = objDictionary.get("strFirstPayment");
+  		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+  		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+      	if (strFirstPayment != null)
+      	{
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "Transaction Fee Payment");
+    		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Unlocked "+strViolationId);
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "CSR Rejected "+strViolationId);
+	  	 	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
+      	}
+      	else
+      	{
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Unlocked "+strViolationId);
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "CSR Rejected "+strViolationId);
+	  	 	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Exited");
 		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","0", "Row Does Not Exist", "");
-		}
-  		else
-  		{
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #1");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","4", "CellValue", "$ 0.25");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Virt Payment #1");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Received 10 Free Minutes with First Payment");
-	  		String strFirstPayment = objDictionary.get("strFirstPayment");
-		  	DecimalFormat dFormat = new DecimalFormat("$ 0.00");
-		  	if (strFirstPayment != null)
-	      	{
-	  		  	double dblFirstPaymentFee = Integer.parseInt(strFirstPayment) * .01;
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "3", "CellValue", "Mps account Payment #1");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "5", "CellValue", "Transaction Fee Payment");
-		 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Unlocked "+strViolationId);
-	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "CSR Rejected "+strViolationId);
-		  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
-			  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
-		    }
-		  	else
-		  	{
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Unlocked "+strViolationId);
-	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "CSR Rejected "+strViolationId);
-		  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Exited");
-			  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","0", "Row Does Not Exist", "");
-		  	}
-  		}
-  		if(strValidateImageFlag.equals("True"))
+      	}
+	  	if(strValidateImageFlag.equals("True"))
 	  	{
 	  		//Wait For Images to Load
 			clsMeter.METER_MeterWaitWithMessage(objDictionary,15, "Waiting for 15 seconds for Images to load to Sentry Link-Spot"+strSpotNumber);
@@ -6338,7 +6943,8 @@ public class IOS_ParkingSessions
       	WebDriver driver = getDriver();
       	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
 	  	//VPSH: Validate Parking Session History
-      	if (strFirstPayment == null)
+      	String strRow3Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow3Column3", "3", "3");
+      	if (strFirstPayment == null && !strRow3Column3.equals("License Plate Changed"))
       	{
       		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
   	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
@@ -6352,21 +6958,21 @@ public class IOS_ParkingSessions
 	  		if(strNotificationSetting.equals("true"))
 	  		{
 	  			//Might need to store row 5 column 3
-	  			String strRow4Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column3", "5", "3");
-	  	  		if(strRow4Column5.equals("Mobile Push"))
+	  			String strRow4Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column3", "6", "3");
+	  	  		if(strRow4Column5.equals("Mobile Push"))	
 	  	  		{
 	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mobile Push");
-	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Expiring Session 15 minutes Confirmed");
-	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Unlocked "+strViolationId);
+	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Expiring Session 15 minutes Confirmed");
+	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Unlocked "+strViolationId);
 	  	  		}
 	  	  		else
 	  	  		{
 	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Unlocked "+strViolationId);
 	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mobile Push");
-	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Expiring Session 15 minutes Confirmed");
+	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValueContains", "Expiring Session 15 minutes");
 	  	  		}
-	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "Exited");
-	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","0", "Row Does Not Exist", "");
+	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
+	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
 	  		}
 	  		else
 	  		{
@@ -6375,25 +6981,25 @@ public class IOS_ParkingSessions
 	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","0", "Row Does Not Exist", "");
 	  		}
       	}
-      	else
+      	else if(strRow3Column3.equals("License Plate Changed"))
       	{
       		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
       		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
       		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
   	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "CSR Approved "+strViolationId);
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "To Verify");
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "To Verify");
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
-	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
-  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
-	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", dFormat.format(dblFirstPaymentFee));
-	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Transaction Fee Payment");
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Unlocked "+strViolationId);
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
-	  	}
+  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "License Plate Changed");
+  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Approved "+strViolationId);
+  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "To Verify");
+  	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", "$ 0.25");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mps account Payment #1");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+		   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Transaction Fee Payment");
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Unlocked "+strViolationId);
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "Exited");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","0", "Row Does Not Exist", "");
+      	}
       	if(strValidateImageFlag.equals("True"))
 	  	{
 			//Wait For Images to Load
@@ -6418,7 +7024,6 @@ public class IOS_ParkingSessions
   		CommonWeb clsCommonWeb = new CommonWeb();
   		Meter clsMeter = new Meter();
 	  	//Get Fees On First Payment
-	  	String strFirstPayment = objDictionary.get("strFirstPayment");
 	  	String strSpotNumber = objDictionary.get("strSpotNumber");
 	  	String strBrowser = objDictionary.get("strBrowser");
       	String strRemotePath = objDictionary.get("strRemotePath");
@@ -6429,203 +7034,260 @@ public class IOS_ParkingSessions
 	  	WebDriver driver = getDriver();
 	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
 	  	//VPSH: Validate Parking Session History
-
-	  	//Get Fees On First Payment
-	  	if (strFirstPayment == null)
-	  	{
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
+	  	String strRow3Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow3Column3", "3", "3");
+  		if(strRow3Column3.equals("License Plate Changed"))	
+  		{
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Approved "+strViolationId);
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "To Verify");
+	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", "$ 0.25");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
+	  		HttpConnections clsHttpConnections = new HttpConnections();
+	  		String strNotificationSetting = clsHttpConnections.HTTPCONNECTION_GetMobileSubscriptionPreference(objDictionary,"Session Notifications","app");
+	  		if(strNotificationSetting.equals("true"))
+	  		{
+	  			String strRow6Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow6Column3", "7", "3");
+	  	  		if(strRow6Column3.contains("Mobile Push"))
+	  	  		{
+		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mobile Push");
+			  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Expiring Session 15 minutes Confirmed");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Unlocked "+strViolationId);
+			  	}
+	  	  		else
+	  	  		{
+	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Unlocked "+strViolationId);
+	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Mobile Push");
+	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","5", "CellValue", "Expiring Session 15 minutes Confirmed");
+		  		}
+	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "Exited");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","0", "Row Does Not Exist", "");
+	  	  	}
+	  		else
+	  	  	{
+	  			String strFirstPayment = objDictionary.get("strFirstPayment");
+	  	  		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+	  	      	if (strFirstPayment != null)
+	  	      	{
+	  	      		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mps account Payment #1");
+	  		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+	  	    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Transaction Fee Payment");
+	  	    	 	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Unlocked "+strViolationId);
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "Exited");
+				  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","0", "Row Does Not Exist", "");
+	  	      	}
+	  	      	else
+	  	      	{
+		  	      	String strRow7Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow7Column3", "7", "3");
+		  	  		if(strRow7Column3.equals("Exited"))	
+		  	  		{
+		  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Exited");
+		  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Unlocked "+strViolationId);
+		  	  		}
+		  	  		else
+		  	  		{
+			  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Unlocked "+strViolationId);
+				  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
+			  		}
+		  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
+	  	      	}
+	  	  	}
+  		}
+  		else
+  		{
 		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "CSR Approved "+strViolationId);
 		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "To Verify");
 	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Unlocked "+strViolationId);
 	  		HttpConnections clsHttpConnections = new HttpConnections();
-			String strNotificationSetting = clsHttpConnections.HTTPCONNECTION_GetMobileSubscriptionPreference(objDictionary,"Session Notifications","app");
+	  		String strNotificationSetting = clsHttpConnections.HTTPCONNECTION_GetMobileSubscriptionPreference(objDictionary,"Session Notifications","app");
 	  		if(strNotificationSetting.equals("true"))
 	  		{
-	  			String strRow6Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column3", "6", "3");
-		  	  	if(strRow6Column3.equals("Mobile Push"))
-		  	  	{
+	  			String strRow6Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow6Column3", "6", "3");
+	  	  		if(strRow6Column3.contains("Mobile Push"))
+	  	  		{
 		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mobile Push");
-			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Expiring Session 15 minutes Confirmed");
+			  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Expiring Session 15 minutes Confirmed");
 			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Unlocked "+strViolationId);
+			  	}
+	  	  		else
+	  	  		{
+	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Unlocked "+strViolationId);
+	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mobile Push");
+	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Expiring Session 15 minutes Confirmed");
+		  		}
+	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
+	  	  	}
+	  		else
+	  	  	{
+	  			String strFirstPayment = objDictionary.get("strFirstPayment");
+	  	  		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+	  	      	if (strFirstPayment != null)
+	  	      	{
+	  	      		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
+	  		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+	  	    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Transaction Fee Payment");
+	  	    	 	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Unlocked "+strViolationId);
 			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
 				  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
-		  	  	}
-		  	  	else
-		  	  	{
-		  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Unlocked "+strViolationId);
-		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mobile Push");
-			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Expiring Session 15 minutes Confirmed");
-			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
-				  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
-		  	  	}
+	  	      	}
+	  	      	else
+	  	      	{
+			  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Unlocked "+strViolationId);
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Exited");
+				  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","0", "Row Does Not Exist", "");
+	  	      	}
+	  	  	}
+  		}
+  	}
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3093_FTFP0_TUON_UON_PS1_GPV1_AV_wm_LP_CSMLP_MP1_ES1(Map<String, String> objDictionary, String strMeterIncrementTime, String strViolationId)
+  	{
+  		CommonWeb clsCommonWeb = new CommonWeb();
+  		Meter clsMeter = new Meter();
+	  	//Get Fees On First Payment
+	  	String strSpotNumber = objDictionary.get("strSpotNumber");
+	  	String strBrowser = objDictionary.get("strBrowser");
+      	String strRemotePath = objDictionary.get("strRemotePath");
+      	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
+      	if(strValidateImageFlag == null){strValidateImageFlag = "True";}
+		//NTPS: Navigate To Parking Session
+	  	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
+	  	WebDriver driver = getDriver();
+	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
+	  	//VPSH: Validate Parking Session History
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
+	  	String strRow3Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow3Column3", "3", "3");
+  		if(strRow3Column3.equals("License Plate Changed"))	
+  		{
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Approved "+strViolationId);
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "To Verify");
+		  	HttpConnections clsHttpConnections = new HttpConnections();
+	  		String strNotificationSetting = clsHttpConnections.HTTPCONNECTION_GetMobileSubscriptionPreference(objDictionary,"Session Notifications","app");
+	  		if(strNotificationSetting.equals("true"))
+	  		{
+	  			String strRow5Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow5Column5", "6", "3");
+	  	  		if(strRow5Column3.contains("Mobile Push"))
+	  	  		{
+	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mobile Push");
+	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mps account Payment #1");
+		  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","4", "CellValue", "$ 0.25");
+		  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
+			  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Unlocked "+strViolationId);
+		  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "Exited");
+		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","0", "Row Does Not Exist", "");
+	  	
+	  	  		}
+	  	  		else
+	  	  		{
+		  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
+		  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", "$ 0.25");
+		  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
+		  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mobile Push");
+		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Unlocked "+strViolationId);
+		  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "Exited");
+		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","0", "Row Does Not Exist", "");
+	  	  		
+	  	  		}
 	  		}
 	  		else
 	  		{
-	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Unlocked "+strViolationId);
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Exited");
-			  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","0", "Row Does Not Exist", "");
+			  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", "$ 0.25");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
+		  		String strFirstPayment = objDictionary.get("strFirstPayment");
+	  	  		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+	  	      	if (strFirstPayment != null)
+	  	      	{
+	  	      		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mps account Payment #1");
+	  		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+	  	    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Transaction Fee Payment");
+	  	    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Unlocked "+strViolationId);
+		  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "Exited");
+		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","0", "Row Does Not Exist", "");
+	  	    
+	  	      	}
+	  	      	else
+	  	      	{
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Unlocked "+strViolationId);
+		  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
+		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
+	  	      	}
 	  		}
-	  	}
-	  	else
-	  	{
-	  		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
-	  		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
+  		}
+  		else
+  		{
 		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "CSR Approved "+strViolationId);
 		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "To Verify");
-	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", dFormat.format(dblFirstPaymentFee));
-		   	String strRow5Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow5Column5", "5", "5");
-  			if(strRow5Column5.equals("Transaction Fee Payment"))
-  			{
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "Transaction Fee Payment");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", "$ 0.25");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
-  			}
-  			else
-  			{
-  				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
+		  	HttpConnections clsHttpConnections = new HttpConnections();
+	  		String strNotificationSetting = clsHttpConnections.HTTPCONNECTION_GetMobileSubscriptionPreference(objDictionary,"Session Notifications","app");
+	  		if(strNotificationSetting.equals("true"))
+	  		{
+	  			String strRow5Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow5Column5", "5", "3");
+	  	  		if(strRow5Column3.contains("Mobile Push"))
+	  	  		{
+	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mobile Push");
+	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
+		  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", "$ 0.25");
+		  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
+			  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Unlocked "+strViolationId);
+		  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
+		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
+	  	
+	  	  		}
+	  	  		else
+	  	  		{
+		  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
+		  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
+		  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
+		  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mobile Push");
+		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Unlocked "+strViolationId);
+		  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
+		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
+	  	  		
+	  	  		}
+	  		}
+	  		else
+	  		{
+			  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
 		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Transaction Fee Payment");
-		  	}
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Unlocked "+strViolationId);
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
-	  	}
-	  	if(strValidateImageFlag.equals("True"))
-	  	{
-			//Wait For Images to Load
-			clsMeter.METER_MeterWaitWithMessage(objDictionary,15, "Waiting for 15 seconds for Images to load to Sentry Link-Spot"+strSpotNumber);
-			driver.navigate().refresh();
-			//Click Image Link
-			clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
-			try {Thread.sleep(1000);}catch (Exception e) {}
-		  	//VICAE: Validate Image Count After Exit
-		  	String strParkingImageDurationEntrance = clsMeter.METER_GetPARKING_IMAGE_LOOK_AHEAD_ENTRANCE(objDictionary,driver);
-		  	String strParkingImageLookAheadEntrance = clsMeter.METER_GetPARKING_IMAGE_LOOK_AHEAD_ENTRANCE(objDictionary,driver);
-		  	String strParkingImageDurationExit  = clsMeter.METER_GetPARKING_IMAGE_DURATION_EXIT(objDictionary,driver);
-		  	int intTotalImageSeconds = Integer.parseInt(strParkingImageDurationEntrance) + Integer.parseInt(strParkingImageLookAheadEntrance) + Integer.parseInt(strParkingImageDurationExit);
-		  	clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary,driver,intTotalImageSeconds,1,"False");
-		  	//VIAC: Validate Images Appear Correctly
-		  	clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
-	  	}
-		driver.quit();
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
+		  		String strFirstPayment = objDictionary.get("strFirstPayment");
+	  	  		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+	  	      	if (strFirstPayment != null)
+	  	      	{
+	  	      		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
+	  		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+	  	    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Transaction Fee Payment");
+	  	    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Unlocked "+strViolationId);
+		  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
+		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
+	  	    
+	  	      	}
+	  	      	else
+	  	      	{
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Unlocked "+strViolationId);
+		  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Exited");
+		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","0", "Row Does Not Exist", "");
+	  	      	}
+	  		}
+  		}
+  		driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3093_FTFP0_TUON_UON_PS1_GPV1_AV_wm_LP_CSMLP_MP1_ES1(Map<String, String> objDictionary, String strCreditCardIncrementTime, String strViolationId)
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3094_FTFP0_UON_PS1_GPV1_AV_wom_LP_MP1_ES1(Map<String, String> objDictionary, String strCreditCardIncrementTime, String strViolationId)
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
   		Meter clsMeter = new Meter();
 	  	//Get Fees On First Payment
 	  	String strFirstPayment = objDictionary.get("strFirstPayment");
 	  	String strSpotNumber = objDictionary.get("strSpotNumber");
-	  	String strBrowser = objDictionary.get("strBrowser");
-      	String strRemotePath = objDictionary.get("strRemotePath");
-      	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
-      	if(strValidateImageFlag == null){strValidateImageFlag = "True";}
-		//NTPS: Navigate To Parking Session
-	  	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
-	  	WebDriver driver = getDriver();
-	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
-	  	//VPSH: Validate Parking Session History
-	  	if (strFirstPayment == null)
-	  	{
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "CSR Approved "+strViolationId);
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "To Verify");
-	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Unlocked "+strViolationId);
-	  		HttpConnections clsHttpConnections = new HttpConnections();
-			String strNotificationSetting = clsHttpConnections.HTTPCONNECTION_GetMobileSubscriptionPreference(objDictionary,"Session Notifications","app");
-	  		if(strNotificationSetting.equals("true"))
-	  		{
-	  			String strRow6Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column3", "6", "3");
-		  	  	if(strRow6Column3.equals("Mobile Push"))
-		  	  	{
-		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mobile Push");
-			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Expiring Session 15 minutes Confirmed");
-			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Unlocked "+strViolationId);
-			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
-				  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
-		  	  	}
-		  	  	else
-		  	  	{
-		  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Unlocked "+strViolationId);
-		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mobile Push");
-			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Expiring Session 15 minutes Confirmed");
-			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
-				  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
-		  	  	}
-	  		}
-	  		else
-	  		{
-	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Unlocked "+strViolationId);
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Exited");
-			  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","0", "Row Does Not Exist", "");
-	  		}
-	  	}
-	  	else
-	  	{
-	  		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
-	  		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "CSR Approved "+strViolationId);
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "To Verify");
-	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", dFormat.format(dblFirstPaymentFee));
-		   	String strRow5Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow5Column5", "5", "5");
-  			if(strRow5Column5.equals("Transaction Fee Payment"))
-  			{
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "Transaction Fee Payment");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", "$ 0.25");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
-  			}
-  			else
-  			{
-  				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Transaction Fee Payment");
-		  	}
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Unlocked "+strViolationId);
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
-	  	}
-	  	if(strValidateImageFlag.equals("True"))
-	  	{
-			//Wait For Images to Load
-			clsMeter.METER_MeterWaitWithMessage(objDictionary,15, "Waiting for 15 seconds for Images to load to Sentry Link-Spot"+strSpotNumber);
-			driver.navigate().refresh();
-			//Click Image Link
-			clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
-			try {Thread.sleep(1000);}catch (Exception e) {}
-		  	//VICAE: Validate Image Count After Exit
-		  	String strParkingImageDurationEntrance = clsMeter.METER_GetPARKING_IMAGE_LOOK_AHEAD_ENTRANCE(objDictionary,driver);
-		  	String strParkingImageLookAheadEntrance = clsMeter.METER_GetPARKING_IMAGE_LOOK_AHEAD_ENTRANCE(objDictionary,driver);
-		  	String strParkingImageDurationExit  = clsMeter.METER_GetPARKING_IMAGE_DURATION_EXIT(objDictionary,driver);
-		  	int intTotalImageSeconds = Integer.parseInt(strParkingImageDurationEntrance) + Integer.parseInt(strParkingImageLookAheadEntrance) + Integer.parseInt(strParkingImageDurationExit);
-		  	clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary,driver,intTotalImageSeconds,1,"False");
-		  	//VIAC: Validate Images Appear Correctly
-		  	clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
-	  	}
-		driver.quit();
-  	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3094_FTFP0_TUON_UON_PS1_GPV1_AV_wom_LP_MP1_ES1(Map<String, String> objDictionary, String strCreditCardIncrementTime, String strViolationId)
-  	{
-  		CommonWeb clsCommonWeb = new CommonWeb();
-  		//Get Fees On First Payment
-	  	String strFirstPayment = objDictionary.get("strFirstPayment");
 	  	String strBrowser = objDictionary.get("strBrowser");
       	String strRemotePath = objDictionary.get("strRemotePath");
       	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");if(strValidateImageFlag == null){strValidateImageFlag = "True";}
@@ -6638,40 +7300,80 @@ public class IOS_ParkingSessions
       	{
       		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
   	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "CSR Approved "+strViolationId);
-	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "To Verify");
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Unlocked "+strViolationId);
-	  		HttpConnections clsHttpConnections = new HttpConnections();
-			String strNotificationSetting = clsHttpConnections.HTTPCONNECTION_GetMobileSubscriptionPreference(objDictionary,"Session Notifications","app");
-	  		if(strNotificationSetting.equals("true"))
+  	  		String strRow3Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow3Column3", "3", "3");
+	  		if(strRow3Column3.equals("License Plate Changed"))	
 	  		{
-	  			String strRow6Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow6Column3", "6", "3");
-	  	  		if(strRow6Column3.contains("Unlocked "+strViolationId))
-	  	  		{
-	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Unlocked "+strViolationId);
-			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mobile Push");
-			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Expiring Session 15 minutes Confirmed");
+	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Approved "+strViolationId);
+		  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "To Verify");
+	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", "$ 0.25");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
+		  		HttpConnections clsHttpConnections = new HttpConnections();
+				String strNotificationSetting = clsHttpConnections.HTTPCONNECTION_GetMobileSubscriptionPreference(objDictionary,"Session Notifications","app");
+		  		if(strNotificationSetting.equals("true"))
+		  		{
+		  			String strRow6Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow6Column3", "6", "3");
+		  	  		if(strRow6Column3.contains("Unlocked "+strViolationId))
+		  	  		{
+		  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Unlocked "+strViolationId);
+				  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Mobile Push");
+				  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","5", "CellValue", "Expiring Session 15 minutes Confirmed");
+				  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "Exited");
+			  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","0", "Row Does Not Exist", "");
+		  	  		}
+		  	  		else
+		  	  		{
+		  				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mobile Push");
+				  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Expiring Session 15 minutes Confirmed");
+				  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Unlocked "+strViolationId);
+				  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "Exited");
+			  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","0", "Row Does Not Exist", "");
+		
+		  	  		}
+		  		}
+		  		else
+		  		{
+		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Unlocked "+strViolationId);
 			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
 		  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
-	  	  		}
-	  	  		else
-	  	  		{
-	  				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mobile Push");
-			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Expiring Session 15 minutes Confirmed");
-			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Unlocked "+strViolationId);
-			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
-		  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
-
-	  	  		}
+		  		}
 	  		}
 	  		else
 	  		{
-	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Unlocked "+strViolationId);
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Exited");
-	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","0", "Row Does Not Exist", "");
+	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "CSR Approved "+strViolationId);
+		  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "To Verify");
+	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
+		  		HttpConnections clsHttpConnections = new HttpConnections();
+				String strNotificationSetting = clsHttpConnections.HTTPCONNECTION_GetMobileSubscriptionPreference(objDictionary,"Session Notifications","app");
+		  		if(strNotificationSetting.equals("true"))
+		  		{
+		  			String strRow6Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow6Column3", "6", "3");
+		  	  		if(strRow6Column3.contains("Unlocked "+strViolationId))
+		  	  		{
+		  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Unlocked "+strViolationId);
+				  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mobile Push");
+				  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Expiring Session 15 minutes Confirmed");
+				  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
+			  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
+		  	  		}
+		  	  		else
+		  	  		{
+		  				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mobile Push");
+				  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Expiring Session 15 minutes Confirmed");
+				  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Unlocked "+strViolationId);
+				  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
+			  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
+		
+		  	  		}
+		  		}
+		  		else
+		  		{
+		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Unlocked "+strViolationId);
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Exited");
+		  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","0", "Row Does Not Exist", "");
+		  		}
 	  		}
 	  	}
       	else
@@ -6679,22 +7381,36 @@ public class IOS_ParkingSessions
       		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
       		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
       		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-      		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "CSR Approved "+strViolationId);
-	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "To Verify");
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", dFormat.format(dblFirstPaymentFee));
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Transaction Fee Payment");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Unlocked "+strViolationId);
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
+  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
+  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "License Plate Changed");
+  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Approved "+strViolationId);
+  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "To Verify");
+  	  		String strRow6Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow6Column5", "6", "5");
+	  	  	if(strRow6Column5.equals("Transaction Fee Payment"))	
+	  	  	{
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+			   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Transaction Fee Payment");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mps account Payment #1");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","4", "CellValue", "$ 0.25");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
+	  	  	}
+	  	  	else
+	  	  	{
+		  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", "$ 0.25");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mps account Payment #1");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+			   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Transaction Fee Payment");
+	  	  	}
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Unlocked "+strViolationId);
+  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "Exited");
+  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","0", "Row Does Not Exist", "");
   	  	}
 	  	driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3095_FTFP0_TUON_UON_PS1_GPV1_RV_wo_LP_MP1_ES1(Map<String, String> objDictionary, String strCreditCardIncrementTime, String strViolationId)
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3095_FTFP0_UON_PS1_GPV1_RV_wo_LP_MP1_ES1(Map<String, String> objDictionary, String strCreditCardIncrementTime, String strViolationId)
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
   		Meter clsMeter = new Meter();
@@ -6741,11 +7457,11 @@ public class IOS_ParkingSessions
       		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
   	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
   	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Voided "+strViolationId);
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Rejected "+strViolationId);
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Rejected "+strViolationId);
+  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", dFormat.format(dblFirstPaymentFee));
 		   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Transaction Fee Payment");
 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Exited");
@@ -6846,11 +7562,12 @@ public class IOS_ParkingSessions
 	  	}
 		driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3097_FTFP0_TUON_UON_PS1_GPV1_RV_wom_LP_MP1_ES1(Map<String, String> objDictionary, String strFreeTimeFirstPayment, String strMeterIncrementTime, String strViolationId)
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3097_FTFP0_TUON_UON_PS1_GPV1_RV_wom_LP_MP1_ES1(Map<String, String> objDictionary, String strCreditCardIncrementTime, String strViolationId)
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
   		Meter clsMeter = new Meter();
 	  	//Get Fees On First Payment
+	  	String strFirstPayment = objDictionary.get("strFirstPayment");
 	  	String strSpotNumber = objDictionary.get("strSpotNumber");
 	  	String strBrowser = objDictionary.get("strBrowser");
       	String strRemotePath = objDictionary.get("strRemotePath");
@@ -6861,34 +7578,49 @@ public class IOS_ParkingSessions
 	  	WebDriver driver = getDriver();
 	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
 	  	//VPSH: Validate Parking Session History
-	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Voided "+strViolationId);
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Rejected "+strViolationId);
-  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Virt Payment #1");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Received 10 Free Minutes with First Payment");
-  		String strFirstPayment = objDictionary.get("strFirstPayment");
-	  	DecimalFormat dFormat = new DecimalFormat("$ 0.00");
-	  	if (strFirstPayment != null)
+	  	if (strFirstPayment == null)
       	{
-  		  	double dblFirstPaymentFee = Integer.parseInt(strFirstPayment) * .01;
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "7", "3", "CellValue", "Mps account Payment #1");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "7", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "7", "5", "CellValue", "Transaction Fee Payment");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
+      		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
+  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Voided "+strViolationId);
+  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Rejected "+strViolationId);
+	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
+	  		HttpConnections clsHttpConnections = new HttpConnections();
+			String strNotificationSetting = clsHttpConnections.HTTPCONNECTION_GetMobileSubscriptionPreference(objDictionary,"Session Notifications","app");
+	  		if(strNotificationSetting.equals("true"))
+	  		{
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mobile Push");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Expiring Session 15 minutes Confirmed");
+	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Exited");
+	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","0", "Row Does Not Exist", "");
+	  		}
+	  		else
+	  		{
+	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Exited");
+	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
+	  		}
       	}
-	  	else
-	  	{
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Exited");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","0", "Row Does Not Exist", "");
-	  	}
-  		//double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
-  		//DecimalFormat dFormat = new DecimalFormat("$ 0.00");
-  		if(strValidateImageFlag.equals("True"))
+      	else
+      	{
+      		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+      		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+      		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
+  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "License Plate Changed");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Voided "+strViolationId);
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "CSR Rejected "+strViolationId);
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", "$ 0.25");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mps account Payment #1");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+		   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Transaction Fee Payment");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
+  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
+      	}
+	  	if(strValidateImageFlag.equals("True"))
 	  	{
 	  		//Wait For Images to Load
 			clsMeter.METER_MeterWaitWithMessage(objDictionary,15, "Waiting for 15 seconds for Images to load to Sentry Link-Spot"+strSpotNumber);
@@ -6902,46 +7634,6 @@ public class IOS_ParkingSessions
 	      	String strParkingImageDurationExit  = clsMeter.METER_GetPARKING_IMAGE_DURATION_EXIT(objDictionary,driver);
 	      	int intTotalImageSeconds = Integer.parseInt(strParkingImageDurationEntrance) + Integer.parseInt(strParkingImageLookAheadEntrance) + Integer.parseInt(strParkingImageDurationExit);
 	      	clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary,driver,intTotalImageSeconds,1,"False");
-	      	//VIAC: Validate Images Appear Correctly
-	      	clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
-	  	}
-		driver.quit();
-  	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3098_AMMOEE_FTFP0_TUON_UON_PS1_GPV1_RV_RES_wo_LP_MP1_ES1_1(Map<String, String> objDictionary, String strCreditCardIncrementTime, String strViolationId)
-  	{
-  		CommonWeb clsCommonWeb = new CommonWeb();
-  		//Get Fees On First Payment
-	  	String strBrowser = objDictionary.get("strBrowser");
-      	String strRemotePath = objDictionary.get("strRemotePath");
-      	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
-      	if(strValidateImageFlag == null){strValidateImageFlag = "True";}
-		//NTPS: Navigate To Parking Session
-	  	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
-	  	WebDriver driver = getDriver();
-	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
-	  	//VPSH: Validate Parking Session History
-	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-  	  	String strRow3Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session", "Parking Session History", 1, "strColumn3Row3", "3", "3");
-		if(strRow3Column3.equals("Exited"))
-		{
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Voided "+strViolationId);
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "CSR Rejected "+strViolationId);
- 		}
-		else
-		{
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Voided "+strViolationId);
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Rejected "+strViolationId);
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
- 		}
-		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
-  	  	if(strValidateImageFlag.equals("True"))
-	  	{
-	  		clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
-	      	try {Thread.sleep(1000);}catch (Exception e) {}
-	  		//VICAE: Validate Image Count After Exit
-	  		clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary,driver,0,2,"False");
 	      	//VIAC: Validate Images Appear Correctly
 	      	clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
 	  	}
@@ -6963,22 +7655,35 @@ public class IOS_ParkingSessions
 	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
   	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "App Purchased 15 Minutes");	
-  		String strFirstPayment = objDictionary.get("strFirstPayment");
-	  	DecimalFormat dFormat = new DecimalFormat("$ 0.00");
-	  	if (strFirstPayment != null)
-      	{
-  		  	double dblFirstPaymentFee = Integer.parseInt(strFirstPayment) * .01;
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "3", "CellValue", "Mps account Payment #1");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "5", "CellValue", "Transaction Fee Payment");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
-      	}
-	  	else
-	  	{
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","0", "Row Does Not Exist", "");
-	  	}
+  		HttpConnections clsHttpConnections = new HttpConnections();
+  		String strNotificationSetting = clsHttpConnections.HTTPCONNECTION_GetMobileSubscriptionPreference(objDictionary,"Session Notifications","app");
+  		if(strNotificationSetting.equals("true"))
+  		{
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mobile Push");
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Expiring Session 15 minutes Confirmed");
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
+  		}
+  		else
+  		{
+  			String strFirstPayment = objDictionary.get("strFirstPayment");
+  	  		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+  	  		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+  	      	if (strFirstPayment != null)
+  	      	{
+  		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #1");
+  		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+  	    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Transaction Fee Payment");
+  	    	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
+  	    
+  	      	}
+  	      	else
+  	      	{
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
+	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","0", "Row Does Not Exist", "");
+  	      	}
+  		}
   	  	if(strValidateImageFlag.equals("True"))
 	  	{
 	  		clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
@@ -6990,88 +7695,11 @@ public class IOS_ParkingSessions
 	  	}
 		driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3099_FTFP0_TUON_UON_PS1_GPV1_RV_RES_wm_LP_MP1_ES1_1(Map<String, String> objDictionary, String strCreditCardIncrementTime, String strViolationId)
-  	{
-  		CommonWeb clsCommonWeb = new CommonWeb();
-  		Meter clsMeter = new Meter();
-	  	//Get Fees On First Payment
-	  	String strSpotNumber = objDictionary.get("strSpotNumber");
-	  	String strBrowser = objDictionary.get("strBrowser");
-      	String strRemotePath = objDictionary.get("strRemotePath");
-      	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
-      	if(strValidateImageFlag == null){strValidateImageFlag = "True";}
-		//NTPS: Navigate To Parking Session
-	  	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
-	  	WebDriver driver = getDriver();
-	  	clsCommonWeb.SENTRYLINK_NavigateToViolationHistory(objDictionary, driver, strViolationId);
-		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Voided "+strViolationId);
-  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "CSR Rejected "+strViolationId);
-  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
-  	  	if(strValidateImageFlag.equals("True"))
-	  	{
-  	  		//Wait For Images to Load
-  	  		clsMeter.METER_MeterWaitWithMessage(objDictionary,15, "Waiting for 15 seconds for Images to load to Sentry Link-Spot"+strSpotNumber);
-  	  		driver.navigate().refresh();
-  	  	  	//Click Image Link
-  	    	clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
-  	    	try {Thread.sleep(1000);}catch (Exception e) {}
-  	      	//VICAE: Validate Image Count After Exit
-  	      	String strParkingImageDurationEntrance = clsMeter.METER_GetPARKING_IMAGE_LOOK_AHEAD_ENTRANCE(objDictionary,driver);
-  	      	String strParkingImageLookAheadEntrance = clsMeter.METER_GetPARKING_IMAGE_LOOK_AHEAD_ENTRANCE(objDictionary,driver);
-  	      	String strParkingImageDurationExit  = clsMeter.METER_GetPARKING_IMAGE_DURATION_EXIT(objDictionary,driver);
-  	      	int intTotalImageSeconds = Integer.parseInt(strParkingImageDurationEntrance) + Integer.parseInt(strParkingImageLookAheadEntrance) + Integer.parseInt(strParkingImageDurationExit);
-  	      	clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary,driver,intTotalImageSeconds,1,"False");
-  	      	//VIAC: Validate Images Appear Correctly
-  	      	clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
-	  	}
-		driver.quit();
-  	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3099_FTFP0_TUON_UON_PS1_GPV1_RV_RES_wm_LP_MP1_ES1_2(Map<String, String> objDictionary, String strCreditCardIncrementTime, String strViolationId)
-  	{
-  		CommonWeb clsCommonWeb = new CommonWeb();
-  		Meter clsMeter = new Meter();
-	  	//Get Fees On First Payment
-	  	String strSpotNumber = objDictionary.get("strSpotNumber");
-	  	String strBrowser = objDictionary.get("strBrowser");
-      	String strRemotePath = objDictionary.get("strRemotePath");
-      	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
-      	if(strValidateImageFlag == null){strValidateImageFlag = "True";}
-		//NTPS: Navigate To Parking Session
-	  	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
-	  	WebDriver driver = getDriver();
-	  	clsCommonWeb.SENTRYLINK_NavigateToViolationHistory(objDictionary, driver, strViolationId);
-		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
-  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Voided "+strViolationId);
-  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "CSR Rejected "+strViolationId);
-  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
-  	  	if(strValidateImageFlag.equals("True"))
-	  	{
-  	  		//Wait For Images to Load
-  	  		clsMeter.METER_MeterWaitWithMessage(objDictionary,15, "Waiting for 15 seconds for Images to load to Sentry Link-Spot"+strSpotNumber);
-  	  		driver.navigate().refresh();
-  	  	  	//Click Image Link
-  	    	clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
-  	    	try {Thread.sleep(1000);}catch (Exception e) {}
-  	      	//VICAE: Validate Image Count After Exit
-  	      	String strParkingImageDurationEntrance = clsMeter.METER_GetPARKING_IMAGE_LOOK_AHEAD_ENTRANCE(objDictionary,driver);
-  	      	String strParkingImageLookAheadEntrance = clsMeter.METER_GetPARKING_IMAGE_LOOK_AHEAD_ENTRANCE(objDictionary,driver);
-  	      	String strParkingImageDurationExit  = clsMeter.METER_GetPARKING_IMAGE_DURATION_EXIT(objDictionary,driver);
-  	      	int intTotalImageSeconds = Integer.parseInt(strParkingImageDurationEntrance) + Integer.parseInt(strParkingImageLookAheadEntrance) + Integer.parseInt(strParkingImageDurationExit);
-  	      	clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary,driver,intTotalImageSeconds,1,"False");
-  	      	//VIAC: Validate Images Appear Correctly
-  	      	clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
-	  	}
-		driver.quit();
-  	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3100_FTFP0_TUON_UON_PS1_GPV1_RV_RES_wom_LP_MP1_ES1_1(Map<String, String> objDictionary,  String strCreditCardIncrementTime, String strViolationId)
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3099_FTFP0_UON_PS1_GPV1_RV_RES_wm_LP_MP1_ES1(Map<String, String> objDictionary, String strCreditCardIncrementTime, String strViolationId)
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
   		//Get Fees On First Payment
+	  	String strFirstPayment = objDictionary.get("strFirstPayment");
 	  	String strBrowser = objDictionary.get("strBrowser");
       	String strRemotePath = objDictionary.get("strRemotePath");
       	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
@@ -7080,23 +7708,157 @@ public class IOS_ParkingSessions
 	  	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
 	  	WebDriver driver = getDriver();
 	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
+	  	//VPSH: Validate Parking Session History
+	  	if (strFirstPayment == null)
+      	{
+	  		String strPaymentRow1 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strPaymentRow3", "1", "3");
+      		if(strPaymentRow1.equals("Parked"))
+      		{
+      			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+      			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
+	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
+    	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
+    	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
+    	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Unlocked "+strViolationId);
+    	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "CSR Rejected "+strViolationId);
+    	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
+	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","0", "Row Does Not Exist", "");
+    	  	}
+      		else
+      		{
+	      		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Mps account Payment #1");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","4", "CellValue", "$ 0.25");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Parked");
+      		}
+      		HttpConnections clsHttpConnections = new HttpConnections();
+  	  		String strNotificationSetting = clsHttpConnections.HTTPCONNECTION_GetMobileSubscriptionPreference(objDictionary,"Session Notifications","app");
+	  		if(strNotificationSetting.equals("true"))
+	  		{
+	      		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mobile Push");
+	      		String strRow3Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow3Column5", "3", "5");
+	      		if(strRow3Column5.contains("Expiring Session 15 minutes Sent"))
+	      		{clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Expiring Session 15 minutes Sent");}
+	  	  		else
+	      		{clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Expiring Session 15 minutes Confirmed");}
+	      		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
+	  		}
+	  		else
+	  		{
+	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
+	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","0", "Row Does Not Exist", "");
+	  		}
+      	}
+      	else
+      	{
+      		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+      		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+      		String strPaymentRow1 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strPaymentRow3", "1", "3");
+      		if(strPaymentRow1.equals("Parked"))
+      		{
+      			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+      			String strRow2Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column3", "2", "5");
+      			if(strRow2Column5.equals("Transaction Fee Payment"))
+      			{
+	      			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+				   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "Transaction Fee Payment");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #1");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","4", "CellValue", "$ 0.25");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
+      			}
+      			else
+      			{
+      				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #1");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+				   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Transaction Fee Payment");
+			  	}
+      		}
+      		else
+      		{
+      			String strPaymentRow1Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strPaymentRow3", "1", "5");
+      			if(strPaymentRow1Column5.equals("Transaction Fee Payment"))
+      			{
+	      			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Mps account Payment #1");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+				   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","5", "CellValue", "Transaction Fee Payment");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Parked");
+      			}
+      			else
+      			{
+      				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Mps account Payment #1");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","4", "CellValue", "$ 0.25");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
+			  		String strPaymentRow2Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strPaymentRow3", "2", "3");
+	      			if(strPaymentRow2Column3.equals("Parked"))
+	      			{
+				  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Parked");
+				  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #1");
+				  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+					   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Transaction Fee Payment");
+	      			}
+	      			else
+	      			{
+	      				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
+				  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+					   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "Transaction Fee Payment");
+					   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Parked");
+				  	}
+			  	}
+      		}
+  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
+      	}
+	  	if(strValidateImageFlag.equals("True"))
+	  	{
+	  		//Click Image Link
+	      	clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
+	      	try {Thread.sleep(1000);}catch (Exception e) {}
+	  		//VICAE: Validate Image Count After Exit
+	  		clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary,driver,0,2,"False");
+	      	//VIAC: Validate Images Appear Correctly
+	      	clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
+	  	}
+		driver.quit();
+  	}
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3100_FTFP0_TUON_UON_PS1_GPV1_RV_RES_wom_LP_MP1_ES1_1(Map<String, String> objDictionary,  String strCreditCardIncrementTime, String strViolationId)
+  	{
+  		CommonWeb clsCommonWeb = new CommonWeb();
+  		//Get Fees On First Payment
+	  	String strFirstPayment = objDictionary.get("strFirstPayment");
+	  	String strBrowser = objDictionary.get("strBrowser");
+      	String strRemotePath = objDictionary.get("strRemotePath");
+      	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
+      	if(strValidateImageFlag == null){strValidateImageFlag = "True";}
+		//NTPS: Navigate To Parking Session
+	  	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
+	  	WebDriver driver = getDriver();
+	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
+	  	//VPSH: Validate Parking Session History
 	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-  	  	String strRow3Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column3", "3", "3");
-		if(strRow3Column3.contains("Exited"))
-		{
-	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Voided "+strViolationId);
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "CSR Rejected "+strViolationId);
-		}
-		else
-		{
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Voided "+strViolationId);
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Rejected "+strViolationId);
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
-		}
-		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
-  		if(strValidateImageFlag.equals("True"))
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
+  		String strRow4Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column3", "4", "3");
+  	  	if(strRow4Column3.equals("Exited"))	
+  	  	{
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Voided "+strViolationId);
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "CSR Rejected "+strViolationId);
+  	  	}
+  	  	else
+  	  	{
+	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Voided "+strViolationId);
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "CSR Rejected "+strViolationId);
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Exited");
+  	  	}
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
+      	if(strValidateImageFlag.equals("True"))
 	  	{
 	  		//Click Image Link
 	      	clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
@@ -7120,77 +7882,52 @@ public class IOS_ParkingSessions
 	  	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
 	  	WebDriver driver = getDriver();
 	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
-	  	String strRow1Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strRow1Column5", "1", "3");
-		if(strRow1Column3.contains("Parked"))
-		{
+	  	//VPSH: Validate Parking Session History
+	  	String strRow1Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow1Column3", "1", "3");
+  	  	if(strRow1Column3.equals("Parked"))	
+  	  	{
 		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "App Purchased 15 Minutes");
-		}
-		else
-		{
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Mps account Payment #1");
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","5", "CellValue", "App Purchased 15 Minutes");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
+  	  	}
+  	  	else
+  	  	{
+	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Mps account Payment #1");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","4", "CellValue", "$ 0.25");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
 		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Parked");
-		}
-		String strFirstPayment = objDictionary.get("strFirstPayment");
-	  	DecimalFormat dFormat = new DecimalFormat("$ 0.00");
-	  	if (strFirstPayment != null)
-      	{
-  		  	double dblFirstPaymentFee = Integer.parseInt(strFirstPayment) * .01;
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "3", "CellValue", "Mps account Payment #1");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "5", "CellValue", "Transaction Fee Payment");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
-	  	}
-	  	else
-	  	{
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","0", "Row Does Not Exist", "");
-	  	}
-  		if(strValidateImageFlag.equals("True"))
-	  	{
-	  		//Click Image Link
-	      	clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
-	      	try {Thread.sleep(1000);}catch (Exception e) {}
-	  		//VICAE: Validate Image Count After Exit
-	  		clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary,driver,0,2,"False");
-	      	//VIAC: Validate Images Appear Correctly
-	      	clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
-	  	}
-		driver.quit();
-  	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3101_FTFP0_TUON_UON_PS1_GPV1_RV_RES_IP_wo_LP_MP1_ES1_1(Map<String, String> objDictionary, String strCreditCardIncrementTime, String strViolationId)
-  	{
-  		CommonWeb clsCommonWeb = new CommonWeb();
-  		//Get Fees On First Payment
-	  	String strBrowser = objDictionary.get("strBrowser");
-      	String strRemotePath = objDictionary.get("strRemotePath");
-      	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
-      	if(strValidateImageFlag == null){strValidateImageFlag = "True";}
-		//NTPS: Navigate To Parking Session
-	  	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
-	  	WebDriver driver = getDriver();
-	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
-	  	//VPSH: Validate Parking Session History
-	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "Initial Grace Period Exceeded");
-	  	String strPaymentRow3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strPaymentRow3", "3", "3");
-  		if(strPaymentRow3.equals("Voided "+strViolationId))
+  	  	}
+	  	HttpConnections clsHttpConnections = new HttpConnections();
+	  	String strNotificationSetting = clsHttpConnections.HTTPCONNECTION_GetMobileSubscriptionPreference(objDictionary,"Session Notifications","app");
+  		if(strNotificationSetting.equals("true"))
   		{
-  		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Voided "+strViolationId);
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
-  		}
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mobile Push");
+	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Expiring Session 15 minutes Confirmed");
+	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
+	  	}
   		else
-  		{
-  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
-  		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Voided "+strViolationId);
+  		{	
+  			String strFirstPayment = objDictionary.get("strFirstPayment");
+  	  		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+  	  		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+  	      	if (strFirstPayment != null)
+  	      	{
+  		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #1");
+  		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+  	    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Transaction Fee Payment");
+  	    	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
+  	    
+  	      	}
+  	      	else
+  	      	{
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
+	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","0", "Row Does Not Exist", "");
+  	      	}
   		}
-	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "CSR Rejected "+strViolationId);
-	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
-	  	if(strValidateImageFlag.equals("True"))
+  	  	if(strValidateImageFlag.equals("True"))
 	  	{
 	  		//Click Image Link
 	      	clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
@@ -7202,10 +7939,11 @@ public class IOS_ParkingSessions
 	  	}
 		driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3101_FTFP0_TUON_UON_PS1_GPV1_RV_RES_IP_wo_LP_MP1_ES1_2(Map<String, String> objDictionary, String strCreditCardIncrementTime, String strViolationId)
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3101_FTFP0_UON_PS1_GPV1_RV_RES_IP_wo_LP_MP1_ES1(Map<String, String> objDictionary, String strCreditCardIncrementTime, String strViolationId)
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
   		//Get Fees On First Payment
+	  	String strFirstPayment = objDictionary.get("strFirstPayment");
 	  	String strBrowser = objDictionary.get("strBrowser");
       	String strRemotePath = objDictionary.get("strRemotePath");
       	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
@@ -7215,13 +7953,40 @@ public class IOS_ParkingSessions
 	  	WebDriver driver = getDriver();
 	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
 	  	//VPSH: Validate Parking Session History
-	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Initial Grace Period Exceeded");
-	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Voided "+strViolationId);
-	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "CSR Rejected "+strViolationId);
-	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
-	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
+	  	if (strFirstPayment == null)
+      	{
+	  		String strRow1Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column3", "1", "3");
+	  	  	if(strRow1Column3.equals("Parked"))
+	  	  	{
+	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
+	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
+	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
+	  		}
+	  	  	else
+	  	  	{
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Mps account Payment #1");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","4", "CellValue", "$ 0.25");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Parked");
+	  	  	}
+  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
+  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","0", "Row Does Not Exist", "");
+      	}
+      	else
+      	{
+      		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+      		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+      		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+      		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #1");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+		   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Transaction Fee Payment");
+		   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
+      	}
 	  	if(strValidateImageFlag.equals("True"))
 	  	{
 	  		//Click Image Link
@@ -7234,7 +7999,7 @@ public class IOS_ParkingSessions
 	  	}
 		driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3102_FTFP0_TUON_UON_PS1_GPV1_MP1_ES1(Map<String, String> objDictionary, String strCreditCardIncrementTime, String strViolationId)
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3102_FTFP0_UON_PS1_GPV1_MP1_ES1(Map<String, String> objDictionary, String strCreditCardIncrementTime, String strViolationId)
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
   		Meter clsMeter = new Meter();
@@ -7249,6 +8014,7 @@ public class IOS_ParkingSessions
       	WebDriver driver = getDriver();
       	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
 	  	//VPSH: Validate Parking Session History
+
 	  	if (strFirstPayment == null)
 	  	{
 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
@@ -7377,38 +8143,36 @@ public class IOS_ParkingSessions
       	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
       	WebDriver driver = getDriver();
       	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
-      	//double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
-  		//DecimalFormat dFormat = new DecimalFormat("$ 0.00");
-  		//System.out.println(dFormat.format(dblFirstPaymentFee));
 	  	//VPSH: Validate Parking Session History
 	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "CSR Approved "+strViolationId);
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "To Verify");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Virt Payment #1");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Received 10 Free Minutes with First Payment");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "License Plate Changed");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Approved "+strViolationId);
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "To Verify");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", "$ 0.25");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Virt Payment #1");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Received 10 Free Minutes with First Payment");
   		String strFirstPayment = objDictionary.get("strFirstPayment");
-	  	DecimalFormat dFormat = new DecimalFormat("$ 0.00");
-	  	if (strFirstPayment != null)
+  		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+  		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+      	if (strFirstPayment != null)
       	{
-  		  	double dblFirstPaymentFee = Integer.parseInt(strFirstPayment) * .01;
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "7", "3", "CellValue", "Mps account Payment #1");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "7", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "7", "5", "CellValue", "Transaction Fee Payment");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Unlocked "+strViolationId);
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Mps account Payment #1");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","5", "CellValue", "Transaction Fee Payment");
+    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "Unlocked "+strViolationId);
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","3", "CellValue", "Exited");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "11","0", "Row Does Not Exist", "");
+	    }
+      	else
+      	{
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Unlocked "+strViolationId);
 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "Exited");
 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","0", "Row Does Not Exist", "");
-	  	}
-	  	else
-	  	{
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Unlocked "+strViolationId);
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
-	  	}
-      	if(strValidateImageFlag.equals("True"))
+      	}
+  		if(strValidateImageFlag.equals("True"))
 	  	{
 			//Wait For Images to Load
 			clsMeter.METER_MeterWaitWithMessage(objDictionary,15, "Waiting for 15 seconds for Images to load to Sentry Link-Spot"+strSpotNumber);
@@ -7427,7 +8191,7 @@ public class IOS_ParkingSessions
 	  	}
       	driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3104_FTFP10_TUON_UON_PS1_GPV1_AV_wm_LP_MP1_ES1(Map<String, String> objDictionary, String strCreditCardIncrementTime, String strViolationId)
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3104_FTFP10_TUON_UON_PS1_GPV1_AV_wm_LP_MP1_ES1(Map<String, String> objDictionary, String strFreeTimeFirstPayment, String strMeterIncrementTime, String strViolationId)
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
   		Meter clsMeter = new Meter();
@@ -7442,34 +8206,35 @@ public class IOS_ParkingSessions
 	  	WebDriver driver = getDriver();
 	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
 	  	//VPSH: Validate Parking Session History
-	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
 	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "CSR Approved "+strViolationId);
-	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "To Verify");
-  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Virt Payment #1");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Received 10 Free Minutes with First Payment");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "License Plate Changed");
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Approved "+strViolationId);
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "To Verify");
+  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", "$ 0.25");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Virt Payment #1");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Received 10 Free Minutes with First Payment");
   		String strFirstPayment = objDictionary.get("strFirstPayment");
-	  	DecimalFormat dFormat = new DecimalFormat("$ 0.00");
-	  	if (strFirstPayment != null)
+  		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+  		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+      	if (strFirstPayment != null)
       	{
-  		  	double dblFirstPaymentFee = Integer.parseInt(strFirstPayment) * .01;
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "7", "3", "CellValue", "Mps account Payment #1");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "7", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "7", "5", "CellValue", "Transaction Fee Payment");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Unlocked "+strViolationId);
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Mps account Payment #1");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","5", "CellValue", "Transaction Fee Payment");
+    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "Unlocked "+strViolationId);
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","3", "CellValue", "Exited");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "11","0", "Row Does Not Exist", "");
+	    }
+      	else
+      	{
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Unlocked "+strViolationId);
 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "Exited");
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","0", "Row Does Not Exist", "");
-	  	}
-	  	else
-	  	{
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Unlocked "+strViolationId);
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
-	  	}
-	  	if(strValidateImageFlag.equals("True"))
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","0", "Row Does Not Exist", "");
+      	}
+  		if(strValidateImageFlag.equals("True"))
 	  	{
 			//Wait For Images to Load
 			clsMeter.METER_MeterWaitWithMessage(objDictionary,15, "Waiting for 15 seconds for Images to load to Sentry Link-Spot"+strSpotNumber);
@@ -7488,11 +8253,12 @@ public class IOS_ParkingSessions
 	  	}
 		driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3105_FTFP10_TUON_UON_PS1_GPV1_AV_wom_LP_MP1_ES1(Map<String, String> objDictionary, String strFreeTimeFirstPayment, String strMeterIncrementTime, String strViolationId)
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3105_FTFP10_UON_PS1_GPV1_AV_wom_LP_MP1_ES1(Map<String, String> objDictionary, String strFreeTimeFirstPayment, String strMeterIncrementTime, String strViolationId)
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
   		Meter clsMeter = new Meter();
 	  	//Get Fees On First Payment
+	  	String strFirstPayment = objDictionary.get("strFirstPayment");
 	  	String strSpotNumber = objDictionary.get("strSpotNumber");
 	  	String strBrowser = objDictionary.get("strBrowser");
       	String strRemotePath = objDictionary.get("strRemotePath");
@@ -7505,31 +8271,31 @@ public class IOS_ParkingSessions
 	  	//VPSH: Validate Parking Session History
 	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "CSR Approved "+strViolationId);
-  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "To Verify");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Virt Payment #1");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Received 10 Free Minutes with First Payment");
-  		String strFirstPayment = objDictionary.get("strFirstPayment");
-	  	DecimalFormat dFormat = new DecimalFormat("$ 0.00");
-	  	if (strFirstPayment != null)
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "License Plate Changed");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Approved "+strViolationId);
+  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "To Verify");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", "$ 0.25");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Virt Payment #1");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Received 10 Free Minutes with First Payment");
+  		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+  		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+      	if (strFirstPayment != null)
       	{
-  		  	double dblFirstPaymentFee = Integer.parseInt(strFirstPayment) * .01;
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "7", "3", "CellValue", "Mps account Payment #1");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "7", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "7", "5", "CellValue", "Transaction Fee Payment");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Unlocked "+strViolationId);
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Mps account Payment #1");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","5", "CellValue", "Transaction Fee Payment");
+    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "Unlocked "+strViolationId);
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","3", "CellValue", "Exited");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "11","0", "Row Does Not Exist", "");
+	    }
+      	else
+      	{
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Unlocked "+strViolationId);
 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "Exited");
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","0", "Row Does Not Exist", "");
-	  	}
-	  	else
-	  	{
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Unlocked "+strViolationId);
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
-	  	}
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","0", "Row Does Not Exist", "");
+      	}
   		if(strValidateImageFlag.equals("True"))
 	  	{
 	  		//Wait For Images to Load
@@ -7549,11 +8315,12 @@ public class IOS_ParkingSessions
 	  	}
 		driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3106_FTFP10_TUON_UON_PS1_GPV1_RV_wo_LP_MP1_ES1(Map<String, String> objDictionary, String strFreeTimeFirstPayment, String strMeterIncrementTime, String strViolationId)
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3106_FTFP10_UON_PS1_GPV1_RV_wo_LP_MP1_ES1(Map<String, String> objDictionary, String strFreeTimeFirstPayment, String strMeterIncrementTime, String strViolationId)
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
   		Meter clsMeter = new Meter();
 	  	//Get Fees On First Payment
+	  	String strFirstPayment = objDictionary.get("strFirstPayment");
 	  	String strSpotNumber = objDictionary.get("strSpotNumber");
 	  	String strBrowser = objDictionary.get("strBrowser");
       	String strRemotePath = objDictionary.get("strRemotePath");
@@ -7573,24 +8340,21 @@ public class IOS_ParkingSessions
   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Virt Payment #1");
   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Received 10 Free Minutes with First Payment");
-  		String strFirstPayment = objDictionary.get("strFirstPayment");
-	  	DecimalFormat dFormat = new DecimalFormat("$ 0.00");
-	  	if (strFirstPayment != null)
+  		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+  		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+      	if (strFirstPayment != null)
       	{
-  		  	double dblFirstPaymentFee = Integer.parseInt(strFirstPayment) * .01;
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "7", "3", "CellValue", "Mps account Payment #1");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "7", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "7", "5", "CellValue", "Transaction Fee Payment");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
-	  	}
-	  	else
-	  	{
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Exited");
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","0", "Row Does Not Exist", "");
-	  	}
-  	  	//double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
-  		//DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mps account Payment #1");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Transaction Fee Payment");
+    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
+	    }
+      	else
+      	{
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Exited");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","0", "Row Does Not Exist", "");
+      	}
   		if(strValidateImageFlag.equals("True"))
 	  	{
 	  		//Wait For Images to Load
@@ -7610,11 +8374,12 @@ public class IOS_ParkingSessions
 	  	}
 		driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3107_FTFP10_TUON_UON_PS1_GPV1_RV_wm_LP_MP1_ES1(Map<String, String> objDictionary, String strFreeTimeFirstPayment, String strMeterIncrementTime, String strViolationId)
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3107_FTFP10_UON_PS1_GPV1_RV_wm_LP_MP1_ES1(Map<String, String> objDictionary, String strFreeTimeFirstPayment, String strMeterIncrementTime, String strViolationId)
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
   		Meter clsMeter = new Meter();
 	  	//Get Fees On First Payment
+	  	String strFirstPayment = objDictionary.get("strFirstPayment");
 	  	String strSpotNumber = objDictionary.get("strSpotNumber");
 	  	String strBrowser = objDictionary.get("strBrowser");
       	String strRemotePath = objDictionary.get("strRemotePath");
@@ -7627,29 +8392,29 @@ public class IOS_ParkingSessions
 	  	//VPSH: Validate Parking Session History
 	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Voided "+strViolationId);
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Rejected "+strViolationId);
-  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Virt Payment #1");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Received 10 Free Minutes with First Payment");
-  		String strFirstPayment = objDictionary.get("strFirstPayment");
-	  	DecimalFormat dFormat = new DecimalFormat("$ 0.00");
-	  	if (strFirstPayment != null)
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "License Plate Changed");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Voided "+strViolationId);
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "CSR Rejected "+strViolationId);
+  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", "$ 0.25");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Virt Payment #1");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Received 10 Free Minutes with First Payment");
+  		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+  		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+      	if (strFirstPayment != null)
       	{
-  		  	double dblFirstPaymentFee = Integer.parseInt(strFirstPayment) * .01;
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "7", "3", "CellValue", "Mps account Payment #1");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "7", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "7", "5", "CellValue", "Transaction Fee Payment");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
-	  	}
-	  	else
-	  	{
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Exited");
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","0", "Row Does Not Exist", "");
-	  	}
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Mps account Payment #1");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","5", "CellValue", "Transaction Fee Payment");
+    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "Exited");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","0", "Row Does Not Exist", "");
+	    }
+      	else
+      	{
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
+      	}
   		if(strValidateImageFlag.equals("True"))
 	  	{
 	  		//Wait For Images to Load
@@ -7674,6 +8439,7 @@ public class IOS_ParkingSessions
   		CommonWeb clsCommonWeb = new CommonWeb();
   		Meter clsMeter = new Meter();
 	  	//Get Fees On First Payment
+	  	String strFirstPayment = objDictionary.get("strFirstPayment");
 	  	String strSpotNumber = objDictionary.get("strSpotNumber");
 	  	String strBrowser = objDictionary.get("strBrowser");
       	String strRemotePath = objDictionary.get("strRemotePath");
@@ -7684,31 +8450,32 @@ public class IOS_ParkingSessions
 	  	WebDriver driver = getDriver();
 	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
 	  	//VPSH: Validate Parking Session History
+	  	//Get Fees On First Payment
 	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Voided "+strViolationId);
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Rejected "+strViolationId);
-  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Virt Payment #1");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Received 10 Free Minutes with First Payment");
-  		String strFirstPayment = objDictionary.get("strFirstPayment");
-	  	DecimalFormat dFormat = new DecimalFormat("$ 0.00");
-	  	if (strFirstPayment != null)
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "License Plate Changed");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Voided "+strViolationId);
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "CSR Rejected "+strViolationId);
+  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", "$ 0.25");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Virt Payment #1");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Received 10 Free Minutes with First Payment");
+  		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+  		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+      	if (strFirstPayment != null)
       	{
-  		  	double dblFirstPaymentFee = Integer.parseInt(strFirstPayment) * .01;
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "7", "3", "CellValue", "Mps account Payment #1");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "7", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "7", "5", "CellValue", "Transaction Fee Payment");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
-	  	}
-	  	else
-	  	{
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Exited");
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","0", "Row Does Not Exist", "");
-	  	}
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Mps account Payment #1");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","5", "CellValue", "Transaction Fee Payment");
+    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "Exited");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","0", "Row Does Not Exist", "");
+	    }
+      	else
+      	{
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
+      	}
   		if(strValidateImageFlag.equals("True"))
 	  	{
 	  		//Wait For Images to Load
@@ -7728,10 +8495,11 @@ public class IOS_ParkingSessions
 	  	}
 		driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3109_FTFP10_TUON_UON_PS1_GPV1_RV_RES_wo_LP_MP1_ES1_1(Map<String, String> objDictionary, String strFreeTimeFirstPayment, String strMeterIncrementTime, String strViolationId)
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3109_FTFP10_UON_PS1_GPV1_RV_RES_wo_LP_MP1_ES1_1(Map<String, String> objDictionary, String strFreeTimeFirstPayment, String strCreditCardIncrementTime, String strViolationId)
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
   		//Get Fees On First Payment
+	  	String strFirstPayment = objDictionary.get("strFirstPayment");
 	  	String strBrowser = objDictionary.get("strBrowser");
       	String strRemotePath = objDictionary.get("strRemotePath");
       	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
@@ -7741,23 +8509,24 @@ public class IOS_ParkingSessions
 	  	WebDriver driver = getDriver();
 	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
 	  	//VPSH: Validate Parking Session History
+	  	int intFirstPayment = Integer.parseInt(strCreditCardIncrementTime) + Integer.parseInt(strFreeTimeFirstPayment);
 	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-		String strRow3Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session", "Parking Session History", 1, "strColumn3Row3", "3", "3");
- 		if(strRow3Column3.equals("Exited"))
- 		{
+		String strRow3Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strPaymentRow3", "3", "3");
+  		if(strRow3Column3.equals("Exited"))
+  		{
 			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
 			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Voided "+strViolationId);
 			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "CSR Rejected "+strViolationId);
- 		}
- 		else
- 		{
- 			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Voided "+strViolationId);
- 			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Rejected "+strViolationId);
- 			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
- 		}
+  		}
+  		else
+  		{
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Voided "+strViolationId);
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Rejected "+strViolationId);
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
+  		}
 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
-        if(strValidateImageFlag.equals("True"))
+      	if(strValidateImageFlag.equals("True"))
 	  	{
 	  		clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
 	      	try {Thread.sleep(1000);}catch (Exception e) {}
@@ -7768,10 +8537,11 @@ public class IOS_ParkingSessions
 	  	}
 		driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3109_FTFP10_TUON_UON_PS1_GPV1_RV_RES_wo_LP_MP1_ES1_2(Map<String, String> objDictionary, String strFreeTimeFirstPayment, String strMeterIncrementTime, String strViolationId)
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3109_FTFP10_UON_PS1_GPV1_RV_RES_wo_LP_MP1_ES1_2(Map<String, String> objDictionary, String strFreeTimeFirstPayment, String strMeterIncrementTime, String strViolationId)
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
   		//Get Fees On First Payment
+	  	String strFirstPayment = objDictionary.get("strFirstPayment");
 	  	String strBrowser = objDictionary.get("strBrowser");
       	String strRemotePath = objDictionary.get("strRemotePath");
       	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
@@ -7781,92 +8551,113 @@ public class IOS_ParkingSessions
 	  	WebDriver driver = getDriver();
 	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
 	  	//VPSH: Validate Parking Session History
-	  	String strRow1Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strRow1Column5", "1", "3");
-		if(strRow1Column3.contains("Parked"))
-		{
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #1");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Received 10 Free Minutes with First Payment");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
-	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
+	  	String strRow1Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow1Column3", "1", "3");
+  		if(strRow1Column3.equals("Parked"))
+  		{
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+		  	String strRow2Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow1Column3", "2", "3");
+	  		if(strRow2Column3.equals("Mps account Payment #1"))
+	  		{
+			  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #1");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Received 10 Free Minutes with First Payment");
+			  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+		  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
+	  		}
+	  		else
+	  		{
+	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Virt Payment #2");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "Meter Purchased 1 Minutes ");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #1");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","4", "CellValue", "$ 0.25");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Virt Payment #1");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Received 10 Free Minutes with First Payment");
+			  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
+		  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
+	  		}
 	    }
-		else
-		{
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Mps account Payment #1");
+  		else
+  		{
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Mps account Payment #1");
 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","4", "CellValue", "$ 0.25");
 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
-	  		String strRow2Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session", "Parking Session History", 1, "strColumn2Row3", "2", "3");
-
+	  		String strRow2Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow1Column3", "2", "3");
 	  		if(strRow2Column3.equals("Parked"))
-			{
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Parked");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #1");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Received 10 Free Minutes with First Payment");
-			}
-			else
-			{
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Virt Payment #1");
+	  		{
+	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Parked");
+	  			String strRow3Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow3Column3", "3", "3");
+		  		if(strRow3Column3.equals("Virt Payment #1"))
+		  		{
+		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #1");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Received 10 Free Minutes with First Payment");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValueContains", "Virt Payment");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Meter Purchased 1 Minutes");
+			  	}
+		  		else
+		  		{
+		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #2");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Meter Purchased 1 Minutes ");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Virt Payment #1");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Received 10 Free Minutes with First Payment");
+			  	}
+		  		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+		  		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+		      	if (strFirstPayment != null)
+		      	{
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+		    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "Transaction Fee Payment");
+		    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Exited");
+		    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
+		      	}
+		      	else
+		      	{
+		      		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
+		    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
+		      	}
+		  	}
+	  		else
+	  		{
+	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Virt Payment #1");
 		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "Received 10 Free Minutes with First Payment");
-		  		String strRow3Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session", "Parking Session History", 1, "strColumn3Row3", "3", "3");
-				if(strRow3Column3.equals("Virt Payment #3"))
-				{
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #3");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Parked");
-					String strFirstPayment = objDictionary.get("strFirstPayment");
-				  	DecimalFormat dFormat = new DecimalFormat("$ 0.00");
-				  	if (strFirstPayment != null)
-			      	{
-			  		  	double dblFirstPaymentFee = Integer.parseInt(strFirstPayment) * .01;
-				  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "3", "CellValue", "Mps account Payment #1");
-						clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
-						clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "5", "CellValue", "Transaction Fee Payment");
-						clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Virt Payment #3");
-						clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Exited");
-				  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","0", "Row Does Not Exist", "");
-				  	}
-				  	else
-				  	{
-				  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
-				  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
-				  	}
-				}
-				else
-				{
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Parked");
-					String strFirstPayment = objDictionary.get("strFirstPayment");
-				  	DecimalFormat dFormat = new DecimalFormat("$ 0.00");
-				  	if (strFirstPayment != null)
-			      	{
-			  		  	double dblFirstPaymentFee = Integer.parseInt(strFirstPayment) * .01;
-				  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "3", "CellValue", "Mps account Payment #1");
-						clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
-						clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "5", "CellValue", "Transaction Fee Payment");
-						clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Virt Payment #2");
-						clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Exited");
-				  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
-				  	}
-				  	else
-				  	{
-				  		String strRow4Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session", "Parking Session History", 1, "strColumn4Row3", "4", "3");
-						if(strRow4Column3.equals("Exited"))
-						{
-							clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
-					  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
-						}
-						else
-						{
-							clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
-					  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
-						}
-				  	}
-
-				}
-			}
-	  	}
-		if(strValidateImageFlag.equals("True"))
+		  		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+		  		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+		      	if (strFirstPayment != null)
+		      	{
+		      		String strRow3Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow3Column3", "3", "3");
+			  		if(strRow3Column3.equals("Parkede"))
+			  		{
+			  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Parked");
+			  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Virt Payment #2");
+				  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Received 1 Free Minutes with First Payment");
+				  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "Transaction Fee Payment");
+			    	}
+			  		else
+			  		{
+			      		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #1");
+				  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+			    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Transaction Fee Payment");
+			    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Parked");
+			    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Virt Payment #2");
+				  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "Meter Purchased 1 Minutes");
+			  		}
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Exited");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
+		  	  	}
+		      	else
+		      	{
+		      		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Parked");
+		    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Virt Payment #2");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Received 1 Free Minutes with First Payment");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
+		      	}
+		  	}
+		}
+  	   	if(strValidateImageFlag.equals("True"))
 	  	{
 	  		clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
 	      	try {Thread.sleep(1000);}catch (Exception e) {}
@@ -7893,22 +8684,22 @@ public class IOS_ParkingSessions
 	  	clsCommonWeb.SENTRYLINK_NavigateToViolationHistory(objDictionary, driver, strViolationId);
 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
   	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-  	  	String strRow3Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column3", "3", "3");
-		if(strRow3Column3.equals("Exited"))
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "License Plate Changed");
+  	  	String strRow4Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow3Column3", "4", "3");
+		if(strRow4Column3.equals("Exited"))
 		{
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Voided "+strViolationId);
-	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "CSR Rejected "+strViolationId);
-	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
-	  	}
+	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Voided "+strViolationId);
+	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "CSR Rejected "+strViolationId);
+		}
 		else
 		{
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Voided "+strViolationId);
-	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Rejected "+strViolationId);
-	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
-	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Voided "+strViolationId);
+	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "CSR Rejected "+strViolationId);
+	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Exited");
 		}
-	  	if(strValidateImageFlag.equals("True"))
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
+  	  	if(strValidateImageFlag.equals("True"))
 	  	{
   	  		//Wait For Images to Load
   	  		clsMeter.METER_MeterWaitWithMessage(objDictionary,15, "Waiting for 15 seconds for Images to load to Sentry Link-Spot"+strSpotNumber);
@@ -7927,10 +8718,11 @@ public class IOS_ParkingSessions
 	  	}
 		driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3111_FTFP10_TUON_UON_PS1_GPV1_RV_RES_wom_LP_MP1_ES1_1(Map<String, String> objDictionary,  String strCreditCardIncrementTime, String strViolationId)
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3111_FTFP10_UON_PS1_GPV1_RV_RES_wom_LP_MP1_ES1_1(Map<String, String> objDictionary, String strFreeTimeFirstPayment, String strCreditCardIncrementTime, String strViolationId)
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
   		//Get Fees On First Payment
+	  	String strFirstPayment = objDictionary.get("strFirstPayment");
 	  	String strBrowser = objDictionary.get("strBrowser");
       	String strRemotePath = objDictionary.get("strRemotePath");
       	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
@@ -7940,23 +8732,24 @@ public class IOS_ParkingSessions
 	  	WebDriver driver = getDriver();
 	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
 	  	//VPSH: Validate Parking Session History
-	 	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-  		String strRow3Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column3", "3", "3");
-		if(strRow3Column3.contains("Exited"))
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "License Plate Changed");
+		String strRow4Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strColumn4Row3", "4", "3");
+  		if(strRow4Column3.equals("Exited"))
   		{
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Voided "+strViolationId);
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "CSR Rejected "+strViolationId);
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Voided "+strViolationId);
+  		}
+  		else
+  		{
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Voided "+strViolationId);
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
   	  	}
-		else
-		{
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Voided "+strViolationId);
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Rejected "+strViolationId);
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
-	  	}
-		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
-  	  	if(strValidateImageFlag.equals("True"))
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "CSR Rejected "+strViolationId);
+  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
+      	if(strValidateImageFlag.equals("True"))
+
 	  	{
 	  		//Click Image Link
 	      	clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
@@ -7968,7 +8761,7 @@ public class IOS_ParkingSessions
 	  	}
 		driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3111_FTFP10_TUON_UON_PS1_GPV1_RV_RES_wom_LP_MP1_ES1_2(Map<String, String> objDictionary,  String strCreditCardIncrementTime, String strViolationId)
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3111_FTFP10_UON_PS1_GPV1_RV_RES_wom_LP_MP1_ES1_2(Map<String, String> objDictionary, String strFreeTimeFirstPayment, String strMeterIncrementTime, String strViolationId)
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
   		//Get Fees On First Payment
@@ -7976,83 +8769,120 @@ public class IOS_ParkingSessions
       	String strRemotePath = objDictionary.get("strRemotePath");
       	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
       	if(strValidateImageFlag == null){strValidateImageFlag = "True";}
+    	String strFirstPayment = objDictionary.get("strFirstPayment");
 		//NTPS: Navigate To Parking Session
 	  	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
 	  	WebDriver driver = getDriver();
 	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
 	  	//VPSH: Validate Parking Session History
-	  	String strRow1Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strRow1Column3", "1", "3");
-		if(strRow1Column3.equals("Parked"))
-		{
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "	Virt Payment #1");
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Received 10 Free Minutes with First Payment ");
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
-	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
-		}
-		else
-		{
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Mps account Payment #1");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","4", "CellValue", "$ 0.25");
-			String strRow2Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strRow2Column3", "2", "3");
-			if(strRow2Column3.equals("Parked"))
-			{
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Parked");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "	Virt Payment #1");
-			  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Received 10 Free Minutes with First Payment ");
-			}
-			else
-			{
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Virt Payment #1");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "Received 10 Free Minutes with First Payment ");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Parked");
-			}
-			String strFirstPayment = objDictionary.get("strFirstPayment");
-		  	DecimalFormat dFormat = new DecimalFormat("$ 0.00");
-		  	if (strFirstPayment != null)
-	      	{
-	  		  	double dblFirstPaymentFee = Integer.parseInt(strFirstPayment) * .01;
-
-	  		  	String strRow4Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strRow4Column3", "4", "3");
-				if(strRow4Column3.contains("Virt Payment"))
-				{
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValueContains", "Virt Payment");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Meter Purchased 1 Minutes");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "3", "CellValue", "Mps account Payment #1");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "5", "CellValue", "Transaction Fee Payment");
+	  	String strRow1Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strColumn3Row3", "1", "3");
+  		if(strRow1Column3.equals("Parked"))
+  		{
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+		  	String strRow2Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strColumn2Row3", "2", "3");
+	  		if(strRow2Column3.equals("Mps account Payment #1"))
+	  		{
+			  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #1");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Received 10 Free Minutes with First Payment");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
+	  		}
+	  		else
+	  		{
+	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Virt Payment #2");
+	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "Meter Purchased 1 Minutes");
+	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #1");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","4", "CellValue", "$ 0.25");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Virt Payment #1");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Received 10 Free Minutes with First Payment");
+		  		if (strFirstPayment == null)
+		      	{
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
+		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
 		      	}
-				else
-				{
-			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "3", "CellValue", "Mps account Payment #1");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "5", "CellValue", "Transaction Fee Payment");
-		      		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValueContains", "Virt Payment");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "Meter Purchased 1 Minutes");
-				}
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Exited");
-		  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
+		      	else
+		      	{
+		      		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+			      	double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+		    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "Transaction Fee Payment");
+		    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Exited");
+		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
+		      	}
+		 	}
+  		}
+  		else
+  		{
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Mps account Payment #1");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","4", "CellValue", "$ 0.25");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
+	  		String strRow2Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strColumn3Row3", "2", "3");
+	  		if(strRow2Column3.equals("Parked"))
+	  		{
+	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Parked");
+	  			String strRow3Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strColumn3Row3", "3", "3");
+		  		if(strRow3Column3.equals("Virt Payment #1"))
+		  		{
+		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #1");
+		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Received 10 Free Minutes with First Payment");
+		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
+		  		}
+		  		else
+		  		{
+		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #2");
+		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Meter Purchased 1 Minutes");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Virt Payment #1");
+		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Received 10 Free Minutes with First Payment");
+		  			if (strFirstPayment == null)
+			      	{
+		  				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
+		  				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
+			      	}
+		  			else
+		  			{
+		  				DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+				      	double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+				  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
+				  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+			    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "Transaction Fee Payment");
+			    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Exited");
+			  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
+		  			}
+		  		}
+	  		}
+	  		else
+	  		{
+	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Virt Payment #1");
+	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "Received 10 Free Minutes with First Payment");
+	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Parked");
+	  			
+	  			if (strFirstPayment != null)
+		      	{
+	  				DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+			      	double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Virt Payment #2");
+		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Meter Purchased 1 Minutes");
+		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+		    	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "Transaction Fee Payment");
+		    	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Exited");
+		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
+		      	}
+	  			else
+	  			{
+		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
+	  			}
+	  		}
+	  	}
+  		if(strValidateImageFlag.equals("True"))
 
-			}
-		  	else
-		  	{
-				String strRow4Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strRow4Column3", "4", "3");
-				if(strRow4Column3.contains("Virt Payment"))
-				{
-					//This is a issue with another pivotal tied to it.
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
-			  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
-				}
-				else
-				{
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
-			  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
-				}
-		  	}
-		}
-		if(strValidateImageFlag.equals("True"))
 	  	{
 	  		//Click Image Link
 	      	clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
@@ -8064,7 +8894,7 @@ public class IOS_ParkingSessions
 	  	}
 		driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3112_FTFP10_TUON_UON_PS1_GPV1_RV_RES_IP_wo_LP_MP1_ES1(Map<String, String> objDictionary, String strFreeTimeFirstPayment, String strCreditCardIncrementTime, String strViolationId)
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3112_FTFP10_UON_PS1_GPV1_RV_RES_IP_wo_LP_MP1_ES1(Map<String, String> objDictionary, String strFreeTimeFirstPayment, String strCreditCardIncrementTime, String strViolationId)
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
   		//Get Fees On First Payment
@@ -8115,7 +8945,7 @@ public class IOS_ParkingSessions
 	  	}
 		driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3113_FTFP0_TUON_UON_GPV1_MP1_LMV1_MP1_VMPSIV_ES1(Map<String, String> objDictionary, String strViolationId, String strViolationId2)
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3113_FTFP0_UON_GPV1_MP1_LMV1_MP1_VMPSIV_ES1(Map<String, String> objDictionary, String strViolationId, String strViolationId2)
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
   		Meter clsMeter = new Meter();
@@ -8141,6 +8971,8 @@ public class IOS_ParkingSessions
 	  		String strNotificationSetting = clsHttpConnections.HTTPCONNECTION_GetMobileSubscriptionPreference(objDictionary,"Session Notifications","app");
 	  		if(strNotificationSetting.equals("true"))
 	  		{
+	  			
+	  			
 	  			String strRow4Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow4Column5", "4", "3");
 	  	  		if(strRow4Column3.contains("Voided "+strViolationId))
 	  	  		{
@@ -8153,10 +8985,24 @@ public class IOS_ParkingSessions
 			  	}
 	  	  		else
 	  	  		{
-	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Unlocked "+strViolationId);
-	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "CSR Rejected "+strViolationId);
-		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mobile Push");
-			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","5", "CellValue", "Time Expired");
+		  	  		if(strRow4Column3.contains("Unlocked"))
+		  	  		{
+		  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Unlocked "+strViolationId);
+		  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "CSR Rejected "+strViolationId);
+		  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mobile Push");
+			  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mobile Push");
+		  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Violation "+strViolationId2);
+		  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","5", "CellValue", "Time Expired");
+		  	  		}
+		  	  		else
+		  	  		{
+		  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mobile Push");
+		  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Unlocked "+strViolationId);
+		  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "CSR Rejected "+strViolationId);
+		  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mobile Push");
+		  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Violation "+strViolationId2);
+		  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","5", "CellValue", "Time Expired");
+	  	  			}
 	  	  		}
 		  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "Exited");
 		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","3", "CellValue", "Missed "+strViolationId2);
@@ -8212,7 +9058,7 @@ public class IOS_ParkingSessions
 	  	}
 		driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3114_FTFP0_TUON_UOff_PS1_GPV1_MP1_VMPSIV_VML_EBS(Map<String, String> objDictionary, String strViolationId)
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3114_FTFP0_UOff_PS1_GPV1_MP1_VMPSIV_VML_EBS(Map<String, String> objDictionary, String strViolationId)
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
   		Meter clsMeter = new Meter();
@@ -8227,6 +9073,7 @@ public class IOS_ParkingSessions
 	  	WebDriver driver = getDriver();
 	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
 	  	//VPSH: Validate Parking Session History
+
 	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
@@ -8249,8 +9096,10 @@ public class IOS_ParkingSessions
 	  	}
 		driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3115_FTFP0_TUON_UOff_PS1_GPV1_MP1_VMPSIV_VML_EBS(Map<String, String> objDictionary, String strViolationId)
+	
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3115_FTFP0_TUON_UOff_PS1_GPV1_UTE_MP1_VMPSIV_VML_EBS(Map<String, String> objDictionary, String strViolationId)
   	{
+		//This on is incorrect
   		CommonWeb clsCommonWeb = new CommonWeb();
   		Meter clsMeter = new Meter();
   		//Dictionary Variables
@@ -8264,6 +9113,7 @@ public class IOS_ParkingSessions
 	  	WebDriver driver = getDriver();
 	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
 	  	//VPSH: Validate Parking Session History
+
 	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
@@ -8416,7 +9266,7 @@ public class IOS_ParkingSessions
 	  	}
   		driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3128_FTFP0_TUOFF_UON_PS1_GPV1_AV_wo_LP_MP1_ES1(Map<String, String> objDictionary, String strCreditCardIncrementTime, String strViolationId)
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_2128_FTFP0_TUOFF_UON_PS1_GPV1_AV_wo_LP_MP1_ES1(Map<String, String> objDictionary, String strCreditCardIncrementTime, String strViolationId)
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
   		Meter clsMeter = new Meter();
@@ -8431,7 +9281,7 @@ public class IOS_ParkingSessions
       	WebDriver driver = getDriver();
       	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
 	  	//VPSH: Validate Parking Session History
-  	  	if (strFirstPayment == null)
+      	if (strFirstPayment == null)
       	{
       		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
   	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
@@ -8445,21 +9295,21 @@ public class IOS_ParkingSessions
 	  		if(strNotificationSetting.equals("true"))
 	  		{
 	  			//Might need to store row 5 column 3
-	  			String strRow4Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column3", "5", "3");
+	  			String strRow4Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column3", "6", "3");
 	  	  		if(strRow4Column5.equals("Mobile Push"))
 	  	  		{
 	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mobile Push");
-	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Expiring Session 15 minutes Confirmed");
-	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Unlocked "+strViolationId);
+	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Expiring Session 15 minutes Confirmed");
+	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Unlocked "+strViolationId);
 	  	  		}
 	  	  		else
 	  	  		{
 	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Unlocked "+strViolationId);
 	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mobile Push");
-	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Expiring Session 15 minutes Confirmed");
+	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValueContains", "Expiring Session 15 minutes");
 	  	  		}
-	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "Exited");
-	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","0", "Row Does Not Exist", "");
+	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
+	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
 	  		}
 	  		else
 	  		{
@@ -8474,29 +9324,34 @@ public class IOS_ParkingSessions
       		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
       		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
   	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "CSR Approved "+strViolationId);
-  	  		String strRow4Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column3", "4", "5");
-  	  		if(strRow4Column5.equals("Transaction Fee Payment"))
+  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "License Plate Changed");
+	  		
+  	  		
+  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Approved "+strViolationId);
+  	  		String strRow5Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow5Column5", "5", "5");
+  	  		if(strRow5Column5.equals("Transaction Fee Payment"))
   	  		{
-	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #1");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","4", "CellValue", dFormat.format(dblFirstPaymentFee));
-			   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Transaction Fee Payment");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
+  	  			//This is wrong
+	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+			   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "Transaction Fee Payment");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", "$ 0.25");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
 		  	}
   	  		else
   	  		{
-  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #1");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","4", "CellValue", "$ 0.25");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", dFormat.format(dblFirstPaymentFee));
-			   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "Transaction Fee Payment");
+  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "To Verify");
+	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", "$ 0.25");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mps account Payment #1");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+			   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Transaction Fee Payment");
 		  	}
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Voided "+strViolationId);
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Exited");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","0", "Row Does Not Exist", "");
+  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Unlocked "+strViolationId);
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "Exited");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","0", "Row Does Not Exist", "");
       	}
       	if(strValidateImageFlag.equals("True"))
 	  	{
@@ -8542,7 +9397,6 @@ public class IOS_ParkingSessions
 	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Unlocked "+strViolationId);
 	  		HttpConnections clsHttpConnections = new HttpConnections();
 			String strNotificationSetting = clsHttpConnections.HTTPCONNECTION_GetMobileSubscriptionPreference(objDictionary,"Session Notifications","app");
 	  		if(strNotificationSetting.equals("true"))
@@ -8551,7 +9405,7 @@ public class IOS_ParkingSessions
 		  	  	if(strRow6Column3.equals("Mobile Push"))
 		  	  	{
 		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mobile Push");
-			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Expiring Session 15 minutes Confirmed");
+		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Expiring Session 15 minutes Confirmed");
 			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Unlocked "+strViolationId);
 			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
 				  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
@@ -8578,28 +9432,31 @@ public class IOS_ParkingSessions
 	  		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
 		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "CSR Approved "+strViolationId);
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "To Verify");
-	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", dFormat.format(dblFirstPaymentFee));
-		   	String strRow5Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow5Column5", "5", "5");
-  			if(strRow5Column5.equals("Transaction Fee Payment"))
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "License Plate Changed");
+		  	
+		  	
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Approved "+strViolationId);
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "To Verify");
+	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+		   	String strRow6Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow6Column5", "6", "5");
+  			if(strRow6Column5.equals("Transaction Fee Payment"))
   			{
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "Transaction Fee Payment");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", "$ 0.25");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Transaction Fee Payment");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mps account Payment #1");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","4", "CellValue", "$ 0.25");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
   			}
   			else
   			{
-  				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Transaction Fee Payment");
+  				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", "$ 0.25");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Transaction Fee Payment");
 		  	}
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Unlocked "+strViolationId);
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Unlocked "+strViolationId);
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "Exited");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","0", "Row Does Not Exist", "");
 	  	}
 	  	if(strValidateImageFlag.equals("True"))
 	  	{
@@ -8620,11 +9477,12 @@ public class IOS_ParkingSessions
 	  	}
 		driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3130_FTFP0_TUOFF_UON_PS1_GPV1_AV_wm_LP_CSMLP_MP1_ES1(Map<String, String> objDictionary, String strCreditCardIncrementTime, String strViolationId)
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3130_FTFP0_UON_PS1_GPV1_AV_wm_LP_CSMLP_MP1_ES1(Map<String, String> objDictionary, String strCreditCardIncrementTime, String strViolationId)
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
   		Meter clsMeter = new Meter();
-	  	//Get Fees On First Payment
+  		HttpConnections clsHttpConnections = new HttpConnections();
+		//Get Fees On First Payment
 	  	String strFirstPayment = objDictionary.get("strFirstPayment");
 	  	String strSpotNumber = objDictionary.get("strSpotNumber");
 	  	String strBrowser = objDictionary.get("strBrowser");
@@ -8645,35 +9503,42 @@ public class IOS_ParkingSessions
 	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Unlocked "+strViolationId);
-	  		HttpConnections clsHttpConnections = new HttpConnections();
-			String strNotificationSetting = clsHttpConnections.HTTPCONNECTION_GetMobileSubscriptionPreference(objDictionary,"Session Notifications","app");
-	  		if(strNotificationSetting.equals("true"))
-	  		{
-	  			String strRow6Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column3", "6", "3");
-		  	  	if(strRow6Column3.equals("Mobile Push"))
-		  	  	{
-		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mobile Push");
-			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Expiring Session 15 minutes Confirmed");
-			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Unlocked "+strViolationId);
-			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
+	  		String strRow6Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strRow6Column3", "6", "5");
+			if (strRow6Column3.equals("Unlocked "+strViolationId))
+			{
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Unlocked "+strViolationId);
+		  		String strNotificationSetting = clsHttpConnections.HTTPCONNECTION_GetMobileSubscriptionPreference(objDictionary,"Session Notifications","app");
+		  		if(strNotificationSetting.equals("true"))
+		  		{
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mobile Push");
+				  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Expiring Session 15 minutes Confirmed");
+				  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
 				  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
-		  	  	}
-		  	  	else
-		  	  	{
-		  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Unlocked "+strViolationId);
-		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mobile Push");
-			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Expiring Session 15 minutes Confirmed");
-			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
+		  		}
+		  		else
+		  		{
+		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Exited");
+				  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","0", "Row Does Not Exist", "");
+		  		}
+			}
+			else
+			{
+				String strNotificationSetting = clsHttpConnections.HTTPCONNECTION_GetMobileSubscriptionPreference(objDictionary,"Session Notifications","app");
+		  		if(strNotificationSetting.equals("true"))
+		  		{
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mobile Push");
+				  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Expiring Session 15 minutes Confirmed");
+				  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Unlocked "+strViolationId);
+				  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
 				  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
-		  	  	}
-	  		}
-	  		else
-	  		{
-	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Unlocked "+strViolationId);
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Exited");
-			  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","0", "Row Does Not Exist", "");
-	  		}
+		  		}
+		  		else
+		  		{
+		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Unlocked "+strViolationId);
+				  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Exited");
+				  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","0", "Row Does Not Exist", "");
+		  		}
+			}
 	  	}
 	  	else
 	  	{
@@ -8681,28 +9546,31 @@ public class IOS_ParkingSessions
 	  		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
 		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "CSR Approved "+strViolationId);
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "To Verify");
-	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", dFormat.format(dblFirstPaymentFee));
-		   	String strRow5Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow5Column5", "5", "5");
-  			if(strRow5Column5.equals("Transaction Fee Payment"))
-  			{
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "Transaction Fee Payment");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "License Plate Changed");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Approved "+strViolationId);
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "To Verify");
+	  	  	String strRow6Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow6Column5", "6", "5");
+	  	  	if(strRow6Column5.equals("Transaction Fee Payment"))
+	  	  	{
+			  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+			   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Transaction Fee Payment");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mps account Payment #1");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","4", "CellValue", "$ 0.25");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
+	  	  	}
+	  	  	else
+	  	  	{
+		  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
 		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", "$ 0.25");
 		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
-  			}
-  			else
-  			{
-  				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Transaction Fee Payment");
-		  	}
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Unlocked "+strViolationId);
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mps account Payment #1");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+			   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Transaction Fee Payment");
+	  		}
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Unlocked "+strViolationId);
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "Exited");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","0", "Row Does Not Exist", "");
 	  	}
 	  	if(strValidateImageFlag.equals("True"))
 	  	{
@@ -8726,91 +9594,6 @@ public class IOS_ParkingSessions
 	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3131_FTFP0_TUOFF_UON_PS1_GPV1_AV_wom_LP_MP1_ES1(Map<String, String> objDictionary, String strCreditCardIncrementTime, String strViolationId)
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
-  		//Get Fees On First Payment
-	  	String strFirstPayment = objDictionary.get("strFirstPayment");
-	  	String strBrowser = objDictionary.get("strBrowser");
-      	String strRemotePath = objDictionary.get("strRemotePath");
-      	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");if(strValidateImageFlag == null){strValidateImageFlag = "True";}
-		//NTPS: Navigate To Parking Session
-	  	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
-	  	WebDriver driver = getDriver();
-	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
-	  	//VPSH: Validate Parking Session History
-	  	if (strFirstPayment == null)
-      	{
-      		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "CSR Approved "+strViolationId);
-	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "To Verify");
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Unlocked "+strViolationId);
-	  		HttpConnections clsHttpConnections = new HttpConnections();
-			String strNotificationSetting = clsHttpConnections.HTTPCONNECTION_GetMobileSubscriptionPreference(objDictionary,"Session Notifications","app");
-	  		if(strNotificationSetting.equals("true"))
-	  		{
-	  			String strRow6Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow6Column3", "6", "3");
-	  	  		if(strRow6Column3.contains("Unlocked "+strViolationId))
-	  	  		{
-	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Unlocked "+strViolationId);
-			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mobile Push");
-			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Expiring Session 15 minutes Confirmed");
-			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
-		  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
-	  	  		}
-	  	  		else
-	  	  		{
-	  				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mobile Push");
-			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Expiring Session 15 minutes Confirmed");
-			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Unlocked "+strViolationId);
-			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
-		  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
-	  	  		}
-	  		}
-	  		else
-	  		{
-	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Unlocked "+strViolationId);
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Exited");
-	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","0", "Row Does Not Exist", "");
-	  		}
-	  	}
-      	else
-      	{
-      		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
-      		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
-      		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Unlocked "+strViolationId);
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "CSR Approved "+strViolationId);
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "To Verify");
-  	  		String strRow5Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column3", "5", "5");
-	  	  	if(strRow5Column5.equals("Transaction Fee Payment"))
-	  	  	{
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", dFormat.format(dblFirstPaymentFee));
-			   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "Transaction Fee Payment");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", "$ 0.25");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
-	  	  	}
-	  	  	else
-	  	  	{
-		  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", dFormat.format(dblFirstPaymentFee));
-			   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Transaction Fee Payment");
-	  	  	}
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Unlocked "+strViolationId);
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
-  	  	}
-	  	driver.quit();
-  	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3132_FTFP0_TUOFF_UON_PS1_GPV1_RV_wo_LP_MP1_ES1(Map<String, String> objDictionary, String strCreditCardIncrementTime, String strViolationId)
-  	{
-  		CommonWeb clsCommonWeb = new CommonWeb();
   		Meter clsMeter = new Meter();
 	  	//Get Fees On First Payment
 	  	String strFirstPayment = objDictionary.get("strFirstPayment");
@@ -8825,11 +9608,11 @@ public class IOS_ParkingSessions
 	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
 	  	//VPSH: Validate Parking Session History
 	  	if (strFirstPayment == null)
-      	{
-      		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Voided "+strViolationId);
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Rejected "+strViolationId);
+	  	{
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "CSR Approved "+strViolationId);
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "To Verify");
 	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
@@ -8837,78 +9620,140 @@ public class IOS_ParkingSessions
 			String strNotificationSetting = clsHttpConnections.HTTPCONNECTION_GetMobileSubscriptionPreference(objDictionary,"Session Notifications","app");
 	  		if(strNotificationSetting.equals("true"))
 	  		{
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mobile Push");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Expiring Session 15 minutes Confirmed");
-	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Exited");
-	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","0", "Row Does Not Exist", "");
+	  			String strRow6Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column3", "6", "3");
+		  	  	if(strRow6Column3.equals("Mobile Push"))
+		  	  	{
+		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mobile Push");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Expiring Session 15 minutes Confirmed");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Unlocked "+strViolationId);
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
+				  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
+		  	  	}
+		  	  	else
+		  	  	{
+		  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Unlocked "+strViolationId);
+		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mobile Push");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Expiring Session 15 minutes Confirmed");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
+				  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
+		  	  	}
 	  		}
 	  		else
 	  		{
-	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Exited");
-	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
+	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Unlocked "+strViolationId);
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Exited");
+			  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","0", "Row Does Not Exist", "");
 	  		}
-      	}
-      	else
-      	{
-      		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
-      		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
-      		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "CSR Rejected "+strViolationId);
-  	  		String strRow4Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column3", "4", "5");
-  	  		if(strRow4Column5.equals("Transaction Fee Payment"))
-  	  		{
-		  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #1");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","4", "CellValue", dFormat.format(dblFirstPaymentFee));
-			   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Transaction Fee Payment");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
+	  	}
+	  	else
+	  	{
+	  		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+	  		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "License Plate Changed");
+		  	
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Approved "+strViolationId);
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "To Verify");
+	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+		   	String strRow6Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow6Column5", "6", "5");
+  			if(strRow6Column5.equals("Transaction Fee Payment"))
+  			{
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Transaction Fee Payment");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mps account Payment #1");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","4", "CellValue", "$ 0.25");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
+  			}
+  			else
+  			{
+  				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", "$ 0.25");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Transaction Fee Payment");
 		  	}
-  	  		else
-  	  		{
-  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #1");
-  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","4", "CellValue", "$ 0.25");
-  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
-  	  			String strRow5Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column3", "5", "5");
-  	  			if(strRow5Column5.equals("Transaction Fee Payment"))
-  	  			{
-	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
-	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", dFormat.format(dblFirstPaymentFee));
-	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "Transaction Fee Payment");
-	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Voided "+strViolationId);
-  	  			}
-  	  			else
-  	  			{
-	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Voided "+strViolationId);
-	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
-		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", dFormat.format(dblFirstPaymentFee));
-		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Transaction Fee Payment");
-	  			}
-	  		}
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Exited");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","0", "Row Does Not Exist", "");
-      	}
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Unlocked "+strViolationId);
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "Exited");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","0", "Row Does Not Exist", "");
+	  	}
 	  	if(strValidateImageFlag.equals("True"))
 	  	{
-	  		//Wait For Images to Load
+			//Wait For Images to Load
 			clsMeter.METER_MeterWaitWithMessage(objDictionary,15, "Waiting for 15 seconds for Images to load to Sentry Link-Spot"+strSpotNumber);
-	 		driver.navigate().refresh();
+			driver.navigate().refresh();
 			//Click Image Link
-	 		clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
-	 		try {Thread.sleep(1000);}catch (Exception e) {}
-	      	//VICAE: Validate Image Count After Exit
-	      	String strParkingImageDurationEntrance = clsMeter.METER_GetPARKING_IMAGE_LOOK_AHEAD_ENTRANCE(objDictionary,driver);
-	      	String strParkingImageLookAheadEntrance = clsMeter.METER_GetPARKING_IMAGE_LOOK_AHEAD_ENTRANCE(objDictionary,driver);
-	      	String strParkingImageDurationExit  = clsMeter.METER_GetPARKING_IMAGE_DURATION_EXIT(objDictionary,driver);
-	      	int intTotalImageSeconds = Integer.parseInt(strParkingImageDurationEntrance) + Integer.parseInt(strParkingImageLookAheadEntrance) + Integer.parseInt(strParkingImageDurationExit);
-	      	clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary,driver,intTotalImageSeconds,1,"False");
-	      	//VIAC: Validate Images Appear Correctly
-	      	clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
+			clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
+			try {Thread.sleep(1000);}catch (Exception e) {}
+		  	//VICAE: Validate Image Count After Exit
+		  	String strParkingImageDurationEntrance = clsMeter.METER_GetPARKING_IMAGE_LOOK_AHEAD_ENTRANCE(objDictionary,driver);
+		  	String strParkingImageLookAheadEntrance = clsMeter.METER_GetPARKING_IMAGE_LOOK_AHEAD_ENTRANCE(objDictionary,driver);
+		  	String strParkingImageDurationExit  = clsMeter.METER_GetPARKING_IMAGE_DURATION_EXIT(objDictionary,driver);
+		  	int intTotalImageSeconds = Integer.parseInt(strParkingImageDurationEntrance) + Integer.parseInt(strParkingImageLookAheadEntrance) + Integer.parseInt(strParkingImageDurationExit);
+		  	clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary,driver,intTotalImageSeconds,1,"False");
+		  	//VIAC: Validate Images Appear Correctly
+		  	clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
 	  	}
 		driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3133_FTFP0_TUOFF_UON_PS1_GPV1_RV_wm_LP_MP1_ES1(Map<String, String> objDictionary, String strCreditCardIncrementTime, String strViolationId)
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3132_FTFP0_TUOFF_UON_PS1_GPV1_RV_wo_LP_MP1_ES1(Map<String, String> objDictionary, String strCreditCardIncrementTime, String strViolationId)
+  	{
+  		CommonWeb clsCommonWeb = new CommonWeb();
+  		Meter clsMeter = new Meter();
+	  	//Get Fees On First Payment
+	  	String strSpotNumber = objDictionary.get("strSpotNumber");
+	  	String strBrowser = objDictionary.get("strBrowser");
+      	String strRemotePath = objDictionary.get("strRemotePath");
+      	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
+      	if(strValidateImageFlag == null){strValidateImageFlag = "True";}
+		//NTPS: Navigate To Parking Session
+	  	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
+	  	WebDriver driver = getDriver();
+	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
+	  	//VPSH: Validate Parking Session History
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Voided "+strViolationId);
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Rejected "+strViolationId);
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
+  		HttpConnections clsHttpConnections = new HttpConnections();
+		String strNotificationSetting = clsHttpConnections.HTTPCONNECTION_GetMobileSubscriptionPreference(objDictionary,"Session Notifications","app");
+  		if(strNotificationSetting.equals("true"))
+  		{
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mobile Push");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Expiring Session 15 minutes Confirmed");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Exited");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","0", "Row Does Not Exist", "");
+  		}
+  		else
+  		{
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", "$ 0.25");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Transaction Fee Payment");
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Exited");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","0", "Row Does Not Exist", "");
+  		}
+	  	if(strValidateImageFlag.equals("True"))
+	  	{
+			//Wait For Images to Load
+			clsMeter.METER_MeterWaitWithMessage(objDictionary,15, "Waiting for 15 seconds for Images to load to Sentry Link-Spot"+strSpotNumber);
+			driver.navigate().refresh();
+			//Click Image Link
+			clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
+			try {Thread.sleep(1000);}catch (Exception e) {}
+		  	//VICAE: Validate Image Count After Exit
+		  	String strParkingImageDurationEntrance = clsMeter.METER_GetPARKING_IMAGE_LOOK_AHEAD_ENTRANCE(objDictionary,driver);
+		  	String strParkingImageLookAheadEntrance = clsMeter.METER_GetPARKING_IMAGE_LOOK_AHEAD_ENTRANCE(objDictionary,driver);
+		  	String strParkingImageDurationExit  = clsMeter.METER_GetPARKING_IMAGE_DURATION_EXIT(objDictionary,driver);
+		  	int intTotalImageSeconds = Integer.parseInt(strParkingImageDurationEntrance) + Integer.parseInt(strParkingImageLookAheadEntrance) + Integer.parseInt(strParkingImageDurationExit);
+		  	clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary,driver,intTotalImageSeconds,1,"False");
+		  	//VIAC: Validate Images Appear Correctly
+		  	clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
+	  	}
+		driver.quit();
+  	}
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3133_FTFP0_UON_PS1_GPV1_RV_wm_LP_MP1_ES1(Map<String, String> objDictionary, String strCreditCardIncrementTime, String strViolationId)
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
   		Meter clsMeter = new Meter();
@@ -8954,29 +9799,30 @@ public class IOS_ParkingSessions
       		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
       		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
   	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "CSR Rejected "+strViolationId);
-	  	  	String strRow4Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column3", "4", "5");
-	  	  	if(strRow4Column5.equals("Transaction Fee Payment"))
+  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "License Plate Changed");
+  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Voided "+strViolationId);
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "CSR Rejected "+strViolationId);
+	  	  	String strRow6Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow6Column5", "6", "5");
+	  	  	if(strRow6Column5.equals("Transaction Fee Payment"))
 	  	  	{
-	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #1");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","4", "CellValue", dFormat.format(dblFirstPaymentFee));
-			   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Transaction Fee Payment");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
+	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+			   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Transaction Fee Payment");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mps account Payment #1");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","4", "CellValue", "$ 0.25");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
 		  	}
 	  	  	else
 	  	  	{
-	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #1");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","4", "CellValue", "$ 0.25");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", dFormat.format(dblFirstPaymentFee));
-			   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "Transaction Fee Payment");
+	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", "$ 0.25");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mps account Payment #1");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+			   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Transaction Fee Payment");
 		  	}
-	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Voided "+strViolationId);
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Exited");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","0", "Row Does Not Exist", "");
+	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
       	}
 	  	if(strValidateImageFlag.equals("True"))
 	  	{
@@ -9043,29 +9889,30 @@ public class IOS_ParkingSessions
       		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
       		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
   	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "CSR Rejected "+strViolationId);
-  	  		String strRow4Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column3", "4", "5");
-	  		if(strRow4Column5.equals("Transaction Fee Payment"))
+  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "License Plate Changed");
+  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Voided "+strViolationId);
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "CSR Rejected "+strViolationId);
+  	  		String strRow6Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow6Column5", "5", "5");
+	  		if(strRow6Column5.equals("Transaction Fee Payment"))
 	  		{
-	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #1");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","4", "CellValue", dFormat.format(dblFirstPaymentFee));
-			   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Transaction Fee Payment");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
+	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+			   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Transaction Fee Payment");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mps account Payment #1");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","4", "CellValue", "$ 0.25");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
 	  		}
 	  		else
 	  		{
-	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #1");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","4", "CellValue", "$ 0.25");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", dFormat.format(dblFirstPaymentFee));
-			   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "Transaction Fee Payment");
+	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", "$ 0.25");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mps account Payment #1");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+			   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Transaction Fee Payment");
 	  		}
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Voided "+strViolationId);
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Exited");
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","0", "Row Does Not Exist", "");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
+  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
       	}
 	  	if(strValidateImageFlag.equals("True"))
 	  	{
@@ -9086,10 +9933,11 @@ public class IOS_ParkingSessions
 	  	}
 		driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3135_FTFP0_TUOFF_UON_PS1_GPV1_RV_RES_wo_LP_MP1_ES1_1(Map<String, String> objDictionary, String strCreditCardIncrementTime, String strViolationId)
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3135_FTFP0_UON_PS1_GPV1_RV_RES_wo_LP_MP1_ES1_1(Map<String, String> objDictionary, String strCreditCardIncrementTime, String strViolationId)
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
   		//Get Fees On First Payment
+	  	String strFirstPayment = objDictionary.get("strFirstPayment");
 	  	String strBrowser = objDictionary.get("strBrowser");
       	String strRemotePath = objDictionary.get("strRemotePath");
       	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
@@ -9100,12 +9948,24 @@ public class IOS_ParkingSessions
 	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
 	  	//VPSH: Validate Parking Session History
 	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
-  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Voided "+strViolationId);
-		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "CSR Rejected "+strViolationId);
-	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
-  	  	if(strValidateImageFlag.equals("True"))
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 30.00");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "Initial Grace Period Exceeded");
+  		String strRow3Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column3", "3", "3");
+		if(strRow3Column3.contains("Exited"))
+		{
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Voided "+strViolationId);
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "CSR Rejected "+strViolationId);
+		}
+		else
+		{
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Voided "+strViolationId);
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Rejected "+strViolationId);
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
+	  	}
+ 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
+ 		if(strValidateImageFlag.equals("True"))
 	  	{
 	  		clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
 	      	try {Thread.sleep(1000);}catch (Exception e) {}
@@ -9116,10 +9976,11 @@ public class IOS_ParkingSessions
 	  	}
 		driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3135_FTFP0_TUOFF_UON_PS1_GPV1_RV_RES_wo_LP_MP1_ES1_2(Map<String, String> objDictionary, String strCreditCardIncrementTime, String strViolationId)
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3135_FTFP0_UON_PS1_GPV1_RV_RES_wo_LP_MP1_ES1_2(Map<String, String> objDictionary, String strCreditCardIncrementTime, String strViolationId)
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
   		//Get Fees On First Payment
+	  	String strFirstPayment = objDictionary.get("strFirstPayment");
 	  	String strBrowser = objDictionary.get("strBrowser");
       	String strRemotePath = objDictionary.get("strRemotePath");
       	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
@@ -9129,35 +9990,77 @@ public class IOS_ParkingSessions
 	  	WebDriver driver = getDriver();
 	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
 	  	//VPSH: Validate Parking Session History
-	  	String strRow1Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strRow1Column5", "1", "3");
-		if(strRow1Column3.contains("Parked"))
-		{
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "App Purchased 15 Minutes");
-		}
-		else
-		{
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Mps account Payment #1");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","5", "CellValue", "App Purchased 15 Minutes");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Parked");
-		}
-		String strFirstPayment = objDictionary.get("strFirstPayment");
-	  	DecimalFormat dFormat = new DecimalFormat("$ 0.00");
-	  	if (strFirstPayment != null)
-      	{
-  		  	double dblFirstPaymentFee = Integer.parseInt(strFirstPayment) * .01;
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "3", "CellValue", "Mps account Payment #1");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "5", "CellValue", "Transaction Fee Payment");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
-      	}
-	  	else
-	  	{
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","0", "Row Does Not Exist", "");
-	  	}
+	  	String strRow1Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column3", "1", "3");
+	  	HttpConnections clsHttpConnections = new HttpConnections();
+	  	String strNotificationSetting = clsHttpConnections.HTTPCONNECTION_GetMobileSubscriptionPreference(objDictionary,"Session Notifications","app");
+  		if(strNotificationSetting.equals("true"))
+  		{
+  			if(strRow1Column3.equals("Parked"))	
+	  	  	{
+			  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+			  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
+			  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "App Purchased 15 Minutes");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mobile Push");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+	  		}
+	  	  	else
+	  	  	{
+		  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Mps account Payment #1");
+			  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","4", "CellValue", "$ 0.25");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","5", "CellValue", "App Purchased 15 Minutes");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Parked");
+	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mobile Push");
+	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+	  	  	}
+  		}
+  		else
+  		{
+	  	  	if(strRow1Column3.equals("Parked"))	
+	  	  	{
+			  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+			  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
+			  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "App Purchased 15 Minutes");
+		  		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+		       	if (strFirstPayment != null)
+		       	{
+		       		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+				   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #1");
+		 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+		     	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Transaction Fee Payment");
+		     	    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+		     	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
+		       	}
+		       	else
+		       	{
+		       		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
+		       		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","0", "Row Does Not Exist", "");
+		       	}
+	  		}
+	  	  	else
+	  	  	{
+		  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Mps account Payment #1");
+			  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","4", "CellValue", "$ 0.25");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","5", "CellValue", "App Purchased 15 Minutes");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Parked");
+		  		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+		       	if (strFirstPayment != null)
+		       	{
+		       		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+				   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #1");
+		 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+		 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Transaction Fee Payment");
+		 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+		 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
+		       	}
+		       	else
+		       	{
+		       		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
+		       		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","0", "Row Does Not Exist", "");
+		       	}
+	  	  	}
+  		}
 		if(strValidateImageFlag.equals("True"))
 	  	{
 	  		clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
@@ -9173,6 +10076,7 @@ public class IOS_ParkingSessions
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
   		//Get Fees On First Payment
+	  	String strFirstPayment = objDictionary.get("strFirstPayment");
 	  	String strBrowser = objDictionary.get("strBrowser");
       	String strRemotePath = objDictionary.get("strRemotePath");
       	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
@@ -9182,22 +10086,24 @@ public class IOS_ParkingSessions
 	  	WebDriver driver = getDriver();
 	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
 	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-  	  	String strRow3Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session", "Parking Session History", 1, "strColumn3Row3", "3", "3");
-		if(strRow3Column3.equals("Exited"))
+  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
+  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "License Plate Changed");
+  	  	String strRow4Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column3", "4", "3");
+		if(strRow4Column3.contains("Exited"))
 		{
-	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Voided "+strViolationId);
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "CSR Rejected "+strViolationId);
-	 	}
+	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Voided "+strViolationId);
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "CSR Rejected "+strViolationId);
+	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
+		}
 		else
 		{
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Voided "+strViolationId);
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Rejected "+strViolationId);
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
-		}
-		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
-  	  	if(strValidateImageFlag.equals("True"))
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Voided "+strViolationId);
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "CSR Rejected "+strViolationId);
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Exited");
+	 	}
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
+		if(strValidateImageFlag.equals("True"))
 	  	{
 	  		//Click Image Link
 	      	clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
@@ -9213,6 +10119,7 @@ public class IOS_ParkingSessions
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
   		//Get Fees On First Payment
+	  	String strFirstPayment = objDictionary.get("strFirstPayment");
 	  	String strBrowser = objDictionary.get("strBrowser");
       	String strRemotePath = objDictionary.get("strRemotePath");
       	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
@@ -9221,36 +10128,47 @@ public class IOS_ParkingSessions
 	  	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
 	  	WebDriver driver = getDriver();
 	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
-	  	String strRow1Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strRow1Column5", "1", "3");
-		if(strRow1Column3.contains("Mps account Payment #1"))
+	  	String strRow1Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow1Column3", "1", "3");
+		if(strRow1Column3.contains("Parked"))
 		{
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Mps account Payment #1");
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","5", "CellValue", "App Purchased 15 Minutes");
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Parked");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "App Purchased 15 Minutes");
 		}
 		else
 		{
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "App Purchased 15 Minutes");
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Mps account Payment #1");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","5", "CellValue", "App Purchased 15 Minutes");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Parked");
 		}
-		String strFirstPayment = objDictionary.get("strFirstPayment");
-	  	DecimalFormat dFormat = new DecimalFormat("$ 0.00");
-	  	if (strFirstPayment != null)
-      	{
-  		  	double dblFirstPaymentFee = Integer.parseInt(strFirstPayment) * .01;
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "3", "CellValue", "Mps account Payment #1");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "5", "CellValue", "Transaction Fee Payment");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
-      	}
-	  	else
-	  	{
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","0", "Row Does Not Exist", "");
-	  	}
-	  	if(strValidateImageFlag.equals("True"))
+	  	HttpConnections clsHttpConnections = new HttpConnections();
+	  	String strNotificationSetting = clsHttpConnections.HTTPCONNECTION_GetMobileSubscriptionPreference(objDictionary,"Session Notifications","app");
+  		if(strNotificationSetting.equals("true"))
+  		{
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mobile Push");
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Expiring Session 15 minutes Confirmed");
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
+  		}
+  		else
+  		{
+  			double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+	   		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+	       	if (strFirstPayment != null)
+	       	{
+	 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #1");
+	 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+	     	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Transaction Fee Payment");
+	     	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
+	       	}
+	       	else
+	       	{
+	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
+	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","0", "Row Does Not Exist", "");
+	       	}
+  		}
+  	  	if(strValidateImageFlag.equals("True"))
 	  	{
 	  		//Click Image Link
 	      	clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
@@ -9276,21 +10194,24 @@ public class IOS_ParkingSessions
 	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
 	  	//VPSH: Validate Parking Session History
 	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-		String strRow3Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session", "Parking Session History", 1, "strColumn3Row3", "3", "3");
-		if(strRow3Column3.equals("Exited"))
+  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
+  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "License Plate Changed");
+  	  	String strRow4Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow4Column3", "4", "3");
+		if(strRow4Column3.contains("Exited"))
 		{
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
-	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Voided "+strViolationId);
-	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "CSR Rejected "+strViolationId);
+	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "License Plate Changed");
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Voided "+strViolationId);
+	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "CSR Rejected "+strViolationId);
+	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
 		}
 		else
 		{
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Voided "+strViolationId);
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Rejected "+strViolationId);
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Voided "+strViolationId);
+	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "CSR Rejected "+strViolationId);
+	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Exited");
+	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
 		}
-  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
   	  	if(strValidateImageFlag.equals("True"))
 	  	{
 	  		//Click Image Link
@@ -9319,33 +10240,45 @@ public class IOS_ParkingSessions
 	  	String strRow1Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow1Column3", "1", "3");
 		if(strRow1Column3.contains("Parked"))
 		{
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "App Purchased 15 Minutes");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
+	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "App Purchased 15 Minutes");
 		}
 		else
 		{
 			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Mps account Payment #1");
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","5", "CellValue", "App Purchased 15 Minutes");
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Parked");
+	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","5", "CellValue", "App Purchased 15 Minutes");
+	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Parked");
 		}
-		String strFirstPayment = objDictionary.get("strFirstPayment");
-	  	DecimalFormat dFormat = new DecimalFormat("$ 0.00");
-	  	if (strFirstPayment != null)
-      	{
-  		  	double dblFirstPaymentFee = Integer.parseInt(strFirstPayment) * .01;
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "3", "CellValue", "Mps account Payment #1");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "5", "CellValue", "Transaction Fee Payment");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
-      	}
-	  	else
-	  	{
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","0", "Row Does Not Exist", "");
-	  	}
-		if(strValidateImageFlag.equals("True"))
+  	  	HttpConnections clsHttpConnections = new HttpConnections();
+	  	String strNotificationSetting = clsHttpConnections.HTTPCONNECTION_GetMobileSubscriptionPreference(objDictionary,"Session Notifications","app");
+		if(strNotificationSetting.equals("true"))
+		{
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mobile Push");
+	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Expiring Session 15 minutes Confirmed");
+	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
+		}
+		else
+		{
+			String strFirstPayment = objDictionary.get("strFirstPayment");
+			double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+	   		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+	       	if (strFirstPayment != null)
+	       	{
+	       		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #1");
+	 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+	     	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Transaction Fee Payment");
+	     		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+			  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
+	       	}
+	       	else
+	       	{
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
+			  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","0", "Row Does Not Exist", "");
+	       	}
+		}
+	  	if(strValidateImageFlag.equals("True"))
 	  	{
 	  		//Click Image Link
 	      	clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
@@ -9357,10 +10290,11 @@ public class IOS_ParkingSessions
 	  	}
 		driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_FTFP0_TUOFF_UON_PS1_GPV1_RV_RES_IP_wo_LP_MP1_ES1_1(Map<String, String> objDictionary, String strMeterIncrementTime, String strViolationId)
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3138_FTFP0_TUOFF_UON_PS1_GPV1_RV_RES_IP_wo_LP_MP1_ES1_1(Map<String, String>objDictionary, String strMeterIncrementTime, String strViolationId)
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
   		//Get Fees On First Payment
+	  	String strFirstPayment = objDictionary.get("strFirstPayment");
 	  	String strBrowser = objDictionary.get("strBrowser");
       	String strRemotePath = objDictionary.get("strRemotePath");
       	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
@@ -9370,24 +10304,25 @@ public class IOS_ParkingSessions
 	  	WebDriver driver = getDriver();
 	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
 	  	//VPSH: Validate Parking Session History
+	  	int intFirstPayment = Integer.parseInt(strMeterIncrementTime);
 	  	//Get Fees On First Payment
-	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-	  	String strRow3Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session", "Parking Session History", 1, "strColumn3Row3", "3", "3");
- 		if(strRow3Column3.equals("Exited"))
- 		{
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Voided "+strViolationId);
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "CSR Rejected "+strViolationId);
- 		}
- 		else
- 		{
- 			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Voided "+strViolationId);
- 			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Rejected "+strViolationId);
- 			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
-		}
-	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
-      	if(strValidateImageFlag.equals("True"))
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "Initial Grace Period Exceeded");
+  		String strRow3Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column5", "3", "3");
+  		if(strRow3Column3.contains("Exited"))
+  		{
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Voided "+strViolationId);
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "CSR Rejected "+strViolationId);
+  		}
+  		else
+  		{
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Voided "+strViolationId);
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Rejected "+strViolationId);
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
+  		}
+  		if(strValidateImageFlag.equals("True"))
 	  	{
 	  		//Click Image Link
 	      	clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
@@ -9399,10 +10334,11 @@ public class IOS_ParkingSessions
 	  	}
 		driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_FTFP0_TUOFF_UON_PS1_GPV1_RV_RES_IP_wo_LP_MP1_ES1_2(Map<String, String> objDictionary, String strMeterIncrementTime, String strViolationId)
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3138_FTFP0_TUOFF_UON_PS1_GPV1_RV_RES_IP_wo_LP_MP1_ES1_2(Map<String, String>objDictionary, String strMeterIncrementTime, String strViolationId)
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
   		//Get Fees On First Payment
+	  	String strFirstPayment = objDictionary.get("strFirstPayment");
 	  	String strBrowser = objDictionary.get("strBrowser");
       	String strRemotePath = objDictionary.get("strRemotePath");
       	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
@@ -9412,13 +10348,23 @@ public class IOS_ParkingSessions
 	  	WebDriver driver = getDriver();
 	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
 	  	//VPSH: Validate Parking Session History
-	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Initial Grace Period Exceeded");
-	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Voided "+strViolationId);
-	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "CSR Rejected "+strViolationId);
-	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
-      	if(strValidateImageFlag.equals("True"))
+	  	int intFirstPayment = Integer.parseInt(strMeterIncrementTime);
+	  	//Get Fees On First Payment
+	  	String strRow1Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column3", "1", "3");
+  	  	if(strRow1Column3.equals("Parked"))	
+  	  	{
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "App Purchased 15 Minutes");
+  	  	}
+  	  	else
+  	  	{
+	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Mps account Payment #1");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","5", "CellValue", "App Purchased 15 Minutes");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Parked");
+  	  	}	
+  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
+  		if(strValidateImageFlag.equals("True"))
 	  	{
 	  		//Click Image Link
 	      	clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
@@ -9488,11 +10434,70 @@ public class IOS_ParkingSessions
 	  	}
   		driver.quit();
   	}
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3139_FTFP10_TUOFF_UON_PS1_GPV1_MP1_ES1(Map<String, String> objDictionary, String strCreditCardIncrementTime, String strViolationId)
+  	{
+  		CommonWeb clsCommonWeb = new CommonWeb();
+  		Meter clsMeter = new Meter();
+	  	//Get Fees On First Payment
+	  	String strSpotNumber = objDictionary.get("strSpotNumber");
+	  	String strBrowser = objDictionary.get("strBrowser");
+      	String strRemotePath = objDictionary.get("strRemotePath");
+      	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
+      	if(strValidateImageFlag == null){strValidateImageFlag = "True";}
+      	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
+      	WebDriver driver = getDriver();
+      	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
+	  	//VPSH: Validate Parking Session History
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #1");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","4", "CellValue", "$ 0.25");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
+		String strRow4Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow4Column3", "4", "3");
+  		if(strRow4Column3.contains("Virt Payment #1"))
+  		{
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Virt Payment #1");
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Received 10 Free Minutes with First Payment");
+			
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "Transaction Fee Payment");
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Unlocked "+strViolationId);
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "CSR Rejected "+strViolationId);
+  		}
+  		else
+  		{
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Unlocked "+strViolationId);
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "CSR Rejected "+strViolationId);
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Virt Payment #1");
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Received 10 Free Minutes with First Payment");
+		}
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
+	  	if(strValidateImageFlag.equals("True"))
+	  	{
+	  		//Wait For Images to Load
+			clsMeter.METER_MeterWaitWithMessage(objDictionary,15, "Waiting for 15 seconds for Images to load to Sentry Link-Spot"+strSpotNumber);
+	 		driver.navigate().refresh();
+			//Click Image Link
+	 		clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
+	 		try {Thread.sleep(1000);}catch (Exception e) {}
+	      	//VICAE: Validate Image Count After Exit
+	      	String strParkingImageDurationEntrance = clsMeter.METER_GetPARKING_IMAGE_LOOK_AHEAD_ENTRANCE(objDictionary,driver);
+	      	String strParkingImageLookAheadEntrance = clsMeter.METER_GetPARKING_IMAGE_LOOK_AHEAD_ENTRANCE(objDictionary,driver);
+	      	String strParkingImageDurationExit  = clsMeter.METER_GetPARKING_IMAGE_DURATION_EXIT(objDictionary,driver);
+	      	int intTotalImageSeconds = Integer.parseInt(strParkingImageDurationEntrance) + Integer.parseInt(strParkingImageLookAheadEntrance) + Integer.parseInt(strParkingImageDurationExit);
+	      	clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary,driver,intTotalImageSeconds,1,"False");
+	      	//VIAC: Validate Images Appear Correctly
+	      	clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
+	  	}
+  		driver.quit();
+  	}
 	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3140_FTFP10_TUOFF_UON_PS1_GPV1_AV_wm_LP_MP1_ES1(Map<String, String> objDictionary, String strFreeTimeFirstPayment, String strMeterIncrementTime, String strViolationId)
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
   		Meter clsMeter = new Meter();
 	  	//Get Fees On First Payment
+	  	String strFirstPayment = objDictionary.get("strFirstPayment");
 	  	String strSpotNumber = objDictionary.get("strSpotNumber");
 	  	String strBrowser = objDictionary.get("strBrowser");
       	String strRemotePath = objDictionary.get("strRemotePath");
@@ -9506,16 +10511,19 @@ public class IOS_ParkingSessions
 	  	//Get Fees On First Payment
 	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
 	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "CSR Approved "+strViolationId);
-	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "To Verify");
-  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
-	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Virt Payment #1");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Received 10 Free Minutes with First Payment");
-	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Unlocked "+strViolationId);
-	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
-	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "License Plate Changed");
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Approved "+strViolationId);
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "To Verify");
+  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", "$ 0.25");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Virt Payment #1");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Received 10 Free Minutes with First Payment");
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Mps account Payment #1");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","5", "CellValue", "Transaction Fee Payment");
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "Unlocked "+strViolationId);
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","3", "CellValue", "Exited");
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "11","0", "Row Does Not Exist", "");
 	  	if(strValidateImageFlag.equals("True"))
 	  	{
 			//Wait For Images to Load
@@ -9535,7 +10543,7 @@ public class IOS_ParkingSessions
 	  	}
 		driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3141_FTFP10_TUOFF_UON_PS1_GPV1_AV_wo_LP_MP1_ES1(Map<String, String> objDictionary, String strCreditCardIncrementTime, String strViolationId)
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3141_FTFP10_TUOFF_UON_PS1_GPV1_AV_wo_LP_MP1_ES1(Map<String, String> objDictionary, String strFreeTimeFirstPayment, String strMeterIncrementTime, String strViolationId)
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
   		Meter clsMeter = new Meter();
@@ -9549,74 +10557,25 @@ public class IOS_ParkingSessions
       	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
       	WebDriver driver = getDriver();
       	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
+      	//double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+  		//DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+  		//System.out.println(dFormat.format(dblFirstPaymentFee));
 	  	//VPSH: Validate Parking Session History
-      	if (strFirstPayment == null)
-      	{
-      		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "CSR Approved "+strViolationId);
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "To Verify");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
-	  		HttpConnections clsHttpConnections = new HttpConnections();
-			String strNotificationSetting = clsHttpConnections.HTTPCONNECTION_GetMobileSubscriptionPreference(objDictionary,"Session Notifications","app");
-	  		if(strNotificationSetting.equals("true"))
-	  		{
-	  			//Might need to store row 5 column 3
-	  			String strRow4Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column3", "5", "3");
-	  	  		if(strRow4Column5.equals("Mobile Push"))
-	  	  		{
-	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mobile Push");
-	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Expiring Session 15 minutes Confirmed");
-	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Unlocked "+strViolationId);
-	  	  		}
-	  	  		else
-	  	  		{
-	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Unlocked "+strViolationId);
-	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mobile Push");
-	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Expiring Session 15 minutes Confirmed");
-	  	  		}
-	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "Exited");
-	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","0", "Row Does Not Exist", "");
-	  		}
-	  		else
-	  		{
-	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Unlocked "+strViolationId);
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Exited");
-	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","0", "Row Does Not Exist", "");
-	  		}
-      	}
-      	else
-      	{
-      		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
-      		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
-      		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "CSR Approved "+strViolationId);
-  	  		String strRow4Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column3", "4", "5");
-  	  		if(strRow4Column5.equals("Transaction Fee Payment"))
-  	  		{
-	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #1");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","4", "CellValue", dFormat.format(dblFirstPaymentFee));
-			   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Transaction Fee Payment");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
-		  	}
-  	  		else
-  	  		{
-  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #1");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","4", "CellValue", "$ 0.25");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", dFormat.format(dblFirstPaymentFee));
-			   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "Transaction Fee Payment");
-		  	}
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Voided "+strViolationId);
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Exited");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","0", "Row Does Not Exist", "");
-      	}
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "License Plate Changed");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Approved "+strViolationId);
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "To Verify");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", "$ 0.25");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Virt Payment #1");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Received 10 Free Minutes with First Payment");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Mps account Payment #1");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","5", "CellValue", "Transaction Fee Payment");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "Unlocked "+strViolationId);
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","3", "CellValue", "Exited");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "11","0", "Row Does Not Exist", "");
       	if(strValidateImageFlag.equals("True"))
 	  	{
 			//Wait For Images to Load
@@ -9636,11 +10595,12 @@ public class IOS_ParkingSessions
 	  	}
       	driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3142_FTFP10_TUOFF_UON_PS1_GPV1_AV_wom_LP_CMM_MP1_ES1(Map<String, String> objDictionary, String strFreeTimeFirstPayment, String strMeterIncrementTime, String strViolationId)
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3142_FTFP10_TUOFF_UON_PS1_GPV1_AV_wom_LP_MP1_ES1(Map<String, String> objDictionary, String strFreeTimeFirstPayment, String strMeterIncrementTime, String strViolationId)
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
   		Meter clsMeter = new Meter();
 	  	//Get Fees On First Payment
+	  	String strFirstPayment = objDictionary.get("strFirstPayment");
 	  	String strSpotNumber = objDictionary.get("strSpotNumber");
 	  	String strBrowser = objDictionary.get("strBrowser");
       	String strRemotePath = objDictionary.get("strRemotePath");
@@ -9653,16 +10613,19 @@ public class IOS_ParkingSessions
 	  	//VPSH: Validate Parking Session History
 	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "CSR Approved "+strViolationId);
-  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "To Verify");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Virt Payment #1");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Received 10 Free Minutes with First Payment");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Unlocked "+strViolationId);
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "License Plate Changed");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Approved "+strViolationId);
+  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "To Verify");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", "$ 0.25");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Virt Payment #1");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Received 10 Free Minutes with First Payment");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Mps account Payment #1");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","5", "CellValue", "Transaction Fee Payment");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "Unlocked "+strViolationId);
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","3", "CellValue", "Exited");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "11","0", "Row Does Not Exist", "");
   		//double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
   		//DecimalFormat dFormat = new DecimalFormat("$ 0.00");
   	  	if(strValidateImageFlag.equals("True"))
@@ -9684,11 +10647,12 @@ public class IOS_ParkingSessions
 	  	}
 		driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3143_FTFP10_TUOFF_UON_PS1_GPV1_RV_wo_LP_MP1_ES1(Map<String, String> objDictionary, String strFreeTimeFirstPayment, String strMeterIncrementTime, String strViolationId)
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_2143_FTFP10_TUOFF_UON_PS1_GPV1_RV_wo_LP_MP1_ES1(Map<String, String> objDictionary, String strFreeTimeFirstPayment, String strMeterIncrementTime, String strViolationId)
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
   		Meter clsMeter = new Meter();
 	  	//Get Fees On First Payment
+	  	String strFirstPayment = objDictionary.get("strFirstPayment");
 	  	String strSpotNumber = objDictionary.get("strSpotNumber");
 	  	String strBrowser = objDictionary.get("strBrowser");
       	String strRemotePath = objDictionary.get("strRemotePath");
@@ -9708,10 +10672,10 @@ public class IOS_ParkingSessions
   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Virt Payment #1");
   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Received 10 Free Minutes with First Payment");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Exited");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","0", "Row Does Not Exist", "");
-  	  	//double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
-  		//DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mps account Payment #1");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Transaction Fee Payment");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
   		if(strValidateImageFlag.equals("True"))
 	  	{
 	  		//Wait For Images to Load
@@ -9736,6 +10700,7 @@ public class IOS_ParkingSessions
   		CommonWeb clsCommonWeb = new CommonWeb();
   		Meter clsMeter = new Meter();
 	  	//Get Fees On First Payment
+	  	String strFirstPayment = objDictionary.get("strFirstPayment");
 	  	String strSpotNumber = objDictionary.get("strSpotNumber");
 	  	String strBrowser = objDictionary.get("strBrowser");
       	String strRemotePath = objDictionary.get("strRemotePath");
@@ -9748,15 +10713,18 @@ public class IOS_ParkingSessions
 	  	//VPSH: Validate Parking Session History
 	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Voided "+strViolationId);
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Rejected "+strViolationId);
-  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Virt Payment #1");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Received 10 Free Minutes with First Payment");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Exited");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","0", "Row Does Not Exist", "");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "License Plate Changed");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Voided "+strViolationId);
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "CSR Rejected "+strViolationId);
+  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", "$ 0.25");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Virt Payment #1");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Received 10 Free Minutes with First Payment");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Mps account Payment #1");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","5", "CellValue", "Transaction Fee Payment");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "Exited");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","0", "Row Does Not Exist", "");
   		//double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
   		//DecimalFormat dFormat = new DecimalFormat("$ 0.00");
   		if(strValidateImageFlag.equals("True"))
@@ -9778,11 +10746,12 @@ public class IOS_ParkingSessions
 	  	}
 		driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3145_FTFP10_TUOFF_UON_PS1_GPV1_RV_wom_LP_MP1_ES1(Map<String, String> objDictionary, String strFreeTimeFirstPayment, String strMeterIncrementTime, String strViolationId)
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3145_FTFP10_TUOFF_UON_PS1_GPV1_RV_wom_LP_MP1_ES1_VPSH_VICAE_VIAC(Map<String, String> objDictionary, String strFreeTimeFirstPayment, String strMeterIncrementTime, String strViolationId)
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
   		Meter clsMeter = new Meter();
 	  	//Get Fees On First Payment
+	  	String strFirstPayment = objDictionary.get("strFirstPayment");
 	  	String strSpotNumber = objDictionary.get("strSpotNumber");
 	  	String strBrowser = objDictionary.get("strBrowser");
       	String strRemotePath = objDictionary.get("strRemotePath");
@@ -9795,15 +10764,18 @@ public class IOS_ParkingSessions
 	  	//VPSH: Validate Parking Session History
 	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Voided "+strViolationId);
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Rejected "+strViolationId);
-  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Virt Payment #1");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Received 10 Free Minutes with First Payment");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Exited");
-  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","0", "Row Does Not Exist", "");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "License Plate Changed");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Voided "+strViolationId);
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "CSR Rejected "+strViolationId);
+  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","4", "CellValue", "$ 0.25");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Virt Payment #1");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Received 10 Free Minutes with First Payment");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Mps account Payment #1");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","5", "CellValue", "Transaction Fee Payment");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "Exited");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","0", "Row Does Not Exist", "");
       	if(strValidateImageFlag.equals("True"))
 	  	{
 	  		//Wait For Images to Load
@@ -9823,282 +10795,12 @@ public class IOS_ParkingSessions
 	  	}
 		driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3146_FTFP10_TUOFF_UON_PS1_GPV1_RV_RES_wo_LP_MP1_ES1_1(Map<String, String> objDictionary, String strFreeTimeFirstPayment, String strMeterIncrementTime, String strViolationId)
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3146_FTFP10_TUOFF_UON_PS1_GPV1_RV_RES_wo_LP_MP1_ES1_1(Map<String, String> objDictionary, String strCreditCardIncrementTime, String strViolationId)
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
-  		//Get Fees On First Payment
-	  	String strBrowser = objDictionary.get("strBrowser");
-      	String strRemotePath = objDictionary.get("strRemotePath");
-      	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
-      	if(strValidateImageFlag == null){strValidateImageFlag = "True";}
-		//NTPS: Navigate To Parking Session
-	  	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
-	  	WebDriver driver = getDriver();
-	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
-	  	//VPSH: Validate Parking Session History
-	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-		String strRow3Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session", "Parking Session History", 1, "strColumn3Row3", "3", "3");
- 		if(strRow3Column3.equals("Exited"))
- 		{
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Voided "+strViolationId);
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "CSR Rejected "+strViolationId);
- 		}
- 		else
- 		{
- 			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Voided "+strViolationId);
- 			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Rejected "+strViolationId);
- 			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
- 		}
-		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
-        if(strValidateImageFlag.equals("True"))
-	  	{
-	  		clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
-	      	try {Thread.sleep(1000);}catch (Exception e) {}
-	  		//VICAE: Validate Image Count After Exit
-	  		clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary,driver,0,2,"False");
-	      	//VIAC: Validate Images Appear Correctly
-	      	clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
-	  	}
-		driver.quit();
-  	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3146_FTFP10_TUOFF_UON_PS1_GPV1_RV_RES_wo_LP_MP1_ES1_2(Map<String, String> objDictionary, String strFreeTimeFirstPayment, String strMeterIncrementTime, String strViolationId)
-  	{
-  		CommonWeb clsCommonWeb = new CommonWeb();
-  		//Get Fees On First Payment
-	  	String strBrowser = objDictionary.get("strBrowser");
-      	String strRemotePath = objDictionary.get("strRemotePath");
-      	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
-      	if(strValidateImageFlag == null){strValidateImageFlag = "True";}
-		//NTPS: Navigate To Parking Session
-	  	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
-	  	WebDriver driver = getDriver();
-	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
-	  	//VPSH: Validate Parking Session History
-	  	String strRow1Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strRow1Column5", "1", "3");
-		if(strRow1Column3.contains("Parked"))
-		{
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #1");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Received 10 Free Minutes with First Payment");
-	  	}
-		else
-		{
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Mps account Payment #1");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","4", "CellValue", "$ 0.25");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","5", "CellValue", "App Purchased "+strMeterIncrementTime+" Minutes");
-	  		String strRow2Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strRow2Column3", "2", "3");
-			if(strRow2Column3.contains("Parked"))
-			{
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Parked");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #1");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Received 10 Free Minutes with First Payment");
-		  		String strFirstPayment = objDictionary.get("strFirstPayment");
-			  	DecimalFormat dFormat = new DecimalFormat("$ 0.00");
-			  	if (strFirstPayment != null)
-		      	{
-		  		  	double dblFirstPaymentFee = Integer.parseInt(strFirstPayment) * .01;
-		  		  	String strRow4Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strRow4Column3", "4", "3");
-					if(strRow4Column3.equals("Mps account Payment #1"))
-					{
-				  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "3", "CellValue", "Mps account Payment #1");
-						clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
-						clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "5", "CellValue", "Transaction Fee Payment");
-						clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "3", "CellValue", "Virt Payment #2");
-						clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "5", "CellValue", "	Meter Purchased 1 Minutes");
-					}
-					else
-					{
-						clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "3", "CellValue", "Virt Payment #2");
-						clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "5", "CellValue", "	Meter Purchased 1 Minutes");
-						clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "3", "CellValue", "Mps account Payment #1");
-						clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
-						clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "5", "CellValue", "Transaction Fee Payment");
-					}
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "6","3", "CellValue", "Exited");
-			  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "7","0", "Row Does Not Exist", "");
-		      	}
-			  	else
-			  	{
-			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "3", "CellValue", "Virt Payment #2");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "5", "CellValue", "	Meter Purchased 1 Minutes");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5","3", "CellValue", "Exited");
-			  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "6","0", "Row Does Not Exist", "");
-		 	  	}
-			}
-			else
-			{
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Virt Payment #1");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "Received 10 Free Minutes with First Payment");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Parked");
-				String strFirstPayment = objDictionary.get("strFirstPayment");
-			  	DecimalFormat dFormat = new DecimalFormat("$ 0.00");
-			  	if (strFirstPayment != null)
-		      	{
-		  		  	double dblFirstPaymentFee = Integer.parseInt(strFirstPayment) * .01;
-			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "3", "CellValue", "Mps account Payment #1");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "5", "CellValue", "Transaction Fee Payment");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "3", "CellValueContains", "Virt Payment");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "5", "CellValue", "	Meter Purchased 1 Minutes");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "6","3", "CellValue", "Exited");
-			  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "7","0", "Row Does Not Exist", "");
-		      	}
-			  	else
-			  	{
-			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "3", "CellValue", "Virt Payment #2");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "5", "CellValue", "	Meter Purchased 1 Minutes");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5","3", "CellValue", "Exited");
-			  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "6","0", "Row Does Not Exist", "");
-		 	  	}
-			}
-	  	}
-		if(strValidateImageFlag.equals("True"))
-	  	{
-	  		clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
-	      	try {Thread.sleep(1000);}catch (Exception e) {}
-	  		//VICAE: Validate Image Count After Exit
-	  		clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary,driver,0,2,"False");
-	      	//VIAC: Validate Images Appear Correctly
-	      	clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
-	  	}
-		driver.quit();
-  	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3147_FTFP10_TUOFF_UON_PS1_GPV1_RV_RES_wm_LP_MP1_ES1_1(Map<String, String> objDictionary, String strFreeTimeFirstPayment, String strCreditCardIncrementTime, String strViolationId)
- 	{
-		CommonWeb clsCommonWeb = new CommonWeb();
- 		//Get Fees On First Payment
-		String strBrowser = objDictionary.get("strBrowser");
-		String strRemotePath = objDictionary.get("strRemotePath");
-		String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
-		if(strValidateImageFlag == null){strValidateImageFlag = "True";}
-		//NTPS: Navigate To Parking Session
-		threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
-		WebDriver driver = getDriver();
-		//VPSH: Validate Parking Session History
-		clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
-		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
- 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
- 		String strRow3Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session", "Parking Session History", 1, "strColumn3Row3", "3", "3");
- 		if(strRow3Column3.equals("Exited"))
- 		{
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Voided "+strViolationId);
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "CSR Rejected "+strViolationId);
-		}
- 		else
- 		{
- 			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Voided "+strViolationId);
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Rejected "+strViolationId);
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
- 		}
-		if(strValidateImageFlag.equals("True"))
-		{
-			//Click Image Link
-			clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
-			try {Thread.sleep(1000);}catch (Exception e) {}
-			//VICAE: Validate Image Count After Exit
-			clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary,driver,0,2,"False");
-			//VIAC: Validate Images Appear Correctly
-			clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
-		}
-		driver.quit();
- 	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3147_FTFP10_TUOFF_UON_PS1_GPV1_RV_RES_wm_LP_MP1_ES1_2(Map<String, String> objDictionary, String strFreeTimeFirstPayment, String strCreditCardIncrementTime, String strViolationId)
- 	{
-		CommonWeb clsCommonWeb = new CommonWeb();
- 		//Get Fees On First Payment
-		String strBrowser = objDictionary.get("strBrowser");
-		String strRemotePath = objDictionary.get("strRemotePath");
-		String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
-		if(strValidateImageFlag == null){strValidateImageFlag = "True";}
-		//NTPS: Navigate To Parking Session
-		threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
-		WebDriver driver = getDriver();
-		//VPSH: Validate Parking Session History
-		clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
-		String strRow1Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strRow1Column5", "1", "3");
-		if(strRow1Column3.contains("Mps account Payment #1"))
-		{
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Mps account Payment #1");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","5", "CellValue", "App Purchased 15 Minutes");
-			String strRow2Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strRow2Column3", "2", "3");
-			if(strRow2Column3.contains("Parked"))
-			{
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Parked");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #1");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Received 10 Free Minutes with First Payment");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Virt Payment #2");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "	Meter Purchased 1 Minutes");
-				String strFirstPayment = objDictionary.get("strFirstPayment");
-			  	DecimalFormat dFormat = new DecimalFormat("$ 0.00");
-			  	if (strFirstPayment != null)
-		      	{
-		  		  	double dblFirstPaymentFee = Integer.parseInt(strFirstPayment) * .01;
-			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "3", "CellValue", "Mps account Payment #1");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "5", "CellValue", "Transaction Fee Payment");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Exited");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
-		      	}
-			  	else
-			  	{
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
-			  	}
-			}
-			else
-			{
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Virt Payment #1");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "Received 10 Free Minutes with First Payment");
-			}
-		}
-	  	else
-	  	{
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "App Purchased 15 Minutes");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #1");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Received 10 Free Minutes with First Payment");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Virt Payment #2");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "	Meter Purchased 1 Minutes");
-			String strFirstPayment = objDictionary.get("strFirstPayment");
-		  	DecimalFormat dFormat = new DecimalFormat("$ 0.00");
-		  	if (strFirstPayment != null)
-	      	{
-	  		  	double dblFirstPaymentFee = Integer.parseInt(strFirstPayment) * .01;
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "3", "CellValue", "Mps account Payment #1");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "5", "CellValue", "Transaction Fee Payment");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Exited");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
-	      	}
-		  	else
-		  	{
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
-		  	}
-	  	}
-		if(strValidateImageFlag.equals("True"))
-		{
-			//Click Image Link
- 			clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
- 			try {Thread.sleep(1000);}catch (Exception e) {}
-			//VICAE: Validate Image Count After Exit
-			clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary,driver,0,2,"False");
-			//VIAC: Validate Images Appear Correctly
-			clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
-		}
-		driver.quit();
- 	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3148_FTFP10_TUOFF_UON_PS1_GPV1_RV_RES_wom_LP_MP1_1(Map<String, String> objDictionary, String strFreeTimeFirstPayment, String strCreditCardIncrementTime, String strViolationId)
-  	{
-  		CommonWeb clsCommonWeb = new CommonWeb();
-  		//Get Fees On First Payment
+  		Meter clsMeter = new Meter();
+	  	//Get Fees On First Payment
+	  	String strSpotNumber = objDictionary.get("strSpotNumber");
 	  	String strBrowser = objDictionary.get("strBrowser");
       	String strRemotePath = objDictionary.get("strRemotePath");
       	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
@@ -10109,20 +10811,375 @@ public class IOS_ParkingSessions
 	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
 	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
   	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-  	  	String strRow3Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column3", "3", "3");
-		if(strRow3Column3.contains("Exited"))
+  	  	String strRow3Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strColumn3Row3", "3", "3");
+		if(strRow3Column3.equals("Exited"))
 		{
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
+	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
 			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Voided "+strViolationId);
-	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "CSR Rejected "+strViolationId);
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "CSR Rejected "+strViolationId);
 		}
 		else
 		{
-	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Voided "+strViolationId);
-	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Rejected "+strViolationId);
-	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Voided "+strViolationId);
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "CSR Rejected "+strViolationId);
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
+		}
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
+  	  	if(strValidateImageFlag.equals("True"))
+	  	{
+	  		//Wait For Images to Load
+	  		clsMeter.METER_MeterWaitWithMessage(objDictionary,15, "Waiting for 15 seconds for Images to load to Sentry Link-Spot"+strSpotNumber);
+	  		driver.navigate().refresh();
+	  	  	//Click Image Link
+	    	clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
+	    	try {Thread.sleep(1000);}catch (Exception e) {}
+	      	//VICAE: Validate Image Count After Exit
+	      	String strParkingImageDurationEntrance = clsMeter.METER_GetPARKING_IMAGE_LOOK_AHEAD_ENTRANCE(objDictionary,driver);
+	      	String strParkingImageLookAheadEntrance = clsMeter.METER_GetPARKING_IMAGE_LOOK_AHEAD_ENTRANCE(objDictionary,driver);
+	      	String strParkingImageDurationExit  = clsMeter.METER_GetPARKING_IMAGE_DURATION_EXIT(objDictionary,driver);
+	      	int intTotalImageSeconds = Integer.parseInt(strParkingImageDurationEntrance) + Integer.parseInt(strParkingImageLookAheadEntrance) + Integer.parseInt(strParkingImageDurationExit);
+	      	clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary,driver,intTotalImageSeconds,1,"False");
+	      	//VIAC: Validate Images Appear Correctly
+	      	clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
+	  	}
+		driver.quit();
+  	}
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3146_FTFP10_TUOFF_UON_PS1_GPV1_RV_RES_wo_LP_MP1_ES1_2(Map<String, String> objDictionary, String strCreditCardIncrementTime, String strViolationId)
+  	{
+  		CommonWeb clsCommonWeb = new CommonWeb();
+  		Meter clsMeter = new Meter();
+	  	//Get Fees On First Payment
+	  	String strSpotNumber = objDictionary.get("strSpotNumber");
+	  	String strBrowser = objDictionary.get("strBrowser");
+      	String strRemotePath = objDictionary.get("strRemotePath");
+      	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
+      	if(strValidateImageFlag == null){strValidateImageFlag = "True";}
+      	String strFirstPayment = objDictionary.get("strFirstPayment");
+      	DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+   		//NTPS: Navigate To Parking Session
+	  	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
+	  	WebDriver driver = getDriver();
+	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
+	  	String strRow1Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strRow1Column5", "1", "3");
+		if(strRow1Column3.contains("Parked"))
+		{
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "App Purchased 15 Minutes");
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #1");
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Received 10 Free Minutes with First Payment");
+			if (strFirstPayment != null)
+	       	{
+				double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #1");
+	 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+	     	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Transaction Fee Payment");
+	     	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
+	      		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
+	       	}
+			else
+			{
+	      	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
+			    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
+			}
+		}
+		else
+		{
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Mps account Payment #1");
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","5", "CellValue", "App Purchased 15 Minutes");
+			String strRow2Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strRow2Column3", "2", "3");
+			if(strRow2Column3.contains("Parked"))
+			{
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Parked");
+				String strRow3Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strRow3Column3", "3", "3");
+				if(strRow3Column3.contains("Virt Payment #1"))
+				{
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #1");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Received 10 Free Minutes with First Payment");
+					if (strFirstPayment != null)
+			       	{
+			       		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+				   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #1");
+			 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+			     	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Transaction Fee Payment");
+			     	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
+			      		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
+			       	}
+			       	else
+			       	{
+			      	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+			      		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
+			       	}
+				}
+				else
+				{
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #2");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Meter Purchased 1 Minutes");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Virt Payment #1");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Received 10 Free Minutes with First Payment");
+					if (strFirstPayment != null)
+			       	{
+			       		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+				   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
+			 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+			     	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "Transaction Fee Payment");
+			     	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Exited");
+			      		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
+			       	}
+			       	else
+			       	{
+			      	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
+			      		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
+			       	}
+		
+				}
+			}
+			else
+			{
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Virt Payment #1");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "Received 10 Free Minutes with First Payment");
+				
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #1");
+	 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","4", "CellValue", "$ 0.25");
+	     	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Transaction Fee Payment");
+	     	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Parked");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Virt Payment #2");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "Meter Purchased 1 Minutes");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Exited");
+			    clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
+			}
+		}
+		if(strValidateImageFlag.equals("True"))
+	  	{
+	  		//Wait For Images to Load
+	  		clsMeter.METER_MeterWaitWithMessage(objDictionary,15, "Waiting for 15 seconds for Images to load to Sentry Link-Spot"+strSpotNumber);
+	  		driver.navigate().refresh();
+	  	  	//Click Image Link
+	    	clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
+	    	try {Thread.sleep(1000);}catch (Exception e) {}
+	      	//VICAE: Validate Image Count After Exit
+	      	String strParkingImageDurationEntrance = clsMeter.METER_GetPARKING_IMAGE_LOOK_AHEAD_ENTRANCE(objDictionary,driver);      	
+	      	String strParkingImageLookAheadEntrance = clsMeter.METER_GetPARKING_IMAGE_LOOK_AHEAD_ENTRANCE(objDictionary,driver);
+	      	String strParkingImageDurationExit  = clsMeter.METER_GetPARKING_IMAGE_DURATION_EXIT(objDictionary,driver);
+	      	int intTotalImageSeconds = Integer.parseInt(strParkingImageDurationEntrance) + Integer.parseInt(strParkingImageLookAheadEntrance) + Integer.parseInt(strParkingImageDurationExit);
+	      	clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary,driver,intTotalImageSeconds,1,"False");
+	      	//VIAC: Validate Images Appear Correctly
+	      	clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
+	  	}
+		driver.quit();
+  	}
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3147_FTFP10_TUOFF_UON_PS1_GPV1_RV_RES_wm_LP_MP1_ES1_1(Map<String, String> objDictionary, String strFreeTimeFirstPayment, String strCreditCardIncrementTime, String strViolationId)
+  	{
+		CommonWeb clsCommonWeb = new CommonWeb();
+  		//Get Fees On First Payment
+	  	String strBrowser = objDictionary.get("strBrowser");
+      	String strRemotePath = objDictionary.get("strRemotePath");
+      	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
+      	if(strValidateImageFlag == null){strValidateImageFlag = "True";}
+		//NTPS: Navigate To Parking Session
+	  	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
+	  	WebDriver driver = getDriver();
+	  	//VPSH: Validate Parking Session History
+		clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "License Plate Changed");
+  	  	String strRow4Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strColumn4Row3", "4", "3");
+  		if(strRow4Column3.equals("Exited"))
+  		{
+	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Voided "+strViolationId);
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "CSR Rejected "+strViolationId);
+    		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
+	  	}
+  		else
+  		{
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Voided "+strViolationId);
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "CSR Rejected "+strViolationId);
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Exited");
+    		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
+	   }
+	  	if(strValidateImageFlag.equals("True"))
+	  	{
+	  		//Click Image Link
+	      	clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
+	      	try {Thread.sleep(1000);}catch (Exception e) {}
+	  		//VICAE: Validate Image Count After Exit
+	  		clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary,driver,0,2,"False");
+	      	//VIAC: Validate Images Appear Correctly
+	      	clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
+	  	}
+		driver.quit();
+  	}
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3147_FTFP10_TUOFF_UON_PS1_GPV1_RV_RES_wm_LP_MP1_ES1_2(Map<String, String> objDictionary, String strFreeTimeFirstPayment, String strCreditCardIncrementTime, String strViolationId)
+  	{
+		CommonWeb clsCommonWeb = new CommonWeb();
+  		//Get Fees On First Payment
+	  	String strBrowser = objDictionary.get("strBrowser");
+      	String strRemotePath = objDictionary.get("strRemotePath");
+      	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
+      	if(strValidateImageFlag == null){strValidateImageFlag = "True";}
+		//NTPS: Navigate To Parking Session
+	  	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
+	  	WebDriver driver = getDriver();
+	  	//VPSH: Validate Parking Session History
+		clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
+		String strRow1Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strRow1Column5", "1", "3");
+		if(strRow1Column3.contains("Mps account Payment #1"))
+		{
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Mps account Payment #1");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","5", "CellValue", "App Purchased 15 Minutes");
+		  	String strRow2Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strRow2Column5", "2", "3");
+			if(strRow2Column3.contains("Parked"))
+			{
+			  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Parked");
+			  	String strRow3Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strRow3Column3", "3", "3");
+				if(strRow3Column3.contains("Virt Payment #2"))
+				{
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #2 ");
+				  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Meter Purchased 1 Minutes ");
+				  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Virt Payment #1");
+				  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Received 10 Free Minutes with First Payment");
+				  	String strFirstPayment = objDictionary.get("strFirstPayment");
+					double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+			   		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+			       	if (strFirstPayment != null)
+			       	{
+		       			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
+			 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+			     	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "Transaction Fee Payment");
+			     	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Exited");
+				  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
+		    		}
+		    		else
+		    		{
+		    			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
+				  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
+					}
+				}
+				else
+				{
+				  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #1");
+				  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Received 10 Free Minutes with First Payment");
+				  	String strFirstPayment = objDictionary.get("strFirstPayment");
+					double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+			   		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+			       	if (strFirstPayment != null)
+			       	{
+			       		String strRow4Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strRow4Column3", "4", "3");
+			    		if(strRow4Column3.contains("Mps account Payment #1"))
+			    		{
+				    		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #1");
+				 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+				     	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Transaction Fee Payment");
+				     	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
+					  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
+			    		}
+			    		else
+			    		{
+			    			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Virt Payment #2");
+						  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Meter Purchased 1 Minutes");
+							clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
+				 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+				     	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "Transaction Fee Payment");
+				     	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Exited");
+					  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
+						}
+			       	}
+			       	else
+			       	{
+					  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+				  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
+			       	}
+				}
+			}
+			else
+			{
+			  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Virt Payment #1");
+			  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "Received 10 Free Minutes with First Payment");
+			  	String strRow3Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strRow3Column3", "3", "3");
+	    		if(strRow3Column3.contains("Parked"))
+	    		{
+	    			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Parked");
+	    			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Virt Payment #2");
+				  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Meter Purchased 1 Minutes");
+				  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
+		 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "Transaction Fee Payment");
+				}
+	    		else
+	    		{
+				  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #1");
+		 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Transaction Fee Payment");
+		     	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Parked");
+		     	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Virt Payment #2");
+				  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "Meter Purchased 1 Minutes");
+	    		}
+	    	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Exited");
+		  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
+    	
+			}
+		}
+		else
+		{
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "App Purchased 15 Minutes");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #1");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Received 10 Free Minutes with First Payment");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
+		}
+  	  	if(strValidateImageFlag.equals("True"))
+	  	{
+	  		//Click Image Link
+	      	clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
+	      	try {Thread.sleep(1000);}catch (Exception e) {}
+	  		//VICAE: Validate Image Count After Exit
+	  		clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary,driver,0,2,"False");
+	      	//VIAC: Validate Images Appear Correctly
+	      	clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
+	  	}
+		driver.quit();
+  	}
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3148_FTFP10_TUOFF_UON_PS1_GPV1_RV_RES_wom_LP_MP1_ES1(Map<String, String> objDictionary, String strFreeTimeFirstPayment, String strCreditCardIncrementTime, String strViolationId)
+  	{
+  		CommonWeb clsCommonWeb = new CommonWeb();
+  		//Get Fees On First Payment
+	  	String strBrowser = objDictionary.get("strBrowser");
+      	String strRemotePath = objDictionary.get("strRemotePath");
+      	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
+      	if(strValidateImageFlag == null){strValidateImageFlag = "True";}
+		//NTPS: Navigate To Parking Session
+	  	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
+	  	WebDriver driver = getDriver();
+	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
+	  	//VPSH: Validate Parking Session History
+	  	String strRow1Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strRow1Column3", "1", "3");
+		if(strRow1Column3.contains("Mps account Payment #1"))
+		{
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "No Done");
+			
+		}
+		else
+		{
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
+			String strRow4Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strColumn3Row3", "4", "3");
+	  		if(strRow4Column3.equals("Exited"))
+	  		{
+		  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "License Plate Changed");
+		  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+		    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Voided "+strViolationId);
+			  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "CSR Rejected "+strViolationId);
+		  	}
+	  		else
+	  		{
+		  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "License Plate Changed");
+	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Voided "+strViolationId);
+			  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "CSR Rejected "+strViolationId);
+			  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Exited");
+		  	}
+	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
 		}
 		if(strValidateImageFlag.equals("True"))
 	  	{
@@ -10136,7 +11193,7 @@ public class IOS_ParkingSessions
 	  	}
 		driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3148_FTFP10_TUOFF_UON_PS1_GPV1_RV_RES_wom_LP_MP1_2(Map<String, String> objDictionary, String strFreeTimeFirstPayment, String strCreditCardIncrementTime, String strViolationId)
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3148_FTFP10_TUOFF_UON_PS1_GPV1_RV_RES_wom_LP_MP1_ES1_2(Map<String, String> objDictionary, String strFreeTimeFirstPayment, String strCreditCardIncrementTime, String strViolationId)
   	{
   		CommonWeb clsCommonWeb = new CommonWeb();
   		//Get Fees On First Payment
@@ -10144,93 +11201,84 @@ public class IOS_ParkingSessions
       	String strRemotePath = objDictionary.get("strRemotePath");
       	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
       	if(strValidateImageFlag == null){strValidateImageFlag = "True";}
-		//NTPS: Navigate To Parking Session
+      	String strFirstPayment = objDictionary.get("strFirstPayment");
+      	DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+	    //NTPS: Navigate To Parking Session
 	  	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
 	  	WebDriver driver = getDriver();
 	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
-	  	String strRow1Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column3", "1", "3");
-  	  	if(strRow1Column3.equals("Parked"))
-  	  	{
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
-	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "App Purchased 15 Minutes");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #1");
-	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Received 10 Free Minutes with First Payment");
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
-		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
-  	  	}
-  	  	else
-  	  	{
-	  	  	String strFirstPayment = objDictionary.get("strFirstPayment");
-		  	DecimalFormat dFormat = new DecimalFormat("$ 0.00");
-			double dblFirstPaymentFee = Integer.parseInt(strFirstPayment) * .01;
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Mps account Payment #1");
-	  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","5", "CellValue", "App Purchased 15 Minutes");
-	  	  	String strRow2Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session", "Parking Session History", 1, "strColumn3Row3", "2", "3");
-			if(strRow2Column3.equals("Parked"))
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Mps account Payment #1");
+		String strRow2Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strRow2Column3", "2", "3");
+		if(strRow2Column3.contains("Virt Payment #1"))
+		{
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Virt Payment #1");
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "Received 10 Free Minutes with First Payment");
+		
+			String strRow3Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strRow3Column3", "3", "3");
+			if(strRow3Column3.contains("Parked"))
 			{
-		  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Parked");
-		  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #1");
-		  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Received 10 Free Minutes with First Payment");
-		  	  	String strRow4Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session", "Parking Session History", 1, "strColumn3Row3", "4", "3");
-				if(strRow4Column3.equals("Exited"))
-				{
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
-				}
-				else
-				{
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValueContains", "Virt Payment");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Meter Purchased 1 Minutes");
-			  	 	if (strFirstPayment != null)
-			      	{
-					  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "3", "CellValue", "Mps account Payment #1");
-						clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
-						clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "5", "CellValue", "Transaction Fee Payment");
-				  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Exited");
-				  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
-					}
-				  	else
-				  	{
-				  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
-				  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
-				  	}
-				}
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Parked");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Virt Payment #2");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Meter Purchased 1 Minutes ");
+				if (strFirstPayment != null)
+		       	{
+		       		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+			   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
+		 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+		     	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "Transaction Fee Payment");
+		     		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Exited");
+				  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
+		       	}
+		       	else
+		       	{
+		     		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
+		       		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
+		       	}
 			}
 			else
 			{
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Virt Payment #1");
-		  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "Received 10 Free Minutes with First Payment");
-		  	  	if (strFirstPayment != null)
-		      	{
-		  		  	String strRow3Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session", "Parking Session History", 1, "strColumn3Row3", "3", "3");
-					if(strRow3Column3.equals("Mps account Payment #1"))
-					{
-				  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "3", "CellValue", "Mps account Payment #1");
-						clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
-						clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "5", "CellValue", "Transaction Fee Payment");
-						clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4","3", "CellValue", "Parked");
-					}
-					else
-					{
-						clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3","3", "CellValue", "Parked");
-						clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "3", "CellValue", "Mps account Payment #1");
-						clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
-						clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "5", "CellValue", "Transaction Fee Payment");
-
-					}
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5","3", "CellValueContains", "Virt Payment");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "6","3", "CellValue", "Exited");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "7","0", "Row Does Not Exist", "");
-				}
-			  	else
-			  	{
-			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #3");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
-		     	}
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #1");
+	 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Transaction Fee Payment");
+	 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Parked");
+	 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Virt Payment #2");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "Meter Purchased 1 Minutes ");
+		 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Exited");
+			  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
+	    	}
+		}
+		else
+		{
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Parked");
+			String strRow3Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strRow3Column3", "3", "3");
+			if(strRow3Column3.contains("Virt Payment #1"))
+			{
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #1");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Received 10 Free Minutes with First Payment");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Virt Payment #2");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Meter Purchased 1 Minutes");
 			}
-  	  	}
+			else
+			{
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #2");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Meter Purchased 1 Minutes");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Virt Payment #1");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Received 10 Free Minutes with First Payment");
+			}
+		   	if (strFirstPayment != null)
+	       	{
+	       		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+		   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
+	 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+	     	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "Transaction Fee Payment");
+	     		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Exited");
+			  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
+	       	}
+	       	else
+	       	{
+	     		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
+	       		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
+	       	}
+		}
 		if(strValidateImageFlag.equals("True"))
 	  	{
 	  		//Click Image Link
@@ -10261,12 +11309,57 @@ public class IOS_ParkingSessions
 	  	//Get Fees On First Payment
 	  	if (strFirstPayment == null)
       	{
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "App Purchased "+intFirstPayment+" Minutes");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
-  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","0", "Row Does Not Exist", "");
+	  		String strRow1Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strRow1Column5", "1", "3");
+			if(strRow1Column3.contains("Virt Payment #1"))
+			{
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Virt Payment #1");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","5", "CellValue", "	Meter Purchased 1 Minutes");
+				
+				String strRow2Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strRow3Column3", "2", "3");
+				if(strRow1Column3.contains("Parked"))
+				{
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Parked");
+		  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #1");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","4", "CellValue", "$ 0.25");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Virt Payment #1");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Received 10 Free Minutes with First Payment");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
+		  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
+				}
+				else
+				{
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
+			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "App Purchased "+strCreditCardIncrementTime+" Minutes");
+			  		String strRow3Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strRow3Column3", "3", "3");
+					if(strRow3Column3.contains("Parked"))
+					{
+				  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Parked");
+			  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Virt Payment #1");
+						clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Received 10 Free Minutes with First Payment");
+						clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
+			  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
+					}
+					else
+					{
+						clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Virt Payment #1");
+						clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Received 10 Free Minutes with First Payment");
+						clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Parked");
+						clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
+			  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
+		  	  		}
+				}
+			}
+			else
+			{
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "App Purchased "+intFirstPayment+" Minutes");
+		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
+	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","0", "Row Does Not Exist", "");
+			}
       	}
       	else
       	{
@@ -10309,75 +11402,63 @@ public class IOS_ParkingSessions
 	  	WebDriver driver = getDriver();
 	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
 	  	//VPSH: Validate Parking Session History
-	  	String strFirstPayment = objDictionary.get("strFirstPayment");
-	  	if (strFirstPayment == null)
-	  	{
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #1");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","4", "CellValue", "$ 0.25");
-	  		HttpConnections clsHttpConnections = new HttpConnections();
-	  		String strNotificationSetting = clsHttpConnections.HTTPCONNECTION_GetMobileSubscriptionPreference(objDictionary,"Session Notifications","app");
-	  		if(strNotificationSetting.equals("true"))
-	  		{
-
-
-	  			String strRow4Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow4Column5", "4", "3");
-	  	  		if(strRow4Column3.contains("Voided "+strViolationId))
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
+    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #1");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","4", "CellValue", "$ 0.25");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #1");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "	Transaction Fee Payment");
+  		HttpConnections clsHttpConnections = new HttpConnections();
+  		String strNotificationSetting = clsHttpConnections.HTTPCONNECTION_GetMobileSubscriptionPreference(objDictionary,"Session Notifications","app");
+  		if(strNotificationSetting.equals("true"))
+  		{
+  			String strRow5Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow5Column3", "5", "3");
+  	  		if(strRow5Column3.equals("Mobile Push"))
+  	  		{
+	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mobile Push");
+	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "Expiring Session 15 minutes Confirmed");
+	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mobile Push");
+	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Expiring Session 5 minutes Confirmed");
+	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Unlocked "+strViolationId);
+	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "CSR Rejected "+strViolationId);
+	  		}
+  	  		else
+  	  		{
+  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Unlocked "+strViolationId);
+  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "CSR Rejected "+strViolationId);
+	  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mobile Push");
+	  	  		String strRow6Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow6Column5", "6", "5");
+	  	  		if(strRow6Column5.equals("Expiring Session 5 minutes Confirmed"))
 	  	  		{
-	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Violation "+strViolationId2);
-	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "CSR Rejected "+strViolationId);
-		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mobile Push");
-			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mobile Push");
-			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Violation "+strViolationId2);
-			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","5", "CellValue", "Time Expired");
-			  	}
+	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Expiring Session 5 minutes Confirmed");
+	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mobile Push");
+	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Expiring Session 15 minutes Confirmed");
+	  	  		}
 	  	  		else
 	  	  		{
-	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Unlocked "+strViolationId);
-	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "CSR Rejected "+strViolationId);
-		  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mobile Push");
-			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","5", "CellValue", "Time Expired");
-	  	  		}
-		  	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "Exited");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","3", "CellValue", "Missed "+strViolationId2);
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "11","3", "CellValue", "CSR Rejected "+strViolationId2);
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "12","0", "Row Does Not Exist", "");
-	  		}
-	  		else
-	  		{
-	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Unlocked "+strViolationId);
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "CSR Rejected "+strViolationId);
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Violation "+strViolationId2);
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Time Expired");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Exited");
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Missed "+strViolationId2);
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "CSR Rejected "+strViolationId2);
-		  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","0", "Row Does Not Exist", "");
-	  		}
-	  	}
-	  	else
+		  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Expiring Session 15 minutes Confirmed");
+	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Mobile Push");
+	  	  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","5", "CellValue", "Expiring Session 5 minutes Confirmed");
+  	  	  		}
+  	  		}
+  	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Violation "+strViolationId2);
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "Exited");
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","3", "CellValue", "Missed "+strViolationId2);
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "11","3", "CellValue", "CSR Rejected "+strViolationId2);
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "12","0", "Row Does Not Exist", "");
+  		}
+  		else
 	  	{
-	  		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
-        	DecimalFormat dFormat = new DecimalFormat("$ 0.00");
-        	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
-	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
-	    	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #1");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","4", "CellValue", dFormat.format(dblFirstPaymentFee));
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #1");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","4", "CellValue", "$ 0.25");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Unlocked "+strViolationId);
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "CSR Rejected "+strViolationId);
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Violation "+strViolationId2);
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Purchase Attempt");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","4", "CellValue", "$ 0.25");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","5", "CellValue", "Parking Spot in Violation And Locked, No More Payments Accepted");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "Exited");
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","3", "CellValue", "Missed "+strViolationId2);
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "11","3", "CellValue", "CSR Rejected "+strViolationId2);
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "12","0", "Row Does Not Exist", "");
-    	}
-    	if(strValidateImageFlag.equals("True"))
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Unlocked "+strViolationId);
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "	Reason: Unlocked");
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "CSR Rejected "+strViolationId);
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Violation "+strViolationId2);
+  			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","3", "CellValue", "Missed "+strViolationId2);
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "10","3", "CellValue", "CSR Rejected "+strViolationId2);
+	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "11","0", "Row Does Not Exist", "");
+  		}
+	  	if(strValidateImageFlag.equals("True"))
 	  	{
   			//Wait For Images to Load
 	  	  	clsMeter.METER_MeterWaitWithMessage(objDictionary,15, "Waiting for 15 seconds for Images to load to Sentry Link-Spot"+strSpotNumber);
@@ -10557,7 +11638,7 @@ public class IOS_ParkingSessions
 		driver.quit();
 	}	
 
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3157_PBP_FTFP0_PS1_MP1_ES1_VPSH_VICAE_VIAC(Map<String, String> objDictionary,String strCreditCardIncrementTime)
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3157_PBP_FTFP0_PS1_MP1_ES1_VPSH_VICAE_VIAC(Map<String, String> objDictionary,String strCreditCardIncrementTime) 
 	{
 		CommonWeb clsCommonWeb = new CommonWeb();
 		Meter clsMeter = new Meter();
@@ -10570,93 +11651,106 @@ public class IOS_ParkingSessions
 		if (strValidateImageFlag == null) {strValidateImageFlag = "True";}
 		threadDriver = clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath, objDictionary);
 		WebDriver driver = getDriver();
-		clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver,"Sentry meter", "1");
+		clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter", "1");
 		// VPSH: Validate Parking Session History
-		String strPaymentRow1 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strPaymentRow3","1", "3");
-		if (strFirstPayment == null)
+		String strPaymentRow1 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strPaymentRow3", "1", "3");
+		String strRow2Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strPaymentRow3", "2", "3");
+		if (strFirstPayment == null) 
 		{
-			if (strPaymentRow1.equals("Parked"))
+			if (strPaymentRow1.equals("Parked")) 
 			{
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History",1, "1", "3","CellValue", "Parked");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History",1, "2", "3","CellValue", "Mps account Payment #1");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History",1, "2", "4","CellValue", "$ 0.25");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History",1, "2", "5","CellValue","App Purchased " + strCreditCardIncrementTime + " Minutes");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "1", "3", "CellValue", "Parked");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "2", "3", "CellValue", "Mps account Payment #1");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "2", "4", "CellValue", "$ 0.25");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "2", "5", "CellValue", "App Purchased " + strCreditCardIncrementTime + " Minutes");
 				HttpConnections clsHttpConnections = new HttpConnections();
 				String strNotificationSetting = clsHttpConnections.HTTPCONNECTION_GetMobileSubscriptionPreference(objDictionary, "Session Notifications", "app");
-				if (strNotificationSetting.equals("true"))
+				if (strNotificationSetting.equals("true")) 
 				{
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3","3", "CellValue", "Mobile Push");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4","3", "CellValue", "Exited");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5","0", "Row Does Not Exist", "");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "3", "CellValue", "Mobile Push");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "3", "CellValue", "Exited");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "0", "Row Does Not Exist", "");
 				}
-				else
+				else 
 				{
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3","3", "CellValue", "Exited");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4","0", "Row Does Not Exist", "");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "3", "CellValue", "Exited");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "0", "Row Does Not Exist", "");
 				}
-			}
+			} 
 			else
 			{
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History",1, "1","3", "CellValue", "Mps account Payment #1");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History",1, "1","4", "CellValue", "$ 0.25");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History",1, "1","5", "CellValue","App Purchased " + strCreditCardIncrementTime + " Minutes");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History",1, "2","3", "CellValue", "Parked");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History",	1, "3","3", "CellValue", "Mobile Push");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History",1, "4","3", "CellValue", "Exited");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History",1, "5","0", "Row Does Not Exist", "");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "1", "3", "CellValue", "Mps account Payment #1");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "1", "4", "CellValue", "$ 0.25");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "1", "5", "CellValue", "App Purchased " + strCreditCardIncrementTime + " Minutes");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "2", "3", "CellValue", "Parked");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",	1, "3", "3", "CellValue", "Mobile Push");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "4", "3", "CellValue", "Exited");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "5", "0", "Row Does Not Exist", "");
 			}
 		}
-		else
+		else 
 		{
 			double dblFirstPaymentFee = Integer.parseInt(strFirstPayment) * .01;
 			DecimalFormat dFormat = new DecimalFormat("$ 0.00");
-			if (strPaymentRow1.equals("Parked"))
+			if (strPaymentRow1.equals("Parked")) 
 			{
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History",1, "1", "3","CellValue", "Parked");
-				String strPaymentRow2Column5 = clsCommonWeb.StoreTableValue(objDictionary, driver,"Parking Session","Parking Session History", 1,"strPaymentRow3", "2", "5");
-				if (strPaymentRow2Column5.equals("Transaction Fee Payment"))
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "1", "3", "CellValue", "Parked");
+				String strPaymentRow2Column5 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strPaymentRow3", "2", "5");
+				if (strPaymentRow2Column5.equals("Transaction Fee Payment") && !strRow2Column3.equals("License Plate Changed"))
 				{
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "2","4", "CellValue", dFormat.format(dblFirstPaymentFee));
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "2","5", "CellValue", "Transaction Fee Payment");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #1");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3","4", "CellValue", "$ 0.25");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "5","CellValue","App Purchased " + strCreditCardIncrementTime + " Minutes");
-				}
-				else
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "2", "3", "CellValue", "Mps account Payment #1");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "2", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "2", "5", "CellValue", "Transaction Fee Payment");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "3", "CellValue", "Mps account Payment #1");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "4", "CellValue", "$ 0.25");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "5", "CellValue","App Purchased " + strCreditCardIncrementTime + " Minutes");
+				} else if (strRow2Column3.equals("License Plate Changed")){
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "2", "3", "CellValue", "License Plate Changed");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "3", "CellValue", "Mps account Payment #1");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "5", "CellValue","App Purchased " + strCreditCardIncrementTime + " Minutes");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "5", "CellValue", "Transaction Fee Payment");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "3", "CellValue", "Mps account Payment #1");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "4", "CellValue", "$ 0.25");
+				} 
+				else 
 				{
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "2","5", "CellValue","App Purchased " + strCreditCardIncrementTime + " Minutes");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #1");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3","4", "CellValue", dFormat.format(dblFirstPaymentFee));
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3","5", "CellValue", "Transaction Fee Payment");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "2", "3", "CellValue", "Mps account Payment #1");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "2", "4", "CellValue", "$ 0.25");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "2", "5", "CellValue","App Purchased " + strCreditCardIncrementTime + " Minutes");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "3", "CellValue", "Mps account Payment #1");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "5", "CellValue", "Transaction Fee Payment");
 				}
 				HttpConnections clsHttpConnections = new HttpConnections();
 				String strNotificationSetting = clsHttpConnections.HTTPCONNECTION_GetMobileSubscriptionPreference(objDictionary, "Session Notifications", "app");
 				if (strNotificationSetting.equals("true"))
 				{
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4","3", "CellValue", "Mobile Push");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5","3", "CellValue", "Exited");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "6","0", "Row Does Not Exist", "");
-				}
-				else
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "3", "CellValue", "Mobile Push");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "3", "CellValue", "Exited");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "6", "0", "Row Does Not Exist", "");
+				} 
+				else if (strRow2Column3.equals("License Plate Changed")){
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "3", "CellValue", "Exited");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "6", "0", "Row Does Not Exist", "");
+
+				}else
 				{
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4","3", "CellValue", "Exited");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5","0", "Row Does Not Exist", "");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4", "3", "CellValue", "Exited");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "0", "Row Does Not Exist", "");
 				}
-			}
-			else
+			} 
+			else 
 			{
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History",1, "1","3", "CellValue", "Mps account Payment #1");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History",1, "1","4", "CellValue", dFormat.format(dblFirstPaymentFee));
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History",1, "1","5", "CellValue", "Transaction Fee Payment");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History",1, "2","3", "CellValue", "Mps account Payment #1");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History",1, "2","4", "CellValue", "$ 0.25");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History",1, "2","5", "CellValue","App Purchased " + strCreditCardIncrementTime + " Minutes");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History",1, "3","3", "CellValue", "Parked");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History",1, "4","3", "CellValue", "Exited");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History",1, "5","0", "Row Does Not Exist", "");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "1", "3", "CellValue", "Mps account Payment #1");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "1", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "1", "5", "CellValue", "Transaction Fee Payment");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "2", "3", "CellValue", "Mps account Payment #1");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "2", "4", "CellValue", "$ 0.25");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "2", "5", "CellValue", "App Purchased " + strCreditCardIncrementTime + " Minutes");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "3", "3", "CellValue", "Parked");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "4", "3", "CellValue", "Exited");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History",1, "5", "0", "Row Does Not Exist", "");
 			}
 		}
 		if (strValidateImageFlag.equals("True"))
@@ -10664,10 +11758,10 @@ public class IOS_ParkingSessions
 			clsMeter.METER_MeterWaitWithMessage(objDictionary, 20,"Waiting for 20 seconds for Images to load to Sentry Link-Spot" + strSpotNumber);
 			driver.navigate().refresh();
 			// Click Image Link
-			clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session","Best Violation Picture", 1);
+			clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
 			try {Thread.sleep(1000);} catch (Exception e) {}
 			// VICAE: Validate Image Count After Exit
-			clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary, driver,0, 2, "False");
+			clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary, driver, 0, 2, "False");
 			// VIAC: Validate Images Appear Correctly
 			clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
 		}
@@ -10685,114 +11779,101 @@ public class IOS_ParkingSessions
 		// NTPS: Navigate To Parking Session
 		threadDriver = clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath, objDictionary);
 		WebDriver driver = getDriver();
-		clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter",strSpotNumber);
+		clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter", strSpotNumber);
 		// VPSH: Validate Parking Session History
-		String strRow1Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strRow2Column3","1", "3");
+		String strRow1Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strRow2Column3", "1", "3");
 		int intExpectedRemainingTimePlus1 = intExpectedRemainingTime + 1;
 		int intExpectedRemainingTimeMinus1 = intExpectedRemainingTime - 1;
 		if (strRow1Column3.equals("Parked"))
 		{
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1,"1", "3","CellValue", "Parked");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1,"2", "3","CellValue", "Virt Payment #1");
-			String strRow2Column5 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strRow2Column5","2", "5");
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1,"1", "3", "CellValue", "Parked");
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1,"2", "3", "CellValue", "Virt Payment #1");
+			String strRow2Column5 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strRow2Column5", "2", "5");
 			if (strRow2Column5.contains("Meter Purchased " + intExpectedRemainingTimePlus1 + " Minutes"))
-			{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) " +"equalled ("+ strRow2Column5 + ")");}
+			{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+ strRow2Column5 + ")");}
 			else if (strRow2Column5.contains("Meter Purchased " + intExpectedRemainingTime + " Minutes"))
-			{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) " +"equalled ("+ strRow2Column5 + ")");}
+			{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+ strRow2Column5 + ")");}
 			else if (strRow2Column5.contains("Meter Purchased " + intExpectedRemainingTimeMinus1 + " Minutes"))
-			{Reporter.log("The cell value in row (3) column (5) of the table (Parking Session History) " +"equalled ("+ strRow2Column5 + ")");}
+			{Reporter.log("The cell value in row (3) column (5) of the table (Parking Session History) equalled ("+ strRow2Column5 + ")");}
 			else
-			{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary, driver,"The cell value in row (3) column (5) of the table (Parking Session History) " +"did not equal (Meter Purchased "+ intExpectedRemainingTime + " Minutes) - actual value " +"(" + strRow2Column5 + ")","Local");}
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3","3","CellValue", "Exited");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4","0","Row Does Not Exist", "");
-		}
-		else if (strRow1Column3.equals("Purchase Attempt"))
-		{
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1,"1", "3","CellValue", "Purchase Attempt");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1,"1", "5","CellValue", "Payment Rejected, Spot Is Reserved");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1,"2", "3","CellValue", "Parked");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1,"3", "3","CellValue", "Virt Payment #1");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1,"3", "5","CellValue", "Meter Purchased 60 Minutes");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1,"4", "3","CellValue", "Exited");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1,"5", "0","Row Does Not Exist", "");
+			{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary, driver,"The cell value in row (3) column (5) of the table (Parking Session History) did not equal (Meter Purchased "+ intExpectedRemainingTime + " Minutes) - actual value (" + strRow2Column5 + ")","Local");}
 		}
 		else
 		{
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1,"1", "3","CellValue", "Virt Payment #1");
-			String strRow1Column5 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strRow2Column5","1", "5");
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1,"1", "3", "CellValue", "Virt Payment #1");
+			String strRow1Column5 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strRow2Column5", "1", "5");
 			if (strRow1Column5.contains("Meter Purchased " + intExpectedRemainingTimePlus1 + " Minutes"))
-			{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled " +"("+ strRow1Column5 + ")");}
+			{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+ strRow1Column5 + ")");}
 			else if (strRow1Column5.contains("Meter Purchased " + intExpectedRemainingTime + " Minutes"))
-			{Reporter.log("The cell value in row (1) column (5) of the table (Parking Session History) equalled " +"("+ strRow1Column5 + ")");}
+			{Reporter.log("The cell value in row (1) column (5) of the table (Parking Session History) equalled ("+ strRow1Column5 + ")");}
 			else if (strRow1Column5.contains("Meter Purchased " + intExpectedRemainingTimeMinus1 + " Minutes"))
-			{Reporter.log("The cell value in row (3) column (5) of the table (Parking Session History) equalled " +"("+ strRow1Column5 + ")");}
+			{Reporter.log("The cell value in row (3) column (5) of the table (Parking Session History) equalled ("+ strRow1Column5 + ")");}
 			else
-			{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary, driver,"The cell value in row (3) column (5) of the table (Parking Session History) " +"did not equal (Meter Purchased "+ intExpectedRemainingTime + " Minutes) - actual value " +"(" + strRow1Column5 + ")","Local");}
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1,"2", "3","CellValue", "Parked");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3","3","CellValue", "Exited");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4","0","Row Does Not Exist", "");
+			{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary, driver,"The cell value in row (3) column (5) of the table (Parking Session History) did not equal (Meter Purchased "+ intExpectedRemainingTime + " Minutes) - actual value (" + strRow1Column5 + ")","Local");}
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1,"2", "3", "CellValue", "Parked");
 		}
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Exited");
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","0", "Row Does Not Exist", "");
 		if (strValidateImageFlag.equals("True"))
 		{
 			// Wait For Images to Load
 			clsMeter.METER_MeterWaitWithMessage(objDictionary, 5,"Waiting for 5 seconds for Images to load to Sentry Link-Spot" + strSpotNumber);
 			driver.navigate().refresh();
 			// Click Image Link
-			clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session","Best Violation Picture", 1);
+			clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
 			try {Thread.sleep(1000);} catch (Exception e) {}
 			// VICAE: Validate Image Count After Exit
-			clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary, driver,0, 2, "False");
+			clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary, driver, 0, 2, "False");
 			// VIAC: Validate Images Appear Correctly
 			clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
 		}
 		driver.quit();
 	}
 	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3203_RSVN_FTRSVN_PSWL_WFTE_VMTAP(Map<String, String> objDictionary, String strReservationTimeMinutes,  String strSpotNumber)
-	{
+  	{
 		CommonWeb clsCommonWeb = new CommonWeb();
 		Meter clsMeter = new Meter();
-		//Dictionary Variables
-		String strBrowser = objDictionary.get("strBrowser");
-		String strRemotePath = objDictionary.get("strRemotePath");
-		String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
-		if(strValidateImageFlag == null){strValidateImageFlag = "False";}
-		//NTPS: Navigate To Parking Session
-		threadDriver = clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
-		WebDriver driver = getDriver();
-		clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter",strSpotNumber);
-		//VPSH: Validate Parking Session History
-		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "1","3","CellValue", "Parked");
-		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "2","3","CellValue", "Virt Payment #1");
-		String strRow2Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session","Parking Session History", 1, "strRow2Column5","2", "5");
+  		//Dictionary Variables
+	  	String strBrowser = objDictionary.get("strBrowser");
+      	String strRemotePath = objDictionary.get("strRemotePath");
+      	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");if(strValidateImageFlag == null){strValidateImageFlag = "False";}
+      	//NTPS: Navigate To Parking Session
+	  	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
+	  	WebDriver driver = getDriver();
+	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter",strSpotNumber);
+	  	//VPSH: Validate Parking Session History
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Virt Payment #1");
+		String strRow2Column5 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column5", "2", "5");
 		int intExpectedRemainingTimePlus1 = Integer.parseInt(strReservationTimeMinutes) +1;
 		int intExpectedRemainingTimeMinus1 = Integer.parseInt(strReservationTimeMinutes) -1;
 		if(strRow2Column5.contains("Meter Purchased "+intExpectedRemainingTimePlus1+" Minutes"))
-		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) " +"equalled ("+strRow2Column5+")");}
-		else if(strRow2Column5.contains("Meter Purchased "+strReservationTimeMinutes+" Minutes"))
-		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) " +"equalled ("+strRow2Column5+")");}
-		else if(strRow2Column5.contains("Meter Purchased "+intExpectedRemainingTimeMinus1+" Minutes"))
-		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) " +"equalled ("+strRow2Column5+")");}
-		else
-		{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary, driver,"The cell value in row (2) column (5) of the table (Parking Session History) " +"did not equal (Meter Purchased "+strReservationTimeMinutes+" Minutes) - actual value " +"("+strRow2Column5+")","Local");}
-		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3","3","CellValue", "Purchase Attempt");
-		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3","5","CellValue", "Payment Rejected, Spot Is Reserved");
-		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4","3","CellValue", "Exited");
-		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5","0","Row Does Not Exist", "");
+	  	{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+strRow2Column5+")");}
+  		else if(strRow2Column5.contains("Meter Purchased "+strReservationTimeMinutes+" Minutes"))
+	  	{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+strRow2Column5+")");}
+  		else if(strRow2Column5.contains("Meter Purchased "+intExpectedRemainingTimeMinus1+" Minutes"))
+  		{Reporter.log("The cell value in row (2) column (5) of the table (Parking Session History) equalled ("+strRow2Column5+")");}
+  		else
+		{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row (2) column (5) of the table (Parking Session History) did not equal (Meter Purchased "+strReservationTimeMinutes+" Minutes) - actual value ("+strRow2Column5+")","Local");}
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Purchase Attempt");
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Payment Rejected, Spot Is Reserved");
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Exited");
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","0", "Row Does Not Exist", "");
 		if(strValidateImageFlag.equals("True"))
-		{
-			//Wait For Images to Load
-			clsMeter.METER_MeterWaitWithMessage(objDictionary,5,"Waiting for 5 seconds for Images to load to Sentry Link-Spot"+strSpotNumber);
-			driver.navigate().refresh();
-			//Click Image Link
-			clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session","Best Violation Picture", 1);
-			try {Thread.sleep(1000);}catch (Exception e) {}
-			//VICAE: Validate Image Count After Exit
-			clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary, driver,0,2,"False");
-			//VIAC: Validate Images Appear Correctly
-			clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
-		}
+	  	{
+  	  		//Wait For Images to Load
+	  		clsMeter.METER_MeterWaitWithMessage(objDictionary,5, "Waiting for 5 seconds for Images to load to Sentry Link-Spot"+strSpotNumber);
+	   		driver.navigate().refresh();
+	  		//Click Image Link
+	      	clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
+	      	try {Thread.sleep(1000);}catch (Exception e) {}
+	  		//VICAE: Validate Image Count After Exit
+	  		clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary,driver,0,2,"False");
+	      	//VIAC: Validate Images Appear Correctly
+	      	clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
+	  	}
 		driver.quit();
-	}
+  	}
 	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3301_CS_PSWL(Map<String, String> objDictionary, String strMeterIncrementTime,  String strSpotNumber)
 	{
 		CommonWeb clsCommonWeb = new CommonWeb();
@@ -10857,198 +11938,241 @@ public class IOS_ParkingSessions
 		driver.quit();
 	}
 	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3302_CS_PS1_GPV1_ALPTPS(Map<String, String> objDictionary, String strMeterIncrementTime,  String strSpotNumber)
-	{
+  	{
 		CommonWeb clsCommonWeb = new CommonWeb();
 		//Dictionary Variables
-		String strBrowser = objDictionary.get("strBrowser");
-		String strRemotePath = objDictionary.get("strRemotePath");
-		String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
-		if(strValidateImageFlag == null){strValidateImageFlag = "False";}
-		//NTPS: Navigate To Parking Session
-		threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
-		WebDriver driver = getDriver();
-		clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver,"Sentry meter",strSpotNumber);
-		//VPSH: Validate Parking Session History
-		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "1","3","CellValue", "Parked");
-		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "2","3","CellValue", "Mps account Payment #1");
-		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "2","5","CellValue", "Concierge Purchased "+strMeterIncrementTime+" Minutes");
+	  	String strBrowser = objDictionary.get("strBrowser");
+      	String strRemotePath = objDictionary.get("strRemotePath");
+      	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");if(strValidateImageFlag == null){strValidateImageFlag = "False";}
+      	String strViolationNumber = objDictionary.get("strViolationNumber");
+   	  	//NTPS: Navigate To Parking Session
+	  	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
+	  	WebDriver driver = getDriver();
+	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter",strSpotNumber);
+	  	//VPSH: Validate Parking Session History
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+	  	String strRow2Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column3", "2", "3");
+  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "Concierge Purchased "+strMeterIncrementTime+" Minutes");
 		String strFirstPayment = objDictionary.get("strFirstPayment");
-	  	DecimalFormat dFormat = new DecimalFormat("$ 0.00");
-	  	if (strFirstPayment != null)
-      	{
-  		  	double dblFirstPaymentFee = Integer.parseInt(strFirstPayment) * .01;
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "3", "CellValue", "Mps account Payment #1");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "5", "CellValue", "Transaction Fee Payment");
-			String strViolationNumber = objDictionary.get("strViolationNumber");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4","3","CellValue", "Violation "+strViolationNumber);
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5","3","CellValue", "Recognized as Concierge");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "6","3","CellValue", "Voided "+strViolationNumber);
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "7","3","CellValue", "Exited");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "8","0","Row Does Not Exist", "");
-
-      	}
-	  	else
-	  	{
-			String strViolationNumber = objDictionary.get("strViolationNumber");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3","3","CellValue", "Violation "+strViolationNumber);
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4","3","CellValue", "Recognized as Concierge");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5","3","CellValue", "Voided "+strViolationNumber);
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "6","3","CellValue", "Exited");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "7","0","Row Does Not Exist", "");
-	  	}
-		driver.quit();
+		double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+   		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+       	if (strFirstPayment != null)
+       	{
+       		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #1");
+ 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+     	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Transaction Fee Payment");
+     	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Violation "+strViolationNumber);
+	   	  	String strRow5Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow5Column3", "5", "3");
+	      	if(strRow5Column3.equals("License Plate Changed"))
+	      	{
+	      		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "License Plate Changed");
+		   	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Recognized as Concierge");
+		   	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Voided "+strViolationNumber);
+		   	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
+		   	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
+	
+	      	}
+	      	else
+	      	{
+		   	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Recognized as Concierge");
+		   	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Voided "+strViolationNumber);
+		   	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "License Plate Changed");
+		   	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
+		   	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
+	      	}
+	   	  	driver.quit();
+       	}
+       	else
+       	{
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Violation "+strViolationNumber);
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Recognized as Concierge");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Voided "+strViolationNumber);
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Exited");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
+			driver.quit();
+       	}
 	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3302_2_A_CS_TU_PS1_GPV1_ALPTPS(Map<String, String> objDictionary, String strMeterIncrementTime,  String strSpotNumber)
-	{
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3302_A_CS_TU_PS1_GPV1_ALPTPS(Map<String, String> objDictionary, String strMeterIncrementTime,  String strSpotNumber)
+  	{
 		CommonWeb clsCommonWeb = new CommonWeb();
 		//Dictionary Variables
-		String strBrowser = objDictionary.get("strBrowser");
-		String strRemotePath = objDictionary.get("strRemotePath");
-		String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
-		if(strValidateImageFlag == null){strValidateImageFlag = "False";}
-		//NTPS: Navigate To Parking Session
-		threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
-		WebDriver driver = getDriver();
-		clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver,"Sentry meter",strSpotNumber);
-		//VPSH: Validate Parking Session History
-		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "1","3","CellValue", "Parked");
-		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "2","3","CellValue", "Mps account Payment #1");
-		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "2","5","CellValue", "Concierge Purchased "+strMeterIncrementTime+" Minutes");
+	  	String strBrowser = objDictionary.get("strBrowser");
+      	String strRemotePath = objDictionary.get("strRemotePath");
+      	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");if(strValidateImageFlag == null){strValidateImageFlag = "False";}
+      	//NTPS: Navigate To Parking Session
+	  	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
+	  	WebDriver driver = getDriver();
+	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter",strSpotNumber);
+	  	//VPSH: Validate Parking Session History
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "Concierge Purchased "+strMeterIncrementTime+" Minutes");
 		String strFirstPayment = objDictionary.get("strFirstPayment");
 		String strViolationNumber = objDictionary.get("strViolationNumber");
-		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
-	  	if (strFirstPayment != null)
-      	{
-  		  	double dblFirstPaymentFee = Integer.parseInt(strFirstPayment) * .01;
-	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "3", "CellValue", "Mps account Payment #1");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3", "5", "CellValue", "Transaction Fee Payment");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4","3","CellValue", "Violation "+strViolationNumber);
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5","3","CellValue", "Recognized as Concierge");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "6","3","CellValue", "Voided "+strViolationNumber);
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "7","3","CellValue", "Exited");
-      	}
-	  	else
-	  	{
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3","3","CellValue", "Violation "+strViolationNumber);
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4","3","CellValue", "Recognized as Concierge");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5","3","CellValue", "Voided "+strViolationNumber);
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "6","3","CellValue", "Exited");
-	  	}
+	  	double dblFirstPaymentFee = Integer.parseInt(strFirstPayment)*.01;
+   		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
+       	if (strFirstPayment != null)
+       	{
+       		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #1");
+ 	  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","4", "CellValue", dFormat.format(dblFirstPaymentFee));
+     	   	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "Transaction Fee Payment");
+     		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Violation "+strViolationNumber);
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Recognized as Concierge");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Voided "+strViolationNumber);
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "License Plate Changed ");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","3", "CellValue", "Exited");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "9","0", "Row Does Not Exist", "");
+		}
+       	else
+       	{
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Violation "+strViolationNumber);
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Recognized as Concierge");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Voided "+strViolationNumber);
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Exited");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
+	   	}
 		driver.quit();
-	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3303_CS_PS1_GPV1_WFFACTNVT_ALPTPS(Map<String, String> objDictionary, String strMeterIncrementTime,  String strSpotNumber,String strViolationId)
-	{
+  	}
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3303_CS_PS1_GPV1_WFFACTNVT_ALPTPS(Map<String, String> objDictionary, String strMeterIncrementTime,  String strSpotNumber, String strViolationId)
+  	{
 		CommonWeb clsCommonWeb = new CommonWeb();
 		//Dictionary Variables
-		String strBrowser = objDictionary.get("strBrowser");
-		String strRemotePath = objDictionary.get("strRemotePath");
-		String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
-		if(strValidateImageFlag == null){strValidateImageFlag = "False";}
-		//NTPS: Navigate To Parking Session
-		threadDriver = clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
-		WebDriver driver = getDriver();
-		clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver,"Sentry meter", strSpotNumber);
-		//VPSH: Validate Parking Session History
-		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "1","3","CellValue", "Parked");
-		String strRow2Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session","Parking Session History", 1, "strRow2Column3", "2","3");
-		if(strRow2Column3.equals("Mps account Payment #1"))
+	  	String strBrowser = objDictionary.get("strBrowser");
+      	String strRemotePath = objDictionary.get("strRemotePath");
+      	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");if(strValidateImageFlag == null){strValidateImageFlag = "False";}
+      	//NTPS: Navigate To Parking Session
+	  	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
+	  	WebDriver driver = getDriver();
+	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter",strSpotNumber);
+	  	//VPSH: Validate Parking Session History
+	  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+	  	String strRow2Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session", "Parking Session History", 1, "strRow2Column3", "2", "3");
+		if(strRow2Column3.equals("Mps account Payment #1"))	
 		{
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "2","3","CellValue", "Mps account Payment #1");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "2","5","CellValue", "Concierge Purchased "+strMeterIncrementTime+" Minutes");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3","3","CellValue", "Violation "+strViolationId);
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4","3","CellValue", "Recognized as Concierge");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5","3","CellValue", "Voided "+strViolationId);
-			String strPaymentRow6Column5 = clsCommonWeb.StoreTableValue(objDictionary, driver,"Parking Session","Parking Session History", 1,"strPaymentRow3", "6", "5");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","5", "CellValue", "Concierge Purchased "+strMeterIncrementTime+" Minutes");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Violation "+strViolationId);
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Recognized as Concierge");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Voided "+strViolationId);
+		  	String strPaymentRow6Column5 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strPaymentRow3", "6", "5");
 			if (strPaymentRow6Column5.equals("Transaction Fee Payment"))
 			{
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "6","3","CellValue", "Mps account Payment #1");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "7","3","CellValue", "Exited");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "8","0","Row Does Not Exist", "");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Exited");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","0", "Row Does Not Exist", "");
 			}
 			else
 			{
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "6","3","CellValue", "Exited");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "7","0","Row Does Not Exist", "");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Exited");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
 			}
 		}
-		else if(strRow2Column3.equals("Recognized as Concierge"))
+		else if(strRow2Column3.equals("Recognized as Concierge"))	
 		{
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "2","3","CellValue", "Recognized as Concierge");
-			String strRow3Column3 = clsCommonWeb.StoreTableValue(objDictionary,  driver, "Parking Session","Parking Session History", 1, "strRow2Column3", "3","3");
-			String strFirstPayment = objDictionary.get("strFirstPayment");
-			if(strRow3Column3.equals("Violation "+strViolationId))
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Recognized as Concierge");
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "License Plate Changed ");
+			
+			String strRow4Column3 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strRow4Column3", "4", "3");
+			if (strRow4Column3.equals("Violation "+strViolationId))
 			{
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3","3","CellValue", "Violation "+strViolationId);
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4","3","CellValue", "Mps account Payment #1");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4","5","CellValue", "Concierge Purchased "+strMeterIncrementTime+" Minutes");
-				String strViolationNumber = objDictionary.get("strViolationNumber");
-				DecimalFormat dFormat = new DecimalFormat("$ 0.00");
-			  	if (strFirstPayment != null)
-		      	{
-		  		  	double dblFirstPaymentFee = Integer.parseInt(strFirstPayment) * .01;
-			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "3", "CellValue", "Mps account Payment #1");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "5", "CellValue", "Transaction Fee Payment");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "6","3","CellValue", "Unlocked "+strViolationId);
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "7","3","CellValue", "CSR Rejected "+strViolationId);
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "8","3","CellValue", "Exited");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "9","0","Row Does Not Exist", "");
-		      	}
-			  	else
-			  	{
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5","3","CellValue", "Unlocked "+strViolationId);
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "6","3","CellValue", "CSR Rejected "+strViolationId);
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "7","3","CellValue", "Exited");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "8","0","Row Does Not Exist", "");
-			  	}
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Violation "+strViolationId);
+			  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #1");
+			  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Concierge Purchased "+strMeterIncrementTime+" Minutes");
+			  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Unlocked "+strViolationId);
+			  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "CSR Rejected "+strViolationId);
+			  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Exited");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","0", "Row Does Not Exist", "");
 			}
 			else
 			{
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3","3","CellValue", "Mps account Payment #1");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3","5","CellValue", "Concierge Purchased "+strMeterIncrementTime+" Minutes");
-				String strViolationNumber = objDictionary.get("strViolationNumber");
-				DecimalFormat dFormat = new DecimalFormat("$ 0.00");
-			  	if (strFirstPayment != null)
-		      	{
-		  		  	double dblFirstPaymentFee = Integer.parseInt(strFirstPayment) * .01;
-			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "3", "CellValue", "Mps account Payment #1");
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "4", "CellValue", dFormat.format(dblFirstPaymentFee));
-					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5", "5", "CellValue", "Transaction Fee Payment");
-			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "6","3","CellValue", "Exited");
-			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "7","0","Row Does Not Exist", "");
-		      	}
-			  	else
-			  	{
-			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4","3","CellValue", "Exited");
-			  		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5","0","Row Does Not Exist", "");
-			  	}
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #1");
+			  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Concierge Purchased "+strMeterIncrementTime+" Minutes");
+			  	String strRow5Column5 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strPaymentRow3", "5", "5");
+				if (strRow5Column5.equals("Transaction Fee Payment"))
+				{
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
+				  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "Transaction Fee Payment");
+				  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Exited");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
+				}
+				else
+				{
+				  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Exited");
+					clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","0", "Row Does Not Exist", "");
+				}
 			}
 		}
 		else
 		{
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "2","3","CellValue", "Violation "+strViolationId);
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "3","3","CellValue", "Recognized as Concierge");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "4","3","CellValue", "Voided "+strViolationId);
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5","3","CellValue", "Mps account Payment #1");
-			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "5","5","CellValue", "Concierge Purchased "+strMeterIncrementTime+" Minutes");
-			String strPaymentRow6Column5 = clsCommonWeb.StoreTableValue(objDictionary, driver,"Parking Session","Parking Session History", 1,"strPaymentRow3", "6", "5");
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Violation "+strViolationId);
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Recognized as Concierge");
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Voided "+strViolationId);
+			clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #1");
+		  	clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "Concierge Purchased "+strMeterIncrementTime+" Minutes");
+		  	String strPaymentRow6Column5 = clsCommonWeb.StoreTableValue(objDictionary, driver, "Parking Session","Parking Session History", 1, "strPaymentRow3", "6", "5");
 			if (strPaymentRow6Column5.equals("Transaction Fee Payment"))
 			{
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "6","3","CellValue", "Mps account Payment #1");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "7","3","CellValue", "Exited");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "8","0","Row Does Not Exist", "");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #1");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Exited");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","0", "Row Does Not Exist", "");
 			}
 			else
 			{
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "6","3","CellValue", "Exited");
-				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session","Parking Session History", 1, "7","0","Row Does Not Exist", "");
-			}
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Exited");
+				clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","0", "Row Does Not Exist", "");
+			}	
 		}
 		driver.quit();
+  	}
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_I3304_CS_PSWL_W4_MP1_VMT_VPSH(Map<String, String> objDictionary)
+	{
+		CommonWeb clsCommonWeb = new CommonWeb();
+		Meter clsMeter = new Meter();
+		//Dictionary Variables
+		String strBrowser = objDictionary.get("strBrowser");
+	  	String strRemotePath = objDictionary.get("strRemotePath");
+	  	String strSpotNumber = objDictionary.get("strSpotNumber");
+	  	String strValidateImageFlag = objDictionary.get("strValidateImageFlag");
+	  	String strActualRemainingTimeMinutes= objDictionary.get("strActualRemainingTimeMinutes");//From METER_ValidateExpectedMeterTime
+	  	if(strValidateImageFlag == null){strValidateImageFlag = "True";}
+	  	//NTPS: Navigate To Parking Session
+	  	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
+	  	WebDriver driver = getDriver();
+	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
+	  	//VPSH: Validate Parking Session History
+	  	String strFreeTimeFirstPayment = objDictionary.get("strFreeTimeFirstPayment");
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Recognized as Concierge");
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","3", "CellValue", "Mps account Payment #1");
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","4", "CellValue", "$ 0.25");
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "3","5", "CellValue", "App Purchased 15 Minutes");
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","3", "CellValue", "Mps account Payment #1");
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","4", "CellValue", "$ 0.25");
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "4","5", "CellValue", "Transaction Fee Payment");	
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","3", "CellValue", "Mps account Payment #2");
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","4", "CellValue", "$ 0.25");
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "5","5", "CellValue", "Concierge Purchased 15 Minutes");
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","3", "CellValue", "Mps account Payment #2");
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "6","5", "CellValue", "Transaction Fee Payment");
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "7","3", "CellValue", "Exited");
+		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "8","0", "Row Does Not Exist", "");
+		if(strValidateImageFlag.equals("True"))
+	  	{
+	  		//Wait For Images to Load
+	  		clsMeter.METER_MeterWaitWithMessage(objDictionary,5, "Waiting for 5 seconds for Images to load to Sentry Link-Spot"+strSpotNumber);
+	   		driver.navigate().refresh();
+	   		try {Thread.sleep(2000);}catch (Exception e) {}
+	  		//Click Image Link
+	      	clsCommonWeb.ClickImage(objDictionary, driver, "Parking Session", "Best Violation Picture", 1);
+	      	try {Thread.sleep(1000);}catch (Exception e) {}
+	  		//VICAE: Validate Image Count After Exit
+	  		clsCommonWeb.SENTRYLINK_ValidateImageCountEqualExpected(objDictionary,driver,0,2,"False");
+	      	//VIAC: Validate Images Appear Correctly
+	      	clsCommonWeb.SENTRYLINK_ValidateAllImagesAppearedCorrectly(objDictionary, driver);
+	  	}
+		driver.quit();
 	}
-
 	// *****************************************************************************************************************************************************************************
 	// SENTRYLINK-CALCULATION
 	// *****************************************************************************************************************************************************************************

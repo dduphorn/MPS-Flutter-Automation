@@ -2473,7 +2473,7 @@ public class CommonWeb {
 				strGmailUserName = strMobileDeviceType.substring(0, 1).toLowerCase() + "sentrystaging@gmail.com";
 				//This is the App password Use Chat GPT and ask this: How do you setup a App password in gmail?
 				if (strGmailUserName.equals("isentrystaging@gmail.com")) {
-					strGmailPassword = "lkujizefoqxbcazc";
+					strGmailPassword = "eygmvgasqgigmhja";
 				} 
 				else if (strGmailUserName.equals("asentrystaging@gmail.com")) {
 					strGmailPassword = "tgjlnrolsuutwbmp";
@@ -8504,6 +8504,7 @@ public class CommonWeb {
 		clsCommonWeb.ClickLink(objDictionary, driver, "Rate Block Groups", strRateBlockGroup, 1);
 		try {Thread.sleep(3500);} catch (Exception e) {}
 		clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Group", "Populate Add Set to This Group","{L} Add Set to This Group", strRateSetName);
+		try {Thread.sleep(1000);} catch (Exception e) {}
 		clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Group", "Add Set to This Group", 1, "Local");
 		clsCommonWeb.GlobalObjectWait(objDictionary, driver, "Rate Block Setting","{TextFieldExists} Rate Block Setting~Rate Block Name", 30);
 		try {Thread.sleep(5000);} catch (Exception e) {}
@@ -8776,7 +8777,7 @@ public class CommonWeb {
 			{
 				if(strMinutesBeforeFirstRateBlockEnds == null)
 				{
-					try {Thread.sleep(1500);} catch (Exception e) {}
+					try {Thread.sleep(2000);} catch (Exception e) {}
 					clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Setting", "Populate Specific Times of Day","{T} Rate Block Name|{T} Start Date|{RB} Time Options",strRateType + "RateBlock|" + strStartDate + "|All Day");
 				}
 			}
