@@ -5,7 +5,7 @@
 	    <parameter name="strAppiumPort" value="6666"></parameter>
 	    <parameter name="strDeviceAppiumPort" value="4723"></parameter>
  		<parameter name="strDeviceId" value="9096-9097"></parameter>
-		<parameter name="strIOSVersion" value="1.0.13"></parameter>
+		<parameter name="strIOSVersion" value="1.0.0"></parameter>
 		<parameter name="strIOSDeviceName" value="iPhone 12"></parameter>
 	    <parameter name="strHeadless" value="False"></parameter>
 <!--		<parameter name="strIOSUdid" value="00008101-000A0CD81160001E"></parameter>-->
@@ -15,7 +15,7 @@
 	     <classes>
 			<class name="AutomationCode.IOS_TestCases_Flutter">
 				<methods>
-<!-- 		   			<include name="I3001_ValidateInvalidCredentialMessage_Flutter"></include> -->
+		   			<include name="I3001_ValidateInvalidCredentialMessage_Flutter"></include>
 <!-- 		   			<include name="I3002_RegisterUser_PasswordShouldHaveAtleastOneDigit_Flutter"></include> -->
 <!-- 		   			<include name="I3003_RegisterUser_EmailHasAlreadyBeenTaken_Flutter"></include> -->
 <!-- 		   			<include name="I3004_RegisterUser_EmailIsInvalid_Flutter"></include> -->

@@ -179,7 +179,7 @@ public class IOS_Common_Flutter
   	            strIOSPath = strUserDir + "/APP/MPS_Quality_" + strIOSDeviceName + "_" + strIOSVersion + ".ipa";
   	            break;
   	        case "SG":
-  	            strIOSPath = strUserDir + "/APP/EasySpotPay_Staging_" + strIOSDeviceName + "_" + strIOSVersion + ".ipa";
+  	            strIOSPath = strUserDir + "/APP/FusionAI_Staging_" + strIOSDeviceName + "_" + strIOSVersion + ".ipa";
   	            break;
   	        case "PROD":
   	            strIOSPath = strUserDir + "/APP/MPS_Production_" + strIOSDeviceName + "_" + strIOSVersion + ".ipa";

@@ -3087,17 +3087,10 @@ public class CommonANDROID_Flutter
 		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Login", "Populate Login", "{T} Email Id|{T} Password|{CB} Remember me",strUserName.toLowerCase()+"|"+strPassword.replace(" ", "")+"|Checked");
 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Login", "Log in",1);
  		String strGPSEnabled = objDictionary.get("strGPSEnabled");if(strGPSEnabled == null) {strGPSEnabled = "True";}
-		
- 		//Add For Test Case: A2074F_VM_FTFP10_FTR_RFT_gt_MTIV_PS1_MP1_BMT_VPSH_VICAE_VIAC 
- 		//clsCommonMobile.ClickLink(objDictionary, androidDriver, "Map", "While using the app",1);
-		
- 		if(strGPSEnabled.equals("False"))
+		if(strGPSEnabled.equals("False"))
 		{
-			clsCommonMobile.VerificationPointText(objDictionary, androidDriver, "Map", "Dialog Message", 1, "Contains", "For a better experience, your device will need to use Location Accuracy");
-			clsCommonMobile.ClickButton(objDictionary, androidDriver, "Map", "No thanks",1);
-			clsCommonMobile.SENTRYMOBILE_RemoveLocationServiceMessage(objDictionary,androidDriver);
-	 	}
-		
+ 			clsCommonMobile.VerificationPointText(objDictionary, androidDriver, "Map", "Google Play Services Location Settings Dialog", 1, "Contains", "Location services are disabled. Please enable the location services.");
+ 		}
 		String strCurrentParkingAccountBalance = objDictionary.get("strCurrentParkingAccountBalance");
 		if(strCurrentParkingAccountBalance == null)
 		{
@@ -3105,7 +3098,6 @@ public class CommonANDROID_Flutter
 		}
 		Double.parseDouble(strCurrentParkingAccountBalance);
 	}
-	
 	public void SENTRYMOBILE_MobilePaymentInitialPaymentMaxTime(Map<String, String> objDictionary, AppiumDriver androidDriver)
 	{
 		String strMethondName = new Object(){}.getClass().getEnclosingMethod().getName();
@@ -3262,7 +3254,17 @@ public class CommonANDROID_Flutter
     		return;
 		}
 	    else if(!strSnackbarText.equals(""))
-	    {UpdateErrorMessageWithPivotalData(objDictionary, androidDriver, "Unexpected Error when clicking Meter Spot Number:"+strSnackbarText);}
+	    {
+	    	String strGPSEnabled = objDictionary.get("strGPSEnabled");
+	    	if(strGPSEnabled.equals("False"))
+	    	{
+	    		if(strSnackbarText.equals("Location services are disabled. Please enable the location services."))
+	    		{Reporter.log("The Snackbar correctly displayed Location services are disabled. Please enable the location services.");}
+	    		else{UpdateErrorMessageWithPivotalData(objDictionary, androidDriver, "Unexpected Error when clicking Meter Spot Number:"+strSnackbarText);}
+	    	}
+	    	else
+	    	{UpdateErrorMessageWithPivotalData(objDictionary, androidDriver, "Unexpected Error when clicking Meter Spot Number:"+strSnackbarText);}
+	    }
 		// Convert string to integer
         String strMaximumDuration = objDictionary.get("strMaximumDuration");
         String strTimePurchased = objDictionary.get("strTimePurchased"); if(strTimePurchased == null) {strTimePurchased = "0";}
@@ -3359,17 +3361,21 @@ public class CommonANDROID_Flutter
     	    		else
     	    		{
     	    			UpdateErrorMessageWithPivotalData(objDictionary, androidDriver, "The Text (Spot Details) with index (1) did not contain (" + strExpectedSpotDetails + ") - actual value (" + strSpotDetails + ")");
-    	    			System.out.println("MIH");
     	    		}
             	}
         	}
         }
 	    clsCommonMobile.ClickButton(objDictionary, androidDriver, "Enter your Parking Zone Number", "Pay", 1);
 	    strSnackbarText = objDictionary.get("strSnackbarText");
-	    if(!strSnackbarText.equals(""))
-	    {
-	    	UpdateErrorMessageWithPivotalData(objDictionary, androidDriver, "Unexpected Error when clicking Pay:"+strSnackbarText);
-		}
+	    String strGPSEnabled = objDictionary.get("strGPSEnabled");
+    	if(strGPSEnabled.equals("False"))
+    	{
+    		if(strSnackbarText.equals("Location services are disabled. Please enable the location services."))
+    		{Reporter.log("The Snackbar correctly displayed Location services are disabled. Please enable the location services.");}
+    		else{UpdateErrorMessageWithPivotalData(objDictionary, androidDriver, "Unexpected Error when clicking Meter Spot Number:"+strSnackbarText);}
+    	}
+    	else if(!strSnackbarText.equals(""))
+    	{UpdateErrorMessageWithPivotalData(objDictionary, androidDriver, "Unexpected Error when clicking Meter Spot Number:"+strSnackbarText);}
 	}
 	
 	public void SENTRYMOBILE_PurchaseMeterTimeParkThenPay(Map<String, String> objDictionary,AppiumDriver androidDriver, String strFreeTimeFirstPayment, String strMeterIncrementTime, String strGPSEnabled, String strAlreadyParked)
@@ -6569,8 +6575,12 @@ public class CommonANDROID_Flutter
 						} catch (Exception e) {
 						    return null;
 						}
-
-
+					case "Google Play Services Location Settings Dialog":
+					    try {
+					        WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(10));
+					        return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.view.View[@content-desc=\"Location services are disabled. Please enable the location services.\"]")));
+					    } 
+					    catch (TimeoutException e) {return null;}
 					case "Would you like to enroll in Concierge Autopay program?":
 						try {
 						    WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(10));
