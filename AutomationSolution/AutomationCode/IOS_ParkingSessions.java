@@ -4466,7 +4466,7 @@ public class IOS_ParkingSessions
 	  	}
   		driver.quit();
   	}
-	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3063_FTFP0_FTR_MTIV_gt_RFT_PS1_MP1(Map<String, String> objDictionary, String strMeterIncrementTime, int intActualRemainingTimeMinutes)
+	public void SENTRYLINK_ValidateParkingSessionHistoryAndImages_3063_FTFP0_FTR_MTIV_gt_RFT_PS1_MP1(Map<String, String> objDictionary, String strMeterIncrementTime, int intRemainingFreeTimeMinutes)
  	{
  		CommonWeb clsCommonWeb = new CommonWeb();
  		Meter clsMeter = new Meter();
@@ -4482,9 +4482,8 @@ public class IOS_ParkingSessions
 		WebDriver driver = getDriver();
 		clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
 		//VPSH: Validate Parking Session History
-		int intRemainingFreeTime = intActualRemainingTimeMinutes - Integer.parseInt(strMeterIncrementTime);
+		int intRemainingFreeTime = intRemainingFreeTimeMinutes ;
 		int intRemainingFreeTimeMinusOne = intRemainingFreeTime -1;
-		int intRemainingFreeTimeMinusTwo = intRemainingFreeTime -2;
 		int intRemainingFreeTimePlusOne = intRemainingFreeTime + 1;
 		String strRowNumber = "2";
  		String strColumnNumber = "5";
@@ -4512,10 +4511,8 @@ public class IOS_ParkingSessions
 			{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (App Purchased "+intRemainingFreeTime+" Minutes ("+intRemainingFreeTime+") free)");}
 			else if(strPurchasedMinutes.contains("App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeTimeMinusOne+" free)"))
 			{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (App Purchased "+intRemainingFreeTime+" Minutes ("+intRemainingFreeTimeMinusOne+") free)");}
-			else if(strPurchasedMinutes.contains("App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeTimeMinusTwo+" free)"))
-			{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (App Purchased "+intRemainingFreeTime+" Minutes ("+intRemainingFreeTimeMinusTwo+") free)");}
 			else
-			{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) did not equal (App Purchased "+intActualRemainingTimeMinutes+" Minutes) - actual value ("+strPurchasedMinutes+")","Local");}
+			{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) did not equal (App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeTimePlusOne+" free)) - actual value ("+strPurchasedMinutes+")","Local");}
  		}
  		String strFirstPayment = objDictionary.get("strFirstPayment");
 	  	DecimalFormat dFormat = new DecimalFormat("$ 0.00");
@@ -5005,10 +5002,9 @@ public class IOS_ParkingSessions
 	  	WebDriver driver = getDriver();
 	  	clsCommonWeb.SENTRYLINK_NavigateToParkingSession(objDictionary, driver, "Sentry meter","1");
 	  	//VPSH: Validate Parking Session History
-	  	int intRemainingFreeTime = intActualRemainingTimeMinutes - Integer.parseInt(strMeterIncrementTime);
+	  	int intRemainingFreeTime = intActualRemainingTimeMinutes ;
 	  	int intRemainingFreeTimePlusOne = intRemainingFreeTime +1;
 	  	int intRemainingFreeTimeMinusOne = intRemainingFreeTime -1;
-	  	int intRemainingFreeTimeMinusTwo = intRemainingFreeTime -2;
 		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "1","3", "CellValue", "Parked");
   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","3", "CellValue", "Mps account Payment #1");
   		clsCommonWeb.VerificationPointTable(objDictionary, driver, "Parking Session", "Parking Session History", 1, "2","4", "CellValue", "$ 0.25");
@@ -5021,8 +5017,6 @@ public class IOS_ParkingSessions
 		{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeTime+") free)");}
   		else if(strPurchasedMinutes.contains("App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeTimeMinusOne+" free)"))
 		{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeTimeMinusOne+") free)");}
-  		else if(strPurchasedMinutes.contains("App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeTimeMinusTwo+" free)"))
-		{Reporter.log("The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) equalled (App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeTimeMinusTwo+") free)");}
   		else
 		{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"The cell value in row ("+strRowNumber+") column ("+strColumnNumber+") of the table (Parking Session History) did not equal (App Purchased "+strMeterIncrementTime+" Minutes ("+intRemainingFreeTime+" free) - actual value ("+strPurchasedMinutes+")","Local");}
   		String strFirstPayment = objDictionary.get("strFirstPayment");

@@ -1705,22 +1705,20 @@ public class IOS_TestCases_Flutter
 		IOS_Common_Flutter clsCommonMobile = new IOS_Common_Flutter();
 		CommonWeb clsCommonWeb = new CommonWeb();
 		GlobalClass clsGlobal = new GlobalClass();
-		//Function Variables
+		objDictionary.put("strVirtualMeter", "True");
+		objDictionary.remove("strDeviceId");objDictionary.put("strDeviceId", "IVMeter1");
+  		clsGlobal.GetMeterProperties(objDictionary, "IVMeter1");
+  		//Function Variables
 		String strMethondName = new Object(){}.getClass().getEnclosingMethod().getName();
-  		String strLicensePlateNumber = "0"+strMethondName.substring(0,strMethondName.indexOf("_"))+"AA";
-  		String strLicensePlateState = "Alabama";
+		String strLicensePlateNumber = "0"+strMethondName.substring(0,strMethondName.indexOf("_"))+"AA";
+		String strLicensePlateState = "Alabama";
 		objDictionary.put("strLicensePlateNumber", strLicensePlateNumber);
 		objDictionary.put("strLicensePlateState", strLicensePlateState);
 		//Remove all License Plate
   		HttpConnections clsHttpConnections = new HttpConnections();
 		clsHttpConnections.HTTPCONNECTIONS_DeleteAllParkerLicensePlates(objDictionary);
 		//Add License Plate
-		clsHttpConnections.POST_LicensePlate(objDictionary,"Parker", strLicensePlateNumber,"Alabama");
-		//Dictionary Variables
-		objDictionary.remove("strDeviceId");objDictionary.put("strDeviceId", "IVMeter1");
-  		clsGlobal.GetMeterProperties(objDictionary, "IVMeter1");
-  		//Simulator
-  		objDictionary.put("strVirtualMeter", "True");
+		clsHttpConnections.POST_LicensePlate(objDictionary,"Parker", strLicensePlateNumber,strLicensePlateState);
   		clsCommonWeb.SENTRYLINK_EnableVirtualMeterPayments(objDictionary);
   		clsCommonMobile.SENTRYMOBILE_3066_VM_FTFP0_FTR_RFT_gt_MTIV_PS1_MP1_VMT_BMT_VPSH_VICAE_VIAC(objDictionary,strLicensePlateNumber);
   		String strAssociatedBug = objDictionary.get("strAssociatedBug");if(strAssociatedBug == null){strAssociatedBug = "";}

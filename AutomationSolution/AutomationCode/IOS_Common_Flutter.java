@@ -45,9 +45,12 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.PointerInput;
@@ -10729,6 +10732,54 @@ public class IOS_Common_Flutter
 		
 	}
 
+
+	private String iosCaptureSnackbarText(IOSDriver driver, int timeoutSec)
+	{
+		if (driver == null || timeoutSec <= 0)
+		{
+			return "";
+		}
+		By snackbarLocator = By.xpath("//XCUIElementTypeOther[@traits='UpdatesFrequently']");
+		long deadline = System.currentTimeMillis() + (timeoutSec * 1000L);
+		while (System.currentTimeMillis() < deadline)
+		{
+			try
+			{
+				List<WebElement> elements = driver.findElements(snackbarLocator);
+				if (elements != null)
+				{
+					for (WebElement element : elements)
+					{
+						try
+						{
+							String text = element.getAttribute("name");
+							if (text == null || text.trim().isEmpty())
+							{
+								text = element.getAttribute("label");
+							}
+							if (text != null)
+							{
+								text = text.trim();
+								if (!text.isEmpty())
+								{
+									return text;
+								}
+							}
+						}
+						catch (StaleElementReferenceException e) {}
+						catch (NoSuchElementException e) {}
+						catch (WebDriverException e) {}
+					}
+				}
+			}
+			catch (StaleElementReferenceException e) {}
+			catch (NoSuchElementException e) {}
+			catch (WebDriverException e) {}
+			try {Thread.sleep(120);} catch (InterruptedException ie) {Thread.currentThread().interrupt(); break;}
+		}
+		return "";
+	}
+
 	public void ClickButton(Map<String, String> objDictionary,IOSDriver iosDriver, String strPageName, String strButtonName, int intButtonIndex)
 	{
 		String strMethodName = new Object(){}.getClass().getEnclosingMethod().getName();
@@ -10739,41 +10790,28 @@ public class IOS_Common_Flutter
 			{UpdateErrorMessageWithPivotalData(objDictionary, iosDriver,"The Button (" + strButtonName + ") did not exist or the object property has changed-"+strMethodName);}
 			try 
 			{
-				// Wait for the Snackbar to appear. 
-				WebDriverWait wait = null;
-				//Path for Login snackbar
-				WebElement snackbar = null;
+				// Wait for the Snackbar to appear and read its text immediately so a short-lived snackbar cannot go stale.
+				String strSnackbarText = "";
 				switch (strPageName)
 		   		{
 		   			case "Enter your Parking Zone Number":
-		   				wait = new WebDriverWait(iosDriver, Duration.ofSeconds(6));
-		   				snackbar = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//XCUIElementTypeOther[@traits='UpdatesFrequently']")));
-		   				break;
 		   			case "Forgot Password":
-		   				wait = new WebDriverWait(iosDriver, Duration.ofSeconds(6));
-		   				snackbar = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//XCUIElementTypeOther[@traits='UpdatesFrequently']")));
+		   			case "Sign Up":
+		   			case "Set New Password":
+		   				strSnackbarText = iosCaptureSnackbarText(iosDriver, 6);
 		   				break;
 		   			case "Login":
-		   				wait = new WebDriverWait(iosDriver, Duration.ofSeconds(1));
-		   				snackbar = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]")));
+		   			case "Log in":
+		   				strSnackbarText = iosCaptureSnackbarText(iosDriver, 3);
 		   				break;
 		   			case "Review and Pay":
-		   				wait = new WebDriverWait(iosDriver, Duration.ofSeconds(3));
-		   				snackbar = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.view.View[@dismissable='true' and @live-region='1']")));
-		   				break;
-		   			case "Sign Up":
-		   				wait = new WebDriverWait(iosDriver, Duration.ofSeconds(6));
-		   				snackbar = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//XCUIElementTypeOther[@traits='UpdatesFrequently']")));
-		   				break;
-		   			case "Set New Password":
-		   				wait = new WebDriverWait(iosDriver, Duration.ofSeconds(6));
-		   				snackbar = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//XCUIElementTypeOther[@traits='UpdatesFrequently']")));
+		   				strSnackbarText = iosCaptureSnackbarText(iosDriver, 3);
 		   				break;
 		   		}
-				if(snackbar != null)
+				if(strSnackbarText != null && !strSnackbarText.equals(""))
 				{
-					String strSnackbarText = snackbar.getAttribute("name");
 					objDictionary.put("strSnackbarText", strSnackbarText);
+					Reporter.log("Snackbar text captured: " + strSnackbarText);
 				}
 			}catch (Exception e) {} 
 			if(strButtonName.equals("Confirm"))
@@ -16711,6 +16749,11 @@ public void SENTRYMOBILE_3062_A_FTFP0_FTR_RFT_gt_MTIV_MP1_PS1_VMT_VPSH_VICAE_VIA
 		//Click Accept
 		clsCommonMobile.ClickButton(objDictionary, iosdriver, "User Agreement", "Accept",1);
 		clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, iosdriver, "parker","Remind me later");
+		//ClickPermissionAlertButton
+  		try {Thread.sleep(3000);}catch (Exception e) {}
+    	clsCommonMobile.ClickPermissionAlertButton(objDictionary, iosdriver, "Allow");
+    	try {Thread.sleep(2000);}catch (Exception e) {}
+    	clsCommonMobile.ClickPermissionAlertButton(objDictionary, iosdriver, "Allow While Using App");
 		clsCommonMobile.SENTRYMOBILE_PurchaseMeterTimePayThenPark(objDictionary, iosdriver,strFreeTimeFirstPayment,strMeterIncrementTime,"True");
 		String strRemainingFreeTimeMinutes = objDictionary.get("strRemainingFreeTimeMinutes");
     	iosdriver.quit();
@@ -16850,7 +16893,12 @@ public void SENTRYMOBILE_3068_A_HR(Map<String, String> objDictionary)
 		//Click Accept
 		clsCommonMobile.ClickButton(objDictionary, iosdriver, "User Agreement", "Accept",1);
 		clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, iosdriver, "parker", "Remind me later");
-    	clsCommonMobile.SENTRYMOBILE_Populate_MeterPayment_SelectSpot(objDictionary,iosdriver,"1");
+		//ClickPermissionAlertButton
+      	try {Thread.sleep(3000);}catch (Exception e) {}
+      	clsCommonMobile.ClickPermissionAlertButton(objDictionary, iosdriver, "Allow");
+      	try {Thread.sleep(3000);}catch (Exception e) {}
+      	clsCommonMobile.ClickPermissionAlertButton(objDictionary, iosdriver, "Allow While Using App");
+		clsCommonMobile.SENTRYMOBILE_Populate_MeterPayment_SelectSpot(objDictionary,iosdriver,"1");
 		iosdriver.quit();
       	//ShortSessionWaitExitSpot
       	clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null,"1","Local");
