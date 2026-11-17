@@ -45,9 +45,12 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.PointerInput;
@@ -10164,13 +10167,54 @@ public class IOS_Common_Flutter
 		String strMeterSpotName = "";
 		if(strSpotNumber.equals("1")){strMeterSpotName = arrMeterSpots[0];}else{strMeterSpotName = arrMeterSpots[1];}
 		//Navigate to Account
-		clsCommonMobile.SENTRYMOBILE_NavigateToPageUsingMenuButtons(objDictionary,iosDriver, "Park");
+		clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary,iosDriver, "Park");
 		clsCommonMobile.PopulateAction(objDictionary, iosDriver, "Enter your Parking Zone Number", "Populate Zone Number", "{T} Zone Number",strMeterSpotName);
 		objDictionary.put("strMeterSpotName", strMeterSpotName);
+		try {Thread.sleep(1500);}catch (Exception e) {}
 		clsCommonMobile.ClickButton(objDictionary, iosDriver,  "Enter your Parking Zone Number", "Meter Spot Number", 1);
-		String strSnackbarText = objDictionary.get("strSnackbarText");if(strSnackbarText == null) {strSnackbarText = "";}
-		if(strSnackbarText.equals("Failed to fetch possible rates for the spot."))
-		{UpdateErrorMessageWithPivotalData(objDictionary, iosDriver, "The snackbar message: Failed to fetch possible rates for the spot. appeared after click Meter Spot");}
+		String strSnackbarText = objDictionary.get("strSnackbarText");
+	    String strViolationStatus = clsMeter.METER_GetMeterViolationValue(objDictionary,"Local",strSpotNumber);
+	    String strHolidayFree = objDictionary.get("strHolidayFree");if(strHolidayFree == null) {strHolidayFree = "False";}
+	    if(strViolationStatus.equals("True"))
+		{
+			if(strSnackbarText.equals("Selected spot is in violation."))
+			{
+				Reporter.log(String.format("The message '%s' appeared correctly.", strSnackbarText));
+				try {Thread.sleep(10000);}catch (Exception e) {}//Wait for snackbar message to expire
+			}
+			else
+			{
+				String strTrueUp = objDictionary.get("strTrueUp");if(strTrueUp == null) {strTrueUp = "False";}
+				if(strSnackbarText.equals("") && strTrueUp.equals("False"))
+				{
+					//https://mpspark.atlassian.net/browse/FLUTTERCA-204
+					Reporter.log("If True Up is disabled the message 'Selected spot is in violation.' doesn’t appear like it does when Unlock is enabled and True Up is disabled.");
+				}
+				else
+				{UpdateErrorMessageWithPivotalData(objDictionary, iosDriver, "Expected message 'Selected spot is in violation.' did not appear. Actual: '" + strSnackbarText + "'");}
+			}
+		}
+	    else if(strHolidayFree.equals("True"))
+		{
+			String strSpotDetails = clsCommonMobile.StoreText(objDictionary, iosDriver, "Enter your Parking Zone Number", "Spot Details-Holiday Free", 1, "strSpotDetails");
+			if(strSpotDetails.equals(strMeterSpotName+"Free parking until 11:59 PMPayments are not allowed"))
+			{Reporter.log("The Text (pot Details-Holiday Free) with index (1) contained (" + strSpotDetails + ")");}
+			else
+			{UpdateErrorMessageWithPivotalData(objDictionary, iosDriver, "The Text (Spot Details-Holiday Free) with index (1) did not contain ("+strMeterSpotName+" Free parking until 11:59 PM Payments are not allowed) - actual value (" + strSpotDetails + ")");}
+    		return;
+    	}
+	    else if(!strSnackbarText.equals(""))
+	    {
+	    	String strGPSEnabled = objDictionary.get("strGPSEnabled");
+	    	if(strGPSEnabled.equals("False"))
+	    	{
+	    		if(strSnackbarText.equals("Location services are disabled. Please enable the location services."))
+	    		{Reporter.log("The Snackbar correctly displayed Location services are disabled. Please enable the location services.");}
+	    		else{UpdateErrorMessageWithPivotalData(objDictionary, iosDriver, "Unexpected Error when clicking Meter Spot Number:"+strSnackbarText);}
+	    	}
+	    	else
+	    	{UpdateErrorMessageWithPivotalData(objDictionary, iosDriver, "Unexpected Error when clicking Meter Spot Number:"+strSnackbarText);}
+	    }
 		// Convert string to integer
         String strMaximumDuration = objDictionary.get("strMaximumDuration");
         String strTimePurchased = objDictionary.get("strTimePurchased"); if(strTimePurchased == null) {strTimePurchased = "0";}
@@ -10184,11 +10228,19 @@ public class IOS_Common_Flutter
         String strFreeTimeMinutes = objDictionary.get("strFreeTimeMinutes");if(strFreeTimeMinutes == null) {strFreeTimeMinutes = "0";}
         if(strFreeTimeMinutes.equals("0"))//Rate
         {
-	        if(intMinutes == 0)
-	        {strExpectedSpotDetails = strMeterSpotName+" Time Limit "+intHours+"hr Rate $ 0.25 / "+strMeterIncrementTime+" minutes Hours of Enforcement 12:00 am-11:59 pm";}
-	        else
-	        {strExpectedSpotDetails = strMeterSpotName+" Time Limit "+intHours+"hr "+intMinutes+"min(s) Rate $ 0.25 / "+strMeterIncrementTime+" minutes Hours of Enforcement 12:00 am-11:59 pm";}
-	        clsCommonMobile.VerificationPointText(objDictionary, iosDriver, "Enter your Parking Zone Number", "Spot Details",1, "Value",strExpectedSpotDetails);
+        	if(intHours == 0)
+        	{
+        		strExpectedSpotDetails = strMeterSpotName+"Time Limit"+intMinutes+"min(s)Rate$ 0.25 / "+strMeterIncrementTime+" minutesHours of Enforcement12:00 am-11:59 pm";
+    	        clsCommonMobile.VerificationPointText(objDictionary, iosDriver, "Enter your Parking Zone Number", "Spot Details",1, "Value",strExpectedSpotDetails);
+    	    }
+        	else
+        	{
+		        if(intMinutes == 0)
+		        {strExpectedSpotDetails = strMeterSpotName+"Time Limit"+intHours+"hrRate$ 0.25 / "+strMeterIncrementTime+" minutesHours of Enforcement12:00 am-11:59 pm";}
+		        else
+		        {strExpectedSpotDetails = strMeterSpotName+"Time Limit"+intHours+"hr "+intMinutes+"min(s)Rate$ 0.25 / "+strMeterIncrementTime+" minutesHours of Enforcement12:00 am-11:59 pm";}
+		        clsCommonMobile.VerificationPointText(objDictionary, iosDriver, "Enter your Parking Zone Number", "Spot Details",1, "Value",strExpectedSpotDetails);
+        	}
         }
         else
         {
@@ -10205,13 +10257,13 @@ public class IOS_Common_Flutter
 	    		String strFreeParkingUntilTimePlus1 = clsCommonWeb.AddTimeToCurrentTime(String.valueOf(intRemainingFreeMinutesPlus1),"h:mm a");
 	  			if(intMinutes == 0)
 	 	        {
-	    			strExpectedSpotDetails = strMeterSpotName+" Free parking until "+strFreeParkingUntilTime+" Time Limit  "+intHours+"h Rate $ 0.25 / "+strMeterIncrementTime+" minutes Hours of Enforcement "+strFreeParkingUntilTime.toLowerCase()+"-11:59 pm";
-	    			strExpectedSpotDetailsFreeTimePlus1 = strMeterSpotName+" Free parking until "+strFreeParkingUntilTimePlus1+" Time Limit  "+intHours+"h Rate $ 0.25 / "+strMeterIncrementTime+" minutes Hours of Enforcement "+strFreeParkingUntilTimePlus1.toLowerCase()+"-11:59 pm";
+	    			strExpectedSpotDetails = strMeterSpotName+" Free parking until "+strFreeParkingUntilTime+" Time Limit "+intHours+"hr Rate $ 0.25 / "+strMeterIncrementTime+" minutes Hours of Enforcement "+strFreeParkingUntilTime.toLowerCase()+"-11:59 pm";
+	    			strExpectedSpotDetailsFreeTimePlus1 = strMeterSpotName+" Free parking until "+strFreeParkingUntilTimePlus1+" Time Limit "+intHours+"hr Rate $ 0.25 / "+strMeterIncrementTime+" minutes Hours of Enforcement "+strFreeParkingUntilTimePlus1.toLowerCase()+"-11:59 pm";
 	 	        }
 	 	        else
 	 	        {
 	 	        	//Not Updated
-	 	        	strExpectedSpotDetails = strMeterSpotName+"Time Limit "+intHours+"h "+intMinutes+"mRate$ 0.25 / "+strMeterIncrementTime+" minutesHours of Enforcement12:00 am-11:59 pm";
+	 	        	strExpectedSpotDetails = strMeterSpotName+"Time Limit "+intHours+"hr "+intMinutes+"mRate$ 0.25 / "+strMeterIncrementTime+" minutesHours of Enforcement12:00 am-11:59 pm";
 	 	        }
 	    		String strSpotDetails = clsCommonMobile.StoreText(objDictionary, iosDriver, "Enter your Parking Zone Number", "Spot Details", 1, "strSpotDetails");
 	    		if(strSpotDetails.contains(strExpectedSpotDetails))
@@ -10220,7 +10272,7 @@ public class IOS_Common_Flutter
 	    		{Reporter.log("The Text (Spot Details) with index (1) contained (" + strExpectedSpotDetailsFreeTimePlus1 + ")");}
 	    		else
 	    		{
-	    			//UpdateErrorMessageWithPivotalData(objDictionary, androidDriver, "The Text (Spot Details) with index (1) did not contain (" + strExpectedSpotDetails + ") - actual value (" + strSpotDetails + ")");
+	    			UpdateErrorMessageWithPivotalData(objDictionary, iosDriver, "The Text (Spot Details) with index (1) did not contain (" + strExpectedSpotDetails + ") - actual value (" + strSpotDetails + ")");
 	    			System.out.println("MIH");
 	    		}
         	}
@@ -10240,9 +10292,9 @@ public class IOS_Common_Flutter
     	  			String strFreeParkingStartTimeTimePlus1 = clsCommonWeb.AddTimeToCurrentTime(String.valueOf(intRemainingMinutesBeforeFreePlus1),"h:mm a");
     	  			if(intMinutes == 0)
     	 	        {
-    	    			strExpectedSpotDetails = strMeterSpotName+" Free parking starts at "+strFreeParkingStartTime+" Time Limit  "+intRemainingMinutesBeforeFree+"m Rate $ 0.25 / "+strMeterIncrementTime+" minutes Hours of Enforcement 12:00 am-"+strFreeParkingStartTimeMinus1.toLowerCase();
-    	    			strExpectedSpotDetailsRemainingTimeMinus1 = strMeterSpotName+" Free parking starts at "+strFreeParkingStartTime+" Time Limit  "+intRemainingMinutesBeforeFreeMinus1+"m Rate $ 0.25 / "+strMeterIncrementTime+" minutes Hours of Enforcement 12:00 am-"+strFreeParkingStartTimeMinus1.toLowerCase();
-    	    			strExpectedSpotDetailsFreeTimePlus1 =  strMeterSpotName+" Free parking starts at "+strFreeParkingStartTimeTimePlus1+" Time Limit  "+intRemainingMinutesBeforeFree+"m Rate $ 0.25 / "+strMeterIncrementTime+" minutes Hours of Enforcement 12:00 am-"+strFreeParkingStartTime.toLowerCase();
+    	    			strExpectedSpotDetails = strMeterSpotName+" Free parking starts at "+strFreeParkingStartTime+" Time Limit "+intRemainingMinutesBeforeFree+"min(s) Rate $ 0.25 / "+strMeterIncrementTime+" minutes Hours of Enforcement 12:00 am-"+strFreeParkingStartTimeMinus1.toLowerCase();
+    	    			strExpectedSpotDetailsRemainingTimeMinus1 = strMeterSpotName+" Free parking starts at "+strFreeParkingStartTime+" Time Limit "+intRemainingMinutesBeforeFreeMinus1+"min(s) Rate $ 0.25 / "+strMeterIncrementTime+" minutes Hours of Enforcement 12:00 am-"+strFreeParkingStartTimeMinus1.toLowerCase();
+    	    			strExpectedSpotDetailsFreeTimePlus1 =  strMeterSpotName+" Free parking starts at "+strFreeParkingStartTimeTimePlus1+" Time Limit "+intRemainingMinutesBeforeFree+"min(s) Rate $ 0.25 / "+strMeterIncrementTime+" minutes Hours of Enforcement 12:00 am-"+strFreeParkingStartTime.toLowerCase();
     	 	        }
     	 	        else
     	 	        {
@@ -10258,18 +10310,141 @@ public class IOS_Common_Flutter
     	    		{Reporter.log("The Text (Spot Details) with index (1) contained (" + strExpectedSpotDetailsFreeTimePlus1 + ")");}
     	    		else
     	    		{
-    	    			//UpdateErrorMessageWithPivotalData(objDictionary, androidDriver, "The Text (Spot Details) with index (1) did not contain (" + strExpectedSpotDetails + ") - actual value (" + strSpotDetails + ")");
-    	    			System.out.println("MIH");
+    	    			UpdateErrorMessageWithPivotalData(objDictionary, iosDriver, "The Text (Spot Details) with index (1) did not contain (" + strExpectedSpotDetails + ") - actual value (" + strSpotDetails + ")");
     	    		}
-            		
             	}
         	}
         }
-        
-        String strInViolation = clsMeter.METER_GetMeterViolationValue(objDictionary,"Local", strSpotNumber);
-		if(strInViolation.equals("True")) {try {Thread.sleep(8000);}catch (Exception e) {}}
 	    clsCommonMobile.ClickButton(objDictionary, iosDriver, "Enter your Parking Zone Number", "Pay", 1);
+	    strSnackbarText = objDictionary.get("strSnackbarText");
+	    String strGPSEnabled = objDictionary.get("strGPSEnabled");
+    	if(strGPSEnabled.equals("False"))
+    	{
+    		if(strSnackbarText.equals("Location services are disabled. Please enable the location services."))
+    		{Reporter.log("The Snackbar correctly displayed Location services are disabled. Please enable the location services.");}
+    		else{UpdateErrorMessageWithPivotalData(objDictionary, iosDriver, "Unexpected Error when clicking Meter Spot Number:"+strSnackbarText);}
+    	}
+    	else if(!strSnackbarText.equals(""))
+    	{UpdateErrorMessageWithPivotalData(objDictionary, iosDriver, "Unexpected Error when clicking Meter Spot Number:"+strSnackbarText);}
 	}
+	
+//	public void SENTRYMOBILE_Populate_MeterPayment_SelectSpot(Map<String, String> objDictionary,IOSDriver iosDriver, String strSpotNumber)
+//  	{
+//		String strMethondName = new Object(){}.getClass().getEnclosingMethod().getName();
+//		IOS_Common_Flutter clsCommonMobile = new IOS_Common_Flutter();
+//		CommonWeb clsCommonWeb = new CommonWeb();
+//		Meter clsMeter = new Meter();
+//  		String strDeviceId = objDictionary.get("strDeviceId");
+//		String[] arrMeterSpots = strDeviceId.split("-");
+//		String strMeterSpotName = "";
+//		if(strSpotNumber.equals("1")){strMeterSpotName = arrMeterSpots[0];}else{strMeterSpotName = arrMeterSpots[1];}
+//		//Navigate to Account
+//		clsCommonMobile.SENTRYMOBILE_NavigateToPageUsingMenuButtons(objDictionary,iosDriver, "Park");
+//		clsCommonMobile.PopulateAction(objDictionary, iosDriver, "Enter your Parking Zone Number", "Populate Zone Number", "{T} Zone Number",strMeterSpotName);
+//		objDictionary.put("strMeterSpotName", strMeterSpotName);
+//		clsCommonMobile.ClickButton(objDictionary, iosDriver,  "Enter your Parking Zone Number", "Meter Spot Number", 1);
+//		String strSnackbarText = objDictionary.get("strSnackbarText");if(strSnackbarText == null) {strSnackbarText = "";}
+//		if(strSnackbarText.equals("Failed to fetch possible rates for the spot."))
+//		{UpdateErrorMessageWithPivotalData(objDictionary, iosDriver, "The snackbar message: Failed to fetch possible rates for the spot. appeared after click Meter Spot");}
+//		// Convert string to integer
+//        String strMaximumDuration = objDictionary.get("strMaximumDuration");
+//        String strTimePurchased = objDictionary.get("strTimePurchased"); if(strTimePurchased == null) {strTimePurchased = "0";}
+//        int intRemainingMinutes = Integer.parseInt(strMaximumDuration) - Integer.parseInt(strTimePurchased);
+//        String strMeterIncrementTime = objDictionary.get("strMeterIncrementTime");
+//        // Round up to the next hour
+//        int intHours = intRemainingMinutes / 60;
+//        int intMinutes = intRemainingMinutes % 60;
+//        String strExpectedSpotDetails = "";
+//        String strExpectedSpotDetailsFreeTimePlus1 = "";
+//        String strFreeTimeMinutes = objDictionary.get("strFreeTimeMinutes");if(strFreeTimeMinutes == null) {strFreeTimeMinutes = "0";}
+//        if(strFreeTimeMinutes.equals("0"))//Rate
+//        {
+//	        if(intMinutes == 0)
+//	        {strExpectedSpotDetails = strMeterSpotName+" Time Limit "+intHours+"hr Rate $ 0.25 / "+strMeterIncrementTime+" minutes Hours of Enforcement 12:00 am-11:59 pm";}
+//	        else
+//	        {strExpectedSpotDetails = strMeterSpotName+" Time Limit "+intHours+"hr "+intMinutes+"min(s) Rate $ 0.25 / "+strMeterIncrementTime+" minutes Hours of Enforcement 12:00 am-11:59 pm";}
+//	        clsCommonMobile.VerificationPointText(objDictionary, iosDriver, "Enter your Parking Zone Number", "Spot Details",1, "Value",strExpectedSpotDetails);
+//        }
+//        else
+//        {
+//        	//Get Remaining Free Time
+//        	String strRemainingFreeTimeStart = objDictionary.get("strRemainingFreeTimeStart");
+//        	if(strRemainingFreeTimeStart != null)
+//        	{
+//        		//Free To Rate
+//	        	int intRemainingFreeMinutes = clsMeter.METER_CalculateRemainingFreeTimeCeil(objDictionary, null,  strRemainingFreeTimeStart, strFreeTimeMinutes);
+//	    		int intRemainingFreeMinutesPlus1 = clsMeter.METER_CalculateRemainingFreeTimeCeil(objDictionary, null,  strRemainingFreeTimeStart, strFreeTimeMinutes) + 1;
+//	    		Reporter.log("intRemainingFreeMinutes: "+intRemainingFreeMinutes+"-"+strMethondName);
+//	    		Reporter.log("intRemainingFreeMinutesPlus1: "+intRemainingFreeMinutesPlus1+"-"+strMethondName);
+//	    		String strFreeParkingUntilTime = clsCommonWeb.AddTimeToCurrentTime(String.valueOf(intRemainingFreeMinutes),"h:mm a");
+//	    		String strFreeParkingUntilTimePlus1 = clsCommonWeb.AddTimeToCurrentTime(String.valueOf(intRemainingFreeMinutesPlus1),"h:mm a");
+//	  			if(intMinutes == 0)
+//	 	        {
+//	    			strExpectedSpotDetails = strMeterSpotName+" Free parking until "+strFreeParkingUntilTime+" Time Limit  "+intHours+"h Rate $ 0.25 / "+strMeterIncrementTime+" minutes Hours of Enforcement "+strFreeParkingUntilTime.toLowerCase()+"-11:59 pm";
+//	    			strExpectedSpotDetailsFreeTimePlus1 = strMeterSpotName+" Free parking until "+strFreeParkingUntilTimePlus1+" Time Limit  "+intHours+"h Rate $ 0.25 / "+strMeterIncrementTime+" minutes Hours of Enforcement "+strFreeParkingUntilTimePlus1.toLowerCase()+"-11:59 pm";
+//	 	        }
+//	 	        else
+//	 	        {
+//	 	        	//Not Updated
+//	 	        	strExpectedSpotDetails = strMeterSpotName+"Time Limit "+intHours+"h "+intMinutes+"mRate$ 0.25 / "+strMeterIncrementTime+" minutesHours of Enforcement12:00 am-11:59 pm";
+//	 	        }
+//	    		String strSpotDetails = clsCommonMobile.StoreText(objDictionary, iosDriver, "Enter your Parking Zone Number", "Spot Details", 1, "strSpotDetails");
+//	    		if(strSpotDetails.contains(strExpectedSpotDetails))
+//	    		{Reporter.log("The Text (Spot Details) with index (1) contained (" + strExpectedSpotDetails + ")");}
+//	    		else if(strSpotDetails.contains(strExpectedSpotDetailsFreeTimePlus1))
+//	    		{Reporter.log("The Text (Spot Details) with index (1) contained (" + strExpectedSpotDetailsFreeTimePlus1 + ")");}
+//	    		else
+//	    		{
+//	    			//UpdateErrorMessageWithPivotalData(objDictionary, androidDriver, "The Text (Spot Details) with index (1) did not contain (" + strExpectedSpotDetails + ") - actual value (" + strSpotDetails + ")");
+//	    			System.out.println("MIH");
+//	    		}
+//        	}
+//        	else
+//        	{
+//        		//Rate To Free
+//        		String strMinutesBeforeFreeStart = objDictionary.get("strMinutesBeforeFreeStart");
+//        		String strExpectedSpotDetailsRemainingTimeMinus1 = "";
+//            	if(strMinutesBeforeFreeStart != null)
+//            	{
+//            		int intRemainingMinutesBeforeFree = clsMeter.METER_CalculateRemainingMinutesBeforeFree(objDictionary, null, strMinutesBeforeFreeStart);
+//            		int intRemainingMinutesBeforeFreeMinus1 = intRemainingMinutesBeforeFree -1;
+//            		int intRemainingMinutesBeforeFreePlus1 = intRemainingMinutesBeforeFree +1;
+//            		//Calculate Free Parking Start Time
+//            		String strFreeParkingStartTime = clsCommonWeb.AddTimeToCurrentTime(String.valueOf(intRemainingMinutesBeforeFree),"h:mm a");
+//    	    		String strFreeParkingStartTimeMinus1 = clsCommonWeb.AddTimeToCurrentTime(String.valueOf(intRemainingMinutesBeforeFreeMinus1),"h:mm a");
+//    	  			String strFreeParkingStartTimeTimePlus1 = clsCommonWeb.AddTimeToCurrentTime(String.valueOf(intRemainingMinutesBeforeFreePlus1),"h:mm a");
+//    	  			if(intMinutes == 0)
+//    	 	        {
+//    	    			strExpectedSpotDetails = strMeterSpotName+" Free parking starts at "+strFreeParkingStartTime+" Time Limit  "+intRemainingMinutesBeforeFree+"m Rate $ 0.25 / "+strMeterIncrementTime+" minutes Hours of Enforcement 12:00 am-"+strFreeParkingStartTimeMinus1.toLowerCase();
+//    	    			strExpectedSpotDetailsRemainingTimeMinus1 = strMeterSpotName+" Free parking starts at "+strFreeParkingStartTime+" Time Limit  "+intRemainingMinutesBeforeFreeMinus1+"m Rate $ 0.25 / "+strMeterIncrementTime+" minutes Hours of Enforcement 12:00 am-"+strFreeParkingStartTimeMinus1.toLowerCase();
+//    	    			strExpectedSpotDetailsFreeTimePlus1 =  strMeterSpotName+" Free parking starts at "+strFreeParkingStartTimeTimePlus1+" Time Limit  "+intRemainingMinutesBeforeFree+"m Rate $ 0.25 / "+strMeterIncrementTime+" minutes Hours of Enforcement 12:00 am-"+strFreeParkingStartTime.toLowerCase();
+//    	 	        }
+//    	 	        else
+//    	 	        {
+//    	 	        	//Not Updated
+//    	 	        	strExpectedSpotDetails = strMeterSpotName+"Time Limit "+intHours+"h "+intMinutes+"mRate$ 0.25 / "+strMeterIncrementTime+" minutesHours of Enforcement12:00 am-11:59 pm";
+//    	 	        }
+//    	    		String strSpotDetails = clsCommonMobile.StoreText(objDictionary, iosDriver, "Enter your Parking Zone Number", "Spot Details", 1, "strSpotDetails");
+//    	    		if(strSpotDetails.contains(strExpectedSpotDetails))
+//    	    		{Reporter.log("The Text (Spot Details) with index (1) contained (" + strExpectedSpotDetails + ")");}
+//    	    		else if(strSpotDetails.contains(strExpectedSpotDetailsRemainingTimeMinus1))
+//    	    		{Reporter.log("The Text (Spot Details) with index (1) contained (" + strExpectedSpotDetailsRemainingTimeMinus1 + ")");}
+//    	    		else if(strSpotDetails.contains(strExpectedSpotDetailsFreeTimePlus1))
+//    	    		{Reporter.log("The Text (Spot Details) with index (1) contained (" + strExpectedSpotDetailsFreeTimePlus1 + ")");}
+//    	    		else
+//    	    		{
+//    	    			//UpdateErrorMessageWithPivotalData(objDictionary, androidDriver, "The Text (Spot Details) with index (1) did not contain (" + strExpectedSpotDetails + ") - actual value (" + strSpotDetails + ")");
+//    	    			System.out.println("MIH");
+//    	    		}
+//            		
+//            	}
+//        	}
+//        }
+//        
+//        String strInViolation = clsMeter.METER_GetMeterViolationValue(objDictionary,"Local", strSpotNumber);
+//		if(strInViolation.equals("True")) {try {Thread.sleep(8000);}catch (Exception e) {}}
+//	    clsCommonMobile.ClickButton(objDictionary, iosDriver, "Enter your Parking Zone Number", "Pay", 1);
+//	}
 	
 	public void SENTRYMOBILE_PurchaseMeterTimeParkThenPay(Map<String, String> objDictionary,IOSDriver iosDriver, String strFreeTimeFirstPayment, String strMeterIncrementTime, String strGPSEnabled, String strAlreadyParked)
     {	
@@ -10729,6 +10904,54 @@ public class IOS_Common_Flutter
 		
 	}
 
+
+	private String iosCaptureSnackbarText(IOSDriver driver, int timeoutSec)
+	{
+		if (driver == null || timeoutSec <= 0)
+		{
+			return "";
+		}
+		By snackbarLocator = By.xpath("//XCUIElementTypeOther[@traits='UpdatesFrequently']");
+		long deadline = System.currentTimeMillis() + (timeoutSec * 1000L);
+		while (System.currentTimeMillis() < deadline)
+		{
+			try
+			{
+				List<WebElement> elements = driver.findElements(snackbarLocator);
+				if (elements != null)
+				{
+					for (WebElement element : elements)
+					{
+						try
+						{
+							String text = element.getAttribute("name");
+							if (text == null || text.trim().isEmpty())
+							{
+								text = element.getAttribute("label");
+							}
+							if (text != null)
+							{
+								text = text.trim();
+								if (!text.isEmpty())
+								{
+									return text;
+								}
+							}
+						}
+						catch (StaleElementReferenceException e) {}
+						catch (NoSuchElementException e) {}
+						catch (WebDriverException e) {}
+					}
+				}
+			}
+			catch (StaleElementReferenceException e) {}
+			catch (NoSuchElementException e) {}
+			catch (WebDriverException e) {}
+			try {Thread.sleep(120);} catch (InterruptedException ie) {Thread.currentThread().interrupt(); break;}
+		}
+		return "";
+	}
+
 	public void ClickButton(Map<String, String> objDictionary,IOSDriver iosDriver, String strPageName, String strButtonName, int intButtonIndex)
 	{
 		String strMethodName = new Object(){}.getClass().getEnclosingMethod().getName();
@@ -10739,41 +10962,28 @@ public class IOS_Common_Flutter
 			{UpdateErrorMessageWithPivotalData(objDictionary, iosDriver,"The Button (" + strButtonName + ") did not exist or the object property has changed-"+strMethodName);}
 			try 
 			{
-				// Wait for the Snackbar to appear. 
-				WebDriverWait wait = null;
-				//Path for Login snackbar
-				WebElement snackbar = null;
+				// Wait for the Snackbar to appear and read its text immediately so a short-lived snackbar cannot go stale.
+				String strSnackbarText = "";
 				switch (strPageName)
 		   		{
 		   			case "Enter your Parking Zone Number":
-		   				wait = new WebDriverWait(iosDriver, Duration.ofSeconds(6));
-		   				snackbar = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//XCUIElementTypeOther[@traits='UpdatesFrequently']")));
-		   				break;
 		   			case "Forgot Password":
-		   				wait = new WebDriverWait(iosDriver, Duration.ofSeconds(6));
-		   				snackbar = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//XCUIElementTypeOther[@traits='UpdatesFrequently']")));
+		   			case "Sign Up":
+		   			case "Set New Password":
+		   				strSnackbarText = iosCaptureSnackbarText(iosDriver, 6);
 		   				break;
 		   			case "Login":
-		   				wait = new WebDriverWait(iosDriver, Duration.ofSeconds(1));
-		   				snackbar = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]")));
+		   			case "Log in":
+		   				strSnackbarText = iosCaptureSnackbarText(iosDriver, 3);
 		   				break;
 		   			case "Review and Pay":
-		   				wait = new WebDriverWait(iosDriver, Duration.ofSeconds(3));
-		   				snackbar = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.view.View[@dismissable='true' and @live-region='1']")));
-		   				break;
-		   			case "Sign Up":
-		   				wait = new WebDriverWait(iosDriver, Duration.ofSeconds(6));
-		   				snackbar = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//XCUIElementTypeOther[@traits='UpdatesFrequently']")));
-		   				break;
-		   			case "Set New Password":
-		   				wait = new WebDriverWait(iosDriver, Duration.ofSeconds(6));
-		   				snackbar = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//XCUIElementTypeOther[@traits='UpdatesFrequently']")));
+		   				strSnackbarText = iosCaptureSnackbarText(iosDriver, 3);
 		   				break;
 		   		}
-				if(snackbar != null)
+				if(strSnackbarText != null && !strSnackbarText.equals(""))
 				{
-					String strSnackbarText = snackbar.getAttribute("name");
 					objDictionary.put("strSnackbarText", strSnackbarText);
+					Reporter.log("Snackbar text captured: " + strSnackbarText);
 				}
 			}catch (Exception e) {} 
 			if(strButtonName.equals("Confirm"))
@@ -12223,6 +12433,21 @@ public class IOS_Common_Flutter
 						} catch (Exception e) {
 						    return null;
 						}
+					case "Spot Details-Holiday Free":
+					    try {
+					        String strMeterSpotName = objDictionary.get("strMeterSpotName");
+					        if (strMeterSpotName == null || strMeterSpotName.trim().isEmpty()) {return null;}
+					        WebDriverWait wait = new WebDriverWait(iosDriver, Duration.ofSeconds(15));
+					        // Preferred (faster, native iOS predicate)
+					        return wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeImage' AND name CONTAINS '" + strMeterSpotName + "' AND name CONTAINS 'Free parking'")));
+					        // Alternative (XPath, works but slower on iOS):
+					        // return wait.until(ExpectedConditions.visibilityOfElementLocated(
+					        //     By.xpath("//XCUIElementTypeImage[contains(@name, '" + strMeterSpotName + "') and contains(@name, 'Free parking')]")
+					        // ));
+					    } catch (Exception e) {
+					        return null;
+					    }
+						
 					default:
 						try {return iosDriver.findElement(By.xpath("//*[@text='"+strTextName+"']"));}catch(Exception e) {return null;}
 				}
@@ -16711,6 +16936,11 @@ public void SENTRYMOBILE_3062_A_FTFP0_FTR_RFT_gt_MTIV_MP1_PS1_VMT_VPSH_VICAE_VIA
 		//Click Accept
 		clsCommonMobile.ClickButton(objDictionary, iosdriver, "User Agreement", "Accept",1);
 		clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, iosdriver, "parker","Remind me later");
+		//ClickPermissionAlertButton
+  		try {Thread.sleep(3000);}catch (Exception e) {}
+    	clsCommonMobile.ClickPermissionAlertButton(objDictionary, iosdriver, "Allow");
+    	try {Thread.sleep(2000);}catch (Exception e) {}
+    	clsCommonMobile.ClickPermissionAlertButton(objDictionary, iosdriver, "Allow While Using App");
 		clsCommonMobile.SENTRYMOBILE_PurchaseMeterTimePayThenPark(objDictionary, iosdriver,strFreeTimeFirstPayment,strMeterIncrementTime,"True");
 		String strRemainingFreeTimeMinutes = objDictionary.get("strRemainingFreeTimeMinutes");
     	iosdriver.quit();
@@ -16850,7 +17080,12 @@ public void SENTRYMOBILE_3068_A_HR(Map<String, String> objDictionary)
 		//Click Accept
 		clsCommonMobile.ClickButton(objDictionary, iosdriver, "User Agreement", "Accept",1);
 		clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, iosdriver, "parker", "Remind me later");
-    	clsCommonMobile.SENTRYMOBILE_Populate_MeterPayment_SelectSpot(objDictionary,iosdriver,"1");
+		//ClickPermissionAlertButton
+  		try {Thread.sleep(3000);}catch (Exception e) {}
+    	clsCommonMobile.ClickPermissionAlertButton(objDictionary, iosdriver, "Allow");
+    	try {Thread.sleep(2000);}catch (Exception e) {}
+    	clsCommonMobile.ClickPermissionAlertButton(objDictionary, iosdriver, "Allow While Using App");
+		clsCommonMobile.SENTRYMOBILE_Populate_MeterPayment_SelectSpot(objDictionary,iosdriver,"1");
 		iosdriver.quit();
       	//ShortSessionWaitExitSpot
       	clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null,"1","Local");

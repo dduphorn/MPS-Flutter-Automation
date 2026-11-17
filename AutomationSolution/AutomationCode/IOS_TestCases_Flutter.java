@@ -6963,7 +6963,6 @@ public class IOS_TestCases_Flutter
 		    	clsCommonMobile.ClickPermissionAlertButton(objDictionary, iosDriver, "Allow");
 		    	try {Thread.sleep(2000);}catch (Exception e) {}
 		    	clsCommonMobile.ClickPermissionAlertButton(objDictionary, iosDriver, "Allow While Using App");
-
 				clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary, iosDriver, "Account");
 				String cachedAccountUi = clsCommonMobile.SENTRYMOBILE_CaptureVisibleUi(iosDriver);
 				if (cachedAccountUi.toLowerCase().contains("account"))
