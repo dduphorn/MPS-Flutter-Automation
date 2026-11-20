@@ -1833,7 +1833,10 @@ public class IOS_TestCases_Flutter
 		IOS_Common_Flutter clsCommonMobile = new IOS_Common_Flutter();
 		CommonWeb clsCommonWeb = new CommonWeb();
 		GlobalClass clsGlobal = new GlobalClass();
-		//Function Variables
+		objDictionary.put("strVirtualMeter", "True");
+		objDictionary.remove("strDeviceId");objDictionary.put("strDeviceId", "IVMeter1");
+  		clsGlobal.GetMeterProperties(objDictionary, "IVMeter1");
+  		//Function Variables
 		String strMethondName = new Object(){}.getClass().getEnclosingMethod().getName();
 		String strLicensePlateNumber = "0"+strMethondName.substring(0,strMethondName.indexOf("_"))+"AA";
 		String strLicensePlateState = "Alabama";
@@ -1843,12 +1846,8 @@ public class IOS_TestCases_Flutter
   		HttpConnections clsHttpConnections = new HttpConnections();
 		clsHttpConnections.HTTPCONNECTIONS_DeleteAllParkerLicensePlates(objDictionary);
 		//Add License Plate
-		clsHttpConnections.POST_LicensePlate(objDictionary,"Parker", strLicensePlateNumber,"Alabama");
-		//Dictionary Variables
-   		objDictionary.remove("strDeviceId");objDictionary.put("strDeviceId", "IVMeter1");
-  		clsGlobal.GetMeterProperties(objDictionary, "IVMeter1");
-  		//Simulator
-  		objDictionary.put("strVirtualMeter", "True");
+		clsHttpConnections.POST_LicensePlate(objDictionary,"Parker", strLicensePlateNumber,strLicensePlateState);
+		//Simulator
   		clsCommonWeb.SENTRYLINK_EnableVirtualMeterPayments(objDictionary);
   		clsCommonMobile.SENTRYMOBILE_3072_VM_FTFP10_FTR_MTIV_gt_RFT_PS1_MP1_VMT_ES1_VPSH_VICAE_VIAC(objDictionary,strLicensePlateNumber);
   		String strAssociatedBug = objDictionary.get("strAssociatedBug");if(strAssociatedBug == null){strAssociatedBug = "";}
@@ -4221,7 +4220,7 @@ public class IOS_TestCases_Flutter
   		clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null, "1","Local");
   		//ValidateParkingSessionHistoryAndImages
   		IOS_ParkingSessions clsIOS_ParkingSessions = new IOS_ParkingSessions();
-      	clsIOS_ParkingSessions.SENTRYLINK_ValidateParkingSessionHistoryAndImages_3200_RSVN_PSWVLP_VMT_ES1(objDictionary, 59,"1");
+      	clsIOS_ParkingSessions.SENTRYLINK_ValidateParkingSessionHistoryAndImages_3200_RSVN_PSWVLP_VMT_ES1(objDictionary, 60,"1");
       	String strAssociatedBug = objDictionary.get("strAssociatedBug");if(strAssociatedBug == null){strAssociatedBug = "";}
 		if(!strAssociatedBug.equals("")){Reporter.log("<font color='Blue'>"+strAssociatedBug+"-This Test passed remove the AssociatedBug</font>");}
     }
@@ -4500,7 +4499,7 @@ public class IOS_TestCases_Flutter
   		clsCommonMobile.ClickButton(objDictionary, iosDriver, "Review and Pay", "Close", 1);
      	clsCommonMobile.ClickButton(objDictionary, iosDriver, "Choose Parking Duration", "Close", 1);
      	clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary,iosDriver, "Sessions");
-     	objDictionary.put("strActualRemainingTimeMinutes","59");
+     	objDictionary.put("strActualRemainingTimeMinutes","58");
      	//Validate Parking Session
      	clsCommonMobile.SENTRYMOBILE_ValidateParkingSession(objDictionary,iosDriver,strParkTime, strEndTime, "$ 0.00");
      	//Exit Space
@@ -4862,6 +4861,7 @@ public class IOS_TestCases_Flutter
       	clsCommonMobile.ClickPermissionAlertButton(objDictionary, iosDriver, "Allow While Using App");
  		clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary,iosDriver, "Sessions");
 		//Validate Parking Session
+ 		objDictionary.put("strActualRemainingTimeMinutes","13");
      	clsCommonMobile.SENTRYMOBILE_ValidateParkingSession(objDictionary,iosDriver,strParkTime, strEndTime, "$ 0.50");
      	//Exit Space
   		clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null, "1","Local");
@@ -5164,10 +5164,7 @@ public class IOS_TestCases_Flutter
 //		if(!strAssociatedBug.equals("")){Reporter.log("<font color='Blue'>"+strAssociatedBug+"-This Test passed remove the AssociatedBug</font>");}
 //	}
 
-
-
-
-	@Test(priority=1570)
+  	@Test(priority=1570)
 	public void I3159F_SENTRYMOBILE_PS1_EC1_NSAC_NSTU()
 	{
 		objDictionary.put("strAssociatedBug", "FLUTTERCA-CONCIERGE");
@@ -6152,17 +6149,26 @@ public class IOS_TestCases_Flutter
 			//Click Accept
 			clsCommonMobile.ClickButton(objDictionary, iosdriver, "User Agreement", "Accept",1);
 			clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, iosdriver, "parker","Remind me later");
+			//ClickPermissionAlertButton
+	  		try {Thread.sleep(3000);}catch (Exception e) {}
+	    	clsCommonMobile.ClickPermissionAlertButton(objDictionary, iosdriver, "Allow");
+	    	try {Thread.sleep(2000);}catch (Exception e) {}
+	    	clsCommonMobile.ClickPermissionAlertButton(objDictionary, iosdriver, "Allow While Using App");
 			//Navigate To Account
 			clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary,iosdriver, "Account");
-			// Checking to see if the switch is clicked
-			boolean isHandicapOn = !iosdriver.findElements(By.xpath("//*[contains(@name,'Permit ID') or contains(@label,'Permit ID')]")).isEmpty();
-			if(!isHandicapOn)
+			// Check if Parker Is Handicap
+			String strParkerType = clsHttpConnections.GET_ParkerType(objDictionary);
+			if (strParkerType.equals("Normal")) 
 			{
-				WebElement switchElement = iosdriver.findElement(By.xpath("//XCUIElementTypeSwitch[contains(@name,'Handicap') or contains(@label,'Handicap') or @name='Handicap'] | //*[@name='Handicap' or @label='Handicap']/following-sibling::*[self::XCUIElementTypeSwitch or self::XCUIElementTypeButton][1]"));
-				switchElement.click();
+				WebElement handicapSwitch = iosdriver.findElement(By.xpath("//XCUIElementTypeOther[@value='Handicap']/following-sibling::XCUIElementTypeOther[1]"));
+				handicapSwitch.click();
 				clsCommonMobile.ClickLink(objDictionary, iosdriver, "Account", "Yes, Continue",1);
 				clsCommonMobile.PopulateAction(objDictionary, iosdriver, "Account", "Populate Handicap Permit ID", "{T} Handicap permit ID","1011");
 				clsCommonMobile.ClickButton(objDictionary, iosdriver, "Account", "Add Permit",1);
+				String strSnackbarText = objDictionary.get("strSnackbarText");if(strSnackbarText == null) {strSnackbarText = "";}
+				if(strSnackbarText.equals("Your Handicap permit ID has been added, you can now use those parker benefits provided by the city.")){Reporter.log("The Text (Error Message) with index (1) contained (" + strSnackbarText + ")");}
+				else{clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary,iosdriver,"The Text (Error Message) with index (1) did not contain (Unable to create User. Please contact support.) - actual value ("+strSnackbarText+")");}
+		 		objDictionary.put("strSnackbarText","");
 			}
 			iosdriver.quit();
 			//PS1: Park Spot 1
@@ -6174,11 +6180,15 @@ public class IOS_TestCases_Flutter
 			//Click Accept
 			clsCommonMobile.ClickButton(objDictionary, iosdriver, "User Agreement", "Accept",1);
 			clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, iosdriver, "parker","Remind me later");
+			//ClickPermissionAlertButton
+	  		try {Thread.sleep(3000);}catch (Exception e) {}
+	    	clsCommonMobile.ClickPermissionAlertButton(objDictionary, iosdriver, "Allow");
+	    	try {Thread.sleep(2000);}catch (Exception e) {}
+	    	clsCommonMobile.ClickPermissionAlertButton(objDictionary, iosdriver, "Allow While Using App");
 			//ParkTP: Park Then Pay
 			String strHandicapBuyMinutes = "30";//From the Rate Block Family Setting Handicap
 			clsCommonMobile.SENTRYMOBILE_PurchaseMeterTimeParkThenPay(objDictionary, iosdriver,strFreeTimeFirstPayment,strHandicapBuyMinutes,"True","True");
 			iosdriver.quit();
-		
 			//Nothing below is complete waiting for FLUTTERCA-251
 			try {Thread.sleep(2000);}catch (Exception e) {}
 			//Exit Vehicle
@@ -6188,22 +6198,29 @@ public class IOS_TestCases_Flutter
 			//Click Accept
 			clsCommonMobile.ClickButton(objDictionary, iosdriver, "User Agreement", "Accept",1);
 			clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, iosdriver, "parker","Remind me later");
+			//ClickPermissionAlertButton
+	  		try {Thread.sleep(3000);}catch (Exception e) {}
+	    	clsCommonMobile.ClickPermissionAlertButton(objDictionary, iosdriver, "Allow");
+	    	try {Thread.sleep(2000);}catch (Exception e) {}
+	    	clsCommonMobile.ClickPermissionAlertButton(objDictionary, iosdriver, "Allow While Using App");
 			//Navigate To Account
 			clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary,iosdriver, "Account");
 			// Checking to see if the switch is clicked
-			isHandicapOn = !iosdriver.findElements(By.xpath("//*[contains(@name,'Permit ID') or contains(@label,'Permit ID')]")).isEmpty();
-			if(isHandicapOn)
+			strParkerType = clsHttpConnections.GET_ParkerType(objDictionary);
+			if (strParkerType.equals("Handicap")) 
 			{
-				WebElement switchElement = iosdriver.findElement(By.xpath("//XCUIElementTypeSwitch[contains(@name,'Handicap') or contains(@label,'Handicap') or @name='Handicap'] | //*[@name='Handicap' or @label='Handicap']/following-sibling::*[self::XCUIElementTypeSwitch or self::XCUIElementTypeButton][1]"));
-				switchElement.click();
-				clsCommonMobile.ClickLink(objDictionary, iosdriver, "Account", "Yes, Remove",1);
+				WebElement handicapSwitch = iosdriver.findElement(By.xpath("//XCUIElementTypeOther[@value='Handicap']/following-sibling::XCUIElementTypeOther[1]"));
+				handicapSwitch.click();
+				clsCommonMobile.ClickButton(objDictionary, iosdriver, "Account", "Yes, Remove",1);
+				String strSnackbarText = objDictionary.get("strSnackbarText");if(strSnackbarText == null) {strSnackbarText = "";}
+				if(strSnackbarText.equals("Handicap permit ID has been removed")){Reporter.log("The Text (Error Message) with index (1) contained (" + strSnackbarText + ")");}
+				else{clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary,iosdriver,"The Text (Error Message) with index (1) did not contain (Handicap permit ID has been removed) - actual value ("+strSnackbarText+")");}
 			}
 			iosdriver.quit();
 	 		Android_ParkingSessions clsAndriodParkingSessions = new Android_ParkingSessions();
 	     	clsAndriodParkingSessions.SENTRYLINK_ValidateParkingSessionHistoryAndImages_A2305_HDCP_FTFP0_MP1_VMT_ES1_VPSH_VIAC(objDictionary);
 	     	clsMeter.METER_ExecutePythonScriptAgainstMeter(objDictionary,strHost,"settings_set_setting_false.py PARKING_RCV_ON_SB_LPR_PLATE_MATCH");
 	     	clsMeter.METER_SetMeterEndTime(objDictionary);
-	//     	clsCommonMobile.SENTRYMOBILE_HDCPDeenroll2(objDictionary,iosdriver);
 			String strAssociatedBug = objDictionary.get("strAssociatedBug");if(strAssociatedBug == null){strAssociatedBug = "";}
 			if(!strAssociatedBug.equals("")){Reporter.log("<font color='Blue'>"+strAssociatedBug+"-This Test passed remove the AssociatedBug</font>");}
 	    }
@@ -6470,7 +6487,12 @@ public class IOS_TestCases_Flutter
 	  		//Click Accept
 	  		clsCommonMobile.ClickButton(objDictionary, iosdriver, "User Agreement", "Accept",1);
 	  		clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, iosdriver, "parker","Enroll later");
-	  		//Populate Spot
+	  		//ClickPermissionAlertButton
+	  		try {Thread.sleep(3000);}catch (Exception e) {}
+	    	clsCommonMobile.ClickPermissionAlertButton(objDictionary, iosdriver, "Allow");
+	    	try {Thread.sleep(2000);}catch (Exception e) {}
+	    	clsCommonMobile.ClickPermissionAlertButton(objDictionary, iosdriver, "Allow While Using App");
+			//Populate Spot
 	  		String strDeviceId = objDictionary.get("strDeviceId");
 			String[] arrMeterSpots = strDeviceId.split("-");
 			String strMeterSpotName = "";
@@ -6486,10 +6508,17 @@ public class IOS_TestCases_Flutter
 				Reporter.log(String.format("The message '%s' appeared correctly.", strSnackbarText));
 				try {Thread.sleep(10000);}catch (Exception e) {}//Wait for snackbar message to expire
 				String strSpotDetails = clsCommonMobile.StoreText(objDictionary, iosdriver, "Enter your Parking Zone Number", "Spot Details-Holiday Free", 1, "strSpotDetails");
-				if(strSpotDetails.equals(strMeterSpotName+" Free parking until 11:59 PM Payments are not allowed"))
+				//I3308F_CS_FADCT_PSWL_WGE_EAV_mobilePaymentBlocked
+				if(strSpotDetails.equals(strMeterSpotName+"Free parking until 11:59 PMPayments are not allowed"))
 				{Reporter.log("The Text (Spot Text) with index (1) contained (" + strSpotDetails + ")");}
 				else
 				{clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, iosdriver, "The Text (Spot Text) with index (1) did not contain ("+strMeterSpotName+" Free parking until 11:59 PM Payments are not allowed) - actual value (" + strSpotDetails + ")");}
+	    		
+				
+//				if(strSpotDetails.equals(strMeterSpotName+" Free parking until 11:59 PM Payments are not allowed"))
+//				{Reporter.log("The Text (Spot Text) with index (1) contained (" + strSpotDetails + ")");}
+//				else
+//				{clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary, iosdriver, "The Text (Spot Text) with index (1) did not contain ("+strMeterSpotName+" Free parking until 11:59 PM Payments are not allowed) - actual value (" + strSpotDetails + ")");}
 	    		return;
 			}
 			else
@@ -6560,7 +6589,7 @@ public class IOS_TestCases_Flutter
 		}
 
 	@Test(priority=1740)
-		public void I4002F_PaymentTest_GooglePay()
+		public void I4002F_PaymentTest_ApplePay()
 		{
 	  		objDictionary.put("strAssociatedBug", "FLUTTERCA-255");
 	  		String strTestCaseName = new Object(){}.getClass().getEnclosingMethod().getName();
@@ -6575,14 +6604,14 @@ public class IOS_TestCases_Flutter
 			//Add License Plate
 			clsHttpConnections.POST_LicensePlate(objDictionary,"Parker", strLicensePlateNumber,"Alabama");
 			IOS_Common_Flutter  clsCommonMobile = new IOS_Common_Flutter();
-			objDictionary.put("strAltPayment", "Google Pay");
+			objDictionary.put("strAltPayment", "Apple Pay");
 			clsCommonMobile.SENTRYMOBILE_4002_PaymentTest_GooglePay(objDictionary);
 			String strAssociatedBug = objDictionary.get("strAssociatedBug");if(strAssociatedBug == null){strAssociatedBug = "";}
 			if(!strAssociatedBug.equals("")){Reporter.log("<font color='Blue'>"+strAssociatedBug+"-This Test passed remove the AssociatedBug</font>");}
 		}
 
 	@Test(priority=1750) 
-		public void I4003F_PaymentTest_GooglePay_MaxTime()throws Exception
+		public void I4003F_PaymentTest_ApplePay_MaxTime()throws Exception
 		{
 			String strTestCaseName = new Object(){}.getClass().getEnclosingMethod().getName();
 			objDictionary.put("strTestCaseName", strTestCaseName);
@@ -6597,7 +6626,7 @@ public class IOS_TestCases_Flutter
 			clsHttpConnections.POST_LicensePlate(objDictionary,"Parker", strLicensePlateNumber,"Alabama");
 			IOS_Common_Flutter  clsCommonMobile = new IOS_Common_Flutter();
 			objDictionary.put("strAltPayment", "Google Pay");
-			clsCommonMobile.SENTRYMOBILE_4003_PaymentTest_GooglePay_MaxTime(objDictionary);
+			clsCommonMobile.SENTRYMOBILE_4003_PaymentTest_ApplePay_MaxTime(objDictionary);
 			String strAssociatedBug = objDictionary.get("strAssociatedBug");if(strAssociatedBug == null){strAssociatedBug = "";}
 			if(!strAssociatedBug.equals("")){Reporter.log("<font color='Blue'>"+strAssociatedBug+"-This Test passed remove the AssociatedBug</font>");}
 		}
@@ -6652,6 +6681,9 @@ public class IOS_TestCases_Flutter
 			String strMethondName = new Object(){}.getClass().getEnclosingMethod().getName();
 			String strSpaceName = objDictionary.get("strMeterSpotName");
 			String strLicensePlateNumber = "0"+strSpaceName+"AA";
+			String strLicensePlateState = "Alabama";
+			objDictionary.put("strLicensePlateNumber", strLicensePlateNumber);
+			objDictionary.put("strLicensePlateState", strLicensePlateState);
 			//Remove all License Plate
 			HttpConnections clsHttpConnections = new HttpConnections();
 			clsHttpConnections.HTTPCONNECTIONS_DeleteAllParkerLicensePlates(objDictionary);
@@ -6728,159 +6760,10 @@ public class IOS_TestCases_Flutter
 			String strAndroidUdid = objDictionary.get("strAndroidUdid");if(strAndroidUdid == null) {strAndroidUdid = "";}
 			//Open Android Device
 			IOSDriver iosdriver = clsCommonMobile.SetMobileDriver(objDictionary,"SentryMobile","True","Parker"); 
-			//Validate UserAgreement
+			//Validate UserAgreement - compare the full EULA text to the saved expected copy (no swiping)
+			//To update after an approved wording change, replace TestData/UserAgreement_EULA_iOS.txt (a mismatch saves the actual text to test-output/UserAgreement_EULA_iOS_actual.txt)
 			try {Thread.sleep(6000);}catch (Exception e) {}
-			WebElement objFrame = iosdriver.findElement(By.id("com.mpspark.consumer.mpsconsumer:id/eula"));
-			ElementSwipe  clsElementSwipe  = new ElementSwipe();
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Header", 1, "Value", "END USER LICENSE AGREEMENT and TERMS OF SERVICE");
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Section 1", 1, "Value", "We want you to be safe. Do not use the SENTRY MOBILE smartphone application while driving a vehicle. You agree to follow all traffic laws and regulations in the state(s) where you are using the SENTRY MOBILE smartphone application.");
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Section 2", 1, "Value", "By downloading and using the SENTRY MOBILE smartphone application (hereinafter the “Product Software”), you agree to be bound by the following terms of this End User License Agreement (“EULA”) between you and Municipal Parking Services, Inc. (“MPS” or “we”). IF YOU DO NOT AGREE TO BE BOUND BY THE TERMS OF THIS EULA, YOU MAY NOT USE THE PRODUCT SOFTWARE.");
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Section 3", 1, "Value", "Every time you use the Product Software you agree to be bound by the terms of this EULA, which may be updated from time-to-time, in MPS’ sole discretion, without prior notice to you. All changes are effective immediately when posted. Your continued use of the SENTRY MOBILE smartphone application following the posting of revised terms means that you accept and agree to the changes.");
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP");
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Section 4", 1, "Value", "THIS IS A LEGAL AGREEMENT. YOU REPRESENT AND WARRANT THAT YOU HAVE THE RIGHT, AUTHORITY, AND CAPACITY TO ACCEPT AND AGREE TO THIS EULA. YOU REPRESENT THAT YOU ARE OF SUFFICIENT LEGAL AGE IN YOUR JURISDICTION OR RESIDENCE TO USE OR ACCESS THE PRODUCT SOFTWARE AND TO ENTER INTO THIS EULA. IF YOU DO NOT AGREE WITH ANY OF THE PROVISIONS OF THESE TERMS, YOU SHOULD CEASE ACCESSING OR USING THE PRODUCT SOFTWARE.");
-			//Scroll Up
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Section 5", 1, "Value", "AS DESCRIBED BELOW, YOU ARE CONSENTING TO AUTOMATIC SOFTWARE UPDATES OF PRODUCT SOFTWARE. IF YOU DO NOT AGREE, YOU SHOULD NOT USE THE PRODUCT SOFTWARE.");
-			//Scroll Up
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP"); 
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement License", 1, "Value", "Subject to the terms of this EULA, MPS grants to you a limited, terminable, and non-exclusive, non-transferrable license (without the right to sublicense) to utilize one (1) single copy of the Product Software, in executable object code form only, on a single smartphone or other mobile computing device.");
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Restrictions", 1, "Value", "You agree not to, and you will not permit others to, (a) license, sell, rent, lease, assign, distribute, transmit, host, outsource, disclose or otherwise commercially exploit the Product Software or make the Product Software available to any third party, (b) copy or use the Product Software for any purpose other than as permitted in Section 1 of this EULA, (c) use any portion of the Product Software on any device or computer other than as provided in Section 1 of this EULA, (d) remove or alter any trademark, logo, copyright, patent or other proprietary notices, legends, symbols or labels in or associated with the Product Software, (e) modify, alter, make derivative works of, disassemble, reverse compile or reverse engineer any part of the Product Software (except to the extent applicable laws specifically prohibit such restriction for interoperability purposes, in which case you agree to first contact MPS in writing and to provide MPS an opportunity to create such changes as are needed for interoperability purposes); (f) you may not release, publicly or otherwise, the results of any performance or functional evaluation of any of the Product Software to any third party without prior written approval of MPS for each such release, (g) you agree to not engage, nor allow a third party to engage, in any of the following: scraping, caching, creating new content, recreating content, or circumventing (including fees) of the Product Software.");
-			//Scroll Up
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP");
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP");
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP");
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP");
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Modifications", 1, "Value", "MPS may from time to time develop make changes to the Software Product or services, which may include adding, updating, or discontinuing the Product Software and services, or parts thereof. Updating may include patches, bug fixes, updates, upgrades and other modifications to improve the performance or operation of the Product Software and related services (“Updates”). These Updates may be automatically installed without providing any additional notice or receiving any additional consent. You consent to this automatic updating and to the Updates. If you do not want such Updates, your sole remedy is to stop using the Software Product. Your failure to exercise your sole remedy of ceasing use of the Software Product, Updates, or the automated updating process, shall constitute your acceptance of the foregoing. You acknowledge that you may be required to install Updates in order to use or to continue to use the Software Product. You agree to promptly install any Updates MPS provides. Your continued use of the Software Product is your agreement to this EULA. The Updates shall automatically become part of the Product Software and shall automatically become subject to the rights and obligations of this EULA.");
-			//Scroll Up
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP"); 
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP"); 
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Ownership", 1, "Value", "The Product Software and all worldwide copyrights, trade secrets, and other intellectual property rights therein are the exclusive property of MPS and its licensors. MPS and its licensors reserve all rights in and to the Product Software not expressly granted to you in this EULA. The Product Software (and all copies thereof) is licensed to you, not sold, under this EULA. There are no implied licenses in this EULA. All suggestions or feedback provided by you to MPS with respect to the Product Software shall be MPS’ sole property. Proffering of such suggestions, ideas, or feedback shall constitute an affirmative assignment of such, and you hereby irrevocably do assign to MPS all right, title, and interest in the foregoing. MPS may use, copy, modify, publish, or redistribute the submission and its contents for any purpose and in any way without any notice or compensation to you. You also agree that MPS does not waive any rights to use similar or related ideas previously known to MPS, developed by its employees, or obtained from other sources.");
-			//Scroll Up
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP"); 
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Consent to Use of Data", 1, "Value", "You agree that MPS and its subsidiaries and agents may collect, maintain, process and use data (including images) relating to you, your smart device, your vehicle, and the personal identification information associated with that vehicle (“User Data”). The User Data may be used a component of parking enforcement.");
-			//Scroll Up
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP"); 
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Consent to Use of Data Part 2", 1, "Value", "Consent to Use of Data: You agree that MPS may collect and use User Data and the personal identification information associated with the User Data, including but not limited to your name and address, the address of the vehicle owner, images of you and any passengers in the vehicle, images of the vehicle, any other vehicle information, location data, technical data and related information, your smart device, system and application software, and peripherals, that is gathered periodically to facilitate the Product Software, the provision of software updates, product support and other services to you (if any) related to the Product Software. MPS may use this information, as long as it is in a form that does not personally identify you, to improve its products or to provide services or technologies to you, or to supply you with advertising material.");
-			//Scroll Up
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP"); 
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Consent to Use of Data Part 3", 1, "Value", "You and all persons in the vehicle being parked acknowledge that your and their likeness may be captured by MPS’s automated vehicle photo identification process and hereby consent to the same. By using the Product Software to park a vehicle, you, as well as the registered user, driver, and passengers in the vehicle consent, pursuant to the requirements of all state and federal laws, to MPS, MPS customers and MPS’s agents obtaining the vehicle registration owner information, including the name and address of the vehicle being parked. This information may be used to collect unpaid parking fees, violation fees or invoice fees that are referred to as Notices. These Notices may be in the form of text messages, emails, USPS mail and other forms of written communication sent to the registered owner of the vehicle and/or registered user of the Product Software. Notices unpaid may be referred for collection to a debt collector and/or subject to towing or booting of the vehicle that is the subject of the unpaid Notices.");
-			//Scroll Up
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP"); 
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Consent to Use of Data Part 4", 1, "Value", "Data Privacy: You agree that MPS may process your User Data, including but not limited to your vehicle data and the personal identification information associated with you and your vehicle, location data, technical and related information about your use of the parking space, software which may include internet protocol address, hardware identification, operating system, application software, peripheral hardware, personally and non-personally identifiable Product Software usage statistics to facilitate the provisioning of updates, support, invoicing or online services and may transfer such information to other companies in the MPS worldwide group of companies from time to time. This information may include your personal data or information such as your name and address, and the address of the vehicle owner. MPS may share this information with governmental agencies, including the municipality in which the rented parking space is located and with law enforcement agencies.");
-			//Scroll Up
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP"); 
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Consent to Use of Data Part 5", 1, "Value", "Interest-Based Advertising: By using the Product software you agree that MPS may provide interest-based advertising to you via the meter or your mobile computing device.");
-			//Scroll Up
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP"); 
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Do Not Use While Driving", 1, "Value", "You agree, represent and warrant, so long as YOU USE OR ACCESS THE PRODUCT SOFTWARE, THAT YOU WILL NOT, UNDER ANY CIRCUMSTANCES, ACCESS, VIEW, OR USE THE PRODUCT SOFTWARE WHILE DRIVING OR OTHERWISE OPERATING A VEHICLE OF ANY KIND (including, without limitation, a car, truck, motorcycle, motor scooter, or bicycle) or operating any dangerous equipment or machinery. You understand that using any handheld device in these circumstances is extremely dangerous, and can result in fines, property damage, physical injuries (including dismemberment) or death. You further agree, represent and warrant, that you will not use or access the Product Software in any manner that places yourself or any other person at risk of injury, and that you will abide by all traffic laws and regulations. While effort is made to assure the accuracy of the information presented, the user is responsible for safe driving and for the consequences of decisions as to where to travel or where to drive. Under no circumstance will MPS assume any responsibility or liability for the consequences of driving decisions made by you.");
-			//Scroll Up
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP");
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP");
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Do Not Use While Driving Part 2", 1, "Value", "You expressly agree that MPS shall not be liable for any driving decisions made by you or at your suggestion or for any damages, injury or other harm caused by your use of or accessing the Product Software, services or content, and waive any and all claims or causes of action you may have, now or in the future, arising from or relating to the same. In the event that any party names MPS as a defendant in a case involving your use of the Product Software while operating a vehicle, you agree to indemnify and hold MPS harmless in such action.");
-			//Scroll Up
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP"); 
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Term and Termination", 1, "Value", "This EULA and the license granted hereunder are effective on the date you first use the Product Software and shall continue for as long as the Product Software resides on your smartphone or mobile device, unless this EULA is terminated under this section. MPS may terminate this EULA at any time, and without notice to you, if you fail to comply with any term(s) hereof. You may terminate this EULA effective immediately upon written notice to MPS. Upon termination of this EULA, the license granted hereunder will terminate and you must stop all use of the Product Software, but the terms of Sections 8 through 22 (inclusive) will remain in effect, after any such termination.");
-			//Scroll Up
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP");
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Warranty Disclaimer", 1, "Value", "NOTWITHSTANDING ANYTHING TO THE CONTRARY AND TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, MPS PROVIDES THE PRODUCT SOFTWARE “AS-IS” AND \"AS AVAILABLE\", WITH ALL FAULTS AND WITHOUT WARRANTY OF ANY KIND.");
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Warranty Disclaimer Part 2", 1, "Value", "MPS DISCLAIMS ALL WARRANTIES AND CONDITIONS, WHETHER EXPRESS, IMPLIED, OR STATUTORY, INCLUDING THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, QUIET ENJOYMENT, ACCURACY, AND NON-INFRINGEMENT OF THIRD-PARTY RIGHTS. MPS DOES NOT GUARANTEE ANY SPECIFIC RESULTS FROM THE USE OF THE PRODUCT SOFTWARE. MPS MAKES NO WARRANTY THAT THE PRODUCT SOFTWARE WILL BE AVAILABLE, FUNCTIONAL, UNINTERRUPTED, FREE OF VIRUSES OR OTHER HARMFUL CODE, TIMELY, SECURE, OR ERROR-FREE.");
-			//Scroll Up
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP"); 
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Warranty Disclaimer Part 3", 1, "Value", "YOU USE ALL PRODUCT SOFTWARE AT YOUR OWN DISCRETION AND RISK. YOU WILL BE SOLELY RESPONSIBLE FOR (AND MPS DISCLAIMS) ANY AND ALL LOSS, LIABILITY, OR DAMAGES, INCLUDING ANY COMPUTER, MOBILE DEVICE, OR OTHER ITEM OF YOURS OR A THIRD PARTY, RESULTING FROM YOUR USE OF THE PRODUCT SOFTWARE.");
-			//Scroll Up
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP"); 
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Limitation of Liability", 1, "Value", "Nothing in this EULA, and in particular within this \"Limitation of Liability\" clause, shall attempt to exclude liability that cannot be excluded under applicable law.");
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Limitation of Liability Part 2", 1, "Value", "TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN ADDITION TO THE ABOVE WARRANTY DISCLAIMERS, IN NO EVENT WILL (A) MPS BE LIABLE FOR ANY CONSEQUENTIAL, EXEMPLARY, SPECIAL, OR INCIDENTAL DAMAGES, INCLUDING ANY DAMAGES FOR LOST DATA OR LOST PROFITS, ARISING FROM OR RELATING TO THE PRODUCT SOFTWARE, EVEN IF MPS KNEW OR SHOULD HAVE KNOWN OF THE POSSIBILITY OF SUCH DAMAGES, AND (B) MPS’S TOTAL CUMULATIVE LIABILITY ARISING FROM OR RELATED TO THE PRODUCT SOFTWARE, WHETHER IN CONTRACT OR TORT OR OTHERWISE, SHALL NOT EXCEED THE FEES ACTUALLY PAID BY YOU TO MPS OR MPS’S AUTHORIZED RESELLER FOR THE PRODUCT OR SOFTWARE AT ISSUE IN THE PRIOR 12 MONTHS (IF ANY). THIS LIMITATION IS CUMULATIVE AND WILL NOT BE INCREASED BY THE EXISTENCE OF MORE THAN ONE INCIDENT OR CLAIM. MPS DISCLAIMS ALL LIABILITY OF ANY KIND OF MPS’S LICENSORS AND SUPPLIERS.");
-			//Scroll Up
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP");
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP");
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Indemnification", 1, "Value", "Unless prohibited by applicable law, you will defend MPS, its agents, and assigns to the extent any event arises from your use of the Product Software or services in violation of this Agreement.");
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Indemnification Part 2", 1, "Value", "You will promptly notify MPS in writing of any allegation(s), or legal proceeding and to cooperate reasonably with MPS to resolve the allegation(s) or legal proceeding. MPS may, in its sole discretion, appoint its own counsel, at its own expense. You agree to not enter any settlement or to admit liability, pay money, or take (or refrain from taking) any action, without MPS’ consent, not to be unreasonably withheld, conditioned, or delayed.");
-			//Scroll Up
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP"); 
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Account Setup, Payment and Charges", 1, "Value", "You must fully setup an account in the MPS Sentry Mobile app prior to parking before you can use the SENTRY MOBILE smartphone application to pay for parking with MPS SENTRY parking meters. The MPS Sentry Mobile app will not work with any other type of parking meter or parking system.");
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Account Setup, Payment and Charges Part 2", 1, "Value", "In order to fully set up your account, you must deposit funds into your account in at least the minimum amount requested by the MPS Sentry Mobile app during the setup process (the “Initial Deposit”). If you cancel or terminate your account, you may request a refund of any remaining balance of your Initial Deposit in your account if such request is made within 120 days of the date of the Initial Deposit. No refunds of the Initial Deposit will be made if the refund request is made more than 120 from the date of the Initial Deposit.");
-			//Scroll Up
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP");
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Account Setup, Payment and Charges Part 3", 1, "Value", "For a payment for parking made through the Product Software to be valid, you must i) provide all accurate and complete information required by the Product Software, including license plate number, parking zone, and parking time(s), (ii) accurately provide valid credit card information or other valid form of electronic payment permitted by the Product Software, and (iii) abide by all payment instructions and prompts set forth in the Application.");
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP");
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Account Setup, Payment and Charges Part 4", 1, "Value", "You are responsible for the validity of the enrolled debit card, credit card, that it has sufficient available funds and is not blocked or inactive. Once the parking is initiated and payment received through the Product Software, you will receive a confirmation of the purchase and it is your responsibility to check that this confirmation is received.");
-			//Scroll Up
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP"); 	
-			//There is a error here. Carriage Return
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Account Setup, Payment and Charges Part 5", 1, "Value", "You agree that, when using the Product Software to pay for parking, MPS will charge the parking amount, including any applicable taxes, fees and service charges. The parking fee is calculated based on the parking time and the parking fee applicable when you begin parking, and such fee is charged immediately upon commencement of parking. Once you have been charged the parking fee, such parking fee and any applicable taxes, fees and service charges are");
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Account Setup, Payment and Charges Part 5A", 1, "Value", "nonrefundable, even if you leave the parking space or lot before the time for which you paid to park has expired or if you entered the license plate, location or amount of time incorrectly.");
-			//Scroll Up
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP"); 
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Account Setup, Payment and Charges Part 6", 1, "Value", "You bear the sole responsibility to follow any applicable parking rules and regulations. If the Software Product is not available, for whatever reason, or if the Software Product does not provide a confirmation that your payment for parking has been received, it is your responsibility to pay the parking fee using another method.");
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Account Setup, Payment and Charges Part 7", 1, "Value", "It is your sole responsibility to monitor your parking session and any pertinent parking regulations set forth by the municipality and payments made by you, through any payment method including but not limited to cash, coin, credit card, and/or mobile application, for the duration of your parking session. FAILURE TO RECEIVE AN ALERT, PUSH NOTIFICATION, PROMPT, OR REMINDER OF YOUR PARKING SESSION EXPIRATION DOES NOT NEGATE YOUR RESPONSIBILITY TO PAY FOR YOUR PARKING, NOR DOES SUCH FAILURE EXEMPT YOU FROM RECEIVING A PARKING TICKET. MPS SHALL BEAR NO RESPONSIBILITY OR LIABILITY, AND SHALL NOT BE REQUIRED TO REIMBURSE USER FOR ANY FEES, FINES, TICKETS, AND THE LIKE, INCLUDING BUT NOT LIMITED TO, EXPENSES RELATED TO TOWING OF USER’S VEHICLE, OR ANY DAMAGE THAT MAY BE INCURRED AS RESULT THEREOF.");
-			//Scroll Up
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP"); 
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Account Setup, Payment and Charges Part 8", 1, "Value", "You are solely responsible for (i) obtaining and maintaining all internet or other communications access, computer hardware and other equipment or electronic media necessary to utilize the Product Software, (ii) any issues pertaining to your mobile computing device (including issues pertaining to any incompatibility of the Product Software with your mobile computing device) and the data plan and data/cellular service providers that permit your mobile computing device to send and receive data wirelessly, and (iii) the data and content provided by you to MPS through the Product Software. MPS SHALL HAVE NO RESPONSIBILITY OR LIABILITY FOR ANALYSIS, DATA, RECOMMENDATIONS, OR OTHER SERVICES PROVIDED TO YOU BASED UPON INCORRECT OR INCOMPLETE DATA PROVIDED BY YOU.");
-			//Scroll Up
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP");
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP");
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Account Setup, Payment and Charges Part 9", 1, "Value", "YOU SHALL HOLD MPS HARMLESS IN ANY DISPUTE BETWEEN YOU AND EACH OF THE FOLLOWING: GOVERNMENTAL ENTITIES, YOUR CREDIT CARD COMPANY AND YOUR CELL PHONE COMPANY OR OTHER MOBILE DATA PROVIDER. MPS IS NOT RESPONSIBLE FOR ANY DISPUTES REGARDING PARKING TICKETS, TOWING OF YOUR VEHICLE, OR OTHER FEES OR ISSUES THAT MAY ARISE WITH RESPECT TO ANY PARKING INFRACTION, FAILURE TO PAY, FAILURE TO FOLLOW A PARKING LOT’S INSTRUCTIONS, OR THE LIKE.");
-			//Scroll Up
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP");
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Parking Violations, Enforcement and Collections", 1, "Value", "If you incur any type of parking violation, such as a parking ticket for example, MPS reserves the right to deduct from your account balance, or to charge to your enrolled credit card or debit card, the fine amount corresponding to that parking violation.");
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Parking Violations, Enforcement and Collections Part 2", 1, "Value", "The amount of a fine amount for a parking violation that you incur is considered a debt owed by you to MPS. MPS reserves the right to collect that debt from you via any method allowed by law, including employing third party collections agents and agencies, as well as reporting your unpaid debt to third party credit rating agencies. Your credit rating could be negatively impacted by failure to pay your parking fines.");
-			//Scroll Up
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP");
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP");
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Third Party Materials", 1, "Value", "The Product Software may display, include or make available third-party content (including data, information, applications and other products services and/or materials) or provide links to third-party websites or services, including through third-party advertising (\"Third Party Materials\"). You acknowledge and agree that MPS is not responsible for Third Party Materials, including their accuracy, completeness, timeliness, validity, copyright compliance, legality, decency, quality or any other aspect thereof. MPS does not assume and will not have any liability or responsibility to you or any other person or entity for any Third Party Materials. Third Party Materials and links thereto are provided solely as a convenience to you and you access and use them entirely at your own risk and subject to such third parties' terms and conditions");
-			//Scroll Up
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP"); 
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement For U.S. Government End Users", 1, "Value", "The Product Software is a “commercial item,” as that term is defined at 48 C.F.R. 2.101 (OCT 1995), and more specifically is “commercial computer software” and “commercial computer software documentation,” as such terms are used in 48 C.F.R. 12.212 (SEPT 1995). Consistent with 48 C.F.R. 12.212 and 48 C.F.R. 227.7202-1 through 227.7202-4 (JUNE 1995), the Product Software is provided to U.S. Government End Users only as a commercial end item and with only those rights as are granted to all other customers pursuant to the terms and conditions herein.");
-			//Scroll Up
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP");
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Export Compliance", 1, "Value", "The Product Software and related technology are subject to U.S. export control laws and may be subject to export or import regulations in other countries. You agree to strictly comply with all such laws and regulations and acknowledge that you have the responsibility to obtain authorization to export, re-export, or import the Product Software and related technology, as may be required. You will indemnify and hold MPS harmless from any and all claims, losses, liabilities, damages, fines, penalties, costs and expenses (including attorney’s fees) arising from or relating to any breach by you of your obligations under this section.");
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP");
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Arbitration Required, Jury Trial Waiver, Class Action Waiver, and Forum Selection Clause", 1, "Value", "Any and all controversies, disputes, demands, counts, claims, or causes of action (including the interpretation and scope of this clause, and the arbitrability of the controversy, dispute, demand, count, claim, or cause of action) between you and MPS or its successors or assigns shall exclusively be settled through binding and confidential arbitration.");
-			//Scroll Up
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP"); 
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Arbitration Required, Jury Trial Waiver, Class Action Waiver, and Forum Selection Clause Part 2", 1, "Value", "Arbitration shall be subject to the Federal Arbitration Act and not any state arbitration law. The arbitration shall be conducted before one commercial arbitrator with substantial experience in resolving commercial contract disputes from the American Arbitration Association (“AAA”). As modified by this EULA, and unless otherwise agreed upon by the parties in writing, the arbitration will be governed by the AAA’s Commercial Arbitration Rules and, if the arbitrator deems them applicable, the Supplementary Procedures for Consumer Related Disputes (collectively, the “Rules and Procedures”).");
-			//Scroll Up
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP");
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Arbitration Required, Jury Trial Waiver, Class Action Waiver, and Forum Selection Clause Part 3", 1, "Value", "You are thus GIVING UP YOUR RIGHT TO GO TO COURT to assert or defend your rights EXCEPT for matters that may be taken to small claims court.");
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Arbitration Required, Jury Trial Waiver, Class Action Waiver, and Forum Selection Clause Part 4", 1, "Value", "You and MPS must abide by the following rules: (a) ANY CLAIMS BROUGHT BY YOU OR MPS MUST BE BROUGHT IN THE PARTY'S INDIVIDUAL CAPACITY, AND NOT AS A PLAINTIFF OR CLASS MEMBER IN ANY PURPORTED CLASS OR REPRESENTATIVE PROCEEDING; (b) THE ARBITRATOR MAY NOT CONSOLIDATE MORE THAN ONE PERSON’S CLAIMS, MAY NOT OTHERWISE PRESIDE OVER ANY FORM OF A REPRESENTATIVE OR CLASS PROCEEDING, AND MAY NOT AWARD CLASS-WIDE RELIEF; (c) in the event that you are able to demonstrate that the costs of arbitration will be prohibitive as compared to costs of litigation, MPS will pay as much of your filing and hearing fees in connection with the arbitration as the arbitrator deems necessary to prevent the arbitration from being cost-prohibitive as compared to the cost of litigation, (d) MPS also reserves the right in its sole and exclusive discretion to assume responsibility for all of the costs of the arbitration; (e) the arbitrator shall honor claims of privilege and privacy recognized at law; (f) the arbitration shall be confidential, and neither you nor we may disclose the existence, content or results of any arbitration, except as may be required by law or for purposes of enforcement of the arbitration award; (g) the arbitrator may award any individual relief or individual remedies that are permitted by applicable law; and (h) each side pays its own attorneys’ fees and expenses unless there is a statutory provision that requires the prevailing party to be paid its fees and litigation expenses, and, in such instance, the fees and costs awarded shall be determined by the applicable law.");
-			//Scroll Up
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP"); 
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP"); 
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Arbitration Required, Jury Trial Waiver, Class Action Waiver, and Forum Selection Clause Part 5", 1, "Value", "Notwithstanding the foregoing, either you or MPS may bring an individual action in small claims court.");
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Arbitration Required, Jury Trial Waiver, Class Action Waiver, and Forum Selection Clause Part 6", 1, "Value", "Claims of defamation, violation of the Computer Fraud and Abuse Act, and infringement or misappropriation of the other party’s patent, copyright, trademark, or trade secret shall not be subject to this arbitration agreement. Such claims shall be exclusively brought in the state or federal courts located in Hennepin or Dakota counties of the state of Minnesota.");
-			//Scroll Up
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP"); 
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Arbitration Required, Jury Trial Waiver, Class Action Waiver, and Forum Selection Clause Part 7", 1, "Value", "With the exception of subparts (a) and (b) in this Section (prohibiting arbitration on a class or collective basis), if any part of this arbitration provision is deemed to be invalid, unenforceable or illegal, or otherwise conflicts with the Rules and Procedures, then the balance of this arbitration provision shall remain in effect and shall be construed in accordance with its terms as if the invalid, unenforceable, illegal or conflicting part was not contained herein. If, however, either subpart (a) or (b) is found to be invalid, unenforceable or illegal, then the entirety of this arbitration provision shall be null and void, and neither you nor MPS shall be entitled to arbitration.");
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP"); 
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Choice of Law", 1, "Value", "You agree that this EULA, and any claim, dispute, action, cause of action, issue, or request for relief relating to this EULA and/or your use of the Product Software, will be governed by the laws of Minnesota, without giving effect to any conflicts of laws principles that require the application of the laws of a different jurisdiction.");
-			//Scroll Up
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP"); 
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Choice of Law Part 2", 1, "Value", "Each party irrevocably submits to the jurisdiction and venue of state or federal courts located in Hennepin or Dakota counties of the state of Minnesota, except that MPS may seek injunctive relief in any court having jurisdiction to protect its intellectual property.");
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP"); 
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Assignment", 1, "Value", "Neither the rights nor the obligations arising under this EULA are assignable by you, and any such attempted assignment shall be void and without effect.");
-			//Scroll Up
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP"); 
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Notices", 1, "Value", "Any notice to you may be provided by email to the address that you registered with MPS.");
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Severability", 1, "Value", "If any provision of this EULA is unenforceable, such provision will be changed and interpreted to accomplish the objectives of such provision to the greatest extent possible under applicable law and the remaining provisions will continue in full force and effect.");
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Waiver", 1, "Value", "All waivers by MPS will be effective only if in writing. Any waiver or failure by MPS to enforce any provision of this EULA on one occasion will not be deemed a waiver of any other provision or of such provision on any other occasion.");
-			//Scroll Up
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP"); 
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement General Terms", 1, "Value", "You are responsible for establishing and maintaining your own password.");
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement General Terms Part 2", 1, "Value", "You acknowledge that transmission of data over the internet and wireless devices involves unique transmission risks that cannot be fully secured against unauthorized access.");
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement General Terms Part 3", 1, "Value", "The Product Software is deemed irrevocably accepted upon your use of the Product Software. MPS will have no responsibility to provide maintenance or support services with respect to the Product Software. The parties are independent contractors.");
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement General Terms Part 4", 1, "Value", "You acknowledge that the Product Software contains valuable trade secrets and proprietary information of MPS, that any actual or threatened breach of Section 2 (Restrictions) of this EULA will constitute immediate, irreparable harm to MPS for which monetary damages would be an inadequate remedy, and that injunctive relief is an appropriate remedy for such breach.");
-			//Scroll Up
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP"); 
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement General Terms Part 5", 1, "Value", "The headings of Sections of this EULA are for convenience and are not to be used in interpreting this EULA.");
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP"); 
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement General Terms Part 6", 1, "Value", "If you have questions regarding this EULA, please contact MPS. MPS’s contact information can be found at http://mpspark.com/");
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Entire Agreement", 1, "Value", "Notwithstanding any agreements or terms expressly incorporated by reference in this EULA, this EULA constitutes the entire agreement between the parties. This EULA (as it may from time to time be amended, restated, or otherwise modified) supersedes any prior agreements, understandings, or negotiations, whether written or oral.");
-			//Scroll Up
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP"); 
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Acknowledgement", 1, "Value", "BY USING THE PRODUCT SOFTWARE OR ACCESSING THE MPS WEBSITE, YOU ACKNOWLEDGE THAT YOU HAVE READ THESE TERMS OF USE AND AGREE TO BE BOUND BY THEM.");
-			//Scroll Up
-			clsElementSwipe.Swipe_Flutter(iosdriver,objFrame,"SWIPE_UP"); 
-			clsCommonMobile.VerificationPointText(objDictionary,iosdriver, "User Agreement", "User Agreement Revision Date", 1, "Value", "Revision Date: February 8, 2024");
+			clsCommonMobile.VerifyUserAgreementText(objDictionary, iosdriver, "TestData/UserAgreement_EULA_iOS.txt");
 			iosdriver.quit();
 			clsMeter.METER_SetMeterEndTime(objDictionary);
 			String strAssociatedBug = objDictionary.get("strAssociatedBug");if(strAssociatedBug == null){strAssociatedBug = "";}
@@ -7123,9 +7006,13 @@ public class IOS_TestCases_Flutter
 				clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, iosdriver, "cold start in Battery Saver");
 				clsCommonMobile.ClickButton(objDictionary, iosdriver, "User Agreement", "Accept", 1);
 				clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, iosdriver, "parker", "Remind me later");
+				//ClickPermissionAlertButton
+		  		try {Thread.sleep(3000);}catch (Exception e) {}
+		    	clsCommonMobile.ClickPermissionAlertButton(objDictionary, iosdriver, "Allow");
+		    	try {Thread.sleep(2000);}catch (Exception e) {}
+		    	clsCommonMobile.ClickPermissionAlertButton(objDictionary, iosdriver, "Allow While Using App");
 				clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary, iosdriver, "Account");
 				clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, iosdriver, "Account in Battery Saver");
-	
 				clsCommonMobile.SENTRYMOBILE_SEND_HOME(objDictionary);
 				try { Thread.sleep(15000); } catch (Exception e) {}
 				clsCommonMobile.SENTRYMOBILE_LAUNCH_APP(objDictionary);
@@ -7222,6 +7109,12 @@ public class IOS_TestCases_Flutter
 				iosdriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
 				clsCommonMobile.ClickButton(objDictionary, iosdriver, "User Agreement", "Accept", 1);
 				clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, iosdriver, "parker", "Remind me later");
+				//ClickPermissionAlertButton
+		  		try {Thread.sleep(3000);}catch (Exception e) {}
+		    	clsCommonMobile.ClickPermissionAlertButton(objDictionary, iosdriver, "Allow");
+		    	try {Thread.sleep(2000);}catch (Exception e) {}
+		    	clsCommonMobile.ClickPermissionAlertButton(objDictionary, iosdriver, "Allow While Using App");
+				
 				clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary, iosdriver, "Account");
 				clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary, iosdriver, "Park");
 	
@@ -7305,6 +7198,11 @@ public class IOS_TestCases_Flutter
 				iosdriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
 				clsCommonMobile.ClickButton(objDictionary, iosdriver, "User Agreement", "Accept", 1);
 				clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, iosdriver, "parker", "Remind me later");
+				//ClickPermissionAlertButton
+		  		try {Thread.sleep(3000);}catch (Exception e) {}
+		    	clsCommonMobile.ClickPermissionAlertButton(objDictionary, iosdriver, "Allow");
+		    	try {Thread.sleep(2000);}catch (Exception e) {}
+		    	clsCommonMobile.ClickPermissionAlertButton(objDictionary, iosdriver, "Allow While Using App");
 				clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary, iosdriver, "Park");
 	
 				objDictionary.put("strPermissionAction", "Revoke");
@@ -7318,6 +7216,8 @@ public class IOS_TestCases_Flutter
 				clsCommonMobile.SENTRYMOBILE_DismissLocationPromptsIfPresent(iosdriver);
 				clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, iosdriver, "relaunch after revoking location and camera");
 				boolean onPark = false;
+				clsCommonMobile.ClickButton(objDictionary, iosdriver, "Log in", "Log in",1);
+				clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary, iosdriver, "Park");
 				try { clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary, iosdriver, "Park"); onPark = true; } catch (Exception e) { onPark = clsCommonMobile.SENTRYMOBILE_ClickIfPresent(iosdriver, "//XCUIElementTypeButton[contains(@name, 'Park') or contains(@label, 'Park')]", 8); }
 				if (onPark)
 				{
@@ -7539,6 +7439,7 @@ public class IOS_TestCases_Flutter
 				clsCommonMobile.SENTRYMOBILE_LAUNCH_APP(objDictionary);
 				try { Thread.sleep(5000); } catch (Exception e) {}
 				clsCommonMobile.SENTRYMOBILE_AcceptUserAgreementIfPresent(objDictionary, iosdriver);
+				clsCommonMobile.ClickButton(objDictionary, iosdriver, "Log in", "Log in", 1);
 				clsCommonMobile.SENTRYMOBILE_AssertAppDidNotCrash(objDictionary, iosdriver, "relaunch under low-storage simulation");
 				String source = clsCommonMobile.SENTRYMOBILE_CaptureVisibleUi(iosdriver);
 				if (NegativeInputCases.looksLikeLowStorage(source))
