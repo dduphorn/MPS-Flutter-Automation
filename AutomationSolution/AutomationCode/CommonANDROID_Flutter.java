@@ -3340,10 +3340,18 @@ public class CommonANDROID_Flutter
             		String strFreeParkingStartTime = clsCommonWeb.AddTimeToCurrentTime(String.valueOf(intRemainingMinutesBeforeFree),"h:mm a");
     	    		String strFreeParkingStartTimeMinus1 = clsCommonWeb.AddTimeToCurrentTime(String.valueOf(intRemainingMinutesBeforeFreeMinus1),"h:mm a");
     	  			String strFreeParkingStartTimeTimePlus1 = clsCommonWeb.AddTimeToCurrentTime(String.valueOf(intRemainingMinutesBeforeFreePlus1),"h:mm a");
+    	  			//Hours of Enforcement = hours of the rate block the parker is paying in right now (RateBlockPlanner keys).
+    	  			//Legacy assumption "12:00 am-(free start - 1)" breaks when the free window starts after midnight (current block is today's 00:00-23:59).
+    	  			String strHoursLegacy = "12:00 am-"+strFreeParkingStartTimeMinus1.toLowerCase();
+    	  			String strHoursPlan = RateBlockPlanner.currentRateBlockHours(objDictionary, java.time.LocalDateTime.now());
+    	  			String strExpectedHours = (strHoursPlan != null) ? strHoursPlan : strHoursLegacy;
+    	  			String strExpectedSpotDetailsLegacyHours = "";
+    	  			Reporter.log("Expected Hours of Enforcement: "+strExpectedHours+(strHoursPlan != null ? " (rate block plan)" : " (legacy free start - 1)"));
     	  			if(intMinutes == 0)
     	 	        {
-    	    			strExpectedSpotDetails = strMeterSpotName+" Free parking starts at "+strFreeParkingStartTime+" Time Limit "+intRemainingMinutesBeforeFree+"min(s) Rate $ 0.25 / "+strMeterIncrementTime+" minutes Hours of Enforcement 12:00 am-"+strFreeParkingStartTimeMinus1.toLowerCase();
-    	    			strExpectedSpotDetailsRemainingTimeMinus1 = strMeterSpotName+" Free parking starts at "+strFreeParkingStartTime+" Time Limit "+intRemainingMinutesBeforeFreeMinus1+"min(s) Rate $ 0.25 / "+strMeterIncrementTime+" minutes Hours of Enforcement 12:00 am-"+strFreeParkingStartTimeMinus1.toLowerCase();
+    	    			strExpectedSpotDetails = strMeterSpotName+" Free parking starts at "+strFreeParkingStartTime+" Time Limit "+intRemainingMinutesBeforeFree+"min(s) Rate $ 0.25 / "+strMeterIncrementTime+" minutes Hours of Enforcement "+strExpectedHours;
+    	    			strExpectedSpotDetailsRemainingTimeMinus1 = strMeterSpotName+" Free parking starts at "+strFreeParkingStartTime+" Time Limit "+intRemainingMinutesBeforeFreeMinus1+"min(s) Rate $ 0.25 / "+strMeterIncrementTime+" minutes Hours of Enforcement "+strExpectedHours;
+    	    			strExpectedSpotDetailsLegacyHours = strMeterSpotName+" Free parking starts at "+strFreeParkingStartTime+" Time Limit "+intRemainingMinutesBeforeFree+"min(s) Rate $ 0.25 / "+strMeterIncrementTime+" minutes Hours of Enforcement 12:00 am-"+strFreeParkingStartTimeMinus1.toLowerCase();
     	    			strExpectedSpotDetailsFreeTimePlus1 =  strMeterSpotName+" Free parking starts at "+strFreeParkingStartTimeTimePlus1+" Time Limit "+intRemainingMinutesBeforeFree+"min(s) Rate $ 0.25 / "+strMeterIncrementTime+" minutes Hours of Enforcement 12:00 am-"+strFreeParkingStartTime.toLowerCase();
     	 	        }
     	 	        else
@@ -3358,6 +3366,8 @@ public class CommonANDROID_Flutter
     	    		{Reporter.log("The Text (Spot Details) with index (1) contained (" + strExpectedSpotDetailsRemainingTimeMinus1 + ")");}
     	    		else if(strSpotDetails.contains(strExpectedSpotDetailsFreeTimePlus1))
     	    		{Reporter.log("The Text (Spot Details) with index (1) contained (" + strExpectedSpotDetailsFreeTimePlus1 + ")");}
+    	    		else if(!strExpectedSpotDetailsLegacyHours.equals("") && strSpotDetails.contains(strExpectedSpotDetailsLegacyHours))
+    	    		{Reporter.log("The Text (Spot Details) with index (1) contained (" + strExpectedSpotDetailsLegacyHours + ")-Legacy hours");}
     	    		else
     	    		{
     	    			UpdateErrorMessageWithPivotalData(objDictionary, androidDriver, "The Text (Spot Details) with index (1) did not contain (" + strExpectedSpotDetails + ") - actual value (" + strSpotDetails + ")");
@@ -3572,12 +3582,23 @@ public class CommonANDROID_Flutter
 				{
 					String strMinutesBeforeFreeStart = objDictionary.get("strMinutesBeforeFreeStart");
 					intMeterRemainingTimeMinutes = clsMeter.METER_CalculateRemainingMinutesBeforeFree(objDictionary, null, strMinutesBeforeFreeStart);
+					//Free start caps the first payment when remaining-before-free <= purchased minutes (RateBlockPlanner keys present)
+					java.time.LocalDateTime dtNowFreeCap = java.time.LocalDateTime.now();
+					java.time.LocalDateTime dtFreeStartCap = RateBlockPlanner.datedFreeStart(objDictionary, dtNowFreeCap);
+					boolean blnFreeStartCaps = dtFreeStartCap != null && intMeterRemainingTimeMinutes <= Integer.parseInt(strMeterIncrementTime)+Integer.parseInt(strFreeTimeFirstPayment);
 					if(intMeterRemainingTimeMinutes > Integer.parseInt(strMeterIncrementTime)+Integer.parseInt(strFreeTimeFirstPayment))
 					{
 						intMeterRemainingTimeMinutes = Integer.parseInt(strMeterIncrementTime)+Integer.parseInt(strFreeTimeFirstPayment);
 					}
 					strEndTime = clsCommonMobile.AddTimeToExistingTime(strPurchaseTime, String.valueOf(intMeterRemainingTimeMinutes),"MMM dd, hh:mm a");
-					clsMeter.METER_ValidateExpectedMeterTime(objDictionary, null, intMeterRemainingTimeMinutes, "1");
+					int intExpectedMeterMinutesFirst = intMeterRemainingTimeMinutes;
+					if(blnFreeStartCaps)
+					{
+						intExpectedMeterMinutesFirst = RateBlockPlanner.roundedMinutesUntil(dtFreeStartCap, dtNowFreeCap);
+						strEndTime = RateBlockPlanner.formatSessionTime(dtFreeStartCap);
+						Reporter.log("Free start caps the session: expected End Time "+strEndTime+" (free start "+dtFreeStartCap.format(RateBlockPlanner.DATE_TIME)+"), expected meter time "+intExpectedMeterMinutesFirst+" min (rounded)");
+					}
+					clsMeter.METER_ValidateExpectedMeterTime(objDictionary, null, intExpectedMeterMinutesFirst, "1");
 				}
 		  	}
 			else
@@ -4052,6 +4073,7 @@ public class CommonANDROID_Flutter
 		clsCommonMobile.GlobalWait(objDictionary, androidDriver, "Parking Sessions", "{TextExists} Parking Sessions~Parking Session Details", 80);
 	 	//Calculate MeterRemainingTimeMinutes
 		int intMeterRemainingTimeMinutes = 0;
+		Integer intFreeCapMeterMinutes = null;//set when the free start caps the session (RateBlockPlanner)
 		//Update with True-Up
 		if(strTrueUpStartTime.equals("")||strSessionReset.equals("True"))
 		{
@@ -4092,12 +4114,23 @@ public class CommonANDROID_Flutter
 					{
 						String strMinutesBeforeFreeStart = objDictionary.get("strMinutesBeforeFreeStart");
 						intMeterRemainingTimeMinutes = clsMeter.METER_CalculateRemainingMinutesBeforeFree(objDictionary, null, strMinutesBeforeFreeStart);
+						int intUncappedMinutesBeforeFree = intMeterRemainingTimeMinutes;
 						if(intMeterRemainingTimeMinutes > (Integer.parseInt(strMeterIncrementTime) * 2))
 						{
 							intMeterRemainingTimeMinutes = Integer.parseInt(strMeterIncrementTime) * 2;
 						}
 						strEndTime = clsCommonMobile.AddTimeToExistingTime(strStartTime, String.valueOf(intMeterRemainingTimeMinutes + 1),"MMM dd, hh:mm a");
 						objDictionary.put("strMeterRemainingTimeMinutes", Integer.toString(intMeterRemainingTimeMinutes));
+						//Free start caps the session (RateBlockPlanner keys present): the meter ends the session at the free start, so expect
+						//End Time = dated free start and meter time = seconds until free start rounded like the meter (not park minute + ceil).
+						java.time.LocalDateTime dtNowFreeCap = java.time.LocalDateTime.now();
+						java.time.LocalDateTime dtFreeStartCap = RateBlockPlanner.datedFreeStart(objDictionary, dtNowFreeCap);
+						if(dtFreeStartCap != null && intUncappedMinutesBeforeFree <= (Integer.parseInt(strMeterIncrementTime) * 2))
+						{
+							intFreeCapMeterMinutes = RateBlockPlanner.roundedMinutesUntil(dtFreeStartCap, dtNowFreeCap);
+							strEndTime = RateBlockPlanner.formatSessionTime(dtFreeStartCap);
+							Reporter.log("Free start caps the session: expected End Time "+strEndTime+" (free start "+dtFreeStartCap.format(RateBlockPlanner.DATE_TIME)+"), expected meter time "+intFreeCapMeterMinutes+" min (rounded)");
+						}
 					}
 			  	}
 			}
@@ -4106,7 +4139,7 @@ public class CommonANDROID_Flutter
 				intMeterRemainingTimeMinutes = clsMeter.METER_CalculateRemainingTrueUpTime(objDictionary, null,  strTrueUpStartTime, strMeterIncrementTime) + Integer.parseInt(strMeterIncrementTime) + Integer.parseInt(strFreeTimeFirstPayment);
 			}
 			//Validate Expected Meter Time
-			clsMeter.METER_ValidateExpectedMeterTime(objDictionary, null, intMeterRemainingTimeMinutes, "1");
+			clsMeter.METER_ValidateExpectedMeterTime(objDictionary, null, (intFreeCapMeterMinutes != null ? intFreeCapMeterMinutes.intValue() : intMeterRemainingTimeMinutes), "1");
 			//ValidateParkingSession
 			String strFirstPaymentFee = objDictionary.get("strFirstPaymentFee");//SENTRYMOBILE_PurchaseMeterTimeParkThenPay
 			String strSecondPaymentFee = objDictionary.get("strTotalFee");//SENTRYMOBILE_ValidateFirstPaymentDialogAndReturnParkingFee

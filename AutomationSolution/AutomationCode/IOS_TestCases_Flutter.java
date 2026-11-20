@@ -184,6 +184,8 @@ public class IOS_TestCases_Flutter
 			//clsMeter.METER_CopyMessageTraceLocally(objDictionary, strTestSuiteName+"_"+strTestCaseName+"_"+strInvocationCounter);
 			String strResetRateBlocksCounter = objDictionary.get("strResetRateBlocksCounter");if(strResetRateBlocksCounter == null) {strResetRateBlocksCounter = "0";}
 		}
+		//Keep overnight evidence (Reporter output, appium_full.log of failed tests, end-of-run reports) in test-output-archive/<run>/
+		try {RunArtifactArchiver.archiveTestResult(result, method == null ? objDictionary.get("strTestCase") : method.getName());} catch (Throwable t) {System.out.println("Archive failed: " + t);}
 	}
 
 

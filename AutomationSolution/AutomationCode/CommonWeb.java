@@ -7975,6 +7975,114 @@ public class CommonWeb {
   	}
 
 	// ******************************************************************************************************************************************************************************************
+	// Per-day (midnight safe) rate blocks - the plan is built by RateBlockPlanner (pure Java, unit tested), these methods type it into SentryLink
+	// ******************************************************************************************************************************************************************************************
+	public void SENTRYLINK_ApplyRateBlockPlan(Map<String, String> objDictionary, WebDriver driver, RateBlockPlanner.Plan objPlan, String strStartDate, String strOpenFormRateSetName)
+	{
+		//Expects to be on the Rate Block Group page, or on a Rate Block Setting form that was already opened for strOpenFormRateSetName.
+		//Saves every block. The caller still clicks "Send to all".
+		String strMethodName = new Object(){}.getClass().getEnclosingMethod().getName();
+		Reporter.log("<font color='orange'>     " + strMethodName + "</font>");
+		System.out.println("Start: " + strMethodName);
+		CommonWeb clsCommonWeb = new CommonWeb();
+		String strPlan = objPlan.describe();
+		Reporter.log(strPlan);
+		System.out.println(strPlan);
+		objDictionary.remove("strRateBlockPlan");objDictionary.put("strRateBlockPlan", strPlan);
+		List<RateBlockPlanner.PlannedBlock> lstBlocks = new ArrayList<RateBlockPlanner.PlannedBlock>(objPlan.blocks);
+		//Use the already open form for a block with the same rate set (the All Day "other days" block when there is one)
+		RateBlockPlanner.PlannedBlock objFirstBlock = null;
+		if (strOpenFormRateSetName != null)
+		{
+			for (RateBlockPlanner.PlannedBlock objBlock : lstBlocks) {if (objBlock.allDay && strOpenFormRateSetName.equals(objBlock.rateSetName)) {objFirstBlock = objBlock; break;}}
+			if (objFirstBlock == null)
+			{
+				for (RateBlockPlanner.PlannedBlock objBlock : lstBlocks) {if (strOpenFormRateSetName.equals(objBlock.rateSetName)) {objFirstBlock = objBlock; break;}}
+			}
+			if (objFirstBlock != null) {lstBlocks.remove(objFirstBlock); lstBlocks.add(0, objFirstBlock);}
+			else
+			{
+				//No block uses the open form's rate set - leave the form without saving
+				driver.navigate().back();
+				waitForPageLoaded(objDictionary, driver);
+			}
+		}
+		boolean blnFormOpen = (objFirstBlock != null);
+		for (RateBlockPlanner.PlannedBlock objBlock : lstBlocks)
+		{
+			if (!blnFormOpen)
+			{
+				try {Thread.sleep(1500);} catch (Exception e) {}
+				clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Group", "Populate Add Set to This Group", "{L} Add Set to This Group", objBlock.rateSetName);
+				try {Thread.sleep(1500);} catch (Exception e) {}
+				clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Group", "Add Set to This Group", 1, "Local");
+				clsCommonWeb.GlobalObjectWait(objDictionary, driver, "Rate Block Setting", "{TextFieldExists} Rate Block Setting~Rate Block Name", 30);
+				try {Thread.sleep(1500);} catch (Exception e) {}
+			}
+			blnFormOpen = false;
+			if (objBlock.allDay)
+			{
+				clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Setting", "Populate Specific Times of Day", "{T} Rate Block Name|{T} Start Date|{RB} Time Options", objBlock.name + "|" + strStartDate + "|All Day");
+			}
+			else
+			{
+				clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Setting", "Populate Specific Times of Day", "{T} Rate Block Name|{T} Start Date|{RB} Time Options|{T} Start Time|{T} End Time", objBlock.name + "|" + strStartDate + "|Specific|" + objBlock.getStartHHmm() + "|" + objBlock.getEndHHmm());
+			}
+			clsCommonWeb.SENTRYLINK_SetRateBlockDaysOfWeek(objDictionary, driver, objBlock.days);
+			try {Thread.sleep(1000);} catch (Exception e) {}
+			clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Setting", "Save Rate Block", 1, "Local");
+			try {Thread.sleep(2000);} catch (Exception e) {}
+			Reporter.log("Saved rate block: " + objBlock);
+		}
+		clsCommonWeb.GlobalObjectWait(objDictionary, driver, "Rate Block Group", "{ButtonExists} Send to all", 20);
+	}
+	public void SENTRYLINK_SetRateBlockDaysOfWeek(Map<String, String> objDictionary, WebDriver driver, Set<java.time.DayOfWeek> setDays)
+	{
+		//Checks only the days in setDays and unchecks the rest. Day checkboxes have no ids; they are found by ng-model,
+		//falling back to their position (Mon..Sun) in the form.
+		String strMethodName = new Object(){}.getClass().getEnclosingMethod().getName();
+		String[] arrDays = {"mon", "tue", "wed", "thu", "fri", "sat", "sun"};
+		List<WebElement> lstDayCheckboxes = driver.findElements(By.xpath("//input[@type='checkbox' and starts-with(@ng-model,'day_checkbox')]"));
+		for (int i = 0; i < 7; i++)
+		{
+			java.time.DayOfWeek objDay = java.time.DayOfWeek.of(i + 1);
+			boolean blnWanted = setDays.contains(objDay);
+			WebElement objCheckbox = null;
+			try {objCheckbox = driver.findElement(By.xpath("//input[@ng-model='day_checkbox." + arrDays[i] + "']"));} catch (Exception e) {}
+			if (objCheckbox == null && lstDayCheckboxes.size() == 7) {objCheckbox = lstDayCheckboxes.get(i);}
+			if (objCheckbox == null)
+			{
+				UpdateErrorMessageWithPivotalData(objDictionary, driver, "The day of week checkbox (" + arrDays[i] + ") did not exist-" + strMethodName, "Local");
+				return;
+			}
+			if (objCheckbox.isSelected() != blnWanted)
+			{
+				try {((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", objCheckbox);} catch (Exception e) {}
+				try {objCheckbox.click();}
+				catch (Exception e) {((JavascriptExecutor) driver).executeScript("arguments[0].click();", objCheckbox);}
+			}
+			if (objCheckbox.isSelected() != blnWanted)
+			{
+				UpdateErrorMessageWithPivotalData(objDictionary, driver, "The day of week checkbox (" + arrDays[i] + ") should be " + (blnWanted ? "checked" : "unchecked") + "-" + strMethodName, "Local");
+			}
+		}
+	}
+	public void SENTRYLINK_PutRateBlockPlanDateTimes(Map<String, String> objDictionary, RateBlockPlanner.Plan objPlan)
+	{
+		//Absolute (dated) values so wrap-safe expected value calculations do not have to guess the day
+		objDictionary.remove("strRateBlockPlanNow");objDictionary.put("strRateBlockPlanNow", objPlan.now.format(RateBlockPlanner.DATE_TIME));
+		if (objPlan.getFreeStart() != null)
+		{
+			objDictionary.remove("strFreeParkingStartDateTime");objDictionary.put("strFreeParkingStartDateTime", objPlan.getFreeStartDateTime());
+			objDictionary.remove("strFreeParkingEndDateTime");objDictionary.put("strFreeParkingEndDateTime", objPlan.getFreeEndDateTime());
+		}
+		//Hours of the block the parker pays in right now (app "Hours of Enforcement"), plus the schedule so it can be recomputed at validation time
+		String strCurrentRateBlockHours = objPlan.getCurrentBlockHours(objPlan.now);
+		objDictionary.remove("strCurrentRateBlockHours");if (strCurrentRateBlockHours != null) {objDictionary.put("strCurrentRateBlockHours", strCurrentRateBlockHours);}
+		objDictionary.remove("strRateBlockPlanSchedule");objDictionary.put("strRateBlockPlanSchedule", objPlan.encodeSchedule());
+		Reporter.log("Rate block plan now=" + objPlan.now.format(RateBlockPlanner.DATE_TIME) + " free start=" + objPlan.getFreeStartDateTime() + " free end=" + objPlan.getFreeEndDateTime() + " crossesMidnight=" + objPlan.crossesMidnight() + " currentBlockHours=" + strCurrentRateBlockHours + " exclusiveEndTimes=" + RateBlockPlanner.EXCLUSIVE_END_TIMES);
+	}
+	// ******************************************************************************************************************************************************************************************
 	// Update Rate Set Values
 	// *******************************************************************************************************************************
 	public void SENTRYLINK_UpdateRateSetValues(Map<String, String> objDictionary, Session sessionMeter)
@@ -8105,6 +8213,8 @@ public class CommonWeb {
 		clsCommonWeb.GlobalObjectWait(objDictionary, driver, "Rate Block Setting", "{TextFieldExists} Rate Block Setting~Rate Block Name", 30);
 		try {Thread.sleep(3500);}catch (Exception e) {}
 		String strStartDate =  clsCommonWeb.AddDaysToCurrentDate("MM/dd/yyyy","-67");
+		//Set to true when the per-day RateBlockPlanner path saved all the blocks itself
+		boolean blnRateBlockPlanApplied = false;
 		//Used for Rate to Rate Test Cases
 		String strMinutesBeforeFirstRateBlockEnds = objDictionary.get("strMinutesBeforeFirstRateBlockEnds");
 		String strMinutesBeforeFreeParking = objDictionary.get("strMinutesBeforeFreeParking");
@@ -8123,147 +8233,137 @@ public class CommonWeb {
 				//RATE TO FREE
 				if(strMinutesBeforeFreeParking != null)
 				{
-					//Calculate and Update Free Parking
-					String strFreeParkingStartTime = clsCommonWeb.AddTimeToCurrentTime(strMinutesBeforeFreeParking,"HH:mm");
-					int intEndTimeMinutes = Integer.parseInt(strMinutesBeforeFreeParking) +Integer.parseInt(strFreeTimeMinutes);
-					String strFreeParkingEndTime = clsCommonWeb.AddTimeToCurrentTime(Integer.toString(intEndTimeMinutes),"HH:mm");
-					Date dtFreeParkingStartTime = null;
-					Date dtFreeParkingEndTime = null;
-					try
-					{
-						Date dateObj = new SimpleDateFormat("HH:mm").parse(strFreeParkingStartTime);
-						String strFreeParkingStartTime12 = new SimpleDateFormat("h:mm a").format(dateObj);
-						objDictionary.remove("strFreeParkingStartTime12");objDictionary.put("strFreeParkingStartTime12",strFreeParkingStartTime12);
-						SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-						dtFreeParkingStartTime = sdf.parse(strFreeParkingStartTime);
-						dtFreeParkingEndTime = sdf.parse(strFreeParkingEndTime);
-					}catch(Exception e){}
-					String strRateSet = "Free Parking";
-					if(dtFreeParkingEndTime.compareTo(dtFreeParkingStartTime)>0)
-					{
-						//Set 1st Rate Block
-						int intMinutesBeforeFirstRateBlockEnds = Integer.parseInt(strMinutesBeforeFreeParking) -1;
-						String strFirstRateBlockEndTime = clsCommonWeb.AddTimeToCurrentTime(String.valueOf(intMinutesBeforeFirstRateBlockEnds),"HH:mm");
-						clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Setting", "Populate Specific Times of Day","{T} Rate Block Name|{T} Start Date|{RB} Time Options|{T} End Time",strRateType + "RateBlock|" + strStartDate + "|Specific|"+strFirstRateBlockEndTime);
-						clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Setting", "Save Rate Block", 1, "Local");
-						//Set FREE Rate Block
-						try {Thread.sleep(1500);} catch (Exception f) {}
-						clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Group","Populate Add Set to This Group", "{L} Add Set to This Group",strFirstLetter + " Free Parking");
-						clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Group", "Add Set to This Group", 1, "Local");
-						try {Thread.sleep(1500);} catch (Exception f) {}
-						clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Setting", "Populate Specific Times of Day","{T} Rate Block Name|{T} Start Date|{RB} Time Options|{T} Start Time|{T} End Time","FreeRateBlock|" + strStartDate + "|Specific|"+strFreeParkingStartTime+"|"+strFreeParkingEndTime);
-						clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Setting", "Save Rate Block", 1, "Local");
-						//Set 2nd Rate Block
-						clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Group", "Populate Add Set to This Group","{L} Add Set to This Group", strRateSetName);
-						clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Group", "Add Set to This Group", 1, "Local");
-						try {Thread.sleep(1500);} catch (Exception f) {}
-						clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Setting", "Populate Specific Times of Day","{T} Rate Block Name|{T} Start Date|{RB} Time Options|{T} Start Time|{T} End Time",strRateType + "RateBlock|" + strStartDate + "|Specific|"+strFreeParkingEndTime+"|23:59");
-						//RemainingFreeTimeStart
-				 		String strMinutesBeforeFreeStart = strFreeParkingStartTime+":00";
-				  		objDictionary.remove("strMinutesBeforeFreeStart");objDictionary.put("strMinutesBeforeFreeStart", strMinutesBeforeFreeStart);
-				  		objDictionary.remove("strFreeParkingStartTime");objDictionary.put("strFreeParkingStartTime", strMinutesBeforeFreeStart);
-				  	}
-					else
-					{
-						//This gets hit when rateblock are getting set around midnight.
-						clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary, driver, "Code Needs to be added to handle rateblocks around midnight-"+strMethodName, "Local");
-					}
+					//RATE TO FREE - per-day rate blocks so the free window can cross midnight (see RateBlockPlanner).
+					//'now' is read ONCE and every block/expected value comes from the same dated plan.
+					String strTestCaseNameRTF = objDictionary.get("strTestCaseName");
+					String strFirstLetterRTF = strTestCaseNameRTF.substring(0, 1);
+					RateBlockPlanner.Plan objRateBlockPlan = RateBlockPlanner.rateToFree(java.time.LocalDateTime.now(), Integer.parseInt(strMinutesBeforeFreeParking), Integer.parseInt(strFreeTimeMinutes), strRateType, strRateSetName, strFirstLetterRTF + " Free Parking");
+					clsCommonWeb.SENTRYLINK_ApplyRateBlockPlan(objDictionary, driver, objRateBlockPlan, strStartDate, strRateSetName);
+					blnRateBlockPlanApplied = true;
+					//Expected values (same keys as before)
+					objDictionary.remove("strFreeParkingStartTime12");objDictionary.put("strFreeParkingStartTime12", objRateBlockPlan.getFreeStart12());
+					String strMinutesBeforeFreeStart = objRateBlockPlan.getFreeStartHHmmss();
+					objDictionary.remove("strMinutesBeforeFreeStart");objDictionary.put("strMinutesBeforeFreeStart", strMinutesBeforeFreeStart);
+					objDictionary.remove("strFreeParkingStartTime");objDictionary.put("strFreeParkingStartTime", strMinutesBeforeFreeStart);
+					clsCommonWeb.SENTRYLINK_PutRateBlockPlanDateTimes(objDictionary, objRateBlockPlan);
 				}
 				else
 				{
-					//FREE TO RATE
-					int inMinutessOffRateBeforeFree = Integer.parseInt(strMinutesOfFreeTimeBeforeCurrentTime) - 1;
-					String strFirstRateEndTime = clsCommonWeb.AddTimeToCurrentTime(String.valueOf(inMinutessOffRateBeforeFree),"HH:mm");
-					String strFreeParkingStartTime = clsCommonWeb.AddTimeToCurrentTime(strMinutesOfFreeTimeBeforeCurrentTime,"HH:mm");
-					String strFreeParkingEndTime = clsCommonWeb.AddTimeToCurrentTime(strFreeTimeMinutes, "HH:mm");
-					//Set 1st Rate Block
-					clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Setting", "Populate Specific Times of Day","{T} Rate Block Name|{T} Start Date|{RB} Time Options|{T} End Time",strRateType + "RateBlock|" + strStartDate + "|Specific|"+strFirstRateEndTime);
-					clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Setting", "Save Rate Block", 1, "Local");
-					//Set Free Rate Block
-					try {Thread.sleep(1500);} catch (Exception f) {}
-					clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Group","Populate Add Set to This Group", "{L} Add Set to This Group",strFirstLetter + " Free Parking");
-					clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Group", "Add Set to This Group", 1, "Local");
-					clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Setting", "Populate Specific Times of Day","{T} Rate Block Name|{T} Start Date|{RB} Time Options|{T} Start Time|{T} End Time","FreeRateBlock|" + strStartDate + "|Specific|"+strFreeParkingStartTime+"|"+strFreeParkingEndTime);
-					clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Setting", "Save Rate Block", 1, "Local");
-					if (strNoParkingTimeMinutes != null)
+					if (strNoParkingTimeMinutes == null)
 					{
-						//Set required free variables
-						objDictionary.put("strFreeParkingEndTime", strFreeParkingEndTime);
-						objDictionary.put("strRemainingFreeTimeStart", strFreeParkingStartTime+":00");
-						String strMinutesBeforeNoParking = objDictionary.get("strMinutesBeforeNoParking");
-						int inMinutessOffRateBeforeNoParking = Integer.parseInt(strMinutesBeforeNoParking) - 1;
-						String strRateEndTime = clsCommonWeb.AddTimeToCurrentTime(String.valueOf(inMinutessOffRateBeforeNoParking),"HH:mm");
-						if(strMinutesBeforeNoParking != null)
-						{
-							//Populate Rate To No Parking
-							clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Group", "Populate Add Set to This Group","{L} Add Set to This Group", strRateSetName);
-							clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Group", "Add Set to This Group", 1, "Local");
-							clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Setting", "Populate Specific Times of Day","{T} Rate Block Name|{T} Start Date|{RB} Time Options|{T} Start Time|{T} End Time",strRateType + "RateBlock|" + strStartDate + "|Specific|"+strFreeParkingEndTime+"|"+strRateEndTime);
-							clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Setting", "Save Rate Block", 1, "Local");
-							//Add No Parking Rate Block
-							String strNoParkingStartTime = clsCommonWeb.AddTimeToCurrentTime(strMinutesBeforeNoParking, "HH:mm");
-							int intEndTimeMinutes = 0;
-							intEndTimeMinutes = Integer.parseInt(strMinutesBeforeNoParking)+ Integer.parseInt(strNoParkingTimeMinutes);
-							String strNoParkingEndTime = clsCommonWeb.AddTimeToCurrentTime(Integer.toString(intEndTimeMinutes), "HH:mm");
-							Date dtNoParkingStartTime = null;
-							Date dtNoParkingEndTime = null;
-							try
-							{
-								Date dateObj = new SimpleDateFormat("HH:mm").parse(strNoParkingStartTime);
-								String strNoParkingStartTime12 = new SimpleDateFormat("h:mm a").format(dateObj);
-								objDictionary.remove("strNoParkingStartTime12");
-								objDictionary.put("strNoParkingStartTime12", strNoParkingStartTime12);
-								SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-								dtNoParkingStartTime = sdf.parse(strNoParkingStartTime);
-								dtNoParkingEndTime = sdf.parse(strNoParkingEndTime);
-							}catch(Exception e) {}
-							if (dtNoParkingEndTime.compareTo(dtNoParkingStartTime) > 0)
-							{
-								//Set NO PARKING Rate Block
-								try {Thread.sleep(1500);} catch (Exception f) {}
-								clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Group","Populate Add Set to This Group", "{L} Add Set to This Group",strFirstLetter + " No Parking");
-								clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Group", "Add Set to This Group", 1, "Local");
-								clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Setting", "Populate Specific Times of Day","{T} Rate Block Name|{T} Start Date|{RB} Time Options|{T} Start Time|{T} End Time","NoParkingRateBlock|" + strStartDate + "|Specific|"+strNoParkingStartTime+"|"+strNoParkingEndTime);
-								clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Setting", "Save Rate Block", 1, "Local");
-								//Set 2nd Rate Block
-								clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Group", "Populate Add Set to This Group","{L} Add Set to This Group", strRateSetName);
-								clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Group", "Add Set to This Group", 1, "Local");
-								clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Setting", "Populate Specific Times of Day","{T} Rate Block Name|{T} Start Date|{RB} Time Options|{T} Start Time|{T} End Time",strRateType + "RateBlock|" + strStartDate + "|Specific|"+strNoParkingEndTime+"|23:59");
-								//RemainingFreeTimeStart
-						 		String strMinutesBeforeNoParkingStart = strNoParkingStartTime+":00";
-						  		objDictionary.remove("strMinutesBeforeNoParkingStart");objDictionary.put("strMinutesBeforeNoParkingStart", strMinutesBeforeNoParkingStart);
-							}
-							else
-							{
-								//This gets hit when rateblock are getting set around midnight.
-								clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary, driver, "Code Needs to be added to handle rateblocks around midnight-"+strMethodName, "Local");
-							}
-						}
-						objDictionary.put("strRemainingFreeTimeStart", strFreeParkingStartTime+":00");
+						//FREE TO RATE - per-day rate blocks so the free window can cross midnight (see RateBlockPlanner).
+						if(strMinutesOfFreeTimeBeforeCurrentTime == null) {strMinutesOfFreeTimeBeforeCurrentTime = "0";}
+						String strTestCaseNameFTR = objDictionary.get("strTestCaseName");
+						String strFirstLetterFTR = strTestCaseNameFTR.substring(0, 1);
+						RateBlockPlanner.Plan objRateBlockPlan = RateBlockPlanner.freeToRate(java.time.LocalDateTime.now(), Integer.parseInt(strMinutesOfFreeTimeBeforeCurrentTime), Integer.parseInt(strFreeTimeMinutes), strRateType, strRateSetName, strFirstLetterFTR + " Free Parking");
+						clsCommonWeb.SENTRYLINK_ApplyRateBlockPlan(objDictionary, driver, objRateBlockPlan, strStartDate, strRateSetName);
+						blnRateBlockPlanApplied = true;
+						//Set required free variables (same keys as before)
+						objDictionary.put("strFreeParkingEndTime", objRateBlockPlan.getFreeEndHHmm());
+						objDictionary.put("strRemainingFreeTimeStart", objRateBlockPlan.getFreeStartHHmmss());
+						objDictionary.put("strFreeParkingStartTime", objRateBlockPlan.getFreeStartHHmmss());
+						objDictionary.remove("strMinutesBeforeFreeStart");objDictionary.put("strMinutesBeforeFreeStart", objRateBlockPlan.getFreeStartHHmmss());
+						objDictionary.put("strFreeParkingStartTime12", objRateBlockPlan.getFreeStart12());
+						objDictionary.put("strFreeParkingEndTime12", objRateBlockPlan.getFreeEnd12());
+						clsCommonWeb.SENTRYLINK_PutRateBlockPlanDateTimes(objDictionary, objRateBlockPlan);
 					}
 					else
 					{
-						//Set 2nd Rate Block
-						clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Group", "Populate Add Set to This Group","{L} Add Set to This Group", strRateSetName);
+						//Legacy FREE TO RATE + NO PARKING path (not migrated to RateBlockPlanner yet)
+						//FREE TO RATE
+						int inMinutessOffRateBeforeFree = Integer.parseInt(strMinutesOfFreeTimeBeforeCurrentTime) - 1;
+						String strFirstRateEndTime = clsCommonWeb.AddTimeToCurrentTime(String.valueOf(inMinutessOffRateBeforeFree),"HH:mm");
+						String strFreeParkingStartTime = clsCommonWeb.AddTimeToCurrentTime(strMinutesOfFreeTimeBeforeCurrentTime,"HH:mm");
+						String strFreeParkingEndTime = clsCommonWeb.AddTimeToCurrentTime(strFreeTimeMinutes, "HH:mm");
+						//Set 1st Rate Block
+						clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Setting", "Populate Specific Times of Day","{T} Rate Block Name|{T} Start Date|{RB} Time Options|{T} End Time",strRateType + "RateBlock|" + strStartDate + "|Specific|"+strFirstRateEndTime);
+						clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Setting", "Save Rate Block", 1, "Local");
+						//Set Free Rate Block
+						try {Thread.sleep(1500);} catch (Exception f) {}
+						clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Group","Populate Add Set to This Group", "{L} Add Set to This Group",strFirstLetter + " Free Parking");
 						clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Group", "Add Set to This Group", 1, "Local");
-						clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Setting", "Populate Specific Times of Day","{T} Rate Block Name|{T} Start Date|{RB} Time Options|{T} Start Time|{T} End Time",strRateType + "RateBlock|" + strStartDate + "|Specific|"+strFreeParkingEndTime+"|23:59");
-						//Set required free variables
-						objDictionary.put("strFreeParkingEndTime", strFreeParkingEndTime);
-						objDictionary.put("strRemainingFreeTimeStart", strFreeParkingStartTime+":00");
-						objDictionary.put("strFreeParkingStartTime", strFreeParkingStartTime+":00");
-						String strMinutesBeforeFreeStart = strFreeParkingStartTime+":00";
-				  		objDictionary.remove("strMinutesBeforeFreeStart");objDictionary.put("strMinutesBeforeFreeStart", strMinutesBeforeFreeStart);
-				  		try
+						clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Setting", "Populate Specific Times of Day","{T} Rate Block Name|{T} Start Date|{RB} Time Options|{T} Start Time|{T} End Time","FreeRateBlock|" + strStartDate + "|Specific|"+strFreeParkingStartTime+"|"+strFreeParkingEndTime);
+						clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Setting", "Save Rate Block", 1, "Local");
+						if (strNoParkingTimeMinutes != null)
 						{
-							Date dateObj = new SimpleDateFormat("HH:mm").parse(strFreeParkingStartTime);
-							String strFreeParkingStartTime12 = new SimpleDateFormat("h:mm a").format(dateObj);
-							objDictionary.put("strFreeParkingStartTime12", strFreeParkingStartTime12);
-							dateObj = new SimpleDateFormat("HH:mm").parse(strFreeParkingEndTime);
-							String strFreeParkingEndTime12 = new SimpleDateFormat("h:mm a").format(dateObj);
-							objDictionary.put("strFreeParkingEndTime12", strFreeParkingEndTime12);
+							//Set required free variables
+							objDictionary.put("strFreeParkingEndTime", strFreeParkingEndTime);
+							objDictionary.put("strRemainingFreeTimeStart", strFreeParkingStartTime+":00");
+							String strMinutesBeforeNoParking = objDictionary.get("strMinutesBeforeNoParking");
+							int inMinutessOffRateBeforeNoParking = Integer.parseInt(strMinutesBeforeNoParking) - 1;
+							String strRateEndTime = clsCommonWeb.AddTimeToCurrentTime(String.valueOf(inMinutessOffRateBeforeNoParking),"HH:mm");
+							if(strMinutesBeforeNoParking != null)
+							{
+								//Populate Rate To No Parking
+								clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Group", "Populate Add Set to This Group","{L} Add Set to This Group", strRateSetName);
+								clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Group", "Add Set to This Group", 1, "Local");
+								clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Setting", "Populate Specific Times of Day","{T} Rate Block Name|{T} Start Date|{RB} Time Options|{T} Start Time|{T} End Time",strRateType + "RateBlock|" + strStartDate + "|Specific|"+strFreeParkingEndTime+"|"+strRateEndTime);
+								clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Setting", "Save Rate Block", 1, "Local");
+								//Add No Parking Rate Block
+								String strNoParkingStartTime = clsCommonWeb.AddTimeToCurrentTime(strMinutesBeforeNoParking, "HH:mm");
+								int intEndTimeMinutes = 0;
+								intEndTimeMinutes = Integer.parseInt(strMinutesBeforeNoParking)+ Integer.parseInt(strNoParkingTimeMinutes);
+								String strNoParkingEndTime = clsCommonWeb.AddTimeToCurrentTime(Integer.toString(intEndTimeMinutes), "HH:mm");
+								Date dtNoParkingStartTime = null;
+								Date dtNoParkingEndTime = null;
+								try
+								{
+									Date dateObj = new SimpleDateFormat("HH:mm").parse(strNoParkingStartTime);
+									String strNoParkingStartTime12 = new SimpleDateFormat("h:mm a").format(dateObj);
+									objDictionary.remove("strNoParkingStartTime12");
+									objDictionary.put("strNoParkingStartTime12", strNoParkingStartTime12);
+									SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+									dtNoParkingStartTime = sdf.parse(strNoParkingStartTime);
+									dtNoParkingEndTime = sdf.parse(strNoParkingEndTime);
+								}catch(Exception e) {}
+								if (dtNoParkingEndTime.compareTo(dtNoParkingStartTime) > 0)
+								{
+									//Set NO PARKING Rate Block
+									try {Thread.sleep(1500);} catch (Exception f) {}
+									clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Group","Populate Add Set to This Group", "{L} Add Set to This Group",strFirstLetter + " No Parking");
+									clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Group", "Add Set to This Group", 1, "Local");
+									clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Setting", "Populate Specific Times of Day","{T} Rate Block Name|{T} Start Date|{RB} Time Options|{T} Start Time|{T} End Time","NoParkingRateBlock|" + strStartDate + "|Specific|"+strNoParkingStartTime+"|"+strNoParkingEndTime);
+									clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Setting", "Save Rate Block", 1, "Local");
+									//Set 2nd Rate Block
+									clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Group", "Populate Add Set to This Group","{L} Add Set to This Group", strRateSetName);
+									clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Group", "Add Set to This Group", 1, "Local");
+									clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Setting", "Populate Specific Times of Day","{T} Rate Block Name|{T} Start Date|{RB} Time Options|{T} Start Time|{T} End Time",strRateType + "RateBlock|" + strStartDate + "|Specific|"+strNoParkingEndTime+"|23:59");
+									//RemainingFreeTimeStart
+							 		String strMinutesBeforeNoParkingStart = strNoParkingStartTime+":00";
+							  		objDictionary.remove("strMinutesBeforeNoParkingStart");objDictionary.put("strMinutesBeforeNoParkingStart", strMinutesBeforeNoParkingStart);
+								}
+								else
+								{
+									//This gets hit when rateblock are getting set around midnight.
+									clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary, driver, "Code Needs to be added to handle rateblocks around midnight-"+strMethodName, "Local");
+								}
+							}
+							objDictionary.put("strRemainingFreeTimeStart", strFreeParkingStartTime+":00");
 						}
-						catch (Exception e)
-						{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary, driver, e + "-" + strMethodName, "Local");}
+						else
+						{
+							//Set 2nd Rate Block
+							clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Group", "Populate Add Set to This Group","{L} Add Set to This Group", strRateSetName);
+							clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Group", "Add Set to This Group", 1, "Local");
+							clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Setting", "Populate Specific Times of Day","{T} Rate Block Name|{T} Start Date|{RB} Time Options|{T} Start Time|{T} End Time",strRateType + "RateBlock|" + strStartDate + "|Specific|"+strFreeParkingEndTime+"|23:59");
+							//Set required free variables
+							objDictionary.put("strFreeParkingEndTime", strFreeParkingEndTime);
+							objDictionary.put("strRemainingFreeTimeStart", strFreeParkingStartTime+":00");
+							objDictionary.put("strFreeParkingStartTime", strFreeParkingStartTime+":00");
+							String strMinutesBeforeFreeStart = strFreeParkingStartTime+":00";
+					  		objDictionary.remove("strMinutesBeforeFreeStart");objDictionary.put("strMinutesBeforeFreeStart", strMinutesBeforeFreeStart);
+					  		try
+							{
+								Date dateObj = new SimpleDateFormat("HH:mm").parse(strFreeParkingStartTime);
+								String strFreeParkingStartTime12 = new SimpleDateFormat("h:mm a").format(dateObj);
+								objDictionary.put("strFreeParkingStartTime12", strFreeParkingStartTime12);
+								dateObj = new SimpleDateFormat("HH:mm").parse(strFreeParkingEndTime);
+								String strFreeParkingEndTime12 = new SimpleDateFormat("h:mm a").format(dateObj);
+								objDictionary.put("strFreeParkingEndTime12", strFreeParkingEndTime12);
+							}
+							catch (Exception e)
+							{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary, driver, e + "-" + strMethodName, "Local");}
+						}
 					}
 				}
 			}
@@ -8329,7 +8429,10 @@ public class CommonWeb {
 			clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Setting", "Populate Specific Times of Day","{T} Rate Block Name|{T} Start Date|{RB} Time Options",strRateType + "RateBlock|" + strStartDate + "|All Day");
 		}
 		try {Thread.sleep(1000);} catch (Exception e) {}
-		clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Setting", "Save Rate Block", 1, "Local");
+		if (!blnRateBlockPlanApplied) //RateBlockPlanner already saved every block
+		{
+			clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Setting", "Save Rate Block", 1, "Local");
+		}
 		clsCommonWeb.GlobalObjectWait(objDictionary, driver, "Rate Block Group", "{ButtonExists} Send to all", 20);
 		try {Thread.sleep(5000);} catch (Exception e) {}
 		clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Group", "Send to all", 1, "Local");
@@ -8511,6 +8614,8 @@ public class CommonWeb {
 		String strStartDate = clsCommonWeb.AddDaysToCurrentDate("MM/dd/yyyy", "-67");
 		try {Thread.sleep(1500);} catch (Exception e) {}
 		
+		//Set to true when the per-day RateBlockPlanner path saved all the blocks itself
+		boolean blnRateBlockPlanApplied = false;
 		//Used for Rate to Rate Test Cases
 		String strMinutesBeforeFirstRateBlockEnds = objDictionary.get("strMinutesBeforeFirstRateBlockEnds");
 		String strMinutesBeforeFreeParking = objDictionary.get("strMinutesBeforeFreeParking");
@@ -8538,180 +8643,163 @@ public class CommonWeb {
 					//RATE TO FREE
 					if(strMinutesBeforeFreeParking != null)
 					{
-						//Calculate and Update Free Parking
-						String strFreeParkingStartTime = clsCommonWeb.AddTimeToCurrentTime(strMinutesBeforeFreeParking,"HH:mm");
-						int intEndTimeMinutes = Integer.parseInt(strMinutesBeforeFreeParking) +Integer.parseInt(strFreeTimeMinutes);
-						String strFreeParkingEndTime = clsCommonWeb.AddTimeToCurrentTime(Integer.toString(intEndTimeMinutes),"HH:mm");
-						Date dtFreeParkingStartTime = null;
-						Date dtFreeParkingEndTime = null;
-						try
-						{
-							Date dateObj = new SimpleDateFormat("HH:mm").parse(strFreeParkingStartTime);
-							String strFreeParkingStartTime12 = new SimpleDateFormat("h:mm a").format(dateObj);
-							objDictionary.remove("strFreeParkingStartTime12");objDictionary.put("strFreeParkingStartTime12",strFreeParkingStartTime12);
-							SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-							dtFreeParkingStartTime = sdf.parse(strFreeParkingStartTime);
-							dtFreeParkingEndTime = sdf.parse(strFreeParkingEndTime);
-						}catch(Exception e){}
-						String strRateSet = "Free Parking";
-						if(dtFreeParkingEndTime.compareTo(dtFreeParkingStartTime)>0)
-						{
-							//Set 1st Rate Block
-							int intMinutesBeforeFirstRateBlockEnds = Integer.parseInt(strMinutesBeforeFreeParking) -1; 
-							String strFirstRateBlockEndTime = clsCommonWeb.AddTimeToCurrentTime(String.valueOf(intMinutesBeforeFirstRateBlockEnds),"HH:mm");
-							clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Setting", "Populate Specific Times of Day","{T} Rate Block Name|{T} Start Date|{RB} Time Options|{T} End Time",strRateType + "RateBlock|" + strStartDate + "|Specific|"+strFirstRateBlockEndTime);
-							try {Thread.sleep(1500);} catch (Exception f) {}
-							clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Setting", "Save Rate Block", 1, "Local");
-							//Set FREE Rate Block
-							String strTestCaseName = objDictionary.get("strTestCaseName");
-							String strFirstLetter = strTestCaseName.substring(0, 1);
-							try {Thread.sleep(2000);} catch (Exception f) {}
-							clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Group","Populate Add Set to This Group", "{L} Add Set to This Group",strFirstLetter + " Free Parking");
-							clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Group", "Add Set to This Group", 1, "Local");
-							try {Thread.sleep(1500);} catch (Exception f) {}
-							clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Setting", "Populate Specific Times of Day","{T} Rate Block Name|{T} Start Date|{RB} Time Options|{T} Start Time|{T} End Time","FreeRateBlock|" + strStartDate + "|Specific|"+strFreeParkingStartTime+"|"+strFreeParkingEndTime);
-							try {Thread.sleep(1500);} catch (Exception f) {}
-							clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Setting", "Save Rate Block", 1, "Local");
-							//Set 2nd Rate Block
-							try {Thread.sleep(2000);} catch (Exception f) {}
-							clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Group", "Populate Add Set to This Group","{L} Add Set to This Group", strRateSetName);
-							try {Thread.sleep(1500);} catch (Exception f) {}
-							clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Group", "Add Set to This Group", 1, "Local");
-							try {Thread.sleep(1500);} catch (Exception f) {}
-							clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Setting", "Populate Specific Times of Day","{T} Rate Block Name|{T} Start Date|{RB} Time Options|{T} Start Time|{T} End Time",strRateType + "RateBlock|" + strStartDate + "|Specific|"+strFreeParkingEndTime+"|23:59");
-							//RemainingFreeTimeStart
-					 		String strMinutesBeforeFreeStart = strFreeParkingStartTime+":00";
-					  		objDictionary.remove("strMinutesBeforeFreeStart");objDictionary.put("strMinutesBeforeFreeStart", strMinutesBeforeFreeStart);
-						}
-						else
-						{
-							//This gets hit when rateblock are getting set around midnight.
-							clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary, driver, "Code Needs to be added to handle rateblocks around midnight-"+strMethodName, "Local");
-						}
+						//RATE TO FREE - per-day rate blocks so the free window can cross midnight (see RateBlockPlanner).
+						//'now' is read ONCE and every block/expected value comes from the same dated plan.
+						String strTestCaseNameRTF = objDictionary.get("strTestCaseName");
+						String strFirstLetterRTF = strTestCaseNameRTF.substring(0, 1);
+						RateBlockPlanner.Plan objRateBlockPlan = RateBlockPlanner.rateToFree(java.time.LocalDateTime.now(), Integer.parseInt(strMinutesBeforeFreeParking), Integer.parseInt(strFreeTimeMinutes), strRateType, strRateSetName, strFirstLetterRTF + " Free Parking");
+						clsCommonWeb.SENTRYLINK_ApplyRateBlockPlan(objDictionary, driver, objRateBlockPlan, strStartDate, strRateSetName);
+						blnRateBlockPlanApplied = true;
+						//Expected values (same keys as before)
+						objDictionary.remove("strFreeParkingStartTime12");objDictionary.put("strFreeParkingStartTime12", objRateBlockPlan.getFreeStart12());
+						String strMinutesBeforeFreeStart = objRateBlockPlan.getFreeStartHHmmss();
+						objDictionary.remove("strMinutesBeforeFreeStart");objDictionary.put("strMinutesBeforeFreeStart", strMinutesBeforeFreeStart);
+						clsCommonWeb.SENTRYLINK_PutRateBlockPlanDateTimes(objDictionary, objRateBlockPlan);
 					}
 					else
 					{
-						//FREE TO RATE
-						if(strMinutesOfFreeTimeBeforeCurrentTime == null) {strMinutesOfFreeTimeBeforeCurrentTime = "0";}
-						int inMinutessOffRateBeforeFree = Integer.parseInt(strMinutesOfFreeTimeBeforeCurrentTime) - 1;
-						String strFirstRateEndTime = clsCommonWeb.AddTimeToCurrentTime(String.valueOf(inMinutessOffRateBeforeFree),"HH:mm");
-						String strFreeParkingStartTime = clsCommonWeb.AddTimeToCurrentTime(strMinutesOfFreeTimeBeforeCurrentTime,"HH:mm");
-						String strFreeParkingEndTime = clsCommonWeb.AddTimeToCurrentTime(strFreeTimeMinutes, "HH:mm");
-						String strMinutesBeforeNoParking = objDictionary.get("strMinutesBeforeNoParking");
-						String strRateEndTime = "";
-						if (strNoParkingTimeMinutes != null)
+						if (strNoParkingTimeMinutes == null)
 						{
-							int inMinutessOffRateBeforeNoParking = Integer.parseInt(strMinutesBeforeNoParking);
-							strRateEndTime = clsCommonWeb.AddTimeToCurrentTime(String.valueOf(inMinutessOffRateBeforeNoParking),"HH:mm");
+							//FREE TO RATE - per-day rate blocks so the free window can cross midnight (see RateBlockPlanner).
+							if(strMinutesOfFreeTimeBeforeCurrentTime == null) {strMinutesOfFreeTimeBeforeCurrentTime = "0";}
+							String strTestCaseNameFTR = objDictionary.get("strTestCaseName");
+							String strFirstLetterFTR = strTestCaseNameFTR.substring(0, 1);
+							RateBlockPlanner.Plan objRateBlockPlan = RateBlockPlanner.freeToRate(java.time.LocalDateTime.now(), Integer.parseInt(strMinutesOfFreeTimeBeforeCurrentTime), Integer.parseInt(strFreeTimeMinutes), strRateType, strRateSetName, strFirstLetterFTR + " Free Parking");
+							clsCommonWeb.SENTRYLINK_ApplyRateBlockPlan(objDictionary, driver, objRateBlockPlan, strStartDate, strRateSetName);
+							blnRateBlockPlanApplied = true;
+							//Set required free variables (same keys as before)
+							objDictionary.put("strFreeParkingEndTime", objRateBlockPlan.getFreeEndHHmm());
+							objDictionary.put("strRemainingFreeTimeStart", objRateBlockPlan.getFreeStartHHmmss());
+							objDictionary.remove("strMinutesBeforeFreeStart");objDictionary.put("strMinutesBeforeFreeStart", objRateBlockPlan.getFreeStartHHmmss());
+							objDictionary.put("strFreeParkingStartTime12", objRateBlockPlan.getFreeStart12());
+							objDictionary.put("strFreeParkingEndTime12", objRateBlockPlan.getFreeEnd12());
+							clsCommonWeb.SENTRYLINK_PutRateBlockPlanDateTimes(objDictionary, objRateBlockPlan);
 						}
-						//Set 1st Rate Block
-						clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Setting", "Populate Specific Times of Day","{T} Rate Block Name|{T} Start Date|{RB} Time Options|{T} End Time",strRateType + "RateBlock|" + strStartDate + "|Specific|"+strFirstRateEndTime);
-						try {Thread.sleep(2000);} catch (Exception f) {}
-						clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Setting", "Save Rate Block", 1, "Local");
-						try {Thread.sleep(4000);} catch (Exception f) {}
-						//Set Free Rate Block
-						String strTestCaseName = objDictionary.get("strTestCaseName");
-						String strFirstLetter = strTestCaseName.substring(0, 1);
-						try {Thread.sleep(4000);} catch (Exception f) {}
-						clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Group","Populate Add Set to This Group", "{L} Add Set to This Group",strFirstLetter + " Free Parking");
-						try {Thread.sleep(2000);} catch (Exception f) {}
-						clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Group", "Add Set to This Group", 1, "Local");
-						try {Thread.sleep(2000);} catch (Exception f) {}
-						clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Setting", "Populate Specific Times of Day","{T} Rate Block Name|{T} Start Date|{RB} Time Options|{T} Start Time|{T} End Time","FreeRateBlock|" + strStartDate + "|Specific|"+strFreeParkingStartTime+"|"+strFreeParkingEndTime);
-						try {Thread.sleep(2000);} catch (Exception f) {}
-						clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Setting", "Save Rate Block", 1, "Local");
-						try {Thread.sleep(2000);} catch (Exception f) {}
-						if (strNoParkingTimeMinutes != null)
+						else
 						{
-							//Set required free variables
-							objDictionary.put("strFreeParkingEndTime", strFreeParkingEndTime);
-							objDictionary.put("strRemainingFreeTimeStart", strFreeParkingStartTime+":00");
-							//String strMinutesBeforeNoParking = objDictionary.get("strMinutesBeforeNoParking");
-							//int inMinutessOffRateBeforeNoParking = Integer.parseInt(strMinutesBeforeNoParking) - 1;
-							//String strNoParkingStartTime = clsCommonWeb.AddTimeToCurrentTime(String.valueOf(inMinutessOffRateBeforeNoParking+1),"HH:mm");
-							if(strMinutesBeforeNoParking != null)
+							//Legacy FREE TO RATE + NO PARKING path (not migrated to RateBlockPlanner yet)
+							//FREE TO RATE
+							if(strMinutesOfFreeTimeBeforeCurrentTime == null) {strMinutesOfFreeTimeBeforeCurrentTime = "0";}
+							int inMinutessOffRateBeforeFree = Integer.parseInt(strMinutesOfFreeTimeBeforeCurrentTime) - 1;
+							String strFirstRateEndTime = clsCommonWeb.AddTimeToCurrentTime(String.valueOf(inMinutessOffRateBeforeFree),"HH:mm");
+							String strFreeParkingStartTime = clsCommonWeb.AddTimeToCurrentTime(strMinutesOfFreeTimeBeforeCurrentTime,"HH:mm");
+							String strFreeParkingEndTime = clsCommonWeb.AddTimeToCurrentTime(strFreeTimeMinutes, "HH:mm");
+							String strMinutesBeforeNoParking = objDictionary.get("strMinutesBeforeNoParking");
+							String strRateEndTime = "";
+							if (strNoParkingTimeMinutes != null)
 							{
-								//Populate Rate To No Parking
-								clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Group", "Populate Add Set to This Group","{L} Add Set to This Group", strRateSetName);
-								try {Thread.sleep(1500);} catch (Exception e) {}
-								clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Group", "Add Set to This Group", 1, "Local");
-								try {Thread.sleep(1500);} catch (Exception e) {}
-								clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Setting", "Populate Specific Times of Day","{T} Rate Block Name|{T} Start Date|{RB} Time Options|{T} Start Time|{T} End Time",strRateType + "RateBlock|" + strStartDate + "|Specific|"+strFreeParkingEndTime+"|"+strRateEndTime);
-								try {Thread.sleep(1500);} catch (Exception e) {}
-								clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Setting", "Save Rate Block", 1, "Local");
-								int intEndTimeMinutes = 0;
-								intEndTimeMinutes = Integer.parseInt(strMinutesBeforeNoParking)+ Integer.parseInt(strNoParkingTimeMinutes);
-//								String strNoParkingEndTime = clsCommonWeb.AddTimeToCurrentTime(Integer.toString(intEndTimeMinutes), "HH:mm");
-//								Date dtNoParkingStartTime = null;
-//								Date dtNoParkingEndTime = null;
-//								try
-//								{
-//									Date dateObj = new SimpleDateFormat("HH:mm").parse(strNoParkingStartTime);
-//									String strNoParkingStartTime12 = new SimpleDateFormat("h:mm a").format(dateObj);
-//									objDictionary.remove("strNoParkingStartTime12");
-//									objDictionary.put("strNoParkingStartTime12", strNoParkingStartTime12);
-//									SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-//									dtNoParkingStartTime = sdf.parse(strNoParkingStartTime);
-//									dtNoParkingEndTime = sdf.parse(strNoParkingEndTime);
-//								}catch(Exception e) {}
-//								if (dtNoParkingEndTime.compareTo(dtNoParkingStartTime) > 0) 
-//								{
-									
-									String strNoParkingStartTime = AddTimeToExistingTime(strRateEndTime, "1","HH:mm");
-									String strNoParkingEndTime = AddTimeToExistingTime(strRateEndTime, Integer.toString(intEndTimeMinutes),"HH:mm");
-									
-									//Set NO PARKING Rate Block
-									try {Thread.sleep(1500);} catch (Exception f) {}
-									clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Group","Populate Add Set to This Group", "{L} Add Set to This Group",strFirstLetter + " No Parking");
-									try {Thread.sleep(1500);} catch (Exception e) {}
-									clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Group", "Add Set to This Group", 1, "Local");
-									try {Thread.sleep(1500);} catch (Exception e) {}
-									clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Setting", "Populate Specific Times of Day","{T} Rate Block Name|{T} Start Date|{RB} Time Options|{T} Start Time|{T} End Time","NoParkingRateBlock|" + strStartDate + "|Specific|"+strNoParkingStartTime+"|"+strNoParkingEndTime);
-									try {Thread.sleep(1500);} catch (Exception e) {}
-									clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Setting", "Save Rate Block", 1, "Local");
-									//Set 2nd Rate Block
-									try {Thread.sleep(1500);} catch (Exception e) {}
+								int inMinutessOffRateBeforeNoParking = Integer.parseInt(strMinutesBeforeNoParking);
+								strRateEndTime = clsCommonWeb.AddTimeToCurrentTime(String.valueOf(inMinutessOffRateBeforeNoParking),"HH:mm");
+							}
+							//Set 1st Rate Block
+							clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Setting", "Populate Specific Times of Day","{T} Rate Block Name|{T} Start Date|{RB} Time Options|{T} End Time",strRateType + "RateBlock|" + strStartDate + "|Specific|"+strFirstRateEndTime);
+							try {Thread.sleep(2000);} catch (Exception f) {}
+							clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Setting", "Save Rate Block", 1, "Local");
+							try {Thread.sleep(4000);} catch (Exception f) {}
+							//Set Free Rate Block
+							String strTestCaseName = objDictionary.get("strTestCaseName");
+							String strFirstLetter = strTestCaseName.substring(0, 1);
+							try {Thread.sleep(4000);} catch (Exception f) {}
+							clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Group","Populate Add Set to This Group", "{L} Add Set to This Group",strFirstLetter + " Free Parking");
+							try {Thread.sleep(2000);} catch (Exception f) {}
+							clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Group", "Add Set to This Group", 1, "Local");
+							try {Thread.sleep(2000);} catch (Exception f) {}
+							clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Setting", "Populate Specific Times of Day","{T} Rate Block Name|{T} Start Date|{RB} Time Options|{T} Start Time|{T} End Time","FreeRateBlock|" + strStartDate + "|Specific|"+strFreeParkingStartTime+"|"+strFreeParkingEndTime);
+							try {Thread.sleep(2000);} catch (Exception f) {}
+							clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Setting", "Save Rate Block", 1, "Local");
+							try {Thread.sleep(2000);} catch (Exception f) {}
+							if (strNoParkingTimeMinutes != null)
+							{
+								//Set required free variables
+								objDictionary.put("strFreeParkingEndTime", strFreeParkingEndTime);
+								objDictionary.put("strRemainingFreeTimeStart", strFreeParkingStartTime+":00");
+								//String strMinutesBeforeNoParking = objDictionary.get("strMinutesBeforeNoParking");
+								//int inMinutessOffRateBeforeNoParking = Integer.parseInt(strMinutesBeforeNoParking) - 1;
+								//String strNoParkingStartTime = clsCommonWeb.AddTimeToCurrentTime(String.valueOf(inMinutessOffRateBeforeNoParking+1),"HH:mm");
+								if(strMinutesBeforeNoParking != null)
+								{
+									//Populate Rate To No Parking
 									clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Group", "Populate Add Set to This Group","{L} Add Set to This Group", strRateSetName);
 									try {Thread.sleep(1500);} catch (Exception e) {}
 									clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Group", "Add Set to This Group", 1, "Local");
 									try {Thread.sleep(1500);} catch (Exception e) {}
-									clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Setting", "Populate Specific Times of Day","{T} Rate Block Name|{T} Start Date|{RB} Time Options|{T} Start Time|{T} End Time",strRateType + "RateBlock|" + strStartDate + "|Specific|"+strNoParkingEndTime+"|23:59");
-									//RemainingFreeTimeStart
-							 		String strMinutesBeforeNoParkingStart = strNoParkingStartTime+":00";
-							  		objDictionary.remove("strMinutesBeforeNoParkingStart");objDictionary.put("strMinutesBeforeNoParkingStart", strMinutesBeforeNoParkingStart);
-//								}
-//								else
-//								{
-//									//This gets hit when rateblock are getting set around midnight.
-//									clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary, driver, "Code Needs to be added to handle rateblocks around midnight-"+strMethodName, "Local");
-//								}
+									clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Setting", "Populate Specific Times of Day","{T} Rate Block Name|{T} Start Date|{RB} Time Options|{T} Start Time|{T} End Time",strRateType + "RateBlock|" + strStartDate + "|Specific|"+strFreeParkingEndTime+"|"+strRateEndTime);
+									try {Thread.sleep(1500);} catch (Exception e) {}
+									clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Setting", "Save Rate Block", 1, "Local");
+									int intEndTimeMinutes = 0;
+									intEndTimeMinutes = Integer.parseInt(strMinutesBeforeNoParking)+ Integer.parseInt(strNoParkingTimeMinutes);
+	//								String strNoParkingEndTime = clsCommonWeb.AddTimeToCurrentTime(Integer.toString(intEndTimeMinutes), "HH:mm");
+	//								Date dtNoParkingStartTime = null;
+	//								Date dtNoParkingEndTime = null;
+	//								try
+	//								{
+	//									Date dateObj = new SimpleDateFormat("HH:mm").parse(strNoParkingStartTime);
+	//									String strNoParkingStartTime12 = new SimpleDateFormat("h:mm a").format(dateObj);
+	//									objDictionary.remove("strNoParkingStartTime12");
+	//									objDictionary.put("strNoParkingStartTime12", strNoParkingStartTime12);
+	//									SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+	//									dtNoParkingStartTime = sdf.parse(strNoParkingStartTime);
+	//									dtNoParkingEndTime = sdf.parse(strNoParkingEndTime);
+	//								}catch(Exception e) {}
+	//								if (dtNoParkingEndTime.compareTo(dtNoParkingStartTime) > 0) 
+	//								{
+									
+										String strNoParkingStartTime = AddTimeToExistingTime(strRateEndTime, "1","HH:mm");
+										String strNoParkingEndTime = AddTimeToExistingTime(strRateEndTime, Integer.toString(intEndTimeMinutes),"HH:mm");
+									
+										//Set NO PARKING Rate Block
+										try {Thread.sleep(1500);} catch (Exception f) {}
+										clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Group","Populate Add Set to This Group", "{L} Add Set to This Group",strFirstLetter + " No Parking");
+										try {Thread.sleep(1500);} catch (Exception e) {}
+										clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Group", "Add Set to This Group", 1, "Local");
+										try {Thread.sleep(1500);} catch (Exception e) {}
+										clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Setting", "Populate Specific Times of Day","{T} Rate Block Name|{T} Start Date|{RB} Time Options|{T} Start Time|{T} End Time","NoParkingRateBlock|" + strStartDate + "|Specific|"+strNoParkingStartTime+"|"+strNoParkingEndTime);
+										try {Thread.sleep(1500);} catch (Exception e) {}
+										clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Setting", "Save Rate Block", 1, "Local");
+										//Set 2nd Rate Block
+										try {Thread.sleep(1500);} catch (Exception e) {}
+										clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Group", "Populate Add Set to This Group","{L} Add Set to This Group", strRateSetName);
+										try {Thread.sleep(1500);} catch (Exception e) {}
+										clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Group", "Add Set to This Group", 1, "Local");
+										try {Thread.sleep(1500);} catch (Exception e) {}
+										clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Setting", "Populate Specific Times of Day","{T} Rate Block Name|{T} Start Date|{RB} Time Options|{T} Start Time|{T} End Time",strRateType + "RateBlock|" + strStartDate + "|Specific|"+strNoParkingEndTime+"|23:59");
+										//RemainingFreeTimeStart
+								 		String strMinutesBeforeNoParkingStart = strNoParkingStartTime+":00";
+								  		objDictionary.remove("strMinutesBeforeNoParkingStart");objDictionary.put("strMinutesBeforeNoParkingStart", strMinutesBeforeNoParkingStart);
+	//								}
+	//								else
+	//								{
+	//									//This gets hit when rateblock are getting set around midnight.
+	//									clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary, driver, "Code Needs to be added to handle rateblocks around midnight-"+strMethodName, "Local");
+	//								}
+								}
 							}
-						}
-						else
-						{
-							//Set 2nd Rate Block
-							try {Thread.sleep(1000);} catch (Exception f) {}
-							clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Group", "Populate Add Set to This Group","{L} Add Set to This Group", strRateSetName);
-							try {Thread.sleep(2000);} catch (Exception f) {}
-							clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Group", "Add Set to This Group", 1, "Local");
-							try {Thread.sleep(2000);} catch (Exception f) {}
-							clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Setting", "Populate Specific Times of Day","{T} Rate Block Name|{T} Start Date|{RB} Time Options|{T} Start Time|{T} End Time",strRateType + "RateBlock|" + strStartDate + "|Specific|"+strFreeParkingEndTime+"|23:59");
-							//Set required free variables
-							objDictionary.put("strFreeParkingEndTime", strFreeParkingEndTime);
-							objDictionary.put("strRemainingFreeTimeStart", strFreeParkingStartTime+":00");
-							String strMinutesBeforeFreeStart = strFreeParkingStartTime+":00";
-					  		objDictionary.remove("strMinutesBeforeFreeStart");objDictionary.put("strMinutesBeforeFreeStart", strMinutesBeforeFreeStart);
-					  		try
+							else
 							{
-								Date dateObj = new SimpleDateFormat("HH:mm").parse(strFreeParkingStartTime);
-								String strFreeParkingStartTime12 = new SimpleDateFormat("h:mm a").format(dateObj);
-								objDictionary.put("strFreeParkingStartTime12", strFreeParkingStartTime12);
-								dateObj = new SimpleDateFormat("HH:mm").parse(strFreeParkingEndTime);
-								String strFreeParkingEndTime12 = new SimpleDateFormat("h:mm a").format(dateObj);
-								objDictionary.put("strFreeParkingEndTime12", strFreeParkingEndTime12);
+								//Set 2nd Rate Block
+								try {Thread.sleep(1000);} catch (Exception f) {}
+								clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Group", "Populate Add Set to This Group","{L} Add Set to This Group", strRateSetName);
+								try {Thread.sleep(2000);} catch (Exception f) {}
+								clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Group", "Add Set to This Group", 1, "Local");
+								try {Thread.sleep(2000);} catch (Exception f) {}
+								clsCommonWeb.PopulateAction(objDictionary, driver, "Rate Block Setting", "Populate Specific Times of Day","{T} Rate Block Name|{T} Start Date|{RB} Time Options|{T} Start Time|{T} End Time",strRateType + "RateBlock|" + strStartDate + "|Specific|"+strFreeParkingEndTime+"|23:59");
+								//Set required free variables
+								objDictionary.put("strFreeParkingEndTime", strFreeParkingEndTime);
+								objDictionary.put("strRemainingFreeTimeStart", strFreeParkingStartTime+":00");
+								String strMinutesBeforeFreeStart = strFreeParkingStartTime+":00";
+						  		objDictionary.remove("strMinutesBeforeFreeStart");objDictionary.put("strMinutesBeforeFreeStart", strMinutesBeforeFreeStart);
+						  		try
+								{
+									Date dateObj = new SimpleDateFormat("HH:mm").parse(strFreeParkingStartTime);
+									String strFreeParkingStartTime12 = new SimpleDateFormat("h:mm a").format(dateObj);
+									objDictionary.put("strFreeParkingStartTime12", strFreeParkingStartTime12);
+									dateObj = new SimpleDateFormat("HH:mm").parse(strFreeParkingEndTime);
+									String strFreeParkingEndTime12 = new SimpleDateFormat("h:mm a").format(dateObj);
+									objDictionary.put("strFreeParkingEndTime12", strFreeParkingEndTime12);
+								}
+								catch (Exception e)
+								{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary, driver, e + "-" + strMethodName, "Local");}
 							}
-							catch (Exception e)
-							{clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary, driver, e + "-" + strMethodName, "Local");}
 						}
 					}
 				}
@@ -8782,7 +8870,10 @@ public class CommonWeb {
 				}
 			}
 		}
-		clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Setting", "Save Rate Block", 1, "Local");
+		if (!blnRateBlockPlanApplied) //RateBlockPlanner already saved every block
+		{
+			clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Setting", "Save Rate Block", 1, "Local");
+		}
 		clsCommonWeb.ClickButton(objDictionary, driver, "Rate Block Group", "Send to all", 1, "Local");
 		if (strVirtualMeter.equals("False"))
 		{
