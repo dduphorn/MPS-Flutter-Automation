@@ -8,12 +8,12 @@
 <!-- 	    <parameter name="strMobileAPK" value="SentryMobile-Quality-10.0.500.apk"></parameter> -->
 <!--      	<parameter name="strDeviceId" value="5591-5592"></parameter> -->
      	<!--SG Environment-->
-     	<parameter name="strMobileAPK" value="FusionAIMobile-Staging-1.0.1.apk"></parameter>
+     	<parameter name="strMobileAPK" value="FusionAIMobile-Staging-1.0.2.apk"></parameter>
 <!--      	<parameter name="strMobileAPK" value="SENTRYMOBILE-Staging-10.0.500.apk"></parameter> -->
      	<parameter name="strDeviceId" value="9010-9011"></parameter>
      	<!--Android Device ID-->
 <!--        	<parameter name="strAndroidUdid" value="R5CT71MQ5YT"></parameter> -->
-       	<parameter name="strAndroidUdid" value="R5CT71MQ5YT"></parameter>
+       	<parameter name="strAndroidUdid" value="R5CT71MQ2MM"></parameter>
 	  	<parameter name="strRemotePath" value="http://localhost:4723"></parameter>
 	   	<classes>
 	   	<class name="AutomationCode.Android_TestCases_Flutter">
@@ -72,7 +72,7 @@
 <!--  					<include name="A2053F_FTFP10_PS1_CCP1_PRT_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
 <!--  					<include name="A2054F_FTFP10_PS1_MP1_CCP1_ES1_VPSH_VICAE_VIAC"></include> -->
 <!--  					<include name="A2055F_FTFP10_PS1_MP1_PRT_CCP1_ES1_VPSH_VICAE_VIAC"></include> -->
- <!--  					<include name="A2056F_FTFP10_MP1_PS1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!--   					<include name="A2056F_FTFP10_MP1_PS1_ES1_VPSH_VICAE_VIAC"></include> -->
 <!--  					<include name="A2057F_VM_FTFP10_MP1_PS1_ES1_VPSH_VICAE_VIAC"></include> -->
 <!--  					<include name="A2058F_GPSOFF_PS1_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
 <!--  					<include name="A2059F_GPSOFF_RegisterUser_EnableGPSDialogNo"></include> -->
@@ -188,14 +188,13 @@
 <!--   					<include name="A2303F_CS_PS1_GPV1_WFFACTNVT_ALPTPS_VMT_VPSH"></include> -->
 <!--   					<include name="A2304F_CS_PSWL_MP1_W4_VMT_VPSH"></include> -->
 <!-- 					<include name="A2305F_HDCP_FTFP0_MP1_VMT_ES1_VPSH_VIAC"></include> -->
-<!--   					<include name="A2306F_CS_PSWL_MP1_PMT_LMV_AV_VPSH"></include> -->
+<!--   					<include name="A2306F_CS_PSWL_MP1_PMT_LMV_AV_VPSH()"></include> -->
 <!--   					<include name="A2307F_CS_FADCT_PSWL_WGE_EAV"></include> -->
 <!--   					<include name="A2308F_CS_FADCT_PSWL_WGE_EAV_mobilePaymentBlocked"></include> -->
 <!--  					<include name="A4002F_PaymentTest_GooglePay"></include> -->
 <!--   					<include name="A4003F_PaymentTest_GooglePay_MaxTime"></include> -->
 <!--  					<include name="A4004F_PaymentTest_CreditOrDebitCard"></include> -->
 <!--  					<include name="A4005F_PaymentTest_CreditOrDebitCard_MaxTime"></include> -->
-
 <!-- 		   			<include name="A5204F_NoInternet_ColdStartLoginKillRelaunchRestore"></include> -->
 <!-- 		   			<include name="A5205F_NetworkToggle_MidSessionCache"></include> -->
 <!-- 		   			<include name="A5205F_NetworkToggle_MidSessionCache_Payment"></include> -->
@@ -215,16 +214,19 @@
 <!-- 		   			<include name="A5219F_HttpProxy_ParkThenRestoreRetry"></include> -->
 
 
-<!--  					<include name="A4008F_PaymentTest_CreditOrDebitCard_Refund"></include> -->
-<!--  				    <include name="A5001F_ValidateUserAgreement"></include> -->
-<!--                    Waiting on a response from Steve-->
-<!--  					<include name="A2035F_A_FTFP0_PS1_CCP1_RM_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
-<!-- 					<include name="A4001F_PaymentTest_PayPal_MaxTime"></include>-->
-<!-- 					<include name="A4000F_PaymentTest_PayPal"></include>-->
-<!-- 					<include name="A4006F_PaymentTest_Venmo"></include>-->
-<!--  					<include name="A4007F_PaymentTest_Venmo_MaxTime"></include>-->
+<!--  					<include name="A4008_PaymentTest_CreditOrDebitCard_Refund"></include> -->
+<!--  				    <include name="A5001_ValidateUserAgreement"></include> -->
 				</methods>
 	   		</class>
 	    </classes>
 	</test>
 </suite>
+<!--                    Waiting on a response from Steve-->
+<!--  					<include name="A2035F_A_FTFP0_PS1_CCP1_RM_MP1_ES1_VPSH_VICAE_VIAC"></include> -->
+<!-- 					<include name="A4001_PaymentTest_PayPal_MaxTime"></include>-->
+<!-- 					<include name="A4000_PaymentTest_PayPal"></include>-->
+<!-- 					<include name="A4006_PaymentTest_Venmo"></include>-->
+<!--  					<include name="A4007_PaymentTest_Venmo_MaxTime"></include>-->
+<!-- 					<include name="A5001_ValidateUserAgreement"></include>-->
+
+
