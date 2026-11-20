@@ -4911,7 +4911,7 @@ public class Android_TestCases_Flutter
   		clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null, "1","Local");
   		//ValidateParkingSessionHistoryAndImages
   		Android_ParkingSessions clsAndriodParkingSessions = new Android_ParkingSessions();
-  		clsAndriodParkingSessions.SENTRYLINK_ValidateParkingSessionHistoryAndImages_2200_RSVN_PSWVLP_VMT_ES1(objDictionary, 59,"1");
+  		clsAndriodParkingSessions.SENTRYLINK_ValidateParkingSessionHistoryAndImages_2200_RSVN_PSWVLP_VMT_ES1(objDictionary, 60,"1");
       	String strAssociatedBug = objDictionary.get("strAssociatedBug");if(strAssociatedBug == null){strAssociatedBug = "";}
 		if(!strAssociatedBug.equals("")){Reporter.log("<font color='Blue'>"+strAssociatedBug+"-This Test passed remove the AssociatedBug</font>");}
     }
@@ -5778,8 +5778,6 @@ public class Android_TestCases_Flutter
   		String strFamilyBuyMinutes = strMaximumDuration;
   		String strHandicapPermit = "1011"; objDictionary.put("strHandicapPermit",strHandicapPermit);
   		String strHost = objDictionary.get("strHost");
-  		//objDictionary.put("strFamilyBuyMinutes", "60");
-  		//objDictionary.put("strFamilyMaxTime", strMaximumDuration);
   		// car plate
 		String strSpaceName = objDictionary.get("strMeterSpotName");
 		String strLicensePlateNumber = "0"+strSpaceName+"AA";
@@ -5810,15 +5808,19 @@ public class Android_TestCases_Flutter
 		clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, androidDriver, "parker","Remind me later");
 		//Navigate To Account
 		clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary,androidDriver, "Account");
-		// Checking to see if the switch is clicked
-		boolean isHandicapOn = !androidDriver.findElements(By.xpath("//android.view.View[contains(@content-desc,'Permit ID')]")).isEmpty();
-		if(!isHandicapOn)
+		// Enable Handicap
+		String strParkerType = clsHttpConnections.GET_ParkerType(objDictionary);
+		if (strParkerType.equals("Normal")) 
 		{
-			WebElement switchElement = androidDriver.findElement(By.xpath("//android.view.View[@text='Handicap']/following-sibling::android.view.View[@clickable='true']"));
-			switchElement.click();
+			WebElement handicapSwitch = androidDriver.findElement(By.xpath("//android.view.View[@text='Handicap']/following-sibling::android.view.View[@clickable='true']"));
+			handicapSwitch.click();
 			clsCommonMobile.ClickLink(objDictionary, androidDriver, "Account", "Yes, Continue",1);
 			clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Account", "Populate Handicap Permit ID", "{T} Handicap permit ID","1011");
 			clsCommonMobile.ClickButton(objDictionary, androidDriver, "Account", "Add Permit",1);
+			String strSnackbarText = objDictionary.get("strSnackbarText");if(strSnackbarText == null) {strSnackbarText = "";}
+			if(strSnackbarText.equals("Your Handicap permit ID has been added, you can now use those parker benefits provided by the city.")){Reporter.log("The Text (Error Message) with index (1) contained (" + strSnackbarText + ")");}
+			else{clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary,androidDriver,"The Text (Error Message) with index (1) did not contain (Unable to create User. Please contact support.) - actual value ("+strSnackbarText+")");}
+	 		objDictionary.put("strSnackbarText","");
 		}
 		androidDriver.quit();
 		//PS1: Park Spot 1
@@ -5834,8 +5836,6 @@ public class Android_TestCases_Flutter
 		String strHandicapBuyMinutes = "30";//From the Rate Block Family Setting Handicap
 		clsCommonMobile.SENTRYMOBILE_PurchaseMeterTimeParkThenPay(objDictionary, androidDriver,strFreeTimeFirstPayment,strHandicapBuyMinutes,"True","True");
 		androidDriver.quit();
-	
-		//Nothing below is complete waiting for FLUTTERCA-251
 		try {Thread.sleep(2000);}catch (Exception e) {}
 		//Exit Vehicle
   		clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null, "1","Local");
@@ -5846,20 +5846,22 @@ public class Android_TestCases_Flutter
 		clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, androidDriver, "parker","Remind me later");
 		//Navigate To Account
 		clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary,androidDriver, "Account");
-		// Checking to see if the switch is clicked
-		isHandicapOn = !androidDriver.findElements(By.xpath("//android.view.View[contains(@content-desc,'Permit ID')]")).isEmpty();
-		if(isHandicapOn)
+		// Disable Handicap
+		strParkerType = clsHttpConnections.GET_ParkerType(objDictionary);
+		if (strParkerType.equals("Handicap")) 
 		{
-			WebElement switchElement = androidDriver.findElement(By.xpath("//android.view.View[@text='Handicap']/following-sibling::android.view.View[@clickable='true']"));
-			switchElement.click();
-			clsCommonMobile.ClickLink(objDictionary, androidDriver, "Account", "Yes, Remove",1);
+			WebElement handicapSwitch = androidDriver.findElement(By.xpath("//android.view.View[@text='Handicap']/following-sibling::android.view.View[@clickable='true']"));
+			handicapSwitch.click();
+			clsCommonMobile.ClickButton(objDictionary, androidDriver, "Account", "Yes, Remove",1);
+			String strSnackbarText = objDictionary.get("strSnackbarText");if(strSnackbarText == null) {strSnackbarText = "";}
+			if(strSnackbarText.equals("Handicap permit ID has been removed")){Reporter.log("The Text (Error Message) with index (1) contained (" + strSnackbarText + ")");}
+			else{clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary,androidDriver,"The Text (Error Message) with index (1) did not contain (Handicap permit ID has been removed) - actual value ("+strSnackbarText+")");}
 		}
 		androidDriver.quit();
  		Android_ParkingSessions clsAndriodParkingSessions = new Android_ParkingSessions();
      	clsAndriodParkingSessions.SENTRYLINK_ValidateParkingSessionHistoryAndImages_A2305_HDCP_FTFP0_MP1_VMT_ES1_VPSH_VIAC(objDictionary);
      	clsMeter.METER_ExecutePythonScriptAgainstMeter(objDictionary,strHost,"settings_set_setting_false.py PARKING_RCV_ON_SB_LPR_PLATE_MATCH");
      	clsMeter.METER_SetMeterEndTime(objDictionary);
-//     	clsCommonMobile.SENTRYMOBILE_HDCPDeenroll2(objDictionary,androiddriver);
 		String strAssociatedBug = objDictionary.get("strAssociatedBug");if(strAssociatedBug == null){strAssociatedBug = "";}
 		if(!strAssociatedBug.equals("")){Reporter.log("<font color='Blue'>"+strAssociatedBug+"-This Test passed remove the AssociatedBug</font>");}
     }

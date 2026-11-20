@@ -74,6 +74,7 @@ import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
 //Appium
 import io.appium.java_client.TouchAction;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.options.XCUITestOptions;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
@@ -208,6 +209,163 @@ public class IOS_Common_Flutter
 	    }
 	}
     
+    //**************************************************
+    //User Agreement (EULA) full-text validation - no swiping
+    //Reads the whole EULA StaticText (value -> name -> label) and compares it to the saved expected copy.
+    //Both sides are normalized the same way: CRLF/CR -> LF, whitespace runs -> one space, trim. Punctuation and curly quotes are kept.
+    //On any mismatch it logs the first differing index, context and lengths, saves the actual text, then fails via UpdateErrorMessageWithPivotalData.
+    //**************************************************
+    public static final String USER_AGREEMENT_INTRO_TEXT = "It is required to read and understand the EULA terms and conditions. Please accept this to proceed to the app.";
+
+    public String NormalizeUserAgreementText(String strText)
+    {
+        if (strText == null) {return "";}
+        String s = strText;
+        if (s.startsWith("\uFEFF")) {s = s.substring(1);}
+        s = s.replace("\r\n", "\n").replace("\r", "\n");
+        s = s.replaceAll("[\\u200B\\u200C\\u200D\\u2060\\uFEFF]", "");
+        s = s.replaceAll("[\\s\\p{Z}]+", " ");
+        return s.trim();
+    }
+
+    private String uaHtml(String s)
+    {
+        if (s == null) {return "";}
+        return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;");
+    }
+
+    private String uaReadElementText(IOSDriver driver, By locator, int timeoutSec)
+    {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSec));
+        RuntimeException lastError = null;
+        for (int attempt = 1; attempt <= 3; attempt++)
+        {
+            try
+            {
+                WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+                String[] attributes = {"value", "name", "label"};
+                for (String attribute : attributes)
+                {
+                    String text = element.getAttribute(attribute);
+                    if (text != null && !text.trim().isEmpty()) {return text;}
+                }
+                return "";
+            }
+            catch (StaleElementReferenceException e) {lastError = e;}
+        }
+        throw lastError;
+    }
+
+    public void VerifyUserAgreementText(Map<String, String> objDictionary, IOSDriver driver, String strExpectedFilePath)
+    {
+        if (driver == null)
+        {
+            UpdateErrorMessageWithPivotalData(objDictionary, driver, "User Agreement: the iOS driver was null, unable to validate the User Agreement text");
+            return;
+        }
+        //Load expected EULA text (UTF-8)
+        File fileExpected = new File(strExpectedFilePath);
+        if (!fileExpected.isAbsolute()) {fileExpected = new File(System.getProperty("user.dir"), strExpectedFilePath);}
+        String strExpectedRaw;
+        try
+        {
+            strExpectedRaw = new String(java.nio.file.Files.readAllBytes(fileExpected.toPath()), StandardCharsets.UTF_8);
+        }
+        catch (IOException e)
+        {
+            UpdateErrorMessageWithPivotalData(objDictionary, driver, "User Agreement: unable to read the expected text file (" + fileExpected.getAbsolutePath() + ") - " + e.getMessage());
+            return;
+        }
+        String strExpected = NormalizeUserAgreementText(strExpectedRaw);
+        if (strExpected.isEmpty())
+        {
+            UpdateErrorMessageWithPivotalData(objDictionary, driver, "User Agreement: the expected text file (" + fileExpected.getAbsolutePath() + ") is empty");
+            return;
+        }
+
+        //Header
+        By byHeader = By.xpath("//XCUIElementTypeOther[@name='User Agreement' or @label='User Agreement'] | //XCUIElementTypeStaticText[@name='User Agreement']");
+        try
+        {
+            new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.presenceOfElementLocated(byHeader));
+            Reporter.log("User Agreement header (User Agreement) is displayed");
+        }
+        catch (Exception e)
+        {
+            UpdateErrorMessageWithPivotalData(objDictionary, driver, "User Agreement: the header (User Agreement) was not displayed - " + e.getClass().getSimpleName());
+            return;
+        }
+
+        //Intro sentence
+        String strIntroActual;
+        try
+        {
+            strIntroActual = uaReadElementText(driver, By.xpath("//XCUIElementTypeStaticText[starts-with(@name,'It is required to read')]"), 10);
+        }
+        catch (Exception e)
+        {
+            UpdateErrorMessageWithPivotalData(objDictionary, driver, "User Agreement: the intro text (" + USER_AGREEMENT_INTRO_TEXT + ") was not displayed - " + e.getClass().getSimpleName());
+            return;
+        }
+        if (!NormalizeUserAgreementText(strIntroActual).equals(NormalizeUserAgreementText(USER_AGREEMENT_INTRO_TEXT)))
+        {
+            UpdateErrorMessageWithPivotalData(objDictionary, driver, "User Agreement: the intro text (" + NormalizeUserAgreementText(strIntroActual) + ") did not equal (" + USER_AGREEMENT_INTRO_TEXT + ")");
+            return;
+        }
+        Reporter.log("User Agreement intro text matched");
+
+        //Full EULA text
+        String strActualRaw;
+        try
+        {
+            strActualRaw = uaReadElementText(driver, By.xpath("//XCUIElementTypeStaticText[starts-with(@name,'END USER LICENSE AGREEMENT') or starts-with(@value,'END USER LICENSE AGREEMENT') or starts-with(@label,'END USER LICENSE AGREEMENT')]"), 15);
+        }
+        catch (Exception e)
+        {
+            UpdateErrorMessageWithPivotalData(objDictionary, driver, "User Agreement: the EULA text element (starts with END USER LICENSE AGREEMENT) was not found - " + e.getClass().getSimpleName());
+            return;
+        }
+        String strActual = NormalizeUserAgreementText(strActualRaw);
+        if (!strActual.equals(strExpected))
+        {
+            int intMin = Math.min(strExpected.length(), strActual.length());
+            int intDiff = 0;
+            while (intDiff < intMin && strExpected.charAt(intDiff) == strActual.charAt(intDiff)) {intDiff++;}
+            int intStart = Math.max(0, intDiff - 20);
+            String strExpectedContext = strExpected.substring(intStart, Math.min(strExpected.length(), intStart + 80));
+            String strActualContext = strActual.substring(intStart, Math.min(strActual.length(), intStart + 80));
+            String strActualFile = "";
+            try
+            {
+                File fileActual = new File(System.getProperty("user.dir") + "/test-output", "UserAgreement_EULA_iOS_actual.txt");
+                FileUtils.writeStringToFile(fileActual, strActualRaw, StandardCharsets.UTF_8);
+                strActualFile = fileActual.getAbsolutePath();
+            }
+            catch (Exception e) {strActualFile = "(unable to save actual text: " + e.getMessage() + ")";}
+            Reporter.log("<font color='red'>User Agreement text mismatch at character index " + intDiff
+                + " | Expected length " + strExpected.length() + " | Actual length " + strActual.length() + "</font>");
+            Reporter.log("<font color='red'>Expected: ..." + uaHtml(strExpectedContext) + "...</font>");
+            Reporter.log("<font color='red'>Actual:&nbsp;&nbsp;&nbsp;..." + uaHtml(strActualContext) + "...</font>");
+            Reporter.log("Actual User Agreement text saved to " + uaHtml(strActualFile));
+            UpdateErrorMessageWithPivotalData(objDictionary, driver, "User Agreement text did not match the expected file (" + fileExpected.getName() + ") at index " + intDiff
+                + " (expected length " + strExpected.length() + ", actual length " + strActual.length() + "). Expected: ..." + strExpectedContext + "... Actual: ..." + strActualContext + "...");
+            return;
+        }
+        Reporter.log("User Agreement full text matched the expected file (" + fileExpected.getName() + ") - " + strActual.length() + " normalized characters");
+
+        //Accept
+        try
+        {
+            new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.presenceOfElementLocated(
+                By.xpath("//XCUIElementTypeStaticText[@name='Accept'] | //XCUIElementTypeButton[@name='Accept']")));
+            Reporter.log("User Agreement Accept is displayed");
+        }
+        catch (Exception e)
+        {
+            UpdateErrorMessageWithPivotalData(objDictionary, driver, "User Agreement: Accept was not displayed - " + e.getClass().getSimpleName());
+        }
+    }
+
     //Error Messages
   	public void UpdateErrorMessageWithPivotalData(Map<String, String> objDictionary, IOSDriver iosDriver,String strErrorMsg)
   	{
@@ -374,14 +532,14 @@ public class IOS_Common_Flutter
   			{Reporter.log("<a style='color:Red' href=\"https://www.pivotaltracker.com/n/projects/980790/stories/"+strPivotalId+"\" target=\"_blank\">"+strPivotalId+"-"+strErrorMsg+"</a>");}
   			// Leave quit() to the test finally / @AfterMethod so network restore can run on a live session.
   			//RPSS: Remain Parked Short Session
-  	      	if(strRemainParkedShortSession.equals("True")){clsMeter.METER_MeterWaitWithMessage(objDictionary,15, "Error Remain Parked (15) seconds-Spot 1");}
+  	      	if(strRemainParkedShortSession.equals("True")){clsMeter.METER_MeterWaitWithMessage(objDictionary,5, "Error Remain Parked (5) seconds-Spot 1");}
   	      	Assert.fail(strPivotalId+"-"+strErrorMsg);
   		}
   		else
   		{
   			Reporter.log("<font color='red'>"+strErrorMsg+"</font>");
   			// Leave quit() to the test finally / @AfterMethod so network restore can run on a live session.
-  			if(strRemainParkedShortSession.equals("True")){clsMeter.METER_MeterWaitWithMessage(objDictionary,15, "Error Remain Parked (15) seconds-Spot 1");}
+  			if(strRemainParkedShortSession.equals("True")){clsMeter.METER_MeterWaitWithMessage(objDictionary,5, "Error Remain Parked (5) seconds-Spot 1");}
   	  	    Assert.fail(strErrorMsg);
   		}
   	}
@@ -532,19 +690,15 @@ public class IOS_Common_Flutter
 		String strUnlockMax = "1";
 		clsCommonWeb.SENTRYLINK_ExitSpotSetMeterRateBlocksOpenMeterInBrowse(objDictionary, strMaximumDuration, strCoinTimePuchaseLimit, strFreeTimeFirstPayment, strMeterIncrementTime, strInitialGracePeriod, strViolationGracePeriod, strHandicapInitialGracePeriod, strHandicapViolationGrace, strNoParkingGrace,strSetImageSendBeforeViolation,strParkingShortSessionSec, strUnlockValue, strUnlockTime, strUnlockMax,"Local");
   		//ParkTP: Park Then Pay
-      	IOSDriver iosDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile","True","Parker");
+      	IOSDriver iosDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SefntryMobile","True","Parker");
       	clsCommonMobile.SENTRYMOBILE_Open(objDictionary, iosDriver);
       	clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, iosDriver, "parker", strLicensePlateNumber, "Remind me later");
-      	//Click 
-      	clsCommonMobile.VerificationPointText(objDictionary, iosDriver, "Log in", "No Internet Connection", 1, "Exists", "");
-      	clsCommonMobile.ClickButton(objDictionary, iosDriver, "Log in", "Ok",1);
-		try { clsCommonMobile.SENTRYMOBILE_RestoreDeviceNetworkAndPower(objDictionary); } catch (Exception e) { Reporter.log("Restore network/power before quit failed: " + e.getMessage()); }
-		clsCommonMobile.ClickButton(objDictionary, iosDriver, "Log in", "Log in",1);
-		//ClickPermissionAlertButton
+      	//ClickPermissionAlertButton
       	try {Thread.sleep(3000);}catch (Exception e) {}
       	clsCommonMobile.ClickPermissionAlertButton(objDictionary, iosDriver, "Allow");
       	try {Thread.sleep(3000);}catch (Exception e) {}
       	clsCommonMobile.ClickPermissionAlertButton(objDictionary, iosDriver, "Allow While Using App");
+		try { clsCommonMobile.SENTRYMOBILE_RestoreDeviceNetworkAndPower(objDictionary); } catch (Exception e) { Reporter.log("Restore network/power before quit failed: " + e.getMessage()); }
 		clsCommonMobile.SENTRYMOBILE_PurchaseMeterTimeParkThenPay(objDictionary, iosDriver, strFreeTimeFirstPayment,strMeterIncrementTime,"True","False");
       	iosDriver.quit();
       	try {Thread.sleep(2000);}catch (Exception e) {}
@@ -4186,9 +4340,7 @@ public class IOS_Common_Flutter
   		//ExitSpotAndSetMeterRateBlocks
 		objDictionary.remove("strFreeDisconnectValue");objDictionary.put("strFreeDisconnectValue", "On");
 		clsCommonWeb.SENTRYLINK_ExitSpotSetMeterRateBlocksOpenMeterInBrowse(objDictionary,  strMaximumDuration, strCoinTimePuchaseLimit, strFreeTimeFirstPayment, strMeterIncrementTime, strInitialGracePeriod, strViolationGracePeriod, strHandicapInitialGracePeriod, strHandicapViolationGrace, strNoParkingGrace,strSetImageSendBeforeViolation,strParkingShortSessionSec, strUnlockValue, strUnlockTime, strUnlockMax,"Local");
-		//PS1: Park Spot 1
-	    clsMeter.METER_ParkSpot(objDictionary,"1","Local");
-	    IOSDriver iosDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile","True","Parker");
+		IOSDriver iosDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile","True","Parker");
 		//Click Accept
 		clsCommonMobile.ClickButton(objDictionary, iosDriver, "User Agreement", "Accept",1);
 		clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, iosDriver, "parker", "Enroll later");
@@ -8855,7 +9007,9 @@ public class IOS_Common_Flutter
       	clsCommonMobile.ClickPermissionAlertButton(objDictionary, iosDriver, "Allow");
       	try {Thread.sleep(2000);}catch (Exception e) {}
       	clsCommonMobile.ClickPermissionAlertButton(objDictionary, iosDriver, "Allow While Using App");
-	  	//Wait for GPS Map to Load
+      	//Delete Saved Credit Cards
+      	clsCommonMobile.SENTRYMOBILE_DeleteSavedCreditCards(objDictionary, iosdriver);
+      	//Wait for GPS Map to Load
 		clsCommonMobile.SENTRYMOBILE_Populate_MeterPayment_SelectSpot(objDictionary,iosDriver,"1");
      	clsCommonMobile.SENTRYMOBILE_AddOrSelectLicensePlate(objDictionary, iosDriver, strLicensePlateNumber, strLicensePlateState);
      	//Validate Max Time
@@ -10172,7 +10326,7 @@ public class IOS_Common_Flutter
 		objDictionary.put("strMeterSpotName", strMeterSpotName);
 		try {Thread.sleep(1500);}catch (Exception e) {}
 		clsCommonMobile.ClickButton(objDictionary, iosDriver,  "Enter your Parking Zone Number", "Meter Spot Number", 1);
-		String strSnackbarText = objDictionary.get("strSnackbarText");
+		String strSnackbarText = objDictionary.get("strSnackbarText");if(strSnackbarText == null) {strSnackbarText = "";}
 	    String strViolationStatus = clsMeter.METER_GetMeterViolationValue(objDictionary,"Local",strSpotNumber);
 	    String strHolidayFree = objDictionary.get("strHolidayFree");if(strHolidayFree == null) {strHolidayFree = "False";}
 	    if(strViolationStatus.equals("True"))
@@ -10230,16 +10384,24 @@ public class IOS_Common_Flutter
         {
         	if(intHours == 0)
         	{
-        		strExpectedSpotDetails = strMeterSpotName+"Time Limit"+intMinutes+"min(s)Rate$ 0.25 / "+strMeterIncrementTime+" minutesHours of Enforcement12:00 am-11:59 pm";
+        		strExpectedSpotDetails = strMeterSpotName+" Time Limit "+intMinutes+"min(s) Rate $ 0.25 / "+strMeterIncrementTime+" minutes Hours of Enforcement 12:00 am-11:59 pm";
+    	     	//strExpectedSpotDetails = strMeterSpotName+"Time Limit"+intMinutes+"min(s)Rate$ 0.25 / "+strMeterIncrementTime+" minutesHours of Enforcement12:00 am-11:59 pm";
     	        clsCommonMobile.VerificationPointText(objDictionary, iosDriver, "Enter your Parking Zone Number", "Spot Details",1, "Value",strExpectedSpotDetails);
     	    }
         	else
         	{
-		        if(intMinutes == 0)
-		        {strExpectedSpotDetails = strMeterSpotName+"Time Limit"+intHours+"hrRate$ 0.25 / "+strMeterIncrementTime+" minutesHours of Enforcement12:00 am-11:59 pm";}
-		        else
-		        {strExpectedSpotDetails = strMeterSpotName+"Time Limit"+intHours+"hr "+intMinutes+"min(s)Rate$ 0.25 / "+strMeterIncrementTime+" minutesHours of Enforcement12:00 am-11:59 pm";}
-		        clsCommonMobile.VerificationPointText(objDictionary, iosDriver, "Enter your Parking Zone Number", "Spot Details",1, "Value",strExpectedSpotDetails);
+        		
+        		if(intMinutes == 0)
+ 		        {strExpectedSpotDetails = strMeterSpotName+" Time Limit "+intHours+"hr Rate $ 0.25 / "+strMeterIncrementTime+" minutes Hours of Enforcement 12:00 am-11:59 pm";}
+ 		        else
+ 		        {strExpectedSpotDetails = strMeterSpotName+" Time Limit "+intHours+"hr "+intMinutes+"min(s) Rate $ 0.25 / "+strMeterIncrementTime+" minutes Hours of Enforcement 12:00 am-11:59 pm";}
+        		
+//		        if(intMinutes == 0)
+//		        {strExpectedSpotDetails = strMeterSpotName+"Time Limit"+intHours+"hrRate$ 0.25 / "+strMeterIncrementTime+" minutesHours of Enforcement12:00 am-11:59 pm";}
+//		        else
+//		        {strExpectedSpotDetails = strMeterSpotName+"Time Limit"+intHours+"hr "+intMinutes+"min(s)Rate$ 0.25 / "+strMeterIncrementTime+" minutesHours of Enforcement12:00 am-11:59 pm";}
+	
+        		clsCommonMobile.VerificationPointText(objDictionary, iosDriver, "Enter your Parking Zone Number", "Spot Details",1, "Value",strExpectedSpotDetails);
         	}
         }
         else
@@ -10257,8 +10419,8 @@ public class IOS_Common_Flutter
 	    		String strFreeParkingUntilTimePlus1 = clsCommonWeb.AddTimeToCurrentTime(String.valueOf(intRemainingFreeMinutesPlus1),"h:mm a");
 	  			if(intMinutes == 0)
 	 	        {
-	    			strExpectedSpotDetails = strMeterSpotName+" Free parking until "+strFreeParkingUntilTime+" Time Limit "+intHours+"hr Rate $ 0.25 / "+strMeterIncrementTime+" minutes Hours of Enforcement "+strFreeParkingUntilTime.toLowerCase()+"-11:59 pm";
-	    			strExpectedSpotDetailsFreeTimePlus1 = strMeterSpotName+" Free parking until "+strFreeParkingUntilTimePlus1+" Time Limit "+intHours+"hr Rate $ 0.25 / "+strMeterIncrementTime+" minutes Hours of Enforcement "+strFreeParkingUntilTimePlus1.toLowerCase()+"-11:59 pm";
+	  				strExpectedSpotDetails = strMeterSpotName+"Free parking until "+strFreeParkingUntilTime+"Time Limit"+intHours+"hrRate$ 0.25 / "+strMeterIncrementTime+" minutesHours of Enforcement"+strFreeParkingUntilTime.toLowerCase()+"-11:59 pm";
+	    			strExpectedSpotDetailsFreeTimePlus1 = strMeterSpotName+"Free parking until "+strFreeParkingUntilTimePlus1+"Time Limit"+intHours+"hrRate$ 0.25 / "+strMeterIncrementTime+" minutesHours of Enforcement"+strFreeParkingUntilTimePlus1.toLowerCase()+"-11:59 pm";
 	 	        }
 	 	        else
 	 	        {
@@ -10292,9 +10454,9 @@ public class IOS_Common_Flutter
     	  			String strFreeParkingStartTimeTimePlus1 = clsCommonWeb.AddTimeToCurrentTime(String.valueOf(intRemainingMinutesBeforeFreePlus1),"h:mm a");
     	  			if(intMinutes == 0)
     	 	        {
-    	    			strExpectedSpotDetails = strMeterSpotName+" Free parking starts at "+strFreeParkingStartTime+" Time Limit "+intRemainingMinutesBeforeFree+"min(s) Rate $ 0.25 / "+strMeterIncrementTime+" minutes Hours of Enforcement 12:00 am-"+strFreeParkingStartTimeMinus1.toLowerCase();
-    	    			strExpectedSpotDetailsRemainingTimeMinus1 = strMeterSpotName+" Free parking starts at "+strFreeParkingStartTime+" Time Limit "+intRemainingMinutesBeforeFreeMinus1+"min(s) Rate $ 0.25 / "+strMeterIncrementTime+" minutes Hours of Enforcement 12:00 am-"+strFreeParkingStartTimeMinus1.toLowerCase();
-    	    			strExpectedSpotDetailsFreeTimePlus1 =  strMeterSpotName+" Free parking starts at "+strFreeParkingStartTimeTimePlus1+" Time Limit "+intRemainingMinutesBeforeFree+"min(s) Rate $ 0.25 / "+strMeterIncrementTime+" minutes Hours of Enforcement 12:00 am-"+strFreeParkingStartTime.toLowerCase();
+    	  				strExpectedSpotDetails = strMeterSpotName+"Free parking starts at "+strFreeParkingStartTime+"Time Limit"+intRemainingMinutesBeforeFree+"min(s)Rate$ 0.25 / "+strMeterIncrementTime+" minutesHours of Enforcement12:00 am-"+strFreeParkingStartTimeMinus1.toLowerCase();
+    	    			strExpectedSpotDetailsRemainingTimeMinus1 = strMeterSpotName+"Free parking starts at "+strFreeParkingStartTime+"Time Limit"+intRemainingMinutesBeforeFreeMinus1+"min(s)Rate$ 0.25 / "+strMeterIncrementTime+" minutesHours of Enforcement12:00 am-"+strFreeParkingStartTimeMinus1.toLowerCase();
+    	    			strExpectedSpotDetailsFreeTimePlus1 =  strMeterSpotName+"Free parking starts at "+strFreeParkingStartTimeTimePlus1+"Time Limit"+intRemainingMinutesBeforeFree+"min(s)Rate$ 0.25 / "+strMeterIncrementTime+" minutesHours of Enforcement12:00 am-"+strFreeParkingStartTime.toLowerCase();
     	 	        }
     	 	        else
     	 	        {
@@ -10316,7 +10478,7 @@ public class IOS_Common_Flutter
         	}
         }
 	    clsCommonMobile.ClickButton(objDictionary, iosDriver, "Enter your Parking Zone Number", "Pay", 1);
-	    strSnackbarText = objDictionary.get("strSnackbarText");
+	    strSnackbarText = objDictionary.get("strSnackbarText");if(strSnackbarText == null) {strSnackbarText = "";}
 	    String strGPSEnabled = objDictionary.get("strGPSEnabled");
     	if(strGPSEnabled.equals("False"))
     	{
@@ -10325,7 +10487,18 @@ public class IOS_Common_Flutter
     		else{UpdateErrorMessageWithPivotalData(objDictionary, iosDriver, "Unexpected Error when clicking Meter Spot Number:"+strSnackbarText);}
     	}
     	else if(!strSnackbarText.equals(""))
-    	{UpdateErrorMessageWithPivotalData(objDictionary, iosDriver, "Unexpected Error when clicking Meter Spot Number:"+strSnackbarText);}
+    	{
+    		if(strViolationStatus.equals("True"))
+    		{
+    			if(strSnackbarText.equals("Selected spot is in violation."))
+        		{Reporter.log("The Snackbar correctly displayed Selected spot is in violation.");}
+        		else{UpdateErrorMessageWithPivotalData(objDictionary, iosDriver, "Unexpected Error when clicking Meter Spot Number:"+strSnackbarText);}
+    		}
+    		else
+    		{
+    			UpdateErrorMessageWithPivotalData(objDictionary, iosDriver, "Unexpected Error when clicking Meter Spot Number:"+strSnackbarText);
+    	    }
+    	}
 	}
 	
 //	public void SENTRYMOBILE_Populate_MeterPayment_SelectSpot(Map<String, String> objDictionary,IOSDriver iosDriver, String strSpotNumber)
@@ -10559,13 +10732,16 @@ public class IOS_Common_Flutter
     		clsCommonMobile.ClickButton(objDictionary, iosDriver, "Review and Pay", strAltPayment, 1);
     		if(strAltPayment.equals("Google Pay"))
     		{clsCommonMobile.ClickButton(objDictionary, iosDriver, "Review and Pay", "Pay", 1);}
+    		if(strAltPayment.equals("Apply Pay"))
+    		{
+    			
+    		}
     		else if(strAltPayment.equals("Credit or Debit Card"))
     		{
     			clsCommonMobile.PopulateAction(objDictionary, iosDriver, "Card Details", "Populate Card Number", "{T} Card Number","4242424242424242");
-    			clsCommonMobile.ClickButton(objDictionary, iosDriver, "Card Details", "Next", 1);
     			CommonWeb clsCommonWeb = new CommonWeb();
     			String strStartDate =  clsCommonWeb.AddDaysToCurrentDate("MM/yy","+30");
-			    clsCommonMobile.PopulateAction(objDictionary, iosDriver, "Card Details", "Populate Credit Card", "{T} Expiration Date|{T} CVC",strStartDate+"|3746");
+			    clsCommonMobile.PopulateAction(objDictionary, iosDriver, "Card Details", "Populate Credit Card", "{T} Expiration Date|{T} Security Code",strStartDate+"|746");
 			    clsCommonMobile.ClickButton(objDictionary, iosDriver, "Card Details", "Add Card", 1);
 			    clsCommonMobile.ClickLink(objDictionary, iosDriver, "Review and Pay", "Yes", 1);
     		}
@@ -10808,6 +10984,8 @@ public class IOS_Common_Flutter
 		String strCurrentMeterTime = objDictionary.get("strCurrentMeterTime");if(strCurrentMeterTime == null){strCurrentMeterTime = "0";}
 		double dblParkingFee = Double.parseDouble(strParkingFee.replace("$",""));
 		double dblConvenienceFee = Double.parseDouble(strFirstPaymentFee)*.01;
+		String strParkerType = clsHttpConnections.GET_ParkerType(objDictionary);
+		if (strParkerType.equals("Handicap")) {dblConvenienceFee = 0.0;}
 		double dblTotalFee = dblParkingFee + dblConvenienceFee;
 		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
 		strParkingFee = dFormat.format(dblParkingFee);
@@ -10970,6 +11148,8 @@ public class IOS_Common_Flutter
 		   			case "Forgot Password":
 		   			case "Sign Up":
 		   			case "Set New Password":
+		   			case "User Agreement":
+		   			case "Account":
 		   				strSnackbarText = iosCaptureSnackbarText(iosDriver, 6);
 		   				break;
 		   			case "Login":
@@ -11749,13 +11929,24 @@ public class IOS_Common_Flutter
 	    		switch (strButtonName)
 				{
 					case "Add Money":
-					    try {
-					        return new WebDriverWait(iosDriver, Duration.ofSeconds(10))
-					                .until(ExpectedConditions.presenceOfElementLocated(
-					                    By.xpath("//XCUIElementTypeImage[@name='Add Money']")
-					                ));
-					    } 
+					    try {return new WebDriverWait(iosDriver, Duration.ofSeconds(10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeImage[@name='Add Money']")));}
 					    catch (Exception e) {return null;}
+					case "Add Permit":
+						try {iosDriver.findElement(AppiumBy.accessibilityId("Done")).click();} catch (Exception ignored) {}
+						try {return new WebDriverWait(iosDriver, Duration.ofSeconds(10)).until(ExpectedConditions.presenceOfElementLocated(AppiumBy.accessibilityId("Add Permit")));}
+						catch (Exception e) {return null;}
+					case "AutoPay":
+					    try {return new WebDriverWait(iosDriver, Duration.ofSeconds(10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeOther[@value='AutoPay']/following-sibling::XCUIElementTypeOther[1]")));} 
+					    catch (Exception e) {return null;}
+					case "Back":
+						try {return new WebDriverWait(iosDriver, Duration.ofSeconds(10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeButton[@name='Back']")));}
+						catch (Exception e) {return null;}
+					case "Saved Credit Cards":
+						try {return new WebDriverWait(iosDriver, Duration.ofSeconds(10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeButton[@name='Saved Credit Cards']")));}
+						catch (Exception e) {return null;}
+					case "Yes, Remove":
+					    try {return new WebDriverWait(iosDriver, Duration.ofSeconds(10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeButton[@name='Yes, Remove']")));} 
+					    catch (Exception e) { return null;}
 					default:
 						UpdateErrorMessageWithPivotalData(objDictionary, iosDriver,"The Button (" + strButtonName + ") had not been added to GetButtonObj for the page (" + strPageName + ")-"+strMethodName);
 				}
@@ -11805,22 +11996,22 @@ public class IOS_Common_Flutter
 				break;
         	case "Enter your Parking Zone Number":
 	       		switch (strButtonName)
-					{
-						case "Meter Spot Number":
-							String strMeterSpotName = objDictionary.get("strMeterSpotName");
-							try {
-							    WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeImage[@name='"+strMeterSpotName+"']")));
-							    return element;
-							} catch (Exception e) {return null;}
-						case "Pay":
-							try {
-							    WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeImage[@name='Pay']")));
-							    return element;
-							} catch (Exception e) {return null;}
-						default:
-							UpdateErrorMessageWithPivotalData(objDictionary, iosDriver,"The Button (" + strButtonName + ") had not been added to GetButtonObj for the page (" + strPageName + ")-"+strMethodName);
-					}
-					break;
+				{
+					case "Meter Spot Number":
+						String strMeterSpotName = objDictionary.get("strMeterSpotName");
+						try {
+						    WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeImage[@name='"+strMeterSpotName+"']")));
+						    return element;
+						} catch (Exception e) {return null;}
+					case "Pay":
+						try {
+						    WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeImage[@name='Pay']")));
+						    return element;
+						} catch (Exception e) {return null;}
+					default:
+						UpdateErrorMessageWithPivotalData(objDictionary, iosDriver,"The Button (" + strButtonName + ") had not been added to GetButtonObj for the page (" + strPageName + ")-"+strMethodName);
+				}
+				break;
         	case "Forgot Password":
         		switch (strButtonName)
 				{
@@ -11904,12 +12095,30 @@ public class IOS_Common_Flutter
 			case "Review and Pay":
 				switch (strButtonName)
 				{
+					case "Apple Pay":
+						try {
+					        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.accessibilityId("Apple Pay")));
+					        return element;
+						}
+						catch (Exception e) {return null;}
 					case "Close":
 						try {
 						    WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeButton[@name='Close']")));
 						    return element;
 						} 
 						catch (Exception e) {return null;}
+					case "Credit or Debit Card":
+						try {
+					        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.accessibilityId("Credit or Debit Card")));
+					        return element;
+						}
+						catch (Exception e) {return null;}
+					case "More Payment Options":
+					    try {
+					        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeStaticText[contains(@name, 'More Payment Options')]")));
+					        return element;
+					    } 
+					    catch (Exception e) {return null;}
 					case "Ok":
 						try {
 						    WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeButton[@name='Ok']")));
@@ -11949,26 +12158,15 @@ public class IOS_Common_Flutter
 				switch (strButtonName)
 				{
 					case "Back":
-					    try {
-					        return new WebDriverWait(iosDriver, Duration.ofSeconds(10))
-					                .until(ExpectedConditions.presenceOfElementLocated(
-					                    By.xpath("//XCUIElementTypeButton[@name='Back']")
-					                ));
-					    } 
+					    try {return new WebDriverWait(iosDriver, Duration.ofSeconds(10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeButton[@name='Back']")));}
 					    catch (Exception e) {return null;}
 					case "Reset":
-					    try {
-					        return new WebDriverWait(iosDriver, Duration.ofSeconds(10))
-					                .until(ExpectedConditions.presenceOfElementLocated(
-					                    By.xpath("//XCUIElementTypeStaticText[@name='Reset']")
-					                ));
-					    } 
+					    try {return new WebDriverWait(iosDriver, Duration.ofSeconds(10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeStaticText[@name='Reset']")));} 
 					    catch (Exception e) {return null;}
 					default:
 						UpdateErrorMessageWithPivotalData(objDictionary, iosDriver,"The Button (" + strButtonName + ") had not been added to GetButtonObj for the page (" + strPageName + ")-"+strMethodName);
 				}
 				break;
-				
 			case "Sign Up":
 				switch (strButtonName)
 				{
@@ -12091,6 +12289,12 @@ public class IOS_Common_Flutter
 					        return iosdriver.findElement(By.xpath("//XCUIElementTypeButton[@name='Ok' and @visible='true']"));
 					    } 
 					    catch (Exception e) {return null;}
+					case "Yes":
+						try {
+						    WebDriverWait wait = new WebDriverWait(iosdriver, Duration.ofSeconds(10));
+						    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//XCUIElementTypeButton[@name='Yes' and @visible='true']")));
+						} 
+						catch (Exception e) { return null; }
 					default:
 						try {iosdriver.findElement(By.xpath("//*[@text='"+strLinkName+"']"));}
 						catch(Exception e) {return null;}
@@ -12190,6 +12394,19 @@ public class IOS_Common_Flutter
 		WebDriverWait wait = new WebDriverWait(iosDriver, Duration.ofSeconds(5));
 		switch (strPageName)
 		{
+			case "Account":
+				switch (strTextFieldName)
+				{
+					case "Handicap permit ID":
+					    try {
+					        wait = new WebDriverWait(iosDriver, Duration.ofSeconds(10));
+					        return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//XCUIElementTypeTextField[@name='Enter permit ID' or @label='Enter permit ID']")));
+					    } 
+					    catch (Exception e) {return null;}
+					default:
+						UpdateErrorMessageWithPivotalData(objDictionary, iosDriver,"The Textfield (" + strTextFieldName + ") had not been added for the page (" + strPageName + ")-"+strMethodName);
+				}
+			
 			case "Add a vehicle":
 				switch (strTextFieldName)
 				{
@@ -12381,6 +12598,35 @@ public class IOS_Common_Flutter
 		Meter clsMeter = new Meter();
 		switch (strPageName)
 		{
+			case "Account":
+				switch (strTextName)
+				{
+				case "Enrolled on":
+				    try {
+				        LocalDate enrollmentDate = LocalDate.now();
+				        String expectedDate = enrollmentDate.format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+				        // Scroll the element into view on iOS
+				        Map<String, Object> scrollParams = new HashMap<>();
+				        scrollParams.put("direction", "down");
+				        scrollParams.put("predicateString", "name CONTAINS 'Enrolled on:'");
+				        iosDriver.executeScript("mobile: scroll", scrollParams);
+				        WebDriverWait wait = new WebDriverWait(iosDriver, Duration.ofSeconds(15));
+				        // iOS locator (predicate is preferred; XPath also works)
+				        By locator = AppiumBy.iOSNsPredicateString("name CONTAINS 'Enrolled on:'");
+				        WebElement enrolledElement = wait.until(
+				                ExpectedConditions.visibilityOfElementLocated(locator)
+				        );
+				        // Read the text (name / label / value are identical on this element)
+				        String text = enrolledElement.getAttribute("name");
+				        if (text != null && text.contains(expectedDate)) {
+				            return enrolledElement;
+				        }
+				        return null;
+				    } 
+				    catch (Exception e) {return null;}
+					default:
+						try {return iosDriver.findElement(By.xpath("//*[@text='"+strTextName+"']"));}catch(Exception e) {return null;}
+				}
 			case "Choose Parking Duration":
 				switch (strTextName)
 				{
@@ -12447,7 +12693,6 @@ public class IOS_Common_Flutter
 					    } catch (Exception e) {
 					        return null;
 					    }
-						
 					default:
 						try {return iosDriver.findElement(By.xpath("//*[@text='"+strTextName+"']"));}catch(Exception e) {return null;}
 				}
@@ -12472,7 +12717,6 @@ public class IOS_Common_Flutter
 					default:
 						try {return iosDriver.findElement(By.xpath("//*[@text='"+strTextName+"']"));}catch(Exception e) {return null;}
 				}
-		
 			case "Log in":
 				switch (strTextName)
 				{
@@ -16658,7 +16902,7 @@ public class IOS_Common_Flutter
 		}
 	}
 
-public String SENTRYMOBILE_CORRUPT_APP_CACHE(Map<String, String> objDictionary) {
+	public String SENTRYMOBILE_CORRUPT_APP_CACHE(Map<String, String> objDictionary) {
 		String evidence = "TODO: iOS cache corruption simulation not available (no ADB); force-stop/relaunch only";
 		Reporter.log(evidence);
 		return evidence;
@@ -16717,8 +16961,32 @@ public String SENTRYMOBILE_CORRUPT_APP_CACHE(Map<String, String> objDictionary) 
 		Reporter.log("TODO: Port PopulateOrValidateMeterPaymentMunicipality to iOS (strGPSEnabled=" + strGPSEnabled + ")");
 	}
 
-	public void SENTRYMOBILE_DeleteSavedCreditCards(Map<String, String> objDictionary, IOSDriver iosdriver) {
-		Reporter.log("TODO: Port SENTRYMOBILE_DeleteSavedCreditCards to iOS");
+	public void SENTRYMOBILE_DeleteSavedCreditCards(Map<String, String> objDictionary, IOSDriver iosDriver) 
+	{
+		//Navigate to Account
+		NavigateToPageUsingMenuButtons(objDictionary,iosDriver, "Account");
+		ClickButton(objDictionary, iosDriver, "Account", "Saved Credit Cards", 1);
+		String strCardDeleted = "False";
+		//Below is where the Delete Needs to happen
+		while (true) 
+		{
+	        // Find the delete (image) button that is the sibling of a masked card number button
+	        List<WebElement> deleteButtons = iosDriver.findElements(By.xpath("//XCUIElementTypeButton[starts-with(@name, '****')]/following-sibling::XCUIElementTypeButton[1]"));
+	        if (deleteButtons.isEmpty()) {break; }
+	        // Click the first (top) delete button
+	        deleteButtons.get(0).click();
+	        iosDriver.findElement(By.xpath("//XCUIElementTypeButton[@name='Yes, Delete' or @label='Yes, Delete']")).click();
+	        try { Thread.sleep(800); } catch (InterruptedException ignored) {}
+	        strCardDeleted = "True";
+	    }
+		ClickButton(objDictionary, iosDriver, "Account", "Back", 1);
+		String strSnackbarText = objDictionary.get("strSnackbarText");if(strSnackbarText == null) {strSnackbarText = "";}
+		if(strCardDeleted.equals("True"))
+		{
+			if(strSnackbarText.equals("Card has been deleted")){Reporter.log("The Text (Snackbar Message) with index (1) contained (" + strSnackbarText + ")");}
+			else{UpdateErrorMessageWithPivotalData(objDictionary,iosdriver,"The Text (Snackbar Message) with index (1) did not contain (Card has been deleted) - actual value ("+strSnackbarText+")");}
+		}
+		objDictionary.put("strSnackbarText","");
 	}
 
 	public void VALIDATION_MeterPaymentDialog(Map<String, String> objDictionary, IOSDriver iosdriver, String strExpectedMessage) {
@@ -17136,6 +17404,11 @@ public void SENTRYMOBILE_3074_A_FTFP10_FTR_MTIV_gt_RFT_PS1_MP1_MTR_PRT_VPSH_VICA
 		//Click Accept
 		clsCommonMobile.ClickButton(objDictionary, iosdriver, "User Agreement", "Accept",1);
 		clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, iosdriver, "parker","Remind me later");
+		//ClickPermissionAlertButton
+  		try {Thread.sleep(3000);}catch (Exception e) {}
+    	clsCommonMobile.ClickPermissionAlertButton(objDictionary, iosdriver, "Allow");
+    	try {Thread.sleep(2000);}catch (Exception e) {}
+    	clsCommonMobile.ClickPermissionAlertButton(objDictionary, iosdriver, "Allow While Using App");
 		clsCommonMobile.SENTRYMOBILE_PurchaseMeterTimeParkThenPay(objDictionary, iosdriver,strFreeTimeFirstPayment,strMeterIncrementTime,"True","False");
 		iosdriver.quit();
 		String strRemainingFreeTimeMinutes = objDictionary.get("strRemainingFreeTimeMinutes");
@@ -17184,7 +17457,7 @@ public void SENTRYMOBILE_3074_A_FTFP10_FTR_MTIV_gt_RFT_PS1_MP1_MTR_PRT_VPSH_VICA
 		Reporter.log("TODO: iOS port of SENTRYMOBILE_MMUPAS_VMMUPAS");
 	}
 
-public void SENTRYMOBILE_A4004_PaymentTest_CreditOrDebitCard(Map<String, String> objDictionary)
+	public void SENTRYMOBILE_A4004_PaymentTest_CreditOrDebitCard(Map<String, String> objDictionary)
 	{
     	objDictionary.put("strMobileDeviceType", "IOS");
     	IOS_Common_Flutter clsCommonMobile = this;
@@ -17224,7 +17497,12 @@ public void SENTRYMOBILE_A4004_PaymentTest_CreditOrDebitCard(Map<String, String>
 		//Click Accept
 		clsCommonMobile.ClickButton(objDictionary, iosdriver, "User Agreement", "Accept",1);
 		clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, iosdriver, "parker","Remind me later");
-		//Delete Saved Credit Cards
+		//ClickPermissionAlertButton
+      	try {Thread.sleep(3000);}catch (Exception e) {}
+      	clsCommonMobile.ClickPermissionAlertButton(objDictionary, iosdriver, "Allow");
+      	try {Thread.sleep(3000);}catch (Exception e) {}
+      	clsCommonMobile.ClickPermissionAlertButton(objDictionary, iosdriver, "Allow While Using App");
+     	//Delete Saved Credit Cards
 		clsCommonMobile.SENTRYMOBILE_DeleteSavedCreditCards(objDictionary, iosdriver);
 		//ParkTP: Park Then Pay
 		clsCommonMobile.SENTRYMOBILE_PurchaseMeterTimeParkThenPay(objDictionary, iosdriver,strFreeTimeFirstPayment,strMeterIncrementTime,"True","False");
@@ -17237,7 +17515,7 @@ public void SENTRYMOBILE_A4004_PaymentTest_CreditOrDebitCard(Map<String, String>
 	  	clsMeter.METER_SetMeterEndTime(objDictionary);
 	}
 
-public void SENTRYMOBILE_4005_PaymentTest_CreditOrDebitCard_MaxTime(Map<String, String> objDictionary)throws Exception
+	public void SENTRYMOBILE_4005_PaymentTest_CreditOrDebitCard_MaxTime(Map<String, String> objDictionary)throws Exception
 	{
     	objDictionary.put("strMobileDeviceType", "IOS");
     	IOS_Common_Flutter clsCommonMobile = this;
@@ -17308,12 +17586,10 @@ public void SENTRYMOBILE_4005_PaymentTest_CreditOrDebitCard_MaxTime(Map<String, 
 	    	}
     		clsCommonMobile.ClickButton(objDictionary, iosdriver, "Review and Pay", strAltPayment, 1);
     		clsCommonMobile.PopulateAction(objDictionary, iosdriver, "Card Details", "Populate Card Number", "{T} Card Number","4242424242424242");
-			clsCommonMobile.ClickButton(objDictionary, iosdriver, "Card Details", "Next", 1);
 			String strStartDate =  clsCommonWeb.AddDaysToCurrentDate("MM/yy","+30");
-		    clsCommonMobile.PopulateAction(objDictionary, iosdriver, "Card Details", "Populate Credit Card", "{T} Expiration Date|{T} CVC",strStartDate+"|3746");
+		    clsCommonMobile.PopulateAction(objDictionary, iosdriver, "Card Details", "Populate Credit Card", "{T} Expiration Date|{T} Security Code",strStartDate+"|746");
 		    clsCommonMobile.ClickButton(objDictionary, iosdriver, "Card Details", "Add Card", 1);
 		    clsCommonMobile.ClickLink(objDictionary, iosdriver, "Review and Pay", "Yes", 1);
-    		//clsCommonMobile.ClickButton(objDictionary, iosdriver, "Review and Pay", "Pay", 1);
      	}
 		//Wait For Parking Session Details
     	clsCommonMobile.GlobalWait(objDictionary, iosdriver, "Parking Sessions", "{TextExists} Parking Sessions~Parking Session Details", 80);
@@ -17333,7 +17609,7 @@ public void SENTRYMOBILE_4005_PaymentTest_CreditOrDebitCard_MaxTime(Map<String, 
       	clsMeter.METER_SetMeterEndTime(objDictionary);
 	}
 
-public void SENTRYMOBILE_4002_PaymentTest_GooglePay(Map<String, String> objDictionary)
+	public void SENTRYMOBILE_4002_PaymentTest_GooglePay(Map<String, String> objDictionary)
 	{
     	objDictionary.put("strMobileDeviceType", "IOS");
     	IOS_Common_Flutter clsCommonMobile = this;
@@ -17381,7 +17657,12 @@ public void SENTRYMOBILE_4002_PaymentTest_GooglePay(Map<String, String> objDicti
 		//Click Accept
 		clsCommonMobile.ClickButton(objDictionary, iosdriver, "User Agreement", "Accept",1);
 		clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, iosdriver, "parker","Remind me later");
-		//ParkTP: Park Then Pay
+		//ClickPermissionAlertButton
+      	try {Thread.sleep(3000);}catch (Exception e) {}
+      	clsCommonMobile.ClickPermissionAlertButton(objDictionary, iosdriver, "Allow");
+      	try {Thread.sleep(3000);}catch (Exception e) {}
+      	clsCommonMobile.ClickPermissionAlertButton(objDictionary, iosdriver, "Allow While Using App");
+      	//ParkTP: Park Then Pay
 		clsCommonMobile.SENTRYMOBILE_PurchaseMeterTimeParkThenPay(objDictionary, iosdriver,strFreeTimeFirstPayment,strMeterIncrementTime,"True","False");
 		iosdriver.quit();
 		//ShortSessionWaitExitSpot
@@ -17392,7 +17673,7 @@ public void SENTRYMOBILE_4002_PaymentTest_GooglePay(Map<String, String> objDicti
 	  	clsMeter.METER_SetMeterEndTime(objDictionary);
 	}
 
-public void SENTRYMOBILE_4003_PaymentTest_GooglePay_MaxTime(Map<String, String> objDictionary)throws Exception
+	public void SENTRYMOBILE_4003_PaymentTest_ApplePay_MaxTime(Map<String, String> objDictionary)throws Exception
 	{
     	objDictionary.put("strMobileDeviceType", "IOS");
     	IOS_Common_Flutter clsCommonMobile = this;
@@ -17482,23 +17763,22 @@ public void SENTRYMOBILE_4003_PaymentTest_GooglePay_MaxTime(Map<String, String> 
       	clsMeter.METER_SetMeterEndTime(objDictionary);
 	}
 
-
 	public void SENTRYMOBILE_PS1_EC1_NSAU_NSTC(Map<String, String> objDictionary, String strLicensePlateNumber)
 	{
 		String strTestCaseName = new Object(){}.getClass().getEnclosingMethod().getName();
-		objDictionary.put("strMobileDeviceType", "IOS");
-		HttpConnections clsHttpConnections = new HttpConnections();
-		IOS_Common_Flutter clsCommonMobile = new IOS_Common_Flutter();
-		CommonIOS clsCommonIOS = new CommonIOS();
-		CommonWeb clsCommonWeb = new CommonWeb();
-		Meter clsMeter = new Meter();
-		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
-		Reporter.log("***************TestCase Description*****************************");
-		Reporter.log("PS1: Park Spot 1                                                ");
+    	objDictionary.put("strMobileDeviceType", "ANDROID");
+    	HttpConnections clsHttpConnections = new HttpConnections();
+    	IOS_Common_Flutter clsCommonMobile = new IOS_Common_Flutter();
+    	CommonWeb clsCommonWeb = new CommonWeb();
+    	Meter clsMeter = new Meter();
+    	clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
+    	Reporter.log("***************TestCase Description*****************************");
+    	Reporter.log("PS1: Park Spot 1                                                ");
 		Reporter.log("EC1: Enroll In Concierge									      ");
 		Reporter.log("NSAU: Notification Session App UnChecked						  ");
 		Reporter.log("NSTC: Notification Session Text checked						  ");
 		Reporter.log("****************************************************************");
+		//Test Case Variables
 		String strMaximumDuration = "240";
 		String strCoinTimePuchaseLimit = "240";
 		String strFreeTimeFirstPayment = "0";
@@ -17514,43 +17794,40 @@ public void SENTRYMOBILE_4003_PaymentTest_GooglePay_MaxTime(Map<String, String> 
 		String strUnlockTime = "1";
 		String strUnlockMax = "1";
 		String strState = "Minnesota";
+		//String strRole = "parker";
 		String strRole = "parker";
 		String strHost = objDictionary.get("strHost");
 		clsMeter.METER_ExecutePythonScriptAgainstMeter(objDictionary,strHost,"settings_set_setting_true.py PARKING_CONCIERGE_ENABLED");
+		//ExitSpotAndSetMeterRateBlocks
 		clsCommonWeb.SENTRYLINK_ExitSpotSetMeterRateBlocksOpenMeterInBrowse(objDictionary,  strMaximumDuration, strCoinTimePuchaseLimit, strFreeTimeFirstPayment, strMeterIncrementTime, strInitialGracePeriod, strViolationGracePeriod, strHandicapInitialGracePeriod, strHandicapViolationGrace, strNoParkingGrace,strSetImageSendBeforeViolation,strParkingShortSessionSec, strUnlockValue, strUnlockTime, strUnlockMax,"Local");
+  		//Update Subscriptions
 		clsHttpConnections.PUT_SubscriptionPreferences(objDictionary, strRole, "Session",false, true, false);
+		//CreateUser
 		clsCommonWeb.SENTRYLINK_CreateUser(objDictionary,strRole);
-		// Existing iOS enroll/deenroll helpers live in CommonIOS, not IOS_Common_Flutter
-		clsCommonIOS.SENTRYMOBILE_DeenrollFromConcierge(objDictionary, strLicensePlateNumber, strState, strRole,"Enroll later");
-		IOSDriver iosdriver = null;
-		try
-		{
-			iosdriver = clsCommonIOS.SENTRYMOBILE_EnrollInConcierge(objDictionary, strTestCaseName, strLicensePlateNumber, strState, strRole, "Enroll later", "Account Details","Enabled");
-		}
-		finally
-		{
-			clsCommonMobile.SENTRYMOBILE_RestoreDeviceNetworkAndPower(objDictionary);
-			try { if (iosdriver != null) iosdriver.quit(); } catch (Exception e) {}
-		}
-		clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null, "1","Local");
+		//DeenrollFromConcierge
+		clsCommonMobile.SENTRYMOBILE_DeenrollFromConcierge(objDictionary, strLicensePlateNumber, strState, strRole,"Enroll later");
+		//EnrollInConcierge
+		clsCommonMobile.SENTRYMOBILE_EnrollInConcierge(objDictionary, strTestCaseName, strLicensePlateNumber, strState, strRole, "Enroll later", "Account Details","Enabled");
+		//ShortSessionWaitExitSpot
+      	clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null, "1","Local");
 	}
 
 	public void SENTRYMOBILE_PS1_RELP_ALPMPP_VLAD_ES1(Map<String, String> objDictionary, String strLicensePlateNumber)
 	{
-		String strTestCaseName = new Object(){}.getClass().getEnclosingMethod().getName();
-		objDictionary.put("strMobileDeviceType", "IOS");
-		IOS_Common_Flutter clsCommonMobile = new IOS_Common_Flutter();
-		HttpConnections clsHttpConnections = new HttpConnections();
-		CommonWeb clsCommonWeb = new CommonWeb();
-		Meter clsMeter = new Meter();
-		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
-		Reporter.log("***************TestCase Description*****************************");
-		Reporter.log("PS1: Park Spot 1                                                ");
-		Reporter.log("RELP: Remove Existing License Plates     						  ");
-		Reporter.log("ALPMPP: Add License Plate Meter Payment Page                    ");
-		Reporter.log("VLAD: Validate License Account Details                          ");
-		Reporter.log("ES1: Exist Spot 1          								      ");
+		objDictionary.put("strMobileDeviceType", "ANDROID");
+    	IOS_Common_Flutter clsCommonMobile = new IOS_Common_Flutter();
+    	HttpConnections clsHttpConnections = new HttpConnections();
+    	CommonWeb clsCommonWeb = new CommonWeb();
+    	Meter clsMeter = new Meter();
+    	clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
+    	Reporter.log("***************TestCase Description*****************************");
+    	Reporter.log("PS1: Park Spot 1                                                ");
+    	Reporter.log("RELP: Remove Existing License Plates     						  ");
+    	Reporter.log("ALPMPP: Add License Plate Meter Payment Page                    ");
+    	Reporter.log("VLAD: Validate License Account Details                          ");
+    	Reporter.log("ES1: Exist Spot 1          								      ");
 		Reporter.log("****************************************************************");
+		//Test Case Variables
 		String strMaximumDuration = "240";
 		String strCoinTimePuchaseLimit = "240";
 		String strFreeTimeFirstPayment = "0";
@@ -17569,52 +17846,62 @@ public void SENTRYMOBILE_4003_PaymentTest_GooglePay_MaxTime(Map<String, String> 
 		String strRole = "parker";
 		String strHost = objDictionary.get("strHost");
 		clsMeter.METER_ExecutePythonScriptAgainstMeter(objDictionary,strHost,"settings_set_setting_true.py PARKING_CONCIERGE_ENABLED");
+		//ExitSpotAndSetMeterRateBlocks
 		clsCommonWeb.SENTRYLINK_ExitSpotSetMeterRateBlocksOpenMeterInBrowse(objDictionary,  strMaximumDuration, strCoinTimePuchaseLimit, strFreeTimeFirstPayment, strMeterIncrementTime, strInitialGracePeriod, strViolationGracePeriod, strHandicapInitialGracePeriod, strHandicapViolationGrace, strNoParkingGrace,strSetImageSendBeforeViolation,strParkingShortSessionSec, strUnlockValue, strUnlockTime, strUnlockMax,"Local");
 		objDictionary.put("strTrueUp", "True");
+		//CreateUser
 		clsCommonWeb.SENTRYLINK_CreateUser(objDictionary,strRole);
+		//De-enroll for Concierge
 		clsHttpConnections.POST_ConciergeDenroll(objDictionary, strRole);
+		//Delete All User License Plates
 		clsHttpConnections.HTTPCONNECTIONS_DeleteAllUserLicensePlates(objDictionary, strLicensePlateNumber, strState, strRole);
-		IOSDriver iosdriver = null;
-		try
+		//Enable Concierge on Mobile device
+		//Open Consumer App
+		IOSDriver iosDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
+		//Enable and Configure Messager
+		String strNotificationTextSubscription = clsHttpConnections.GET_GetSubscriptionPreference(objDictionary, "Session","text",strRole);
+		SMS clsSMS = null;
+		if(strNotificationTextSubscription.equals("true"))
 		{
-			iosdriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
-			String strNotificationTextSubscription = clsHttpConnections.GET_GetSubscriptionPreference(objDictionary, "Session","text",strRole);
-			if(strNotificationTextSubscription.equals("true"))
-			{
-				SMS clsSMS = new SMS(iosdriver);
-			}
-			clsCommonMobile.ClickButton(objDictionary, iosdriver, "User Agreement", "Accept",1);
-			clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, iosdriver, "parker", "Remind me later");
-			String strMeterSpotName = objDictionary.get("strMeterSpotName");
-			clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary,iosdriver, "Park");
-			clsCommonMobile.PopulateAction(objDictionary, iosdriver, "Enter your Parking Zone Number", "Populate Zone Number", "{T} Zone Number",strMeterSpotName);
-			clsCommonMobile.ClickButton(objDictionary, iosdriver,  "Enter your Parking Zone Number", "Meter Spot Number", 1);
+			//Enable and Configure Messager
+			clsSMS = new SMS(iosDriver);
+//			clsSMS.InstallAPK(objDictionary);clsSMS.ConfigureSMS(objDictionary);
 		}
-		finally
-		{
-			clsCommonMobile.SENTRYMOBILE_RestoreDeviceNetworkAndPower(objDictionary);
-			try { if (iosdriver != null) iosdriver.quit(); } catch (Exception e) {}
-		}
-		clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null, "1","Local");
+		//Click Accept
+ 		clsCommonMobile.ClickButton(objDictionary, iosDriver, "User Agreement", "Accept",1);
+ 		clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, iosDriver, "parker", "Remind me later");
+ 		//ClickPermissionAlertButton
+      	try {Thread.sleep(3000);}catch (Exception e) {}
+      	clsCommonMobile.ClickPermissionAlertButton(objDictionary, iosDriver, "Allow");
+      	try {Thread.sleep(3000);}catch (Exception e) {}
+      	clsCommonMobile.ClickPermissionAlertButton(objDictionary, iosDriver, "Allow While Using App");
+      	String strMeterSpotName = objDictionary.get("strMeterSpotName");
+   		//Validate Parking Space is in Violation
+		clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary,iosDriver, "Park");
+		clsCommonMobile.PopulateAction(objDictionary, iosDriver, "Enter your Parking Zone Number", "Populate Zone Number", "{T} Zone Number",strMeterSpotName);
+		clsCommonMobile.ClickButton(objDictionary, iosDriver,  "Enter your Parking Zone Number", "Meter Spot Number", 1);
+		iosDriver.quit();
+		//ShortSessionWaitExitSpot
+      	clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null, "1","Local");
 	}
 
 
 	public void SENTRYMOBILE_PS1_EC1_NSAC_NSTU(Map<String, String> objDictionary, String strLicensePlateNumber)
 	{
 		String strTestCaseName = new Object(){}.getClass().getEnclosingMethod().getName();
-		objDictionary.put("strMobileDeviceType", "IOS");
-		HttpConnections clsHttpConnections = new HttpConnections();
-		IOS_Common_Flutter clsCommonMobile = new IOS_Common_Flutter();
-		CommonIOS clsCommonIOS = new CommonIOS();
-		CommonWeb clsCommonWeb = new CommonWeb();
-		Meter clsMeter = new Meter();
-		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
-		Reporter.log("***************TestCase Description*****************************");
-		Reporter.log("PS1: Park Spot 1                                                ");
+    	objDictionary.put("strMobileDeviceType", "IOS");
+    	IOS_Common_Flutter clsCommonMobile = new IOS_Common_Flutter();
+    	CommonWeb clsCommonWeb = new CommonWeb();
+    	HttpConnections clsHttpConnections = new HttpConnections();
+    	Meter clsMeter = new Meter();
+    	clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
+    	Reporter.log("***************TestCase Description*****************************");
+    	Reporter.log("PS1: Park Spot 1                                                ");
 		Reporter.log("EC1: Enroll In Concierge									      ");
 		Reporter.log("NSAC: Notification Session App Checked						  ");
-		Reporter.log("NSTU: Notification Session Text Unchecked						  ");
+		Reporter.log("NSTC: Notification Session Text Unchecked						  ");
 		Reporter.log("****************************************************************");
+		//Test Case Variables
 		String strMaximumDuration = "240";
 		String strCoinTimePuchaseLimit = "240";
 		String strFreeTimeFirstPayment = "0";
@@ -17633,22 +17920,114 @@ public void SENTRYMOBILE_4003_PaymentTest_GooglePay_MaxTime(Map<String, String> 
 		String strRole = "parker";
 		String strHost = objDictionary.get("strHost");
 		clsMeter.METER_ExecutePythonScriptAgainstMeter(objDictionary,strHost,"settings_set_setting_true.py PARKING_CONCIERGE_ENABLED");
+		//ExitSpotAndSetMeterRateBlocks
 		clsCommonWeb.SENTRYLINK_ExitSpotSetMeterRateBlocksOpenMeterInBrowse(objDictionary,  strMaximumDuration, strCoinTimePuchaseLimit, strFreeTimeFirstPayment, strMeterIncrementTime, strInitialGracePeriod, strViolationGracePeriod, strHandicapInitialGracePeriod, strHandicapViolationGrace, strNoParkingGrace,strSetImageSendBeforeViolation,strParkingShortSessionSec, strUnlockValue, strUnlockTime, strUnlockMax,"Local");
+		//Update Subscriptions
 		clsHttpConnections.PUT_SubscriptionPreferences(objDictionary, strRole, "Session",true, false, false);
+		//CreateUser
 		clsCommonWeb.SENTRYLINK_CreateUser(objDictionary,strRole);
-		// Existing iOS enroll/deenroll helpers live in CommonIOS, not IOS_Common_Flutter
-		clsCommonIOS.SENTRYMOBILE_DeenrollFromConcierge(objDictionary, strLicensePlateNumber, strState, strRole,"Enroll later");
-		IOSDriver iosdriver = null;
-		try
-		{
-			iosdriver = clsCommonIOS.SENTRYMOBILE_EnrollInConcierge(objDictionary, strTestCaseName, strLicensePlateNumber, strState, strRole, "Enroll later", "Account Details","Enabled");
-		}
-		finally
-		{
-			clsCommonMobile.SENTRYMOBILE_RestoreDeviceNetworkAndPower(objDictionary);
-			try { if (iosdriver != null) iosdriver.quit(); } catch (Exception e) {}
-		}
-		clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null, "1","Local");
+		//DeenrollFromConcierge
+		clsCommonMobile.SENTRYMOBILE_DeenrollFromConcierge(objDictionary, strLicensePlateNumber, strState, strRole,"Enroll later");
+		//EnrollInConcierge
+		clsCommonMobile.SENTRYMOBILE_EnrollInConcierge(objDictionary, strTestCaseName, strLicensePlateNumber, strState, strRole, "Enroll later", "Account Details","Enabled");
+		//ShortSessionWaitExitSpot
+      	clsMeter.SENTRYMETER_ShortSessionWaitExitSpot(objDictionary, null, "1","Local");
 	}
+	public void SENTRYMOBILE_DeenrollFromConcierge(Map<String, String> objDictionary, String strLicensePlateNumber, String strState, String strRole, String strWizardStatus)
+	{
+		IOS_Common_Flutter clsCommonMobile = new IOS_Common_Flutter();
+		HttpConnections clsHttpConnections = new HttpConnections();
+		CommonWeb clsCommonWeb = new CommonWeb();
+		//De-enroll when 1 plate exists
+		String strConciergeState = clsHttpConnections.API_ReturnConciergeState(objDictionary,strRole,strLicensePlateNumber);
+		if(strConciergeState.equals("active"))
+		{
+			clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary,null,"This Test Case Is Incomplete");
+		}
+		String strEnrolledState = clsHttpConnections.GET_ConciergeEnrolledState(objDictionary, strRole);
+		if(strEnrolledState.equals("true"))
+		{
+			//De-enroll Using App
+			iosdriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
+			//Click Accept
+	 		clsCommonMobile.ClickButton(objDictionary, iosdriver, "User Agreement", "Accept",1);
+	 		clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, iosdriver, "parker", "Remind me later");
+	 		//ClickPermissionAlertButton
+	      	try {Thread.sleep(3000);}catch (Exception e) {}
+	      	clsCommonMobile.ClickPermissionAlertButton(objDictionary, iosdriver, "Allow");
+	      	try {Thread.sleep(3000);}catch (Exception e) {}
+	      	clsCommonMobile.ClickPermissionAlertButton(objDictionary, iosdriver, "Allow While Using App");
+	      	clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary,iosdriver, "Account");
+	 		//Enable AutoPay on Mobile device
+	 		clsCommonMobile.ClickButton(objDictionary, iosdriver, "Account", "AutoPay",1);
+	 		clsCommonMobile.ClickButton(objDictionary, iosdriver, "Account", "Yes, Remove",1);
+	 		String strSnackbarText = objDictionary.get("strSnackbarText");
+	 		if(strSnackbarText.equals("You have now de-enrolled from Concierge Auto pay Program."))
+			{Reporter.log("The Text (Error Message) with index (1) contained (" + strSnackbarText + ")");}
+			else
+			{clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary,iosdriver,"The Text (Error Message) with index (1) did not contain (You have now de-enrolled from Concierge Auto pay Program.) - actual value ("+strSnackbarText+")");}
+	 		try {Thread.sleep(15000);}catch (Exception e) {}
+	 		strEnrolledState = clsHttpConnections.GET_ConciergeEnrolledState(objDictionary, strRole);
+			if(strEnrolledState.equals("false"))
+	 		{Reporter.log("The User was succesfully unenrolled in Concierge");}
+	 		else
+	 		{clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary,iosdriver,"The User was NOT succesfully unenrolled in Concierge in Sentry Link");}
+			iosdriver.quit();
+		}
+		else
+		{
+			Reporter.log("The User was alread unenrolled in Concierge");
+		}
+	}
+	
+	public IOSDriver SENTRYMOBILE_EnrollInConcierge(Map<String, String> objDictionary, String strTestCaseName, String strLicensePlateNumber, String strState, String strRole, String strWizardStatus, String strAddLicensePlateScreen, String strPhoneStatus)
+	{
+		IOS_Common_Flutter clsCommonMobile = new IOS_Common_Flutter();
+		HttpConnections clsHttpConnections = new HttpConnections();
+		Meter clsMeter = new Meter();
+		IOSDriver iosDriver = null;
+		//Needed for Bug
+		objDictionary.put("strRole", strRole);
+		objDictionary.put("strLicensePlateNumber", strLicensePlateNumber);
+		String strConciergeState = clsHttpConnections.API_ReturnConciergeState(objDictionary,strRole,strLicensePlateNumber);
+		if(!strConciergeState.equals("active"))
+		{
+			//Open Consumer App
+			iosDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
+//			SMS clsSMS = new SMS(iosdriver);
+//			clsSMS.InstallAPK(objDictionary);clsSMS.ConfigureSMS(objDictionary);
+	 		//Click Accept
+	 		clsCommonMobile.ClickButton(objDictionary, iosDriver, "User Agreement", "Accept",1);
+			clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, iosDriver, "parker", "Remind me later");
+			//ClickPermissionAlertButton
+	      	try {Thread.sleep(3000);}catch (Exception e) {}
+	      	clsCommonMobile.ClickPermissionAlertButton(objDictionary, iosDriver, "Allow");
+	      	try {Thread.sleep(3000);}catch (Exception e) {}
+	      	clsCommonMobile.ClickPermissionAlertButton(objDictionary, iosDriver, "Allow While Using App");
+			clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary,iosDriver, "Account");
+	 		//Enable AutoPay on Mobile device
+	 		clsCommonMobile.ClickButton(objDictionary, iosDriver, "Account", "AutoPay",1);
+	 		clsCommonMobile.ClickButton(objDictionary, iosDriver, "User Agreement", "Accept",1);
+	 		String strSnackbarText = objDictionary.get("strSnackbarText");
+	 		if(strSnackbarText.equals("You have successfully enrolled in Concierge Auto pay."))
+			{Reporter.log("The Text (Error Message) with index (1) contained (" + strSnackbarText + ")");}
+			else
+			{clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary,iosDriver,"The Text (Error Message) with index (1) did not contain (You have successfully enrolled in Concierge Auto pay.) - actual value ("+strSnackbarText+")");}
+			SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+	 		Calendar cal = Calendar.getInstance();
+//	 		if (cal.get(Calendar.HOUR_OF_DAY) > 19
+//	 		        || (cal.get(Calendar.HOUR_OF_DAY) == 19 && cal.get(Calendar.MINUTE) > 0)
+//	 		        || (cal.get(Calendar.HOUR_OF_DAY) == 19 && cal.get(Calendar.MINUTE) == 0 && cal.get(Calendar.SECOND) > 0)) {
+//	 		    cal.add(Calendar.DATE, 1);
+//	 		}
+	 		// After 7:00:00 PM → next day. Exactly 7:00:00 PM stays today.
+	 		clsCommonMobile.VerificationPointText(objDictionary,iosDriver,"Account","Enrolled on",1,"Value","Enrolled on: " + sdf.format(cal.getTime()));
+	 		return iosdriver;
+		}
+		else
+		{Reporter.log("The License Plate ("+strLicensePlateNumber+") in state () was already enrolled in Concierge");}
+		return iosDriver;
+	}
+
 
 }

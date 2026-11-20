@@ -5043,22 +5043,14 @@ public class CommonANDROID_Flutter
 		String strCurrentMeterTime = objDictionary.get("strCurrentMeterTime");if(strCurrentMeterTime == null){strCurrentMeterTime = "0";}
 		double dblParkingFee = Double.parseDouble(strParkingFee.replace("$",""));
 		double dblConvenienceFee = Double.parseDouble(strFirstPaymentFee)*.01;
-		String strHandicapPermit = objDictionary.get("strHandicapPermit");
-		double dblTotalFee = dblParkingFee;
-		if(strHandicapPermit == null) {dblTotalFee = dblParkingFee + dblConvenienceFee;}
+		String strParkerType = clsHttpConnections.GET_ParkerType(objDictionary);
+		if (strParkerType.equals("Handicap")) {dblConvenienceFee = 0.0;}
+		double dblTotalFee = dblParkingFee + dblConvenienceFee;
 		DecimalFormat dFormat = new DecimalFormat("$ 0.00");
 		strParkingFee = dFormat.format(dblParkingFee);
 		VerificationPointText(objDictionary, androidDriver, "Review and Pay", "Parking Fee", 1, "Value", dFormat.format(dblParkingFee));
-		if(strHandicapPermit == null)
-		{
-			VerificationPointText(objDictionary, androidDriver, "Review and Pay", "Convenience Fee", 1, "Value", dFormat.format(dblConvenienceFee));
-			objDictionary.remove("strConveninceFee");objDictionary.put("strConveninceFee", dFormat.format(dblConvenienceFee));
-		}
-		else
-		{
-			VerificationPointText(objDictionary, androidDriver, "Review and Pay", "Convenience Fee", 1, "Value", "$ 0.00");
-			objDictionary.remove("strConveninceFee");objDictionary.put("strConveninceFee", "$ 0.00");
-		}
+		VerificationPointText(objDictionary, androidDriver, "Review and Pay", "Convenience Fee", 1, "Value", dFormat.format(dblConvenienceFee));
+		objDictionary.remove("strConveninceFee");objDictionary.put("strConveninceFee", dFormat.format(dblConvenienceFee));
 		VerificationPointText(objDictionary, androidDriver, "Review and Pay", "Total Fee", 1, "Value", dFormat.format(dblTotalFee));
 		objDictionary.put("strTotalFee", dFormat.format(dblTotalFee));
 		return dFormat.format(dblTotalFee);
@@ -11917,9 +11909,7 @@ public class CommonANDROID_Flutter
   		//ExitSpotAndSetMeterRateBlocks
 		objDictionary.remove("strFreeDisconnectValue");objDictionary.put("strFreeDisconnectValue", "On");
 		clsCommonWeb.SENTRYLINK_ExitSpotSetMeterRateBlocksOpenMeterInBrowse(objDictionary,  strMaximumDuration, strCoinTimePuchaseLimit, strFreeTimeFirstPayment, strMeterIncrementTime, strInitialGracePeriod, strViolationGracePeriod, strHandicapInitialGracePeriod, strHandicapViolationGrace, strNoParkingGrace,strSetImageSendBeforeViolation,strParkingShortSessionSec, strUnlockValue, strUnlockTime, strUnlockMax,"Local");
-		//PS1: Park Spot 1
-	    clsMeter.METER_ParkSpot(objDictionary,"1","Local");
-	    AppiumDriver androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
+		AppiumDriver androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
 		//Click Accept
 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept",1);
 		clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, androidDriver, "parker", "Enroll later");
