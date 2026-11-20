@@ -13705,9 +13705,8 @@ public class Meter
 	  	SimpleDateFormat formater=new SimpleDateFormat("HH:mm:ss");
 		try
 		{
-			long d1=formater.parse(strRemainingFreeTimeStart).getTime();
-	    	long d2=formater.parse(strRemainingTimeStop).getTime();
-	    	long lUsedFreeSeconds = TimeUnit.MILLISECONDS.toSeconds(d2-d1);
+			//Wrap-safe (midnight): uses the dated free start from RateBlockPlanner when it matches, else unwraps a start from late yesterday
+	    	long lUsedFreeSeconds = RateBlockPlanner.elapsedSeconds(strRemainingFreeTimeStart, (objDictionary == null ? null : objDictionary.get("strFreeParkingStartDateTime")), LocalDateTime.now());
 	    	Reporter.log("UsedFreeSeconds: "+lUsedFreeSeconds);
 //	    	int intUsedFreeMinutes = (int) Math.ceil(lUsedFreeSeconds / 60.00);
 	    	int intUsedFreeMinutes = (int) Math.round(lUsedFreeSeconds / 60.00);
@@ -13741,9 +13740,8 @@ public class Meter
 	  	SimpleDateFormat formater=new SimpleDateFormat("HH:mm:ss");
 		try
 		{
-			long d1=formater.parse(strRemainingFreeTimeStart).getTime();
-		    	long d2=formater.parse(strRemainingTimeStop).getTime();
-		    	long lUsedFreeSeconds = TimeUnit.MILLISECONDS.toSeconds(d2-d1);
+			//Wrap-safe (midnight) - see RateBlockPlanner.elapsedSeconds
+		    	long lUsedFreeSeconds = RateBlockPlanner.elapsedSeconds(strRemainingFreeTimeStart, (objDictionary == null ? null : objDictionary.get("strFreeParkingStartDateTime")), LocalDateTime.now());
 		    	int intFreeTimeSeconds = Integer.parseInt(strFreeTimeMinutes) * 60;
 		    	intRemainingFreeTimeSec = intFreeTimeSeconds - (int) lUsedFreeSeconds;
 		    	Reporter.log("intRemainingFreeTimeSec: "+intRemainingFreeTimeSec);
@@ -13760,9 +13758,8 @@ public class Meter
 		SimpleDateFormat formater=new SimpleDateFormat("HH:mm:ss");
 		try
 		{
-			long d1=formater.parse(strRemainingFreeTimeStart).getTime();
-		    	long d2=formater.parse(strRemainingTimeStop).getTime();
-		    	long lUsedFreeSeconds = TimeUnit.MILLISECONDS.toSeconds(d2-d1);
+			//Wrap-safe (midnight) - see RateBlockPlanner.elapsedSeconds
+		    	long lUsedFreeSeconds = RateBlockPlanner.elapsedSeconds(strRemainingFreeTimeStart, (objDictionary == null ? null : objDictionary.get("strFreeParkingStartDateTime")), LocalDateTime.now());
 		    	int intUsedFreeMinutes = (int) Math.floor(lUsedFreeSeconds / 60.00);
 		    	intRemainingFreeTime = Integer.parseInt(strFreeTimeMinutes) -  intUsedFreeMinutes;
 	    	}catch (Exception e) {clsMeter.UpdateErrorMessageWithPivotalData(objDictionary, driver,"Unable to calculate intTimeRemaining");}
@@ -13782,7 +13779,8 @@ public class Meter
 	        Reporter.log("strRemainingTimeStop: " + currentTime);
 
 	        // Calculate the duration between start and current time in seconds
-	        long usedFreeSeconds = Duration.between(startTime, currentTime).getSeconds();
+	        // Wrap-safe (midnight) - see RateBlockPlanner.elapsedSeconds (was Duration.between(startTime, currentTime))
+	        long usedFreeSeconds = RateBlockPlanner.elapsedSeconds(strRemainingFreeTimeStart, (objDictionary == null ? null : objDictionary.get("strFreeParkingStartDateTime")), LocalDateTime.now());
 	        Reporter.log("UsedFreeSeconds: " + usedFreeSeconds);
 
 	        // Calculate used free minutes, rounded up (ceil)
@@ -13849,15 +13847,23 @@ public class Meter
 	    Meter clsMeter = new Meter();
 	    try {
 	        LocalTime target = LocalTime.parse(targetTimeStr, DateTimeFormatter.ofPattern("HH:mm:ss"));
-	        LocalTime now = LocalTime.now();
-	        Duration duration;
-	        if (target.isAfter(now)) {
-	            duration = Duration.between(now, target);
+	        LocalDateTime dtNow = LocalDateTime.now();
+	        LocalTime now = dtNow.toLocalTime();
+	        long remainingSeconds;
+	        //Midnight-safe: prefer the dated free start from RateBlockPlanner (strFreeParkingStartDateTime) when it matches the target
+	        Long lDatedSeconds = RateBlockPlanner.secondsUntilDated(targetTimeStr, (objDictionary == null ? null : objDictionary.get("strFreeParkingStartDateTime")), dtNow);
+	        if (lDatedSeconds != null) {
+	            remainingSeconds = lDatedSeconds.longValue();
 	        } else {
-	            // Wraps to next day
-	            duration = Duration.between(now, target).plus(Duration.ofDays(1));
+	            Duration duration;
+	            if (target.isAfter(now)) {
+	                duration = Duration.between(now, target);
+	            } else {
+	                // Wraps to next day
+	                duration = Duration.between(now, target).plus(Duration.ofDays(1));
+	            }
+	            remainingSeconds = duration.getSeconds();
 	        }
-	        long remainingSeconds = duration.getSeconds();
 	        int remainingMinutes = (int) Math.ceil(remainingSeconds / 60.0);
 	        Reporter.log("Target time: " + targetTimeStr);
 	        Reporter.log("Current time: " + now);
@@ -14078,9 +14084,8 @@ public class Meter
 	  	SimpleDateFormat formater=new SimpleDateFormat("HH:mm:ss");
 		try
 		{
-			long d1=formater.parse(strUsedTimeStart).getTime();
-	    	long d2=formater.parse(strTimeStop).getTime();
-	    	long lUsedFreeSeconds = TimeUnit.MILLISECONDS.toSeconds(d2-d1);
+			//Midnight-safe: a start from late yesterday (e.g. 23:55 -> 00:05) is +10 min, not -23h50m
+	    	long lUsedFreeSeconds = RateBlockPlanner.elapsedSeconds(strUsedTimeStart, null, LocalDateTime.now());
 	    	intUsedTime = (int) Math.round(lUsedFreeSeconds / 60.00);
     	}catch (Exception e) {clsMeter.UpdateErrorMessageWithPivotalData(objDictionary, driver, "Unable to calculate intTimeRemaining");}
 		return intUsedTime;
