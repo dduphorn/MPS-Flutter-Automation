@@ -10111,18 +10111,36 @@ public class Meter
 			else{strCommand = "/usr/bin/nohup tail -f /var/log/Xsession.log > /tmp/LocalTracelog.txt &";}
 			//Local Log Trace
 			int port=22;
-	    	try
+	    	// Retry once; if the trace still can't start, log a warning instead of failing the test (a failure here skipped the rest of the suite)
+	    	for (int intTraceAttempt = 1; intTraceAttempt <= 2; intTraceAttempt++)
 	    	{
-		    	Session session = jsch.getSession(strMeterUser, strLocalHost, port);
-		    	session.setPassword(strPassword);
-		        session.setConfig("StrictHostKeyChecking", "no");
-		        connectMeterSession(session);
-		        Channel channel=session.openChannel("exec");
-		        ((ChannelExec)channel).setCommand(strCommand);
-		        channel.connect();
-		        Reporter.log("<font color='orange'>Single or Dual MeterTracelog Started</font>");
+		    	try
+		    	{
+			    	Session session = jsch.getSession(strMeterUser, strLocalHost, port);
+			    	session.setPassword(strPassword);
+			        session.setConfig("StrictHostKeyChecking", "no");
+			        connectMeterSession(session);
+			        Channel channel=session.openChannel("exec");
+			        ((ChannelExec)channel).setCommand(strCommand);
+			        channel.connect();
+			        Reporter.log("<font color='orange'>Single or Dual MeterTracelog Started</font>");
+			        break;
+		    	}
+		    	catch(Exception e)
+		    	{
+		    		if (intTraceAttempt < 2)
+		    		{
+		    			System.out.println("METER_StartLogTrace attempt "+intTraceAttempt+" failed ("+strLocalHost+"): "+e+" - retrying");
+		    			try {Thread.sleep(3000);} catch (InterruptedException ie) {Thread.currentThread().interrupt();}
+		    		}
+		    		else
+		    		{
+		    			String strWarning = "WARNING: The script ("+strCommand+") failed to execute ("+strLocalHost+") after 2 attempts - continuing without the local meter trace log: "+e;
+		    			System.out.println(strWarning);
+		    			Reporter.log("<font color='orange'>"+strWarning+"</font>");
+		    		}
+		    	}
 	    	}
-	    	catch(Exception e){UpdateErrorMessageWithPivotalData(objDictionary,driver,null,"The script ("+strCommand+") failed to execute ("+strLocalHost+")","True");}
 			//Remote Log Trace
 	    	String strRemoteMeterExists = "True";
 	    	int intRemoteMeterCounter = 1;
