@@ -809,6 +809,7 @@ public class Android_TestCases_Flutter
 		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Sign Up", "Populate Register", "{T} First Name|{T} Last Name|{T} Email Id|{T} Password|{T} Confirm Password","Delete|User|"+strUserName+"|"+strPassword+"|"+strPassword+"");
 		//Click Sign Up
 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Sign Up", "Sign up",1);
+		String strSnackbarText = objDictionary.get("strSnackbarText");
 		//Sign Out
 		clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary,androidDriver, "Account");
  		clsCommonMobile.ClickLink(objDictionary, androidDriver, "Account", "Sign out", 1);
@@ -1743,14 +1744,8 @@ public class Android_TestCases_Flutter
 		clsCommonWeb.SENTRYLINK_ExitSpotSetMeterRateBlocksOpenMeterInBrowse(objDictionary, strMaximumDuration, strCoinTimePuchaseLimit, strFreeTimeFirstPayment, strMeterIncrementTime, strInitialGracePeriod, strViolationGracePeriod, strHandicapInitialGracePeriod, strHandicapViolationGrace, strNoParkingGrace,strSetImageSendBeforeViolation,strParkingShortSessionSec, strUnlockValue, strUnlockTime, strUnlockMax,"Local");
 		//ParkTP: Park Then Pay
 		clsCommonWeb.SENTRYLINK_ConciergeDeenroll(objDictionary);
-		
 		//objDictionary.put("strAutoGrantPermissions", "False");
 		AppiumDriver androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "False", "Parker");
-		
-		//Validate No Location Access Dialog
-		//clsCommonMobile.VerificationPointText(objDictionary, androidDriver, "User Agreement", "No Location Service",1, "Exists", "");
-   		
-		
 		//Click Accept
 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept",1);
 		//objDictionary.put("strAutoGrantPermissions", "False");
@@ -1805,9 +1800,6 @@ public class Android_TestCases_Flutter
 		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Sign Up", "Populate Phone Number", "{T} Phone Number","9525581708");
 		//Click Accept
 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Sign Up", "Next",1);
-		//Click No thanks
-		try {Thread.sleep(1500);}catch (Exception e) {}
-		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Map", "No thanks",1);
 		//Populate Sign Up
 		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Sign Up", "Populate Register", "{T} First Name|{T} Last Name|{T} Email Id|{T} Password|{T} Confirm Password","Delete|User|"+strUserName+"|"+strPassword+"|"+strPassword+"");
 		//Click Sign Up
@@ -1860,8 +1852,6 @@ public class Android_TestCases_Flutter
 		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Sign Up", "Populate Phone Number", "{T} Phone Number","6125581709");
 		//Click Accept
 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Sign Up", "Next",1);
-		//Click No thanks
-		clsCommonMobile.ClickButton(objDictionary, androidDriver, "Map", "Turn on",1);
 		//Populate Sign Up
 		clsCommonMobile.PopulateAction(objDictionary, androidDriver, "Sign Up", "Populate Register", "{T} First Name|{T} Last Name|{T} Email Id|{T} Password|{T} Confirm Password","Delete|User|"+strUserName+"|"+strPassword+"|"+strPassword+"");
 		//Click Sign Up

@@ -3332,7 +3332,6 @@ public class CommonANDROID_Flutter
 	    		else
 	    		{
 	    			UpdateErrorMessageWithPivotalData(objDictionary, androidDriver, "The Text (Spot Details) with index (1) did not contain (" + strExpectedSpotDetails + ") - actual value (" + strSpotDetails + ")");
-	    			System.out.println("MIH");
 	    		}
         	}
         	else
