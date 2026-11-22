@@ -3314,10 +3314,17 @@ public class CommonANDROID_Flutter
 	    		Reporter.log("intRemainingFreeMinutesPlus1: "+intRemainingFreeMinutesPlus1+"-"+strMethondName);
 	    		String strFreeParkingUntilTime = clsCommonWeb.AddTimeToCurrentTime(String.valueOf(intRemainingFreeMinutes),"h:mm a");
 	    		String strFreeParkingUntilTimePlus1 = clsCommonWeb.AddTimeToCurrentTime(String.valueOf(intRemainingFreeMinutesPlus1),"h:mm a");
+	    		//Hours of Enforcement = hours of the rate block that starts when free parking ends (RateBlockPlanner keys). With inclusive
+	    		//end times the free block ends at the "Free parking until" minute and the rate block starts one minute later.
+	    		String strPlanRateHours = null;
+	    		try {String strSchedule = objDictionary.get("strRateBlockPlanSchedule"); java.time.LocalDateTime dtFreeEnd = RateBlockPlanner.parseDateTime(objDictionary.get("strFreeParkingEndDateTime")); if (strSchedule != null && dtFreeEnd != null) {strPlanRateHours = RateBlockPlanner.currentBlockHoursFromSchedule(strSchedule, dtFreeEnd);}} catch (Exception e) {}
+	    		String strExpectedFreeToRateHours = strPlanRateHours != null ? strPlanRateHours : strFreeParkingUntilTime.toLowerCase()+"-11:59 pm";
+	    		String strExpectedFreeToRateHoursPlus1 = strPlanRateHours != null ? strPlanRateHours : strFreeParkingUntilTimePlus1.toLowerCase()+"-11:59 pm";
+	    		Reporter.log("Expected Hours of Enforcement: "+strExpectedFreeToRateHours+(strPlanRateHours != null ? " (rate block plan)" : " (legacy free end)"));
 	  			if(intMinutes == 0)
 	 	        {
-	    			strExpectedSpotDetails = strMeterSpotName+" Free parking until "+strFreeParkingUntilTime+" Time Limit "+intHours+"hr Rate $ 0.25 / "+strMeterIncrementTime+" minutes Hours of Enforcement "+strFreeParkingUntilTime.toLowerCase()+"-11:59 pm";
-	    			strExpectedSpotDetailsFreeTimePlus1 = strMeterSpotName+" Free parking until "+strFreeParkingUntilTimePlus1+" Time Limit "+intHours+"hr Rate $ 0.25 / "+strMeterIncrementTime+" minutes Hours of Enforcement "+strFreeParkingUntilTimePlus1.toLowerCase()+"-11:59 pm";
+	    			strExpectedSpotDetails = strMeterSpotName+" Free parking until "+strFreeParkingUntilTime+" Time Limit "+intHours+"hr Rate $ 0.25 / "+strMeterIncrementTime+" minutes Hours of Enforcement "+strExpectedFreeToRateHours;
+	    			strExpectedSpotDetailsFreeTimePlus1 = strMeterSpotName+" Free parking until "+strFreeParkingUntilTimePlus1+" Time Limit "+intHours+"hr Rate $ 0.25 / "+strMeterIncrementTime+" minutes Hours of Enforcement "+strExpectedFreeToRateHoursPlus1;
 	 	        }
 	 	        else
 	 	        {
