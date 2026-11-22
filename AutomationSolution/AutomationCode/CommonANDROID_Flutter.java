@@ -6771,6 +6771,19 @@ public class CommonANDROID_Flutter
 						try {return androidDriver.findElement(By.xpath("//*[contains(@content-desc, \""+strTextName+"\")]"));}	
 						catch(Exception e) {return null;}
 				}
+			case "User Agreement": 
+				switch (strTextName)
+				{
+					case "No Location Service":
+					    try {
+					        WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(10));
+					        // Wait for the dialog title
+					        return wait.until(ExpectedConditions.presenceOfElementLocated(AppiumBy.id("com.google.android.gms:id/alertTitle")));} 
+					    catch (Exception e) {return null;}
+					default:
+						try {return androidDriver.findElement(By.xpath("//*[contains(@content-desc, \""+strTextName+"\")]"));}	
+						catch(Exception e) {return null;}
+				}
 			case "Violation Details":
 				switch (strTextName)
 				{
