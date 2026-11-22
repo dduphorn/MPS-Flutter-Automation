@@ -192,12 +192,12 @@ public class Android_Lot_TestCases
 	//ANDROID-LOT_TEST CASES - Hourly
 	//********************************************************************************************************************
 	@Test(priority=9000,groups={"Smoke"})
-	public void AL1000_PRE_PPSL_LP_VCAPS_LE_VSPS()
+	public void AL1000F_PRE_PPSL_LP_VCAPS_LE_VSPS()
 	{
 		objDictionary.put("strAssociatedBug", "");
 		objDictionary.put("strMobileDeviceType", "ANDROID");
 		HttpConnections clsHttpConnections = new HttpConnections();
-		CommonANDROID clsCommonMobile = new CommonANDROID ();
+		CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
 		CommonWeb clsCommonWeb = new CommonWeb();
 		Meter clsMeter = new Meter();
 		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
@@ -250,12 +250,231 @@ public class Android_Lot_TestCases
 	    // Format the current date and time in UTC
 	    String strParkStartTimeUTC = dateFormat.format(new Date());
 		//Validate Mobile Parking Session
-		AndroidDriver androiddriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile","True","Parker"); 
-      	clsCommonMobile.SENTRYMOBILE_Open(objDictionary, androiddriver);
-      	clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOnEmailIdWithoutCaps(objDictionary, androiddriver, "parker",strLicensePlateNumber, "Enroll later");
-      	clsCommonMobile.SENTRYMOBILE_NavigateToPageUsingMenuButtons(objDictionary,androiddriver, "Parking Sessions");
-      	String strMeterGroup = objDictionary.get("strMeterGroup");
-      	clsCommonMobile.VerificationPointText(objDictionary, androiddriver, "Parking Sessions", "Lot", 1, "Value", "Lot : "+strMeterGroup);
+	  	AppiumDriver androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "True", "Parker");
+  		//Click Accept
+  		clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept",1);
+  		clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOffEmailIdWithoutCaps(objDictionary, androidDriver, "parker","Remind me later");
+  		clsCommonMobile.NavigateToPageUsingMenuButtons(objDictionary,androidDriver, "Sessions");
+  		String strMeterGroup = objDictionary.get("strMeterGroup");
+  		clsCommonMobile.VerificationPointText(objDictionary, androidDriver, "Parking Sessions", "Parking Session Details", 1, "Value", "Lot : "+strMeterGroup);
+
+  		System.out.println("MIH");
+
+//		clsCommonMobile.VerificationPointText(objDictionary, androiddriver, "Parking Sessions", "License Plate Number", 1, "Value", strLicensePlateNumber);
+//		String strParkTimestamp = objDictionary.get("strParkTimestamp");
+//		clsCommonMobile.VerificationPointText(objDictionary, androiddriver, "Parking Sessions", "Parked at", 1, "Value", "Parked Today at "+strParkTimestamp);
+//		//Validate Permit
+//		clsCommonMobile.SENTRYMOBILE_NavigateToPageUsingMenuButtons(objDictionary,androiddriver, "Account Details");
+//		clsCommonMobile.ClickLink(objDictionary, androiddriver, "Account Details", "Click to view active permits", 0);
+//		try {Thread.sleep(1500);}catch (Exception e) {}
+//		clsCommonMobile.VerificationPointText(objDictionary, androiddriver, "Permits", "Permitted License Plate", 1, "Value", "Permit valid for Vehicle(s) : "+strLicensePlateNumber);
+//		String strMeterName = objDictionary.get("strMeterName");
+//		clsCommonMobile.VerificationPointText(objDictionary, androiddriver, "Permits", "Permitted Lots", 1, "Value", "Lot(s) : "+strMeterName);
+//		String strMobileValidFrom = objDictionary.get("strMobileValidFrom");
+//		String strMobileValidTo = objDictionary.get("strMobileValidTo");
+//		String strMobileValidFromMinusMin = objDictionary.get("strMobileValidFromMinusMin");
+//		String strMobileValidToMinusMin = objDictionary.get("strMobileValidToMinusMin");
+//		String strPermitValidFrom = clsCommonMobile.StoreText(objDictionary, androiddriver, "Permits", "Permit Valid From", 1, "strPermitValidFrom");
+//		String strPermitValidTo = clsCommonMobile.StoreText(objDictionary, androiddriver, "Permits", "Permit Valid To", 1, "strPermitValidFrom");
+//		if(strPermitValidFrom.equals(strMobileValidFrom))
+//		{
+//			Reporter.log("The Text (Permit Valid From) with index (1) equaled (" + strMobileValidFrom + ")"+"");
+//			clsCommonMobile.VerificationPointText(objDictionary, androiddriver, "Permits", "Permit Valid To", 1, "Value", strPermitValidTo);
+//		}
+//		else if(strPermitValidFrom.equals(strMobileValidFromMinusMin))
+//		{
+//			Reporter.log("The Text (Permit Valid From) with index (1) equaled (" + strMobileValidFromMinusMin + ")"+"");
+//			clsCommonMobile.VerificationPointText(objDictionary, androiddriver, "Permits", "Permit Valid To", 1, "Value", strMobileValidToMinusMin);
+//			strMobileValidFrom = strMobileValidFromMinusMin;
+//			strPermitValidFrom = strMobileValidToMinusMin;
+//		}
+//		else
+//		{clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary,androiddriver,"The Text (Permit Valid From) with index (1) did not equal (" + strMobileValidFrom + ") - actual value (" + strPermitValidFrom + ")");}
+//		//Format Dates for CSV
+//		String strMobileValidFromFormat = "";
+//		String strMobileValidToFormat = "";
+//		try
+//		{
+//	        DateFormat inputFormat = new SimpleDateFormat("MM-dd-yyyy h:mm a");
+//			Date date = inputFormat.parse(strMobileValidFrom.replace("Valid From : ", "").replace(" at", ""));
+//	        DateFormat outputFormat = new SimpleDateFormat("MM-dd-yyyy hh:mm a");
+//	        strMobileValidFromFormat = outputFormat.format(date);
+//	        date = inputFormat.parse(strMobileValidTo.replace("Valid To : ", "").replace(" at", ""));
+// 	        outputFormat = new SimpleDateFormat("MM-dd-yyyy hh:mm a");
+// 			strMobileValidToFormat = outputFormat.format(date);
+//	   }
+//		catch (Exception e) 
+//		{clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary,androiddriver,e.toString());}
+//		clsCommonMobile.ClickLink(objDictionary, androiddriver, "Permits", "Account Details", 0);
+//		clsCommonMobile.SENTRYMOBILE_NavigateToPageUsingMenuButtons(objDictionary,androiddriver, "Pay for lot");
+//      	//Store Lot Parking Id
+//		try
+//		{
+//			String strParkingId = clsHttpConnections.GetJsonParkingSessionId(objDictionary);
+//			objDictionary.put("strParkingId", strParkingId);
+//		}
+//		catch (Exception e) 
+//		{clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary,androiddriver,"The GetJsonParkingSessionId Failed");}
+//		//Exit Lot
+//		clsHttpConnections.CURL_ExitLot(objDictionary,strLicensePlateNumber, "MN",strLotExitId,"False");
+//		//Validate Parking Session Removed from CA
+//		try {Thread.sleep(5000);}catch (Exception e) {}
+//		clsCommonMobile.SENTRYMOBILE_NavigateToPageUsingMenuButtons(objDictionary,androiddriver, "Parking Sessions");
+//		try {Thread.sleep(2500);}catch (Exception e) {}
+//		clsCommonMobile.VerificationPointText(objDictionary, androiddriver, "Parking Sessions", "Lot", 1, "Does Not Exist", "");
+//		androiddriver.quit();
+//		//Dictionary Variables
+//	  	String strBrowser = objDictionary.get("strBrowser");
+//      	String strRemotePath = objDictionary.get("strRemotePath");
+//      	//NTPS: Navigate To Parking Session
+//	  	threadDriver =clsCommonWeb.SetDriverBrowser(strBrowser, strRemotePath,objDictionary);
+//	  	WebDriver driver = getDriver();
+//  		clsCommonWeb.SENTRYLINK_OpenLoginPage(objDictionary, driver);
+//		clsCommonWeb.SENTRYLINK_AdminLoginIn(objDictionary, driver);
+//		// Navigate to Configure Meter
+//		String strCurrentPageName = clsCommonWeb.GetCurrentPageName(objDictionary, driver);
+//		clsCommonWeb.SENTRYLINK_NavigateToPage2(objDictionary, driver, strCurrentPageName, "Parking Lot Sessions","Local");
+//		//Lot Sessions Date Filter
+//		DateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+//        Calendar cal = Calendar.getInstance();
+//        cal.add(Calendar.MINUTE, -5);
+//        cal.set(Calendar.SECOND, 0);
+//        cal.set(Calendar.MILLISECOND, 0);
+//        String formattedDate = dateFormat2.format(cal.getTime());
+//		clsCommonWeb.PopulateAction(objDictionary, driver, "Parking Lot Sessions", "Populate Date Range", "{T} From Date Time Entered",formattedDate);
+//		clsCommonWeb.ClickButton(objDictionary, driver, "Parking Lot Sessions", "Find Sessions", 1, "Local");
+//		clsCommonWeb.ClickButton(objDictionary, driver, "Parking Lot Sessions", "Show Total", 1, "Local");
+//		try {Thread.sleep(1500);}catch (Exception e) {} 
+//		String strRecordCount = clsCommonWeb.StoreText(objDictionary, driver, "Parking Lot Sessions", "Records", 0, "strRecordCount").replace("Records: ", "");
+//		if(!strRecordCount.equals("0"))
+//		{
+//			clsCommonWeb.ClickLink(objDictionary, driver, "Parking Lot Sessions", "(csv)", 1);
+//			try {Thread.sleep(1500);}catch (Exception e) {} 
+//			clsCommonWeb.VerificationPointText(objDictionary, driver,  "Parking Lot Sessions", "Alert Message", 0, "Contains", "Creating a CSV, can be found in CSV Reports");
+//			clsCommonWeb.ClickLink(objDictionary, driver, "Parking Lot Sessions", "CSV Reports", 1);
+//			if(strEnvironment.equals("SG")){try {Thread.sleep(18000);}catch (Exception e) {}}
+//			if(strEnvironment.equals("PROD")){try {Thread.sleep(60000);}catch (Exception e) {}}
+//			driver.navigate().refresh();
+//			//Click Download File
+//			try {Thread.sleep(5000);}catch (Exception e) {} 
+//			clsCommonWeb.ClickLink(objDictionary, driver, "CSV Reports", "Download Parking Sessions", 1);
+//			try {Thread.sleep(4000);}catch (Exception e) {} 
+//			String fileName = clsCommonWeb.StoreText(objDictionary, driver, "CSV Reports", "CSV File Name", 0, "strDownloadName").replace("Download ", "");
+//			String downloadDir = System.getProperty("user.home") + "/Downloads/";
+//	        String filePath = downloadDir + fileName;
+//	        try {
+//	            // Check if file exists
+//	            Path path = FileSystems.getDefault().getPath(filePath);
+//	            if (!Files.exists(path))
+//	            {clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary, driver,"The file ("+fileName+") did not exist in ("+downloadDir+")", "Local");}
+////	            else
+////	            {driver.quit();}
+//	            // Open the CSV file and count rows
+//	            BufferedReader reader = new BufferedReader(new FileReader(filePath));
+//	            String line;
+//	            int rowCount = 0;
+//	            // Read each line from the file
+//	            while ((line = reader.readLine()) != null) {
+//	                rowCount++;
+//	                if(rowCount == 2)
+//	                {
+//	                	 // Split the line into values using a comma as the delimiter
+//	                    String[] values = line.split(",");
+//	                    // Define expected values
+//	                    String[] expectedValues = {"true", "plate", "plate", strParkStartTime, strParkStartTimeUTC, strMobileValidFromFormat, "2024-02-13 08:07 PM", "2 minutes", "2", "LA0LOTAA", "Minnesota", "Lot Auto One"};
+//	                    // Validate each value
+//	                    for (int i = 0; i < values.length; i++) {
+//	                    	String actualValue = values[i].trim().replaceAll("^\"|\"$", "");
+//	                        if (!actualValue.equals(expectedValues[i].replaceAll("^\"|\"$", ""))) {
+//	                            // Value doesn't match expected value
+//	                            System.out.println("Validation failed for value at index " + i + ". Expected: " + expectedValues[i].replaceAll("^\"|\"$", "") + ", Actual: " + values[i].replaceAll("^\"|\"$", ""));
+//	                        }
+//	                    }
+//	                    // Print success message if all values match
+//	                    System.out.println("Validation succeeded. All values match expected values.");
+//	                }
+//	            }  	        
+//	        	} catch (IOException e) 
+//	        {
+//	        	clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,e.toString(), "Local");
+//	        }
+//		}
+//		else
+//		{
+//			clsCommonWeb.UpdateErrorMessageWithPivotalData(objDictionary,driver,"No Parking Lot Sessions Existed", "Local");
+//		}
+//		driver.quit();
+//		Android_Lot_ParkingSessions clsAndroidLotParkingSessions = new Android_Lot_ParkingSessions ();
+//		clsAndroidLotParkingSessions.SENTRYLINK_ValidateParkingSessionHistory_AL1001_PRE_PPSL_LP_VCAPS_LE_VSPS(objDictionary, strLicensePlateNumber); 
+      	clsMeter.METER_SetMeterEndTime(objDictionary);
+		String strAssociatedBug = objDictionary.get("strAssociatedBug");if(strAssociatedBug == null){strAssociatedBug = "";}
+		if(!strAssociatedBug.equals("")){Reporter.log("<font color='Blue'>"+strAssociatedBug+"-This Test passed remove the AssociatedBug</font>");}
+	}
+	@Test(priority=9000,groups={"Smoke"})
+	public void AL1000_PRE_PPSL_LP_VCAPS_LE_VSPS()
+	{
+		objDictionary.put("strAssociatedBug", "");
+		objDictionary.put("strMobileDeviceType", "ANDROID");
+		HttpConnections clsHttpConnections = new HttpConnections();
+		CommonANDROID clsCommonMobile = new CommonANDROID ();
+		CommonWeb clsCommonWeb = new CommonWeb();
+		Meter clsMeter = new Meter();
+		clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
+		Reporter.log("***************TestCase Description*****************************");
+		Reporter.log("PRE: Permit Rate Expired (Allowed to purchase in SL only)       ");
+		Reporter.log("PPSL: Purchase Permit Sentry Link                               ");
+		Reporter.log("LP: Lot Park                                                    ");
+		Reporter.log("VCAPS: Validate CA Parking Session                              ");
+  		Reporter.log("LE: Lot Exit                                                    ");
+  		Reporter.log("VSPS: Validate Sentry Parking Session                           ");
+  		Reporter.log("****************************************************************");
+		//Exit Lot If parked
+  		String strSpaceName = "LOT";
+		String strLicensePlateNumber = ("LA0"+strSpaceName+"BB").toUpperCase();
+//		//Enable Ticket Service Lob Mailing
+//  		clsCommonWeb.SENTRYLINK_EnableAndDisableTicketServices(objDictionary,"AutomationTicketService");
+//  		//Enable Look Up Service s&p
+//  		clsCommonWeb.SENTRYLINK_EnableAndDisableLookupServices(objDictionary,"AutomationLookUp");
+//  		//Update Kiosk Group Ticket Service
+//  		clsCommonWeb.SENTRYLINK_UpdateKioskGroupTicketService(objDictionary,"Lob Mailing","AutomationLookUp");
+  		String strLotEntryId = objDictionary.get("strLotEntryId");
+		String strLotExitId = objDictionary.get("strLotExitId");
+		clsCommonWeb.SENTRYLINK_ConciergeDeenroll(objDictionary);
+		//Exit Lot
+		clsHttpConnections.CURL_ExitLot(objDictionary,strLicensePlateNumber, "MN",strLotExitId,"False");
+		//Delete Active Permits
+		clsHttpConnections.JsonDeleteAllActivePermits(objDictionary,"");
+		//Remove all License Plate
+		clsHttpConnections.HTTPCONNECTIONS_DeleteAllParkerLicensePlates(objDictionary);
+		//Add License Plate
+		clsHttpConnections.POST_LicensePlate(objDictionary,"Parker", strLicensePlateNumber,"Minnesota");
+		//Add Or Update Permit Group
+		objDictionary.put("strPermitCost","2.00");
+		objDictionary.put("strPermitGroup","Student");
+		objDictionary.put("strPermitRate","Hourly 1");
+		objDictionary.put("strLicensePlateNumber",strLicensePlateNumber);
+		objDictionary.put("strDaysBeforePermitStarts","-14");
+		objDictionary.put("strDaysBeforePermitEnds","-7");
+		String strEnvironment = objDictionary.get("strEnvironment");
+		if(strEnvironment.equals("SG")){objDictionary.put("strLotTaxRate","(0.000%)-Lot Auto One-ParkingFeeLineItem");}
+		else if(strEnvironment.equals("PROD")){objDictionary.put("strLotTaxRate","(0.000%)-Lot Automation-ParkingFeeLineItem");}
+		clsCommonWeb.SENTRYLINK_AddOrUpdatePermitRates(objDictionary);
+		clsCommonWeb.SENTRYLINK_AddOrUpdatePermitGroup(objDictionary);
+		//Park in Lot
+		clsHttpConnections.CURL_ParkInLot(objDictionary,strLicensePlateNumber, "MN",strLotEntryId);
+		String strParkStartTime = new SimpleDateFormat("yyyy-MM-dd hh:mm a").format(new Date());
+  	 	DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm a");
+		// Set the time zone to UTC
+	    dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+	    // Format the current date and time in UTC
+	    String strParkStartTimeUTC = dateFormat.format(new Date());
+	    //Validate Mobile Parking Session
+	  	AndroidDriver androiddriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile","True","Parker");
+    	clsCommonMobile.SENTRYMOBILE_Open(objDictionary, androiddriver);
+    	clsCommonMobile.SENTRYMOBILE_LoginOrRegisterWithRememberMeOnEmailIdWithoutCaps(objDictionary, androiddriver, "parker",strLicensePlateNumber, "Enroll later");
+    	clsCommonMobile.SENTRYMOBILE_NavigateToPageUsingMenuButtons(objDictionary,androiddriver, "Parking Sessions");
+    	String strMeterGroup = objDictionary.get("strMeterGroup");
+    	clsCommonMobile.VerificationPointText(objDictionary, androiddriver, "Parking Sessions", "Lot", 1, "Value", "Lot : "+strMeterGroup);
 		clsCommonMobile.VerificationPointText(objDictionary, androiddriver, "Parking Sessions", "License Plate Number", 1, "Value", strLicensePlateNumber);
 		String strParkTimestamp = objDictionary.get("strParkTimestamp");
 		clsCommonMobile.VerificationPointText(objDictionary, androiddriver, "Parking Sessions", "Parked at", 1, "Value", "Parked Today at "+strParkTimestamp);
@@ -461,9 +680,7 @@ public class Android_Lot_TestCases
 		clsCommonWeb.SENTRYLINK_AddOrUpdatePermitGroup(objDictionary);     
 	    AndroidDriver smsdriver = clsCommonMobile.SetSmsDriver(objDictionary, "True");
 	    try {Thread.sleep(2500);}catch (Exception e) {}
-	    smsdriver.findElement(By.id("com.google.android.apps.messaging:id/continue_as_button")).click();
-	    try {Thread.sleep(500);}catch (Exception e) {}
-	    smsdriver.findElement(By.id("com.google.android.apps.messaging:id/conversation_list_spam_popup_positive_button")).click();
+	    CommonANDROID_Flutter.SMS_DismissOnboarding(smsdriver);
 	    try {Thread.sleep(500);}catch (Exception e) {}
 	    smsdriver.findElement(By.id("com.google.android.apps.messaging:id/start_chat_fab")).click();
 	    try {Thread.sleep(500);}catch (Exception e) {}
@@ -477,6 +694,92 @@ public class Android_Lot_TestCases
 	    try {Thread.sleep(5000);}catch (Exception e) {}
 	    String strMessage = smsdriver.findElement(By.xpath("(//android.widget.TextView[@resource-id=\"message_text\"])[1]")).getText();
 	    if(strMessage.contains("opt-in"))
+	    {
+	        String strOptInNumber = strMessage.replaceAll("\\D+", "");  // removes everything that's not a digit
+	        smsdriver.findElement(By.id("com.google.android.apps.messaging:id/compose_message_text")).sendKeys(strOptInNumber);
+	        try {Thread.sleep(1000);}catch (Exception e) {}
+	        smsdriver.findElement(By.xpath("//android.view.View[@resource-id=\"Compose:Draft:Send\"]/android.widget.Button")).click();
+	        try {Thread.sleep(1000);}catch (Exception e) {}
+	        strMessage = smsdriver.findElement(By.xpath("(//android.widget.TextView[@resource-id=\"message_text\"])[1]")).getText();
+	    }
+	    String url = strMessage.substring(strMessage.lastIndexOf("https://"));
+	    // Close the Messenger Session
+	    smsdriver.quit();
+	    //Open URL in Chrome Browser on Device
+	    AndroidDriver chromeDriver = clsCommonMobile.SetChromeDriver(objDictionary);
+	    // Navigate to URL
+	    chromeDriver.get(url);
+	    try {Thread.sleep(2000);}catch (Exception e) {}
+	    //Validate Alert Text
+	    clsCommonWeb.VerificationPointText(objDictionary, chromeDriver, "Purchase Permit", "Alert Text", 1, "Contains", "QR code parking is not enabled for this location.");
+		//The permit or QR code is no longer valid.
+	    clsCommonWeb.VerificationPointText(objDictionary, chromeDriver, "Purchase Permit", "Page Header", 1, "Contains", "The permit or QR code is no longer valid.");
+	    chromeDriver.quit();
+	}
+	@Test(priority=9001,groups={"Smoke"})
+    public void AL1000F_A_PRE_SMS_VPA_VPH() throws Exception
+    {
+        objDictionary.put("strAssociatedBug", "");
+        objDictionary.put("strMobileDeviceType", "ANDROID");
+        HttpConnections clsHttpConnections = new HttpConnections();
+        CommonANDROID_Flutter  clsCommonMobile = new CommonANDROID_Flutter();
+        CommonWeb clsCommonWeb = new CommonWeb();
+        clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
+        Reporter.log("***************TestCase Description******************************************");
+        Reporter.log("PRE: Permit Rate Expired                                                     ");
+        Reporter.log("SMS: Send Short Message Service                                              ");
+        Reporter.log("VPA: Validate Page Alert = QR code parking is not enabled for this location. ");
+        Reporter.log("VPH: Validate Page Header = The permit or QR code is no longer valid.");
+        Reporter.log("****************************************************************");
+        //Exit Lot If parked
+        String strSpaceName = "LOT";
+        String strLicensePlateNumber = ("LA0"+strSpaceName+"BB").toUpperCase();
+        String strLotExitId = objDictionary.get("strLotExitId");
+	    //Exit Lot
+	    clsHttpConnections.CURL_ExitLot(objDictionary,strLicensePlateNumber, "MN",strLotExitId,"False");
+	    //Delete Active Permits
+	    clsHttpConnections.JsonDeleteAllActivePermits(objDictionary,"");
+	    //Remove all License Plate
+	    clsHttpConnections.HTTPCONNECTIONS_DeleteAllParkerLicensePlates(objDictionary);
+	    //Add License Plate
+	    clsHttpConnections.POST_LicensePlate(objDictionary,"Parker", strLicensePlateNumber,"Minnesota");
+	    //Add Or Update Permit Group
+  		objDictionary.put("strPermitCost","2.00");
+  		objDictionary.put("strPermitGroup","Student");
+  		objDictionary.put("strPermitRate","Daily");
+  		objDictionary.put("strLicensePlateNumber",strLicensePlateNumber);
+  		objDictionary.put("strDaysBeforePermitStarts","-14");
+  		objDictionary.put("strDaysBeforePermitEnds","-7");
+  		String strEnvironment = objDictionary.get("strEnvironment");
+  		if(strEnvironment.equals("SG")){objDictionary.put("strLotTaxRate","(0.000%)-Lot Auto One-ParkingFeeLineItem");}
+  		else if(strEnvironment.equals("PROD")){objDictionary.put("strLotTaxRate","(0.000%)-Lot Automation-ParkingFeeLineItem");}
+  		String strStartHour = "0";
+  		String strEndHour = "23";
+  		objDictionary.put("strStartHour",strStartHour);
+  		objDictionary.put("strEndHour",strEndHour);
+  		//Permit Rate Expired
+  		clsCommonWeb.SENTRYLINK_AddOrUpdatePermitRates(objDictionary);
+	    //Add Or Update Permit Group
+	    objDictionary.put("strPermitCost","2.00");
+	    objDictionary.put("strPermitGroup","Student");
+	    objDictionary.put("strPermitRate","Hourly 1");
+	    objDictionary.put("strLicensePlateNumber",strLicensePlateNumber);
+	    objDictionary.put("strDaysBeforePermitStarts","-14");
+	    objDictionary.put("strDaysBeforePermitEnds","-7");
+	    clsCommonWeb.SENTRYLINK_AddOrUpdatePermitRates(objDictionary);
+		clsCommonWeb.SENTRYLINK_AddOrUpdatePermitGroup(objDictionary);     
+	    AndroidDriver smsdriver = clsCommonMobile.SetSmsDriver(objDictionary, "True");
+	    WebDriverWait wait = new WebDriverWait(smsdriver, Duration.ofSeconds(15));
+	    CommonANDROID_Flutter.SMS_DismissOnboarding(smsdriver);
+	    wait.until(ExpectedConditions.elementToBeClickable(By.id("com.google.android.apps.messaging:id/start_chat_fab"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.EditText[@resource-id='ContactSearchField']"))).sendKeys("6124825433");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.view.View[@resource-id='GlideMonogram']"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.view.View[@resource-id=\"MIRROR_EXTENDED_FAB_UI\"]/android.view.View/android.widget.Button"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("com.google.android.apps.messaging:id/compose_message_text"))).sendKeys("1717");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.view.View[@resource-id=\"Compose:Draft:Send\"]/android.widget.Button"))).click();
+		try {Thread.sleep(5000);}catch (Exception e) {}
+		String strMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//android.widget.TextView[@resource-id=\"message_text\"])[1]"))).getText();
+		if(strMessage.contains("opt-in"))
 	    {
 	        String strOptInNumber = strMessage.replaceAll("\\D+", "");  // removes everything that's not a digit
 	        smsdriver.findElement(By.id("com.google.android.apps.messaging:id/compose_message_text")).sendKeys(strOptInNumber);
@@ -716,9 +1019,7 @@ public class Android_Lot_TestCases
 		clsCommonWeb.SENTRYLINK_AddOrUpdatePermitRates(objDictionary);
 		AndroidDriver smsdriver = clsCommonMobile.SetSmsDriver(objDictionary, "True");
 	    try {Thread.sleep(2000);}catch (Exception e) {}
-	    smsdriver.findElement(By.id("com.google.android.apps.messaging:id/continue_as_button")).click();
-	    try {Thread.sleep(500);}catch (Exception e) {}
-	    smsdriver.findElement(By.id("com.google.android.apps.messaging:id/conversation_list_spam_popup_positive_button")).click();
+	    CommonANDROID_Flutter.SMS_DismissOnboarding(smsdriver);
 	    try {Thread.sleep(500);}catch (Exception e) {}
 	    smsdriver.findElement(By.id("com.google.android.apps.messaging:id/start_chat_fab")).click();
 	    try {Thread.sleep(500);}catch (Exception e) {}

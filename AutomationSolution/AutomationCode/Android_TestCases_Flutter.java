@@ -1023,14 +1023,14 @@ public class Android_TestCases_Flutter
 		CommonWeb clsCommonWeb = new CommonWeb();
 		GlobalClass clsGlobal = new GlobalClass();
 		//Dictionary Variables
-  		objDictionary.remove("strDeviceId");objDictionary.put("strDeviceId", "IVMeter1");
-		clsGlobal.GetMeterProperties(objDictionary, "IVMeter1");
+  		objDictionary.remove("strDeviceId");objDictionary.put("strDeviceId", "AVMeter4");
+		clsGlobal.GetMeterProperties(objDictionary, "AVMeter4");
   		//Function Variables
 		String strSpaceName = objDictionary.get("strMeterSpotName");
 		String strLicensePlateNumber = "F"+strSpaceName.toUpperCase();
 		String strLicensePlateState = "Alabama";
-		objDictionary.put("strLicensePlateNumber", strLicensePlateNumber);
 		objDictionary.put("strLicensePlateState", strLicensePlateState);
+		objDictionary.put("strLicensePlateNumber", strLicensePlateNumber.toUpperCase());
 		//Remove all License Plate
   		HttpConnections clsHttpConnections = new HttpConnections();
 		clsHttpConnections.HTTPCONNECTIONS_DeleteAllParkerLicensePlates(objDictionary);
@@ -1070,19 +1070,19 @@ public class Android_TestCases_Flutter
 		CommonWeb clsCommonWeb = new CommonWeb();
 		GlobalClass clsGlobal = new GlobalClass();
 		//Dictionary Variables
-		objDictionary.remove("strDeviceId");objDictionary.put("strDeviceId", "AVMeter4");
+  		objDictionary.remove("strDeviceId");objDictionary.put("strDeviceId", "AVMeter4");
 		clsGlobal.GetMeterProperties(objDictionary, "AVMeter4");
   		//Function Variables
 		String strSpaceName = objDictionary.get("strMeterSpotName");
 		String strLicensePlateNumber = "F"+strSpaceName.toUpperCase();
 		String strLicensePlateState = "Alabama";
-		objDictionary.put("strLicensePlateNumber", strLicensePlateNumber);
 		objDictionary.put("strLicensePlateState", strLicensePlateState);
+		objDictionary.put("strLicensePlateNumber", strLicensePlateNumber.toUpperCase());
 		//Remove all License Plate
   		HttpConnections clsHttpConnections = new HttpConnections();
 		clsHttpConnections.HTTPCONNECTIONS_DeleteAllParkerLicensePlates(objDictionary);
 		//Add License Plate
-		clsHttpConnections.POST_LicensePlate(objDictionary,"Parker", strLicensePlateNumber.toUpperCase(),"Alabama");
+		clsHttpConnections.POST_LicensePlate(objDictionary,"Parker", strLicensePlateNumber.toUpperCase(),strLicensePlateState);
   		//Simulator
   		objDictionary.put("strVirtualMeter", "True");
   		clsCommonWeb.SENTRYLINK_EnableVirtualMeterPayments(objDictionary);
@@ -1746,6 +1746,11 @@ public class Android_TestCases_Flutter
 		
 		//objDictionary.put("strAutoGrantPermissions", "False");
 		AppiumDriver androidDriver = clsCommonMobile.SetMobileDriver(objDictionary, "SentryMobile", "False", "Parker");
+		
+		//Validate No Location Access Dialog
+		//clsCommonMobile.VerificationPointText(objDictionary, androidDriver, "User Agreement", "No Location Service",1, "Exists", "");
+   		
+		
 		//Click Accept
 		clsCommonMobile.ClickButton(objDictionary, androidDriver, "User Agreement", "Accept",1);
 		//objDictionary.put("strAutoGrantPermissions", "False");

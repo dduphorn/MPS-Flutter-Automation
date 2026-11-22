@@ -11246,13 +11246,42 @@ public class IOS_Common_Flutter
 	    try {Thread.sleep(1200);} catch (InterruptedException ie) {Thread.currentThread().interrupt();}
 	}
 
+    // Polls for the app's "Sign Out" confirmation dialog (title "Sign Out", text "Are you sure you want to sign out?")
+    private boolean iosSignOutDialogShown(IOSDriver iosdriver, long lngTimeoutMs)
+    {
+    	long lngEnd = System.currentTimeMillis() + lngTimeoutMs;
+    	do
+    	{
+    		try
+    		{
+    			if (!iosdriver.findElements(By.xpath("//*[contains(@name,'Are you sure you want to sign out') or contains(@label,'Are you sure you want to sign out')]")).isEmpty()) {return true;}
+    		}
+    		catch (Exception e) {}
+    		try {Thread.sleep(300);}catch (Exception e) {}
+    	} while (System.currentTimeMillis() < lngEnd);
+    	return false;
+    }
     public void ClickLink(Map<String, String> objDictionary, IOSDriver iosdriver, String strPageName, String strLinkName, int intLinkIndex)
 	{
 		String strMethodName = new Object(){}.getClass().getEnclosingMethod().getName();
+		boolean blnSignOut = strLinkName.equals("Sign out");
+		// Sign out sits at the bottom of a Flutter page that can still be scrolling/settling; let it settle so the tap lands on the button
+		if (blnSignOut) {try {Thread.sleep(1000);}catch (Exception e) {}}
 		WebElement objLink = GetLinkObj(objDictionary, iosdriver, strPageName, strLinkName);
 		if (objLink != null)
 	    {
 			objLink.click();
+			if (blnSignOut)
+			{
+				// The app always shows the "Sign Out" confirmation dialog; if it didn't appear, the tap missed, so re-find the button and tap again
+				for (int intSignOutAttempt = 2; intSignOutAttempt <= 3 && !iosSignOutDialogShown(iosdriver, 3000); intSignOutAttempt++)
+				{
+					System.out.println("ClickLink: Sign out confirmation dialog did not appear - re-tapping Sign out (attempt " + intSignOutAttempt + ")");
+					try {Thread.sleep(1000);}catch (Exception e) {}
+					WebElement objRetryLink = GetLinkObj(objDictionary, iosdriver, strPageName, strLinkName);
+					if (objRetryLink != null) {objRetryLink.click();}
+				}
+			}
 			try {Thread.sleep(2000);}catch (Exception e) {}
 			strLinkName = ConvertValues(objDictionary, iosdriver, strLinkName);
 			Reporter.log("The Link (" + strLinkName + ") with index (" + intLinkIndex + ") was clicked successfully"+"");
