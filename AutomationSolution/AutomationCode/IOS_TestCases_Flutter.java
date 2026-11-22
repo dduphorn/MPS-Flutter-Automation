@@ -5299,8 +5299,8 @@ public class IOS_TestCases_Flutter
 			}
 			clsCommonMobile.SENTRYMOBILE_AddReportVariables(objDictionary);
 			//Destroy User
-			String strUserName = "adeleteuser01@gmail.com";objDictionary.put("strUserName", strUserName);
-			String strPassword = "ADeleteMe01!";
+			String strUserName = "ideleteuser01@gmail.com";objDictionary.put("strUserName", strUserName);
+			String strPassword = "IDeleteMe01!";
 			String strBrowser = objDictionary.get("strBrowser");
 			String strRemotePath = objDictionary.get("strRemotePath");
 			//UnDelete Account
@@ -5320,8 +5320,6 @@ public class IOS_TestCases_Flutter
 			//Click Sign up
 			clsCommonMobile.ClickLink(objDictionary, iosdriver, "Log in", "Sign up",1);
 			//Populate Phone Number
-			clsCommonMobile.PopulateActionSlow(objDictionary, iosdriver, "Sign Up", "Populate Phone Number", "{T} Phone number","281-281-6804");
-			//Click Accept
 			clsCommonMobile.PopulateActionSlow(objDictionary, iosdriver, "Sign Up", "Populate Phone Number", "{T} Phone number","281-281-6804");
 			clsCommonMobile.ClickButton(objDictionary, iosdriver, "Sign Up", "Next",1);
 			//Permissions
