@@ -80,6 +80,7 @@ import org.openqa.selenium.By;
 import com.jcraft.jsch.Session;
 import org.openqa.selenium.ScreenOrientation;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import io.netty.handler.timeout.TimeoutException;
 
@@ -98,6 +99,7 @@ import io.appium.java_client.AppiumBy;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import io.appium.java_client.remote.AutomationName;
 import io.appium.java_client.remote.SupportsContextSwitching;
 
 import org.openqa.selenium.support.PageFactory;
@@ -1592,6 +1594,11 @@ public class CommonANDROID_Flutter
 		WebElement objButton = GetButtonObj(objDictionary, androiddriver, strPageName, strButtonName,intButtonIndex);
 		if (objButton != null)
 	    {
+			//Location off: the location services snackbar can cover bottom buttons (A2058F)
+			if ("False".equals(objDictionary.get("strGPSEnabled")))
+			{
+				clsCommonMobile.SENTRYMOBILE_RemoveLocationServiceMessageIfCovering(objDictionary, androiddriver, objButton);
+			}
 			try {objButton.click();}catch (Exception e)
 			{clsCommonMobile.UpdateErrorMessageWithPivotalData(objDictionary,androiddriver,"The Button (" + strButtonName + ") existed but was not clickable");}
 			//try {Thread.sleep(2000);}catch (Exception e) {} 
@@ -3090,6 +3097,8 @@ public class CommonANDROID_Flutter
 		if(strGPSEnabled.equals("False"))
 		{
  			clsCommonMobile.VerificationPointText(objDictionary, androidDriver, "Map", "Google Play Services Location Settings Dialog", 1, "Contains", "Location services are disabled. Please enable the location services.");
+ 			//Remove the snackbar so it does not cover Pay / Proceed (A2058F)
+ 			clsCommonMobile.SENTRYMOBILE_RemoveLocationServiceMessage(objDictionary,androidDriver);
  		}
 		String strCurrentParkingAccountBalance = objDictionary.get("strCurrentParkingAccountBalance");
 		if(strCurrentParkingAccountBalance == null)
@@ -3380,8 +3389,11 @@ public class CommonANDROID_Flutter
 	    String strGPSEnabled = objDictionary.get("strGPSEnabled");
     	if(strGPSEnabled.equals("False"))
     	{
+    		//Location off: the location message may have been removed already (SENTRYMOBILE_RemoveLocationServiceMessage), so empty is OK too
     		if(strSnackbarText.equals("Location services are disabled. Please enable the location services."))
     		{Reporter.log("The Snackbar correctly displayed Location services are disabled. Please enable the location services.");}
+    		else if(strSnackbarText.equals(""))
+    		{Reporter.log("No snackbar after clicking Pay with location services off (location message already removed)");}
     		else{UpdateErrorMessageWithPivotalData(objDictionary, androidDriver, "Unexpected Error when clicking Meter Spot Number:"+strSnackbarText);}
     	}
     	else if(!strSnackbarText.equals(""))
@@ -3905,42 +3917,151 @@ public class CommonANDROID_Flutter
      	clsCommonMobile.SENTRYMOBILE_ValidateParkingSession(objDictionary,androidDriver,strStartTime, strEndTime, String.valueOf(dFormat.format(dblTotalPayment)));
     }
 	
+	/** XPath of the Flutter SnackBar shown when location services are off (bottom of screen, dismissable, live-region 1, no buttons). */
+	public static final String LOCATION_SERVICES_SNACKBAR_XPATH = "//android.view.View[@content-desc=\"Location services are disabled. Please enable the location services.\"]";
+
+	/** The location services snackbar if it is on screen right now (no waiting, implicit wait temporarily 0), else null. */
+	public WebElement SENTRYMOBILE_FindLocationServiceMessageNow(AppiumDriver androidDriver)
+	{
+		Duration durImplicit = null;
+		try
+		{
+			try {durImplicit = androidDriver.manage().timeouts().getImplicitWaitTimeout();} catch (Exception e) {durImplicit = null;}
+			if (durImplicit != null && !durImplicit.isZero()) {androidDriver.manage().timeouts().implicitlyWait(Duration.ZERO);}
+			List<WebElement> lst = androidDriver.findElements(By.xpath(LOCATION_SERVICES_SNACKBAR_XPATH));
+			for (WebElement obj : lst) {try {if (obj.isDisplayed()) {return obj;}} catch (Exception e) {}}
+			return null;
+		}
+		catch (Exception e) {return null;}
+		finally
+		{
+			if (durImplicit != null && !durImplicit.isZero()) {try {androidDriver.manage().timeouts().implicitlyWait(durImplicit);} catch (Exception e) {}}
+		}
+	}
+
+	/**
+	 * Removes the Flutter SnackBar "Location services are disabled. Please enable the location services." (A2058F, GPS off).
+	 * It sits at the bottom of the screen (e.g. [0,1734][1080,2025]) and covers buttons such as Pay / Proceed.
+	 * Swipes it DOWN (it is dismissable=true; never tapped, it is not clickable). Never fails the test: only logs.
+	 */
 	public void SENTRYMOBILE_RemoveLocationServiceMessage(Map<String, String> objDictionary,AppiumDriver androidDriver)
 	{
 		String strGPSEnabled = objDictionary.get("strGPSEnabled");if(strGPSEnabled == null) {strGPSEnabled = "True";}
-		if(strGPSEnabled.equals("False"))
+		WebElement objSnackbar = null;
+		try
 		{
-			try {
-			    WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(10));
-			    WebElement settingsButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.Button[@content-desc='Settings']")));
-			    // Get element location & size (viewport-relative coordinates)
-			    Point location = settingsButton.getLocation();
-			    Dimension size   = settingsButton.getSize();
-			    int centerX = location.getX() + size.getWidth() / 2;
-			    // Very top to very bottom of the element (small offsets to stay inside bounds)
-			    int startY = location.getY() + 10;                    // ~very top
-			    int endY   = location.getY() + size.getHeight() - 10; // ~very bottom
-			    // Modern W3C Actions: Swipe DOWN (top → bottom)
-			    PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-			    Sequence swipeSequence = new Sequence(finger, 1);
-			    // Move to start position (no duration for initial move)
-			    swipeSequence.addAction(finger.createPointerMove(Duration.ZERO,PointerInput.Origin.viewport(), centerX, startY));
-			    // Press down
-			    swipeSequence.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-			    // Move to end position over 600ms (natural swipe speed)
-			    swipeSequence.addAction(finger.createPointerMove(Duration.ofMillis(600),PointerInput.Origin.viewport(), centerX, endY));
-			    // Release
-			    swipeSequence.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-			    // Perform the gesture (works with AppiumDriver)
-			    androidDriver.perform(Collections.singletonList(swipeSequence));
-			    Reporter.log("Performed full swipe down (very top → very bottom) on Settings button / overlay using W3C Actions");
-			    Thread.sleep(1500);  // Give time for animation/dismissal
-			} catch (TimeoutException te) {
-			    Reporter.log("No location overlay / Settings button found. Proceeding.");
-			} catch (Exception e) {
-			    Reporter.log("Error handling overlay, swipe, or returning from Settings: " + e.getMessage());
+			WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(strGPSEnabled.equals("False") ? 5 : 1));
+			objSnackbar = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(LOCATION_SERVICES_SNACKBAR_XPATH)));
+		}
+		catch (Exception e) {objSnackbar = null;}
+		if (objSnackbar == null)
+		{
+			Reporter.log("The location services snackbar was not displayed. Proceeding.");
+			SENTRYMOBILE_RemoveLocationServiceSettingsOverlay(androidDriver);
+			return;
+		}
+		for (int intAttempt = 1; intAttempt <= 2; intAttempt++)
+		{
+			if (objSnackbar == null) {objSnackbar = SENTRYMOBILE_FindLocationServiceMessageNow(androidDriver);}
+			if (objSnackbar == null) {break;}
+			String strHow = SENTRYMOBILE_SwipeElementDown(androidDriver, objSnackbar);
+			Reporter.log("Swiped down the location services snackbar (attempt " + intAttempt + ", " + strHow + ")");
+			if (SENTRYMOBILE_WaitForLocationServiceMessageToVanish(androidDriver, 3))
+			{
+				Reporter.log("The location services snackbar was removed (attempt " + intAttempt + ")");
+				return;
+			}
+			objSnackbar = null;
+		}
+		//Still there: give the SnackBar time to time out by itself
+		if (SENTRYMOBILE_WaitForLocationServiceMessageToVanish(androidDriver, 10))
+		{Reporter.log("The location services snackbar timed out by itself after the swipes");}
+		else
+		{Reporter.log("<font color='orange'>The location services snackbar was still displayed after 2 swipes and a 10 second wait. Proceeding.</font>");}
+	}
+
+	/** True when the location services snackbar is gone within intSeconds (polls every 500 ms). */
+	public boolean SENTRYMOBILE_WaitForLocationServiceMessageToVanish(AppiumDriver androidDriver, int intSeconds)
+	{
+		long lEnd = System.currentTimeMillis() + intSeconds * 1000L;
+		do
+		{
+			if (SENTRYMOBILE_FindLocationServiceMessageNow(androidDriver) == null) {return true;}
+			try {Thread.sleep(500);} catch (Exception e) {}
+		}
+		while (System.currentTimeMillis() < lEnd);
+		return SENTRYMOBILE_FindLocationServiceMessageNow(androidDriver) == null;
+	}
+
+	/** Swipe an element downwards: UiAutomator2 mobile: swipeGesture first, W3C pointer swipe inside its bounds as fallback. Returns how. */
+	public String SENTRYMOBILE_SwipeElementDown(AppiumDriver androidDriver, WebElement objElement)
+	{
+		try
+		{
+			Map<String, Object> mapArgs = new HashMap<>();
+			mapArgs.put("elementId", ((RemoteWebElement) objElement).getId());
+			mapArgs.put("direction", "down");
+			mapArgs.put("percent", 0.9);
+			androidDriver.executeScript("mobile: swipeGesture", mapArgs);
+			return "mobile: swipeGesture";
+		}
+		catch (Exception e)
+		{
+			try
+			{
+				Rectangle rect = objElement.getRect();
+				int intX = rect.getX() + rect.getWidth() / 2;
+				int intStartY = rect.getY() + Math.min(10, Math.max(1, rect.getHeight() / 4));
+				int intEndY = rect.getY() + rect.getHeight() - 2;
+				PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+				Sequence swipe = new Sequence(finger, 1);
+				swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), intX, intStartY));
+				swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+				swipe.addAction(finger.createPointerMove(Duration.ofMillis(400), PointerInput.Origin.viewport(), intX, intEndY));
+				swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+				androidDriver.perform(Collections.singletonList(swipe));
+				return "W3C swipe (swipeGesture failed: " + e.getMessage() + ")";
+			}
+			catch (Exception e2) {return "swipe failed: " + e2.getMessage();}
+		}
+	}
+
+	/** Older app builds showed the location message with a 'Settings' button; swipe that overlay down if it is there (1 s check). */
+	public void SENTRYMOBILE_RemoveLocationServiceSettingsOverlay(AppiumDriver androidDriver)
+	{
+		try
+		{
+			WebDriverWait wait = new WebDriverWait(androidDriver, Duration.ofSeconds(1));
+			WebElement settingsButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.Button[@content-desc='Settings']")));
+			Reporter.log("Found an older location overlay with a Settings button: " + SENTRYMOBILE_SwipeElementDown(androidDriver, settingsButton));
+			Thread.sleep(1500);
+		}
+		catch (Exception e) {}
+	}
+
+	/**
+	 * ClickButton guard (cheap): only when location is off. If the location services snackbar is on screen and overlaps the
+	 * button that is about to be clicked, remove it first so the tap does not land on the snackbar.
+	 */
+	public void SENTRYMOBILE_RemoveLocationServiceMessageIfCovering(Map<String, String> objDictionary, AppiumDriver androidDriver, WebElement objTarget)
+	{
+		try
+		{
+			String strGPSEnabled = objDictionary.get("strGPSEnabled");
+			if (strGPSEnabled == null || !strGPSEnabled.equals("False") || objTarget == null) {return;}
+			WebElement objSnackbar = SENTRYMOBILE_FindLocationServiceMessageNow(androidDriver);
+			if (objSnackbar == null) {return;}
+			Rectangle rS = objSnackbar.getRect();
+			Rectangle rT = objTarget.getRect();
+			boolean blnOverlap = rT.getX() < rS.getX() + rS.getWidth() && rS.getX() < rT.getX() + rT.getWidth()
+				&& rT.getY() < rS.getY() + rS.getHeight() && rS.getY() < rT.getY() + rT.getHeight();
+			if (blnOverlap)
+			{
+				Reporter.log("The location services snackbar covers the button about to be clicked; removing it first");
+				SENTRYMOBILE_RemoveLocationServiceMessage(objDictionary, androidDriver);
 			}
 		}
+		catch (Exception e) {}
 	}
 	
 	public void SENTRYMOBILE_ValidateParkingSession(Map<String, String> objDictionary,AppiumDriver androidDriver, String strStartTime, String strEndTime,String strTotalPayment) 
@@ -16659,6 +16780,231 @@ public class CommonANDROID_Flutter
 	    ClickButton(objDictionary, androidDriver, screenName, buttonName, 1);
 	}
 	
+	
+	//SMS 
+	public AndroidDriver SetSmsDriver(Map<String, String> objDictionary, String strGPSEnabled) throws MalformedURLException, InterruptedException {
+	    String strStopAndStartAppiumServer = objDictionary.get("strStopAndStartAppiumServer");
+	    String strAndroidUdid = objDictionary.getOrDefault("strAndroidUdid", "");
+	    String strDeviceAppiumPort = objDictionary.getOrDefault("strDeviceAppiumPort", "6666");
+	    String strAVDName = objDictionary.getOrDefault("strAVDName", "");
+	    String strEnableUiautomator2 = objDictionary.getOrDefault("strEnableUiautomator2", "True");
+
+	    objDictionary.put("strGPSEnabled", strGPSEnabled);
+	    objDictionary.put("strApplication", "SMS");
+
+	    // === SET DEVICE PHONE NUMBER BY UDID ===
+	    switch (strAndroidUdid) {
+	        case "R5CW42VHVZY":        objDictionary.put("strDevicePhone", "16124777378"); break;
+	        case "VS986a4741414":      objDictionary.put("strDevicePhone", "16513413525"); break;
+	        case "LGTP2605408c68a":    objDictionary.put("strDevicePhone", "195220054"); break;
+	        case "R5CT71MQ5YT":        objDictionary.put("strDevicePhone", "16124777378"); break;
+	    }
+
+	    // === CLEAR STALE ADB PORT FORWARDS ===
+	    String adbForwardCmd = strAndroidUdid.isEmpty()
+	            ? "adb forward --remove-all"
+	            : "adb -s " + strAndroidUdid + " forward --remove-all";
+	    execCmd(adbForwardCmd);
+	    sleep(1500);
+
+	    // === STOP & RESTART APPIUM SERVER IF REQUIRED ===
+	    if ("True".equalsIgnoreCase(strStopAndStartAppiumServer)) {
+	        if (strAndroidUdid.isEmpty()) {
+	            execCmd("killall qemu-system-x86_64");
+	            execCmd("killall qemu-system-i386");
+	            sleep(15000);
+	        }
+	        stopServer(objDictionary);
+	        sleep(4000);
+	        startServer(objDictionary);
+	        sleep(4000);
+	    }
+
+	    // KILL ANY OLD CHROMEDRIVER — PREVENTS HANGING
+	    try {
+	        Runtime.getRuntime().exec("pkill -f chromedriver || true");
+	        Thread.sleep(2500);
+	    } catch (Exception ignored) {}
+
+	    // === CONFIGURE UIAUTOMATOR2 OPTIONS ===
+	    UiAutomator2Options options = new UiAutomator2Options();
+	    options.setPlatformName("Android");
+	    options.setNewCommandTimeout(Duration.ofMinutes(6));
+	    options.setCapability("appium:unicodeKeyboard", true);
+	    options.setCapability("appium:clearSystemFiles", true);
+	    options.setCapability("appium:enableWebviewAutomation", true);
+	    options.setCapability("appium:autoGrantPermissions", true);
+	    options.setCapability("appium:defaultSmsApp", "com.google.android.apps.messaging");
+
+	    // FINAL CHROME 143 FIX — 100% WORKING
+	    String strUserDir = System.getProperty("user.dir");
+	    options.setCapability("chromedriverExecutable", strUserDir + "/Lib/Android_Chromedriver/chromedriver");
+	    options.setCapability("appium:webviewDevtoolsPort", 10900);
+
+	    // FIXED: chromedriverArgs MUST be an array/list of strings (not a Map/object)
+	    // Use List.of(...) for clean Java 9+ syntax; or Arrays.asList(...) for older JDKs
+	    List<String> chromeArgs = List.of(
+	        "--disable-build-check",
+	        "--no-sandbox",
+	        "--disable-gpu"
+	    );
+
+	    // Preferred: Use typed setter if your appium-java-client supports it (8.x+ usually does)
+	    // options.setChromedriverArgs(chromeArgs);
+
+	    // Fallback/safe: set via generic capability (always works)
+	    options.setCapability("appium:chromedriverArgs", chromeArgs);
+
+	    // === SET UNIQUE SYSTEM PORT ===
+	    int basePort = Integer.parseInt(strDeviceAppiumPort);
+	    int systemPort = 8200 + (basePort % 100);
+	    if ("True".equalsIgnoreCase(strEnableUiautomator2)) {
+	        options.setAutomationName(AutomationName.ANDROID_UIAUTOMATOR2)
+	               .setSystemPort(systemPort);
+	    }
+
+	    // === DEVICE OR EMULATOR SETUP ===
+	    if (strAndroidUdid.isEmpty()) {
+	        options.setAvd(strAVDName.replace(" ", "_"))
+	               .setDeviceName(strAVDName);
+	    } else {
+	        options.setDeviceName("Android Device")
+	               .setUdid(strAndroidUdid);
+	    }
+
+	    // === LAUNCH GOOGLE MESSAGES APP ===
+	    options.setAppPackage("com.google.android.apps.messaging")
+	           .setAppActivity("com.google.android.apps.messaging.ui.ConversationListActivity")
+	           .setOrientation(ScreenOrientation.PORTRAIT);
+
+	    // === INITIALIZE DRIVER ===
+	    try {
+	        AndroidDriver smsDriver = new AndroidDriver(new URL("http://127.0.0.1:" + strDeviceAppiumPort), options);
+	        smsDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+	        Reporter.log("SMS Driver initialized successfully — Chrome 143 context switch READY");
+
+	        try { smsDriver.unlockDevice(); } catch (Exception ignored) {}
+
+	        return smsDriver;
+
+	    } catch (Exception e) {
+	        String errorMsg = "Failed to start SMS driver: " + e.getMessage();
+	        Reporter.log("<font color='red'>" + errorMsg + "</font>");
+	        e.printStackTrace();
+	        Assert.fail(errorMsg);
+	        return null;
+	    }
+	}
+	/**
+	 * Dismisses Google Messages onboarding screens if they appear:
+	 * "Customize how you're seen" (Continue as ...) and the spam protection popup.
+	 * Each step is optional, so the test works whether or not Messages shows them.
+	 */
+	public static void SMS_DismissOnboarding(AndroidDriver smsdriver) {
+	    WebDriverWait shortWait = new WebDriverWait(smsdriver, Duration.ofSeconds(5));
+	    // "Customize how you're seen" -> "Continue as <name>" (match by text; fall back to legacy id)
+	    try {
+	        org.openqa.selenium.WebElement continueAs = shortWait.until(ExpectedConditions.presenceOfElementLocated(
+	            AppiumBy.androidUIAutomator("new UiSelector().textStartsWith(\"Continue as\")")));
+	        // A plain click() on the Compose text node does nothing here; use a real tap gesture at the element's center
+	        for (int attempt = 1; attempt <= 3; attempt++) {
+	            smsdriver.executeScript("mobile: clickGesture", java.util.Map.of(
+	                "elementId", ((org.openqa.selenium.remote.RemoteWebElement) continueAs).getId()));
+	            try { Thread.sleep(2000); } catch (InterruptedException ie) {}
+	            if (smsdriver.findElements(AppiumBy.androidUIAutomator("new UiSelector().textStartsWith(\"Continue as\")")).isEmpty()) break;
+	            continueAs = smsdriver.findElement(AppiumBy.androidUIAutomator("new UiSelector().textStartsWith(\"Continue as\")"));
+	        }
+	        Reporter.log("SMS onboarding: tapped Continue as");
+	    } catch (Exception e) {
+	        try {
+	            smsdriver.findElement(By.id("com.google.android.apps.messaging:id/continue_as_button")).click();
+	            Reporter.log("SMS onboarding: clicked continue_as_button");
+	        } catch (Exception e2) {
+	            Reporter.log("SMS onboarding: Continue as page not shown");
+	        }
+	    }
+	    // Spam protection popup
+	    try {
+	        shortWait.until(ExpectedConditions.elementToBeClickable(
+	            By.id("com.google.android.apps.messaging:id/conversation_list_spam_popup_positive_button"))).click();
+	        Reporter.log("SMS onboarding: dismissed spam popup");
+	    } catch (Exception e) {
+	        Reporter.log("SMS onboarding: spam popup not shown");
+	    }
+	}
+	// === HELPER METHODS ===
+	private void execCmd(String cmd) {
+	    try {
+	        Runtime.getRuntime().exec(cmd);
+	    } catch (Exception ignored) {}
+	}
+	private void sleep(long millis) {
+	    try {
+	        Thread.sleep(millis);
+	    } catch (Exception ignored) {}
+	}
+	public AndroidDriver SetChromeDriver(Map<String, String> objDictionary) 
+	{
+	    String strAndroidUdid = objDictionary.getOrDefault("strAndroidUdid", "");
+	    String strDeviceAppiumPort = objDictionary.getOrDefault("strDeviceAppiumPort", "6666");
+	    
+	    // Chrome Options
+	    ChromeOptions chromeOptions = new ChromeOptions();
+	    chromeOptions.addArguments("--disable-offer-store-unmasked-wallet-cards");
+	    chromeOptions.addArguments("--disable-autofill-keyboard-accessory-view");
+	    chromeOptions.addArguments("--disable-notifications");
+	    chromeOptions.addArguments("--disable-translate");
+	    chromeOptions.addArguments("--disable-popup-blocking");   // Optional: helps stability
+
+	    // Desired Capabilities
+	    DesiredCapabilities chromeCaps = new DesiredCapabilities();
+	    chromeCaps.setCapability("platformName", "Android");
+	    chromeCaps.setCapability("appium:udid", strAndroidUdid);
+	    chromeCaps.setCapability("appium:browserName", "Chrome");
+	    chromeCaps.setCapability("appium:automationName", "UiAutomator2");
+
+	    // === IMPORTANT FIXES FOR CHROME 147 ===
+	    chromeCaps.setCapability("appium:chromedriverUseSystemExecutable", false);   // Disable system driver
+	    chromeCaps.setCapability("appium:chromedriverExecutable", "");               // Clear any fixed path
+	    
+	    // Let Appium automatically download the correct ChromeDriver version
+	    chromeCaps.setCapability("appium:enableWebviewDetailsCollection", true);
+
+	    // Additional useful options
+	    chromeCaps.setCapability("appium:newCommandTimeout", 0);
+	    chromeCaps.setCapability("appium:shouldTerminateApp", false);
+	    chromeCaps.setCapability("appium:detach", true);
+
+	    // Merge ChromeOptions
+	    chromeCaps.setCapability("goog:chromeOptions", chromeOptions);
+
+	    // Restart Appium Server
+	    stopServer(objDictionary);
+	    try { Thread.sleep(4000); } catch (Exception ignored) {}
+	    startServer(objDictionary);
+	    try { Thread.sleep(6000); } catch (Exception ignored) {}
+
+	    try {
+	        AndroidDriver chromeDriver = new AndroidDriver(
+	            new URL("http://127.0.0.1:" + strDeviceAppiumPort), 
+	            chromeCaps
+	        );
+
+	        chromeDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+	        try { chromeDriver.unlockDevice(); } catch (Exception ignored) {}
+
+	        System.out.println("✅ Chrome session started successfully with matching ChromeDriver");
+	        return chromeDriver;
+
+	    } catch (Exception e) {
+	        String errorMsg = "Failed to start Chrome driver: " + e.getMessage();
+	        Reporter.log("<font color='red'>" + errorMsg + "</font>");
+	        e.printStackTrace();
+	        Assert.fail(errorMsg);
+	        return null;
+	    }
+	}
 }
 
 
