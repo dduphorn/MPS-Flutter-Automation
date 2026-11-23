@@ -346,7 +346,7 @@ public final class RateBlockPlanner
 		int intCount = mapNameCount.merge(strName, 1, Integer::sum);
 		if (intCount > 1) {strName = strName + "_" + intCount;}
 		LocalTime tStart = s.toLocalTime();
-		LocalTime tEnd = endTimeFor(s, e, d);
+		LocalTime tEnd = (type == BlockType.FREE) ? freeEndTimeFor(e, d) : endTimeFor(s, e, d);
 		lstBlocks.add(new PlannedBlock(strName, EnumSet.of(d.getDayOfWeek()), false, tStart, tEnd, type, strRateSetName, d, e));
 	}
 
@@ -365,6 +365,20 @@ public final class RateBlockPlanner
 	}
 
 	private static final LocalTime LAST_MINUTE = LocalTime.of(23, 59);
+
+	/**
+	 * End Time typed for a FREE block: the same minute the next block starts (free 20:21-20:51, rate 20:51-23:59), matching the
+	 * legacy SentryLink setup. Ending free one minute early (20:50) cost the parker the last free minute and made the meter's
+	 * MaxRemaining 224.5 instead of 225 in A2067F (2026-11-22). A free piece that runs to midnight still ends at 23:59 (never 24:00).
+	 * Rate blocks keep endTimeFor (rate 00:00-20:20 before free 20:21), which the I3079F evidence needs.
+	 */
+	static LocalTime freeEndTimeFor(LocalDateTime e, LocalDate d)
+	{
+		LocalDateTime dtDayEnd = d.plusDays(1).atStartOfDay();
+		if (!e.isBefore(dtDayEnd)) {return LAST_MINUTE;}
+		return e.toLocalTime();
+	}
+
 
 	/** "12:00 am-9:41 am" (the app's Hours of Enforcement format). */
 	public static String hours12(LocalTime tStart, LocalTime tEnd) {return (tStart.format(H12) + "-" + tEnd.format(H12)).toLowerCase(Locale.US);}
