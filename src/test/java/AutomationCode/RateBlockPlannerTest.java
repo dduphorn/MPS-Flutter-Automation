@@ -46,12 +46,13 @@ public class RateBlockPlannerTest
 	/**
 	 * Every covered day must be tiled 00:00..23:59, single day per block, never 24:00.
 	 * Exclusive ends: the next block starts at the previous End Time (only exception: the 23:58 -> 23:59 seam edge case).
-	 * Inclusive ends: the next block starts one minute after the previous End Time.
+	 * Inclusive ends: the next block starts one minute after the previous End Time, except after a FREE block, which ends on the minute the next block starts.
 	 */
 	private static void assertDaysFullyTiled(Plan p)
 	{
 		LocalTime tPrevEnd = null;
 		DayOfWeek dCurrent = null;
+		boolean blnPrevFree = false;
 		for (PlannedBlock b : p.blocks)
 		{
 			if (b.allDay) {continue;}
@@ -69,11 +70,16 @@ public class RateBlockPlannerTest
 				boolean blnEdge = tPrevEnd.equals(LocalTime.of(23, 58)) && b.startTime.equals(LocalTime.of(23, 59));
 				if (!blnEdge) {Assert.assertEquals(b.startTime, tPrevEnd, "Exclusive seam: block must start at the previous End Time: " + b);}
 			}
+			else if (blnPrevFree)
+			{
+				Assert.assertEquals(b.startTime, tPrevEnd, "Free block must end on the minute the next block starts (legacy seam): " + b);
+			}
 			else
 			{
 				Assert.assertEquals(b.startTime, tPrevEnd.plusMinutes(1), "Inclusive seam must step by exactly one minute: " + b);
 			}
 			tPrevEnd = b.endTime;
+			blnPrevFree = b.type == RateBlockPlanner.BlockType.FREE;
 		}
 		Assert.assertEquals(tPrevEnd, LocalTime.of(23, 59), "Last day did not end at 23:59");
 	}
@@ -89,7 +95,7 @@ public class RateBlockPlannerTest
 	{
 		Plan p = RateBlockPlanner.rateToFree(wed(12, 0), 15, 120, "Fixed", RATE, FREE);
 		Assert.assertEquals(compact(p), List.of(
-			"Wed 00:00-12:14 RATE", "Wed 12:15-14:14 FREE", "Wed 14:15-23:59 RATE",
+			"Wed 00:00-12:14 RATE", "Wed 12:15-14:15 FREE", "Wed 14:15-23:59 RATE",
 			"Thu 00:00-23:59 RATE"));
 		Assert.assertEquals(p.getFreeStartHHmm(), "12:15");
 		Assert.assertEquals(p.getFreeEndHHmm(), "14:15");
@@ -109,7 +115,7 @@ public class RateBlockPlannerTest
 	{
 		Plan p = RateBlockPlanner.rateToFree(wed(21, 30), 15, 120, "Fixed", RATE, FREE);
 		Assert.assertEquals(compact(p), List.of(
-			"Wed 00:00-21:44 RATE", "Wed 21:45-23:44 FREE", "Wed 23:45-23:59 RATE",
+			"Wed 00:00-21:44 RATE", "Wed 21:45-23:45 FREE", "Wed 23:45-23:59 RATE",
 			"Thu 00:00-23:59 RATE"));
 		Assert.assertEquals(p.getFreeEndHHmm(), "23:45");
 		assertDaysFullyTiled(p);
@@ -121,7 +127,7 @@ public class RateBlockPlannerTest
 		Plan p = RateBlockPlanner.rateToFree(wed(23, 50), 15, 120, "Fixed", RATE, FREE);
 		Assert.assertEquals(compact(p), List.of(
 			"Wed 00:00-23:59 RATE",
-			"Thu 00:00-00:04 RATE", "Thu 00:05-02:04 FREE", "Thu 02:05-23:59 RATE"));
+			"Thu 00:00-00:04 RATE", "Thu 00:05-02:05 FREE", "Thu 02:05-23:59 RATE"));
 		Assert.assertEquals(p.getFreeStartDateTime(), "2026-11-19 00:05:00");
 		Assert.assertEquals(p.getFreeEndDateTime(), "2026-11-19 02:05:00");
 		assertDaysFullyTiled(p);
@@ -133,7 +139,7 @@ public class RateBlockPlannerTest
 		Plan p = RateBlockPlanner.rateToFree(wed(23, 40), 15, 120, "Fixed", RATE, FREE);
 		Assert.assertEquals(compact(p), List.of(
 			"Wed 00:00-23:54 RATE", "Wed 23:55-23:59 FREE",
-			"Thu 00:00-01:54 FREE", "Thu 01:55-23:59 RATE"));
+			"Thu 00:00-01:55 FREE", "Thu 01:55-23:59 RATE"));
 		Assert.assertTrue(p.crossesMidnight());
 		Assert.assertEquals(p.blocks.get(1).name, "FreeRateBlock_Wed");
 		Assert.assertEquals(p.blocks.get(2).name, "FreeRateBlock_Thu");
@@ -150,7 +156,7 @@ public class RateBlockPlannerTest
 		Assert.assertEquals(p.now, wed(23, 59), "Seconds must be dropped once");
 		Assert.assertEquals(compact(p), List.of(
 			"Wed 00:00-23:59 RATE",
-			"Thu 00:00-00:13 RATE", "Thu 00:14-02:13 FREE", "Thu 02:14-23:59 RATE"));
+			"Thu 00:00-00:13 RATE", "Thu 00:14-02:14 FREE", "Thu 02:14-23:59 RATE"));
 		assertDaysFullyTiled(p);
 	}
 
@@ -160,7 +166,7 @@ public class RateBlockPlannerTest
 		Plan p = RateBlockPlanner.rateToFree(wed(23, 45), 15, 120, "Fixed", RATE, FREE);
 		Assert.assertEquals(compact(p), List.of(
 			"Wed 00:00-23:59 RATE",
-			"Thu 00:00-01:59 FREE", "Thu 02:00-23:59 RATE"));
+			"Thu 00:00-02:00 FREE", "Thu 02:00-23:59 RATE"));
 		assertDaysFullyTiled(p);
 	}
 
@@ -180,7 +186,7 @@ public class RateBlockPlannerTest
 	{
 		Plan p = RateBlockPlanner.rateToFree(wed(0, 0), 15, 120, "Fixed", RATE, FREE);
 		Assert.assertEquals(compact(p), List.of(
-			"Wed 00:00-00:14 RATE", "Wed 00:15-02:14 FREE", "Wed 02:15-23:59 RATE",
+			"Wed 00:00-00:14 RATE", "Wed 00:15-02:15 FREE", "Wed 02:15-23:59 RATE",
 			"Thu 00:00-23:59 RATE"));
 		assertDaysFullyTiled(p);
 	}
@@ -191,12 +197,12 @@ public class RateBlockPlannerTest
 		Plan p = RateBlockPlanner.rateToFree(wed(23, 30), 30, 120, "Progressive", RATE, FREE);
 		Assert.assertEquals(compact(p), List.of(
 			"Wed 00:00-23:59 RATE",
-			"Thu 00:00-01:59 FREE", "Thu 02:00-23:59 RATE"));
+			"Thu 00:00-02:00 FREE", "Thu 02:00-23:59 RATE"));
 		Assert.assertEquals(p.blocks.get(0).name, "ProgressiveRateBlock_Wed");
 		p = RateBlockPlanner.rateToFree(wed(23, 55), 10, 30, "Fixed", RATE, FREE);
 		Assert.assertEquals(compact(p), List.of(
 			"Wed 00:00-23:59 RATE",
-			"Thu 00:00-00:04 RATE", "Thu 00:05-00:34 FREE", "Thu 00:35-23:59 RATE"));
+			"Thu 00:00-00:04 RATE", "Thu 00:05-00:35 FREE", "Thu 00:35-23:59 RATE"));
 		assertDaysFullyTiled(p);
 	}
 
@@ -205,13 +211,13 @@ public class RateBlockPlannerTest
 	{
 		Plan p = RateBlockPlanner.freeToRate(wed(12, 0), 0, 30, "Fixed", RATE, FREE);
 		Assert.assertEquals(compact(p), List.of(
-			"Wed 00:00-11:59 RATE", "Wed 12:00-12:29 FREE", "Wed 12:30-23:59 RATE",
+			"Wed 00:00-11:59 RATE", "Wed 12:00-12:30 FREE", "Wed 12:30-23:59 RATE",
 			"Thu 00:00-23:59 RATE"));
 		Assert.assertEquals(p.getFreeEndHHmm(), "12:30");
 		p = RateBlockPlanner.freeToRate(wed(23, 50), 0, 30, "Fixed", RATE, FREE);
 		Assert.assertEquals(compact(p), List.of(
 			"Wed 00:00-23:49 RATE", "Wed 23:50-23:59 FREE",
-			"Thu 00:00-00:19 FREE", "Thu 00:20-23:59 RATE"));
+			"Thu 00:00-00:20 FREE", "Thu 00:20-23:59 RATE"));
 		Assert.assertEquals(p.getFreeStartHHmmss(), "23:50:00");
 		Assert.assertEquals(p.getFreeEnd12(), "12:20 AM");
 		assertDaysFullyTiled(p);
@@ -222,7 +228,7 @@ public class RateBlockPlannerTest
 	{
 		Plan p = RateBlockPlanner.freeToRate(wed(0, 0), 0, 30, "Fixed", RATE, FREE);
 		Assert.assertEquals(compact(p), List.of(
-			"Wed 00:00-00:29 FREE", "Wed 00:30-23:59 RATE",
+			"Wed 00:00-00:30 FREE", "Wed 00:30-23:59 RATE",
 			"Thu 00:00-23:59 RATE"));
 		assertDaysFullyTiled(p);
 	}
@@ -233,7 +239,7 @@ public class RateBlockPlannerTest
 		Plan p = RateBlockPlanner.freeToRate(wed(0, 5), -10, 30, "Fixed", RATE, FREE);
 		Assert.assertEquals(compact(p), List.of(
 			"Tue 00:00-23:54 RATE", "Tue 23:55-23:59 FREE",
-			"Wed 00:00-00:34 FREE", "Wed 00:35-23:59 RATE",
+			"Wed 00:00-00:35 FREE", "Wed 00:35-23:59 RATE",
 			"Thu 00:00-23:59 RATE"));
 		Assert.assertEquals(otherDaysBlock(p).days, EnumSet.of(DayOfWeek.MONDAY, DayOfWeek.FRIDAY, DayOfWeek.SATURDAY, DayOfWeek.SUNDAY));
 		assertDaysFullyTiled(p);
@@ -339,13 +345,13 @@ public class RateBlockPlannerTest
 		Plan p = RateBlockPlanner.rateToFree(dtPlan, 30, 120, "Fixed", RATE, FREE);
 		Assert.assertEquals(compact(p), List.of(
 			"Thu 00:00-23:59 RATE",
-			"Fri 00:00-00:07 RATE", "Fri 00:08-02:07 FREE", "Fri 02:08-23:59 RATE"));
+			"Fri 00:00-00:07 RATE", "Fri 00:08-02:08 FREE", "Fri 02:08-23:59 RATE"));
 		Assert.assertEquals(p.getCurrentBlockHours(dtPlan), "12:00 am-11:59 pm");
 		Assert.assertEquals(p.getCurrentBlockHours(LocalDateTime.of(2026, 11, 19, 23, 43, 15)), "12:00 am-11:59 pm");
 		Assert.assertEquals(p.getCurrentBlockHours(LocalDateTime.of(2026, 11, 19, 23, 59, 30)), "12:00 am-11:59 pm");
 		Assert.assertEquals(p.getCurrentBlockHours(LocalDateTime.of(2026, 11, 20, 0, 3, 0)), "12:00 am-12:07 am");
 		Assert.assertEquals(p.getCurrentBlockHours(LocalDateTime.of(2026, 11, 20, 0, 7, 30)), "12:00 am-12:07 am");
-		Assert.assertEquals(p.getCurrentBlockHours(LocalDateTime.of(2026, 11, 20, 0, 8, 0)), "12:08 am-2:07 am");
+		Assert.assertEquals(p.getCurrentBlockHours(LocalDateTime.of(2026, 11, 20, 0, 8, 0)), "12:08 am-2:08 am");
 		// Same answers from the encoded schedule kept in objDictionary
 		String strSchedule = p.encodeSchedule();
 		Assert.assertEquals(RateBlockPlanner.currentBlockHoursFromSchedule(strSchedule, LocalDateTime.of(2026, 11, 19, 23, 43, 15)), "12:00 am-11:59 pm");
@@ -361,7 +367,7 @@ public class RateBlockPlannerTest
 		Plan p = RateBlockPlanner.rateToFree(LocalDateTime.of(2026, 11, 20, 9, 11, 0), 30, 120, "Fixed", RATE, FREE);
 		Assert.assertEquals(p.getCurrentBlockHours(LocalDateTime.of(2026, 11, 20, 9, 15, 54)), "12:00 am-9:40 am");
 		Assert.assertEquals(RateBlockPlanner.currentBlockHoursFromSchedule(p.encodeSchedule(), LocalDateTime.of(2026, 11, 20, 9, 15, 54)), "12:00 am-9:40 am");
-		Assert.assertEquals(p.getCurrentBlockHours(LocalDateTime.of(2026, 11, 20, 9, 41, 0)), "9:41 am-11:40 am");
+		Assert.assertEquals(p.getCurrentBlockHours(LocalDateTime.of(2026, 11, 20, 9, 41, 0)), "9:41 am-11:41 am");
 	}
 
 	@Test(groups = {"Unit"})
@@ -373,7 +379,7 @@ public class RateBlockPlannerTest
 		// Free starts exactly at Thu 00:00: Wed 23:50 pays in Wed 00:00-23:59, Thu 00:00 is already free
 		p = RateBlockPlanner.rateToFree(wed(23, 45), 15, 120, "Fixed", RATE, FREE);
 		Assert.assertEquals(p.getCurrentBlockHours(wed(23, 50)), "12:00 am-11:59 pm");
-		Assert.assertEquals(p.getCurrentBlockHours(LocalDateTime.of(2026, 11, 19, 0, 0, 0)), "12:00 am-1:59 am");
+		Assert.assertEquals(p.getCurrentBlockHours(LocalDateTime.of(2026, 11, 19, 0, 0, 0)), "12:00 am-2:00 am");
 	}
 
 	@Test(groups = {"Unit"})
