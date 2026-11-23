@@ -5494,7 +5494,7 @@ public class Meter
 	    			try {Thread.sleep(15000);}catch (Exception e) {}
 	      		}
 			}
-			try {Thread.sleep(1500);}catch (Exception e) {}
+			try {Thread.sleep(2500);}catch (Exception e) {}
 			clsMeter.METER_ExecutePythonScriptAgainstMeter(objDictionary,strHost, "vehicle_"+strVehicleDepartType+"_spot_"+strSpotNumber+".py");
 			clsMeter.GlobalWait(objDictionary, driver, "{WaitUntilMeterVariableBegunEqualFalse} NA", 30, strSpotNumber,strHostType);
 		}
